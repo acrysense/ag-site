@@ -1,0 +1,31 @@
+{{!--
+	Постраничная навигация (Figma: Pagination 3172:13909, страница новостей 4478:18838).
+	props: label, prev { url }, next { url }, pages [{ number, url, current, far, gap }],
+	total, totalText. «Назад» и «Вперёд» — только если есть куда. far — страница, которую
+	на мобильном не показываем (остаются первая, последняя и соседние с текущей); gap — «…».
+	Одна страница — навигации нет, только «Всего».
+--}}
+{{#if (or props.pages.[1] props.total)}}
+    <div class="pagination{{#if props.class}} {{props.class}}{{/if}}">
+        {{#if props.pages.[1]}}
+            <nav class="pagination__nav" aria-label="{{default props.label 'Страницы'}}">
+                <ul class="pagination__list" role="list">
+                    {{#if props.prev}}<li><a class="pagination__step" href="{{props.prev.url}}" rel="prev">Назад</a></li>{{/if}}
+                    {{#each props.pages}}
+                        <li class="pagination__item{{#if far}} pagination__item--far{{/if}}">
+                            {{#if gap}}
+                                <span class="pagination__gap" aria-hidden="true">…</span>
+                            {{else if current}}
+                                <span class="pagination__page is-current" aria-current="page"><span class="visually-hidden">Страница </span>{{number}}</span>
+                            {{else}}
+                                <a class="pagination__page" href="{{url}}"><span class="visually-hidden">Страница </span>{{number}}</a>
+                            {{/if}}
+                        </li>
+                    {{/each}}
+                    {{#if props.next}}<li><a class="pagination__step" href="{{props.next.url}}" rel="next">Вперёд</a></li>{{/if}}
+                </ul>
+            </nav>
+        {{/if}}
+        {{#if props.total}}<p class="pagination__total">{{default props.totalText "Всего:"}} <span class="pagination__count">{{props.total}}</span></p>{{/if}}
+    </div>
+{{/if}}

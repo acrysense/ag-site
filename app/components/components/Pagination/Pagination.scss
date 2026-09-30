@@ -1,0 +1,86 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Pagination (3172:13909) — кнопки 36 со скруглением 7, BG.Info, текст S/400
+// Dark-grey.TXT; текущая — BG.Main 2 и Black.TXT; «Назад»/«Вперёд» шириной 65.
+// Мобильного в макете нет — наше: дальние страницы скрыты, ряд переносится, «Всего» ниже.
+@layer components {
+	.pagination {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+
+		@include up(tablet) {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+		}
+	}
+
+	.pagination__list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 5px;
+		align-items: center;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.pagination__item--far {
+		@include down(tablet) {
+			display: none;
+		}
+	}
+
+	.pagination__page,
+	.pagination__step,
+	.pagination__gap {
+		@include text("s-400");
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 36px;
+		height: 36px;
+		padding: 0 8px;
+		color: palette("dark-grey-txt");
+		border-radius: 7px;
+	}
+
+	.pagination__page,
+	.pagination__step {
+		background: palette("bg-info");
+		transition:
+			color $transition-default,
+			background-color $transition-default;
+	}
+
+	a.pagination__page:hover,
+	a.pagination__step:hover {
+		color: palette("black-txt");
+	}
+
+	.pagination__page.is-current {
+		color: palette("black-txt");
+		background: palette("bg-main-2");
+	}
+
+	.pagination__step {
+		min-width: 65px;
+	}
+
+	.pagination__gap {
+		color: palette("icon-grey");
+	}
+
+	.pagination__total {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.pagination__count {
+		color: palette("black-txt");
+	}
+}
