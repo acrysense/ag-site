@@ -92,8 +92,7 @@
 			transform: rotate(180deg);
 		}
 
-		// Двойной класс: стили общих компонентов подключаются после секций
-		&__dots.carousel__dots {
+		&__dots {
 			@include up(desktop) {
 				display: none;
 			}

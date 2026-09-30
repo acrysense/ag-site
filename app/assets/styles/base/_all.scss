@@ -1,3 +1,15 @@
+// Порядок важен: общие компоненты — первыми, блоки страниц после них и уточняют их
+// (при равной специфичности побеждает блок).
+@forward "@/components/components/Button/Button";
+@forward "@/components/components/Carousel/Carousel";
+@forward "@/components/components/Icon/Icon";
+@forward "@/components/components/LikeButton/LikeButton";
+@forward "@/components/components/SearchField/SearchField";
+@forward "@/components/components/Sheet/Sheet";
+@forward "@/components/components/Tabs/Tabs";
+@forward "@/components/components/Breadcrumbs/Breadcrumbs";
+@forward "@/components/components/Select/Select";
+
 @forward "@/components/layouts/Header/Header";
 @forward "@/components/layouts/Footer/Footer";
 @forward "@/components/layouts/MainMenu/MainMenu";
@@ -14,13 +26,3 @@
 @forward "@/components/sections/birthdays/BirthdayCalendar/BirthdayCalendar";
 
 // @forward '@/components/sections/shared/';
-
-@forward "@/components/components/Button/Button";
-@forward "@/components/components/Carousel/Carousel";
-@forward "@/components/components/Icon/Icon";
-@forward "@/components/components/LikeButton/LikeButton";
-@forward "@/components/components/SearchField/SearchField";
-@forward "@/components/components/Sheet/Sheet";
-@forward "@/components/components/Tabs/Tabs";
-@forward "@/components/components/Breadcrumbs/Breadcrumbs";
-@forward "@/components/components/Select/Select";

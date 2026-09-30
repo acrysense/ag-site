@@ -47,13 +47,12 @@ $leaders-gap: 14.5px; // 1920: 5 карточек по 300 в 1558 — пром�
 			}
 		}
 
-		// Двойные классы: стили общей карусели подключаются после секций
 		&__panel {
 			position: relative;
 			container-type: inline-size;
 		}
 
-		&__track.carousel__track {
+		&__track {
 			display: grid;
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 			gap: 20px 10px;
@@ -73,7 +72,7 @@ $leaders-gap: 14.5px; // 1920: 5 карточек по 300 в 1558 — пром�
 			}
 		}
 
-		&__item.carousel__slide {
+		&__item {
 			min-width: 0;
 
 			// На мобильном и планшете — первые 6

@@ -237,9 +237,8 @@
 			}
 		}
 
-		// Мобильный гость: «Button M.General, 36 px» из описания 360.HEADER.
-		// Через __actions — чтобы перебить размер .btn--m из общей кнопки
-		&__actions &__login {
+		// Мобильный гость: «Button M.General, 36 px» из описания 360.HEADER
+		&__login {
 			@include down(desktop) {
 				height: 36px;
 				padding-block: 7px;
