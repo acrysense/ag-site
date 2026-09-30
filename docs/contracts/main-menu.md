@@ -1,8 +1,8 @@
 # Контракт: мобильное меню и TabBar
 
 Черновик для согласования с бэкендом (Битрикс). Вёрстка: `app/components/layouts/MainMenu`,
-`app/components/layouts/TabBar`, шторка выхода — `app/components/components/Sheet`.
-Витрина: `/dev/ui.html#story=main-menu`, `#story=tab-bar`, `#story=sheet`.
+`app/components/layouts/TabBar`, подтверждение выхода — `app/components/components/Modal` (шторка до 768, окно по центру с 768).
+Витрина: `/dev/ui.html#story=main-menu`, `#story=tab-bar`, `#story=modal`.
 
 Макет: Figma, 360.MainMenu v2 — `4558:842`, свёрнуто — `4558:30851`, подтверждение выхода —
 `4568:929`, 360.TabBar — `4870:1538`, пункт TabBar — `4554:521`.
