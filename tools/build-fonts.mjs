@@ -9,15 +9,6 @@ const OUT = path.join(ROOT, 'public/fonts')
 const STYLES_OUT = path.join(ROOT, 'app/assets/styles/base/_fonts.generated.scss')
 const CONFIG_PATH = path.join(ROOT, 'fonts.config.json')
 
-function normalizeBase(value) {
-	let base = value || '/'
-	if (!base.startsWith('/')) base = `/${base}`
-	if (!base.endsWith('/')) base += '/'
-	return base
-}
-
-const BASE = normalizeBase(process.env.BASE)
-
 async function readConfig() {
 	try {
 		const config = JSON.parse(await fs.readFile(CONFIG_PATH, 'utf8'))
@@ -69,8 +60,11 @@ function isItalic(fileName) {
 	return tokens(fileName).includes('italic')
 }
 
+// Путь от корня public без BASE: Vite сам добавляет base к таким адресам в CSS при сборке.
+// Если зашивать BASE здесь, общий для dev и сборки _fonts.generated.scss после сборки
+// с BASE ломал шрифты в запущенном dev-сервере.
 function webPath(relativePath) {
-	return `${BASE}fonts/${relativePath.split(path.sep).join('/')}`
+	return `/fonts/${relativePath.split(path.sep).join('/')}`
 }
 
 async function copy(file, target) {
