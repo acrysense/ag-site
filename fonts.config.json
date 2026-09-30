@@ -1,7 +1,15 @@
 {
 	"defaults": {
 		"display": "swap",
-		"varWght": "300 700"
+		"varWght": "100 900"
 	},
-	"families": {}
+	"families": {
+		"Inter": {
+			"cssFamily": "Inter",
+			"normal": { "varWght": "100 900" }
+		},
+		"RFRufo": {
+			"cssFamily": "RF Rufo"
+		}
+	}
 }
