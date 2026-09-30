@@ -2,13 +2,16 @@
 	Поле формы (Figma: Input 2545:4083, Textarea 2551:5100 — форма «Предложить тему»).
 	props: id, name, label, labelHidden (подпись только для скринридера — у строк в макете её
 	нет, есть подсказка), type (text, email, tel…), multiline (многострочное), placeholder,
-	value, required, autocomplete, maxlength, class.
+	value, required, autocomplete, maxlength, maxRows (многострочное растёт до стольких строк,
+	потом прокрутка; по умолчанию 8), class.
+	Многострочное не растягивается мышью — растёт по высоте само (utils/autosize.js).
+	Длину ограничивает maxlength, лишние пробелы и пустые строки чистит модуль Form.
 	Ошибку под полем выводит модуль Form: цвет, значок и текст, aria-invalid и aria-describedby.
 --}}
 <div class="field{{#if props.multiline}} field--multiline{{/if}}{{#if props.class}} {{props.class}}{{/if}}">
     <label class="field__label{{#if props.labelHidden}} visually-hidden{{/if}}" for="{{props.id}}">{{props.label}}</label>
     {{#if props.multiline}}
-        <textarea class="field__control" id="{{props.id}}" name="{{props.name}}" rows="4" {{#if props.placeholder}}placeholder="{{props.placeholder}}"{{/if}} {{#if props.required}}required{{/if}} {{#if props.maxlength}}maxlength="{{props.maxlength}}"{{/if}}>{{props.value}}</textarea>
+        <textarea class="field__control" id="{{props.id}}" name="{{props.name}}" rows="3" data-autosize data-autosize-max-rows="{{default props.maxRows 8}}" {{#if props.placeholder}}placeholder="{{props.placeholder}}"{{/if}} {{#if props.required}}required{{/if}} {{#if props.maxlength}}maxlength="{{props.maxlength}}"{{/if}}>{{props.value}}</textarea>
     {{else}}
         <input class="field__control" id="{{props.id}}" name="{{props.name}}" type="{{default props.type 'text'}}" {{#if props.value}}value="{{props.value}}"{{/if}} {{#if props.placeholder}}placeholder="{{props.placeholder}}"{{/if}} {{#if props.autocomplete}}autocomplete="{{props.autocomplete}}"{{/if}} {{#if props.required}}required{{/if}} {{#if props.maxlength}}maxlength="{{props.maxlength}}"{{/if}} />
     {{/if}}

@@ -19,6 +19,8 @@ const TEXT = {
 	sent: 'Отправлено',
 }
 
+const TEXT_TYPES = new Set(['text', 'email', 'tel', 'search', 'url'])
+
 const sessid = (form) => window.BX?.bitrix_sessid?.() || form.dataset.sessid || ''
 
 export default function init(form) {
@@ -70,6 +72,25 @@ export default function init(form) {
 		formError.hidden = !message
 	}
 
+	// Чистка текста: пробелы по краям и в концах строк, не больше одной пустой строки подряд.
+	// Длину ограничивает maxlength; бэк проверяет то же самое (фронт можно обойти)
+	const normalize = (el) => {
+		if (!(
+			el instanceof HTMLTextAreaElement ||
+			(el instanceof HTMLInputElement && TEXT_TYPES.has(el.type))
+		))
+			return
+		const clean = el.value
+			.replace(/\r\n?/g, '\n')
+			.replace(/[ \t]+\n/g, '\n')
+			.replace(/\n{3,}/g, '\n\n')
+			.trim()
+		if (clean !== el.value) {
+			el.value = clean
+			el.dispatchEvent(new Event('input', { bubbles: true }))
+		}
+	}
+
 	const check = (el) => {
 		if (el.type === 'checkbox') return el.required && !el.checked ? TEXT.consent : ''
 		const value = el.value.trim()
@@ -110,6 +131,7 @@ export default function init(form) {
 			if (request) return
 			setFormError('')
 
+			controls().forEach(normalize)
 			const invalid = []
 			for (const el of controls()) {
 				const message = check(el)
@@ -181,6 +203,7 @@ export default function init(form) {
 	form.addEventListener('input', onInput, { signal })
 	form.addEventListener('change', onInput, { signal })
 	form.addEventListener('form:reset', clearAll, { signal })
+	form.addEventListener('focusout', (event) => normalize(event.target), { signal })
 
 	return () => {
 		controller.abort()

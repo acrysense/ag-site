@@ -30,28 +30,39 @@
 		background: palette("white");
 		border: 1px solid palette("form-border");
 		border-radius: $radius-button;
-		transition: border-color $transition-default;
-		--focus-ring-color: #{palette("form-focus")};
+		transition:
+			border-color $transition-default,
+			box-shadow $transition-default;
 
 		&::placeholder {
 			color: palette("dark-grey-txt");
 			opacity: 1;
 		}
 
+		// Фокус — одна рамка Form.Focus в 2px (рамка + тень), без отдельного кольца: как
+		// у открытого списка в макете (4706:1210). Кольцо заменено, не убрано
 		&:focus {
 			border-color: palette("form-focus");
+			outline: none;
+			box-shadow: 0 0 0 1px palette("form-focus");
 		}
 
 		.field.is-invalid & {
 			border-color: palette("red");
-			--focus-ring-color: #{palette("red")};
+		}
+
+		.field.is-invalid &:focus {
+			box-shadow: 0 0 0 1px palette("red");
 		}
 	}
 
 	.field--multiline .field__control {
-		height: 100px;
+		display: block;
+		min-height: 100px;
+		height: auto;
 		padding: 11px 14px;
-		resize: vertical;
+		overflow-y: hidden;
+		resize: none;
 	}
 
 	.field__error {
