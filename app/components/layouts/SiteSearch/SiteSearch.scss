@@ -733,4 +733,20 @@
 			color: palette("main-blue");
 		}
 	}
+
+	// Появление (наше): окно поиска проявляется со сдвигом; на мобильном весь экран поиска
+	// проявляется
+	.site-search__panel {
+		@include appear-when(".site-search.is-open &", flex);
+	}
+
+	@include down(desktop) {
+		.site-search.is-open {
+			transition: opacity $duration-overlay $ease-out;
+
+			@starting-style {
+				opacity: 0;
+			}
+		}
+	}
 }

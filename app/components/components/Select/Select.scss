@@ -370,8 +370,9 @@
 			margin-inline: 10px;
 		}
 
-		.select__backdrop:not([hidden]) {
+		.select__backdrop {
 			@include sheet-backdrop;
+			@include appear(none, $duration-overlay);
 
 			display: block;
 		}
@@ -403,5 +404,11 @@
 	.select__sheet-close-icon {
 		width: 10px;
 		height: 10px;
+	}
+
+	// Появление (наше): список проявляется со сдвигом; нижний лист (мультивыбор на мобильном)
+	// выезжает снизу (переменные — в миксине sheet), затемнение проявляется
+	.select__popup {
+		@include appear;
 	}
 }

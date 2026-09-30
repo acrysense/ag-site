@@ -298,6 +298,10 @@ $alias-bp: (
 	border: 0;
 	border-radius: vars.$radius-content-block vars.$radius-content-block 0 0;
 	box-shadow: vars.$shadow-sheet;
+	// Появление (миксин appear): выезжает снизу целиком, без прозрачности
+	--appear-shift: translateY(100%);
+	--appear-opacity: 1;
+	--appear-duration: #{vars.$duration-overlay};
 }
 
 @mixin sheet-backdrop {
@@ -306,4 +310,58 @@ $alias-bp: (
 	z-index: 99;
 	background: vars.$overlay-background;
 	backdrop-filter: blur(vars.$overlay-blur);
+}
+
+// Появление и скрытие блока, который прячется атрибутом hidden: проявление и сдвиг $shift
+// (по умолчанию — на 4px сверху), скрытие — в полтора раза быстрее. Скрытие плавное там, где
+// браузер умеет анимировать display (Chrome, Safari 17.4+, Firefox 129+); в остальных —
+// просто показать и спрятать. Нижний лист (миксин sheet) переопределяет переменные: выезжает
+// снизу целиком, без прозрачности.
+@mixin appear($shift: translateY(-4px), $duration: vars.$duration-popup) {
+	transition:
+		opacity var(--appear-duration, #{$duration}) vars.$ease-out,
+		transform var(--appear-duration, #{$duration}) vars.$ease-out,
+		display var(--appear-duration, #{$duration}) allow-discrete,
+		overlay var(--appear-duration, #{$duration}) allow-discrete;
+
+	&[hidden] {
+		opacity: var(--appear-opacity, 0);
+		transform: var(--appear-shift, #{$shift});
+		transition-duration: calc(var(--appear-duration, #{$duration}) * 0.67);
+	}
+
+	@starting-style {
+		opacity: var(--appear-opacity, 0);
+		transform: var(--appear-shift, #{$shift});
+	}
+}
+
+// То же для блока, который показывается классом (скрыт — display: none): $open — селектор
+// открытого состояния относительно блока, например «.is-open &» или «&.is-open»
+@mixin appear-when(
+	$open,
+	$display: block,
+	$shift: translateY(-4px),
+	$duration: vars.$duration-popup
+) {
+	display: none;
+	opacity: 0;
+	transform: $shift;
+	transition:
+		opacity $duration * 0.67 vars.$ease-out,
+		transform $duration * 0.67 vars.$ease-out,
+		display $duration * 0.67 allow-discrete,
+		overlay $duration * 0.67 allow-discrete;
+
+	#{$open} {
+		display: $display;
+		opacity: 1;
+		transform: none;
+		transition-duration: $duration;
+
+		@starting-style {
+			opacity: 0;
+			transform: $shift;
+		}
+	}
 }

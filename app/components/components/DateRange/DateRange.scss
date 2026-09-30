@@ -163,4 +163,15 @@
 			color: palette("main-blue");
 		}
 	}
+
+	// Появление (наше): календарь проявляется со сдвигом; на мобильном лист выезжает снизу
+	.date-range__popup {
+		@include appear;
+	}
+
+	.date-range__backdrop {
+		@include down(tablet) {
+			@include appear(none, $duration-overlay);
+		}
+	}
 }

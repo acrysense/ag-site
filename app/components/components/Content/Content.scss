@@ -194,4 +194,26 @@
 			color: palette("blue-txt");
 		}
 	}
+
+	// Раскрывающийся блок (наше): содержимое плавно раскрывается по высоте — где браузер умеет
+	// (::details-content, interpolate-size), иначе открывается сразу
+	.content details {
+		interpolate-size: allow-keywords;
+	}
+
+	.content details::details-content {
+		height: 0;
+		overflow: clip;
+		transition:
+			height $duration-overlay $ease-out,
+			content-visibility $duration-overlay allow-discrete;
+	}
+
+	.content details[open]::details-content {
+		height: auto;
+	}
+
+	.content__summary-icon {
+		transition: transform $duration-overlay $ease-out;
+	}
 }

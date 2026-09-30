@@ -786,4 +786,25 @@
 			background: palette("blue-soft");
 		}
 	}
+
+	// Появление (наше): панели проявляются со сдвигом от своей кнопки (реакции — снизу вверх).
+	// Закрываются сразу: их удаляет скрипт
+	.comment__picker,
+	.comment__menu,
+	.comment__confirm {
+		transition:
+			opacity $duration-popup $ease-out,
+			transform $duration-popup $ease-out;
+
+		@starting-style {
+			opacity: 0;
+			transform: translateY(-4px);
+		}
+	}
+
+	.comment__picker {
+		@starting-style {
+			transform: translateY(4px);
+		}
+	}
 }

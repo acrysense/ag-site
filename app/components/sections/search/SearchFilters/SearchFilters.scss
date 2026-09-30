@@ -190,4 +190,11 @@
 			color: palette("main-blue");
 		}
 	}
+
+	// Появление (наше): панель фильтров на весь экран проявляется и чуть поднимается
+	@include down(desktop) {
+		.search-filters {
+			@include appear-when("&.is-open", flex, translateY(16px), $duration-overlay);
+		}
+	}
 }

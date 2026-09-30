@@ -184,4 +184,12 @@
 			opacity: 0.5;
 		}
 	}
+
+	.calendar__day,
+	.calendar__month {
+		transition:
+			color $transition-default,
+			background-color $transition-default,
+			border-color $transition-default;
+	}
 }

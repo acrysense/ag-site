@@ -247,4 +247,14 @@ $leaders-gap: 14.5px; // 1920: 5 карточек по 300 в 1558 — пром�
 	.leaders__title a:hover {
 		color: palette("blue-txt");
 	}
+
+	// Смена вкладки (наше): новая панель проявляется; старая прячется сразу, чтобы две панели
+	// не стояли друг под другом
+	.leaders__panel[role="tabpanel"] {
+		transition: opacity $duration-overlay $ease-out;
+
+		@starting-style {
+			opacity: 0;
+		}
+	}
 }

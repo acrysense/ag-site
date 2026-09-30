@@ -395,4 +395,13 @@
 	.header__burger:hover {
 		color: palette("main-blue");
 	}
+
+	// Появление (наше): подменю проявляется со сдвигом сверху
+	.menu__submenu {
+		@include appear;
+	}
+
+	.menu__toggle {
+		transition: color $transition-default;
+	}
 }

@@ -303,4 +303,36 @@
 	.main-menu__profile-link:hover {
 		color: palette("blue-hover");
 	}
+
+	// Появление (наше): меню проявляется и чуть опускается (со стороны бургера), закрытие —
+	// обратно; раскрытие групп — проявление
+	.main-menu {
+		opacity: 0;
+		transform: translateY(-8px);
+		transition:
+			opacity $duration-popup $ease-out,
+			transform $duration-popup $ease-out,
+			display $duration-popup allow-discrete,
+			overlay $duration-popup allow-discrete;
+
+		&[open] {
+			opacity: 1;
+			transform: none;
+			transition-duration: $duration-overlay;
+
+			@starting-style {
+				opacity: 0;
+				transform: translateY(-8px);
+			}
+		}
+
+		&--static {
+			opacity: 1;
+			transform: none;
+		}
+	}
+
+	.main-menu__list {
+		@include appear;
+	}
 }

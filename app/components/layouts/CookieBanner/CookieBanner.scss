@@ -78,4 +78,13 @@
 			@include text("m-400");
 		}
 	}
+
+	// Появление (наше): карточка проявляется и чуть поднимается; после выбора — уходит так же
+	.cookie-banner {
+		@include appear(translateY(8px), $duration-overlay);
+
+		&.is-instant {
+			transition: none;
+		}
+	}
 }

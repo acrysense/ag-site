@@ -283,4 +283,59 @@
 			color: palette("main-blue");
 		}
 	}
+
+	// Появление (наше): на мобильном шторка выезжает снизу целиком (без прозрачности), на
+	// десктопе окно по центру проявляется с лёгким приближением; фон плавно темнеет.
+	// Закрытие — обратно и быстрее
+	.modal {
+		--modal-shift: translateY(100%);
+		--modal-opacity: 1;
+
+		opacity: var(--modal-opacity);
+		transform: var(--modal-shift);
+		transition:
+			opacity $duration-popup $ease-out,
+			transform $duration-popup $ease-out,
+			display $duration-popup allow-discrete,
+			overlay $duration-popup allow-discrete;
+
+		@include up(tablet) {
+			--modal-shift: scale(0.96);
+			--modal-opacity: 0;
+		}
+
+		&[open] {
+			opacity: 1;
+			transform: none;
+			transition-duration: $duration-overlay;
+
+			@starting-style {
+				opacity: var(--modal-opacity);
+				transform: var(--modal-shift);
+			}
+		}
+
+		&::backdrop {
+			opacity: 0;
+			transition:
+				opacity $duration-popup $ease-out,
+				display $duration-popup allow-discrete,
+				overlay $duration-popup allow-discrete;
+		}
+
+		&[open]::backdrop {
+			opacity: 1;
+			transition-duration: $duration-overlay;
+
+			@starting-style {
+				opacity: 0;
+			}
+		}
+
+		// Витрина: окно на странице, без появления
+		&--static {
+			opacity: 1;
+			transform: none;
+		}
+	}
 }
