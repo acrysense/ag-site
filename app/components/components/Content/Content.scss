@@ -1,4 +1,3 @@
-@use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
 // HTML из визуального редактора Битрикса: голые теги без классов.
@@ -63,24 +62,29 @@
 		}
 
 		// Видео из редактора приходит с фиксированными width/height — тянем на ширину
-		iframe:is([src*="youtube.com"], [src*="youtu.be"], [src*="rutube.ru"], [src*="vk.com/video"], [src*="vkvideo.ru"]) {
+		iframe:is(
+			[src*="youtube.com"],
+			[src*="youtube-nocookie.com"],
+			[src*="youtu.be"],
+			[src*="rutube.ru"],
+			[src*="vk.com/video"],
+			[src*="vkvideo.ru"]
+		) {
 			width: 100%;
 			height: auto;
 			aspect-ratio: 16 / 9;
 		}
 
+		// Широкая таблица скроллится по горизонтали сама, без обёртки от админа.
+		// display: block делает саму таблицу scroll-контейнером: текст в ячейках
+		// переносится, а скролл появляется, только когда колонки не помещаются.
+		// Цена: короткая таблица не растягивается на всю ширину.
 		table {
+			display: block;
+			max-width: 100%;
+			overflow-x: auto;
+			overscroll-behavior-x: contain;
 			border-collapse: collapse;
-			width: 100%;
-
-			// На мобилке таблица скроллится сама, без обёртки от админа
-			@include down(tablet) {
-				display: block;
-				width: auto;
-				max-width: 100%;
-				overflow-x: auto;
-				overscroll-behavior-x: contain;
-			}
 		}
 
 		th,
