@@ -50,6 +50,27 @@
 				<div class="tokens tokens--text" data-token-list="text"></div>
 			{{/story}}
 
+			{{#> story id="icons" group="Основа" title="Иконки" description='Все иконки спрайта в размерах, в которых они стоят на сайте. Толщина линии измеряется по отрисовке (медиана по центрам линий); у залитых иконок не считается. Разбор расхождений — docs/design-review/icons.md.'}}
+				{{#> state label="Как в макете"}}
+					<div class="tokens tokens--icons" data-icon-list>
+						{{#each data.icons}}
+							<figure class="token-icon" data-icon="{{name}}">
+								<div class="token-icon__samples">
+									{{#each sizes}}
+										<span class="token-icon__sample token-icon__sample--{{this}}">{{> components/Icon/Icon name=../name class="token-icon__svg"}}</span>
+									{{/each}}
+								</div>
+								<figcaption class="token-icon__body">
+									<span class="token-icon__name">{{name}}</span>
+									<span class="token-icon__where">{{where}}</span>
+									<span class="token-icon__stroke" data-icon-stroke data-sizes="{{#each sizes}}{{this}} {{/each}}"></span>
+								</figcaption>
+							</figure>
+						{{/each}}
+					</div>
+				{{/state}}
+			{{/story}}
+
 			{{#> story id="header" group="Каркас" title="Шапка" description='Figma: PC.HEADER.v2 (4652:8752), 360.HEADER (4865:1334). Данные — site.header в site.config.json. Подменю «Новости»: наведение мышью, стрелка, Escape. Бургер открывает мобильное меню — см. «Мобильное меню».'}}
 				{{#> state label="Гость" bg="page"}}
 					{{> layouts/Header/Header props=site.header}}

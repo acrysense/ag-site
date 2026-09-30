@@ -146,3 +146,95 @@ window.addEventListener('resize', updateSpecimens)
 
 // Правка _vars.scss в dev обновляет только CSS — перерисовываем списки токенов
 if (import.meta.hot) import.meta.hot.on('vite:afterUpdate', renderTokens)
+
+// Толщина линии иконки: рисуем символ из спрайта в 8 раз крупнее, строим карту расстояний
+// до края и берём медиану по центральным линиям. Для разбора с дизайнером, только витрина.
+const SCALE = 8
+
+async function strokeWidth(name, size) {
+	const symbol = document.getElementById(`icon-${name}`)
+	if (!symbol) return null
+	const box = symbol.getAttribute('viewBox')
+	const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${size * SCALE}" height="${size * SCALE}" viewBox="${box}" color="#000">${symbol.innerHTML}</svg>`
+	const image = new Image()
+	image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`
+	await image.decode()
+
+	const width = size * SCALE
+	const canvas = document.createElement('canvas')
+	canvas.width = canvas.height = width
+	const context = canvas.getContext('2d')
+	context.drawImage(image, 0, 0, width, width)
+	const alpha = context.getImageData(0, 0, width, width).data
+
+	const dist = new Float32Array(width * width)
+	for (let i = 0; i < dist.length; i++) dist[i] = alpha[i * 4 + 3] > 127 ? 1e9 : 0
+	const d2 = Math.SQRT2
+	for (let y = 0; y < width; y++) {
+		for (let x = 0; x < width; x++) {
+			const i = y * width + x
+			if (!dist[i]) continue
+			let v = x && y ? dist[i] : 1
+			if (x) v = Math.min(v, dist[i - 1] + 1)
+			if (y) {
+				v = Math.min(v, dist[i - width] + 1)
+				if (x) v = Math.min(v, dist[i - width - 1] + d2)
+				if (x < width - 1) v = Math.min(v, dist[i - width + 1] + d2)
+			}
+			dist[i] = v
+		}
+	}
+	for (let y = width - 1; y >= 0; y--) {
+		for (let x = width - 1; x >= 0; x--) {
+			const i = y * width + x
+			if (!dist[i]) continue
+			let v = x < width - 1 && y < width - 1 ? dist[i] : 1
+			if (x < width - 1) v = Math.min(v, dist[i + 1] + 1)
+			if (y < width - 1) {
+				v = Math.min(v, dist[i + width] + 1)
+				if (x < width - 1) v = Math.min(v, dist[i + width + 1] + d2)
+				if (x) v = Math.min(v, dist[i + width - 1] + d2)
+			}
+			dist[i] = v
+		}
+	}
+
+	const ridge = []
+	for (let y = 1; y < width - 1; y++) {
+		for (let x = 1; x < width - 1; x++) {
+			const i = y * width + x
+			const v = dist[i]
+			if (v < 1.5) continue
+			if ([-1, 1, -width, width].every((o) => dist[i + o] <= v)) ridge.push(v)
+		}
+	}
+	if (!ridge.length) return null
+	ridge.sort((a, b) => a - b)
+	return (2 * ridge[Math.floor(ridge.length / 2)] - 1) / SCALE
+}
+
+// Ориентир: иконки 20px в макете в основном 1.1–1.4px; тоньше 1 — заметно тоньше соседей
+async function renderIconStrokes() {
+	for (const node of document.querySelectorAll('[data-icon-stroke]')) {
+		const name = node.closest('[data-icon]').dataset.icon
+		const sizes = node.dataset.sizes.trim().split(/\s+/).map(Number)
+		const values = []
+		for (const size of sizes) {
+			const value = await strokeWidth(name, size)
+			if (value !== null) values.push({ size, value })
+		}
+		const filled = name.endsWith('-filled')
+		node.textContent = filled
+			? 'залитая — толщина не считается'
+			: values.map(({ size, value }) => `${value.toFixed(2)}px при ${size}px`).join(' · ')
+		const min = Math.min(...values.map(({ value }) => value))
+		const max = Math.max(...values.map(({ value }) => value))
+		node.classList.toggle('is-thin', !filled && min < 1)
+		node.classList.toggle('is-thick', !filled && max > 1.6)
+	}
+}
+
+// Спрайт монтируется на DOMContentLoaded — ждём его
+if (document.querySelector('[data-icon-list]')) {
+	window.addEventListener('load', renderIconStrokes, { once: true })
+}

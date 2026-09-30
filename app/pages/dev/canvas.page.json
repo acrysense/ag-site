@@ -888,6 +888,214 @@
 			"url": "#",
 			"title": "Выйти из аккаунта?",
 			"text": "Чтобы снова открыть портал, понадобится войти по логину и паролю."
-		}
+		},
+		"icons": [
+			{
+				"name": "menu",
+				"sizes": [
+					20,
+					30
+				],
+				"where": "TabBar (20), бургер в шапке 360 (30)"
+			},
+			{
+				"name": "profile",
+				"sizes": [
+					20,
+					24
+				],
+				"where": "меню, TabBar (20), шапка (24)"
+			},
+			{
+				"name": "edu",
+				"sizes": [
+					20,
+					24
+				],
+				"where": "меню, TabBar (20), шапка (24)"
+			},
+			{
+				"name": "crm",
+				"sizes": [
+					24
+				],
+				"where": "шапка вошедшего"
+			},
+			{
+				"name": "news",
+				"sizes": [
+					20
+				],
+				"where": "меню, TabBar"
+			},
+			{
+				"name": "directory",
+				"sizes": [
+					20
+				],
+				"where": "меню, TabBar"
+			},
+			{
+				"name": "case",
+				"sizes": [
+					20
+				],
+				"where": "меню, TabBar"
+			},
+			{
+				"name": "home",
+				"sizes": [
+					20
+				],
+				"where": "меню"
+			},
+			{
+				"name": "pharmacy",
+				"sizes": [
+					20
+				],
+				"where": "меню"
+			},
+			{
+				"name": "manager",
+				"sizes": [
+					20
+				],
+				"where": "меню"
+			},
+			{
+				"name": "calendar",
+				"sizes": [
+					20
+				],
+				"where": "меню"
+			},
+			{
+				"name": "tasks",
+				"sizes": [
+					20
+				],
+				"where": "меню"
+			},
+			{
+				"name": "multiplier",
+				"sizes": [
+					20
+				],
+				"where": "меню"
+			},
+			{
+				"name": "box",
+				"sizes": [
+					20
+				],
+				"where": "меню"
+			},
+			{
+				"name": "apple",
+				"sizes": [
+					20
+				],
+				"where": "меню"
+			},
+			{
+				"name": "motivation",
+				"sizes": [
+					20
+				],
+				"where": "меню"
+			},
+			{
+				"name": "wiki",
+				"sizes": [
+					20
+				],
+				"where": "меню"
+			},
+			{
+				"name": "gallery",
+				"sizes": [
+					20
+				],
+				"where": "меню"
+			},
+			{
+				"name": "exit",
+				"sizes": [
+					20
+				],
+				"where": "меню"
+			},
+			{
+				"name": "search",
+				"sizes": [
+					16
+				],
+				"where": "поле поиска"
+			},
+			{
+				"name": "comment",
+				"sizes": [
+					16
+				],
+				"where": "карточка новости"
+			},
+			{
+				"name": "like",
+				"sizes": [
+					16
+				],
+				"where": "карточка новости"
+			},
+			{
+				"name": "like-filled",
+				"sizes": [
+					16
+				],
+				"where": "карточка новости (залитая)"
+			},
+			{
+				"name": "external-link",
+				"sizes": [
+					16
+				],
+				"where": "меню «Присоединяйтесь»"
+			},
+			{
+				"name": "chevron-right",
+				"sizes": [
+					16
+				],
+				"where": "меню"
+			},
+			{
+				"name": "chevron-up",
+				"sizes": [
+					16
+				],
+				"where": "меню"
+			},
+			{
+				"name": "angle-right",
+				"sizes": [
+					16
+				],
+				"where": "аватар в шапке"
+			},
+			{
+				"name": "close",
+				"sizes": [
+					14
+				],
+				"where": "меню"
+			},
+			{
+				"name": "arrow-down-small",
+				"sizes": [
+					10
+				],
+				"where": "пункт меню шапки"
+			}
+		]
 	}
 }

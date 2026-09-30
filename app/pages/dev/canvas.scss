@@ -322,3 +322,69 @@ $token-text-names: ();
 		overflow-wrap: break-word;
 	}
 }
+
+// Иконки: образцы в размерах со страницы и замер толщины линии
+.tokens--icons {
+	display: grid;
+	gap: 8px;
+}
+
+.token-icon {
+	display: grid;
+	grid-template-columns: 76px minmax(0, 1fr);
+	gap: 12px;
+	align-items: center;
+	margin: 0;
+	padding: 10px 12px;
+	background: $canvas-card;
+	border: 1px solid $canvas-line;
+	border-radius: 12px;
+
+	&__samples {
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		color: palette("black-txt");
+	}
+
+	&__sample {
+		display: block;
+
+		@each $size in (10, 14, 16, 20, 24, 30) {
+			&--#{$size} .token-icon__svg {
+				width: #{$size}px;
+				height: #{$size}px;
+			}
+		}
+	}
+
+	&__body {
+		display: grid;
+		gap: 2px;
+		min-width: 0;
+	}
+
+	&__name {
+		font-size: 13px;
+		font-weight: 600;
+	}
+
+	&__where {
+		font-size: 12px;
+		color: $canvas-muted;
+	}
+
+	&__stroke {
+		font-family: $canvas-mono;
+		font-size: 12px;
+		color: $canvas-muted;
+
+		&.is-thin {
+			color: #b35c00;
+		}
+
+		&.is-thick {
+			color: $canvas-fail;
+		}
+	}
+}
