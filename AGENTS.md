@@ -71,6 +71,10 @@ The main requirement of the spec: everything the admin edits must not be hard-co
 - Images: resize on the backend, `srcset` for 2x, fixed aspect ratio.
 - Hover submenus open by tap on touch devices and from the keyboard.
 - The UI element that looks like a button either does something or does not look clickable.
+- Every interactive element has a hover, color only (no underline, it does not animate): dark or
+  grey text → Blue.TXT, blue links → Blue.Hover, icon buttons → Main Blue, fields → Icon.Grey
+  border (focus and error states stay on top), image links → image opacity 0.9. The current item
+  (selected tab, active dot) needs no hover. Details: `docs/design-review/open-questions.md`.
 
 ## Forms
 
