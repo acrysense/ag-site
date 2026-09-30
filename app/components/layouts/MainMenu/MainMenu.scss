@@ -24,11 +24,17 @@
 			flex-direction: column;
 		}
 
-		// Витрина: открытое меню внутри карточки состояния, без фиксации
+		// Витрина: открытое меню внутри карточки состояния, без фиксации. Своей прокрутки
+		// нет — прокручивается страница; иначе overscroll-behavior: contain гасил колесо
+		// и свайп над меню, и не прокручивалось ничего
 		&--static {
 			position: relative;
 			z-index: auto;
+			height: auto;
 			min-height: 100vh;
+			max-height: none;
+			overflow: visible;
+			overscroll-behavior: auto;
 		}
 
 		&__header {
