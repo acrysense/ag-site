@@ -59,8 +59,9 @@ The main requirement of the spec: everything the admin edits must not be hard-co
 ## Blocks and Bitrix
 
 - Every block survives 0, 1 and N items. A block hidden by the admin leaves no gap.
-- Every block is added to `app/pages/dev/states.html` in all states: normal, loading, empty, error,
-  long content, 320px. A state that cannot happen is marked explicitly.
+- Every block gets a story in the component showcase (`app/pages/dev/canvas.html`, viewed at
+  `/dev/ui.html`) in all states: normal, loading, empty, error, long content. Check it at 360px.
+  A state that cannot happen is marked explicitly with `note`.
 - `#bx-panel` and edit-mode buttons must not break the fixed header and menu.
 - Lists (news, gallery, documents, directory) load in portions.
 - Images: resize on the backend, `srcset` for 2x, fixed aspect ratio.
