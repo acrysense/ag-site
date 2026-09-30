@@ -1,7 +1,33 @@
 @use "sass:meta";
+@use "./mixins" as *;
+@use "./vars" as *;
 
 // Стили библиотек — в слое vendor: компоненты перекрывают их без повышения специфичности
 @layer vendor {
-	// Своя прокрутка списков (выпадающий список, модалки)
+	// Своя прокрутка списков и модалок (SimpleBar): системную полосу нельзя привести к одному
+	// виду во всех браузерах
 	@include meta.load-css("simplebar/dist/simplebar.css");
+
+	// Общий вид полосы. В макете её нет — наше: ползунок 4px Main Blue на подложке BG.Info,
+	// видна всегда (подсказывает, что содержимое длиннее окна)
+	.simplebar-track.simplebar-vertical {
+		width: 8px;
+
+		&::before {
+			position: absolute;
+			inset: 2px;
+			content: "";
+			background: palette("bg-info");
+			border-radius: 2px;
+		}
+	}
+
+	.simplebar-scrollbar::before {
+		background: palette("main-blue");
+		border-radius: 2px;
+	}
+
+	.simplebar-scrollbar.simplebar-visible::before {
+		opacity: 1;
+	}
 }

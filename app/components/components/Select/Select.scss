@@ -133,25 +133,10 @@
 		}
 	}
 
-	// Окно прокрутки — не выше ~7 пунктов; полоса SimpleBar: ползунок 4px, Icon.Grey
-	// (в макете прокрутки нет — длина списка там 12 месяцев без неё)
+	// Окно прокрутки — не выше ~7 пунктов; вид полосы — общий (base/_vendor.scss)
 	.select__scroll {
 		min-height: 0;
 		max-height: min(280px, 45vh);
-
-		.simplebar-track.simplebar-vertical {
-			right: -4px;
-			width: 8px;
-		}
-
-		.simplebar-scrollbar::before {
-			background: palette("icon-grey");
-			border-radius: 2px;
-		}
-
-		.simplebar-scrollbar.simplebar-visible::before {
-			opacity: 1;
-		}
 	}
 
 	.select__list {
