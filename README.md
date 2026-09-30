@@ -1,9 +1,9 @@
-# Vite starter
+# my.apteka-group.by
 
-Базовая multi-page сборка для версточных проектов на Vite, HTML/Handlebars и SCSS.
+Вёрстка нового корпоративного сайта под шаблон Битрикса. Multi-page сборка на Vite,
+HTML/Handlebars и SCSS, создана из шаблона `acrysense/vite-starter`.
 
-Стартер намеренно содержит только универсальную инфраструктуру. Проектные библиотеки,
-компоненты, контент и оптимизация медиа добавляются в конкретном проекте, а не в общей базе.
+Правила работы — `AGENTS.md`.
 
 ## Требования
 
@@ -320,6 +320,14 @@ reset → vendor → base → layout → components → utilities
 - Поля ввода не меньше 16px, чтобы iOS не зумил страницу. Масштаб во viewport не запрещается.
 - `appearance: none` у полей и `select`; чекбоксы, радио и range остаются нативными.
 
+## Контент из редактора Битрикса
+
+HTML из визуального редактора выводится внутри `.content` (partial
+`components/Content/Content`). Модуль оформляет голые `p`, `h2–h4`, `ul/ol`, `table`, `img`,
+`iframe` без классов. Широкая таблица скроллится по горизонтали сама, обёртка от админа не
+нужна. Интервалы (`$content-gap`, `$content-gap-lg`) — временные, согласуются с бэком по
+стилям редактора.
+
 ## Страница состояний блоков
 
 `app/pages/dev/states.html` (в dev — `/dev/states.html`, в сборке — `dev-states.html`)
@@ -360,7 +368,7 @@ rm -rf node_modules dist
 npm ci
 npm run build
 BASE=/demo/ npm run build
-BASE=/demo/ npm run build -- --mode cms
+BASE=/bitrix/templates/<шаблон>/ npm run build -- --mode cms
 npm audit --omit=dev
 npm audit
 npm ls
