@@ -123,7 +123,12 @@ HTML-файлы из `app/pages` становятся отдельными entry
 
 Глобальные данные берутся из `site.config.json`. Для отдельной страницы можно создать
 рядом файл `<page>.page.json` с `title`, `description`, `ogImage`, `twitterCard` или
-`canonical`.
+`canonical`. Ключ `data` из него доступен в шаблоне как `data` — так в витрину и статичные
+страницы попадает демо-контент:
+
+```hbs
+{{> sections/home/NewsFeed/NewsFeed props=data.news }}
+```
 
 Полезные helpers уже доступны в шаблонах: `asset`, `attrs`, `default`, `obj`, `arr`,
 `and`, `or`, `eq`, `cls`, `json`, `striptags`, `isSet`, `isEmpty`, `not`.
@@ -148,13 +153,13 @@ app/assets/icons/close.svg       -> icon-close
 app/assets/icons/social/mail.svg -> icon-social-mail
 ```
 
-Использование:
+Использование — через partial, чтобы способ вывода иконок менялся в одном месте:
 
-```html
-<svg aria-hidden="true" focusable="false">
-	<use href="#icon-close"></use>
-</svg>
+```hbs
+{{> components/Icon/Icon name="close" class="btn__icon"}}
 ```
+
+Иконки готовятся под `currentColor`: без зашитого `fill`, цвет задаёт CSS.
 
 Внутренние ID SVG автоматически получают префикс, поэтому gradients, masks и clip paths
 разных иконок не конфликтуют. Цвета исходной иконки не переписываются автоматически.
@@ -334,14 +339,20 @@ reset → vendor → base → layout → components → utilities
 - `$colors` — цвета, в коде `palette("main-blue")`. Переменные с одинаковым значением и
   именем на двух языках (`White` / `Белый`) сведены в одну.
 - `$text-styles` — стили текста, в коде `@include text("m-400")`. Размеры фиксированные, как
-  в макете: мобильный и десктопный используют одни и те же, отличия мобильного — ключ
-  `mobile`, действуют до десктопного брейкпоинта.
-- `$radius-button`, `$radius-content-block`, `$radius-inner-block` — скругления.
+  в макете. Мобильные стили Figma (`360/…`) — отдельные записи с суффиксом `-360`: на одном
+  мобильном экране встречаются и они, и десктопные, поэтому блок выбирает стиль сам.
+  `line-height` «100» в переменных Figma — это Auto, в CSS `normal`.
+- `$radius-button`, `$radius-content-block`, `$radius-inner-block` — скругления,
+  `$shadow-content-block` — тень белых блоков, `$container-width` — ширина контента (1600).
 
 ```scss
-.news__title {
-	@include text("h4");
-	color: palette("black-txt");
+.news-card__title {
+	@include text("h4-360");
+	color: palette("black-h");
+
+	@include up(desktop) {
+		@include text("card-title");
+	}
 }
 ```
 
@@ -351,6 +362,11 @@ reset → vendor → base → layout → components → utilities
 Шрифты: Inter (переменный, OFL) и RF Rufo Bold — из проекта `ag`. RF Rufo — платный шрифт,
 лицензия заказчика разрешает хранить его в репозитории. Подключены только начертания из
 переменных макета.
+
+## Контракты с бэкендом
+
+Перед интеграцией блока в Битрикс его разметка, поля админки и обмен с сервером описываются в
+`docs/contracts/<блок>.md` и согласуются с бэкендом.
 
 ## Витрина компонентов
 
