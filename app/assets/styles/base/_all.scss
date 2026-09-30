@@ -3,12 +3,15 @@
 @forward "@/components/layouts/MainMenu/MainMenu";
 @forward "@/components/layouts/TabBar/TabBar";
 
+@forward "@/components/sections/home/HeroBanners/HeroBanners";
+@forward "@/components/sections/home/PostList/PostList";
 @forward "@/components/sections/home/NewsFeed/NewsFeed";
 @forward "@/components/sections/shared/NewsCard/NewsCard";
 
 // @forward '@/components/sections/shared/';
 
 @forward "@/components/components/Button/Button";
+@forward "@/components/components/Carousel/Carousel";
 @forward "@/components/components/Icon/Icon";
 @forward "@/components/components/LikeButton/LikeButton";
 @forward "@/components/components/SearchField/SearchField";

@@ -606,6 +606,15 @@ export default defineConfig(({ mode }) => {
 					add(a: any, b: any) {
 						return Number(a) + Number(b)
 					},
+					// Разбивка списка на страницы: {{#each (chunk items 4)}} — для каруселей по N пунктов
+					chunk(list: any, size: any) {
+						if (!Array.isArray(list)) return []
+						const step = Math.max(1, Number(size) || 1)
+						const pages: any[] = []
+						for (let i = 0; i < list.length; i += step)
+							pages.push(list.slice(i, i + step))
+						return pages
+					},
 					obj(...args) {
 						const options = args[args.length - 1]
 						const hasOptions =

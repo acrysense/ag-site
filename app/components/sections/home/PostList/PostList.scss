@@ -1,0 +1,155 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: 360 — 4865:1354, 1920 — 4615:42853
+@layer components {
+	.post-list {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		min-width: 0;
+		height: 100%;
+		padding: 32px 10px;
+		background: palette("white");
+
+		@include up(desktop) {
+			gap: 40px;
+			padding: 20px;
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+
+		&__head {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		&__title {
+			@include text("h2");
+
+			color: palette("black-h");
+		}
+
+		&__arrows {
+			display: none;
+			gap: 5px;
+
+			@include up(desktop) {
+				display: flex;
+			}
+		}
+
+		&__arrow {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 28px;
+			height: 28px;
+			padding: 0;
+			color: palette("dark-grey-txt");
+			background: palette("bg-info");
+			border: 0;
+			border-radius: 5px;
+		}
+
+		&__arrow--next &__arrow-icon {
+			transform: rotate(180deg);
+		}
+
+		&__arrow-icon {
+			width: 12px;
+			height: 12px;
+		}
+
+		// На мобильном — только первая страница, листания нет
+		&__track {
+			@include down(desktop) {
+				overflow: visible;
+			}
+		}
+
+		&__page {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			@include down(desktop) {
+				&:not(:first-child) {
+					display: none;
+				}
+			}
+
+			@include up(desktop) {
+				gap: 10px;
+			}
+		}
+
+		// Разделитель: на мобильном между пунктами с отступом 70 (под текстом),
+		// на десктопе под каждым пунктом во всю ширину
+		&__item {
+			@include down(desktop) {
+				& + &::before {
+					display: block;
+					height: 1px;
+					margin: 0 0 16px 70px;
+					content: "";
+					background: palette("form-border");
+				}
+			}
+
+			@include up(desktop) {
+				padding-bottom: 10px;
+				border-bottom: 1px solid palette("form-border");
+			}
+		}
+
+		&__link {
+			display: flex;
+			gap: 10px;
+			align-items: flex-start;
+			color: palette("black-txt");
+
+			@include up(desktop) {
+				align-items: center;
+			}
+
+			&:hover .post-list__text {
+				color: palette("blue-hover");
+			}
+		}
+
+		&__image {
+			flex: none;
+			width: 60px;
+			height: 60px;
+			object-fit: cover;
+			border-radius: $radius-inner-block;
+
+			@include up(desktop) {
+				width: 80px;
+				height: 80px;
+			}
+		}
+
+		// Мобильный: 2 строки в высоту картинки, дальше «…»; десктоп: до 3 строк
+		&__text {
+			@include text("l-400");
+
+			display: -webkit-box;
+			overflow: hidden;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+			transition: color $transition-default;
+
+			@include up(desktop) {
+				-webkit-line-clamp: 3;
+			}
+		}
+	}
+}

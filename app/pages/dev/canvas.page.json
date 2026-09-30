@@ -1181,6 +1181,324 @@
 					"external-link"
 				]
 			}
-		]
+		],
+		"hero": {
+			"slides": [
+				{
+					"url": "#",
+					"alt": "Uriage: уход для проблемной кожи",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Аптечка при простуде — скидки до −23%",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Всё для гигиены полости рта — скидки до −15%",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Uriage: уход для проблемной кожи",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Аптечка при простуде — скидки до −23%",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Всё для гигиены полости рта — скидки до −15%",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				}
+			],
+			"promos": [
+				{
+					"url": "#",
+					"alt": "Аптечка при простуде — скидки до −23%",
+					"image": "./img/promo-1.jpg"
+				},
+				{
+					"url": "#",
+					"alt": "Всё для гигиены полости рта — скидки до −15%",
+					"image": "./img/promo-2.jpg"
+				}
+			]
+		},
+		"heroNoPromos": {
+			"slides": [
+				{
+					"url": "#",
+					"alt": "Uriage: уход для проблемной кожи",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Аптечка при простуде — скидки до −23%",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Всё для гигиены полости рта — скидки до −15%",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Uriage: уход для проблемной кожи",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Аптечка при простуде — скидки до −23%",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Всё для гигиены полости рта — скидки до −15%",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				}
+			]
+		},
+		"heroOnePromo": {
+			"slides": [
+				{
+					"url": "#",
+					"alt": "Uriage: уход для проблемной кожи",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Аптечка при простуде — скидки до −23%",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Всё для гигиены полости рта — скидки до −15%",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Uriage: уход для проблемной кожи",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Аптечка при простуде — скидки до −23%",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Всё для гигиены полости рта — скидки до −15%",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				}
+			],
+			"promos": [
+				{
+					"url": "#",
+					"alt": "Аптечка при простуде — скидки до −23%",
+					"image": "./img/promo-1.jpg"
+				}
+			]
+		},
+		"heroOneSlide": {
+			"slides": [
+				{
+					"url": "#",
+					"alt": "Uriage: уход для проблемной кожи",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				}
+			],
+			"promos": [
+				{
+					"url": "#",
+					"alt": "Аптечка при простуде — скидки до −23%",
+					"image": "./img/promo-1.jpg"
+				},
+				{
+					"url": "#",
+					"alt": "Всё для гигиены полости рта — скидки до −15%",
+					"image": "./img/promo-2.jpg"
+				}
+			]
+		},
+		"heroOnlyPromos": {
+			"promos": [
+				{
+					"url": "#",
+					"alt": "Аптечка при простуде — скидки до −23%",
+					"image": "./img/promo-1.jpg"
+				},
+				{
+					"url": "#",
+					"alt": "Всё для гигиены полости рта — скидки до −15%",
+					"image": "./img/promo-2.jpg"
+				}
+			]
+		},
+		"heroEmpty": {},
+		"posts": {
+			"title": "Акции",
+			"url": "#",
+			"items": [
+				{
+					"url": "#",
+					"title": "Bonjour, уважаемые коллеги! С 7 сентября в аптеках ADEL, «Добрыя лекi»",
+					"image": "./img/post-1.jpg"
+				},
+				{
+					"url": "#",
+					"title": "С 7 сентября по 31 декабря 2026 года (до последнего «подарка») в 329 аптеках ADEL,  «Добрыя лекi»",
+					"image": "./img/post-2.jpg"
+				},
+				{
+					"url": "#",
+					"title": "С 7 сентября по 31 декабря 2026 года в 12 аптеках ADEL стартует акция «Подарок за покупку от Dr. Ceruocle",
+					"image": "./img/post-3.jpg"
+				},
+				{
+					"url": "#",
+					"title": "Rovectin – корейская косметика для требовательной кожи",
+					"image": "./img/post-4.jpg"
+				},
+				{
+					"url": "#",
+					"title": "Bonjour, уважаемые коллеги! С 7 сентября в аптеках ADEL, «Добрыя лекi»",
+					"image": "./img/post-1.jpg"
+				},
+				{
+					"url": "#",
+					"title": "С 7 сентября по 31 декабря 2026 года (до последнего «подарка») в 329 аптеках ADEL,  «Добрыя лекi»",
+					"image": "./img/post-2.jpg"
+				}
+			]
+		},
+		"postsFew": {
+			"title": "Акции",
+			"url": "#",
+			"items": [
+				{
+					"url": "#",
+					"title": "Bonjour, уважаемые коллеги! С 7 сентября в аптеках ADEL, «Добрыя лекi»",
+					"image": "./img/post-1.jpg"
+				},
+				{
+					"url": "#",
+					"title": "С 7 сентября по 31 декабря 2026 года (до последнего «подарка») в 329 аптеках ADEL,  «Добрыя лекi»",
+					"image": "./img/post-2.jpg"
+				}
+			]
+		},
+		"postsNoImages": {
+			"title": "Корпоративные новости",
+			"url": "#",
+			"items": [
+				{
+					"url": "#",
+					"title": "Bonjour, уважаемые коллеги! С 7 сентября в аптеках ADEL, «Добрыя лекi»"
+				},
+				{
+					"url": "#",
+					"title": "С 7 сентября по 31 декабря 2026 года (до последнего «подарка») в 329 аптеках ADEL,  «Добрыя лекi»"
+				},
+				{
+					"url": "#",
+					"title": "С 7 сентября по 31 декабря 2026 года в 12 аптеках ADEL стартует акция «Подарок за покупку от Dr. Ceruocle"
+				},
+				{
+					"url": "#",
+					"title": "Rovectin – корейская косметика для требовательной кожи"
+				}
+			]
+		},
+		"postsLong": {
+			"title": "Корпоративные новости холдинга «Аптека групп»",
+			"url": "#",
+			"items": [
+				{
+					"url": "#",
+					"title": "Очень длинный заголовок акции: С 7 сентября по 31 декабря 2026 года (до последнего «подарка») в 329 аптеках ADEL,  «Добрыя лекi» С 7 сентября по 31 декабря 2026 года в 12 аптеках ADEL стартует акция «Подарок за покупку от Dr. Ceruocle",
+					"image": "./img/post-2.jpg"
+				},
+				{
+					"url": "#",
+					"title": "С 7 сентября по 31 декабря 2026 года (до последнего «подарка») в 329 аптеках ADEL,  «Добрыя лекi»",
+					"image": "./img/post-2.jpg"
+				},
+				{
+					"url": "#",
+					"title": "С 7 сентября по 31 декабря 2026 года в 12 аптеках ADEL стартует акция «Подарок за покупку от Dr. Ceruocle",
+					"image": "./img/post-3.jpg"
+				},
+				{
+					"url": "#",
+					"title": "Rovectin – корейская косметика для требовательной кожи",
+					"image": "./img/post-4.jpg"
+				}
+			]
+		},
+		"postsEmpty": {
+			"title": "Акции",
+			"items": []
+		}
 	}
 }

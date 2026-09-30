@@ -102,6 +102,142 @@
 					"liked": false
 				}
 			]
+		},
+		"hero": {
+			"slides": [
+				{
+					"url": "#",
+					"alt": "Uriage: уход для проблемной кожи",
+					"image": {
+						"desktop": "./dev/img/banner-desktop.jpg",
+						"mobile": "./dev/img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Аптечка при простуде — скидки до −23%",
+					"image": {
+						"desktop": "./dev/img/banner-desktop.jpg",
+						"mobile": "./dev/img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Всё для гигиены полости рта — скидки до −15%",
+					"image": {
+						"desktop": "./dev/img/banner-desktop.jpg",
+						"mobile": "./dev/img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Uriage: уход для проблемной кожи",
+					"image": {
+						"desktop": "./dev/img/banner-desktop.jpg",
+						"mobile": "./dev/img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Аптечка при простуде — скидки до −23%",
+					"image": {
+						"desktop": "./dev/img/banner-desktop.jpg",
+						"mobile": "./dev/img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Всё для гигиены полости рта — скидки до −15%",
+					"image": {
+						"desktop": "./dev/img/banner-desktop.jpg",
+						"mobile": "./dev/img/banner-mobile.jpg"
+					}
+				}
+			],
+			"promos": [
+				{
+					"url": "#",
+					"alt": "Аптечка при простуде — скидки до −23%",
+					"image": "./dev/img/promo-1.jpg"
+				},
+				{
+					"url": "#",
+					"alt": "Всё для гигиены полости рта — скидки до −15%",
+					"image": "./dev/img/promo-2.jpg"
+				}
+			]
+		},
+		"promo": {
+			"title": "Акции",
+			"url": "#",
+			"items": [
+				{
+					"url": "#",
+					"title": "Bonjour, уважаемые коллеги! С 7 сентября в аптеках ADEL, «Добрыя лекi»",
+					"image": "./dev/img/post-1.jpg"
+				},
+				{
+					"url": "#",
+					"title": "С 7 сентября по 31 декабря 2026 года (до последнего «подарка») в 329 аптеках ADEL,  «Добрыя лекi»",
+					"image": "./dev/img/post-2.jpg"
+				},
+				{
+					"url": "#",
+					"title": "С 7 сентября по 31 декабря 2026 года в 12 аптеках ADEL стартует акция «Подарок за покупку от Dr. Ceruocle",
+					"image": "./dev/img/post-3.jpg"
+				},
+				{
+					"url": "#",
+					"title": "Rovectin – корейская косметика для требовательной кожи",
+					"image": "./dev/img/post-4.jpg"
+				},
+				{
+					"url": "#",
+					"title": "Bonjour, уважаемые коллеги! С 7 сентября в аптеках ADEL, «Добрыя лекi»",
+					"image": "./dev/img/post-1.jpg"
+				},
+				{
+					"url": "#",
+					"title": "С 7 сентября по 31 декабря 2026 года (до последнего «подарка») в 329 аптеках ADEL,  «Добрыя лекi»",
+					"image": "./dev/img/post-2.jpg"
+				}
+			]
+		},
+		"corporate": {
+			"title": "Корпоративные новости",
+			"url": "#",
+			"items": [
+				{
+					"url": "#",
+					"title": "Bonjour, уважаемые коллеги! С 7 сентября в аптеках ADEL, «Добрыя лекi»",
+					"image": "./dev/img/post-1.jpg"
+				},
+				{
+					"url": "#",
+					"title": "С 7 сентября по 31 декабря 2026 года (до последнего «подарка») в 329 аптеках ADEL,  «Добрыя лекi»",
+					"image": "./dev/img/post-2.jpg"
+				},
+				{
+					"url": "#",
+					"title": "С 7 сентября по 31 декабря 2026 года в 12 аптеках ADEL стартует акция «Подарок за покупку от Dr. Ceruocle",
+					"image": "./dev/img/post-3.jpg"
+				},
+				{
+					"url": "#",
+					"title": "Rovectin – корейская косметика для требовательной кожи",
+					"image": "./dev/img/post-4.jpg"
+				},
+				{
+					"url": "#",
+					"title": "Bonjour, уважаемые коллеги! С 7 сентября в аптеках ADEL, «Добрыя лекi»",
+					"image": "./dev/img/post-1.jpg"
+				},
+				{
+					"url": "#",
+					"title": "С 7 сентября по 31 декабря 2026 года (до последнего «подарка») в 329 аптеках ADEL,  «Добрыя лекi»",
+					"image": "./dev/img/post-2.jpg"
+				}
+			]
 		}
 	}
 }

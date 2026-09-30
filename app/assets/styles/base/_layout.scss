@@ -46,4 +46,32 @@
 			padding-block: 40px;
 		}
 	}
+
+	// Ряд блоков главной: «Акции», «Корпоративные новости», «День рождения»
+	// (1920: 587.5 + 587.5 + 385 через 20). На мобильном — столбиком, как .page-blocks.
+	.page-row {
+		display: grid;
+		gap: 10px;
+
+		@include up(desktop) {
+			grid-auto-columns: minmax(0, 1fr);
+			grid-auto-flow: column;
+			gap: 20px;
+		}
+
+		// Колонки — по числу выведенных блоков: скрытый админом блок не оставляет дыру
+		&--posts {
+			@include up(desktop) {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+
+				&:has(> :nth-child(3)) {
+					grid-template-columns: 587.5fr 587.5fr 385fr;
+				}
+
+				&:has(> :only-child) {
+					grid-template-columns: minmax(0, 1fr);
+				}
+			}
+		}
+	}
 }

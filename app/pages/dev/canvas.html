@@ -173,6 +173,47 @@
 				{{#> state label="Ошибка" note="после неудачного запроса отметка возвращается как была, скринридер слышит сообщение"}}{{/state}}
 			{{/story}}
 
+			{{#> story id="hero" group="Главная" title="Баннеры" description='Figma: 1920 — 4615:42835, 360 — 4865:1335. Текст баннеров в картинках — alt обязателен. У слайда две картинки: для десктопа и мобильного.'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container">{{> sections/home/HeroBanners/HeroBanners props=data.hero}}</div>
+				{{/state}}
+				{{#> state label="Без промо" bg="page"}}
+					<div class="container">{{> sections/home/HeroBanners/HeroBanners props=data.heroNoPromos}}</div>
+				{{/state}}
+				{{#> state label="Одно промо" bg="page"}}
+					<div class="container">{{> sections/home/HeroBanners/HeroBanners props=data.heroOnePromo}}</div>
+				{{/state}}
+				{{#> state label="Один слайд" bg="page"}}
+					<div class="container">{{> sections/home/HeroBanners/HeroBanners props=data.heroOneSlide}}</div>
+				{{/state}}
+				{{#> state label="Только промо" bg="page"}}
+					<div class="container">{{> sections/home/HeroBanners/HeroBanners props=data.heroOnlyPromos}}</div>
+				{{/state}}
+				{{#> state label="Пусто" bg="page"}}
+					<div class="container">{{> sections/home/HeroBanners/HeroBanners props=data.heroEmpty}}</div>
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: баннеры приходят с сервера вместе со страницей"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="post-list" group="Главная" title="Акции и корпоративные новости" description='Figma: 1920 — 4615:42853, 360 — 4865:1354. Один компонент для «Акций» и «Корпоративных новостей». На десктопе по 4 на странице, стрелки листают; на мобильном первые 4.'}}
+				{{#> state label="Обычное (2 страницы)" bg="page"}}
+					<div class="container">{{> sections/home/PostList/PostList props=data.posts}}</div>
+				{{/state}}
+				{{#> state label="Мало пунктов (без стрелок)" bg="page"}}
+					<div class="container">{{> sections/home/PostList/PostList props=data.postsFew}}</div>
+				{{/state}}
+				{{#> state label="Без картинок" bg="page"}}
+					<div class="container">{{> sections/home/PostList/PostList props=data.postsNoImages}}</div>
+				{{/state}}
+				{{#> state label="Длинный контент" bg="page"}}
+					<div class="container">{{> sections/home/PostList/PostList props=data.postsLong}}</div>
+				{{/state}}
+				{{#> state label="Пусто" bg="page"}}
+					<div class="container">{{> sections/home/PostList/PostList props=data.postsEmpty}}</div>
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: список приходит с сервера вместе со страницей"}}{{/state}}
+			{{/story}}
+
 			{{#> story id="news-feed" group="Главная" title="Новости холдинга" description="Figma: 1920 — 4615:43032, 360 — 4865:1470. На мобильном 6 карточек в 2 колонки, на десктопе 5 в ряд. Карточка кликабельна целиком."}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container">{{> sections/home/NewsFeed/NewsFeed props=data.news}}</div>

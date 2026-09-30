@@ -11,6 +11,11 @@
 				{{!-- Блоки главной в порядке макета (PC.Main v2 — 4615:42781, 360.Main v2 — 4865:1332).
 				Готовые подключены, остальные добавляются по мере вёрстки. --}}
 				<div class="container page-blocks">
+					{{> sections/home/HeroBanners/HeroBanners props=data.hero }}
+					<div class="page-row page-row--posts">
+						{{> sections/home/PostList/PostList props=data.promo }}
+						{{> sections/home/PostList/PostList props=data.corporate }}
+					</div>
 					{{> sections/home/NewsFeed/NewsFeed props=data.news }}
 				</div>
 			</main>

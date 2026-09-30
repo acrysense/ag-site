@@ -1,0 +1,64 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Общая механика карусели: дорожка с привязкой к кадрам и точки. Вид стрелок — в блоке.
+@layer components {
+	.carousel__track {
+		display: flex;
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	.carousel__slide {
+		flex: 0 0 100%;
+		min-width: 0;
+		scroll-snap-align: start;
+		scroll-snap-stop: always;
+	}
+
+	.carousel.is-single {
+		[data-carousel-prev],
+		[data-carousel-next],
+		[data-carousel-dots] {
+			display: none;
+		}
+	}
+
+	// Точки: 10px, активная — полоска 25px Blue.Hover (Figma: Frame 356)
+	.carousel__dots {
+		display: flex;
+		gap: 5px;
+		justify-content: center;
+	}
+
+	.carousel__dot {
+		position: relative;
+		width: 10px;
+		height: 10px;
+		padding: 0;
+		background: palette("bg-info");
+		border: 0;
+		border-radius: 5px;
+		transition:
+			width $transition-default,
+			background-color $transition-default;
+
+		// Точка маленькая — область нажатия больше
+		&::after {
+			position: absolute;
+			inset: -7px -3px;
+			content: "";
+		}
+
+		&[aria-current="true"] {
+			width: 25px;
+			background: palette("blue-hover");
+		}
+	}
+}

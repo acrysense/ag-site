@@ -1,0 +1,45 @@
+{{!--
+	Баннеры главной (Figma: 1920 — 4615:42835, 360 — 4865:1335): слайдер и промо справа.
+	props: slides [{ url, alt, image: { desktop, mobile } }], promos [{ url, alt, image }].
+	Текст баннеров — в самих картинках, поэтому alt обязателен (его заполняет админ).
+	Нет промо — слайдер во всю ширину; один слайд — без стрелок и точек; нет ничего — блок
+	не выводится. Контракт — docs/contracts/hero-banners.md.
+--}}
+{{#if (or props.slides.length props.promos.length)}}
+    <section class="hero{{#unless props.promos.length}} hero--no-promos{{/unless}}{{#unless props.slides.length}} hero--no-slides{{/unless}}" aria-label="{{default props.label 'Баннеры'}}">
+        {{#if props.slides.length}}
+            <div class="hero__slider carousel" role="region" aria-roledescription="карусель" aria-label="Баннеры" data-module="Carousel" data-path="components" data-carousel-loop>
+                <div class="carousel__track hero__track" data-carousel-track>
+                    {{#each props.slides}}
+                        <div class="carousel__slide hero__slide" role="group" aria-roledescription="слайд" aria-label="{{add @index 1}} из {{../props.slides.length}}">
+                            {{#if url}}<a class="hero__slide-link" href="{{url}}">{{/if}}
+                            <picture>
+                                {{#if image.desktop}}<source media="(min-width: 768px)" srcset="{{image.desktop}}" />{{/if}}
+                                <img class="hero__image" src="{{default image.mobile image.desktop}}" alt="{{alt}}" {{#unless @first}}loading="lazy"{{/unless}} decoding="async" />
+                            </picture>
+                            {{#if url}}</a>{{/if}}
+                        </div>
+                    {{/each}}
+                </div>
+                <button class="hero__arrow hero__arrow--prev" type="button" aria-label="Предыдущий баннер" data-carousel-prev>
+                    {{> components/Icon/Icon name="angle-right" class="hero__arrow-icon"}}
+                </button>
+                <button class="hero__arrow hero__arrow--next" type="button" aria-label="Следующий баннер" data-carousel-next>
+                    {{> components/Icon/Icon name="angle-right" class="hero__arrow-icon"}}
+                </button>
+                <div class="carousel__dots hero__dots" data-carousel-dots></div>
+            </div>
+        {{/if}}
+        {{#if props.promos.length}}
+            <ul class="hero__promos" role="list">
+                {{#each props.promos}}
+                    <li class="hero__promo-item">
+                        {{#if url}}<a class="hero__promo" href="{{url}}">{{else}}<div class="hero__promo">{{/if}}
+                        <img class="hero__promo-image" src="{{image}}" alt="{{alt}}" decoding="async" />
+                        {{#if url}}</a>{{else}}</div>{{/if}}
+                    </li>
+                {{/each}}
+            </ul>
+        {{/if}}
+    </section>
+{{/if}}
