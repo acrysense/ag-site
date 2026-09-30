@@ -480,6 +480,18 @@ function svgSpritePlugin() {
 				if (import.meta.hot) import.meta.hot.dispose(() => document.getElementById(spriteId)?.remove());
 			`
 		},
+		// Новая или удалённая иконка в dev: без этого спрайт собирался только при запуске
+		// сервера, и добавленные иконки не появлялись до перезапуска
+		configureServer(server) {
+			const onIconsChange = (file: string) => {
+				if (!file.startsWith(ICONS_ROOT) || !file.endsWith('.svg')) return
+				const module = server.moduleGraph.getModuleById(RESOLVED_SVG_SPRITE_ID)
+				if (module) server.moduleGraph.invalidateModule(module)
+				server.ws.send({ type: 'full-reload' })
+			}
+			server.watcher.on('add', onIconsChange)
+			server.watcher.on('unlink', onIconsChange)
+		},
 		handleHotUpdate({ file, server }) {
 			if (file.startsWith(ICONS_ROOT) && file.endsWith('.svg')) {
 				const module = server.moduleGraph.getModuleById(RESOLVED_SVG_SPRITE_ID)
