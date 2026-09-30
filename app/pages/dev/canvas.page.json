@@ -1237,12 +1237,18 @@
 				{
 					"url": "#",
 					"alt": "Аптечка при простуде — скидки до −23%",
-					"image": "./img/promo-1.jpg"
+					"image": {
+						"desktop": "./img/promo-1-desktop.jpg",
+						"mobile": "./img/promo-1-mobile.jpg"
+					}
 				},
 				{
 					"url": "#",
 					"alt": "Всё для гигиены полости рта — скидки до −15%",
-					"image": "./img/promo-2.jpg"
+					"image": {
+						"desktop": "./img/promo-2-desktop.jpg",
+						"mobile": "./img/promo-2-mobile.jpg"
+					}
 				}
 			]
 		},
@@ -1353,7 +1359,10 @@
 				{
 					"url": "#",
 					"alt": "Аптечка при простуде — скидки до −23%",
-					"image": "./img/promo-1.jpg"
+					"image": {
+						"desktop": "./img/promo-1-desktop.jpg",
+						"mobile": "./img/promo-1-mobile.jpg"
+					}
 				}
 			]
 		},
@@ -1372,12 +1381,18 @@
 				{
 					"url": "#",
 					"alt": "Аптечка при простуде — скидки до −23%",
-					"image": "./img/promo-1.jpg"
+					"image": {
+						"desktop": "./img/promo-1-desktop.jpg",
+						"mobile": "./img/promo-1-mobile.jpg"
+					}
 				},
 				{
 					"url": "#",
 					"alt": "Всё для гигиены полости рта — скидки до −15%",
-					"image": "./img/promo-2.jpg"
+					"image": {
+						"desktop": "./img/promo-2-desktop.jpg",
+						"mobile": "./img/promo-2-mobile.jpg"
+					}
 				}
 			]
 		},
@@ -1386,12 +1401,18 @@
 				{
 					"url": "#",
 					"alt": "Аптечка при простуде — скидки до −23%",
-					"image": "./img/promo-1.jpg"
+					"image": {
+						"desktop": "./img/promo-1-desktop.jpg",
+						"mobile": "./img/promo-1-mobile.jpg"
+					}
 				},
 				{
 					"url": "#",
 					"alt": "Всё для гигиены полости рта — скидки до −15%",
-					"image": "./img/promo-2.jpg"
+					"image": {
+						"desktop": "./img/promo-2-desktop.jpg",
+						"mobile": "./img/promo-2-mobile.jpg"
+					}
 				}
 			]
 		},
@@ -1873,6 +1894,74 @@
 		"wideBannerEmpty": {
 			"label": "Баннеры партнёров",
 			"slides": []
+		},
+		"heroPromosNoMobile": {
+			"slides": [
+				{
+					"url": "#",
+					"alt": "Uriage: уход для проблемной кожи",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Аптечка при простуде — скидки до −23%",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Всё для гигиены полости рта — скидки до −15%",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Uriage: уход для проблемной кожи",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Аптечка при простуде — скидки до −23%",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Всё для гигиены полости рта — скидки до −15%",
+					"image": {
+						"desktop": "./img/banner-desktop.jpg",
+						"mobile": "./img/banner-mobile.jpg"
+					}
+				}
+			],
+			"promos": [
+				{
+					"url": "#",
+					"alt": "Аптечка при простуде — скидки до −23%",
+					"image": {
+						"desktop": "./img/promo-1-desktop.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Всё для гигиены полости рта — скидки до −15%",
+					"image": {
+						"desktop": "./img/promo-2-desktop.jpg"
+					}
+				}
+			]
 		}
 	}
 }

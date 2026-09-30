@@ -158,12 +158,18 @@
 				{
 					"url": "#",
 					"alt": "Аптечка при простуде — скидки до −23%",
-					"image": "./dev/img/promo-1.jpg"
+					"image": {
+						"desktop": "./dev/img/promo-1-desktop.jpg",
+						"mobile": "./dev/img/promo-1-mobile.jpg"
+					}
 				},
 				{
 					"url": "#",
 					"alt": "Всё для гигиены полости рта — скидки до −15%",
-					"image": "./dev/img/promo-2.jpg"
+					"image": {
+						"desktop": "./dev/img/promo-2-desktop.jpg",
+						"mobile": "./dev/img/promo-2-mobile.jpg"
+					}
 				}
 			]
 		},
