@@ -401,6 +401,13 @@
 				{{#> state label="Отправка" note="в живом окне: кнопка неактивна, в ней значок загрузки, на форме aria-busy"}}{{/state}}
 				{{#> state label="Ошибка" note="в живом окне: пустые поля при отправке; тема со словом «ошибка» или «сбой»"}}{{/state}}
 			{{/story}}
+
+			{{#> story id="cookie-banner" group="Каркас" title="Согласие на cookie" description='Figma: 4711:32225. На странице — в левом нижнем углу без затемнения (на мобильном — над нижней навигацией), фокус не перехватывает. Выбор — в cookie на год; с cookie баннер не выводится.'}}
+				{{#> state label="Обычное" bg="page"}}
+					{{> layouts/CookieBanner/CookieBanner props=data.cookiesStatic}}
+				{{/state}}
+				{{#> state label="Выбор сделан" note="баннера нет: бэк не выводит его при cookie ag_cookie_consent, а если страница из кеша — скрывает скрипт"}}{{/state}}
+			{{/story}}
 		</main>
 		{{> layouts/SiteModals/SiteModals props=data.siteModals}}
 	</body>
