@@ -12,6 +12,14 @@ $font-base:
 $color-white: #ffffff;
 $color-full-black: #000000;
 
+// content (HTML из редактора Битрикса)
+// TODO(макеты): заменить значениями из макета и согласовать со стилями редактора
+$content-gap: 16px;
+$content-gap-lg: 32px;
+$content-heading-line-height: 1.25;
+$content-cell-padding: 8px 12px;
+$color-content-border: #d0d0d0;
+
 // fields
 $field-font-size-min: 16px;
 
