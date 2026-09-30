@@ -139,4 +139,21 @@
 			}
 		}
 	}
+
+	// Блоки основной колонки друг под другом: на мобильном — в одном белом блоке через 32,
+	// на десктопе — карточки через 10. --article: колонка новости не шире 1080 (Figma 4652:11884)
+	.page-stack {
+		display: flex;
+		flex-direction: column;
+		gap: 32px;
+		min-width: 0;
+
+		@include up(desktop) {
+			gap: 10px;
+		}
+
+		&--article {
+			max-width: 1080px;
+		}
+	}
 }

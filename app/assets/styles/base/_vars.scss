@@ -68,7 +68,13 @@ $colors: (
 	// Без переменной в Figma: обводка аватара и конфетти в «День рождения»
 	"festive-gold": #ffd700,
 	// Без переменной в Figma: значок успеха в модалке (Success icon, 4134:27271)
-	"success": #2fa95c
+	"success": #2fa95c,
+	// Green — рейтинг комментария «+N»
+	"green": #169e23,
+	// Без переменной в Figma: моя реакция (Comment/Reaction · Mine)
+	"blue-soft": #e5f2ff,
+	// Без переменной в Figma: мой 👎 (Comment/Reaction · Mine dislike)
+	"red-soft": #ffeded
 );
 
 // layout
@@ -87,6 +93,13 @@ $radius-dropdown: 8px;
 
 // Без переменной в Figma: тень выпадающего списка (Dropdown, 4706:1214)
 $shadow-dropdown: 0 8px 24px rgb(15 26 36 / 12%);
+
+// Без переменной в Figma: всплывающие панели комментариев (выбор реакции, меню модерации)
+$shadow-popover: 0 8px 12px rgb(18 23 33 / 14%);
+// Без переменной в Figma: подсветка поля правки комментария (Edit box)
+$shadow-field-focus: 0 0 0 3px rgb(0 129 255 / 16%);
+// Comment/Delete confirm popover — мягкая тень подтверждения
+$shadow-popover-soft: 0 8px 24px -8px rgb(18 23 33 / 14%);
 
 // Без переменной в Figma: фон под модальным окном (Overlay, 4132:1034) — подсветка и размытие
 $overlay-background: rgb(245 248 250 / 60%);
@@ -250,6 +263,13 @@ $text-styles: (
 			weight: 400,
 			size: 14,
 			line-height: normal,
+		),
+	// Без переменной в Figma: имя в комментарии (Inter Medium 14/22)
+	"m-medium": (
+			family: body,
+			weight: 500,
+			size: 14,
+			line-height: 22,
 		),
 	// PC/M/500
 	"m-500": (

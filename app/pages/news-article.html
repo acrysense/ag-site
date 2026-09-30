@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="{{ lang }}">
+	<head>
+		{{> layouts/Head/Head }}
+		{{!-- Демо: имитация API комментариев (docs/contracts/comments.md); в сборке для CMS её нет --}}
+		{{#if demo}}<script type="module" src="./dev/mock-server.js"></script>{{/if}}
+		<script type="module" src="/app.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			{{> layouts/Header/Header props=(default data.header site.header) }}
+			<main class="wrapper__content">
+				{{!-- Новость (1920 — 4652:11884; мобильного макета нет) --}}
+				<div class="container page-inner">
+					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.breadcrumbs) }}
+					<div class="page-columns page-columns--start">
+						<aside class="page-columns__aside page-columns__aside--desktop">
+							{{> sections/news/NewsFilters/NewsFilters props=data.filters }}
+							{{> sections/shared/SideBanner/SideBanner props=data.banner }}
+						</aside>
+						<div class="page-stack page-stack--article">
+							{{> sections/news/NewsArticle/NewsArticle props=data.article }}
+							{{> sections/shared/Comments/Comments props=data.comments }}
+						</div>
+					</div>
+				</div>
+			</main>
+			{{> layouts/Footer/Footer props=site.footer }}
+		</div>
+		{{> layouts/MainMenu/MainMenu props=site.mainMenu }}
+		{{> layouts/TabBar/TabBar props=site.tabBar }}
+		{{> layouts/SiteModals/SiteModals props=site.modals }}
+		{{> layouts/CookieBanner/CookieBanner props=site.cookies }}
+	</body>
+</html>

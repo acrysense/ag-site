@@ -1,0 +1,97 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: PC.News article v2 (4652:12003) — карточка 1080, поля 20, всё через 20: заголовок H1,
+// обложка 1040×341 с подписью S/400, текст (.content), галерея, строка действий и дата.
+@layer components {
+	.news-article {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		min-width: 0;
+
+		// Рамка в Figma внутри карточки: поля 20 вместе с ней — содержимое 1040
+		@include up(desktop) {
+			padding: 19px;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+
+		&__title {
+			@include text("h1-360");
+
+			color: palette("black-h");
+			overflow-wrap: anywhere;
+
+			@include up(desktop) {
+				@include text("h1");
+			}
+		}
+
+		&__cover {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			margin: 0;
+		}
+
+		&__image {
+			width: 100%;
+			height: auto;
+			aspect-ratio: 1040 / 341;
+			object-fit: cover;
+			border-radius: $radius-inner-block;
+		}
+
+		&__caption {
+			@include text("s-400");
+
+			color: palette("dark-grey-txt");
+		}
+
+		&__footer {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		&__actions {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+		}
+
+		&__share {
+			width: 40px;
+			padding: 0;
+
+			.icon:not(.news-article__copied) {
+				display: block;
+			}
+		}
+
+		// После копирования — галочка вместо скрепки
+		&__copied {
+			display: none;
+			color: palette("main-blue");
+		}
+
+		&__share.is-copied .news-article__copied {
+			display: block;
+		}
+
+		&__share.is-copied .icon:not(.news-article__copied) {
+			display: none;
+		}
+
+		&__date {
+			@include text("m-400");
+
+			color: palette("dark-grey-txt");
+		}
+	}
+}

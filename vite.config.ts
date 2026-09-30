@@ -751,6 +751,9 @@ export default defineConfig(({ mode }) => {
 						// Данные страницы для шаблона: ключ data в <page>.page.json
 						// (демо-контент витрины и статических страниц)
 						data: pageCfg.data || {},
+						// Демо и dev (не --mode cms): на статических страницах можно подключить
+						// имитацию сервера (pages/dev/mock-server.js), в шаблон для Битрикса она не попадёт
+						demo: mode !== 'cms',
 					}
 				},
 			}),

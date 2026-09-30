@@ -1,0 +1,793 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: «Комментарии — дерево (v2)» 4494:780 — компоненты (Comment/Item, Reaction, Reply box,
+// Reaction picker, Admin menu, Disabled notice) и «Состояния и поведение» 1–10; на странице
+// новости — 4652:12134. Мобильного макета нет: те же элементы, поля карточки убраны
+// (блок внутри белого .page-inner), действия переносятся.
+@layer components {
+	.comments {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		min-width: 0;
+
+		// Поля 25 вместе с рамкой (в Figma она внутри карточки)
+		@include up(desktop) {
+			padding: 24px;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+
+		&__title {
+			@include text("h3");
+
+			display: flex;
+			gap: 10px;
+			align-items: baseline;
+			color: palette("black-h");
+		}
+
+		&__count {
+			color: palette("dark-grey-txt");
+
+			&:empty {
+				display: none;
+			}
+		}
+
+		&__composer:empty {
+			display: none;
+		}
+
+		&__list {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			min-width: 0;
+		}
+
+		&__empty,
+		&__status {
+			@include text("m-400");
+
+			color: palette("dark-grey-txt");
+		}
+
+		&__retry {
+			@include text("m-400");
+
+			padding: 0;
+			color: palette("main-blue");
+			cursor: pointer;
+			background: none;
+			border: 0;
+			transition: color $transition-default;
+
+			&:hover {
+				color: palette("blue-hover");
+			}
+		}
+
+		// «Показать ещё комментарии»: во всю ширину, 48, серая рамка; загрузка — спиннер .btn
+		&__more {
+			@include text("m-400");
+
+			width: 100%;
+			height: 48px;
+			padding: 0 16px;
+			color: palette("black-txt");
+			cursor: pointer;
+			border: 1px solid palette("grey");
+			border-radius: $radius-button;
+			transition:
+				color $transition-default,
+				border-color $transition-default;
+
+			&:hover:not(:disabled) {
+				color: palette("main-blue");
+				border-color: palette("main-blue");
+			}
+
+			&[hidden] {
+				display: none;
+			}
+		}
+
+		// Скелетон первой загрузки: строки по три полосы (Figma 4504:1502)
+		&__skeleton {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+
+			> span {
+				display: block;
+				height: 11px;
+				background: palette("bg-main");
+				border-radius: 6px;
+				animation: comments-pulse 1.2s ease-in-out infinite alternate;
+
+				&:nth-child(3n + 1) {
+					width: 35%;
+				}
+
+				&:nth-child(3n + 2) {
+					width: 92%;
+				}
+
+				&:nth-child(3n) {
+					width: 68%;
+
+					&:not(:last-child) {
+						margin-bottom: 8px;
+					}
+				}
+			}
+		}
+
+		// Комментарии отключены (Figma 4519:1883)
+		&__disabled {
+			@include text("m-400");
+
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			padding: 13px 16px;
+			color: palette("dark-grey-txt");
+			background: palette("bg-info");
+			border-radius: $radius-button;
+		}
+
+		&__disabled-icon {
+			flex: none;
+			width: 20px;
+			height: 20px;
+		}
+	}
+
+	@keyframes comments-pulse {
+		to {
+			opacity: 0.5;
+		}
+	}
+
+	// ---------- Поле ввода: новый комментарий, ответ, правка ----------
+
+	.comment-form {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		min-width: 0;
+
+		&__field {
+			display: flex;
+			gap: 10px;
+			align-items: flex-end;
+			padding: 8px 8px 8px 15px;
+			background: palette("white");
+			border: 1px solid palette("grey");
+			border-radius: $radius-button;
+			transition:
+				border-color $transition-default,
+				box-shadow $transition-default;
+
+			&:focus-within {
+				border-color: palette("main-blue");
+			}
+
+			.comment-form.is-error & {
+				border-color: palette("red");
+			}
+		}
+
+		// Верхнее поле — 56 (Figma Input.Wide): поля 9/15 и рамка
+		&--new &__field {
+			padding: 9px 15px;
+		}
+
+		// Растёт по высоте (utils/autosize), не выше ~260 — дальше прокрутка; тянуть нельзя.
+		// Шрифт 16, чтобы iOS не увеличивал страницу
+		&__input {
+			flex: 1 1 auto;
+			min-width: 0;
+			min-height: 36px;
+			max-height: 260px;
+			padding: 7px 0;
+			font: inherit;
+			font-size: $field-font-size-min;
+			line-height: 22px;
+			color: palette("black-txt");
+			resize: none;
+			background: none;
+			border: 0;
+			outline: none;
+
+			&::placeholder {
+				color: palette("dark-grey-txt");
+			}
+		}
+
+		&__submit {
+			flex: none;
+
+			&:disabled {
+				cursor: default;
+				opacity: 0.5;
+			}
+		}
+
+		&__hint {
+			@include text("xs-400");
+
+			line-height: 16px;
+			color: palette("dark-grey-txt");
+
+			.comment-form.is-counting &,
+			.comment-form.is-error & {
+				color: palette("red");
+			}
+
+			&[hidden] {
+				display: none;
+			}
+		}
+
+		// Правка на месте (Figma 4518:1845): поле с синей рамкой и ореолом, под ним
+		// «Esc — отменить», «Отмена», «Сохранить»
+		&--edit {
+			gap: 8px;
+			padding-top: 6px;
+		}
+
+		&--edit &__field {
+			padding: 0 15px;
+			border-color: palette("main-blue");
+			box-shadow: $shadow-field-focus;
+		}
+
+		&--edit &__input {
+			padding-block: 11px;
+		}
+
+		&__buttons {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+
+			.comment-form__hint {
+				flex: 1 1 auto;
+				min-width: 0;
+				color: palette("dark-grey-txt");
+			}
+		}
+
+		&__cancel {
+			@include text("m-500");
+
+			color: palette("main-blue");
+		}
+	}
+
+	// ---------- Комментарий ----------
+
+	.comment {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		min-width: 0;
+		border-radius: 12px;
+
+		// Новый комментарий или ответ — короткая подсветка (≈0,6 с)
+		&.is-new {
+			animation: comment-highlight 0.6s ease-out;
+
+			@media (prefers-reduced-motion: reduce) {
+				animation: none;
+			}
+		}
+
+		&__head {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			min-width: 0;
+		}
+
+		&__avatar {
+			flex: none;
+			width: 30px;
+			height: 30px;
+			object-fit: cover;
+			background: palette("grey");
+			border-radius: 50%;
+		}
+
+		&__meta {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 2px 8px;
+			align-items: center;
+			min-width: 0;
+		}
+
+		&__name {
+			@include text("m-500");
+
+			font-weight: 500;
+			color: palette("black-txt");
+			text-decoration: none;
+			overflow-wrap: anywhere;
+		}
+
+		a.comment__name {
+			transition: color $transition-default;
+
+			&:hover {
+				color: palette("main-blue");
+			}
+		}
+
+		&__role {
+			@include text("xs-400");
+
+			padding: 3px 10px;
+			color: palette("black-txt");
+			white-space: nowrap;
+			background: palette("bg-info");
+			border-radius: 7px;
+		}
+
+		&__time,
+		&__edited,
+		&__pending {
+			@include text("xs-400");
+
+			color: palette("dark-grey-txt");
+			white-space: nowrap;
+		}
+
+		&__pending {
+			color: palette("yellow");
+		}
+
+		&__score {
+			@include text("xs-400");
+
+			font-weight: 600;
+			line-height: 16px;
+			color: palette("green");
+
+			&.is-negative {
+				color: palette("red");
+			}
+
+			&[hidden] {
+				display: none;
+			}
+		}
+
+		&__deleted {
+			@include text("m-400");
+
+			font-style: italic;
+			color: palette("dark-grey-txt");
+		}
+
+		&__body {
+			display: flex;
+			gap: 10px;
+			min-width: 0;
+		}
+
+		// Линия ветки и кнопка сворачивания — только у комментариев с ответами
+		&__rail {
+			display: flex;
+			flex: none;
+			flex-direction: column;
+			align-items: center;
+			width: 30px;
+		}
+
+		&__rail-line,
+		&__rail-end {
+			width: 1px;
+			background: palette("grey");
+		}
+
+		&__rail-line {
+			flex: 1 1 auto;
+			min-height: 4px;
+		}
+
+		&__rail-end {
+			flex: none;
+			height: 8px;
+
+			.comment.is-collapsed > .comment__body & {
+				display: none;
+			}
+		}
+
+		&__collapse {
+			position: relative;
+			display: flex;
+			flex: none;
+			align-items: center;
+			justify-content: center;
+			width: 16px;
+			height: 16px;
+			padding: 0;
+			color: palette("dark-grey-txt");
+			cursor: pointer;
+			background: palette("white");
+			border: 0;
+			border-radius: 50%;
+			transition: color $transition-default;
+
+			// Область нажатия больше значка
+			&::after {
+				position: absolute;
+				inset: -8px;
+				content: "";
+			}
+
+			&:hover {
+				color: palette("main-blue");
+			}
+		}
+
+		&__collapse-icon {
+			width: 16px;
+			height: 16px;
+		}
+
+		&__content {
+			display: flex;
+			flex: 1 1 auto;
+			flex-direction: column;
+			gap: 6px;
+			min-width: 0;
+		}
+
+		&__text {
+			@include text("m-400");
+
+			color: palette("black-txt");
+			white-space: pre-line;
+			overflow-wrap: anywhere;
+
+			&[hidden] {
+				display: none;
+			}
+		}
+
+		&__actions {
+			position: relative;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 6px;
+			align-items: center;
+
+			&[hidden] {
+				display: none;
+			}
+		}
+
+		&__reactions {
+			display: contents;
+		}
+
+		// Пилюля реакции (Figma 4494:790): 32, от 60, моя — синяя, мой 👎 — красный
+		&__reaction {
+			@include text("m-400");
+
+			display: inline-flex;
+			flex: none;
+			gap: 5px;
+			align-items: center;
+			min-width: 60px;
+			height: 32px;
+			padding: 0 10px;
+			color: palette("black-txt");
+			cursor: pointer;
+			background: palette("bg-info");
+			border: 1px solid transparent;
+			border-radius: $radius-button;
+			transition: border-color $transition-default;
+
+			&:hover:not(:disabled) {
+				border-color: palette("grey");
+			}
+
+			&:disabled {
+				cursor: default;
+			}
+
+			&.is-mine {
+				color: palette("main-blue");
+				background: palette("blue-soft");
+				border-color: palette("main-blue");
+			}
+
+			&.is-dislike {
+				color: palette("red");
+				background: palette("red-soft");
+				border-color: palette("red");
+			}
+		}
+
+		&__add-reaction,
+		&__reply {
+			@include text("m-400");
+
+			display: inline-flex;
+			flex: none;
+			gap: 4px;
+			align-items: center;
+			height: 32px;
+			padding: 0 8px;
+			cursor: pointer;
+			background: none;
+			border: 0;
+			border-radius: $radius-button;
+			transition:
+				color $transition-default,
+				background-color $transition-default;
+
+			&:hover,
+			&.is-active,
+			&[aria-expanded="true"] {
+				background: palette("bg-info");
+			}
+		}
+
+		&__add-reaction {
+			color: palette("dark-grey-txt");
+		}
+
+		&__reply {
+			color: palette("black-txt");
+		}
+
+		&__plus {
+			width: 10px;
+			height: 10px;
+		}
+
+		// ⋯ — только у тех, кому бэк разрешил править или удалять (Figma 4517:1633)
+		&__more {
+			display: flex;
+			flex: none;
+			align-items: center;
+			justify-content: center;
+			width: 32px;
+			height: 32px;
+			padding: 0;
+			color: palette("black-txt");
+			cursor: pointer;
+			background: none;
+			border: 0;
+			border-radius: 50%;
+			transition: background-color $transition-default;
+
+			&:hover,
+			&.is-active {
+				background: palette("bg-info");
+			}
+		}
+
+		&__more-icon {
+			width: 16px;
+			height: 16px;
+		}
+
+		// Всплывающие панели: реакции — над строкой действий, меню и удаление — под ней.
+		// Сдвиг внутрь экрана — скрипт (translate)
+		&__picker,
+		&__menu,
+		&__confirm {
+			position: absolute;
+			z-index: 10;
+			background: palette("white");
+			border: 1px solid palette("form-border");
+			border-radius: $radius-button;
+		}
+
+		&__picker {
+			bottom: calc(100% + 6px);
+			left: 0;
+			display: flex;
+			gap: 2px;
+			padding: 4px;
+			box-shadow: $shadow-popover;
+		}
+
+		&__picker-option {
+			display: flex;
+			flex: none;
+			align-items: center;
+			justify-content: center;
+			width: 36px;
+			height: 36px;
+			padding: 0;
+			font-size: 20px;
+			line-height: 24px;
+			cursor: pointer;
+			background: none;
+			border: 0;
+			border-radius: $radius-inner-block;
+			transition: background-color $transition-default;
+
+			&:hover,
+			&[aria-pressed="true"] {
+				background: palette("bg-info");
+			}
+		}
+
+		&__menu,
+		&__confirm {
+			top: calc(100% + 6px);
+			right: 0;
+		}
+
+		&__menu {
+			display: flex;
+			flex-direction: column;
+			gap: 2px;
+			width: 200px;
+			padding: 4px;
+			box-shadow: $shadow-popover;
+		}
+
+		&__menu-item {
+			@include text("m-400");
+
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			width: 100%;
+			padding: 7px 12px;
+			color: palette("black-txt");
+			text-align: left;
+			cursor: pointer;
+			background: none;
+			border: 0;
+			border-radius: $radius-inner-block;
+			transition: background-color $transition-default;
+
+			&:hover,
+			&:focus-visible {
+				background: palette("bg-info");
+			}
+
+			&--danger {
+				color: palette("red");
+			}
+		}
+
+		&__menu-icon {
+			flex: none;
+			width: 16px;
+			height: 16px;
+		}
+
+		// Подтверждение удаления (Figma 4518:1964)
+		&__confirm {
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+			width: min(300px, calc(100vw - 20px));
+			padding: 16px 16px 14px;
+			box-shadow: $shadow-popover-soft;
+		}
+
+		&__confirm-title {
+			@include text("m-500");
+
+			font-weight: 600;
+			line-height: 20px;
+			color: palette("black-txt");
+		}
+
+		&__confirm-text {
+			@include text("s-13");
+
+			color: palette("dark-grey-txt");
+		}
+
+		&__confirm-buttons {
+			display: flex;
+			gap: 10px;
+			justify-content: flex-end;
+			padding-top: 6px;
+		}
+
+		&__confirm-cancel {
+			@include text("m-500");
+
+			color: palette("main-blue");
+		}
+
+		// Ответы: ветка отступает на половину аватара, линия — продолжение линии родителя
+		&__replies {
+			display: flex;
+			flex-direction: column;
+			min-width: 0;
+
+			&:empty,
+			&[hidden] {
+				display: none;
+			}
+		}
+
+		&__branch {
+			position: relative;
+			min-width: 0;
+			margin-left: 14.5px;
+			padding: 12px 0 0 20px;
+
+			// Вертикаль: у не последней ветки — до конца, у последней — до изгиба
+			&::before {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				width: 1px;
+				content: "";
+				background: palette("grey");
+			}
+
+			&:last-child::before {
+				bottom: auto;
+				height: 12px;
+			}
+		}
+
+		// Изгиб 20×16, радиус 12
+		&__connector {
+			position: absolute;
+			top: 12px;
+			left: 0;
+			width: 20px;
+			height: 16px;
+			border-bottom: 1px solid palette("grey");
+			border-left: 1px solid palette("grey");
+			border-bottom-left-radius: 12px;
+		}
+
+		// «Показать ещё N ответов» (Figma 4501:1302): ссылка 30 высотой на уровне изгиба
+		&__branch--more {
+			padding-left: 26px;
+		}
+
+		&__load-replies {
+			@include text("m-400");
+
+			height: 30px;
+			padding: 0;
+			color: palette("main-blue");
+			cursor: pointer;
+			transition: color $transition-default;
+
+			&:hover:not(:disabled) {
+				color: palette("blue-hover");
+			}
+
+			&:disabled {
+				color: palette("dark-grey-txt");
+			}
+		}
+
+		&.is-deleted > .comment__head .comment__avatar {
+			opacity: 0.5;
+		}
+	}
+
+	@keyframes comment-highlight {
+		from {
+			background: palette("blue-soft");
+		}
+	}
+}

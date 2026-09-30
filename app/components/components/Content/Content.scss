@@ -1,0 +1,188 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Текст из визуального редактора (Figma: PC.News article v2, 4652:12004). Абзацы M/400
+// Black.TXT через 20, ссылки Main Blue, заголовки H2/H3, цитата — BG.Info с полосой Blue.TXT
+// 5px, раскрывающийся блок — полоса 1px, таблицы 12px с шапкой BG.Main, фото со скруглением
+// и подписью S/400. Админ вставляет обычный HTML — обёртки не нужны.
+@layer components {
+	.content {
+		@include text("m-400");
+
+		min-width: 0;
+		color: palette("black-txt");
+		overflow-wrap: break-word;
+
+		> * + * {
+			margin-top: 20px;
+		}
+
+		> :first-child {
+			margin-top: 0;
+		}
+
+		h2 {
+			@include text("h2");
+
+			color: palette("black-h");
+		}
+
+		h3 {
+			@include text("h3");
+
+			color: palette("black-h");
+		}
+
+		h4 {
+			@include text("h4");
+
+			color: palette("black-h");
+		}
+
+		a {
+			color: palette("main-blue");
+			transition: color $transition-default;
+
+			&:hover {
+				color: palette("blue-hover");
+			}
+		}
+
+		strong,
+		b {
+			font-weight: 700;
+		}
+
+		ul,
+		ol {
+			padding-left: 21px;
+		}
+
+		ul {
+			list-style: disc;
+		}
+
+		ol {
+			list-style: decimal;
+		}
+
+		img {
+			max-width: 100%;
+			height: auto;
+			border-radius: $radius-inner-block;
+		}
+
+		iframe,
+		video {
+			display: block;
+			width: 100%;
+			max-width: 100%;
+			height: auto;
+			aspect-ratio: 16 / 9;
+			border: 0;
+			border-radius: $radius-inner-block;
+		}
+
+		figure {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			margin-inline: 0;
+
+			img {
+				display: block;
+				width: 100%;
+			}
+		}
+
+		figcaption {
+			@include text("s-400");
+
+			color: palette("dark-grey-txt");
+		}
+
+		blockquote {
+			margin-inline: 0;
+			padding: 20px;
+			background: palette("bg-info");
+			border-left: 5px solid palette("blue-txt");
+
+			> * + * {
+				margin-top: 10px;
+			}
+		}
+
+		// Раскрывающийся блок: закрыт — M/400, открыт — L/500; стрелка вниз / вверх
+		details {
+			padding: 5px 0 5px 20px;
+			border-left: 1px solid palette("blue-txt");
+
+			> :not(summary) + * {
+				margin-top: 10px;
+			}
+		}
+
+		summary {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			justify-content: space-between;
+			cursor: pointer;
+			list-style: none;
+
+			&::-webkit-details-marker {
+				display: none;
+			}
+		}
+
+		details[open] > summary {
+			@include text("l-500");
+
+			margin-bottom: 10px;
+		}
+
+		.content__summary-icon {
+			flex: none;
+			width: 11.5px;
+			height: 6.5px;
+			color: palette("blue-txt");
+			transition: transform $transition-default;
+		}
+
+		details[open] > summary .content__summary-icon {
+			transform: rotate(180deg);
+		}
+
+		// Таблица: прокрутка вбок в обёртке, колонки не уже 80 — на телефоне таблица листается,
+		// а не сжимается в столбик по букве
+		.content__table {
+			max-width: 100%;
+			overflow-x: auto;
+			overscroll-behavior-x: contain;
+		}
+
+		table {
+			@include text("s-400");
+
+			width: 100%;
+			border-collapse: collapse;
+		}
+
+		th,
+		td {
+			min-width: 80px;
+			height: 40px;
+			padding: 0 10px;
+			text-align: left;
+			vertical-align: middle;
+			border: 1px solid palette("form-border");
+		}
+
+		th {
+			@include text("s-600");
+
+			height: 60px;
+			background: palette("bg-main");
+		}
+	}
+}

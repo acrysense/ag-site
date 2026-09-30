@@ -442,6 +442,58 @@
 					{{> components/Pagination/Pagination props=data.newsListOnePage.pagination}}
 				{{/state}}
 			{{/story}}
+
+			{{#> story id="content" group="Новости" title="Текст из редактора" description='Модуль .content: HTML из визуального редактора Битрикса как есть, обёртки не нужны. Таблица прокручивается вбок в своей рамке, details/summary — раскрывающийся блок (значок добавляет скрипт).'}}
+				{{#> state label="Обычное"}}
+					<div class="content" data-module="Content" data-path="components">{{{data.article.html}}}</div>
+				{{/state}}
+				{{#> state label="Пусто" note="не применимо: без текста блок не выводится"}}{{/state}}
+				{{#> state label="Загрузка" note="не применимо: HTML приходит с сервера готовым"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="gallery" group="Новости" title="Фотогалерея" description='Figma: 4652:12790. 1040×500, фото обрезается по cover. Одно фото — без стрелок и точек, пусто — блока нет.'}}
+				{{#> state label="Несколько фото"}}
+					{{> components/Gallery/Gallery props=data.gallery}}
+				{{/state}}
+				{{#> state label="Одно фото"}}
+					{{> components/Gallery/Gallery props=data.galleryOne}}
+				{{/state}}
+				{{#> state label="Пусто" note="блок не выводится"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="news-article" group="Новости" title="Новость" description='Figma: PC.News article v2 (4652:12003). Карточка с 1024, на мобильном (наше) — без рамки внутри белого блока страницы. «Скопировать ссылку» — буфер обмена и галочка на 2 с.'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container"><div class="page-stack page-stack--article">{{> sections/news/NewsArticle/NewsArticle props=data.article}}</div></div>
+				{{/state}}
+				{{#> state label="Длинный заголовок, без обложки и галереи" bg="page"}}
+					<div class="container"><div class="page-stack page-stack--article">{{> sections/news/NewsArticle/NewsArticle props=data.articleLong}}</div></div>
+				{{/state}}
+			{{/story}}
+
+			{{#> story id="comments" group="Новости" title="Комментарии" description='Figma: 4494:780 (компоненты и состояния 1–10). Дерево рисует скрипт по JSON-API (docs/contracts/comments.md), в витрине сервер имитируется: текст со словом «ошибка» — отказ, «модерац» — «на модерации».'}}
+				{{#> state label="Администратор: ветки, реакции, ⋯" bg="page"}}
+					<div class="container"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-demo" url=data.comments.url entity=data.comments.entity entityId="demo")}}</div></div>
+				{{/state}}
+				{{#> state label="Сотрудник (без модерации)" bg="page"}}
+					<div class="container"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-user" url=data.comments.url entity=data.comments.entity entityId="user")}}</div></div>
+				{{/state}}
+				{{#> state label="Гость: только чтение" bg="page"}}
+					<div class="container"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-guest" url=data.comments.url entity=data.comments.entity entityId="guest")}}</div></div>
+				{{/state}}
+				{{#> state label="Пусто" bg="page"}}
+					<div class="container"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-empty" url=data.comments.url entity=data.comments.entity entityId="empty")}}</div></div>
+				{{/state}}
+				{{#> state label="Комментарии отключены" bg="page"}}
+					<div class="container"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-disabled" url=data.comments.url entity=data.comments.entity entityId="disabled")}}</div></div>
+				{{/state}}
+				{{#> state label="Загрузка" bg="page"}}
+					<div class="container"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-loading" url=data.comments.url entity=data.comments.entity entityId="loading")}}</div></div>
+				{{/state}}
+				{{#> state label="Ошибка загрузки" bg="page"}}
+					<div class="container"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-fail" url=data.comments.url entity=data.comments.entity entityId="fail")}}</div></div>
+				{{/state}}
+				{{#> state label="Длинный контент" note="в «Администратор»: ветка в 4 уровня, текст с переносами, догрузка ответов и ленты"}}{{/state}}
+			{{/story}}
 		</main>
 		{{> layouts/SiteModals/SiteModals props=data.siteModals}}
 	</body>
