@@ -18,7 +18,7 @@
                             {{#if video}}
                                 <video class="hero__image" src="{{video.src}}" {{#if video.poster}}poster="{{video.poster}}"{{/if}} muted loop playsinline preload="metadata" aria-label="{{alt}}" data-hero-video></video>
                             {{else}}
-                                <picture>
+                                <picture class="hero__picture">
                                     {{#if image.desktop}}<source media="(min-width: 768px)" srcset="{{image.desktop}}" />{{/if}}
                                     <img class="hero__image" src="{{default image.mobile image.desktop}}" alt="{{alt}}" {{#unless @first}}loading="lazy"{{/unless}} decoding="async" />
                                 </picture>
