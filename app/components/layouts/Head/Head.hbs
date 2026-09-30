@@ -37,3 +37,6 @@
 {{#if head.ogImage}}
     <meta name="twitter:image" content="{{head.ogImage}}" />
 {{/if}}
+
+{{!-- Демо и dev: имитация сервера (поиск в шапке, комментарии, фильтры) — в сборке для CMS её нет --}}
+{{#if @root.demo}}<script type="module" src="/pages/dev/mock-server.js"></script>{{/if}}

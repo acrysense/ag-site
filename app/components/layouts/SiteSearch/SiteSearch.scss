@@ -1,0 +1,709 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Search.Field (4773:3215) — 700×46, серая рамка, в фокусе синяя; чип-сводка Search.Chip
+// (BG.Violet, Blue.TXT, S/400, × 6). Окно (4764:2634): под полем через 7, белое, рамка
+// Block.Border, скругление 20, тень Dropdown; сайдбар 200 (#F8F9FB, пункты Search.Section item —
+// 42, выбранный BG.Violet + Blue.TXT), справа фильтры в 2 колонки, черта, «Раздел · найдено N»,
+// подсказки Search.Suggest (превью 40, название M/400, мета S/400), «Все результаты · N».
+// Пусто (4777:3853): круг 56 с лупой 24, H4, текст M/400, «Сбросить фильтры».
+// До 1024 (360: 4786:2699, 4786:3116, 4786:3438, 4786:3499): окно на весь экран — поле и ×,
+// лента вкладок, фильтры в столбик (при вводе — свёрнуты в строку), подсказки, внизу закреплена
+// «Все результаты в разделе · N».
+@layer components {
+	.site-search {
+		position: relative;
+		min-width: 0;
+	}
+
+	.site-search__form {
+		display: contents;
+	}
+
+	.site-search__bar {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+	}
+
+	.site-search__field {
+		display: flex;
+		flex: 1 1 auto;
+		gap: 10px;
+		align-items: center;
+		min-width: 0;
+		height: 46px;
+		padding: 0 16px;
+		color: palette("black-txt");
+		background: palette("white");
+		border: 1px solid palette("form-border");
+		border-radius: $radius-button;
+		transition: border-color $transition-default;
+
+		&:focus-within,
+		.site-search.is-open & {
+			border-color: palette("form-focus");
+		}
+	}
+
+	.site-search__icon {
+		flex: none;
+		width: 16px;
+		height: 16px;
+	}
+
+	.site-search__input {
+		@include text("m-400");
+
+		flex: 1 1 auto;
+		min-width: 0;
+		height: 100%;
+		padding: 0;
+		color: palette("black-txt");
+		text-overflow: ellipsis;
+		background: none;
+		border: 0;
+		outline: none;
+		// Кольцо фокуса — рамка всего поля
+
+		&::placeholder {
+			color: palette("dark-grey-txt");
+			opacity: 1;
+		}
+
+		&::-webkit-search-cancel-button {
+			appearance: none;
+		}
+
+		// iOS увеличивает страницу при фокусе на поле меньше 16px
+		@media (pointer: coarse) {
+			font-size: max(#{$field-font-size-min}, 1em);
+		}
+	}
+
+	.site-search__chip {
+		@include text("s-400");
+
+		display: flex;
+		flex: none;
+		gap: 4px;
+		align-items: center;
+		max-width: 60%;
+		padding: 4px 6px 4px 10px;
+		color: palette("blue-txt");
+		white-space: nowrap;
+		cursor: pointer;
+		background: palette("bg-violet");
+		border: 0;
+		border-radius: 8px;
+
+		> span {
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		&[hidden] {
+			display: none;
+		}
+	}
+
+	.site-search__chip-icon {
+		flex: none;
+		width: 6px;
+		height: 6px;
+		opacity: 0.7;
+	}
+
+	.site-search__clear {
+		display: flex;
+		flex: none;
+		padding: 0;
+		color: palette("black-txt");
+		cursor: pointer;
+		background: none;
+		border: 0;
+
+		&[hidden] {
+			display: none;
+		}
+	}
+
+	.site-search__clear-icon {
+		width: 16px;
+		height: 16px;
+
+		@include down(desktop) {
+			width: 14px;
+			height: 14px;
+		}
+	}
+
+	// × «закрыть поиск» — только в полноэкранном окне
+	.site-search__close {
+		display: none;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		padding: 0;
+		color: palette("black-txt");
+		cursor: pointer;
+		background: palette("bg-main");
+		border: 0;
+		border-radius: 50%;
+	}
+
+	.site-search__close-icon {
+		width: 10px;
+		height: 10px;
+	}
+
+	// ---------- Окно ----------
+	.site-search__panel {
+		display: none;
+
+		.site-search.is-open & {
+			display: flex;
+		}
+
+		@include up(desktop) {
+			position: absolute;
+			top: calc(100% + 7px);
+			right: 0;
+			left: 0;
+			z-index: 30;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-dropdown;
+		}
+	}
+
+	.site-search__sections {
+		flex: none;
+		min-width: 0;
+		margin: 0;
+		padding: 0;
+		border: 0;
+
+		@include up(desktop) {
+			display: flex;
+			flex-direction: column;
+			gap: 2px;
+			width: 200px;
+			padding: 16px 8px 12px;
+			background: palette("bg-soft");
+			border-right: 1px solid palette("block-border");
+			border-radius: $radius-content-block 0 0 $radius-content-block;
+		}
+	}
+
+	.site-search__legend {
+		@include text("s-600");
+
+		padding: 0 0 6px 12px;
+		color: palette("dark-grey-txt");
+
+		@include down(desktop) {
+			@include visually-hidden;
+		}
+	}
+
+	.site-search__section-list {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+
+	// position: relative — радиокнопка (visually-hidden) остаётся внутри ленты с прокруткой
+	.site-search__section {
+		@include text("m-400");
+
+		position: relative;
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		padding: 10px 12px;
+		color: palette("black-txt");
+		cursor: pointer;
+		border-radius: $radius-inner-block;
+		transition: color $transition-default;
+
+		&:hover,
+		&:has(:checked) {
+			color: palette("blue-txt");
+		}
+
+		&:has(:checked) {
+			background: palette("bg-violet");
+		}
+
+		&:has(:focus-visible) {
+			outline: $focus-ring-width solid var(--focus-ring-color, #{palette("form-focus")});
+			outline-offset: $focus-ring-offset;
+		}
+	}
+
+	.site-search__radio {
+		@include visually-hidden;
+	}
+
+	.site-search__section-icon {
+		flex: none;
+		width: 16px;
+		height: 16px;
+	}
+
+	.site-search__content {
+		display: flex;
+		flex: 1 1 auto;
+		flex-direction: column;
+		gap: 8px;
+		min-width: 0;
+
+		@include up(desktop) {
+			padding: 16px 12px 12px;
+		}
+	}
+
+	.site-search__filters {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+
+		@include up(desktop) {
+			padding: 4px 8px 4px;
+		}
+	}
+
+	.site-search__filters-head {
+		display: flex;
+		gap: 16px;
+		align-items: center;
+	}
+
+	.site-search__filters-title {
+		@include text("s-600");
+
+		flex: 1 1 auto;
+		min-width: 0;
+		color: palette("dark-grey-txt");
+
+		@include down(desktop) {
+			@include text("s-700-caps");
+
+			padding-left: 4px;
+			text-transform: uppercase;
+		}
+	}
+
+	.site-search__reset {
+		@include text("s-400");
+
+		flex: none;
+		padding: 0;
+		color: palette("main-blue");
+		cursor: pointer;
+		background: none;
+		border: 0;
+		transition: color $transition-default;
+
+		&:hover {
+			color: palette("blue-hover");
+		}
+	}
+
+	.site-search__filter-list {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 12px;
+
+		@include up(desktop) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 10px;
+		}
+	}
+
+	.site-search__skeleton {
+		display: block;
+		height: 46px;
+		background: palette("bg-main");
+		border-radius: $radius-button;
+		animation: site-search-pulse 1.2s ease-in-out infinite alternate;
+
+		@media (prefers-reduced-motion: reduce) {
+			animation: none;
+		}
+	}
+
+	@keyframes site-search-pulse {
+		to {
+			opacity: 0.5;
+		}
+	}
+
+	.site-search__filters-error {
+		@include text("m-400");
+
+		grid-column: 1 / -1;
+		color: palette("red");
+	}
+
+	// Мобильный при вводе: фильтры свёрнуты в строку (тап — развернуть)
+	.site-search__summary {
+		@include control-box;
+		@include text("m-400-360");
+
+		display: none;
+		gap: 10px;
+		padding: 0 14px;
+		cursor: pointer;
+		border-color: palette("block-border");
+	}
+
+	.site-search__summary-text {
+		flex: 1 1 auto;
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	// Стрелка — как у полей выбора (Select)
+	.site-search__summary-icon {
+		flex: none;
+		width: 11.5px;
+		height: 6.5px;
+		color: palette("dark-grey-txt");
+		transition: transform $transition-default;
+
+		[aria-expanded="true"] > & {
+			transform: rotate(180deg);
+		}
+	}
+
+	// ---------- Подсказки ----------
+	.site-search__results {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+
+		&[hidden] {
+			display: none;
+		}
+
+		@include up(desktop) {
+			padding-top: 8px;
+			border-top: 1px solid palette("block-border");
+		}
+	}
+
+	.site-search__info {
+		@include text("s-600");
+
+		padding: 6px 10px;
+		color: palette("dark-grey-txt");
+
+		&[hidden] {
+			display: none;
+		}
+
+		@include down(desktop) {
+			@include text("s-700-caps");
+
+			padding: 0 4px 6px;
+			text-transform: uppercase;
+		}
+	}
+
+	.site-search__list {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		&[hidden] {
+			display: none;
+		}
+
+		@include down(desktop) {
+			gap: 0;
+		}
+	}
+
+	.site-search__link {
+		display: flex;
+		gap: 12px;
+		align-items: center;
+		padding: 8px 10px;
+		color: palette("black-txt");
+		text-decoration: none;
+		border-radius: $radius-inner-block;
+		transition: background-color $transition-default;
+
+		&:hover,
+		.is-active > & {
+			background: palette("bg-info");
+		}
+	}
+
+	.site-search__preview {
+		display: flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		overflow: hidden;
+		color: palette("black-txt");
+		border-radius: 8px;
+
+		&--person {
+			background: palette("grey");
+		}
+
+		&--news {
+			background: palette("bg-main");
+		}
+
+		&--document {
+			background: palette("bg-blue");
+		}
+
+		&--vacancy {
+			background: palette("bg-green");
+		}
+
+		&--other {
+			background: palette("bg-neutral");
+		}
+	}
+
+	.site-search__image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.site-search__preview-icon {
+		width: 16px;
+		height: 16px;
+
+		&--l {
+			width: 20px;
+			height: 20px;
+		}
+	}
+
+	.site-search__text {
+		display: flex;
+		flex: 1 1 auto;
+		flex-direction: column;
+		gap: 2px;
+		min-width: 0;
+	}
+
+	.site-search__title,
+	.site-search__meta {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.site-search__title {
+		@include text("m-400");
+
+		mark {
+			font-weight: 600;
+			color: palette("blue-txt");
+			background: none;
+		}
+	}
+
+	.site-search__meta {
+		@include text("s-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.site-search__footer {
+		display: flex;
+		padding-top: 10px;
+
+		&[hidden] {
+			display: none;
+		}
+
+		.btn {
+			flex: 1 1 auto;
+		}
+	}
+
+	// «в Справочнике» — только на мобильном (на десктопе раздел виден в сайдбаре)
+	.site-search__all-in {
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	// ---------- Пусто ----------
+	.site-search__empty {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		align-items: center;
+		padding: 24px 12px 16px;
+		text-align: center;
+
+		&[hidden] {
+			display: none;
+		}
+
+		@include down(desktop) {
+			padding: 24px 0 0;
+
+			.btn {
+				align-self: stretch;
+			}
+		}
+	}
+
+	.site-search__empty-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 56px;
+		height: 56px;
+		color: palette("black-txt");
+		background: palette("bg-main");
+		border-radius: 50%;
+	}
+
+	.site-search__empty-glyph {
+		width: 24px;
+		height: 24px;
+	}
+
+	.site-search__empty-title {
+		@include text("h4");
+
+		color: palette("black-h");
+	}
+
+	.site-search__empty-text {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.site-search__where--top {
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.site-search__where--side {
+		@include down(desktop) {
+			display: none;
+		}
+	}
+
+	.site-search__empty-reset[hidden] {
+		display: none;
+	}
+
+	// ---------- До 1024: окно на весь экран ----------
+	// Поиск живёт в шапке (у неё свой z-index), поэтому на время окна шапка поднимается над
+	// таб-баром и баннером cookie
+	.header:has(.site-search.is-open) {
+		@include down(desktop) {
+			z-index: 90;
+		}
+	}
+
+	@include down(desktop) {
+		.site-search.is-open {
+			position: fixed;
+			inset: 0;
+			z-index: 90;
+			display: flex;
+			flex-direction: column;
+			margin: 0;
+			background: palette("white");
+		}
+
+		.site-search.is-open .site-search__bar {
+			flex: none;
+			padding: 10px 10px 6px;
+		}
+
+		.site-search.is-open .site-search__close {
+			display: flex;
+		}
+
+		.site-search__panel {
+			flex: 1 1 auto;
+			flex-direction: column;
+			min-height: 0;
+			overflow-y: auto;
+			overscroll-behavior: contain;
+		}
+
+		// Лента вкладок (360.Search.Tab)
+		.site-search__section-list {
+			flex-direction: row;
+			gap: 8px;
+			padding: 4px 10px 6px;
+			overflow-x: auto;
+			scrollbar-width: none;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+		}
+
+		.site-search__section {
+			flex: none;
+			gap: 8px;
+			height: 36px;
+			padding: 0 14px 0 12px;
+			white-space: nowrap;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+
+			&:has(:checked) {
+				background: palette("white");
+				border-color: palette("main-blue");
+			}
+		}
+
+		.site-search__content {
+			gap: 16px;
+			padding: 8px 10px 90px;
+		}
+
+		// При вводе фильтры сворачиваются в строку-сводку
+		.site-search.has-query:not(.is-filters-open) .site-search__filters-head,
+		.site-search.has-query:not(.is-filters-open) .site-search__filter-list {
+			display: none;
+		}
+
+		.site-search.has-query .site-search__summary {
+			display: flex;
+		}
+
+		.site-search__footer {
+			position: fixed;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 1;
+			padding: 10px 10px calc(14px + env(safe-area-inset-bottom));
+			background: palette("white");
+			border-top: 1px solid palette("form-border");
+		}
+	}
+}

@@ -1,0 +1,86 @@
+{{!--
+	Поиск в шапке (Figma: 1920 — 4760:2199 … 4777:3705, заметки 4734:1835; 360 — 4786:2643).
+	Поле 700 в шапке (на мобильном — строка под шапкой). По фокусу — окно: слева «Искать в
+	разделе» (на мобильном — лента вкладок), справа фильтры раздела (2 колонки), с 2-го символа —
+	до 6 подсказок, «Все результаты · N» ведёт на страницу результатов с теми же фильтрами.
+	На мобильном окно — на весь экран. Без фокуса в поле — запрос и сводка «Справочник · 2 фильтра»
+	(× сбрасывает фильтры). Без JS — обычная GET-форма.
+	props: action (страница результатов), suggestUrl (подсказки, JSON), filtersUrl (фильтры
+	раздела, HTML), sections [{ value, text, where («в Справочнике» — для кнопки на мобильном), icon, checked }], filters (фильтры выбранного
+	раздела — см. SearchFilter), placeholder. query — текущий запрос, id, class.
+	Контракт — docs/contracts/site-search.md.
+--}}
+<div class="site-search{{#if class}} {{class}}{{/if}}" data-module="SiteSearch" data-path="layouts" {{#if props.suggestUrl}}data-suggest-url="{{props.suggestUrl}}"{{/if}} {{#if props.filtersUrl}}data-filters-url="{{props.filtersUrl}}"{{/if}}>
+    <form class="site-search__form" action="{{props.action}}" method="get" role="search" autocomplete="off">
+        <div class="site-search__bar">
+            <div class="site-search__field">
+                <label class="visually-hidden" for="{{default id 'site-search'}}-q">Поиск по сайту</label>
+                {{> components/Icon/Icon name="search" class="site-search__icon"}}
+                <input class="site-search__input" id="{{default id 'site-search'}}-q" type="search" name="q" value="{{query}}" placeholder="{{default props.placeholder 'Начать поиск'}}" autocomplete="off" enterkeyhint="search" data-site-search-input />
+                <button class="site-search__chip" type="button" hidden data-site-search-chip>
+                    <span data-site-search-chip-text></span>
+                    {{> components/Icon/Icon name="close" class="site-search__chip-icon"}}
+                </button>
+                <button class="site-search__clear" type="button" aria-label="Очистить запрос" hidden data-site-search-clear>
+                    {{> components/Icon/Icon name="close" class="site-search__clear-icon"}}
+                </button>
+            </div>
+            <button class="site-search__close" type="button" aria-label="Закрыть поиск" data-site-search-close>
+                {{> components/Icon/Icon name="close" class="site-search__close-icon"}}
+            </button>
+        </div>
+
+        <div class="site-search__panel" id="{{default id 'site-search'}}-panel" data-site-search-panel>
+            {{#if props.sections.length}}
+                <fieldset class="site-search__sections">
+                    <legend class="site-search__legend">Искать в разделе</legend>
+                    <div class="site-search__section-list">
+                        {{#each props.sections}}
+                            <label class="site-search__section">
+                                <input class="site-search__radio" type="radio" name="section" value="{{value}}" {{#if checked}}checked{{/if}} data-label="{{text}}" {{#if where}}data-where="{{where}}"{{/if}} />
+                                {{#if icon}}{{> components/Icon/Icon name=icon class="site-search__section-icon"}}{{/if}}
+                                <span>{{text}}</span>
+                            </label>
+                        {{/each}}
+                    </div>
+                </fieldset>
+            {{/if}}
+            <div class="site-search__content">
+                <div class="site-search__filters">
+                    <div class="site-search__filters-head">
+                        <p class="site-search__filters-title">Фильтры · <span data-site-search-section-label>{{#each props.sections}}{{#if checked}}{{text}}{{/if}}{{/each}}</span></p>
+                        <button class="site-search__reset" type="button" data-site-search-reset>Сбросить все</button>
+                    </div>
+                    <button class="site-search__summary" type="button" aria-expanded="false" data-site-search-summary>
+                        <span class="site-search__summary-text" data-site-search-summary-text></span>
+                        {{> components/Icon/Icon name="chevron-down" class="site-search__summary-icon"}}
+                    </button>
+                    <div class="site-search__filter-list" data-site-search-filter-list>
+                        {{#each props.filters}}
+                            {{> sections/search/SearchFilter/SearchFilter props=this}}
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="site-search__results" hidden data-site-search-results>
+                    <p class="site-search__info" data-site-search-info></p>
+                    <ul class="site-search__list" role="listbox" id="{{default id 'site-search'}}-list" aria-label="Быстрые результаты" data-site-search-list></ul>
+                    <div class="site-search__empty" hidden data-site-search-empty>
+                        <span class="site-search__empty-icon">{{> components/Icon/Icon name="search" class="site-search__empty-glyph"}}</span>
+                        <p class="site-search__empty-title" data-site-search-empty-title></p>
+                        <p class="site-search__empty-text">Проверьте раскладку клавиатуры и опечатки, попробуйте сократить запрос, сбросить фильтры или выбрать другой раздел <span class="site-search__where site-search__where--side">слева</span><span class="site-search__where site-search__where--top">выше</span>.</p>
+                        <button class="btn btn--general btn--m site-search__empty-reset" type="button" data-site-search-reset>Сбросить фильтры</button>
+                    </div>
+                    <div class="site-search__footer" data-site-search-footer>
+                        <button class="btn btn--general btn--m site-search__all" type="submit" data-site-search-all>Все результаты</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    {{!-- Демо: фильтры других разделов для имитации filtersUrl (в сборке для CMS их нет) --}}
+    {{#if @root.demo}}
+        {{#each props.demoFilters}}
+            <template data-site-search-demo="{{@key}}">{{#each this}}{{> sections/search/SearchFilter/SearchFilter props=this}}{{/each}}</template>
+        {{/each}}
+    {{/if}}
+</div>

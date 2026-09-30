@@ -2,8 +2,6 @@
 <html lang="{{ lang }}">
 	<head>
 		{{> layouts/Head/Head }}
-		{{!-- Демо: имитация подсчёта результатов для панели фильтров; в сборке для CMS её нет --}}
-		{{#if demo}}<script type="module" src="./dev/mock-server.js"></script>{{/if}}
 		<script type="module" src="/app.js"></script>
 	</head>
 	<body>

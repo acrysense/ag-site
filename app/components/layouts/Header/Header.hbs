@@ -1,7 +1,8 @@
 {{!--
 	Шапка сайта (Figma: PC.HEADER.v2 — 4652:8752, 360.HEADER — 4865:1334).
 	props: id, homeUrl, logo { desktop, mobile } (по умолчанию — логотипы из assets), title (полное
-	название), titleShort (мобильное), search (см. SearchField),
+	название), titleShort (мобильное), search { value } — запрос в строке поиска (окно поиска —
+	layouts/SiteSearch, настройки — site.search),
 	menu — пункты [{ text, url, current, children: [{ text, url, current }] }]; пункт с подменю без url
 	(ТЗ: «О холдинге» не кликабелен) — целиком кнопка подменю,
 	user — для вошедшего: { name, initials, avatar, url, links: [{ icon, label, url }] }
@@ -21,7 +22,8 @@
             <span class="header__title header__title--short">{{default props.titleShort props.title}}</span>
         </a>
 
-        {{> components/SearchField/SearchField props=(obj action=props.search.action name=props.search.name value=props.search.value placeholder=props.search.placeholder id=(default props.id 'header') class="header__search")}}
+        {{!-- Поиск: разделы и фильтры — общие для сайта (site.search), запрос — со страницы --}}
+        {{> layouts/SiteSearch/SiteSearch props=@root.site.search query=props.search.value id=(default props.id 'header') class="header__search"}}
 
         <div class="header__actions">
             {{#if props.user}}

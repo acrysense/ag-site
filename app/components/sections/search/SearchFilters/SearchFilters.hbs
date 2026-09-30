@@ -7,9 +7,7 @@
 	props: id, sections (SearchSections), sectionLabel (подпись над фильтрами на мобильном),
 	filters [{ type: select | date | number, … }], resetUrl, countUrl, countText («Показать 5
 	результатов»).
-	Фильтр select — Select с multiple: name («department[]»), placeholder, options, searchPlaceholder,
-	valueText; date — DateRange: nameFrom, nameTo, from, to, placeholder; number — NumberRange:
-	label, nameFrom, nameTo, from, to, placeholderFrom, placeholderTo (во всю ширину).
+	Поля фильтров — см. SearchFilter.
 --}}
 <aside class="search-filters" id="{{default props.id 'search-filters'}}" aria-labelledby="{{default props.id 'search-filters'}}-title" data-module="SearchFilters" data-path="sections/search" {{#if props.countUrl}}data-search-count-url="{{props.countUrl}}"{{/if}}>
     <div class="search-filters__head">
@@ -28,15 +26,7 @@
                 {{#if props.sectionLabel}}<p class="search-filters__label">{{props.sectionLabel}}</p>{{/if}}
                 <div class="search-filters__list">
                     {{#each props.filters}}
-                        <div class="search-filters__item{{#if (eq type 'number')}} search-filters__item--wide{{/if}}">
-                            {{#if (eq type 'select')}}
-                                {{> components/Select/Select props=(obj name=name placeholder=placeholder options=options multiple=true search=true searchPlaceholder=searchPlaceholder valueText=valueText url=url)}}
-                            {{else if (eq type 'date')}}
-                                {{> components/DateRange/DateRange props=this}}
-                            {{else if (eq type 'number')}}
-                                {{> components/NumberRange/NumberRange props=this}}
-                            {{/if}}
-                        </div>
+                        {{> sections/search/SearchFilter/SearchFilter props=this}}
                     {{/each}}
                 </div>
                 {{#if props.resetUrl}}<a class="search-filters__reset" href="{{props.resetUrl}}">Сбросить фильтры</a>{{/if}}

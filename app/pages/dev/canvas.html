@@ -528,6 +528,16 @@
 				{{#> state label="Длинный контент" note="в «Администратор»: ветка в 4 уровня, текст с переносами, догрузка ответов и ленты"}}{{/state}}
 			{{/story}}
 
+			{{#> story id="site-search" group="Поиск" title="Поиск в шапке" description='Figma: 1920 — 4760:2199…4777:3705, 360 — 4786:2643. Нажмите в поле: разделы, фильтры раздела (смена раздела — скелетон), с 2-го символа подсказки («иван», «ывапролд» — пусто), ↑↓ и Enter. До 1024 — на весь экран. Без фокуса — сводка «Раздел · N фильтров». Сервер имитируется.'}}
+				{{#> state label="Пусто" bg="page"}}
+					<div class="story-search-field">{{> layouts/SiteSearch/SiteSearch props=site.search id="story-search"}}</div>
+				{{/state}}
+				{{#> state label="С запросом" bg="page"}}
+					<div class="story-search-field">{{> layouts/SiteSearch/SiteSearch props=site.search id="story-search-query" query="иван"}}</div>
+				{{/state}}
+				{{#> state label="Загрузка, пусто, ошибка" note="в окне: скелетон фильтров при смене раздела, «По запросу … ничего не найдено», «Подсказки не загрузились — откройте все результаты»"}}{{/state}}
+			{{/story}}
+
 			{{#> story id="search-result" group="Поиск" title="Результат поиска" description='Figma: Result — person / news / doc / other / vac. Без картинки — заглушка по типу; совпадения — в mark (экранирует бэк).'}}
 				{{#> state label="Сотрудник, новость, документ, прочее, вакансия"}}
 					<ul class="search-results__list" role="list">

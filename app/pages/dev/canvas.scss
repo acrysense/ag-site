@@ -452,3 +452,9 @@ $token-text-names: ();
 		max-width: 350px;
 	}
 }
+
+// Поиск в шапке в витрине: ширина поля как в шапке (700) и место под окно
+.story-search-field {
+	max-width: 700px;
+	min-height: 620px;
+}

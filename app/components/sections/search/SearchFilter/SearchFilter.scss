@@ -1,0 +1,14 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Фильтр в сетке (окно поиска в шапке — 2 колонки): числовой диапазон — во всю ширину
+// (Figma 4764:3141 — «Зарплата от — до» на всю ширину колонки)
+@layer components {
+	.search-filter {
+		min-width: 0;
+
+		&--wide {
+			grid-column: 1 / -1;
+		}
+	}
+}

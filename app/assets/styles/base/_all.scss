@@ -4,7 +4,6 @@
 @forward "@/components/components/Carousel/Carousel";
 @forward "@/components/components/Icon/Icon";
 @forward "@/components/components/LikeButton/LikeButton";
-@forward "@/components/components/SearchField/SearchField";
 @forward "@/components/components/Modal/Modal";
 @forward "@/components/components/Field/Field";
 @forward "@/components/components/Checkbox/Checkbox";
@@ -24,6 +23,7 @@
 @forward "@/components/layouts/MainMenu/MainMenu";
 @forward "@/components/layouts/TabBar/TabBar";
 @forward "@/components/layouts/CookieBanner/CookieBanner";
+@forward "@/components/layouts/SiteSearch/SiteSearch";
 
 @forward "@/components/sections/home/HeroBanners/HeroBanners";
 @forward "@/components/sections/home/PostList/PostList";
@@ -39,6 +39,7 @@
 @forward "@/components/sections/news/NewsFilters/NewsFilters";
 @forward "@/components/sections/news/NewsArticle/NewsArticle";
 @forward "@/components/sections/shared/Comments/Comments";
+@forward "@/components/sections/search/SearchFilter/SearchFilter";
 @forward "@/components/sections/search/SearchResult/SearchResult";
 @forward "@/components/sections/search/SearchSections/SearchSections";
 @forward "@/components/sections/search/SearchFilters/SearchFilters";

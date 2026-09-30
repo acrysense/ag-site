@@ -152,6 +152,9 @@ export default function init(root) {
 		},
 		{ signal }
 	)
+	// Даты поменяли снаружи (кнопка «Сбросить все» и т. п.) и объявили change — обновить поле
+	inputFrom.addEventListener('change', sync, { signal })
+
 	// Сброс формы — поле снова пустое (событие reset приходит до очистки полей)
 	inputFrom.form?.addEventListener(
 		'reset',

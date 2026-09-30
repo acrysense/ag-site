@@ -31,6 +31,8 @@ window.fetch = async (input, init = {}) => {
 	if (url.pathname === '/__mock/form') return mockForm(init)
 	if (url.pathname === '/__mock/comments') return mockComments(url, init)
 	if (url.pathname === '/__mock/search-count') return mockSearchCount(url, init)
+	if (url.pathname === '/__mock/search-suggest') return mockSearchSuggest(url, init)
+	if (url.pathname === '/__mock/search-filters') return mockSearchFilters(url, init)
 	if (url.pathname !== '/__mock/select') return realFetch(input, init)
 	console.info('[mock-select]', url.search || '(без параметров)')
 	await new Promise((resolve, reject) => {
@@ -307,5 +309,151 @@ async function mockSearchCount(url, init) {
 	const count = Math.max(0, 12 - filters.length * 2)
 	return new Response(JSON.stringify({ count }), {
 		headers: { 'Content-Type': 'application/json' },
+	})
+}
+
+// 5) Поиск в шапке. GET /__mock/search-suggest?q=&section=&<фильтры> → { count, items } —
+// до 6 подсказок раздела, совпадение в <mark>; каждый выбранный фильтр убавляет выдачу.
+// GET /__mock/search-filters?section= → HTML фильтров раздела (берётся из <template
+// data-site-search-demo>, которые демо-страницы выводят в поиске). Задержка 400 мс.
+const photo = (n) => new URL(`./img/person-${n}.jpg`, import.meta.url).href
+const suggestData = {
+	directory: [
+		[
+			'Иванова Ольга Александровна',
+			'Провизор · ООО «Адель Фарм» · Отдел продаж',
+			'person',
+			photo(1),
+		],
+		[
+			'Иванчик Дмитрий Олегович',
+			'Менеджер · ООО «Адель Фарм» · Отдел маркетинга',
+			'person',
+			photo(2),
+		],
+		[
+			'Иваненко Мария Сергеевна',
+			'Маркетолог · ООО «Адель Фарм» · Отдел маркетинга',
+			'person',
+			'',
+		],
+		[
+			'Иванькова Анна Игоревна',
+			'Специалист · ООО «Адель Фарм» · Отдел продаж',
+			'person',
+			photo(3),
+		],
+		[
+			'Ивановский Павел Андреевич',
+			'Руководитель · ООО «Адель Фарм» · Отдел продаж',
+			'person',
+			photo(4),
+		],
+		[
+			'Петрова Анна Сергеевна',
+			'Фармацевт · ООО «Аптека групп» · Аптека №4',
+			'person',
+			photo(5),
+		],
+	],
+	news: [
+		[
+			'Иван Купала: как мы провели летний корпоратив',
+			'Новости · 08.07.2026',
+			'news',
+			new URL('./img/news-1.jpg', import.meta.url).href,
+		],
+		[
+			'Приказ о назначении: Иванов С.П. — директор по развитию',
+			'Новости · 14.09.2026',
+			'news',
+			'',
+		],
+		[
+			'Итоги программы «Лучшая аптека сезона»',
+			'Новости · 28.03.2026',
+			'news',
+			new URL('./img/news-3.jpg', import.meta.url).href,
+		],
+	],
+	documents: [
+		[
+			'Инструкция по приёмке товара (ред. Иванова О.А.)',
+			'PDF · 1,2 МБ · Библиотека / Регламенты',
+			'document',
+			'',
+		],
+		[
+			'Положение о премировании сотрудников (согласовано: Иванов С.П.)',
+			'DOCX · 240 КБ · Библиотека / Кадры',
+			'document',
+			'',
+		],
+		[
+			'Памятка новому сотруднику: к кому обращаться (Иванова О.А.)',
+			'Страница сайта · обновлено 12.08.2026',
+			'other',
+			'',
+		],
+	],
+	vacancies: [
+		[
+			'Фармацевт — аптека на ул. Ивановская, 12',
+			'Вакансии · Минск · ООО «Добрыя лекі»',
+			'vacancy',
+			'',
+		],
+		[
+			'Провизор — аптека №4, Иваново',
+			'Вакансии · Иваново · ООО «Аптека групп» · от 1 800 BYN',
+			'vacancy',
+			'',
+		],
+	],
+}
+const escapeMock = (value) =>
+	value.replace(
+		/[&<>"]/g,
+		(char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[char]
+	)
+const wait = (ms, signal) =>
+	new Promise((resolve, reject) => {
+		const timer = setTimeout(resolve, ms)
+		signal?.addEventListener('abort', () => {
+			clearTimeout(timer)
+			reject(new DOMException('Aborted', 'AbortError'))
+		})
+	})
+
+async function mockSearchSuggest(url, init) {
+	console.info('[mock-search-suggest]', url.search)
+	await wait(400, init.signal)
+	const q = (url.searchParams.get('q') || '').trim().toLowerCase()
+	const section = url.searchParams.get('section') || 'directory'
+	const filters = [...url.searchParams.keys()].filter(
+		(key) => !['q', 'section', 'ajax_call'].includes(key)
+	).length
+	const found = (suggestData[section] || []).filter(([title]) => title.toLowerCase().includes(q))
+	const kept = found.slice(0, Math.max(0, found.length - filters))
+	const items = kept.slice(0, 6).map(([title, meta, type, image]) => {
+		const start = title.toLowerCase().indexOf(q)
+		const titleHtml =
+			escapeMock(title.slice(0, start)) +
+			`<mark>${escapeMock(title.slice(start, start + q.length))}</mark>` +
+			escapeMock(title.slice(start + q.length))
+		return { url: '#', type, image, titleHtml, meta }
+	})
+	return new Response(JSON.stringify({ count: kept.length, items }), {
+		headers: { 'Content-Type': 'application/json' },
+	})
+}
+
+async function mockSearchFilters(url, init) {
+	const section = url.searchParams.get('section') || 'directory'
+	console.info('[mock-search-filters]', section)
+	await wait(600, init.signal)
+	const template = document.querySelector(`template[data-site-search-demo="${section}"]`)
+	return new Response(template ? template.innerHTML : '', {
+		headers: { 'Content-Type': 'text/html' },
 	})
 }
