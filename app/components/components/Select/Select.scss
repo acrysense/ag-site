@@ -134,9 +134,12 @@
 	}
 
 	// Окно прокрутки — не выше ~7 пунктов; вид полосы — общий (base/_vendor.scss)
+	// Полоса — в правом поле окна (6px), в 2px от рамки: область прокрутки заходит в поле,
+	// список отступает на столько же — пункты той же ширины, что и без прокрутки
 	.select__scroll {
 		min-height: 0;
 		max-height: min(280px, 45vh);
+		margin-right: -6px;
 	}
 
 	.select__list {
@@ -144,7 +147,7 @@
 		flex-direction: column;
 		gap: 2px;
 		margin: 0;
-		padding: 0;
+		padding: 0 6px 0 0;
 		list-style: none;
 	}
 

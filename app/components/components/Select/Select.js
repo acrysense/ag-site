@@ -65,6 +65,7 @@ export default function init(root) {
 	let debounceTimer = 0
 	let typed = ''
 	let typedTimer = 0
+	let pointer = { x: null, y: null }
 	const cache = new Map()
 
 	const fromOptions = () =>
@@ -165,7 +166,7 @@ export default function init(root) {
 		}
 	}
 
-	const renderActive = () => {
+	const renderActive = ({ scroll = true } = {}) => {
 		const target = focusTarget()
 		list.querySelectorAll('.select__option').forEach((option, index) => {
 			option.classList.toggle('is-active', index === active)
@@ -173,7 +174,7 @@ export default function init(root) {
 		const current = list.children[active]
 		if (current && current !== sentinel) {
 			target.setAttribute('aria-activedescendant', current.id)
-			current.scrollIntoView({ block: 'nearest' })
+			if (scroll) current.scrollIntoView({ block: 'nearest' })
 		} else target.removeAttribute('aria-activedescendant')
 	}
 
@@ -304,6 +305,7 @@ export default function init(root) {
 	const open = () => {
 		if (isOpen()) return
 		popup.hidden = false
+		pointer = { x: null, y: null }
 		root.classList.add('is-open')
 		simplebar.recalculate()
 		button.setAttribute('aria-expanded', 'true')
@@ -348,10 +350,10 @@ export default function init(root) {
 		if (changed) select.dispatchEvent(new Event('change', { bubbles: true }))
 	}
 
-	const move = (index) => {
+	const move = (index, { scroll = true } = {}) => {
 		if (!items.length) return
 		active = Math.min(Math.max(index, 0), items.length - 1)
-		renderActive()
+		renderActive({ scroll })
 	}
 
 	// Без поиска: набор букв — к первому пункту, который начинается с них
@@ -441,9 +443,15 @@ export default function init(root) {
 	list.addEventListener(
 		'mousemove',
 		(event) => {
+			// Только настоящее движение мыши: при появлении списка под курсором браузер тоже
+			// шлёт mousemove — он не должен сбивать выбранный пункт и прокрутку
+			if (event.clientX === pointer.x && event.clientY === pointer.y) return
+			const moved = pointer.x !== null
+			pointer = { x: event.clientX, y: event.clientY }
+			if (!moved) return
 			const option = event.target.closest('.select__option')
 			const index = [...list.children].indexOf(option)
-			if (option && index !== active) move(index)
+			if (option && index !== active) move(index, { scroll: false })
 		},
 		{ signal }
 	)
