@@ -1,13 +1,9 @@
 // Оболочка витрины. Стили сайта сюда не подключаются, поэтому значения свои,
-// а не из токенов сайта.
-$ui-bg: #f4f4f5;
-$ui-panel: #ffffff;
-$ui-border: #e4e4e7;
-$ui-text: #18181b;
-$ui-muted: #6b6b73;
-$ui-accent: #2f5bea;
-$ui-accent-bg: #e8eefd;
-$ui-side-width: 248px;
+// а не из токенов сайта. Тема оболочки следует системной (светлая/тёмная);
+// сам компонент в телефоне всегда показывается как на сайте.
+$ui-side-width: 264px;
+$ui-phone-width: 360px;
+$ui-phone-bezel: 10px;
 $ui-font:
 	system-ui,
 	-apple-system,
@@ -15,11 +11,52 @@ $ui-font:
 	Roboto,
 	Arial,
 	sans-serif;
+$ui-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+:root {
+	color-scheme: light;
+	--ui-bg: #f3f3f5;
+	--ui-side: #fbfbfc;
+	--ui-panel: #ffffff;
+	--ui-line: #e4e4e9;
+	--ui-text: #17171c;
+	--ui-muted: #6b6b76;
+	--ui-accent: #4f46e5;
+	--ui-accent-soft: #eeedfd;
+	--ui-accent-text: #3f37c9;
+	--ui-bezel: #1d1d22;
+	--ui-shadow: 0 1px 2px rgb(16 16 24 / 6%), 0 12px 32px -12px rgb(16 16 24 / 18%);
+	--ui-logo-1: #4f46e5;
+	--ui-logo-2: #22b8cf;
+	--ui-logo-3: #f59f00;
+	--ui-logo-4: #e64980;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		color-scheme: dark;
+		--ui-bg: #111114;
+		--ui-side: #17171b;
+		--ui-panel: #1c1c21;
+		--ui-line: #2c2c33;
+		--ui-text: #ececf1;
+		--ui-muted: #9d9daa;
+		--ui-accent: #8b85ff;
+		--ui-accent-soft: #26244a;
+		--ui-accent-text: #b4b0ff;
+		--ui-bezel: #000000;
+		--ui-shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 16px 40px -12px rgb(0 0 0 / 60%);
+	}
+}
 
 *,
 *::before,
 *::after {
 	box-sizing: border-box;
+}
+
+[hidden] {
+	display: none !important;
 }
 
 .ui {
@@ -30,41 +67,165 @@ $ui-font:
 	overflow: hidden;
 	font-family: $ui-font;
 	font-size: 14px;
-	line-height: 1.4;
-	color: $ui-text;
-	background: $ui-bg;
+	line-height: 1.45;
+	color: var(--ui-text);
+	background: var(--ui-bg);
+	-webkit-font-smoothing: antialiased;
 
 	:focus-visible {
-		outline: 2px solid $ui-accent;
+		outline: 2px solid var(--ui-accent);
 		outline-offset: 2px;
 	}
 
+	code,
+	kbd {
+		font-family: $ui-mono;
+		font-size: 12px;
+	}
+
+	// Сайдбар
+
 	&__side {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		min-height: 0;
+		padding: 20px 14px 16px;
 		overflow-y: auto;
-		padding: 16px 12px;
-		background: $ui-panel;
-		border-right: 1px solid $ui-border;
+		background: var(--ui-side);
+		border-right: 1px solid var(--ui-line);
 	}
 
 	&__brand {
-		margin: 0 8px 16px;
-		font-weight: 700;
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		padding: 0 6px;
 	}
 
-	&__group + &__group {
-		margin-top: 16px;
+	&__logo {
+		display: grid;
+		flex: none;
+		grid-template-columns: repeat(2, 12px);
+		gap: 3px;
+
+		span {
+			width: 12px;
+			height: 12px;
+			border-radius: 3px;
+			background: var(--ui-logo-1);
+
+			&:nth-child(2) {
+				background: var(--ui-logo-2);
+			}
+
+			&:nth-child(3) {
+				background: var(--ui-logo-3);
+			}
+
+			&:nth-child(4) {
+				background: var(--ui-logo-4);
+				border-radius: 50%;
+			}
+		}
+	}
+
+	&__brand-text {
+		display: grid;
+		min-width: 0;
+	}
+
+	&__brand-name {
+		overflow: hidden;
+		font-weight: 650;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	&__brand-sub {
+		font-size: 12px;
+		color: var(--ui-muted);
+	}
+
+	&__search {
+		position: relative;
+	}
+
+	&__search-label {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+
+	&__search-input {
+		width: 100%;
+		padding: 8px 32px 8px 12px;
+		font: inherit;
+		color: inherit;
+		background: var(--ui-panel);
+		border: 1px solid var(--ui-line);
+		border-radius: 10px;
+		appearance: none;
+
+		&::placeholder {
+			color: var(--ui-muted);
+		}
+
+		&::-webkit-search-cancel-button {
+			display: none;
+		}
+
+		&:focus-visible {
+			outline-offset: 0;
+			border-color: var(--ui-accent);
+		}
+	}
+
+	&__search-key {
+		position: absolute;
+		top: 50%;
+		right: 8px;
+		padding: 1px 6px;
+		color: var(--ui-muted);
+		border: 1px solid var(--ui-line);
+		border-radius: 5px;
+		transform: translateY(-50%);
+	}
+
+	&__nav {
+		display: grid;
+		gap: 18px;
 	}
 
 	&__group-title {
-		margin: 0 8px 4px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin: 0 0 6px;
+		padding: 0 10px;
 		font-size: 11px;
-		font-weight: 600;
-		letter-spacing: 0.06em;
+		font-weight: 650;
+		letter-spacing: 0.07em;
 		text-transform: uppercase;
-		color: $ui-muted;
+		color: var(--ui-muted);
+	}
+
+	&__group-count {
+		min-width: 20px;
+		padding: 0 6px;
+		font-size: 11px;
+		letter-spacing: 0;
+		text-align: center;
+		background: var(--ui-line);
+		border-radius: 99px;
 	}
 
 	&__list {
+		display: grid;
+		gap: 2px;
 		margin: 0;
 		padding: 0;
 		list-style: none;
@@ -72,21 +233,39 @@ $ui-font:
 
 	&__link {
 		display: block;
-		padding: 6px 8px;
-		border-radius: 6px;
+		padding: 7px 10px;
 		color: inherit;
 		text-decoration: none;
+		border-radius: 8px;
+		transition: background 0.15s ease;
 
 		&:hover {
-			background: $ui-bg;
+			background: var(--ui-bg);
 		}
 
 		&[aria-current="page"] {
 			font-weight: 600;
-			color: $ui-accent;
-			background: $ui-accent-bg;
+			color: var(--ui-accent-text);
+			background: var(--ui-accent-soft);
+			box-shadow: inset 3px 0 0 var(--ui-accent);
 		}
 	}
+
+	&__empty {
+		margin: 0;
+		padding: 0 10px;
+		color: var(--ui-muted);
+	}
+
+	&__side-foot {
+		margin: auto 0 0;
+		padding: 12px 10px 0;
+		font-size: 12px;
+		color: var(--ui-muted);
+		border-top: 1px solid var(--ui-line);
+	}
+
+	// Основная часть
 
 	&__main {
 		display: flex;
@@ -98,108 +277,253 @@ $ui-font:
 	&__toolbar {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 8px 16px;
+		gap: 12px 24px;
 		align-items: center;
-		padding: 10px 16px;
-		background: $ui-panel;
-		border-bottom: 1px solid $ui-border;
+		justify-content: space-between;
+		padding: 16px 32px;
+		background: var(--ui-panel);
+		border-bottom: 1px solid var(--ui-line);
+	}
+
+	&__crumb {
+		margin: 0;
+		font-size: 12px;
+		color: var(--ui-muted);
 	}
 
 	&__title {
-		margin: 0 auto 0 0;
-		font-size: 16px;
+		margin: 0;
+		font-size: 20px;
+		font-weight: 650;
+		letter-spacing: -0.01em;
 	}
 
-	&__widths {
+	&__actions {
 		display: flex;
-		overflow: hidden;
-		border: 1px solid $ui-border;
-		border-radius: 8px;
+		flex-wrap: wrap;
+		gap: 8px;
 	}
 
-	&__width {
-		padding: 5px 10px;
+	&__toggle,
+	&__button {
+		display: inline-flex;
+		gap: 8px;
+		align-items: center;
+		padding: 8px 14px;
 		font: inherit;
+		font-weight: 500;
 		color: inherit;
-		background: none;
-		border: 0;
+		text-decoration: none;
 		cursor: pointer;
-
-		& + & {
-			border-left: 1px solid $ui-border;
-		}
+		background: var(--ui-panel);
+		border: 1px solid var(--ui-line);
+		border-radius: 10px;
+		transition:
+			background 0.15s ease,
+			border-color 0.15s ease;
 
 		&:hover {
-			background: $ui-bg;
-		}
-
-		&[aria-pressed="true"] {
-			font-weight: 600;
-			color: $ui-accent;
-			background: $ui-accent-bg;
+			background: var(--ui-bg);
 		}
 	}
 
-	&__scale {
-		color: $ui-muted;
+	// Индикатор вкл/выкл у переключателя
+	&__toggle::before {
+		width: 8px;
+		height: 8px;
+		content: "";
+		background: var(--ui-line);
+		border-radius: 50%;
 	}
 
-	&__open {
-		color: $ui-accent;
+	&__toggle[aria-pressed="true"]::before {
+		background: var(--ui-accent);
+	}
+
+	&__button {
+		color: #ffffff;
+		background: var(--ui-accent);
+		border-color: var(--ui-accent);
+
+		&:hover {
+			background: var(--ui-accent-text);
+		}
 	}
 
 	&__stage {
-		position: relative;
+		display: flex;
 		flex: 1 1 auto;
+		flex-wrap: wrap;
+		gap: 32px;
+		align-content: flex-start;
 		min-height: 0;
-		overflow: hidden;
+		padding: 28px 32px;
+		overflow-y: auto;
 	}
 
-	&__viewport {
-		position: relative;
+	// Телефон
+
+	&__phone {
+		display: flex;
+		flex: none;
+		flex-direction: column;
+		gap: 10px;
 		height: 100%;
-		margin: 0 auto;
-		overflow: hidden;
-		background: $ui-panel;
-		box-shadow: 0 0 0 1px $ui-border;
+		min-height: 480px;
+	}
+
+	&__phone-label {
+		margin: 0;
+		font-size: 12px;
+		font-weight: 500;
+		color: var(--ui-muted);
+		text-align: center;
+	}
+
+	&__screen {
+		flex: 1 1 auto;
+		width: $ui-phone-width + $ui-phone-bezel * 2;
+		min-height: 0;
+		padding: $ui-phone-bezel;
+		background: var(--ui-bezel);
+		border-radius: 36px;
+		box-shadow: var(--ui-shadow);
 	}
 
 	&__frame {
-		position: absolute;
-		top: 0;
-		left: 0;
 		display: block;
+		width: $ui-phone-width;
+		height: 100%;
+		background: #ffffff;
 		border: 0;
-		transform-origin: top left;
+		border-radius: 26px;
 	}
 
-	// На узком экране меню уходит наверх горизонтальной лентой
+	// Описание
+
+	&__info {
+		display: grid;
+		flex: 1 1 280px;
+		gap: 12px;
+		align-content: start;
+		align-self: flex-start;
+		max-width: 440px;
+		padding: 24px;
+		background: var(--ui-panel);
+		border: 1px solid var(--ui-line);
+		border-radius: 16px;
+	}
+
+	&__info-title,
+	&__info-subtitle {
+		margin: 0;
+		font-size: 11px;
+		font-weight: 650;
+		letter-spacing: 0.07em;
+		text-transform: uppercase;
+		color: var(--ui-muted);
+	}
+
+	&__info-subtitle {
+		margin-top: 8px;
+	}
+
+	&__description {
+		margin: 0;
+		font-size: 15px;
+	}
+
+	&__states {
+		display: grid;
+		gap: 4px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		counter-reset: ui-state;
+
+		li {
+			counter-increment: ui-state;
+		}
+	}
+
+	&__state {
+		display: grid;
+		grid-template-columns: 24px 1fr;
+		width: 100%;
+		padding: 8px 10px;
+		font: inherit;
+		font-weight: 500;
+		color: inherit;
+		text-align: left;
+		cursor: pointer;
+		background: none;
+		border: 0;
+		border-radius: 8px;
+
+		&::before {
+			grid-row: span 2;
+			font-family: $ui-mono;
+			font-size: 12px;
+			line-height: 20px;
+			color: var(--ui-muted);
+			content: counter(ui-state, decimal-leading-zero);
+		}
+
+		&:hover {
+			background: var(--ui-bg);
+		}
+
+		&.is-muted {
+			color: var(--ui-muted);
+		}
+	}
+
+	&__state-note {
+		font-size: 12px;
+		font-weight: 400;
+	}
+
+	&__hint {
+		margin-top: 8px;
+		padding: 14px 16px;
+		font-size: 13px;
+		color: var(--ui-accent-text);
+		background: var(--ui-accent-soft);
+		border-radius: 12px;
+
+		p {
+			margin: 0;
+		}
+	}
+
+	&__hint-title {
+		margin-bottom: 4px !important;
+		font-weight: 650;
+	}
+
+	// Узкое окно: меню уходит наверх лентой, описание — под телефон
 	@media (max-width: 767.98px) {
 		grid-template-columns: minmax(0, 1fr);
 		grid-template-rows: auto minmax(0, 1fr);
 
 		&__side {
-			display: flex;
-			gap: 16px;
+			flex-direction: row;
+			align-items: center;
+			padding: 10px 12px;
 			overflow-x: auto;
-			padding: 8px 12px;
 			border-right: 0;
-			border-bottom: 1px solid $ui-border;
+			border-bottom: 1px solid var(--ui-line);
 		}
 
-		&__brand {
+		&__brand-text,
+		&__search,
+		&__side-foot,
+		&__group-title,
+		&__phone-label {
 			display: none;
 		}
 
-		&__nav {
-			display: flex;
-			gap: 16px;
-		}
-
-		&__group + &__group {
-			margin-top: 0;
-		}
-
+		&__nav,
 		&__list {
 			display: flex;
 			gap: 4px;
@@ -207,6 +531,20 @@ $ui-font:
 
 		&__link {
 			white-space: nowrap;
+		}
+
+		&__toolbar,
+		&__stage {
+			padding-right: 16px;
+			padding-left: 16px;
+		}
+
+		&__screen {
+			width: 100%;
+		}
+
+		&__frame {
+			width: 100%;
 		}
 	}
 }

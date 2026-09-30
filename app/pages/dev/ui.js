@@ -1,14 +1,14 @@
 import './ui.scss'
 
-const DEFAULT_WIDTH = '1440'
-
 const nav = document.querySelector('[data-ui-nav]')
+const empty = document.querySelector('[data-ui-empty]')
+const search = document.querySelector('[data-ui-search]')
+const crumb = document.querySelector('[data-ui-group]')
 const title = document.querySelector('[data-ui-title]')
-const widths = document.querySelector('[data-ui-widths]')
-const scaleLabel = document.querySelector('[data-ui-scale]')
+const description = document.querySelector('[data-ui-description]')
+const states = document.querySelector('[data-ui-states]')
+const boundsToggle = document.querySelector('[data-ui-bounds]')
 const openLink = document.querySelector('[data-ui-open]')
-const stage = document.querySelector('[data-ui-stage]')
-const viewport = document.querySelector('[data-ui-viewport]')
 const frame = document.querySelector('[data-ui-frame]')
 
 // dev: /dev/ui.html → /dev/canvas.html; сборка: /BASE/dev-ui.html → /BASE/dev-canvas.html
@@ -24,13 +24,28 @@ function writeHash(patch) {
 	apply()
 }
 
-function buildNav(doc) {
-	stories = [...doc.querySelectorAll('[data-story]')].map((el) => ({
-		id: el.dataset.story,
-		group: el.dataset.group || 'Прочее',
-		title: el.dataset.title || el.dataset.story,
-	}))
+const el = (tag, className, text) => {
+	const node = document.createElement(tag)
+	if (className) node.className = className
+	if (text) node.textContent = text
+	return node
+}
 
+function readStories(doc) {
+	return [...doc.querySelectorAll('[data-story]')].map((node) => ({
+		id: node.dataset.story,
+		group: node.dataset.group || 'Прочее',
+		title: node.dataset.title || node.dataset.story,
+		description: node.dataset.description || '',
+		states: [...node.querySelectorAll('[data-state-label]')].map((state) => ({
+			node: state,
+			label: state.dataset.stateLabel,
+			note: state.dataset.stateNote || '',
+		})),
+	}))
+}
+
+function buildNav() {
 	const groups = new Map()
 	for (const story of stories) {
 		if (!groups.has(story.group)) groups.set(story.group, [])
@@ -39,22 +54,16 @@ function buildNav(doc) {
 
 	nav.replaceChildren(
 		...[...groups].map(([group, items]) => {
-			const section = document.createElement('section')
-			section.className = 'ui__group'
+			const section = el('section', 'ui__group')
+			const heading = el('h2', 'ui__group-title', group)
+			heading.append(el('span', 'ui__group-count', String(items.length)))
 
-			const heading = document.createElement('h2')
-			heading.className = 'ui__group-title'
-			heading.textContent = group
-
-			const list = document.createElement('ul')
-			list.className = 'ui__list'
+			const list = el('ul', 'ui__list')
 			for (const story of items) {
-				const link = document.createElement('a')
-				link.className = 'ui__link'
+				const link = el('a', 'ui__link', story.title)
 				link.href = `#${new URLSearchParams({ ...readHash(), story: story.id })}`
-				link.textContent = story.title
 				link.dataset.storyLink = story.id
-				const item = document.createElement('li')
+				const item = el('li')
 				item.append(link)
 				list.append(item)
 			}
@@ -63,6 +72,23 @@ function buildNav(doc) {
 			return section
 		})
 	)
+	filterNav()
+}
+
+function filterNav() {
+	const query = search.value.trim().toLowerCase()
+	let visible = 0
+	for (const section of nav.querySelectorAll('.ui__group')) {
+		let groupVisible = 0
+		for (const item of section.querySelectorAll('li')) {
+			const match = !query || item.textContent.toLowerCase().includes(query)
+			item.hidden = !match
+			if (match) groupVisible += 1
+		}
+		section.hidden = groupVisible === 0
+		visible += groupVisible
+	}
+	empty.hidden = visible > 0
 }
 
 function currentStory() {
@@ -70,23 +96,36 @@ function currentStory() {
 	return stories.find((item) => item.id === story) || stories[0]
 }
 
-function resize() {
-	const width = Number(readHash().w ?? DEFAULT_WIDTH)
-	const available = stage.clientWidth
-	const target = width || available
-	const scale = Math.min(1, available / target)
+function renderInfo(story) {
+	crumb.textContent = story?.group || ''
+	title.textContent = story?.title || 'Историй пока нет'
+	description.textContent = story?.description || ''
+	description.hidden = !story?.description
 
-	// Широкий экран не помещается в окно: рисуем его в полную ширину и уменьшаем
-	viewport.style.width = `${target * scale}px`
-	frame.style.width = `${target}px`
-	frame.style.height = `${stage.clientHeight / scale}px`
-	frame.style.transform = scale < 1 ? `scale(${scale})` : ''
-	scaleLabel.textContent =
-		scale < 1 ? `${target}px, уменьшено до ${Math.round(scale * 100)}%` : ''
+	const items = story?.states || []
+	states.previousElementSibling.hidden = items.length === 0
+	states.replaceChildren(
+		...items.map((state) => {
+			const button = el('button', 'ui__state', state.label)
+			button.type = 'button'
+			if (state.note) {
+				button.classList.add('is-muted')
+				button.append(el('span', 'ui__state-note', state.note))
+			}
+			button.addEventListener('click', () =>
+				state.node.scrollIntoView({ behavior: 'smooth', block: 'start' })
+			)
+			const item = el('li')
+			item.append(button)
+			return item
+		})
+	)
+}
 
-	for (const button of widths.querySelectorAll('[data-width]')) {
-		button.setAttribute('aria-pressed', String(button.dataset.width === String(width)))
-	}
+function applyBounds() {
+	const on = readHash().bounds !== '0'
+	boundsToggle.setAttribute('aria-pressed', String(on))
+	frame.contentDocument?.documentElement.classList.toggle('show-bounds', on)
 }
 
 function apply() {
@@ -100,19 +139,20 @@ function apply() {
 		frame.src = src
 	}
 
-	title.textContent = story?.title || 'Историй пока нет'
 	openLink.href = src
 	for (const link of nav.querySelectorAll('[data-story-link]')) {
 		if (link.dataset.storyLink === story?.id) link.setAttribute('aria-current', 'page')
 		else link.removeAttribute('aria-current')
 	}
-	resize()
+	renderInfo(story)
+	applyBounds()
 }
 
 // Меню пересобирается на каждой загрузке canvas: новые истории видны после HMR
 frame.addEventListener('load', () => {
 	if (!frame.contentDocument) return
-	buildNav(frame.contentDocument)
+	stories = readStories(frame.contentDocument)
+	buildNav()
 	apply()
 })
 
@@ -123,12 +163,19 @@ nav.addEventListener('click', (event) => {
 	writeHash({ story: link.dataset.storyLink })
 })
 
-widths.addEventListener('click', (event) => {
-	const button = event.target.closest('[data-width]')
-	if (button) writeHash({ w: button.dataset.width })
+search.addEventListener('input', filterNav)
+
+// «/» — к поиску, как в Storybook
+document.addEventListener('keydown', (event) => {
+	if (event.key !== '/' || event.target.closest('input, textarea, [contenteditable]')) return
+	event.preventDefault()
+	search.focus()
+})
+
+boundsToggle.addEventListener('click', () => {
+	writeHash({ bounds: boundsToggle.getAttribute('aria-pressed') === 'true' ? '0' : '1' })
 })
 
 window.addEventListener('hashchange', apply)
-new ResizeObserver(resize).observe(stage)
 
 apply()

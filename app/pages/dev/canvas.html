@@ -10,6 +10,7 @@
 		{{!--
 			Холст витрины: все истории компонентов. Оболочка ui.html открывает его в
 			iframe с ?story=<id> и показывает одну историю. Без параметра видны все.
+			Заголовок и описание истории в одиночном режиме показывает оболочка.
 
 			Новая история:
 			{{#> story id="button" group="Компоненты" title="Кнопка"}}
@@ -21,17 +22,20 @@
 			первого появления.
 		--}}
 		{{#*inline "story"}}
-			<article class="story" data-story="{{id}}" data-group="{{group}}" data-title="{{title}}">
-				<h2 class="story__title">{{title}}</h2>
-				{{#if description}}<p class="story__description">{{description}}</p>{{/if}}
+			<article class="story" data-story="{{id}}" data-group="{{group}}" data-title="{{title}}" data-description="{{description}}">
+				<header class="story__header">
+					<p class="story__group">{{group}}</p>
+					<h2 class="story__title">{{title}}</h2>
+					{{#if description}}<p class="story__description">{{description}}</p>{{/if}}
+				</header>
 				<div class="story__states">{{> @partial-block}}</div>
 			</article>
 		{{/inline}}
 		{{#*inline "state"}}
-			<section class="story-state">
+			<section class="story-state{{#if note}} story-state--na{{/if}}" data-state-label="{{label}}" {{#if note}}data-state-note="{{note}}"{{/if}}>
 				<h3 class="story-state__label">
 					{{label}}
-					{{#if note}}<span class="story-state__note">— {{note}}</span>{{/if}}
+					{{#if note}}<span class="story-state__note">{{note}}</span>{{/if}}
 				</h3>
 				{{#unless note}}<div class="story-state__frame">{{> @partial-block}}</div>{{/unless}}
 			</section>

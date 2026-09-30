@@ -4,69 +4,128 @@
 @use "@/assets/styles/base/mixins" as *;
 
 // Обвязка историй на холсте. Грузится только холстом, в CSS сайта не попадает,
-// поэтому значения свои, а не из токенов сайта.
-$canvas-muted: #6b6b73;
-$canvas-frame: #b4b4bb;
+// поэтому значения свои, а не из токенов сайта. Шрифт обвязки системный, чтобы
+// не путать её с типографикой проекта внутри карточек.
+$canvas-bg: #f3f3f5;
+$canvas-card: #ffffff;
+$canvas-line: #e4e4e9;
+$canvas-text: #17171c;
+$canvas-muted: #6b6b76;
+$canvas-accent: #4f46e5;
+$canvas-bounds: rgb(79 70 229 / 45%);
+$canvas-pass: #2b8a3e;
+$canvas-fail: #c92a2a;
+$canvas-font:
+	system-ui,
+	-apple-system,
+	"Segoe UI",
+	Roboto,
+	Arial,
+	sans-serif;
+$canvas-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-.stories {
-	padding: 24px 16px 64px;
+body:has(.stories) {
+	background: $canvas-bg;
 }
 
-.story + .story {
-	margin-top: 64px;
+.stories {
+	display: grid;
+	gap: 56px;
+	padding: 20px 16px 48px;
 }
 
 .story {
+	&__header {
+		margin-bottom: 20px;
+		font-family: $canvas-font;
+		color: $canvas-text;
+	}
+
+	&__group {
+		font-size: 12px;
+		color: $canvas-muted;
+	}
+
 	&__title {
-		margin-bottom: 4px;
+		font-size: 22px;
+		font-weight: 650;
+		line-height: 1.25;
 	}
 
 	&__description {
 		max-width: 72ch;
-		margin-bottom: 24px;
+		margin-top: 6px;
 		font-size: 14px;
+		line-height: 1.5;
 		color: $canvas-muted;
 	}
 
 	&__states {
 		display: grid;
-		gap: 32px;
+		gap: 16px;
 	}
 }
 
-// В одиночном режиме заголовок истории уже есть в оболочке, а соседние
-// истории скрыты — их отступ не нужен
+// В одиночном режиме заголовок и описание показывает оболочка
 .is-single-story {
-	.story {
-		margin-top: 0;
+	.stories {
+		padding-top: 16px;
 	}
 
-	.story__title {
+	.story__header {
 		display: none;
 	}
 }
 
+// Карточка состояния: подпись сверху, компонент на белом внутри
 .story-state {
 	min-width: 0;
+	background: $canvas-card;
+	border: 1px solid $canvas-line;
+	border-radius: 14px;
 
 	&__label {
-		margin-bottom: 8px;
-		font-size: 13px;
-		font-weight: 600;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px 8px;
+		align-items: baseline;
+		padding: 10px 14px;
+		font-family: $canvas-font;
+		font-size: 11px;
+		font-weight: 650;
+		line-height: 1.4;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: $canvas-muted;
+		border-bottom: 1px solid $canvas-line;
 	}
 
 	&__note {
+		font-size: 12px;
 		font-weight: 400;
-		color: $canvas-muted;
+		letter-spacing: 0;
+		text-transform: none;
 	}
 
-	// Пунктир показывает место, которое занимает блок; пустой блок — пустая рамка
 	&__frame {
-		min-height: 8px;
 		padding: 16px;
-		outline: 1px dashed $canvas-frame;
-		outline-offset: -1px;
 	}
+
+	// Неприменимое состояние — одна строка без карточки
+	&--na {
+		background: none;
+		border-style: dashed;
+
+		.story-state__label {
+			border-bottom: 0;
+		}
+	}
+}
+
+// «Границы блоков» в оболочке: пунктир по краю каждого блока внутри карточки
+.show-bounds .story-state__frame > * {
+	outline: 1px dashed $canvas-bounds;
+	outline-offset: 0;
 }
 
 // Токены: образцы и списки имён строятся из карт в _vars.scss.
@@ -103,41 +162,118 @@ $token-text-names: ();
 }
 
 .tokens {
+	font-family: $canvas-font;
+	color: $canvas-text;
+
 	&--colors {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-		gap: 16px;
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+		gap: 12px;
 	}
 
 	&--text {
-		display: grid;
-		gap: 24px;
+		overflow: hidden;
+		background: $canvas-card;
+		border: 1px solid $canvas-line;
+		border-radius: 14px;
 	}
 
 	&__empty {
+		padding: 28px 20px;
 		font-size: 14px;
 		color: $canvas-muted;
+		text-align: center;
+		background: $canvas-card;
+		border: 1px dashed $canvas-line;
+		border-radius: 14px;
 	}
 }
 
 .token-swatch {
+	margin: 0;
+	overflow: hidden;
+	background: $canvas-card;
+	border: 1px solid $canvas-line;
+	border-radius: 14px;
+
 	&__chip {
-		height: 72px;
+		height: 88px;
 		background: var(--swatch);
-		border: 1px solid $canvas-frame;
-		border-radius: 8px;
+		border-bottom: 1px solid $canvas-line;
+	}
+
+	&__body {
+		display: grid;
+		gap: 2px;
+		padding: 10px 12px 12px;
 	}
 
 	&__name {
-		margin-top: 8px;
+		font-size: 14px;
 		font-weight: 600;
+	}
+
+	&__value {
+		font-family: $canvas-mono;
+		font-size: 12px;
+		color: $canvas-muted;
+	}
+
+	&__contrast {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px;
+		margin-top: 6px;
 	}
 }
 
-.token-specimen__meta,
-.token-swatch__value {
-	margin-top: 4px;
-	font-family: monospace;
-	font-size: 12px;
+// Контраст текста этого цвета на белом и на чёрном (WCAG: 4.5 — текст, 3 — крупный)
+.token-badge {
+	padding: 1px 6px;
+	font-family: $canvas-mono;
+	font-size: 11px;
 	color: $canvas-muted;
+	border: 1px solid $canvas-line;
+	border-radius: 6px;
+
+	&.is-pass {
+		color: $canvas-pass;
+	}
+
+	&.is-fail {
+		color: $canvas-fail;
+	}
+}
+
+.token-specimen {
+	display: grid;
+	gap: 8px;
+	padding: 16px;
+
+	& + & {
+		border-top: 1px solid $canvas-line;
+	}
+
+	&__meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px 12px;
+		align-items: baseline;
+		font-size: 12px;
+		color: $canvas-muted;
+	}
+
+	&__name {
+		font-size: 13px;
+		font-weight: 600;
+		color: $canvas-text;
+	}
+
+	&__values {
+		font-family: $canvas-mono;
+	}
+
+	&__sample {
+		overflow-wrap: break-word;
+	}
 }
