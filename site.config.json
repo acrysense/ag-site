@@ -247,5 +247,61 @@
 				"url": "#"
 			}
 		]
+	},
+	"footer": {
+		"slogan": "Превращаем заботу о здоровье в искусство",
+		"social": [
+			{
+				"icon": "linkedin",
+				"label": "LinkedIn",
+				"url": "https://by.linkedin.com/company/aptekagroup"
+			},
+			{
+				"icon": "telegram",
+				"label": "Telegram",
+				"text": "Переговорка",
+				"url": "https://t.me/aptekagroup_peregovorka"
+			}
+		],
+		"contacts": [
+			{
+				"icon": "phone",
+				"text": "+375 (17) 394-70-34",
+				"url": "tel:+375173947034"
+			},
+			{
+				"icon": "phone",
+				"text": "+375 (44) 503-29-00",
+				"url": "tel:+375445032900"
+			},
+			{
+				"icon": "mail",
+				"text": "holding@phg.by",
+				"url": "mailto:holding@phg.by"
+			}
+		],
+		"suggest": {
+			"text": "Предложить тему",
+			"url": "#"
+		},
+		"copyright": "© 2014-2026 «Аптека групп». Все права защищены.",
+		"legal": [
+			{
+				"text": "Обработка cookie-файлов",
+				"url": "#"
+			},
+			{
+				"text": "Согласие на обработку персональных данных",
+				"url": "#"
+			},
+			{
+				"text": "Политика конфиденциальности",
+				"url": "#"
+			},
+			{
+				"text": "Пользовательское соглашение",
+				"url": "#"
+			}
+		]
 	}
 }

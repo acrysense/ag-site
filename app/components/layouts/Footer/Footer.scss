@@ -1,1 +1,179 @@
-// Footer styles.
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: PC.FOOTER v2 — компакт (Light) (4699:29656) и 360.FOOTER (4865:41007):
+// мобильный — тот же подвал в одну колонку. Фон — фон страницы.
+@layer components {
+	.footer {
+		color: palette("black-txt");
+		border-top: 1px solid palette("form-border");
+
+		@include up(desktop) {
+			border-top: 0;
+		}
+
+		&__inner {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			padding: 24px 10px;
+
+			@include up(desktop) {
+				max-width: $container-width + $container-gutter-desktop * 2;
+				margin: 0 auto;
+				padding: 20px $container-gutter-desktop;
+			}
+		}
+
+		// Строки разделены линией Form.Border
+		&__row {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+
+			& + & {
+				padding-top: 20px;
+				border-top: 1px solid palette("form-border");
+			}
+
+			@include up(desktop) {
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-between;
+			}
+		}
+
+		&__row--legal {
+			@include up(desktop) {
+				gap: 24px;
+			}
+		}
+
+		&__slogan {
+			@include text("h3-360");
+
+			text-transform: uppercase;
+
+			@include up(desktop) {
+				@include text("slogan");
+			}
+		}
+
+		&__social {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		&__social-link {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			color: palette("black-txt");
+		}
+
+		&__social-icon {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			border: 1px solid palette("form-border");
+			border-radius: 20px;
+			transition: border-color $transition-default;
+		}
+
+		&__social-link:hover &__social-icon {
+			border-color: palette("icon-grey");
+		}
+
+		&__social-svg {
+			width: 18px;
+			height: 18px;
+		}
+
+		&__social-text {
+			@include text("m-400");
+		}
+
+		&__contacts {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			@include up(desktop) {
+				flex-direction: row;
+				gap: 48px;
+			}
+		}
+
+		// В макете контакты #1F1F1F (без переменной) — берём Black.TXT, как у остального текста
+		&__contact {
+			@include text("l-400");
+
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			color: palette("black-txt");
+			white-space: nowrap;
+		}
+
+		&__contact-icon {
+			width: 20px;
+			height: 20px;
+		}
+
+		&__suggest {
+			@include down(desktop) {
+				width: 100%;
+			}
+		}
+
+		// В макете #73808C — на единицу от Dark-grey.TXT, берём переменную
+		&__copyright {
+			@include text("m-400");
+
+			color: palette("dark-grey-txt");
+		}
+
+		// Стиль текста на самом списке: иначе у пунктов высота строки 24px от страницы
+		&__legal {
+			@include text("s-400");
+
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			@include up(desktop) {
+				flex-direction: row;
+				flex-wrap: wrap;
+				gap: 4px 14px;
+
+				// Разделитель «•» Grey между ссылками
+				li + li::before {
+					margin-right: 14px;
+					color: palette("grey");
+					content: "•";
+				}
+			}
+		}
+
+		&__legal-link {
+			color: palette("dark-grey-txt");
+			transition: color $transition-default;
+
+			&:hover {
+				color: palette("black-txt");
+			}
+		}
+	}
+}

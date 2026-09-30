@@ -98,6 +98,13 @@ $text-styles: (
 			size: 32,
 			line-height: 32,
 		),
+	// Без переменной в Figma: слоган в подвале 1920 (RF Rufo Bold 28, верхний регистр)
+	"slogan": (
+			family: heading,
+			weight: 700,
+			size: 28,
+			line-height: normal,
+		),
 	// PC/HEADER/H2
 	"h2": (
 			family: heading,

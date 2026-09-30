@@ -105,6 +105,13 @@
 				{{#> state label="Загрузка" note="не применимо: шапка приходит с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
+			{{#> story id="footer" group="Каркас" title="Подвал" description='Figma: PC.FOOTER v2 — компакт (Light) (4699:29656), 360.FOOTER (4865:41007) — тот же подвал в одну колонку. Данные — site.footer.'}}
+				{{#> state label="Обычный" bg="page"}}
+					{{> layouts/Footer/Footer props=site.footer}}
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: подвал приходит с сервера вместе со страницей"}}{{/state}}
+			{{/story}}
+
 			{{#> story id="main-menu" group="Каркас" title="Мобильное меню" description='Figma: 360.MainMenu v2 (4558:842). Открывается бургером в шапке и пунктом «Меню» в TabBar, на странице — поверх всего, кроме TabBar. Данные — site.mainMenu. Кнопка выхода открывает шторку.'}}
 				{{#> state label="Открыто" bg="page"}}
 					{{> layouts/MainMenu/MainMenu props=data.mainMenuOpen}}
