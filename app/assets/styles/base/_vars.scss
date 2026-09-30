@@ -50,7 +50,9 @@ $colors: (
 	// Forms/Form.Border
 	"form-border": #e1e1e1,
 	// Forms/Block.Berder
-	"block-border": #dde3e9
+	"block-border": #dde3e9,
+	// Без переменной в Figma: рамка выпадающего меню (Dropdown Menu, 4615:43188)
+	"dropdown-border": #ebedf0
 );
 
 // layout
@@ -62,6 +64,10 @@ $container-gutter-desktop: 20px;
 // shadow
 // Тень белых блоков (Radius-ContentBlock) — в Figma эффект без переменной
 $shadow-content-block: 0 2px 8px rgb(15 23 42 / 5%);
+
+// dropdown
+// Без переменной в Figma: скругление выпадающего меню
+$radius-dropdown: 8px;
 
 // radius
 $radius-button: 14px; // Radius-Button
@@ -111,6 +117,21 @@ $text-styles: (
 			size: 20,
 			line-height: 24,
 			letter-spacing: 0.2,
+		),
+	// Без переменной в Figma: название сайта в шапке 1920 (RF Rufo Regular 26/31.9)
+	"site-title": (
+			family: heading,
+			weight: 400,
+			size: 26,
+			line-height: 31.9,
+		),
+	// Без переменной в Figma: название сайта в шапке 360 (RF Rufo Regular 15, 0.6px)
+	"site-title-360": (
+			family: heading,
+			weight: 400,
+			size: 15,
+			line-height: normal,
+			letter-spacing: 0.6,
 		),
 	// PC/L/400
 	"l-400": (
