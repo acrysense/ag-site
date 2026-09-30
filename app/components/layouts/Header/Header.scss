@@ -330,6 +330,18 @@
 			color: palette("blue-hover");
 		}
 
+		// Пункт без ссылки: подпись и стрелка — одна кнопка (ТЗ: «О холдинге» не кликабелен)
+		&__toggle--label {
+			gap: 2px;
+			width: auto;
+			height: auto;
+			margin: 0;
+
+			.menu__link {
+				color: inherit;
+			}
+		}
+
 		&__arrow {
 			width: 10px;
 			height: 10px;

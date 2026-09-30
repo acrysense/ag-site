@@ -1,7 +1,9 @@
 {{!--
 	Шапка сайта (Figma: PC.HEADER.v2 — 4652:8752, 360.HEADER — 4865:1334).
-	props: id, homeUrl, title (полное название), titleShort (мобильное), search (см. SearchField),
-	menu — пункты [{ text, url, current, children: [{ text, url, current }] }],
+	props: id, homeUrl, logo { desktop, mobile } (по умолчанию — логотипы из assets), title (полное
+	название), titleShort (мобильное), search (см. SearchField),
+	menu — пункты [{ text, url, current, children: [{ text, url, current }] }]; пункт с подменю без url
+	(ТЗ: «О холдинге» не кликабелен) — целиком кнопка подменю,
 	user — для вошедшего: { name, initials, avatar, url, links: [{ icon, label, url }] }
 	(links — быстрые ссылки на десктопе: личный кабинет, учебный портал, CRM),
 	иначе кнопка входа: loginUrl, loginText.
@@ -10,9 +12,10 @@
 <header class="header" data-module="Header" data-path="layouts">
     <div class="header__top">
         <a class="header__brand" href="{{default props.homeUrl '/'}}">
+            {{!-- Логотип меняется через админку (ТЗ: праздничные логотипы): logo { desktop, mobile } --}}
             <picture class="header__logo">
-                <source media="(min-width: 1024px)" srcset="/assets/images/logo.svg" width="57" height="52" />
-                <img src="/assets/images/logo-mobile.svg" width="40" height="40" alt="" />
+                <source media="(min-width: 1024px)" srcset="{{default props.logo.desktop '/assets/images/logo.svg'}}" width="57" height="52" />
+                <img src="{{default props.logo.mobile '/assets/images/logo-mobile.svg'}}" width="40" height="40" alt="" />
             </picture>
             <span class="header__title header__title--full">{{props.title}}</span>
             <span class="header__title header__title--short">{{default props.titleShort props.title}}</span>
@@ -60,10 +63,12 @@
         <ul class="menu" role="list">
             {{#each props.menu}}
                 <li class="menu__item" {{#if children}}data-submenu{{/if}}>
-                    <a class="menu__link" href="{{url}}" {{#if current}}aria-current="page"{{/if}}>{{text}}</a>
+                    {{#if url}}
+                        <a class="menu__link" href="{{url}}" {{#if current}}aria-current="page"{{/if}}>{{text}}</a>
+                    {{/if}}
                     {{#if children}}
-                        <button class="menu__toggle" type="button" aria-expanded="false" aria-controls="{{default ../props.id 'header'}}-submenu-{{@index}}" data-submenu-toggle>
-                            <span class="visually-hidden">Подменю «{{text}}»</span>
+                        <button class="menu__toggle{{#unless url}} menu__toggle--label{{/unless}}" type="button" aria-expanded="false" aria-controls="{{default ../props.id 'header'}}-submenu-{{@index}}" data-submenu-toggle>
+                            {{#if url}}<span class="visually-hidden">Подменю «{{text}}»</span>{{else}}<span class="menu__link">{{text}}</span>{{/if}}
                             {{> components/Icon/Icon name="arrow-down-small" class="menu__arrow"}}
                         </button>
                         <ul class="menu__submenu" id="{{default ../props.id 'header'}}-submenu-{{@index}}" role="list" hidden>

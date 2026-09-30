@@ -1,6 +1,8 @@
 {{!--
 	Баннеры главной (Figma: 1920 — 4615:42835, 360 — 4865:1335): слайдер и промо справа.
-	props: slides [{ url, alt, image: { desktop, mobile } }], promos [{ url, alt, image }].
+	props: slides [{ url, alt, image: { desktop, mobile }, video: { src, poster } }], promos [{ url, alt, image }].
+	ТЗ: слайдер — смесь картинок и видео. Видео без звука, по кругу; при «уменьшить движение»
+	не запускается само (постер).
 	Текст баннеров — в самих картинках, поэтому alt обязателен (его заполняет админ).
 	Нет промо — слайдер во всю ширину; один слайд — без стрелок и точек; нет ничего — блок
 	не выводится. Контракт — docs/contracts/hero-banners.md.
@@ -13,10 +15,14 @@
                     {{#each props.slides}}
                         <div class="carousel__slide hero__slide" role="group" aria-roledescription="слайд" aria-label="{{add @index 1}} из {{../props.slides.length}}">
                             {{#if url}}<a class="hero__slide-link" href="{{url}}">{{/if}}
-                            <picture>
-                                {{#if image.desktop}}<source media="(min-width: 768px)" srcset="{{image.desktop}}" />{{/if}}
-                                <img class="hero__image" src="{{default image.mobile image.desktop}}" alt="{{alt}}" {{#unless @first}}loading="lazy"{{/unless}} decoding="async" />
-                            </picture>
+                            {{#if video}}
+                                <video class="hero__image" src="{{video.src}}" {{#if video.poster}}poster="{{video.poster}}"{{/if}} muted loop playsinline preload="metadata" aria-label="{{alt}}" data-hero-video></video>
+                            {{else}}
+                                <picture>
+                                    {{#if image.desktop}}<source media="(min-width: 768px)" srcset="{{image.desktop}}" />{{/if}}
+                                    <img class="hero__image" src="{{default image.mobile image.desktop}}" alt="{{alt}}" {{#unless @first}}loading="lazy"{{/unless}} decoding="async" />
+                                </picture>
+                            {{/if}}
                             {{#if url}}</a>{{/if}}
                         </div>
                     {{/each}}

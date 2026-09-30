@@ -1,5 +1,5 @@
 // Карусель на нативной прокрутке с привязкой к кадрам (scroll-snap): свайп и тачпад работают
-// сами, JS — только стрелки, точки и номер текущего кадра. Без сторонних библиотек.
+// сами, JS — стрелки, точки, номер текущего кадра и видео в кадрах. Без сторонних библиотек.
 // Разметка: [data-carousel-track] с кадрами, [data-carousel-prev], [data-carousel-next],
 // [data-carousel-dots] (точки создаются здесь). data-carousel-loop — после последнего к первому.
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -15,7 +15,14 @@ export default function init(root) {
 
 	// Один кадр — ни стрелок, ни точек
 	root.classList.toggle('is-single', slides.length < 2)
-	if (slides.length < 2) return () => controller.abort()
+	if (slides.length < 2) {
+		const video = slides[0]?.querySelector('video')
+		if (video && !reducedMotion.matches) video.play().catch(() => {})
+		return () => {
+			controller.abort()
+			video?.pause()
+		}
+	}
 
 	const current = () => Math.round(track.scrollLeft / track.clientWidth)
 
@@ -40,9 +47,17 @@ export default function init(root) {
 			})
 		: []
 
+	// Видео в кадрах: играет только видимое и только если не просили уменьшить движение
+	const videos = slides.map((slide) => slide.querySelector('video'))
+
 	const render = () => {
 		const index = current()
 		dotButtons.forEach((button, i) => button.setAttribute('aria-current', String(i === index)))
+		videos.forEach((video, i) => {
+			if (!video) return
+			if (i === index && !reducedMotion.matches) video.play().catch(() => {})
+			else video.pause()
+		})
 	}
 
 	root.querySelector('[data-carousel-prev]')?.addEventListener('click', () => go(current() - 1), {
@@ -67,5 +82,6 @@ export default function init(root) {
 		controller.abort()
 		cancelAnimationFrame(frame)
 		dots?.replaceChildren()
+		videos.forEach((video) => video?.pause())
 	}
 }
