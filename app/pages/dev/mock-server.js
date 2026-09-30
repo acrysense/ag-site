@@ -1,4 +1,5 @@
-// Только для витрины: имитация сервера для выпадающего списка с загрузкой (Select с url).
+// Только для витрины: имитация сервера.
+// 1) Выпадающий список с загрузкой (Select с url).
 // GET /__mock/select?q=&cursor= → { items: [{ value, text }], next }. 240 сотрудников, порции
 // по 20, задержка 400 мс; ?fail=1 — ошибка 500. В консоль пишется каждый запрос — видно,
 // сколько их уходит при наборе и прокрутке.
@@ -27,6 +28,7 @@ const realFetch = window.fetch.bind(window)
 window.fetch = async (input, init = {}) => {
 	const source = input instanceof URL ? input.href : typeof input === 'string' ? input : input.url
 	const url = new URL(source, window.location.href)
+	if (url.pathname === '/__mock/form') return mockForm(init)
 	if (url.pathname !== '/__mock/select') return realFetch(input, init)
 	console.info('[mock-select]', url.search || '(без параметров)')
 	await new Promise((resolve, reject) => {
@@ -45,4 +47,23 @@ window.fetch = async (input, init = {}) => {
 	return new Response(JSON.stringify({ items, next }), {
 		headers: { 'Content-Type': 'application/json' },
 	})
+}
+
+// 2) Отправка формы: POST /__mock/form → { ok: true } через 800 мс. Тема со словом «ошибка» —
+// 422 с ошибкой поля, «сбой» — 500 (общая ошибка).
+async function mockForm(init) {
+	const body = init.body instanceof FormData ? init.body : new FormData()
+	console.info('[mock-form]', Object.fromEntries(body.entries()))
+	await new Promise((resolve) => setTimeout(resolve, 800))
+	const topic = String(body.get('topic') || '').toLowerCase()
+	const json = (data, status) =>
+		new Response(JSON.stringify(data), {
+			status,
+			headers: { 'Content-Type': 'application/json' },
+		})
+	if (topic.includes('сбой')) return new Response('', { status: 500 })
+	if (topic.includes('ошибка')) {
+		return json({ ok: false, errors: { topic: 'Такая тема уже предложена' }, message: '' }, 422)
+	}
+	return json({ ok: true, message: 'Спасибо! Ваше обращение передано в редакцию' }, 200)
 }

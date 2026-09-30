@@ -1,5 +1,5 @@
 import './canvas.scss'
-import './mock-select.js'
+import './mock-server.js'
 
 // ?story=<id> — одна история; &state=<n> — одно её состояние (так их открывает
 // оболочка ui.html). Номер состояния — порядок в разметке истории, с нуля.

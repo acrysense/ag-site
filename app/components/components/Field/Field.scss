@@ -1,0 +1,76 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Input (2545:4083) — 46px, рамка Form.Border, скругление 14, поля 15; Textarea
+// (2551:5100) — подпись сверху, высота 100. Шрифт полей 16px, а не 14 из макета: иначе iOS
+// увеличивает страницу при вводе (правило проекта). Ошибки в макете нет — наше: рамка Red,
+// под полем значок и текст.
+@layer components {
+	.field {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		padding-block: 2px;
+	}
+
+	.field__label {
+		@include text("m-400");
+
+		color: palette("black-txt");
+	}
+
+	.field__control {
+		@include text("m-400");
+
+		width: 100%;
+		height: 46px;
+		padding: 11px 15px;
+		font-size: $field-font-size-min;
+		color: palette("black-txt");
+		background: palette("white");
+		border: 1px solid palette("form-border");
+		border-radius: $radius-button;
+		transition: border-color $transition-default;
+		--focus-ring-color: #{palette("form-focus")};
+
+		&::placeholder {
+			color: palette("dark-grey-txt");
+			opacity: 1;
+		}
+
+		&:focus {
+			border-color: palette("form-focus");
+		}
+
+		.field.is-invalid & {
+			border-color: palette("red");
+			--focus-ring-color: #{palette("red")};
+		}
+	}
+
+	.field--multiline .field__control {
+		height: 100px;
+		padding: 11px 14px;
+		resize: vertical;
+	}
+
+	.field__error {
+		@include text("s-400");
+
+		display: flex;
+		gap: 4px;
+		align-items: center;
+		margin-top: 4px;
+		color: palette("red");
+
+		&[hidden] {
+			display: none;
+		}
+	}
+
+	.field__error-icon {
+		flex: none;
+		width: 14px;
+		height: 14px;
+	}
+}

@@ -1,0 +1,12 @@
+{{!-- Форма «Предложить тему» (контекст — site.modals.suggest). Figma: 4132:1034, 4879:1361. --}}
+<form class="modal__form" action="{{action}}" method="post" data-module="Form" data-path="components" data-form-success="{{id}}-success">
+    {{#if text}}<p class="modal__text">{{text}}</p>{{/if}}
+    <div class="modal__fields">
+        {{> components/Field/Field props=(obj id=(concat id "-name") name="name" label=fields.name labelHidden=true placeholder=fields.name autocomplete="name" required=true maxlength=100)}}
+        {{> components/Field/Field props=(obj id=(concat id "-contact") name="contact" label=fields.contact labelHidden=true placeholder=fields.contact autocomplete="email" required=true maxlength=150)}}
+        {{> components/Field/Field props=(obj id=(concat id "-topic") name="topic" label=fields.topic placeholder=fields.topicPlaceholder multiline=true required=true maxlength=2000)}}
+    </div>
+    {{> components/Checkbox/Checkbox props=(obj id=(concat id "-consent") name="consent" text=consent.text link=consent.link required=true)}}
+    <p class="form-error" role="alert" data-form-error hidden></p>
+    {{> components/Button/Button props=(obj text=submit variant="general" size="m" type="submit" class="modal__submit")}}
+</form>

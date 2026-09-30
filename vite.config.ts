@@ -606,6 +606,13 @@ export default defineConfig(({ mode }) => {
 					add(a: any, b: any) {
 						return Number(a) + Number(b)
 					},
+					// Склейка строк: id="{{concat props.id '-name'}}"
+					concat(...args: any[]) {
+						args.pop()
+						return args
+							.map((v) => (v === undefined || v === null ? '' : String(v)))
+							.join('')
+					},
 					// Разбивка списка на страницы: {{#each (chunk items 4)}} — для каруселей по N пунктов
 					chunk(list: any, size: any) {
 						if (!Array.isArray(list)) return []

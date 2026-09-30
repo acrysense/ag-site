@@ -1,0 +1,73 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Checkbox (3540:10340) — 24px, скругление 7, рамка Icon.Grey; подпись 13px Black.TXT,
+// ссылка Blue.TXT с подчёркиванием. Отмеченного состояния в макете нет — наше: Main Blue с
+// белой галочкой.
+@layer components {
+	.checkbox__row {
+		display: flex;
+		gap: 10px;
+		align-items: flex-start;
+		cursor: pointer;
+	}
+
+	.checkbox__input {
+		@include visually-hidden;
+	}
+
+	.checkbox__box {
+		display: flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: 24px;
+		height: 24px;
+		color: palette("white");
+		background: palette("white");
+		border: 1px solid palette("icon-grey");
+		border-radius: 7px;
+		transition:
+			background-color $transition-default,
+			border-color $transition-default;
+
+		.checkbox__input:checked + & {
+			background: palette("main-blue");
+			border-color: palette("main-blue");
+		}
+
+		.checkbox__input:focus-visible + & {
+			outline: $focus-ring-width solid palette("form-focus");
+			outline-offset: $focus-ring-offset;
+		}
+
+		.checkbox.is-invalid & {
+			border-color: palette("red");
+		}
+	}
+
+	.checkbox__check {
+		width: 12px;
+		height: 8.5px;
+		opacity: 0;
+
+		.checkbox__input:checked + .checkbox__box & {
+			opacity: 1;
+		}
+	}
+
+	.checkbox__text {
+		@include text("s-13");
+
+		color: palette("black-txt");
+
+		a {
+			color: palette("blue-txt");
+			text-decoration: underline;
+		}
+	}
+
+	.checkbox .field__error {
+		margin-left: 34px;
+	}
+}

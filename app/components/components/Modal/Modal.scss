@@ -161,6 +161,23 @@
 			color: palette("dark-grey-txt");
 		}
 
+		// Форма в окне (Figma 4132:1034): описание, поля через 14, согласие, кнопка во всю ширину
+		&__form {
+			display: flex;
+			flex-direction: column;
+			gap: var(--modal-gap);
+		}
+
+		&__fields {
+			display: flex;
+			flex-direction: column;
+			gap: 14px;
+		}
+
+		&__submit {
+			width: 100%;
+		}
+
 		&__actions {
 			display: flex;
 			flex-direction: column;

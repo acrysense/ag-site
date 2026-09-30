@@ -1,0 +1,16 @@
+{{!--
+	Флажок с подписью (Figma: Checkbox 3540:10340, «Согласие» в форме «Предложить тему»).
+	props: id, name, value, text, link { text, url } — ссылка в конце подписи (новая вкладка),
+	required, checked, class. Ошибку выводит модуль Form.
+--}}
+<div class="checkbox{{#if props.class}} {{props.class}}{{/if}}">
+    <label class="checkbox__row" for="{{props.id}}">
+        <input class="checkbox__input" type="checkbox" id="{{props.id}}" name="{{props.name}}" value="{{default props.value 'Y'}}" {{#if props.required}}required{{/if}} {{#if props.checked}}checked{{/if}} />
+        <span class="checkbox__box" aria-hidden="true">{{> components/Icon/Icon name="check" class="checkbox__check"}}</span>
+        <span class="checkbox__text">{{props.text}}{{#if props.link}} <a href="{{props.link.url}}" target="_blank" rel="noopener noreferrer">{{props.link.text}}</a>{{/if}}</span>
+    </label>
+    <p class="field__error" id="{{props.id}}-error" hidden>
+        {{> components/Icon/Icon name="alert" class="field__error-icon"}}
+        <span data-field-error></span>
+    </p>
+</div>

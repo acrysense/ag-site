@@ -384,6 +384,24 @@
 					{{> components/Select/Select props=data.selectRemoteError}}
 				{{/state}}
 			{{/story}}
+
+			{{#> story id="suggest-topic" group="Каркас" title="Предложить тему" description='Figma: 1920 — 4132:1034, 4134:27265; 360 — 4879:1361, 4880:1513. Окно из подвала. Проверка при отправке, ошибки у полей, отправка с sessid; после отправки — окно «Спасибо». В витрине сервер имитируется: тема со словом «ошибка» — ошибка поля, «сбой» — общая ошибка.'}}
+				{{#> state label="Форма" bg="page"}}
+					{{#with data.suggestStatic}}
+						{{#> components/Modal/Modal props=(obj id=id title=title size="l" open=true)}}
+							{{> layouts/SiteModals/SuggestForm}}
+						{{/components/Modal/Modal}}
+					{{/with}}
+				{{/state}}
+				{{#> state label="Живое окно"}}
+					<div class="story-row">
+						{{> components/Button/Button props=(obj text="Предложить тему" variant="general" size="m" attrs=(obj data-modal-open="suggest-topic"))}}
+					</div>
+				{{/state}}
+				{{#> state label="Отправка" note="в живом окне: кнопка неактивна, в ней значок загрузки, на форме aria-busy"}}{{/state}}
+				{{#> state label="Ошибка" note="в живом окне: пустые поля при отправке; тема со словом «ошибка» или «сбой»"}}{{/state}}
+			{{/story}}
 		</main>
+		{{> layouts/SiteModals/SiteModals props=data.siteModals}}
 	</body>
 </html>

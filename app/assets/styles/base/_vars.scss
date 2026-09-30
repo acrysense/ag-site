@@ -265,6 +265,13 @@ $text-styles: (
 			size: 14,
 			line-height: 22,
 		),
+	// Без переменной в Figma: подпись согласия в форме (Inter 13, высота строки Auto)
+	"s-13": (
+			family: body,
+			weight: 400,
+			size: 13,
+			line-height: normal,
+		),
 	// PC/S/400
 	"s-400": (
 			family: body,

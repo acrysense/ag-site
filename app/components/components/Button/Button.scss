@@ -68,6 +68,28 @@
 		color: palette("main-blue");
 	}
 
+	// Отправка: значок загрузки перед надписью, надпись та же, кнопка неактивна (в макете нет)
+	.btn.is-loading {
+		cursor: progress;
+
+		&::before {
+			flex: none;
+			width: 16px;
+			height: 16px;
+			content: "";
+			border: 2px solid currentColor;
+			border-right-color: transparent;
+			border-radius: 50%;
+			animation: btn-spin 0.8s linear infinite;
+		}
+	}
+
+	@keyframes btn-spin {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
 	// Figma: Error — красная, «Выйти»
 	.btn--error {
 		color: palette("white");
