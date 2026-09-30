@@ -1,23 +1,73 @@
 {
 	"template": "vite",
-
 	"siteName": "Vite",
 	"siteUrl": "",
-
 	"lang": "ru",
-
 	"meta": [
-		{ "charset": "utf-8" },
-		{ "name": "viewport", "content": "width=device-width, initial-scale=1" },
-		{ "name": "format-detection", "content": "telephone=no" }
+		{
+			"charset": "utf-8"
+		},
+		{
+			"name": "viewport",
+			"content": "width=device-width, initial-scale=1"
+		},
+		{
+			"name": "format-detection",
+			"content": "telephone=no"
+		}
 	],
-
 	"link": [],
-
 	"seoDefaults": {
 		"title": "Vite — стартовая страница",
 		"description": "Стартовый проект на Vite: быстрый и гибкий старт.",
 		"ogImage": "",
 		"twitterCard": "summary_large_image"
+	},
+	"header": {
+		"homeUrl": "/",
+		"title": "Корпоративный сайт холдинга “Аптека групп”",
+		"titleShort": "Корпоративный сайт холдинга",
+		"search": {
+			"action": "#",
+			"name": "q"
+		},
+		"menu": [
+			{
+				"text": "Главная",
+				"url": "/"
+			},
+			{
+				"text": "О холдинге",
+				"url": "#"
+			},
+			{
+				"text": "Новости",
+				"url": "#",
+				"children": [
+					{
+						"text": "Новости холдинга",
+						"url": "#"
+					},
+					{
+						"text": "HR-дайджест",
+						"url": "#"
+					}
+				]
+			},
+			{
+				"text": "Карьера",
+				"url": "#"
+			},
+			{
+				"text": "База знаний",
+				"url": "#"
+			},
+			{
+				"text": "Галерея",
+				"url": "#"
+			}
+		],
+		"loginUrl": "#",
+		"loginText": "Войти в ЛК"
 	}
 }

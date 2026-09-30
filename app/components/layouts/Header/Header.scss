@@ -1,1 +1,311 @@
-// Header styles.
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: PC.HEADER.v2 (4652:8752) и 360.HEADER (4865:1334)
+@layer components {
+	.header {
+		position: relative;
+		z-index: 10;
+		background: palette("white");
+
+		// Мобильный: строка 60 (логотип, аватар, бургер) + строка поиска 66.
+		// Десктоп: строка 64 (логотип, поиск, вход) + строка меню 50.
+		&__top {
+			display: grid;
+			grid-template-areas:
+				"brand actions"
+				"search search";
+			grid-template-columns: minmax(0, 1fr) auto;
+			align-items: center;
+
+			@include up(desktop) {
+				grid-template-areas: "brand search actions";
+				// Поиск по центру, пока хватает места; уже — сжимается до 240px
+				grid-template-columns: minmax(max-content, 1fr) minmax(240px, 700px) minmax(max-content, 1fr);
+				// Зазор между колонками — наш, на макете 1920 места с запасом
+				column-gap: 24px;
+				height: 64px;
+				padding: 0 30px;
+			}
+		}
+
+		&__brand {
+			display: flex;
+			grid-area: brand;
+			gap: 10px;
+			align-items: center;
+			min-width: 0;
+			height: 60px;
+			padding: 10px;
+			color: palette("black-txt");
+
+			@include up(desktop) {
+				gap: 29px;
+				height: auto;
+				padding: 0;
+			}
+		}
+
+		&__logo {
+			flex: none;
+
+			img {
+				width: 40px;
+				height: 40px;
+
+				@include up(desktop) {
+					width: 56.55px;
+					height: 52.2px;
+				}
+			}
+		}
+
+		&__title {
+			text-transform: uppercase;
+
+			&--full {
+				display: none;
+
+				@include up(desktop) {
+					@include text("site-title");
+
+					display: block;
+					white-space: nowrap;
+				}
+			}
+
+			// В макете 360 название в две строки шириной 91px
+			&--short {
+				@include text("site-title-360");
+
+				max-width: 91px;
+
+				@include up(desktop) {
+					display: none;
+				}
+			}
+		}
+
+		&__search {
+			grid-area: search;
+			margin: 10px;
+
+			@include up(desktop) {
+				margin: 0;
+			}
+		}
+
+		&__actions {
+			display: flex;
+			grid-area: actions;
+			gap: 15px;
+			align-items: center;
+			justify-self: end;
+			padding-right: 10px;
+
+			@include up(desktop) {
+				padding-right: 0;
+			}
+		}
+
+		&__user {
+			display: flex;
+			gap: 5px;
+			align-items: center;
+			color: palette("black-txt");
+		}
+
+		&__avatar {
+			display: block;
+			width: 30px;
+			height: 30px;
+			overflow: hidden;
+			background: palette("icon-grey");
+			border-radius: 50%;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+
+		// В файле иконка смотрит вправо, в макете — вниз
+		&__user-arrow {
+			width: 16px;
+			height: 16px;
+			transform: rotate(90deg);
+		}
+
+		// Мобильный гость: «Button M.General, 36 px» из описания 360.HEADER.
+		// Через __actions — чтобы перебить размер .btn--l из общей кнопки
+		&__actions &__login {
+			@include down(desktop) {
+				height: 36px;
+				padding-block: 7px;
+			}
+		}
+
+		&__burger {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 30px;
+			height: 30px;
+			padding: 0;
+			color: palette("black-txt");
+			background: none;
+			border: 0;
+
+			@include up(desktop) {
+				display: none;
+			}
+		}
+
+		&__burger-icon {
+			width: 30px;
+			height: 30px;
+		}
+
+		// Меню: на десктопе — строка под шапкой; на мобильном скрыто до бургера.
+		// Полноэкранное мобильное меню (360.MainMenu v2) — отдельный блок, пока здесь
+		// простой список, чтобы бургер работал.
+		&__nav {
+			display: none;
+			border-top: 1px solid palette("form-border");
+
+			@include up(desktop) {
+				display: flex;
+				align-items: center;
+				min-height: 50px;
+				padding: 0 30px;
+			}
+		}
+
+		&.is-nav-open &__nav {
+			@include down(desktop) {
+				display: block;
+				padding: 0 10px 10px;
+			}
+		}
+	}
+
+	.menu {
+		display: flex;
+		flex-direction: column;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		@include up(desktop) {
+			flex-direction: row;
+			flex-wrap: wrap;
+			column-gap: 40px;
+		}
+
+		&__item {
+			position: relative;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+
+			@include up(desktop) {
+				flex-wrap: nowrap;
+				gap: 2px;
+				min-height: 46px;
+			}
+		}
+
+		&__link,
+		&__sublink {
+			color: palette("black-txt");
+			transition: color $transition-default;
+
+			&:hover {
+				color: palette("blue-hover");
+			}
+		}
+
+		&__link {
+			@include text("m-400");
+
+			padding: 12px 0;
+
+			@include up(desktop) {
+				padding: 0;
+			}
+		}
+
+		// Открытый пункт в макете — Blue.Hover
+		&__item.is-open > &__link {
+			color: palette("blue-hover");
+		}
+
+		// Стрелка 10px, область нажатия больше
+		&__toggle {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 32px;
+			height: 32px;
+			margin: -11px -11px -11px -9px;
+			padding: 0;
+			color: palette("black-txt");
+			background: none;
+			border: 0;
+
+			@include up(desktop) {
+				width: 24px;
+				height: 24px;
+				margin: 0 -7px;
+			}
+		}
+
+		&__item.is-open > &__toggle,
+		&__toggle:hover {
+			color: palette("blue-hover");
+		}
+
+		&__arrow {
+			width: 10px;
+			height: 10px;
+			transition: transform $transition-default;
+		}
+
+		&__item.is-open &__arrow {
+			transform: rotate(180deg);
+		}
+
+		// Figma: Dropdown Menu (4615:43188). Шрифт в макете Poppins — на сайте его нет, Inter.
+		&__submenu {
+			flex-basis: 100%;
+			margin: 0;
+			padding: 0 0 0 16px;
+			list-style: none;
+
+			@include up(desktop) {
+				position: absolute;
+				// Из макета: на 6px выше низа пункта и на 4px левее
+				top: calc(100% - 6px);
+				left: -4px;
+				width: 222px;
+				padding: 10px 0;
+				background: palette("white");
+				border: 1px solid palette("dropdown-border");
+				border-radius: $radius-dropdown;
+				box-shadow: $shadow-content-block;
+			}
+		}
+
+		&__sublink {
+			@include text("m-400-360");
+
+			display: block;
+			padding: 10px 0;
+
+			@include up(desktop) {
+				padding: 10px 16px;
+			}
+		}
+	}
+}
