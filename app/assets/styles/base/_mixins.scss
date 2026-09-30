@@ -200,23 +200,59 @@ $alias-bp: (
 	@return $value;
 }
 
-// Стиль текста из $text-styles. Способ масштабирования шрифта задаётся только здесь:
-// блоки вызывают text("имя") и не знают, vw это или что-то другое.
-// Планшет пока получает мобильные размеры (с потолком диапазона) — уточняется по макету.
-@mixin text($name, $range: $default-range) {
+// Стиль текста из $text-styles. Способ задания размеров живёт только здесь:
+// блоки вызывают text("имя") и не знают, как он устроен.
+// Сейчас размеры фиксированные, как в макете (мобильный и десктопный используют
+// одни и те же размеры): font-size в rem, line-height — отношение к размеру.
+// Отличия мобильного макета (ключ mobile) действуют до десктопного брейкпоинта.
+@function _px-to-rem($px) {
+	@return math.div($px, 16) * 1rem;
+}
+
+@function _leading($line-height, $size) {
+	// 1 и меньше 3 — уже отношение («100%» в Figma), иначе — пиксели
+	@if $line-height < 3 {
+		@return $line-height;
+	}
+	@return math.div(math.round(math.div($line-height, $size) * 10000), 10000);
+}
+
+// $only — какие свойства выводить (для десктопа после мобильных отличий)
+@mixin _text-values($style, $only: (size, line-height)) {
+	$size: map.get($style, size);
+	@if list.index($only, size) {
+		font-size: _px-to-rem($size);
+	}
+	@if list.index($only, line-height) {
+		line-height: _leading(map.get($style, line-height), $size);
+	}
+}
+
+@mixin text($name) {
 	$style: map.get(vars.$text-styles, $name);
 	@if $style == null {
 		@error 'Unknown text style `#{$name}`: add it to $text-styles in _vars.scss';
 	}
-	@if map.get($style, mobile) == null or map.get($style, desktop) == null {
-		@error 'Text style `#{$name}` needs both mobile and desktop sizes';
+	@if map.get($style, size) == null or map.get($style, line-height) == null {
+		@error 'Text style `#{$name}` needs size and line-height';
 	}
 
+	$family: map.get($style, family);
+	@if $family == heading {
+		font-family: vars.$font-heading;
+	} @else if $family == body {
+		font-family: vars.$font-base;
+	}
 	font-weight: map.get($style, weight);
-	line-height: map.get($style, line-height);
-	@include prop-vw(font-size, map.get($style, mobile), mobile);
 
-	@include up(desktop) {
-		@include prop-vw(font-size, map.get($style, desktop), $range);
+	$mobile: map.get($style, mobile);
+	@if $mobile {
+		@include _text-values(map.merge($style, $mobile));
+
+		@include up(desktop) {
+			@include _text-values($style, map.keys($mobile));
+		}
+	} @else {
+		@include _text-values($style);
 	}
 }
