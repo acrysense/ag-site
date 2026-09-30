@@ -286,8 +286,10 @@
 			}
 		}
 
+		// Figma 4706:1265: ФИО — ссылка на профиль, при наведении Blue.TXT с подчёркиванием
 		a.birthday-calendar__person-main:hover .birthday-calendar__name {
 			color: palette("blue-txt");
+			text-decoration: underline;
 		}
 
 		&__avatar {
