@@ -1,0 +1,65 @@
+// Обвязка историй на холсте. Грузится только холстом, в CSS сайта не попадает,
+// поэтому значения свои, а не из токенов сайта.
+$canvas-muted: #6b6b73;
+$canvas-frame: #b4b4bb;
+
+.stories {
+	padding: 24px 16px 64px;
+}
+
+.story + .story {
+	margin-top: 64px;
+}
+
+.story {
+	&__title {
+		margin-bottom: 4px;
+	}
+
+	&__description {
+		max-width: 72ch;
+		margin-bottom: 24px;
+		font-size: 14px;
+		color: $canvas-muted;
+	}
+
+	&__states {
+		display: grid;
+		gap: 32px;
+	}
+}
+
+// В одиночном режиме заголовок истории уже есть в оболочке, а соседние
+// истории скрыты — их отступ не нужен
+.is-single-story {
+	.story {
+		margin-top: 0;
+	}
+
+	.story__title {
+		display: none;
+	}
+}
+
+.story-state {
+	min-width: 0;
+
+	&__label {
+		margin-bottom: 8px;
+		font-size: 13px;
+		font-weight: 600;
+	}
+
+	&__note {
+		font-weight: 400;
+		color: $canvas-muted;
+	}
+
+	// Пунктир показывает место, которое занимает блок; пустой блок — пустая рамка
+	&__frame {
+		min-height: 8px;
+		padding: 16px;
+		outline: 1px dashed $canvas-frame;
+		outline-offset: -1px;
+	}
+}

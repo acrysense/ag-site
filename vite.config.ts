@@ -501,8 +501,8 @@ function flattenPagesToRoot() {
 				if (asset?.type !== 'asset' || !fileName.endsWith('.html')) continue
 				if (!fileName.startsWith('pages/')) continue
 
-				// То же правило, что в getHtmlInputs и dev-роутере: pages/dev/states.html →
-				// dev-states.html. Раньше брался только basename, и pages/a/index.html с
+				// То же правило, что в getHtmlInputs и dev-роутере: pages/dev/ui.html →
+				// dev-ui.html. Раньше брался только basename, и pages/a/index.html с
 				// pages/b/index.html молча перезаписывали друг друга.
 				const newName = fileName
 					.replace(/^pages\//, '')

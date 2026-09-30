@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="{{ lang }}">
+	<head>
+		{{> layouts/Head/Head }}
+		<meta name="robots" content="noindex, nofollow" />
+		<script type="module" src="./ui.js"></script>
+	</head>
+	<body class="ui">
+		{{!--
+			Витрина компонентов: оболочка. Сами компоненты живут в canvas.html и
+			открываются здесь в iframe, поэтому медиазапросы работают по-настоящему.
+			Меню строится из [data-story] в canvas.html. Выбор и ширина — в адресе
+			(#story=…&w=…), ссылку можно отправить.
+		--}}
+		<aside class="ui__side">
+			<p class="ui__brand">Витрина компонентов</p>
+			<nav class="ui__nav" aria-label="Компоненты" data-ui-nav></nav>
+		</aside>
+
+		<div class="ui__main">
+			<div class="ui__toolbar">
+				<h1 class="ui__title" data-ui-title>Загрузка…</h1>
+				<div class="ui__widths" role="group" aria-label="Ширина экрана" data-ui-widths>
+					<button class="ui__width" type="button" data-width="360">360</button>
+					<button class="ui__width" type="button" data-width="768">768</button>
+					<button class="ui__width" type="button" data-width="1280">1280</button>
+					<button class="ui__width" type="button" data-width="1440">1440</button>
+					<button class="ui__width" type="button" data-width="1920">1920</button>
+					<button class="ui__width" type="button" data-width="0">По окну</button>
+				</div>
+				<span class="ui__scale" data-ui-scale aria-live="polite"></span>
+				<a class="ui__open" href="#" target="_blank" rel="noopener noreferrer" data-ui-open>Открыть отдельно</a>
+			</div>
+
+			<div class="ui__stage" data-ui-stage>
+				<div class="ui__viewport" data-ui-viewport>
+					<iframe class="ui__frame" title="Выбранный компонент" data-ui-frame></iframe>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

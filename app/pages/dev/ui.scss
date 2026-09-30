@@ -1,0 +1,212 @@
+// Оболочка витрины. Стили сайта сюда не подключаются, поэтому значения свои,
+// а не из токенов сайта.
+$ui-bg: #f4f4f5;
+$ui-panel: #ffffff;
+$ui-border: #e4e4e7;
+$ui-text: #18181b;
+$ui-muted: #6b6b73;
+$ui-accent: #2f5bea;
+$ui-accent-bg: #e8eefd;
+$ui-side-width: 248px;
+$ui-font:
+	system-ui,
+	-apple-system,
+	"Segoe UI",
+	Roboto,
+	Arial,
+	sans-serif;
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.ui {
+	display: grid;
+	grid-template-columns: $ui-side-width minmax(0, 1fr);
+	height: 100dvh;
+	margin: 0;
+	overflow: hidden;
+	font-family: $ui-font;
+	font-size: 14px;
+	line-height: 1.4;
+	color: $ui-text;
+	background: $ui-bg;
+
+	:focus-visible {
+		outline: 2px solid $ui-accent;
+		outline-offset: 2px;
+	}
+
+	&__side {
+		overflow-y: auto;
+		padding: 16px 12px;
+		background: $ui-panel;
+		border-right: 1px solid $ui-border;
+	}
+
+	&__brand {
+		margin: 0 8px 16px;
+		font-weight: 700;
+	}
+
+	&__group + &__group {
+		margin-top: 16px;
+	}
+
+	&__group-title {
+		margin: 0 8px 4px;
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: $ui-muted;
+	}
+
+	&__list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	&__link {
+		display: block;
+		padding: 6px 8px;
+		border-radius: 6px;
+		color: inherit;
+		text-decoration: none;
+
+		&:hover {
+			background: $ui-bg;
+		}
+
+		&[aria-current="page"] {
+			font-weight: 600;
+			color: $ui-accent;
+			background: $ui-accent-bg;
+		}
+	}
+
+	&__main {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+		min-height: 0;
+	}
+
+	&__toolbar {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px 16px;
+		align-items: center;
+		padding: 10px 16px;
+		background: $ui-panel;
+		border-bottom: 1px solid $ui-border;
+	}
+
+	&__title {
+		margin: 0 auto 0 0;
+		font-size: 16px;
+	}
+
+	&__widths {
+		display: flex;
+		overflow: hidden;
+		border: 1px solid $ui-border;
+		border-radius: 8px;
+	}
+
+	&__width {
+		padding: 5px 10px;
+		font: inherit;
+		color: inherit;
+		background: none;
+		border: 0;
+		cursor: pointer;
+
+		& + & {
+			border-left: 1px solid $ui-border;
+		}
+
+		&:hover {
+			background: $ui-bg;
+		}
+
+		&[aria-pressed="true"] {
+			font-weight: 600;
+			color: $ui-accent;
+			background: $ui-accent-bg;
+		}
+	}
+
+	&__scale {
+		color: $ui-muted;
+	}
+
+	&__open {
+		color: $ui-accent;
+	}
+
+	&__stage {
+		position: relative;
+		flex: 1 1 auto;
+		min-height: 0;
+		overflow: hidden;
+	}
+
+	&__viewport {
+		position: relative;
+		height: 100%;
+		margin: 0 auto;
+		overflow: hidden;
+		background: $ui-panel;
+		box-shadow: 0 0 0 1px $ui-border;
+	}
+
+	&__frame {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: block;
+		border: 0;
+		transform-origin: top left;
+	}
+
+	// На узком экране меню уходит наверх горизонтальной лентой
+	@media (max-width: 767.98px) {
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-rows: auto minmax(0, 1fr);
+
+		&__side {
+			display: flex;
+			gap: 16px;
+			overflow-x: auto;
+			padding: 8px 12px;
+			border-right: 0;
+			border-bottom: 1px solid $ui-border;
+		}
+
+		&__brand {
+			display: none;
+		}
+
+		&__nav {
+			display: flex;
+			gap: 16px;
+		}
+
+		&__group + &__group {
+			margin-top: 0;
+		}
+
+		&__list {
+			display: flex;
+			gap: 4px;
+		}
+
+		&__link {
+			white-space: nowrap;
+		}
+	}
+}
