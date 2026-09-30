@@ -30,7 +30,10 @@
 		gap: 15px;
 	}
 
+	// position: relative — скрытая подпись «: найдено» (visually-hidden, absolute) остаётся внутри
+	// ленты с прокруткой; без него она вылезала за ленту и растягивала страницу на мобильном
 	.search-sections__item {
+		position: relative;
 		display: flex;
 		gap: 8px;
 		align-items: center;
