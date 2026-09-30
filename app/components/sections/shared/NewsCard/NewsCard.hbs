@@ -1,0 +1,35 @@
+{{!--
+	Карточка новости (Figma: News preview). Контракт полей — docs/contracts/news-feed.md.
+	props: url, title, excerpt, image (src, srcset, width, height), date (YYYY-MM-DD), dateText,
+	commentsUrl, comments, likes, liked, likeUrl.
+	Вся карточка кликабельна через ссылку в заголовке; кнопки реакций поверх неё.
+--}}
+<article class="news-card">
+    <div class="news-card__media">
+        {{#if props.image}}
+            <img
+                class="news-card__image"
+                src="{{props.image.src}}"
+                {{#if props.image.srcset}}srcset="{{props.image.srcset}}" sizes="(min-width: 1024px) 300px, 50vw"{{/if}}
+                width="{{props.image.width}}"
+                height="{{props.image.height}}"
+                alt=""
+                loading="lazy"
+                decoding="async"
+            />
+        {{/if}}
+    </div>
+    <div class="news-card__body">
+        <div class="news-card__text">
+            <h3 class="news-card__title"><a class="news-card__link" href="{{props.url}}">{{props.title}}</a></h3>
+            {{#if props.excerpt}}<p class="news-card__excerpt">{{props.excerpt}}</p>{{/if}}
+        </div>
+        <div class="news-card__footer">
+            {{#if props.date}}<time class="news-card__date" datetime="{{props.date}}">{{props.dateText}}</time>{{/if}}
+            <div class="news-card__actions">
+                {{> components/Button/Button props=(obj href=props.commentsUrl icon="comment" hiddenText="Комментарии: " text=props.comments variant="light" size="s")}}
+                {{> components/LikeButton/LikeButton props=(obj count=props.likes liked=props.liked url=props.likeUrl)}}
+            </div>
+        </div>
+    </div>
+</article>

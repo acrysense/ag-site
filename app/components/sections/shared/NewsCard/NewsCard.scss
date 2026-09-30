@@ -1,0 +1,117 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: News preview — 360 (4865:1474) и 1920 (2762:3068)
+@layer components {
+	.news-card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		min-width: 0;
+		height: 100%;
+
+		&__media {
+			aspect-ratio: 1;
+			overflow: hidden;
+			border-radius: $radius-inner-block;
+		}
+
+		&__image {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		&__body {
+			display: flex;
+			flex: 1 1 auto;
+			flex-direction: column;
+			gap: 20px;
+		}
+
+		&__text {
+			display: grid;
+			gap: 10px;
+		}
+
+		&__title {
+			@include text("h4-360");
+
+			display: -webkit-box;
+			overflow: hidden;
+			color: palette("black-h");
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 3;
+
+			@include up(desktop) {
+				@include text("card-title");
+
+				-webkit-line-clamp: 2;
+			}
+		}
+
+		// Ссылка растянута на всю карточку
+		&__link {
+			color: inherit;
+
+			&::after {
+				position: absolute;
+				inset: 0;
+				content: "";
+			}
+		}
+
+		// В макете под анонс всегда 3 строки (60 и 65px), даже если текст короче:
+		// так ряды карточек одной высоты
+		&__excerpt {
+			@include text("m-400-360");
+
+			display: -webkit-box;
+			min-height: 3lh;
+			overflow: hidden;
+			color: palette("dark-grey-txt");
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 3;
+
+			@include up(desktop) {
+				@include text("m-400");
+			}
+		}
+
+		// Мобильный: дата над реакциями и линия снизу; десктоп: реакции слева, дата справа
+		&__footer {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			margin-top: auto;
+			padding-bottom: 10px;
+			border-bottom: 1px solid palette("grey");
+
+			@include up(desktop) {
+				flex-direction: row-reverse;
+				align-items: flex-end;
+				justify-content: space-between;
+				padding-bottom: 0;
+				border-bottom: 0;
+			}
+		}
+
+		&__date {
+			@include text("m-400");
+
+			color: palette("dark-grey-txt");
+
+			@include up(desktop) {
+				@include text("xs-400");
+			}
+		}
+
+		&__actions {
+			position: relative;
+			z-index: 1;
+			display: flex;
+			gap: 10px;
+		}
+	}
+}

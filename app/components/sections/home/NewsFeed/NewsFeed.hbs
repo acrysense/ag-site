@@ -1,0 +1,17 @@
+{{!--
+	Блок «Новости холдинга» на главной (Figma: 1920 — 4615:43032, 360 — 4865:1470).
+	props: title, items (карточки, см. NewsCard), allUrl, allText.
+	Без новостей блок не выводится. На десктопе видно 5 карточек, на мобильном — 6.
+	Контракт — docs/contracts/news-feed.md.
+--}}
+{{#if props.items.length}}
+    <section class="news-feed">
+        <h2 class="news-feed__title">{{props.title}}</h2>
+        <ul class="news-feed__list" role="list">
+            {{#each props.items}}
+                <li class="news-feed__item">{{> sections/shared/NewsCard/NewsCard props=this}}</li>
+            {{/each}}
+        </ul>
+        {{#if props.allUrl}}<a class="news-feed__all" href="{{props.allUrl}}">{{default props.allText 'Показать все'}}</a>{{/if}}
+    </section>
+{{/if}}

@@ -1,0 +1,57 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: 360 — 4865:1470, 1920 — 4615:43032
+@layer components {
+	.news-feed {
+		display: grid;
+		gap: 20px;
+		padding: 32px 10px;
+		background: palette("white");
+
+		@include up(desktop) {
+			gap: 40px;
+			padding: 20px;
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+
+		&__title {
+			@include text("h1");
+
+			color: palette("black-h");
+		}
+
+		// Мобильный: колонки от 165px (2 на 360); десктоп: ровно 5 в ряд
+		&__list {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+			gap: 20px 10px;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			@include up(desktop) {
+				grid-template-columns: repeat(5, minmax(0, 1fr));
+				gap: 15px;
+			}
+		}
+
+		&__item:nth-child(n + 6) {
+			@include up(desktop) {
+				display: none;
+			}
+		}
+
+		&__all {
+			@include text("l-400");
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 40px;
+			color: palette("main-blue");
+		}
+	}
+}
