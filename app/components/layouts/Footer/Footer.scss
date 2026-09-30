@@ -176,4 +176,9 @@
 			}
 		}
 	}
+
+	// Наведение на контакты (наше): текст и значок Blue.TXT
+	.footer__contact:hover {
+		color: palette("blue-txt");
+	}
 }

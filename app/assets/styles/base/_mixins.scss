@@ -277,6 +277,11 @@ $alias-bp: (
 	border: 1px solid palette("form-border");
 	border-radius: vars.$radius-button;
 	transition: border-color vars.$transition-default;
+
+	// Наведение (наше): рамка Icon.Grey; фокус и «открыто» блок задаёт после миксина
+	&:hover {
+		border-color: palette("icon-grey");
+	}
 }
 
 // Нижний лист на мобильном (Figma: Bottom sheet · Отдел 4786:2839, как у Modal): у нижнего края,

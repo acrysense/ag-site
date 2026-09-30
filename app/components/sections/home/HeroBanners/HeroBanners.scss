@@ -208,4 +208,23 @@ $promo-column: calc((100% - 66.4px) / 3);
 			object-position: top;
 		}
 	}
+
+	// Наведение (наше): стрелка — Main Blue, баннер — картинка чуть притемняется
+	.hero__arrow {
+		transition: color $transition-default;
+
+		&:hover {
+			color: palette("main-blue");
+		}
+	}
+
+	.hero__slide-link img,
+	.hero__promo img {
+		transition: opacity $transition-default;
+	}
+
+	.hero__slide-link:hover img,
+	.hero__promo:hover img {
+		opacity: 0.9;
+	}
 }

@@ -716,4 +716,21 @@
 			border-top: 1px solid palette("form-border");
 		}
 	}
+
+	// Наведение (наше): рамка поля — Icon.Grey (в фокусе и на мобильном — синяя), крестики — Main Blue
+	.site-search__field:hover:not(:focus-within) {
+		@include up(desktop) {
+			border-color: palette("icon-grey");
+		}
+	}
+
+	.site-search__clear,
+	.site-search__close,
+	.site-search__chip {
+		transition: color $transition-default;
+
+		&:hover {
+			color: palette("main-blue");
+		}
+	}
 }

@@ -274,4 +274,13 @@
 			}
 		}
 	}
+
+	// Наведение на крестик (наше): Main Blue
+	.modal__close {
+		transition: color $transition-default;
+
+		&:hover {
+			color: palette("main-blue");
+		}
+	}
 }

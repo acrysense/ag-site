@@ -173,6 +173,11 @@
 				border-color $transition-default,
 				box-shadow $transition-default;
 
+			// Наведение (наше): рамка Icon.Grey
+			&:hover {
+				border-color: palette("icon-grey");
+			}
+
 			&:focus-within {
 				border-color: palette("main-blue");
 			}

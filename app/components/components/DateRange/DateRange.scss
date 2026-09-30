@@ -154,4 +154,13 @@
 			}
 		}
 	}
+
+	// Наведение (наше): крестик листа — Main Blue
+	.date-range__close {
+		transition: color $transition-default;
+
+		&:hover {
+			color: palette("main-blue");
+		}
+	}
 }

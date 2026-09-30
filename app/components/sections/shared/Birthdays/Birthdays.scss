@@ -240,4 +240,9 @@
 			color: palette("date-grey");
 		}
 	}
+
+	// Наведение (наше): заголовок-ссылка — Blue.TXT
+	.birthdays__title-link:hover {
+		color: palette("blue-txt");
+	}
 }

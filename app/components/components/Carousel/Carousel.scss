@@ -61,4 +61,9 @@
 			background: palette("blue-hover");
 		}
 	}
+
+	// Наведение на точку (наше): Grey
+	.carousel__dot:hover:not([aria-current="true"]) {
+		background: palette("grey");
+	}
 }

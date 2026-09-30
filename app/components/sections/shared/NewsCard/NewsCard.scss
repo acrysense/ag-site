@@ -114,4 +114,9 @@
 			gap: 10px;
 		}
 	}
+
+	// Наведение (наше): вся карточка — ссылка, заголовок Blue.Hover
+	.news-card__link:hover {
+		color: palette("blue-hover");
+	}
 }

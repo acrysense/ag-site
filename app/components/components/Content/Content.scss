@@ -185,4 +185,13 @@
 			background: palette("bg-main");
 		}
 	}
+
+	// Наведение на заголовок раскрывающегося блока (наше): Blue.TXT
+	.content summary {
+		transition: color $transition-default;
+
+		&:hover {
+			color: palette("blue-txt");
+		}
+	}
 }

@@ -152,4 +152,17 @@
 			}
 		}
 	}
+
+	// Наведение (наше): стрелка — Main Blue, заголовок-ссылка раздела — Blue.TXT
+	.post-list__arrow {
+		transition: color $transition-default;
+
+		&:hover {
+			color: palette("main-blue");
+		}
+	}
+
+	.post-list__title a:hover {
+		color: palette("blue-txt");
+	}
 }

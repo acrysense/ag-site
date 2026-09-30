@@ -86,4 +86,13 @@
 			bottom: 20px;
 		}
 	}
+
+	// Наведение на стрелку (наше): Main Blue
+	.gallery__arrow {
+		transition: color $transition-default;
+
+		&:hover {
+			color: palette("main-blue");
+		}
+	}
 }

@@ -380,4 +380,19 @@
 			padding: 10px 16px;
 		}
 	}
+
+	// Наведение (наше, только цвет): название, имя пользователя — Blue.TXT, бургер — Main Blue
+	.header__brand:hover .header__title,
+	.header__user:hover .header__user-name {
+		color: palette("blue-txt");
+	}
+
+	.header__title,
+	.header__user-name {
+		transition: color $transition-default;
+	}
+
+	.header__burger:hover {
+		color: palette("main-blue");
+	}
 }

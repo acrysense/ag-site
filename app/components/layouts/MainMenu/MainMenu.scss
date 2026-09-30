@@ -275,4 +275,32 @@
 			overflow-wrap: break-word;
 		}
 	}
+
+	// Наведение (наше, только цвет): пункты, плитки, «Выйти» — Blue.TXT, крестик — Main Blue,
+	// «Моя страница» — Blue.Hover
+	.main-menu__row:hover,
+	.main-menu__group:hover,
+	.main-menu__tile:hover,
+	.main-menu__logout:hover {
+		color: palette("blue-txt");
+	}
+
+	.main-menu__row,
+	.main-menu__group,
+	.main-menu__tile,
+	.main-menu__logout,
+	.main-menu__close,
+	.main-menu__profile-link {
+		transition:
+			color $transition-default,
+			border-color $transition-default;
+	}
+
+	.main-menu__close:hover {
+		color: palette("main-blue");
+	}
+
+	.main-menu__profile-link:hover {
+		color: palette("blue-hover");
+	}
 }

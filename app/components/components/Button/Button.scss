@@ -95,4 +95,22 @@
 		color: palette("white");
 		background: palette("red");
 	}
+
+	// Наведение (в Figma нет — наше, только цвет): светлая — текст и значок Blue.TXT, красная — на тон
+	// темнее
+	.btn--light {
+		transition: color $transition-default;
+
+		&:hover {
+			color: palette("blue-txt");
+		}
+	}
+
+	.btn--error {
+		transition: background-color $transition-default;
+
+		&:hover {
+			background: color-mix(in srgb, palette("red") 88%, palette("black-txt"));
+		}
+	}
 }

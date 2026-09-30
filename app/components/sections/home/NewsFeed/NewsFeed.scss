@@ -54,4 +54,9 @@
 			color: palette("main-blue");
 		}
 	}
+
+	// Наведение (наше): «Показать все» — Blue.Hover
+	.news-feed__all:hover {
+		color: palette("blue-hover");
+	}
 }

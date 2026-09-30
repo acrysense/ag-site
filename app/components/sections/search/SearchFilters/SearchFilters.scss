@@ -181,4 +181,13 @@
 			cursor: progress;
 		}
 	}
+
+	// Наведение на крестик панели (наше): Main Blue
+	.search-filters__close {
+		transition: color $transition-default;
+
+		&:hover {
+			color: palette("main-blue");
+		}
+	}
 }

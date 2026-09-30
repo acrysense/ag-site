@@ -122,4 +122,9 @@
 			}
 		}
 	}
+
+	// Наведение на год (наше): Blue.TXT
+	.news-filters__chip:hover:not([aria-current]) {
+		color: palette("blue-txt");
+	}
 }

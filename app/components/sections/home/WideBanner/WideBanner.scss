@@ -98,4 +98,21 @@
 			}
 		}
 	}
+
+	// Наведение (наше): стрелка — Main Blue, баннер — картинка чуть притемняется
+	.wide-banner__arrow {
+		transition: color $transition-default;
+
+		&:hover {
+			color: palette("main-blue");
+		}
+	}
+
+	.wide-banner__link img {
+		transition: opacity $transition-default;
+	}
+
+	.wide-banner__link:hover img {
+		opacity: 0.9;
+	}
 }

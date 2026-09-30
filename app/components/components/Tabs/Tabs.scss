@@ -33,4 +33,9 @@
 			box-shadow: $shadow-content-block;
 		}
 	}
+
+	// Наведение на невыбранную вкладку (наше): Blue.TXT
+	.tabs__tab:hover:not([aria-selected="true"]) {
+		color: palette("blue-txt");
+	}
 }

@@ -25,4 +25,13 @@
 		aspect-ratio: 350 / 800;
 		object-fit: cover;
 	}
+
+	// Наведение (наше): картинка чуть притемняется
+	.side-banner__link img {
+		transition: opacity $transition-default;
+	}
+
+	.side-banner__link:hover img {
+		opacity: 0.9;
+	}
 }

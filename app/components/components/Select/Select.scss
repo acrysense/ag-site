@@ -23,6 +23,11 @@
 		border-radius: $radius-button;
 		transition: border-color $transition-default;
 
+		// Наведение (наше): рамка Icon.Grey; фокус и ошибка — ниже, перекрывают
+		&:hover {
+			border-color: palette("icon-grey");
+		}
+
 		&:focus-within,
 		.select.is-open & {
 			border-color: palette("form-focus");
