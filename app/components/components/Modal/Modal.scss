@@ -1,0 +1,260 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma, 1920: «Предложить тему» 4132:1034 (560, поля 32), успех 4134:27265 (480, поля 40),
+// cookie 4711:32225 (420, поля 32). 360: шторки 4879:1361, 4880:1513 (поля 16/10, крестик 36 на
+// BG.Main), «Выйти из аккаунта?» 4568:1079. «Выйти» на десктопе в макете нет — по образцу
+// остальных окон: карточка 420, кнопки в ряд.
+@layer components {
+	.modal {
+		--modal-gap: 20px;
+
+		width: 100%;
+		max-width: 100%;
+		max-height: calc(100dvh - 40px);
+		margin: auto 0 0;
+		padding: 0;
+		overflow: visible;
+		color: palette("black-txt");
+		background: none;
+		border: 0;
+
+		&::backdrop {
+			background: $overlay-background;
+			backdrop-filter: blur($overlay-blur);
+		}
+
+		@include up(tablet) {
+			width: calc(100% - 40px);
+			max-width: 560px;
+			margin: auto;
+		}
+
+		&--s {
+			@include up(tablet) {
+				max-width: 420px;
+			}
+		}
+
+		&--m {
+			@include up(tablet) {
+				max-width: 480px;
+			}
+		}
+
+		&--static {
+			position: static;
+			display: block;
+			margin: 0 auto;
+		}
+
+		&[open] {
+			display: flex;
+		}
+
+		// Шапка на месте, тело прокручивается: сетка из двух строк, тело — 1fr
+		&__panel {
+			display: grid;
+			grid-template-rows: auto minmax(0, 1fr);
+			grid-template-columns: minmax(0, 1fr);
+			gap: 12px;
+			width: 100%;
+			max-height: inherit;
+			padding: 16px 10px calc(16px + env(safe-area-inset-bottom));
+			background: palette("white");
+			border-radius: $radius-content-block $radius-content-block 0 0;
+			box-shadow: $shadow-sheet;
+
+			@include up(tablet) {
+				gap: var(--modal-gap);
+				padding: 32px;
+				border-radius: $radius-content-block;
+				box-shadow: $shadow-content-block;
+			}
+		}
+
+		&__header {
+			display: flex;
+			gap: 8px;
+			align-items: center;
+			justify-content: flex-end;
+			padding-left: 10px;
+
+			@include up(tablet) {
+				gap: 10px;
+				padding-left: 0;
+			}
+		}
+
+		&__title {
+			@include text("h4-360");
+
+			flex: 1 1 auto;
+			min-width: 0;
+			color: palette("black-txt");
+
+			@include up(tablet) {
+				@include text("h3");
+			}
+		}
+
+		// Мобильный: круг 36 на BG.Main, крестик 10; десктоп: крестик 20 без фона
+		&__close {
+			display: flex;
+			flex: none;
+			align-items: center;
+			justify-content: center;
+			width: 36px;
+			height: 36px;
+			padding: 0;
+			color: palette("black-txt");
+			cursor: pointer;
+			background: palette("bg-main");
+			border: 0;
+			border-radius: 50%;
+
+			@include up(tablet) {
+				width: 20px;
+				height: 20px;
+				margin: -8px;
+				padding: 8px;
+				box-sizing: content-box;
+				background: none;
+			}
+		}
+
+		&__close-icon {
+			width: 10px;
+			height: 10px;
+
+			@include up(tablet) {
+				width: 20px;
+				height: 20px;
+			}
+		}
+
+		// Тело: прокрутка SimpleBar, когда окно выше экрана; вид полосы — общий (base/_vendor.scss)
+		&__body {
+			min-height: 0;
+			height: 100%;
+			margin-inline: -10px;
+
+			@include up(tablet) {
+				margin-inline: -16px;
+			}
+		}
+
+		&__content {
+			display: flex;
+			flex-direction: column;
+			gap: var(--modal-gap);
+			padding-inline: 20px;
+
+			@include up(tablet) {
+				padding-inline: 16px;
+			}
+		}
+
+		&__text {
+			@include text("m-400-auto");
+
+			color: palette("dark-grey-txt");
+		}
+
+		&__actions {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+
+			// Десктоп: кнопки в ряд поровну, высотой M (как «Принять / Отклонить» в cookie)
+			@include up(tablet) {
+				flex-direction: row;
+				gap: 12px;
+
+				> .btn {
+					@include text("m-500");
+
+					flex: 1 1 0;
+					height: 46px;
+					padding: 12px 24px;
+				}
+			}
+		}
+
+		// По центру (успех): только крестик сверху, содержимое по центру; на десктопе поля 40
+		&--center &__panel {
+			@include up(tablet) {
+				padding: 40px;
+			}
+		}
+
+		&--center &__content {
+			align-items: center;
+			text-align: center;
+
+			> .btn {
+				align-self: stretch;
+			}
+		}
+
+		&--center &__title {
+			white-space: pre-line;
+		}
+
+		&__icon {
+			display: flex;
+			flex: none;
+			align-items: center;
+			justify-content: center;
+			width: 64px;
+			height: 64px;
+			color: palette("white");
+			border-radius: 50%;
+
+			&--success {
+				background: palette("success");
+			}
+		}
+
+		&__icon-glyph {
+			width: 16.3px;
+			height: 11.6px;
+		}
+
+		// Подтверждение («Выйти из аккаунта?»): на мобильном заголовок и текст плотнее,
+		// кнопки друг под другом через 8 (Figma 4568:1079)
+		&--confirm {
+			@include down(tablet) {
+				--modal-gap: 8px;
+			}
+		}
+
+		&--confirm &__panel {
+			@include down(tablet) {
+				gap: 8px;
+				padding-top: 24px;
+			}
+		}
+
+		&--confirm &__text {
+			@include down(tablet) {
+				@include text("m-400-360");
+
+				padding-bottom: 12px;
+			}
+		}
+
+		&--confirm &__content > .modal__text,
+		&--confirm &__header {
+			@include down(tablet) {
+				padding-inline: 10px;
+			}
+		}
+
+		&--confirm &__content {
+			@include down(tablet) {
+				padding-inline: 10px;
+			}
+		}
+	}
+}

@@ -25,7 +25,7 @@
                     <a class="main-menu__profile-link" href="{{props.user.url}}">{{default props.user.urlText 'Моя страница'}}</a>
                 </div>
                 {{#if props.logout}}
-                    <button class="main-menu__logout" type="button" data-sheet-open="{{default props.id 'main-menu'}}-logout">
+                    <button class="main-menu__logout" type="button" data-modal-open="{{default props.logoutId 'main-menu-logout'}}">
                         <span class="visually-hidden">Выйти из аккаунта</span>
                         {{> components/Icon/Icon name="exit" class="main-menu__icon"}}
                     </button>
@@ -89,9 +89,11 @@
     </div>
 
     {{#if props.logout}}
-        {{#> components/Sheet/Sheet props=(obj id=(default props.logoutId 'main-menu-logout') title=props.logout.title text=props.logout.text)}}
-            {{> components/Button/Button props=(obj href=props.logout.url text="Выйти" variant="error" size="l")}}
-            {{> components/Button/Button props=(obj text="Отмена" variant="light" size="l" attrs=(obj data-sheet-close=""))}}
-        {{/components/Sheet/Sheet}}
+        {{#> components/Modal/Modal props=(obj id=(default props.logoutId 'main-menu-logout') title=props.logout.title text=props.logout.text size="s" variant="confirm" close=false)}}
+            <div class="modal__actions">
+                {{> components/Button/Button props=(obj href=props.logout.url text="Выйти" variant="error" size="l")}}
+                {{> components/Button/Button props=(obj text="Отмена" variant="light" size="l" attrs=(obj data-modal-close="" autofocus=""))}}
+            </div>
+        {{/components/Modal/Modal}}
     {{/if}}
 </dialog>

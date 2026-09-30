@@ -1,0 +1,35 @@
+{{!--
+	Модальное окно (Figma, 1920: «Предложить тему» 4132:1034, успех 4134:27265; 360: шторки
+	4879:1361, 4880:1513, «Выйти из аккаунта?» 4568:1079). С 768 — карточка по центру, до 768 —
+	шторка снизу. Нативный <dialog>: фокус внутри, Escape, фон. Не помещается по высоте —
+	прокручивается тело, шапка на месте. Контракт — docs/contracts/modal.md.
+	props: id, title, text, size (s — 420, m — 480, l — 560), variant (center — по центру,
+	как «успех»; confirm — подтверждение), icon (success), close (крестик, по умолчанию есть),
+	open — показать сразу без затемнения (витрина), class.
+	Содержимое — в блоке партиала; кнопки — в .modal__actions. Открывает кнопка
+	data-modal-open="<id>", закрывает data-modal-close.
+--}}
+<dialog class="modal modal--{{default props.size 'm'}}{{#if props.variant}} modal--{{props.variant}}{{/if}}{{#if props.open}} modal--static{{/if}}{{#if props.class}} {{props.class}}{{/if}}" id="{{props.id}}" {{#if props.title}}aria-labelledby="{{props.id}}-title"{{/if}} {{#if props.text}}aria-describedby="{{props.id}}-text"{{/if}} {{#if props.open}}open{{/if}} {{#if props.discard}}data-modal-discard{{/if}} data-module="Modal" data-path="components">
+    <div class="modal__panel">
+        {{#if (or (and props.title (not (eq props.variant "center"))) (not (eq props.close false)))}}
+            <div class="modal__header">
+                {{#if (and props.title (not (eq props.variant "center")))}}<h2 class="modal__title" id="{{props.id}}-title">{{props.title}}</h2>{{/if}}
+                {{#unless (eq props.close false)}}
+                    <button class="modal__close" type="button" aria-label="Закрыть" data-modal-close>
+                        {{> components/Icon/Icon name="close" class="modal__close-icon"}}
+                    </button>
+                {{/unless}}
+            </div>
+        {{/if}}
+        <div class="modal__body">
+            <div class="modal__content">
+                {{#if (eq props.icon "success")}}
+                    <span class="modal__icon modal__icon--success">{{> components/Icon/Icon name="check" class="modal__icon-glyph"}}</span>
+                {{/if}}
+                {{#if (and props.title (eq props.variant "center"))}}<h2 class="modal__title" id="{{props.id}}-title">{{props.title}}</h2>{{/if}}
+                {{#if props.text}}<p class="modal__text" id="{{props.id}}-text">{{props.text}}</p>{{/if}}
+                {{> @partial-block}}
+            </div>
+        </div>
+    </div>
+</dialog>

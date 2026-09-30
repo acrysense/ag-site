@@ -66,7 +66,9 @@ $colors: (
 	// Без переменной в Figma: обводка аватара и конфетти в «День рождения»
 	"festive-pink": #ff69b4,
 	// Без переменной в Figma: обводка аватара и конфетти в «День рождения»
-	"festive-gold": #ffd700
+	"festive-gold": #ffd700,
+	// Без переменной в Figma: значок успеха в модалке (Success icon, 4134:27271)
+	"success": #2fa95c
 );
 
 // layout
@@ -85,6 +87,10 @@ $radius-dropdown: 8px;
 
 // Без переменной в Figma: тень выпадающего списка (Dropdown, 4706:1214)
 $shadow-dropdown: 0 8px 24px rgb(15 26 36 / 12%);
+
+// Без переменной в Figma: фон под модальным окном (Overlay, 4132:1034) — подсветка и размытие
+$overlay-background: rgb(245 248 250 / 60%);
+$overlay-blur: 2.5px;
 
 // Без переменной в Figma: тень нижней шторки (Bottom sheet · Выйти из аккаунта?)
 $shadow-sheet: 0 -8px 24px rgb(15 26 36 / 12%);
@@ -237,6 +243,13 @@ $text-styles: (
 			weight: 400,
 			size: 14,
 			line-height: 20,
+		),
+	// Без переменной в Figma: описание в модалке (Inter 14, высота строки Auto)
+	"m-400-auto": (
+			family: body,
+			weight: 400,
+			size: 14,
+			line-height: normal,
 		),
 	// PC/M/500
 	"m-500": (

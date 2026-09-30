@@ -139,13 +139,40 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="sheet" group="Компоненты" title="Шторка" description='Figma: Bottom sheet · Выйти из аккаунта? (4568:1079). На странице — модальная поверх всего, фон размыт; закрывается «Отмена», Escape и нажатием по фону.'}}
-				{{#> state label="Выйти из аккаунта" bg="page"}}
-					{{#> components/Sheet/Sheet props=(obj id="story-sheet" title=data.logout.title text=data.logout.text open=true)}}
-						{{> components/Button/Button props=(obj href=data.logout.url text="Выйти" variant="error" size="l")}}
-						{{> components/Button/Button props=(obj text="Отмена" variant="light" size="l" attrs=(obj data-sheet-close=""))}}
-					{{/components/Sheet/Sheet}}
+			{{#> story id="modal" group="Компоненты" title="Модальное окно" description='Figma: 1920 — 4132:1034, 4134:27265; 360 — 4879:1361, 4880:1513, 4568:1079. С 768 — карточка по центру, до 768 — шторка снизу. Фон размыт, закрывается крестиком, Escape и нажатием по фону; не помещается — прокручивается тело.'}}
+				{{#> state label="Подтверждение: выход" bg="page"}}
+					{{#> components/Modal/Modal props=(obj id="story-modal-confirm" title=data.logout.title text=data.logout.text size="s" variant="confirm" close=false open=true)}}
+						<div class="modal__actions">
+							{{> components/Button/Button props=(obj href=data.logout.url text="Выйти" variant="error" size="l")}}
+							{{> components/Button/Button props=(obj text="Отмена" variant="light" size="l" attrs=(obj data-modal-close=""))}}
+						</div>
+					{{/components/Modal/Modal}}
 				{{/state}}
+				{{#> state label="Успех" bg="page"}}
+					{{#> components/Modal/Modal props=(obj id="story-modal-success" title=data.modalSuccess.title text=data.modalSuccess.text variant="center" icon="success" open=true)}}
+						{{> components/Button/Button props=(obj text="Закрыть" variant="general" size="m" attrs=(obj data-modal-close=""))}}
+					{{/components/Modal/Modal}}
+				{{/state}}
+				{{#> state label="Живые окна"}}
+					<div class="story-row">
+						{{> components/Button/Button props=(obj text="Выйти из аккаунта?" variant="light" size="m" attrs=(obj data-modal-open="live-modal-confirm"))}}
+						{{> components/Button/Button props=(obj text="Успех" variant="light" size="m" attrs=(obj data-modal-open="live-modal-success"))}}
+						{{> components/Button/Button props=(obj text="Длинное содержимое" variant="light" size="m" attrs=(obj data-modal-open="live-modal-long"))}}
+					</div>
+					{{#> components/Modal/Modal props=(obj id="live-modal-confirm" title=data.logout.title text=data.logout.text size="s" variant="confirm" close=false)}}
+						<div class="modal__actions">
+							{{> components/Button/Button props=(obj href="#" text="Выйти" variant="error" size="l")}}
+							{{> components/Button/Button props=(obj text="Отмена" variant="light" size="l" attrs=(obj data-modal-close="" autofocus=""))}}
+						</div>
+					{{/components/Modal/Modal}}
+					{{#> components/Modal/Modal props=(obj id="live-modal-success" title=data.modalSuccess.title text=data.modalSuccess.text variant="center" icon="success")}}
+						{{> components/Button/Button props=(obj text="Закрыть" variant="general" size="m" attrs=(obj data-modal-close=""))}}
+					{{/components/Modal/Modal}}
+					{{#> components/Modal/Modal props=(obj id="live-modal-long" title="Длинное содержимое" size="l")}}
+						{{#each data.modalLong}}<p class="modal__text">{{this}}</p>{{/each}}
+					{{/components/Modal/Modal}}
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: содержимое приходит со страницей; отправка формы — в её кнопке"}}{{/state}}
 			{{/story}}
 
 			{{#> story id="button" group="Компоненты" title="Кнопка" description='Figma: Button / S.Light.Left. props: text, icon, hiddenText, variant="light", size="s", href.'}}
