@@ -9,8 +9,19 @@ $font-base:
 	sans-serif;
 
 // colors
-$color-white: #ffffff;
-$color-full-black: #000000;
+// Все цвета проекта: имя → значение из макета. Берутся через palette("имя").
+// Новый цвет добавляется только сюда; в витрине («Основа → Цвета») он появится сам.
+$colors: (
+	"white": #ffffff,
+	"black": #000000,
+);
+
+// text
+// Стили текста из макета: имя → размеры в px на мобильном и десктопном макете.
+// Применяются через @include text("имя"); в витрине («Основа → Типографика») появятся сами.
+// Пока макета нет, карта пустая. Пример записи:
+// "h1": (mobile: 32, desktop: 64, line-height: 1.1, weight: 700),
+$text-styles: ();
 
 // fields
 $field-font-size-min: 16px;
@@ -18,7 +29,7 @@ $field-font-size-min: 16px;
 // focus
 // Цвет кольца по умолчанию — currentColor. На заливках, где текст совпадает с фоном
 // вокруг (белая подпись на цветной кнопке у белого фона), переопределяйте локально:
-// .footer { --focus-ring-color: #{$color-white}; }
+// .footer { --focus-ring-color: #{palette("white")}; }
 $focus-ring-width: 2px;
 $focus-ring-offset: 2px;
 

@@ -1,9 +1,12 @@
 @use "sass:math";
 @use "sass:map";
 @use "sass:list";
+@use "@/assets/styles/base/vars";
 
 $fluid-cap: 2560 !default;
 $mq-epsilon: 0.02 !default;
+// Диапазон по умолчанию для vw-range и миксинов ниже: ширина десктопного макета
+$default-range: lg !default;
 
 $breakpoints: (
 	mobile: 0,
@@ -101,7 +104,7 @@ $alias-bp: (
 	@return clamp(#{$lower}px, #{$k}, #{$upper}px);
 }
 
-@function vw-range($px, $range: lg) {
+@function vw-range($px, $range: $default-range) {
 	$n: $px;
 	@if not math.is-unitless($px) {
 		$n: math.div($px, 1px);
@@ -161,29 +164,58 @@ $alias-bp: (
 	}
 }
 
-@mixin width-cols($cols, $gapPx, $range: lg) {
+@mixin width-cols($cols, $gapPx, $range: $default-range) {
 	width: calc((100% - #{$gapPx}px * (#{$cols} - 1)) / #{$cols});
 	width: calc((100% - #{vw-range($gapPx, $range)} * (#{$cols} - 1)) / #{$cols});
 }
 
-@mixin border-side($side, $px, $style: solid, $color: currentColor, $range: lg) {
+@mixin border-side($side, $px, $style: solid, $color: currentColor, $range: $default-range) {
 	border-#{$side}-style: $style;
 	border-#{$side}-color: $color;
 	border-#{$side}-width: vw-range($px, $range);
 }
 
-@mixin border-all($px, $style: solid, $color: currentColor, $range: lg) {
+@mixin border-all($px, $style: solid, $color: currentColor, $range: $default-range) {
 	border-style: $style;
 	border-color: $color;
 	border-width: vw-range($px, $range);
 }
 
-@mixin prop-plus($prop, $percent, $px, $range: lg) {
+@mixin prop-plus($prop, $percent, $px, $range: $default-range) {
 	#{$prop}: calc(#{$percent} + #{$px}px);
 	#{$prop}: calc(#{$percent} + #{vw-range($px, $range)});
 }
 
-@mixin prop-minus($prop, $percent, $px, $range: lg) {
+@mixin prop-minus($prop, $percent, $px, $range: $default-range) {
 	#{$prop}: calc(#{$percent} - #{$px}px);
 	#{$prop}: calc(#{$percent} - #{vw-range($px, $range)});
+}
+
+@function palette($name) {
+	$value: map.get(vars.$colors, $name);
+	@if $value == null {
+		@error 'Unknown color `#{$name}`: add it to $colors in _vars.scss';
+	}
+	@return $value;
+}
+
+// Стиль текста из $text-styles. Способ масштабирования шрифта задаётся только здесь:
+// блоки вызывают text("имя") и не знают, vw это или что-то другое.
+// Планшет пока получает мобильные размеры (с потолком диапазона) — уточняется по макету.
+@mixin text($name, $range: $default-range) {
+	$style: map.get(vars.$text-styles, $name);
+	@if $style == null {
+		@error 'Unknown text style `#{$name}`: add it to $text-styles in _vars.scss';
+	}
+	@if map.get($style, mobile) == null or map.get($style, desktop) == null {
+		@error 'Text style `#{$name}` needs both mobile and desktop sizes';
+	}
+
+	font-weight: map.get($style, weight);
+	line-height: map.get($style, line-height);
+	@include prop-vw(font-size, map.get($style, mobile), mobile);
+
+	@include up(desktop) {
+		@include prop-vw(font-size, map.get($style, desktop), $range);
+	}
 }

@@ -1,4 +1,5 @@
 @use "@/assets/styles/base/vars" as *;
+@use "@/assets/styles/base/mixins" as *;
 
 @layer base {
 	html {
@@ -11,7 +12,7 @@
 		overflow-x: clip;
 		font-family: $font-base;
 		line-height: 1.5;
-		color: $color-full-black;
+		color: palette("black");
 	}
 
 	// iOS зумит страницу при фокусе на поле с шрифтом меньше 16px.
