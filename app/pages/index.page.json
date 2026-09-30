@@ -373,6 +373,143 @@
 					}
 				}
 			]
+		},
+		"leaders": {
+			"id": "leaders",
+			"title": "Галерея живой заботы",
+			"url": "#",
+			"lists": [
+				{
+					"title": "Лидеры месяца",
+					"items": [
+						{
+							"url": "#",
+							"name": "Волкова Анна",
+							"position": "Заведующая аптекой",
+							"image": {
+								"src": "./dev/img/leader-1.jpg"
+							},
+							"award": {
+								"icon": "award-trophy",
+								"text": "Лидер продаж"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Федорович Светлана",
+							"position": "Фармацевт",
+							"image": {
+								"src": "./dev/img/leader-2.jpg"
+							},
+							"award": {
+								"icon": "award-podium",
+								"text": "Программа лояльности"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Кот Евгений",
+							"position": "Заведующий аптекой",
+							"image": {
+								"src": "./dev/img/leader-3.jpg"
+							},
+							"award": {
+								"icon": "award-leaf",
+								"text": "Живая забота"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Иванов Алексей",
+							"position": "Фармацевт",
+							"image": {
+								"src": "./dev/img/leader-4.jpg"
+							},
+							"award": {
+								"icon": "award-trophy",
+								"text": "Лидер продаж"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Синичкина Елена",
+							"position": "Провизор",
+							"image": {
+								"src": "./dev/img/leader-5.jpg"
+							},
+							"award": {
+								"icon": "award-pro",
+								"text": "Профессионал"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Федорович Светлана",
+							"position": "Фармацевт",
+							"image": {
+								"src": "./dev/img/leader-2.jpg"
+							},
+							"award": {
+								"icon": "award-leaf",
+								"text": "Живая забота"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Волкова Анна",
+							"position": "Заведующая аптекой",
+							"image": {
+								"src": "./dev/img/leader-1.jpg"
+							},
+							"award": {
+								"icon": "award-pro",
+								"text": "Профессионал"
+							}
+						}
+					]
+				},
+				{
+					"title": "Фарм-лидеры",
+					"items": [
+						{
+							"url": "#",
+							"name": "Кот Евгений",
+							"position": "Заведующий аптекой",
+							"image": {
+								"src": "./dev/img/leader-3.jpg"
+							},
+							"award": {
+								"icon": "award-pro",
+								"text": "Профессионал"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Синичкина Елена",
+							"position": "Провизор",
+							"image": {
+								"src": "./dev/img/leader-5.jpg"
+							},
+							"award": {
+								"icon": "award-trophy",
+								"text": "Лидер продаж"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Иванов Алексей",
+							"position": "Фармацевт",
+							"image": {
+								"src": "./dev/img/leader-4.jpg"
+							},
+							"award": {
+								"icon": "award-leaf",
+								"text": "Живая забота"
+							}
+						}
+					]
+				}
+			]
 		}
 	}
 }

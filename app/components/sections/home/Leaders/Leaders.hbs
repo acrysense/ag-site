@@ -1,0 +1,54 @@
+{{!--
+	«Галерея живой заботы» (Figma: 1920 — 4615:43127, 360 — 4865:1668). props: id, title,
+	url (все лидеры), allText, lists [{ title, items [человек] }] — вкладки «Лидеры месяца»,
+	«Фарм-лидеры». Человек: { url, name, position, image: { src, srcset }, award: { icon, text } }.
+	Скрытый список бэк не выводит; один список — без вкладок; пусто — блока нет.
+	Десктоп: карусель по 5 (с 1280) или 4 карточки, стрелки. Мобильный: первые 6 сеткой и
+	«Показать все». Контракт — docs/contracts/leaders.md.
+--}}
+{{#if props.lists.length}}
+    <section class="leaders">
+        <div class="leaders__head">
+            <h2 class="leaders__title">{{#if props.url}}<a href="{{props.url}}">{{props.title}}</a>{{else}}{{props.title}}{{/if}}</h2>
+            {{#if props.lists.[1]}}
+                {{> components/Tabs/Tabs props=(obj id=(default props.id "leaders") label=props.title items=props.lists)}}
+            {{/if}}
+        </div>
+        {{#each props.lists}}
+            <div class="leaders__panel carousel" {{#if ../props.lists.[1]}}role="tabpanel" id="{{default ../props.id 'leaders'}}-panel-{{@index}}" aria-labelledby="{{default ../props.id 'leaders'}}-tab-{{@index}}" {{#unless @first}}hidden{{/unless}}{{/if}} data-module="Carousel" data-path="components" data-carousel-loop>
+                <ul class="carousel__track leaders__track" role="list" data-carousel-track>
+                    {{#each items}}
+                        <li class="carousel__slide leaders__item">
+                            {{#if url}}<a class="leaders__card" href="{{url}}">{{else}}<div class="leaders__card">{{/if}}
+                                {{#if image.src}}
+                                    <img class="leaders__photo" src="{{image.src}}" {{#if image.srcset}}srcset="{{image.srcset}}" sizes="(min-width: 1024px) 300px, 50vw"{{/if}} width="300" height="300" alt="" loading="lazy" decoding="async" />
+                                {{else}}
+                                    <span class="leaders__photo leaders__photo--empty">{{> components/Icon/Icon name="profile" class="leaders__photo-icon"}}</span>
+                                {{/if}}
+                                <span class="leaders__info">
+                                    <span class="leaders__name">{{name}}</span>
+                                    {{#if position}}<span class="leaders__position">{{position}}</span>{{/if}}
+                                </span>
+                                {{#if award.text}}
+                                    <span class="leaders__award">
+                                        {{#if award.icon}}{{> components/Icon/Icon name=award.icon class="leaders__award-icon"}}{{/if}}
+                                        {{award.text}}
+                                    </span>
+                                {{/if}}
+                            {{#if url}}</a>{{else}}</div>{{/if}}
+                        </li>
+                    {{/each}}
+                </ul>
+                {{#if items.[1]}}
+                    <button class="leaders__arrow leaders__arrow--prev" type="button" aria-label="Предыдущие: {{title}}" data-carousel-prev>
+                        {{> components/Icon/Icon name="angle-right" class="leaders__arrow-icon"}}
+                    </button>
+                    <button class="leaders__arrow leaders__arrow--next" type="button" aria-label="Следующие: {{title}}" data-carousel-next>
+                        {{> components/Icon/Icon name="angle-right" class="leaders__arrow-icon"}}
+                    </button>
+                {{/if}}
+            </div>
+        {{/each}}
+        {{#if props.url}}<a class="leaders__all" href="{{props.url}}">{{default props.allText "Показать все"}}</a>{{/if}}
+    </section>
+{{/if}}

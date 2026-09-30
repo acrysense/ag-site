@@ -1,0 +1,10 @@
+{{!--
+	Вкладки-переключатель (Figma: Tabs в «Галерее живой заботы»). Только список вкладок —
+	панели выводит блок: id панели «<id>-panel-<номер с 0>», вкладки — «<id>-tab-<номер>».
+	props: id, label (для скринридера), items [{ title }] — выбрана первая, class.
+--}}
+<div class="tabs{{#if props.class}} {{props.class}}{{/if}}" role="tablist" aria-label="{{props.label}}" data-module="Tabs" data-path="components">
+    {{#each props.items}}
+        <button class="tabs__tab" type="button" role="tab" id="{{../props.id}}-tab-{{@index}}" aria-controls="{{../props.id}}-panel-{{@index}}" aria-selected="{{#if @first}}true{{else}}false{{/if}}" {{#unless @first}}tabindex="-1"{{/unless}}>{{title}}</button>
+    {{/each}}
+</div>

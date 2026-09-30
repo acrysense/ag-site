@@ -1,0 +1,36 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Tabs (4615:43130). В макете поля неравные (2 слева, 10 справа, у выбранной 15, у
+// остальных 10) — сведены к одинаковым, чтобы не прыгало при переключении; ширина та же ±2px.
+// Шрифт в макете Poppins — в проекте его нет, Inter того же размера.
+@layer components {
+	.tabs {
+		display: inline-flex;
+		flex-wrap: wrap;
+		gap: 5px;
+		padding: 2px;
+		background: palette("bg-main-2");
+		border-radius: $radius-inner-block;
+	}
+
+	.tabs__tab {
+		@include text("m-400");
+
+		padding: 7px 15px;
+		color: palette("seryi");
+		white-space: nowrap;
+		background: none;
+		border: 0;
+		border-radius: $radius-inner-block;
+		transition:
+			color $transition-default,
+			background-color $transition-default;
+
+		&[aria-selected="true"] {
+			color: palette("white");
+			background: palette("main-blue");
+			box-shadow: $shadow-content-block;
+		}
+	}
+}

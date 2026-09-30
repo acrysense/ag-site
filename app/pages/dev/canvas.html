@@ -288,6 +288,34 @@
 				{{#> state label="Загрузка" note="не применимо: баннеры приходят с сервера вместе со страницей"}}{{/state}}
 				{{#> state label="Длинный контент" note="не применимо: текст в картинке"}}{{/state}}
 			{{/story}}
+
+			{{#> story id="leaders" group="Главная" title="Галерея живой заботы" description='Figma: 1920 — 4615:43127, 360 — 4865:1668. Вкладки «Лидеры месяца» и «Фарм-лидеры» (скрытую бэк не выводит). Десктоп — карусель по 5 (по 4 до 1280), мобильный — первые 6 и «Показать все».'}}
+				{{#> state label="Обычное (две вкладки)" bg="page"}}
+					<div class="container">{{> sections/home/Leaders/Leaders props=data.leaders}}</div>
+				{{/state}}
+				{{#> state label="Одна вкладка" bg="page"}}
+					<div class="container">{{> sections/home/Leaders/Leaders props=data.leadersOneList}}</div>
+				{{/state}}
+				{{#> state label="Мало лидеров" bg="page"}}
+					<div class="container">{{> sections/home/Leaders/Leaders props=data.leadersFew}}</div>
+				{{/state}}
+				{{#> state label="Длинный контент, без фото" bg="page"}}
+					<div class="container">{{> sections/home/Leaders/Leaders props=data.leadersLong}}</div>
+				{{/state}}
+				{{#> state label="Пусто" bg="page"}}
+					<div class="container">{{> sections/home/Leaders/Leaders props=data.leadersEmpty}}</div>
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: списки приходят с сервера вместе со страницей"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="tabs" group="Компоненты" title="Вкладки" description="Figma: Tabs. Панели выводит блок. Клавиатура: стрелки, Home, End."}}
+				{{#> state label="Две вкладки"}}
+					{{> components/Tabs/Tabs props=(obj id="tabs-demo" label="Пример" items=(arr (obj title="Лидеры месяца") (obj title="Фарм-лидеры")))}}
+				{{/state}}
+				{{#> state label="Три вкладки"}}
+					{{> components/Tabs/Tabs props=(obj id="tabs-demo-3" label="Пример" items=(arr (obj title="Все") (obj title="Сегодня") (obj title="В этом месяце")))}}
+				{{/state}}
+			{{/story}}
 		</main>
 	</body>
 </html>

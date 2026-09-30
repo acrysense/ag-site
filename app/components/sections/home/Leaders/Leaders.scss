@@ -1,0 +1,233 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: 360 — 4865:1668 (сетка 2 колонки, первые 6, круглые фото, «Показать все»),
+// 1920 — 4615:43127 (карусель по 5 карточек 300, фото со скруглением 10, заслуга под именем).
+// Наше: планшет — сетка в 3 колонки; 1024–1279 — карусель по 4.
+$leaders-gap: 14.5px; // 1920: 5 карточек по 300 в 1558 — промежутки 14.5
+
+@layer components {
+	.leaders {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		min-width: 0;
+		padding: 32px 10px;
+		background: palette("white");
+
+		@include up(desktop) {
+			gap: 40px;
+			padding: 20px;
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+
+		&__head {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			align-items: flex-start;
+
+			@include up(desktop) {
+				flex-direction: row;
+				gap: 10px;
+				align-items: center;
+				justify-content: space-between;
+			}
+		}
+
+		&__title {
+			@include text("h1");
+
+			color: palette("black-h");
+
+			a {
+				color: inherit;
+			}
+		}
+
+		// Двойные классы: стили общей карусели подключаются после секций
+		&__panel {
+			position: relative;
+			container-type: inline-size;
+		}
+
+		&__track.carousel__track {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 20px 10px;
+			margin: 0;
+			padding: 0;
+			overflow: visible;
+			list-style: none;
+
+			@include up(tablet) {
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+			}
+
+			@include up(desktop) {
+				display: flex;
+				gap: $leaders-gap;
+				overflow-x: auto;
+			}
+		}
+
+		&__item.carousel__slide {
+			min-width: 0;
+
+			// На мобильном и планшете — первые 6
+			@include down(desktop) {
+				&:nth-child(n + 7) {
+					display: none;
+				}
+			}
+
+			@include up(desktop) {
+				flex: 0 0 calc((100% - #{$leaders-gap} * 3) / 4);
+			}
+
+			@include up(wide) {
+				flex-basis: calc((100% - #{$leaders-gap} * 4) / 5);
+			}
+		}
+
+		&__card {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+			align-items: center;
+			color: palette("black-txt");
+			text-align: center;
+		}
+
+		a.leaders__card:hover .leaders__name {
+			color: palette("blue-hover");
+		}
+
+		// В макете у фото прозрачность 0.9 (на 1920 — дважды, 0.81); берём один раз
+		&__photo {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: auto;
+			aspect-ratio: 1;
+			object-fit: cover;
+			border-radius: 50%;
+			opacity: 0.9;
+
+			@include up(desktop) {
+				border-radius: $radius-inner-block;
+			}
+		}
+
+		&__photo--empty {
+			color: palette("icon-grey");
+			background: palette("bg-info");
+			opacity: 1;
+		}
+
+		&__photo-icon {
+			width: 40%;
+			height: 40%;
+		}
+
+		&__info {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+			width: 100%;
+		}
+
+		&__name {
+			@include text("l-500");
+
+			overflow-wrap: anywhere;
+			transition: color $transition-default;
+		}
+
+		&__position {
+			@include text("m-400");
+
+			color: palette("dark-grey-txt");
+		}
+
+		// Заслуга — только на десктопе (в макете 360 её нет)
+		&__award {
+			@include text("l-400");
+
+			display: none;
+			gap: 12px;
+			align-items: center;
+			justify-content: center;
+
+			@include up(desktop) {
+				display: flex;
+			}
+		}
+
+		&__award-icon {
+			flex: none;
+			width: 20px;
+			height: 20px;
+			color: palette("yellow");
+		}
+
+		// Стрелки по центру фото: фото квадратное во всю ширину карточки
+		&__arrow {
+			position: absolute;
+			top: calc((100cqw - #{$leaders-gap} * 3) / 8);
+			display: none;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			padding: 0;
+			color: palette("black-txt");
+			background: palette("bg-info");
+			border: 0;
+			border-radius: 50%;
+			transform: translateY(-50%);
+
+			@include up(desktop) {
+				display: flex;
+			}
+
+			@include up(wide) {
+				top: calc((100cqw - #{$leaders-gap} * 4) / 10);
+			}
+
+			&--prev {
+				left: 0;
+			}
+
+			&--next {
+				right: 0;
+			}
+		}
+
+		&__arrow-icon {
+			width: 16px;
+			height: 16px;
+		}
+
+		&__arrow--prev &__arrow-icon {
+			transform: rotate(180deg);
+		}
+
+		&__all {
+			@include text("l-400");
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 40px;
+			color: palette("main-blue");
+
+			@include up(desktop) {
+				display: none;
+			}
+		}
+	}
+}
