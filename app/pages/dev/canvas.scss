@@ -137,6 +137,36 @@ body:has(.stories) {
 	}
 }
 
+// Одно состояние (?state=): только компонент, без подписи и карточки, на всю высоту
+.is-single-state {
+	.stories {
+		padding: 0;
+	}
+
+	.story__states {
+		display: block;
+	}
+
+	.story-state {
+		background: none;
+		border: 0;
+	}
+
+	.story-state__label {
+		display: none;
+	}
+
+	.story-state__frame {
+		min-height: 100vh;
+		background: $canvas-card;
+	}
+
+	.story-state__frame--page {
+		padding-block: 0;
+		background: palette("bg-main");
+	}
+}
+
 // «Границы блоков» в оболочке: пунктир по краю каждого блока внутри карточки
 .show-bounds .story-state__frame > * {
 	outline: 1px dashed $canvas-bounds;

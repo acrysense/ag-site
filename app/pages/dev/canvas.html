@@ -50,7 +50,7 @@
 				<div class="tokens tokens--text" data-token-list="text"></div>
 			{{/story}}
 
-			{{#> story id="header" group="Каркас" title="Шапка" description='Figma: PC.HEADER.v2 (4652:8752), 360.HEADER (4865:1334). Данные — site.header в site.config.json. Подменю «Новости»: наведение мышью, стрелка, Escape. Бургер пока открывает простой список: полноэкранное меню 360.MainMenu v2 — следующий блок.'}}
+			{{#> story id="header" group="Каркас" title="Шапка" description='Figma: PC.HEADER.v2 (4652:8752), 360.HEADER (4865:1334). Данные — site.header в site.config.json. Подменю «Новости»: наведение мышью, стрелка, Escape. Бургер открывает мобильное меню — см. «Мобильное меню».'}}
 				{{#> state label="Гость" bg="page"}}
 					{{> layouts/Header/Header props=site.header}}
 				{{/state}}
@@ -61,6 +61,42 @@
 					{{> layouts/Header/Header props=data.headerLong}}
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: шапка приходит с сервера вместе со страницей"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="main-menu" group="Каркас" title="Мобильное меню" description='Figma: 360.MainMenu v2 (4558:842). Открывается бургером в шапке и пунктом «Меню» в TabBar, на странице — поверх всего, кроме TabBar. Данные — site.mainMenu. Кнопка выхода открывает шторку.'}}
+				{{#> state label="Открыто" bg="page"}}
+					{{> layouts/MainMenu/MainMenu props=data.mainMenuOpen}}
+				{{/state}}
+				{{#> state label="Разделы свёрнуты" bg="page"}}
+					{{> layouts/MainMenu/MainMenu props=data.mainMenuCollapsed}}
+				{{/state}}
+				{{#> state label="Без доступа к CRM" bg="page"}}
+					{{> layouts/MainMenu/MainMenu props=data.mainMenuNoCrm}}
+				{{/state}}
+			{{/story}}
+
+			{{#> story id="tab-bar" group="Каркас" title="TabBar" description='Figma: 360.TabBar (4870:1538). До 767px, фиксирована внизу, высота 60 + safe-area. Набор пунктов зависит от доступа. В витрине показана без фиксации.'}}
+				{{#> state label="Новости и обучение" bg="page"}}
+					{{> layouts/TabBar/TabBar props=data.tabBar}}
+				{{/state}}
+				{{#> state label="Справочник и CRM" bg="page"}}
+					{{> layouts/TabBar/TabBar props=data.tabBarCrm}}
+				{{/state}}
+				{{#> state label="Активный раздел" bg="page"}}
+					{{> layouts/TabBar/TabBar props=data.tabBarCurrent}}
+				{{/state}}
+				{{#> state label="Открыто меню" bg="page"}}
+					{{> layouts/TabBar/TabBar props=data.tabBarMenuOpen}}
+				{{/state}}
+			{{/story}}
+
+			{{#> story id="sheet" group="Компоненты" title="Шторка" description='Figma: Bottom sheet · Выйти из аккаунта? (4568:1079). На странице — модальная поверх всего, фон размыт; закрывается «Отмена», Escape и нажатием по фону.'}}
+				{{#> state label="Выйти из аккаунта" bg="page"}}
+					{{#> components/Sheet/Sheet props=(obj id="story-sheet" title=data.logout.title text=data.logout.text open=true)}}
+						{{> components/Button/Button props=(obj href=data.logout.url text="Выйти" variant="error" size="l")}}
+						{{> components/Button/Button props=(obj text="Отмена" variant="light" size="l" attrs=(obj data-sheet-close=""))}}
+					{{/components/Sheet/Sheet}}
+				{{/state}}
 			{{/story}}
 
 			{{#> story id="button" group="Компоненты" title="Кнопка" description='Figma: Button / S.Light.Left. props: text, icon, hiddenText, variant="light", size="s", href.'}}

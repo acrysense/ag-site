@@ -346,6 +346,548 @@
 			"loginUrl": "#",
 			"loginText": "Войти в ЛК",
 			"id": "header-long"
+		},
+		"mainMenuOpen": {
+			"title": "Меню",
+			"user": {
+				"name": "Волкова Анна",
+				"role": "Заведующая аптекой",
+				"url": "#",
+				"urlText": "Моя страница"
+			},
+			"logout": {
+				"url": "#",
+				"title": "Выйти из аккаунта?",
+				"text": "Чтобы снова открыть портал, понадобится войти по логину и паролю."
+			},
+			"groups": [
+				{
+					"label": "CRM",
+					"title": "CRM",
+					"icon": "case",
+					"meta": "6 разделов",
+					"expanded": true,
+					"items": [
+						{
+							"icon": "home",
+							"text": "Дашборд",
+							"url": "#"
+						},
+						{
+							"icon": "pharmacy",
+							"text": "Аптеки",
+							"url": "#"
+						},
+						{
+							"icon": "manager",
+							"text": "Менеджеры",
+							"url": "#"
+						},
+						{
+							"icon": "profile",
+							"text": "Сотрудники",
+							"url": "#"
+						},
+						{
+							"icon": "calendar",
+							"text": "Визиты",
+							"url": "#"
+						},
+						{
+							"icon": "tasks",
+							"text": "Задачи",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"label": "Личный кабинет",
+					"title": "Личный кабинет",
+					"icon": "profile",
+					"meta": "5 разделов",
+					"expanded": true,
+					"items": [
+						{
+							"icon": "edu",
+							"text": "Учебный портал",
+							"url": "#"
+						},
+						{
+							"icon": "multiplier",
+							"text": "Коэффициент",
+							"url": "#"
+						},
+						{
+							"icon": "box",
+							"text": "Пакеты",
+							"url": "#"
+						},
+						{
+							"icon": "apple",
+							"text": "Конкурс",
+							"url": "#"
+						},
+						{
+							"icon": "motivation",
+							"text": "Мотивация",
+							"url": "#"
+						}
+					]
+				}
+			],
+			"portal": {
+				"label": "Портал",
+				"items": [
+					{
+						"icon": "home",
+						"text": "Главная",
+						"url": "/",
+						"current": true
+					},
+					{
+						"icon": "news",
+						"text": "Новости",
+						"url": "#"
+					},
+					{
+						"icon": "directory",
+						"text": "Справочник сотрудников",
+						"url": "#"
+					},
+					{
+						"icon": "wiki",
+						"text": "База знаний",
+						"url": "#"
+					},
+					{
+						"icon": "case",
+						"text": "Вакансии",
+						"url": "#"
+					},
+					{
+						"icon": "gallery",
+						"text": "Галерея",
+						"url": "#"
+					}
+				]
+			},
+			"join": {
+				"label": "Присоединяйтесь",
+				"items": [
+					{
+						"logo": "/assets/images/brands/apte4ka.png",
+						"text": "Гипермаркет Аптечка+",
+						"url": "#"
+					},
+					{
+						"logo": "/assets/images/brands/adel.svg",
+						"text": "Аптеки ADEL",
+						"url": "#"
+					},
+					{
+						"logo": "/assets/images/brands/dleki.svg",
+						"text": "Аптеки Добрыя лекi",
+						"url": "#"
+					},
+					{
+						"logo": "/assets/images/brands/feelingood.png",
+						"text": "Клуб FeelinGood",
+						"url": "#"
+					},
+					{
+						"logo": "/assets/images/brands/aptekaby.svg",
+						"text": "Сервис Apteka.by",
+						"url": "#"
+					}
+				]
+			},
+			"id": "story-menu",
+			"logoutId": "story-menu-logout",
+			"open": true
+		},
+		"mainMenuCollapsed": {
+			"title": "Меню",
+			"user": {
+				"name": "Волкова Анна",
+				"role": "Заведующая аптекой",
+				"url": "#",
+				"urlText": "Моя страница"
+			},
+			"logout": {
+				"url": "#",
+				"title": "Выйти из аккаунта?",
+				"text": "Чтобы снова открыть портал, понадобится войти по логину и паролю."
+			},
+			"groups": [
+				{
+					"label": "CRM",
+					"title": "CRM",
+					"icon": "case",
+					"meta": "6 разделов",
+					"expanded": false,
+					"items": [
+						{
+							"icon": "home",
+							"text": "Дашборд",
+							"url": "#"
+						},
+						{
+							"icon": "pharmacy",
+							"text": "Аптеки",
+							"url": "#"
+						},
+						{
+							"icon": "manager",
+							"text": "Менеджеры",
+							"url": "#"
+						},
+						{
+							"icon": "profile",
+							"text": "Сотрудники",
+							"url": "#"
+						},
+						{
+							"icon": "calendar",
+							"text": "Визиты",
+							"url": "#"
+						},
+						{
+							"icon": "tasks",
+							"text": "Задачи",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"label": "Личный кабинет",
+					"title": "Личный кабинет",
+					"icon": "profile",
+					"meta": "5 разделов",
+					"expanded": false,
+					"items": [
+						{
+							"icon": "edu",
+							"text": "Учебный портал",
+							"url": "#"
+						},
+						{
+							"icon": "multiplier",
+							"text": "Коэффициент",
+							"url": "#"
+						},
+						{
+							"icon": "box",
+							"text": "Пакеты",
+							"url": "#"
+						},
+						{
+							"icon": "apple",
+							"text": "Конкурс",
+							"url": "#"
+						},
+						{
+							"icon": "motivation",
+							"text": "Мотивация",
+							"url": "#"
+						}
+					]
+				}
+			],
+			"portal": {
+				"label": "Портал",
+				"items": [
+					{
+						"icon": "home",
+						"text": "Главная",
+						"url": "/",
+						"current": true
+					},
+					{
+						"icon": "news",
+						"text": "Новости",
+						"url": "#"
+					},
+					{
+						"icon": "directory",
+						"text": "Справочник сотрудников",
+						"url": "#"
+					},
+					{
+						"icon": "wiki",
+						"text": "База знаний",
+						"url": "#"
+					},
+					{
+						"icon": "case",
+						"text": "Вакансии",
+						"url": "#"
+					},
+					{
+						"icon": "gallery",
+						"text": "Галерея",
+						"url": "#"
+					}
+				]
+			},
+			"join": {
+				"label": "Присоединяйтесь",
+				"items": [
+					{
+						"logo": "/assets/images/brands/apte4ka.png",
+						"text": "Гипермаркет Аптечка+",
+						"url": "#"
+					},
+					{
+						"logo": "/assets/images/brands/adel.svg",
+						"text": "Аптеки ADEL",
+						"url": "#"
+					},
+					{
+						"logo": "/assets/images/brands/dleki.svg",
+						"text": "Аптеки Добрыя лекi",
+						"url": "#"
+					},
+					{
+						"logo": "/assets/images/brands/feelingood.png",
+						"text": "Клуб FeelinGood",
+						"url": "#"
+					},
+					{
+						"logo": "/assets/images/brands/aptekaby.svg",
+						"text": "Сервис Apteka.by",
+						"url": "#"
+					}
+				]
+			},
+			"id": "story-menu-collapsed",
+			"logoutId": "story-menu-collapsed-logout",
+			"open": true
+		},
+		"mainMenuNoCrm": {
+			"title": "Меню",
+			"user": {
+				"name": "Волкова Анна",
+				"role": "Заведующая аптекой",
+				"url": "#",
+				"urlText": "Моя страница"
+			},
+			"logout": {
+				"url": "#",
+				"title": "Выйти из аккаунта?",
+				"text": "Чтобы снова открыть портал, понадобится войти по логину и паролю."
+			},
+			"groups": [
+				{
+					"label": "Личный кабинет",
+					"title": "Личный кабинет",
+					"icon": "profile",
+					"meta": "5 разделов",
+					"expanded": true,
+					"items": [
+						{
+							"icon": "edu",
+							"text": "Учебный портал",
+							"url": "#"
+						},
+						{
+							"icon": "multiplier",
+							"text": "Коэффициент",
+							"url": "#"
+						},
+						{
+							"icon": "box",
+							"text": "Пакеты",
+							"url": "#"
+						},
+						{
+							"icon": "apple",
+							"text": "Конкурс",
+							"url": "#"
+						},
+						{
+							"icon": "motivation",
+							"text": "Мотивация",
+							"url": "#"
+						}
+					]
+				}
+			],
+			"portal": {
+				"label": "Портал",
+				"items": [
+					{
+						"icon": "home",
+						"text": "Главная",
+						"url": "/",
+						"current": true
+					},
+					{
+						"icon": "news",
+						"text": "Новости",
+						"url": "#"
+					},
+					{
+						"icon": "directory",
+						"text": "Справочник сотрудников",
+						"url": "#"
+					},
+					{
+						"icon": "wiki",
+						"text": "База знаний",
+						"url": "#"
+					},
+					{
+						"icon": "case",
+						"text": "Вакансии",
+						"url": "#"
+					},
+					{
+						"icon": "gallery",
+						"text": "Галерея",
+						"url": "#"
+					}
+				]
+			},
+			"join": {
+				"label": "Присоединяйтесь",
+				"items": [
+					{
+						"logo": "/assets/images/brands/apte4ka.png",
+						"text": "Гипермаркет Аптечка+",
+						"url": "#"
+					},
+					{
+						"logo": "/assets/images/brands/adel.svg",
+						"text": "Аптеки ADEL",
+						"url": "#"
+					},
+					{
+						"logo": "/assets/images/brands/dleki.svg",
+						"text": "Аптеки Добрыя лекi",
+						"url": "#"
+					},
+					{
+						"logo": "/assets/images/brands/feelingood.png",
+						"text": "Клуб FeelinGood",
+						"url": "#"
+					},
+					{
+						"logo": "/assets/images/brands/aptekaby.svg",
+						"text": "Сервис Apteka.by",
+						"url": "#"
+					}
+				]
+			},
+			"id": "story-menu-nocrm",
+			"logoutId": "story-menu-nocrm-logout",
+			"open": true
+		},
+		"tabBar": {
+			"static": true,
+			"items": [
+				{
+					"icon": "menu",
+					"text": "Меню",
+					"menu": true
+				},
+				{
+					"icon": "profile",
+					"text": "Кабинет",
+					"url": "#"
+				},
+				{
+					"icon": "news",
+					"text": "Новости",
+					"url": "#"
+				},
+				{
+					"icon": "edu",
+					"text": "Обучение",
+					"url": "#"
+				}
+			]
+		},
+		"tabBarCrm": {
+			"static": true,
+			"items": [
+				{
+					"icon": "menu",
+					"text": "Меню",
+					"menu": true
+				},
+				{
+					"icon": "profile",
+					"text": "Кабинет",
+					"url": "#"
+				},
+				{
+					"icon": "directory",
+					"text": "Справочник",
+					"url": "#"
+				},
+				{
+					"icon": "case",
+					"text": "CRM",
+					"url": "#"
+				}
+			]
+		},
+		"tabBarCurrent": {
+			"static": true,
+			"items": [
+				{
+					"icon": "menu",
+					"text": "Меню",
+					"menu": true
+				},
+				{
+					"icon": "profile",
+					"text": "Кабинет",
+					"url": "#",
+					"current": true
+				},
+				{
+					"icon": "news",
+					"text": "Новости",
+					"url": "#"
+				},
+				{
+					"icon": "edu",
+					"text": "Обучение",
+					"url": "#"
+				}
+			]
+		},
+		"tabBarMenuOpen": {
+			"static": true,
+			"menuOpen": true,
+			"items": [
+				{
+					"icon": "menu",
+					"text": "Меню",
+					"menu": true
+				},
+				{
+					"icon": "profile",
+					"text": "Кабинет",
+					"url": "#"
+				},
+				{
+					"icon": "news",
+					"text": "Новости",
+					"url": "#"
+				},
+				{
+					"icon": "edu",
+					"text": "Обучение",
+					"url": "#"
+				}
+			]
+		},
+		"logout": {
+			"url": "#",
+			"title": "Выйти из аккаунта?",
+			"text": "Чтобы снова открыть портал, понадобится войти по логину и паролю."
 		}
 	}
 }

@@ -1,12 +1,29 @@
 import './canvas.scss'
 
-// ?story=<id> — показываем одну историю (так её открывает оболочка ui.html)
-const story = new URLSearchParams(window.location.search).get('story')
+// ?story=<id> — одна история; &state=<n> — одно её состояние (так их открывает
+// оболочка ui.html). Номер состояния — порядок в разметке истории, с нуля.
+const params = new URLSearchParams(window.location.search)
+const story = params.get('story')
+const state = params.get('state')
+
+for (const el of document.querySelectorAll('[data-story]')) {
+	el.querySelectorAll('[data-state-label]').forEach((node, index) => {
+		node.dataset.stateIndex = String(index)
+	})
+}
 
 if (story) {
 	document.documentElement.classList.add('is-single-story')
 	for (const el of document.querySelectorAll('[data-story]')) {
 		el.hidden = el.dataset.story !== story
+	}
+}
+
+if (story && state !== null) {
+	document.documentElement.classList.add('is-single-state')
+	const current = document.querySelector(`[data-story="${CSS.escape(story)}"]`)
+	for (const node of current?.querySelectorAll('[data-state-label]') || []) {
+		node.hidden = node.dataset.stateIndex !== state
 	}
 }
 

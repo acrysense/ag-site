@@ -37,13 +37,19 @@ function readStories(doc) {
 		group: node.dataset.group || 'Прочее',
 		title: node.dataset.title || node.dataset.story,
 		description: node.dataset.description || '',
-		states: [...node.querySelectorAll('[data-state-label]')].map((state) => ({
-			node: state,
+		states: [...node.querySelectorAll('[data-state-label]')].map((state, index) => ({
+			index: String(index),
 			label: state.dataset.stateLabel,
 			note: state.dataset.stateNote || '',
 		})),
 	}))
 }
+
+// Состояния, которые можно показать (у неприменимых только пояснение)
+const shown = (story) => story.states.filter((state) => !state.note)
+
+const storyHash = (story, state) =>
+	`#${new URLSearchParams({ ...readHash(), story: story.id, ...(state ? { state: state.index } : {}) })}`
 
 function buildNav() {
 	const groups = new Map()
@@ -60,11 +66,32 @@ function buildNav() {
 
 			const list = el('ul', 'ui__list')
 			for (const story of items) {
+				const states = shown(story)
 				const link = el('a', 'ui__link', story.title)
-				link.href = `#${new URLSearchParams({ ...readHash(), story: story.id })}`
+				link.href = storyHash(story, states[0])
 				link.dataset.storyLink = story.id
+				if (states[0]) link.dataset.stateLink = states[0].index
+				if (states.length > 1)
+					link.append(el('span', 'ui__link-count', String(states.length)))
+
 				const item = el('li')
+				item.dataset.storyItem = story.id
 				item.append(link)
+
+				// Состояния компонента — вложенным списком, раскрыт у выбранного
+				if (states.length > 1) {
+					const sub = el('ul', 'ui__sublist')
+					for (const state of states) {
+						const subLink = el('a', 'ui__sublink', state.label)
+						subLink.href = storyHash(story, state)
+						subLink.dataset.storyLink = story.id
+						subLink.dataset.stateLink = state.index
+						const subItem = el('li')
+						subItem.append(subLink)
+						sub.append(subItem)
+					}
+					item.append(sub)
+				}
 				list.append(item)
 			}
 
@@ -80,7 +107,7 @@ function filterNav() {
 	let visible = 0
 	for (const section of nav.querySelectorAll('.ui__group')) {
 		let groupVisible = 0
-		for (const item of section.querySelectorAll('li')) {
+		for (const item of section.querySelectorAll('[data-story-item]')) {
 			const match = !query || item.textContent.toLowerCase().includes(query)
 			item.hidden = !match
 			if (match) groupVisible += 1
@@ -91,13 +118,17 @@ function filterNav() {
 	empty.hidden = visible > 0
 }
 
-function currentStory() {
-	const { story } = readHash()
-	return stories.find((item) => item.id === story) || stories[0]
+function current() {
+	const hash = readHash()
+	const story = stories.find((item) => item.id === hash.story) || stories[0]
+	if (!story) return { story: null, state: null }
+	const states = shown(story)
+	const state = states.find((item) => item.index === hash.state) || states[0] || null
+	return { story, state }
 }
 
-function renderInfo(story) {
-	crumb.textContent = story?.group || ''
+function renderInfo(story, active) {
+	crumb.textContent = story ? [story.group, active?.label].filter(Boolean).join(' · ') : ''
 	title.textContent = story?.title || 'Историй пока нет'
 	description.textContent = story?.description || ''
 	description.hidden = !story?.description
@@ -106,17 +137,19 @@ function renderInfo(story) {
 	states.previousElementSibling.hidden = items.length === 0
 	states.replaceChildren(
 		...items.map((state) => {
-			const button = el('button', 'ui__state', state.label)
-			button.type = 'button'
-			if (state.note) {
-				button.classList.add('is-muted')
-				button.append(el('span', 'ui__state-note', state.note))
-			}
-			button.addEventListener('click', () =>
-				state.node.scrollIntoView({ behavior: 'smooth', block: 'start' })
-			)
 			const item = el('li')
-			item.append(button)
+			if (state.note) {
+				const muted = el('span', 'ui__state is-muted', state.label)
+				muted.append(el('span', 'ui__state-note', state.note))
+				item.append(muted)
+				return item
+			}
+			const link = el('a', 'ui__state', state.label)
+			link.href = storyHash(story, state)
+			link.dataset.storyLink = story.id
+			link.dataset.stateLink = state.index
+			if (state.index === active?.index) link.setAttribute('aria-current', 'true')
+			item.append(link)
 			return item
 		})
 	)
@@ -129,10 +162,14 @@ function applyBounds() {
 }
 
 function apply() {
-	const story = currentStory()
+	const { story, state } = current()
+	const hash = readHash()
 	// До первой загрузки canvas меню ещё пустое — берём историю прямо из адреса
-	const id = story?.id ?? readHash().story
-	const src = id ? `${canvasUrl}?story=${encodeURIComponent(id)}` : canvasUrl
+	const id = story?.id ?? hash.story
+	const stateIndex = story ? state?.index : hash.state
+	const query = new URLSearchParams(id ? { story: id } : {})
+	if (id && stateIndex !== undefined && stateIndex !== null) query.set('state', stateIndex)
+	const src = `${canvasUrl}${query.size ? `?${query}` : ''}`
 
 	if (frame.dataset.src !== src) {
 		frame.dataset.src = src
@@ -140,11 +177,17 @@ function apply() {
 	}
 
 	openLink.href = src
+	for (const item of nav.querySelectorAll('[data-story-item]')) {
+		item.classList.toggle('is-open', item.dataset.storyItem === story?.id)
+	}
 	for (const link of nav.querySelectorAll('[data-story-link]')) {
-		if (link.dataset.storyLink === story?.id) link.setAttribute('aria-current', 'page')
+		const isStory = link.dataset.storyLink === story?.id
+		const isState = link.classList.contains('ui__sublink')
+		const active = isStory && (!isState || link.dataset.stateLink === state?.index)
+		if (active) link.setAttribute('aria-current', 'page')
 		else link.removeAttribute('aria-current')
 	}
-	renderInfo(story)
+	renderInfo(story, state)
 	applyBounds()
 }
 
@@ -156,12 +199,20 @@ frame.addEventListener('load', () => {
 	apply()
 })
 
-nav.addEventListener('click', (event) => {
+// Ссылки на историю и состояние — в меню и в списке состояний справа
+const onStoryClick = (event) => {
 	const link = event.target.closest('[data-story-link]')
 	if (!link || event.metaKey || event.ctrlKey || event.shiftKey) return
 	event.preventDefault()
-	writeHash({ story: link.dataset.storyLink })
-})
+	const patch = { story: link.dataset.storyLink }
+	if (link.dataset.stateLink) patch.state = link.dataset.stateLink
+	const next = new URLSearchParams({ ...readHash(), ...patch })
+	if (!link.dataset.stateLink) next.delete('state')
+	history.replaceState(null, '', `#${next}`)
+	apply()
+}
+nav.addEventListener('click', onStoryClick)
+states.addEventListener('click', onStoryClick)
 
 search.addEventListener('input', filterNav)
 
