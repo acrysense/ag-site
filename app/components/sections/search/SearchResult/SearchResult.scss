@@ -1,0 +1,159 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: результаты поиска 4733:1650 (1920) и 4790:3382 (360). Строка: черта Block.Border сверху,
+// поля 18/4, превью 64 (360 — 48) со скруглением 10, текст через 6: метка XS/500 на своём фоне,
+// название L/400 (совпадение — Semi Bold, Blue.TXT), фрагмент M/400 Dark-grey (в строку — с
+// многоточием; на мобильном до двух строк), мета S/400 Icon.Grey.
+@layer components {
+	.search-result {
+		position: relative;
+		display: flex;
+		gap: 16px;
+		align-items: flex-start;
+		padding: 18px 4px;
+		border-top: 1px solid palette("block-border");
+	}
+
+	.search-result__preview {
+		display: flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: 48px;
+		height: 48px;
+		overflow: hidden;
+		color: palette("black-txt");
+		border-radius: $radius-inner-block;
+
+		@include up(tablet) {
+			width: 64px;
+			height: 64px;
+		}
+
+		&--person {
+			background: palette("grey");
+		}
+
+		&--news {
+			background: palette("bg-main");
+		}
+
+		&--document {
+			background: palette("bg-blue");
+		}
+
+		&--vacancy {
+			background: palette("bg-green");
+		}
+
+		&--other {
+			background: palette("bg-neutral");
+		}
+	}
+
+	.search-result__image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.search-result__icon {
+		width: 20px;
+		height: 20px;
+
+		&--l {
+			width: 25px;
+			height: 25px;
+		}
+	}
+
+	.search-result__text {
+		display: flex;
+		flex: 1 1 auto;
+		flex-direction: column;
+		gap: 6px;
+		align-items: flex-start;
+		min-width: 0;
+	}
+
+	.search-result__label {
+		@include text("xs-500");
+
+		padding: 2px 8px;
+		border-radius: 6px;
+
+		&--directory {
+			color: palette("blue-txt");
+			background: palette("bg-violet");
+		}
+
+		&--news {
+			color: palette("black-txt");
+			background: palette("bg-yellow");
+		}
+
+		&--documents {
+			color: palette("blue-txt");
+			background: palette("bg-blue");
+		}
+
+		&--vacancies {
+			color: palette("green");
+			background: palette("bg-green");
+		}
+	}
+
+	.search-result__title {
+		@include text("l-400");
+
+		max-width: 100%;
+		color: palette("black-txt");
+		overflow-wrap: anywhere;
+	}
+
+	// Вся строка — ссылка (область нажатия), текст выделяется как обычно
+	.search-result__link {
+		color: inherit;
+		text-decoration: none;
+		transition: color $transition-default;
+
+		&::after {
+			position: absolute;
+			inset: 0;
+			content: "";
+		}
+
+		&:hover {
+			color: palette("blue-hover");
+		}
+	}
+
+	.search-result__title mark,
+	.search-result__snippet mark {
+		font-weight: 600;
+		color: palette("blue-txt");
+		background: none;
+	}
+
+	.search-result__snippet {
+		@include text("m-400");
+
+		display: -webkit-box;
+		max-width: 100%;
+		overflow: hidden;
+		color: palette("dark-grey-txt");
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+
+		@include up(tablet) {
+			-webkit-line-clamp: 1;
+		}
+	}
+
+	.search-result__meta {
+		@include text("s-400");
+
+		color: palette("icon-grey");
+	}
+}

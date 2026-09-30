@@ -1,0 +1,194 @@
+import { announce } from '@/utils/announce'
+import { lockBody } from '@/utils/scroll-lock'
+
+// Фильтры страницы результатов. Блок внутри GET-формы поиска.
+// - С 1024 (сайдбар): фильтр применяется сразу — форма отправляется при выборе (список с
+//   мультивыбором — один раз, когда его закрыли: событие select:commit).
+// - До 1024 (панель на весь экран): кнопка data-search-filters-open="<id>" открывает, ×/Esc —
+//   закрывают без применения (форма возвращается к исходным значениям). Выбор меняет только
+//   число на кнопке «Показать N результатов» (запрос на countUrl, без перезагрузки).
+// - Отправка: пустые параметры в адрес не попадают (?q=иван&section=news, без «&date_from=»).
+const DESKTOP = '(min-width: 1024px)'
+const COUNT_DELAY = 300
+const plural = (n, one, few, many) => {
+	const mod10 = n % 10
+	const mod100 = n % 100
+	if (mod10 === 1 && mod100 !== 11) return one
+	if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return few
+	return many
+}
+const countText = (n) => `Показать ${n} ${plural(n, 'результат', 'результата', 'результатов')}`
+
+export default function init(root) {
+	const controller = new AbortController()
+	const { signal } = controller
+	const form = root.closest('form')
+	const countButton = root.querySelector('[data-search-count]')
+	const countUrl = root.dataset.searchCountUrl || ''
+	const media = window.matchMedia(DESKTOP)
+	let release = null
+	let opener = null
+	let countTimer = 0
+	let countRequest = null
+
+	const isPanel = () => !media.matches
+	const isOpen = () => root.classList.contains('is-open')
+
+	const params = (data) => {
+		const search = new URLSearchParams()
+		for (const [key, value] of data) if (String(value).trim() !== '') search.append(key, value)
+		return search
+	}
+
+	// Число результатов для кнопки панели
+	const updateCount = () => {
+		if (!countUrl || !countButton || !form) return
+		clearTimeout(countTimer)
+		countTimer = setTimeout(async () => {
+			countRequest?.abort()
+			const own = new AbortController()
+			countRequest = own
+			countButton.setAttribute('aria-busy', 'true')
+			const url = new URL(countUrl, window.location.href)
+			params(new FormData(form)).forEach((value, key) => url.searchParams.append(key, value))
+			try {
+				const response = await fetch(url, {
+					signal: own.signal,
+					headers: { Accept: 'application/json' },
+					credentials: 'same-origin',
+				})
+				if (!response.ok) throw new Error(`HTTP ${response.status}`)
+				const data = await response.json()
+				if (own.signal.aborted || signal.aborted) return
+				const count = Math.max(0, Number(data?.count) || 0)
+				countButton.textContent = countText(count)
+				announce(countButton.textContent)
+			} catch {
+				// Не посчитали — на кнопке остаётся прошлое число, применить всё равно можно
+			} finally {
+				if (countRequest === own) {
+					countRequest = null
+					countButton.removeAttribute('aria-busy')
+				}
+			}
+		}, COUNT_DELAY)
+	}
+
+	const focusables = () =>
+		[
+			...root.querySelectorAll(
+				'button, [href], input, select, [tabindex]:not([tabindex="-1"])'
+			),
+		].filter((el) => !el.disabled && el.offsetParent !== null && !el.closest('[hidden]'))
+
+	const open = (trigger) => {
+		if (isOpen() || !isPanel()) return
+		opener = trigger || null
+		root.classList.add('is-open')
+		root.setAttribute('role', 'dialog')
+		root.setAttribute('aria-modal', 'true')
+		opener?.setAttribute('aria-expanded', 'true')
+		release = lockBody()
+		root.querySelector('[data-search-filters-close]')?.focus()
+	}
+
+	const close = ({ discard = true } = {}) => {
+		if (!isOpen()) return
+		root.classList.remove('is-open')
+		root.removeAttribute('role')
+		root.removeAttribute('aria-modal')
+		opener?.setAttribute('aria-expanded', 'false')
+		release?.()
+		release = null
+		// Закрыли без «Показать» — выбор не применяется
+		if (discard) form?.reset()
+		opener?.focus()
+		opener = null
+	}
+
+	document.addEventListener(
+		'click',
+		(event) => {
+			const trigger = event.target.closest(
+				`[data-search-filters-open="${CSS.escape(root.id)}"]`
+			)
+			if (!trigger) return
+			event.preventDefault()
+			open(trigger)
+		},
+		{ signal }
+	)
+	root.querySelector('[data-search-filters-close]')?.addEventListener('click', () => close(), {
+		signal,
+	})
+
+	root.addEventListener(
+		'keydown',
+		(event) => {
+			if (!isOpen()) return
+			// Esc закрывает панель, если его не забрал открытый список или календарь
+			if (event.key === 'Escape' && !event.defaultPrevented) {
+				event.preventDefault()
+				close()
+			}
+			// Фокус не уходит из панели
+			if (event.key === 'Tab') {
+				const items = focusables()
+				if (!items.length) return
+				const first = items[0]
+				const last = items[items.length - 1]
+				if (event.shiftKey && document.activeElement === first) {
+					event.preventDefault()
+					last.focus()
+				} else if (!event.shiftKey && document.activeElement === last) {
+					event.preventDefault()
+					first.focus()
+				}
+			}
+		},
+		{ signal }
+	)
+
+	// Выбор в фильтрах: сайдбар — применить, панель — пересчитать число
+	const onChange = (event) => {
+		if (!root.contains(event.target)) return
+		const multiple = event.target instanceof HTMLSelectElement && event.target.multiple
+		if (isPanel()) {
+			updateCount()
+			return
+		}
+		if (event.type === 'select:commit' || !multiple) form?.requestSubmit()
+	}
+	form?.addEventListener('change', onChange, { signal })
+	form?.addEventListener('select:commit', onChange, { signal })
+
+	// Отправка без пустых параметров
+	form?.addEventListener(
+		'submit',
+		(event) => {
+			if (event.defaultPrevented) return
+			event.preventDefault()
+			const search = params(new FormData(form, event.submitter || undefined))
+			const url = new URL(
+				form.getAttribute('action') || window.location.pathname,
+				window.location.href
+			)
+			url.search = search.toString()
+			release?.()
+			release = null
+			window.location.assign(url)
+		},
+		{ signal }
+	)
+
+	// Стали десктопом с открытой панелью — закрыть (выбор сохраняется)
+	media.addEventListener('change', () => media.matches && close({ discard: false }), { signal })
+
+	return () => {
+		controller.abort()
+		clearTimeout(countTimer)
+		countRequest?.abort()
+		release?.()
+		root.classList.remove('is-open')
+	}
+}

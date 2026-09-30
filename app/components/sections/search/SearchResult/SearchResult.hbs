@@ -1,0 +1,26 @@
+{{!--
+	Результат поиска (Figma: Result — person / news / doc / other / vac, 4733:1819, 4779:3634,
+	4779:3906, 4779:4120, 4779:4209). Превью 64 (мобильный — 48): фото или картинка; без неё —
+	заглушка по типу. Метка раздела, название-ссылка, фрагмент текста, мета-строка.
+	props: url, section (directory | news | documents | vacancies — цвет метки), sectionLabel,
+	type (person | news | document | other | vacancy — заглушка), image { src, srcset },
+	titleHtml, snippetHtml — текст с совпадениями в <mark> (экранирует бэк!), meta.
+--}}
+<article class="search-result">
+    <div class="search-result__preview search-result__preview--{{default props.type 'other'}}">
+        {{#if props.image.src}}
+            <img class="search-result__image" src="{{props.image.src}}" {{#if props.image.srcset}}srcset="{{props.image.srcset}}"{{/if}} width="64" height="64" alt="" loading="lazy" decoding="async" />
+        {{else if (eq props.type 'person')}}{{> components/Icon/Icon name="profile" class="search-result__icon search-result__icon--l"}}
+        {{else if (eq props.type 'news')}}{{> components/Icon/Icon name="news" class="search-result__icon search-result__icon--l"}}
+        {{else if (eq props.type 'vacancy')}}{{> components/Icon/Icon name="case" class="search-result__icon search-result__icon--l"}}
+        {{else if (eq props.type 'document')}}{{> components/Icon/Icon name="document" class="search-result__icon"}}
+        {{else}}{{> components/Icon/Icon name="chain" class="search-result__icon"}}
+        {{/if}}
+    </div>
+    <div class="search-result__text">
+        {{#if props.sectionLabel}}<span class="search-result__label search-result__label--{{default props.section 'directory'}}">{{props.sectionLabel}}</span>{{/if}}
+        <h3 class="search-result__title"><a class="search-result__link" href="{{props.url}}">{{{props.titleHtml}}}</a></h3>
+        {{#if props.snippetHtml}}<p class="search-result__snippet">{{{props.snippetHtml}}}</p>{{/if}}
+        {{#if props.meta}}<p class="search-result__meta">{{props.meta}}</p>{{/if}}
+    </div>
+</article>

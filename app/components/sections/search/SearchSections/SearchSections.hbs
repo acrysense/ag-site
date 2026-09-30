@@ -1,0 +1,22 @@
+{{!--
+	Разделы поиска с количеством найденного (Figma: 1920 — L.Sidebar «Разделы» 4740:1946,
+	360 — лента 360.Search.Tab 4790:3385). Текущий — синий, раздел без результатов — серый.
+	variant: menu — список в сайдбаре (с 1024), tabs — лента вкладок с иконками (до 1024).
+	props: title («Разделы»), variant, items [{ text, url, count, current, icon }].
+--}}
+{{#if props.items.length}}
+    <nav class="search-sections search-sections--{{default props.variant 'menu'}}" aria-label="{{default props.title 'Разделы'}}" {{#if (eq props.variant 'tabs')}}data-module="SearchSections" data-path="sections/search"{{/if}}>
+        {{#unless (eq props.variant 'tabs')}}<h2 class="search-sections__title">{{default props.title "Разделы"}}</h2>{{/unless}}
+        <ul class="search-sections__list" role="list">
+            {{#each props.items}}
+                <li class="search-sections__li">
+                    <a class="search-sections__item{{#unless count}} is-empty{{/unless}}" href="{{url}}" {{#if current}}aria-current="page"{{/if}}>
+                        {{#if (and icon (eq ../props.variant 'tabs'))}}{{> components/Icon/Icon name=icon class="search-sections__icon"}}{{/if}}
+                        <span class="search-sections__text">{{text}}</span>
+                        <span class="search-sections__count"><span class="visually-hidden">: найдено </span>{{default count 0}}</span>
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+    </nav>
+{{/if}}

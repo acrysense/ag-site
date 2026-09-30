@@ -5493,6 +5493,1017 @@
 		"comments": {
 			"url": "/__mock/comments",
 			"entity": "news"
+		},
+		"searchDirectory": {
+			"filters": {
+				"id": "search-filters",
+				"sections": [
+					{
+						"text": "Справочник",
+						"url": "#",
+						"count": 5,
+						"icon": "profile",
+						"current": true
+					},
+					{
+						"text": "Новости",
+						"url": "#",
+						"count": 8,
+						"icon": "news"
+					},
+					{
+						"text": "Документы",
+						"url": "#",
+						"count": 3,
+						"icon": "directory"
+					},
+					{
+						"text": "Вакансии",
+						"url": "#",
+						"count": 2,
+						"icon": "case"
+					}
+				],
+				"sectionLabel": "Справочник",
+				"filters": [
+					{
+						"type": "select",
+						"name": "company[]",
+						"placeholder": "Юр. лицо",
+						"searchPlaceholder": "Найти юр. лицо",
+						"valueText": "Юр. лицо: 1",
+						"options": [
+							{
+								"value": "1",
+								"text": "ООО «Адель Фарм»",
+								"selected": true
+							},
+							{
+								"value": "2",
+								"text": "ООО «Аптека групп»"
+							},
+							{
+								"value": "3",
+								"text": "ООО «Добрыя лекі»"
+							}
+						]
+					},
+					{
+						"type": "select",
+						"name": "department[]",
+						"placeholder": "Отдел",
+						"searchPlaceholder": "Найти отдел",
+						"valueText": "Отдел: 2",
+						"options": [
+							{
+								"value": "1",
+								"text": "Отдел маркетинга",
+								"selected": true
+							},
+							{
+								"value": "2",
+								"text": "Отдел продаж",
+								"selected": true
+							},
+							{
+								"value": "3",
+								"text": "Бухгалтерия"
+							},
+							{
+								"value": "4",
+								"text": "Отдел кадров"
+							},
+							{
+								"value": "5",
+								"text": "IT-отдел"
+							},
+							{
+								"value": "6",
+								"text": "Логистика"
+							},
+							{
+								"value": "7",
+								"text": "Склад"
+							}
+						]
+					},
+					{
+						"type": "select",
+						"name": "position[]",
+						"placeholder": "Должность",
+						"searchPlaceholder": "Найти должность",
+						"options": [
+							{
+								"value": "1",
+								"text": "Провизор"
+							},
+							{
+								"value": "2",
+								"text": "Фармацевт"
+							},
+							{
+								"value": "3",
+								"text": "Менеджер по закупкам"
+							},
+							{
+								"value": "4",
+								"text": "Маркетолог"
+							},
+							{
+								"value": "5",
+								"text": "Специалист по продажам"
+							},
+							{
+								"value": "6",
+								"text": "Руководитель направления"
+							}
+						]
+					},
+					{
+						"type": "select",
+						"name": "city[]",
+						"placeholder": "Город",
+						"searchPlaceholder": "Найти город",
+						"options": [
+							{
+								"value": "1",
+								"text": "Минск"
+							},
+							{
+								"value": "2",
+								"text": "Гродно"
+							},
+							{
+								"value": "3",
+								"text": "Брест"
+							},
+							{
+								"value": "4",
+								"text": "Гомель"
+							},
+							{
+								"value": "5",
+								"text": "Витебск"
+							},
+							{
+								"value": "6",
+								"text": "Могилёв"
+							}
+						]
+					}
+				],
+				"resetUrl": "./search.html?q=иван",
+				"countUrl": "/__mock/search-count",
+				"countText": "Показать 5 результатов"
+			},
+			"results": {
+				"query": "иван",
+				"foundText": "Найдено 5 сотрудников в Справочнике",
+				"sections": [
+					{
+						"text": "Справочник",
+						"url": "#",
+						"count": 5,
+						"icon": "profile",
+						"current": true
+					},
+					{
+						"text": "Новости",
+						"url": "#",
+						"count": 8,
+						"icon": "news"
+					},
+					{
+						"text": "Документы",
+						"url": "#",
+						"count": 3,
+						"icon": "directory"
+					},
+					{
+						"text": "Вакансии",
+						"url": "#",
+						"count": 2,
+						"icon": "case"
+					}
+				],
+				"filtersId": "search-filters",
+				"activeFilters": 2,
+				"sort": {
+					"name": "sort",
+					"submit": true,
+					"options": [
+						{
+							"value": "alpha",
+							"text": "По алфавиту",
+							"selected": true
+						},
+						{
+							"value": "relevance",
+							"text": "По релевантности"
+						}
+					]
+				},
+				"items": [
+					{
+						"url": "#",
+						"section": "directory",
+						"sectionLabel": "Справочник",
+						"type": "person",
+						"image": {
+							"src": "./dev/img/person-1.jpg"
+						},
+						"titleHtml": "<mark>Иван</mark>ова Ольга Александровна",
+						"snippetHtml": "Провизор · Аптека №12, Минск, ул. Притыцкого, 34",
+						"meta": "ООО «Адель Фарм» · Отдел продаж"
+					},
+					{
+						"url": "#",
+						"section": "directory",
+						"sectionLabel": "Справочник",
+						"type": "person",
+						"image": {
+							"src": "./dev/img/person-2.jpg"
+						},
+						"titleHtml": "<mark>Иван</mark>чик Дмитрий Олегович",
+						"snippetHtml": "Менеджер по закупкам · Центральный офис",
+						"meta": "ООО «Адель Фарм» · Отдел маркетинга"
+					},
+					{
+						"url": "#",
+						"section": "directory",
+						"sectionLabel": "Справочник",
+						"type": "person",
+						"titleHtml": "<mark>Иван</mark>енко Мария Сергеевна",
+						"snippetHtml": "Маркетолог · Центральный офис",
+						"meta": "ООО «Адель Фарм» · Отдел маркетинга"
+					},
+					{
+						"url": "#",
+						"section": "directory",
+						"sectionLabel": "Справочник",
+						"type": "person",
+						"image": {
+							"src": "./dev/img/person-3.jpg"
+						},
+						"titleHtml": "<mark>Иван</mark>ькова Анна Игоревна",
+						"snippetHtml": "Специалист по продажам · Аптека №4, Гродно",
+						"meta": "ООО «Адель Фарм» · Отдел продаж"
+					},
+					{
+						"url": "#",
+						"section": "directory",
+						"sectionLabel": "Справочник",
+						"type": "person",
+						"image": {
+							"src": "./dev/img/person-4.jpg"
+						},
+						"titleHtml": "<mark>Иван</mark>овский Павел Андреевич",
+						"snippetHtml": "Руководитель направления · Центральный офис",
+						"meta": "ООО «Адель Фарм» · Отдел продаж"
+					}
+				],
+				"empty": {
+					"title": "По вашему запросу ничего не найдено",
+					"text": "Проверьте раскладку клавиатуры и опечатки, попробуйте сократить запрос или использовать другие слова. Если выбраны фильтры — сбросьте их или выберите другой раздел слева.",
+					"resetUrl": "./search.html?q=иван",
+					"clearUrl": "./search.html"
+				},
+				"id": "search-results-searchDirectory"
+			}
+		},
+		"searchNews": {
+			"filters": {
+				"id": "search-filters-news",
+				"sections": [
+					{
+						"text": "Справочник",
+						"url": "#",
+						"count": 12,
+						"icon": "profile"
+					},
+					{
+						"text": "Новости",
+						"url": "#",
+						"count": 2,
+						"icon": "news",
+						"current": true
+					},
+					{
+						"text": "Документы",
+						"url": "#",
+						"count": 5,
+						"icon": "directory"
+					},
+					{
+						"text": "Вакансии",
+						"url": "#",
+						"count": 2,
+						"icon": "case"
+					}
+				],
+				"sectionLabel": "Новости",
+				"filters": [
+					{
+						"type": "date",
+						"nameFrom": "date_from",
+						"nameTo": "date_to",
+						"from": "2026-09-07",
+						"to": "2026-09-18",
+						"placeholder": "Дата публикации"
+					},
+					{
+						"type": "select",
+						"name": "rubric[]",
+						"placeholder": "Рубрика",
+						"searchPlaceholder": "Найти рубрику",
+						"options": [
+							{
+								"value": "1",
+								"text": "Новости холдинга"
+							},
+							{
+								"value": "2",
+								"text": "СТМ"
+							},
+							{
+								"value": "3",
+								"text": "Товары"
+							},
+							{
+								"value": "4",
+								"text": "Мотивационные проекты"
+							},
+							{
+								"value": "5",
+								"text": "Акции"
+							},
+							{
+								"value": "6",
+								"text": "Учебный центр"
+							}
+						]
+					}
+				],
+				"resetUrl": "./search.html?q=иван",
+				"countUrl": "/__mock/search-count",
+				"countText": "Показать 2 результата"
+			},
+			"results": {
+				"query": "иван",
+				"foundText": "Найдено 2 новости в разделе Новости",
+				"sections": [
+					{
+						"text": "Справочник",
+						"url": "#",
+						"count": 12,
+						"icon": "profile"
+					},
+					{
+						"text": "Новости",
+						"url": "#",
+						"count": 2,
+						"icon": "news",
+						"current": true
+					},
+					{
+						"text": "Документы",
+						"url": "#",
+						"count": 5,
+						"icon": "directory"
+					},
+					{
+						"text": "Вакансии",
+						"url": "#",
+						"count": 2,
+						"icon": "case"
+					}
+				],
+				"filtersId": "search-filters-news",
+				"activeFilters": 1,
+				"sort": {
+					"name": "sort",
+					"submit": true,
+					"options": [
+						{
+							"value": "relevance",
+							"text": "По релевантности",
+							"selected": true
+						},
+						{
+							"value": "date",
+							"text": "По дате"
+						}
+					]
+				},
+				"items": [
+					{
+						"url": "./news-article.html",
+						"section": "news",
+						"sectionLabel": "Новости",
+						"type": "news",
+						"image": {
+							"src": "./dev/img/news-1.jpg"
+						},
+						"titleHtml": "<mark>Иван</mark> Купала: как мы провели летний корпоратив",
+						"snippetHtml": "Больше 300 сотрудников собрались на берегу озера, чтобы отметить праздник <mark>Иван</mark>а Купалы: конкурсы, венки и традиционный костёр…",
+						"meta": "Новости · 08.07.2026"
+					},
+					{
+						"url": "./news-article.html",
+						"section": "news",
+						"sectionLabel": "Новости",
+						"type": "news",
+						"titleHtml": "Приказ о назначении: <mark>Иван</mark>ов С.П. — директор по развитию",
+						"snippetHtml": "С 15 сентября 2026 года на должность директора по развитию назначен <mark>Иван</mark>ов Сергей Петрович…",
+						"meta": "Новости · 14.09.2026"
+					}
+				],
+				"empty": {
+					"title": "По вашему запросу ничего не найдено",
+					"text": "Проверьте раскладку клавиатуры и опечатки, попробуйте сократить запрос или использовать другие слова. Если выбраны фильтры — сбросьте их или выберите другой раздел слева.",
+					"resetUrl": "./search.html?q=иван",
+					"clearUrl": "./search.html"
+				},
+				"id": "search-results-searchNews"
+			}
+		},
+		"searchDocs": {
+			"filters": {
+				"id": "search-filters-docs",
+				"sections": [
+					{
+						"text": "Справочник",
+						"url": "#",
+						"count": 12,
+						"icon": "profile"
+					},
+					{
+						"text": "Новости",
+						"url": "#",
+						"count": 8,
+						"icon": "news"
+					},
+					{
+						"text": "Документы",
+						"url": "#",
+						"count": 3,
+						"icon": "directory",
+						"current": true
+					},
+					{
+						"text": "Вакансии",
+						"url": "#",
+						"count": 2,
+						"icon": "case"
+					}
+				],
+				"sectionLabel": "Документы",
+				"filters": [
+					{
+						"type": "date",
+						"nameFrom": "date_from",
+						"nameTo": "date_to",
+						"placeholder": "Дата"
+					},
+					{
+						"type": "select",
+						"name": "filetype[]",
+						"placeholder": "Тип файла",
+						"searchPlaceholder": "Найти тип",
+						"options": [
+							{
+								"value": "1",
+								"text": "PDF"
+							},
+							{
+								"value": "2",
+								"text": "DOCX"
+							},
+							{
+								"value": "3",
+								"text": "XLSX"
+							},
+							{
+								"value": "4",
+								"text": "PPTX"
+							},
+							{
+								"value": "5",
+								"text": "Страница сайта"
+							}
+						]
+					},
+					{
+						"type": "select",
+						"name": "folder[]",
+						"placeholder": "Папка",
+						"searchPlaceholder": "Найти папку",
+						"options": [
+							{
+								"value": "1",
+								"text": "Библиотека / Регламенты"
+							},
+							{
+								"value": "2",
+								"text": "Библиотека / Кадры"
+							},
+							{
+								"value": "3",
+								"text": "Библиотека / Бухгалтерия"
+							},
+							{
+								"value": "4",
+								"text": "Шаблоны"
+							}
+						]
+					}
+				],
+				"resetUrl": "./search.html?q=иван",
+				"countUrl": "/__mock/search-count",
+				"countText": "Показать 3 результата"
+			},
+			"results": {
+				"query": "иван",
+				"foundText": "Найдено 3 документа в разделе Документы",
+				"sections": [
+					{
+						"text": "Справочник",
+						"url": "#",
+						"count": 12,
+						"icon": "profile"
+					},
+					{
+						"text": "Новости",
+						"url": "#",
+						"count": 8,
+						"icon": "news"
+					},
+					{
+						"text": "Документы",
+						"url": "#",
+						"count": 3,
+						"icon": "directory",
+						"current": true
+					},
+					{
+						"text": "Вакансии",
+						"url": "#",
+						"count": 2,
+						"icon": "case"
+					}
+				],
+				"filtersId": "search-filters-docs",
+				"sort": {
+					"name": "sort",
+					"submit": true,
+					"options": [
+						{
+							"value": "relevance",
+							"text": "По релевантности",
+							"selected": true
+						},
+						{
+							"value": "date",
+							"text": "По дате"
+						}
+					]
+				},
+				"items": [
+					{
+						"url": "#",
+						"section": "documents",
+						"sectionLabel": "Документы",
+						"type": "document",
+						"titleHtml": "Инструкция по приёмке товара (ред. <mark>Иван</mark>ова О.А.)",
+						"snippetHtml": "Порядок приёмки товара на аптечный склад, проверка сопроводительных документов. Ответственный за редакцию — <mark>Иван</mark>ова О.А.",
+						"meta": "PDF · 1,2 МБ · Библиотека / Регламенты · обновлено 02.09.2026"
+					},
+					{
+						"url": "#",
+						"section": "documents",
+						"sectionLabel": "Документы",
+						"type": "document",
+						"titleHtml": "Положение о премировании сотрудников (согласовано: <mark>Иван</mark>ов С.П.)",
+						"snippetHtml": "Порядок начисления квартальных и годовых премий, критерии оценки, сроки выплат.",
+						"meta": "DOCX · 240 КБ · Библиотека / Кадры"
+					},
+					{
+						"url": "#",
+						"section": "documents",
+						"sectionLabel": "Документы",
+						"type": "other",
+						"titleHtml": "Памятка новому сотруднику: к кому обращаться (<mark>Иван</mark>ова О.А.)",
+						"snippetHtml": "Контакты кадровой службы, IT-поддержки и бухгалтерии; как получить пропуск и доступы.",
+						"meta": "Страница сайта · обновлено 12.08.2026"
+					}
+				],
+				"empty": {
+					"title": "По вашему запросу ничего не найдено",
+					"text": "Проверьте раскладку клавиатуры и опечатки, попробуйте сократить запрос или использовать другие слова. Если выбраны фильтры — сбросьте их или выберите другой раздел слева.",
+					"resetUrl": "./search.html?q=иван",
+					"clearUrl": "./search.html"
+				},
+				"id": "search-results-searchDocs"
+			}
+		},
+		"searchVacancies": {
+			"filters": {
+				"id": "search-filters-vac",
+				"sections": [
+					{
+						"text": "Справочник",
+						"url": "#",
+						"count": 12,
+						"icon": "profile"
+					},
+					{
+						"text": "Новости",
+						"url": "#",
+						"count": 8,
+						"icon": "news"
+					},
+					{
+						"text": "Документы",
+						"url": "#",
+						"count": 5,
+						"icon": "directory"
+					},
+					{
+						"text": "Вакансии",
+						"url": "#",
+						"count": 2,
+						"icon": "case",
+						"current": true
+					}
+				],
+				"sectionLabel": "Вакансии",
+				"filters": [
+					{
+						"type": "number",
+						"label": "Зарплата, BYN",
+						"nameFrom": "salary_from",
+						"nameTo": "salary_to",
+						"from": "1500",
+						"to": "2500",
+						"placeholderFrom": "Зарплата от",
+						"placeholderTo": "до"
+					},
+					{
+						"type": "select",
+						"name": "city[]",
+						"placeholder": "Город",
+						"searchPlaceholder": "Найти город",
+						"options": [
+							{
+								"value": "1",
+								"text": "Минск"
+							},
+							{
+								"value": "2",
+								"text": "Гродно"
+							},
+							{
+								"value": "3",
+								"text": "Брест"
+							},
+							{
+								"value": "4",
+								"text": "Иваново"
+							}
+						]
+					},
+					{
+						"type": "select",
+						"name": "company[]",
+						"placeholder": "Юр. лицо",
+						"searchPlaceholder": "Найти юр. лицо",
+						"options": [
+							{
+								"value": "1",
+								"text": "ООО «Адель Фарм»"
+							},
+							{
+								"value": "2",
+								"text": "ООО «Аптека групп»"
+							},
+							{
+								"value": "3",
+								"text": "ООО «Добрыя лекі»"
+							}
+						]
+					}
+				],
+				"resetUrl": "./search.html?q=иван",
+				"countUrl": "/__mock/search-count",
+				"countText": "Показать 2 результата"
+			},
+			"results": {
+				"query": "иван",
+				"foundText": "Найдено 2 вакансии в разделе Вакансии",
+				"sections": [
+					{
+						"text": "Справочник",
+						"url": "#",
+						"count": 12,
+						"icon": "profile"
+					},
+					{
+						"text": "Новости",
+						"url": "#",
+						"count": 8,
+						"icon": "news"
+					},
+					{
+						"text": "Документы",
+						"url": "#",
+						"count": 5,
+						"icon": "directory"
+					},
+					{
+						"text": "Вакансии",
+						"url": "#",
+						"count": 2,
+						"icon": "case",
+						"current": true
+					}
+				],
+				"filtersId": "search-filters-vac",
+				"activeFilters": 1,
+				"sort": {
+					"name": "sort",
+					"submit": true,
+					"options": [
+						{
+							"value": "relevance",
+							"text": "По релевантности",
+							"selected": true
+						},
+						{
+							"value": "date",
+							"text": "По дате"
+						}
+					]
+				},
+				"items": [
+					{
+						"url": "#",
+						"section": "vacancies",
+						"sectionLabel": "Вакансии",
+						"type": "vacancy",
+						"titleHtml": "Фармацевт — аптека на ул. <mark>Иван</mark>овская, 12",
+						"snippetHtml": "Полная занятость, сменный график 2/2. Опыт работы от 1 года. Зарплата от 1 800 BYN.",
+						"meta": "Вакансии · Минск · ООО «Добрыя лекі»"
+					},
+					{
+						"url": "#",
+						"section": "vacancies",
+						"sectionLabel": "Вакансии",
+						"type": "vacancy",
+						"titleHtml": "Провизор — аптека №4, <mark>Иван</mark>ово",
+						"snippetHtml": "Полная занятость, график 5/2. Опыт работы от 2 лет, наличие сертификата.",
+						"meta": "Вакансии · Иваново · ООО «Аптека групп» · от 1 800 BYN"
+					}
+				],
+				"empty": {
+					"title": "По вашему запросу ничего не найдено",
+					"text": "Проверьте раскладку клавиатуры и опечатки, попробуйте сократить запрос или использовать другие слова. Если выбраны фильтры — сбросьте их или выберите другой раздел слева.",
+					"resetUrl": "./search.html?q=иван",
+					"clearUrl": "./search.html"
+				},
+				"id": "search-results-searchVacancies"
+			}
+		},
+		"searchEmpty": {
+			"filters": {
+				"id": "search-filters-empty",
+				"sections": [
+					{
+						"text": "Справочник",
+						"url": "#",
+						"count": 0,
+						"icon": "profile",
+						"current": true
+					},
+					{
+						"text": "Новости",
+						"url": "#",
+						"count": 0,
+						"icon": "news"
+					},
+					{
+						"text": "Документы",
+						"url": "#",
+						"count": 0,
+						"icon": "directory"
+					},
+					{
+						"text": "Вакансии",
+						"url": "#",
+						"count": 0,
+						"icon": "case"
+					}
+				],
+				"sectionLabel": "Справочник",
+				"filters": [
+					{
+						"type": "select",
+						"name": "company[]",
+						"placeholder": "Юр. лицо",
+						"searchPlaceholder": "Найти юр. лицо",
+						"valueText": "Юр. лицо: 1",
+						"options": [
+							{
+								"value": "1",
+								"text": "ООО «Адель Фарм»",
+								"selected": true
+							},
+							{
+								"value": "2",
+								"text": "ООО «Аптека групп»"
+							},
+							{
+								"value": "3",
+								"text": "ООО «Добрыя лекі»"
+							}
+						]
+					},
+					{
+						"type": "select",
+						"name": "department[]",
+						"placeholder": "Отдел",
+						"searchPlaceholder": "Найти отдел",
+						"valueText": "Отдел: 2",
+						"options": [
+							{
+								"value": "1",
+								"text": "Отдел маркетинга",
+								"selected": true
+							},
+							{
+								"value": "2",
+								"text": "Отдел продаж",
+								"selected": true
+							},
+							{
+								"value": "3",
+								"text": "Бухгалтерия"
+							},
+							{
+								"value": "4",
+								"text": "Отдел кадров"
+							},
+							{
+								"value": "5",
+								"text": "IT-отдел"
+							},
+							{
+								"value": "6",
+								"text": "Логистика"
+							},
+							{
+								"value": "7",
+								"text": "Склад"
+							}
+						]
+					},
+					{
+						"type": "select",
+						"name": "position[]",
+						"placeholder": "Должность",
+						"searchPlaceholder": "Найти должность",
+						"options": [
+							{
+								"value": "1",
+								"text": "Провизор"
+							},
+							{
+								"value": "2",
+								"text": "Фармацевт"
+							},
+							{
+								"value": "3",
+								"text": "Менеджер по закупкам"
+							},
+							{
+								"value": "4",
+								"text": "Маркетолог"
+							},
+							{
+								"value": "5",
+								"text": "Специалист по продажам"
+							},
+							{
+								"value": "6",
+								"text": "Руководитель направления"
+							}
+						]
+					},
+					{
+						"type": "select",
+						"name": "city[]",
+						"placeholder": "Город",
+						"searchPlaceholder": "Найти город",
+						"options": [
+							{
+								"value": "1",
+								"text": "Минск"
+							},
+							{
+								"value": "2",
+								"text": "Гродно"
+							},
+							{
+								"value": "3",
+								"text": "Брест"
+							},
+							{
+								"value": "4",
+								"text": "Гомель"
+							},
+							{
+								"value": "5",
+								"text": "Витебск"
+							},
+							{
+								"value": "6",
+								"text": "Могилёв"
+							}
+						]
+					}
+				],
+				"resetUrl": "./search.html?q=иван",
+				"countUrl": "/__mock/search-count",
+				"countText": "Показать 0 результатов"
+			},
+			"results": {
+				"query": "ывапролд",
+				"foundText": "Ничего не найдено",
+				"sections": [
+					{
+						"text": "Справочник",
+						"url": "#",
+						"count": 0,
+						"icon": "profile",
+						"current": true
+					},
+					{
+						"text": "Новости",
+						"url": "#",
+						"count": 0,
+						"icon": "news"
+					},
+					{
+						"text": "Документы",
+						"url": "#",
+						"count": 0,
+						"icon": "directory"
+					},
+					{
+						"text": "Вакансии",
+						"url": "#",
+						"count": 0,
+						"icon": "case"
+					}
+				],
+				"filtersId": "search-filters-empty",
+				"activeFilters": 2,
+				"sort": {
+					"name": "sort",
+					"submit": true,
+					"options": [
+						{
+							"value": "alpha",
+							"text": "По алфавиту",
+							"selected": true
+						},
+						{
+							"value": "relevance",
+							"text": "По релевантности"
+						}
+					]
+				},
+				"items": [],
+				"empty": {
+					"title": "По вашему запросу ничего не найдено",
+					"text": "Проверьте раскладку клавиатуры и опечатки, попробуйте сократить запрос или использовать другие слова. Если выбраны фильтры — сбросьте их или выберите другой раздел слева.",
+					"resetUrl": "./search.html?q=иван",
+					"clearUrl": "./search.html"
+				},
+				"id": "search-results-searchEmpty"
+			}
+		},
+		"searchResultsLong": {
+			"items": [
+				{
+					"url": "#",
+					"section": "documents",
+					"sectionLabel": "Документы",
+					"type": "document",
+					"titleHtml": "Очень длинное название документа, которое не помещается в одну строку: регламент приёмки, хранения и отпуска лекарственных средств в аптеках холдинга (ред. <mark>Иван</mark>ова О.А.)",
+					"snippetHtml": "Длинный фрагмент текста документа: порядок приёмки товара, проверка документов, хранение, отпуск, возврат. порядок приёмки товара, проверка документов, хранение, отпуск, возврат. порядок приёмки товара, проверка документов, хранение, отпуск, возврат. порядок приёмки товара, проверка документов, хранение, отпуск, возврат. ",
+					"meta": "PDF · 12,4 МБ · Библиотека / Регламенты / Приёмка / Архив 2024 · обновлено 02.09.2026"
+				}
+			]
 		}
 	}
 }

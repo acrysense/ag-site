@@ -30,6 +30,7 @@ window.fetch = async (input, init = {}) => {
 	const url = new URL(source, window.location.href)
 	if (url.pathname === '/__mock/form') return mockForm(init)
 	if (url.pathname === '/__mock/comments') return mockComments(url, init)
+	if (url.pathname === '/__mock/search-count') return mockSearchCount(url, init)
 	if (url.pathname !== '/__mock/select') return realFetch(input, init)
 	console.info('[mock-select]', url.search || '(без параметров)')
 	await new Promise((resolve, reject) => {
@@ -287,4 +288,24 @@ async function mockComments(url, init) {
 		return json({ ok: true, mode: 'removed' })
 	}
 	return json({ ok: false, message: 'Неизвестное действие' }, 400)
+}
+
+// 4) Поиск: число результатов для кнопки «Показать N результатов» (панель фильтров).
+// GET /__mock/search-count?<параметры формы> → { count }. Чем больше фильтров, тем меньше.
+async function mockSearchCount(url, init) {
+	console.info('[mock-search-count]', url.search)
+	await new Promise((resolve, reject) => {
+		const timer = setTimeout(resolve, 300)
+		init.signal?.addEventListener('abort', () => {
+			clearTimeout(timer)
+			reject(new DOMException('Aborted', 'AbortError'))
+		})
+	})
+	const filters = [...url.searchParams.keys()].filter(
+		(key) => !['q', 'section', 'sort'].includes(key)
+	)
+	const count = Math.max(0, 12 - filters.length * 2)
+	return new Response(JSON.stringify({ count }), {
+		headers: { 'Content-Type': 'application/json' },
+	})
 }

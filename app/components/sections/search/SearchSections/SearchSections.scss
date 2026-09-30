@@ -1,0 +1,123 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: «Разделы» в сайдбаре (4740:1946): заголовок H3, пункты через 15 — название L/400 и
+// число M/400 Icon.Grey по краям; текущий — Blue.TXT целиком; без результатов — серый.
+// Лента 360.Search.Tab (4790:3385): вкладки 36, рамка Block.Border, скругление 10, поля 12/14,
+// значок 16 и «Справочник · 5» M/400; текущая — рамка Main Blue и Blue.TXT. Прокрутка вбок.
+@layer components {
+	.search-sections--menu {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	.search-sections__title {
+		@include text("h3");
+
+		color: palette("black-txt");
+	}
+
+	.search-sections__list {
+		display: flex;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.search-sections--menu .search-sections__list {
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	.search-sections__item {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+		color: palette("black-txt");
+		text-decoration: none;
+		transition:
+			color $transition-default,
+			border-color $transition-default;
+
+		&:hover,
+		&[aria-current] {
+			color: palette("blue-txt");
+		}
+
+		&.is-empty:not([aria-current]) {
+			color: palette("icon-grey");
+		}
+	}
+
+	.search-sections--menu .search-sections__item {
+		justify-content: space-between;
+	}
+
+	.search-sections__text {
+		@include text("l-400");
+	}
+
+	.search-sections__count {
+		@include text("m-400");
+
+		.search-sections--menu .search-sections__item:not([aria-current]) & {
+			color: palette("icon-grey");
+		}
+	}
+
+	// ---------- Лента вкладок ----------
+	.search-sections--tabs .search-sections__list {
+		gap: 8px;
+		margin: 0 -10px;
+		padding: 0 10px;
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scrollbar-width: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	.search-sections__li {
+		flex: none;
+	}
+
+	.search-sections--tabs .search-sections__item {
+		height: 36px;
+		padding: 0 14px 0 12px;
+		white-space: nowrap;
+		background: palette("white");
+		border: 1px solid palette("block-border");
+		border-radius: $radius-inner-block;
+
+		&[aria-current] {
+			border-color: palette("main-blue");
+		}
+	}
+
+	.search-sections--tabs .search-sections__text {
+		@include text("m-400");
+	}
+
+	// «Справочник · 5» — одной строкой: между названием и числом только « · »
+	.search-sections--tabs .search-sections__item {
+		gap: 0;
+	}
+
+	.search-sections--tabs .search-sections__count {
+		white-space: pre;
+
+		&::before {
+			content: " · ";
+		}
+	}
+
+	.search-sections__icon {
+		flex: none;
+		width: 16px;
+		height: 16px;
+		margin-right: 8px;
+	}
+}

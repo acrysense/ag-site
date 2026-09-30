@@ -1,0 +1,184 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma, 1920: L.Sidebar (4740:1945) — белая карточка 350, поля 20, через 20: «Разделы», черта
+// Block.Border, «Фильтры» (H4) и поля через 10, «Сбросить фильтры» (M/400 Main Blue).
+// 360: «Фильтры» на весь экран (4790:3529) — шапка 56 (H3, × 36 на BG.Main), подпись раздела
+// заглавными, поля через 12; внизу закреплены «Сбросить» и «Показать N результатов» (70, черта
+// Form.Border). Панель — до 1024: сайдбару 350 рядом с выдачей нужна ширина десктопа.
+@layer components {
+	.search-filters {
+		display: none;
+		min-width: 0;
+
+		// Панель на весь экран (до 1024)
+		&.is-open {
+			position: fixed;
+			inset: 0;
+			z-index: 95;
+			display: flex;
+			flex-direction: column;
+			background: palette("white");
+		}
+
+		@include up(desktop) {
+			display: flex;
+			flex-direction: column;
+			padding: 20px;
+			background: palette("white");
+			border-radius: $radius-content-block;
+		}
+	}
+
+	.search-filters__head {
+		display: flex;
+		flex: none;
+		align-items: center;
+		justify-content: space-between;
+		height: 56px;
+		padding: 0 8px 0 14px;
+
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.search-filters__panel-title {
+		@include text("h3-360");
+
+		color: palette("black-txt");
+	}
+
+	.search-filters__close {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		padding: 0;
+		color: palette("black-txt");
+		cursor: pointer;
+		background: palette("bg-main");
+		border: 0;
+		border-radius: 50%;
+	}
+
+	.search-filters__close-icon {
+		width: 10px;
+		height: 10px;
+	}
+
+	.search-filters__body {
+		display: flex;
+		flex: 1 1 auto;
+		flex-direction: column;
+		gap: 20px;
+		min-height: 0;
+		padding: 8px 10px 20px;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+
+		@include up(desktop) {
+			padding: 0;
+			overflow: visible;
+		}
+	}
+
+	// Разделы — в сайдбаре; на мобильном они лентой над выдачей (SearchSections tabs)
+	.search-filters__sections {
+		display: none;
+
+		@include up(desktop) {
+			display: block;
+		}
+	}
+
+	.search-filters__group {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		@include up(desktop) {
+			padding-top: 20px;
+			border-top: 1px solid palette("block-border");
+		}
+	}
+
+	.search-filters__title {
+		display: none;
+
+		@include up(desktop) {
+			@include text("h4");
+
+			display: block;
+			color: palette("black-txt");
+		}
+	}
+
+	.search-filters__label {
+		@include text("s-700-caps");
+
+		padding-left: 4px;
+		color: palette("dark-grey-txt");
+		text-transform: uppercase;
+
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.search-filters__list {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+
+		@include up(desktop) {
+			gap: 10px;
+		}
+	}
+
+	.search-filters__reset {
+		@include text("m-400");
+
+		display: none;
+		align-self: flex-start;
+		color: palette("main-blue");
+		text-decoration: none;
+		transition: color $transition-default;
+
+		&:hover {
+			color: palette("blue-hover");
+		}
+
+		@include up(desktop) {
+			display: block;
+		}
+	}
+
+	.search-filters__actions {
+		display: flex;
+		flex: none;
+		gap: 10px;
+		padding: 10px 10px calc(14px + env(safe-area-inset-bottom));
+		border-top: 1px solid palette("form-border");
+
+		@include up(desktop) {
+			display: none;
+		}
+
+		.btn--light {
+			@include text("m-400");
+
+			color: palette("black-txt");
+		}
+	}
+
+	.search-filters__submit {
+		flex: 1 1 auto;
+		min-width: 0;
+
+		&[aria-busy="true"] {
+			cursor: progress;
+		}
+	}
+}

@@ -1,0 +1,51 @@
+{{!--
+	Разделы и фильтры страницы результатов (Figma: 1920 — L.Sidebar 4740:1945, 4779:3601, 4779:3865,
+	4779:4142; 360 — «Фильтры» на весь экран 4790:3529). Один блок: с 1024 — сайдбар (разделы,
+	черта, фильтры, «Сбросить фильтры»), фильтр применяется сразу; до 1024 — панель на весь экран
+	по кнопке «Фильтры · N» (data-search-filters-open), выбор применяется кнопкой «Показать N
+	результатов», число пересчитывается на лету (countUrl). Блок — внутри формы поиска (GET).
+	props: id, sections (SearchSections), sectionLabel (подпись над фильтрами на мобильном),
+	filters [{ type: select | date | number, … }], resetUrl, countUrl, countText («Показать 5
+	результатов»).
+	Фильтр select — Select с multiple: name («department[]»), placeholder, options, searchPlaceholder,
+	valueText; date — DateRange: nameFrom, nameTo, from, to, placeholder; number — NumberRange:
+	label, nameFrom, nameTo, from, to, placeholderFrom, placeholderTo (во всю ширину).
+--}}
+<aside class="search-filters" id="{{default props.id 'search-filters'}}" aria-labelledby="{{default props.id 'search-filters'}}-title" data-module="SearchFilters" data-path="sections/search" {{#if props.countUrl}}data-search-count-url="{{props.countUrl}}"{{/if}}>
+    <div class="search-filters__head">
+        <h2 class="search-filters__panel-title" id="{{default props.id 'search-filters'}}-title">Фильтры</h2>
+        <button class="search-filters__close" type="button" aria-label="Закрыть фильтры" data-search-filters-close>
+            {{> components/Icon/Icon name="close" class="search-filters__close-icon"}}
+        </button>
+    </div>
+    <div class="search-filters__body">
+        <div class="search-filters__sections">
+            {{> sections/search/SearchSections/SearchSections props=(obj items=props.sections variant="menu")}}
+        </div>
+        {{#if props.filters.length}}
+            <div class="search-filters__group">
+                <p class="search-filters__title">Фильтры</p>
+                {{#if props.sectionLabel}}<p class="search-filters__label">{{props.sectionLabel}}</p>{{/if}}
+                <div class="search-filters__list">
+                    {{#each props.filters}}
+                        <div class="search-filters__item{{#if (eq type 'number')}} search-filters__item--wide{{/if}}">
+                            {{#if (eq type 'select')}}
+                                {{> components/Select/Select props=(obj name=name placeholder=placeholder options=options multiple=true search=true searchPlaceholder=searchPlaceholder valueText=valueText url=url)}}
+                            {{else if (eq type 'date')}}
+                                {{> components/DateRange/DateRange props=this}}
+                            {{else if (eq type 'number')}}
+                                {{> components/NumberRange/NumberRange props=this}}
+                            {{/if}}
+                        </div>
+                    {{/each}}
+                </div>
+                {{#if props.resetUrl}}<a class="search-filters__reset" href="{{props.resetUrl}}">Сбросить фильтры</a>{{/if}}
+                <noscript><button class="btn btn--light btn--m" type="submit">Показать</button></noscript>
+            </div>
+        {{/if}}
+    </div>
+    <div class="search-filters__actions">
+        {{#if props.resetUrl}}<a class="btn btn--light btn--m search-filters__reset-button" href="{{props.resetUrl}}">Сбросить</a>{{/if}}
+        <button class="btn btn--general btn--m search-filters__submit" type="submit" data-search-count>{{default props.countText "Показать результаты"}}</button>
+    </div>
+</aside>

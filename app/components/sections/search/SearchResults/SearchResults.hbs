@@ -1,0 +1,47 @@
+{{!--
+	Выдача поиска (Figma: 1920 — Main 4733:1752, пусто — 4733:2020; 360 — Body 4790:3382,
+	пусто — 4790:4188). Белая карточка: заголовок с запросом, «Найдено …», сортировка, список.
+	До 1024 добавляются лента разделов и кнопка «Фильтры · N» (открывает SearchFilters), вместо
+	страниц — «Показать ещё» (догружает следующую страницу без перехода).
+	props: id, title, query, foundText, sections (для ленты), filtersId, activeFilters (число
+	выбранных), sort (Select), items [SearchResult], pagination (Pagination), more { url, text },
+	empty { title, text, resetUrl, resetText, clearUrl, clearText }.
+--}}
+<section class="search-results" id="{{default props.id 'search-results'}}" aria-labelledby="{{default props.id 'search-results'}}-title" data-module="SearchResults" data-path="sections/search">
+    <div class="search-results__head">
+        <div class="search-results__heading">
+            <h1 class="search-results__title" id="{{default props.id 'search-results'}}-title">{{default props.title "Результаты поиска"}}{{#if props.query}}<span class="search-results__query"> «{{props.query}}»</span>{{/if}}</h1>
+            {{#if props.foundText}}<p class="search-results__found">{{props.foundText}}</p>{{/if}}
+        </div>
+        <div class="search-results__tabs">
+            {{> sections/search/SearchSections/SearchSections props=(obj items=props.sections variant="tabs")}}
+        </div>
+        <div class="search-results__controls">
+            {{#if props.filtersId}}
+                <button class="btn btn--light btn--m search-results__filters" type="button" data-search-filters-open="{{props.filtersId}}" aria-controls="{{props.filtersId}}" aria-expanded="false">Фильтры{{#if props.activeFilters}} · {{props.activeFilters}}{{/if}}</button>
+            {{/if}}
+            {{#if (and props.sort props.items.length)}}
+                <div class="search-results__sort">{{> components/Select/Select props=props.sort}}</div>
+            {{/if}}
+        </div>
+    </div>
+    {{#if props.items.length}}
+        <ul class="search-results__list" role="list" data-search-items>
+            {{#each props.items}}
+                <li>{{> sections/search/SearchResult/SearchResult props=this}}</li>
+            {{/each}}
+        </ul>
+        {{#if props.pagination}}<div class="search-results__pages">{{> components/Pagination/Pagination props=props.pagination}}</div>{{/if}}
+        {{#if props.more.url}}<a class="btn btn--light btn--m search-results__more" href="{{props.more.url}}" data-search-more>{{default props.more.text "Показать ещё"}}</a>{{/if}}
+    {{else}}
+        <div class="search-results__empty">
+            <span class="search-results__empty-icon">{{> components/Icon/Icon name="search" class="search-results__empty-glyph"}}</span>
+            <h2 class="search-results__empty-title">{{default props.empty.title "По вашему запросу ничего не найдено"}}</h2>
+            {{#if props.empty.text}}<p class="search-results__empty-text">{{props.empty.text}}</p>{{/if}}
+            <div class="search-results__empty-actions">
+                {{#if props.empty.resetUrl}}<a class="btn btn--general btn--m" href="{{props.empty.resetUrl}}">{{default props.empty.resetText "Сбросить фильтры"}}</a>{{/if}}
+                {{#if props.empty.clearUrl}}<a class="btn btn--light btn--m search-results__clear" href="{{props.empty.clearUrl}}">{{default props.empty.clearText "Очистить поиск"}}</a>{{/if}}
+            </div>
+        </div>
+    {{/if}}
+</section>

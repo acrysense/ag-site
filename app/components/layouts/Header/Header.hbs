@@ -21,7 +21,7 @@
             <span class="header__title header__title--short">{{default props.titleShort props.title}}</span>
         </a>
 
-        {{> components/SearchField/SearchField props=(obj action=props.search.action name=props.search.name placeholder=props.search.placeholder id=(default props.id 'header') class="header__search")}}
+        {{> components/SearchField/SearchField props=(obj action=props.search.action name=props.search.name value=props.search.value placeholder=props.search.placeholder id=(default props.id 'header') class="header__search")}}
 
         <div class="header__actions">
             {{#if props.user}}

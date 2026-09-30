@@ -1,0 +1,207 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma, 1920: Main (4733:1752) — белая карточка, поля 30, через 24: заголовок H1 с запросом и
+// «Найдено …» (M/400 Dark-grey) через 6, справа сортировка 240; список; пусто (4733:2020) —
+// круг 80 на BG.Main с лупой 32, H3, текст до 640, кнопки через 10.
+// 360 (4790:3382): в белом блоке страницы через 16 — «Результаты поиска» (H2, запрос — в строке
+// поиска), «Найдено …», лента разделов, «Фильтры · N» и сортировка в ряд, список, «Показать ещё».
+@layer components {
+	.search-results {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		min-width: 0;
+
+		@include up(desktop) {
+			gap: 24px;
+			padding: 30px;
+			background: palette("white");
+			border-radius: $radius-content-block;
+		}
+	}
+
+	.search-results__head {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+
+		@include up(desktop) {
+			flex-direction: row;
+			gap: 20px;
+			align-items: flex-start;
+			justify-content: space-between;
+		}
+	}
+
+	.search-results__heading {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		min-width: 0;
+
+		@include up(desktop) {
+			gap: 6px;
+		}
+	}
+
+	.search-results__title {
+		@include text("h2");
+
+		color: palette("black-h");
+		overflow-wrap: anywhere;
+
+		@include up(desktop) {
+			@include text("h1");
+		}
+	}
+
+	// Запрос в заголовке — с 1024; на мобильном он в строке поиска (для скринридера остаётся)
+	.search-results__query {
+		@include down(desktop) {
+			@include visually-hidden;
+		}
+	}
+
+	.search-results__found {
+		@include text("m-400-360");
+
+		color: palette("dark-grey-txt");
+
+		@include up(desktop) {
+			@include text("m-400");
+		}
+	}
+
+	.search-results__tabs {
+		min-width: 0;
+
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.search-results__controls {
+		display: flex;
+		gap: 10px;
+		min-width: 0;
+
+		&:empty {
+			display: none;
+		}
+
+		@include up(desktop) {
+			flex: none;
+		}
+	}
+
+	.search-results__filters {
+		@include text("m-400");
+
+		color: palette("black-txt");
+
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.search-results__sort {
+		flex: 1 1 auto;
+		min-width: 0;
+
+		@include up(desktop) {
+			flex: none;
+			width: 240px;
+		}
+	}
+
+	.search-results__list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.search-results__pages {
+		display: none;
+
+		@include up(desktop) {
+			display: block;
+		}
+	}
+
+	.search-results__more {
+		@include text("m-400");
+
+		width: 100%;
+		color: palette("black-txt");
+
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	// ---------- Ничего не найдено ----------
+	.search-results__empty {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+		align-items: center;
+		padding: 40px 0;
+		text-align: center;
+
+		@include up(desktop) {
+			padding: 60px 0;
+		}
+	}
+
+	.search-results__empty-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 80px;
+		height: 80px;
+		color: palette("black-txt");
+		background: palette("bg-main");
+		border-radius: 50%;
+	}
+
+	.search-results__empty-glyph {
+		width: 32px;
+		height: 32px;
+	}
+
+	.search-results__empty-title {
+		@include text("h3");
+
+		color: palette("black-h");
+	}
+
+	.search-results__empty-text {
+		@include text("m-400");
+
+		max-width: 640px;
+		color: palette("dark-grey-txt");
+	}
+
+	.search-results__empty-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		justify-content: center;
+
+		&:empty {
+			display: none;
+		}
+
+		@include down(tablet) {
+			flex-direction: column;
+			align-self: stretch;
+		}
+	}
+
+	.search-results__clear {
+		@include text("m-400");
+
+		color: palette("black-txt");
+	}
+}

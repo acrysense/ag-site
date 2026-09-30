@@ -383,6 +383,39 @@
 				{{#> state label="С сервера: ошибка"}}
 					{{> components/Select/Select props=data.selectRemoteError}}
 				{{/state}}
+				{{#> state label="Мультивыбор (фильтр): выбрано 2"}}
+					<div class="story-column-narrow">{{> components/Select/Select props=(lookup data.searchDirectory.filters.filters 1)}}</div>
+				{{/state}}
+				{{#> state label="Мультивыбор: ничего не выбрано"}}
+					<div class="story-column-narrow">{{> components/Select/Select props=(lookup data.searchDirectory.filters.filters 2)}}</div>
+				{{/state}}
+			{{/story}}
+
+			{{#> story id="calendar" group="Компоненты" title="Календарь" description='Figma: Calendar.Range (4743:2251), пресеты — 4743:37841. Первый клик — начало, второй — конец; пресеты Неделя (пн–вс), Месяц, Год (сетка месяцев), повторный клик снимает. Кнопок пресетов в макете нет — ряд наш. Стрелки, PageUp/PageDown, Home/End — с клавиатуры.'}}
+				{{#> state label="Пусто"}}
+					<div data-module="Calendar" data-path="components"></div>
+				{{/state}}
+				{{#> state label="Выбран период"}}
+					<div data-module="Calendar" data-path="components" data-from="2026-09-07" data-to="2026-09-18"></div>
+				{{/state}}
+			{{/story}}
+
+			{{#> story id="date-range" group="Компоненты" title="Поле периода" description='Поле 46 с иконкой календаря; по клику — Calendar.Range под полем (на мобильном — нижний лист, 4786:2977). «Применить» пишет даты в форму, «Сбросить» очищает. Без JS — два поля даты.'}}
+				{{#> state label="Пусто"}}
+					<div class="story-column-narrow">{{> components/DateRange/DateRange props=(lookup data.searchDocs.filters.filters 0)}}</div>
+				{{/state}}
+				{{#> state label="Заполнено"}}
+					<div class="story-column-narrow">{{> components/DateRange/DateRange props=(lookup data.searchNews.filters.filters 0)}}</div>
+				{{/state}}
+			{{/story}}
+
+			{{#> story id="number-range" group="Компоненты" title="Диапазон чисел" description='Figma: Filter.NumberRange (4779:4361). Разряды через пробел, в форму уходят цифры.'}}
+				{{#> state label="Заполнено"}}
+					<div class="story-column-narrow">{{> components/NumberRange/NumberRange props=(lookup data.searchVacancies.filters.filters 0)}}</div>
+				{{/state}}
+				{{#> state label="Пусто"}}
+					<div class="story-column-narrow">{{> components/NumberRange/NumberRange props=(obj label="Зарплата" nameFrom="from" nameTo="to" placeholderFrom="Зарплата от" placeholderTo="до")}}</div>
+				{{/state}}
 			{{/story}}
 
 			{{#> story id="suggest-topic" group="Каркас" title="Предложить тему" description='Figma: 1920 — 4132:1034, 4134:27265; 360 — 4879:1361, 4880:1513. Окно из подвала. Проверка при отправке, ошибки у полей, отправка с sessid; после отправки — окно «Спасибо». В витрине сервер имитируется: тема со словом «ошибка» — ошибка поля, «сбой» — общая ошибка.'}}
@@ -493,6 +526,44 @@
 					<div class="container"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-fail" url=data.comments.url entity=data.comments.entity entityId="fail")}}</div></div>
 				{{/state}}
 				{{#> state label="Длинный контент" note="в «Администратор»: ветка в 4 уровня, текст с переносами, догрузка ответов и ленты"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="search-result" group="Поиск" title="Результат поиска" description='Figma: Result — person / news / doc / other / vac. Без картинки — заглушка по типу; совпадения — в mark (экранирует бэк).'}}
+				{{#> state label="Сотрудник, новость, документ, прочее, вакансия"}}
+					<ul class="search-results__list" role="list">
+						<li>{{> sections/search/SearchResult/SearchResult props=(lookup data.searchDirectory.results.items 0)}}</li>
+						<li>{{> sections/search/SearchResult/SearchResult props=(lookup data.searchDirectory.results.items 2)}}</li>
+						<li>{{> sections/search/SearchResult/SearchResult props=(lookup data.searchNews.results.items 1)}}</li>
+						<li>{{> sections/search/SearchResult/SearchResult props=(lookup data.searchDocs.results.items 0)}}</li>
+						<li>{{> sections/search/SearchResult/SearchResult props=(lookup data.searchDocs.results.items 2)}}</li>
+						<li>{{> sections/search/SearchResult/SearchResult props=(lookup data.searchVacancies.results.items 0)}}</li>
+					</ul>
+				{{/state}}
+				{{#> state label="Длинный контент"}}
+					<ul class="search-results__list" role="list">
+						<li>{{> sections/search/SearchResult/SearchResult props=(lookup data.searchResultsLong.items 0)}}</li>
+					</ul>
+				{{/state}}
+			{{/story}}
+
+			{{#> story id="search-page" group="Поиск" title="Результаты поиска" description='Figma: 1920 — 4733:1650, 4779:3591, 4779:3855, 4779:4132, 4733:1908; 360 — 4790:3323…4790:4129. С 1024 — сайдбар с разделами и фильтрами (применяются сразу), до 1024 — лента разделов и «Фильтры · N» (панель на весь экран, «Показать N результатов» пересчитывается).'}}
+				{{#> state label="Справочник" bg="page"}}
+					<div class="container"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchDirectory.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchDirectory.results}}</form></div>
+				{{/state}}
+				{{#> state label="Новости — период" bg="page"}}
+					<div class="container"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchNews.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchNews.results}}</form></div>
+				{{/state}}
+				{{#> state label="Документы — тип и прочее" bg="page"}}
+					<div class="container"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchDocs.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchDocs.results}}</form></div>
+				{{/state}}
+				{{#> state label="Вакансии — зарплата" bg="page"}}
+					<div class="container"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchVacancies.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchVacancies.results}}</form></div>
+				{{/state}}
+				{{#> state label="Пусто" bg="page"}}
+					<div class="container"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchEmpty.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchEmpty.results}}</form></div>
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера; фильтры применяются переходом, «Показать ещё» — кнопка в состоянии загрузки"}}{{/state}}
+				{{#> state label="Ошибка" note="страница поиска отдаётся бэком целиком; ошибка подсчёта в панели — на кнопке остаётся прошлое число"}}{{/state}}
 			{{/story}}
 		</main>
 		{{> layouts/SiteModals/SiteModals props=data.siteModals}}
