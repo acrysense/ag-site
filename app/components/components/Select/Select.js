@@ -1,3 +1,4 @@
+import SimpleBar from 'simplebar'
 import { announce } from '@/utils/announce'
 
 // Выпадающий список. Без JS работает нативный <select> прозрачным слоем поверх поля. Здесь он
@@ -125,7 +126,18 @@ export default function init(root) {
 	const statusBox = document.createElement('div')
 	statusBox.className = 'select__status'
 	statusBox.hidden = true
-	popup.append(list, statusBox)
+
+	// Прокрутка — SimpleBar: окно не выше ~7 пунктов, полоса по макету, а не системная
+	const scroll = document.createElement('div')
+	scroll.className = 'select__scroll'
+	popup.append(scroll, statusBox)
+	root.append(popup)
+	const simplebar = new SimpleBar(scroll, {
+		autoHide: false,
+		ariaLabel: label?.textContent || '',
+	})
+	const scroller = simplebar.getScrollElement()
+	simplebar.getContentElement().append(list)
 
 	// Элемент с фокусом, пока окно открыто
 	const focusTarget = () => input || button
@@ -267,7 +279,7 @@ export default function init(root) {
 			if (!append) announce(items.length ? TEXT.found(items.length) : TEXT.empty)
 			request = null
 			// Порция короче окна — метка конца видна сразу, грузим следующую
-			if (next && list.scrollHeight <= list.clientHeight + 1) load({ append: true })
+			if (next && scroller.scrollHeight <= scroller.clientHeight + 1) load({ append: true })
 		} catch (error) {
 			if (own.signal.aborted || signal.aborted) return
 			request = null
@@ -282,7 +294,7 @@ export default function init(root) {
 					if (entries.some((entry) => entry.isIntersecting) && isOpen())
 						load({ append: true })
 				},
-				{ root: list, rootMargin: '0px 0px 80px 0px' }
+				{ root: scroller, rootMargin: '0px 0px 80px 0px' }
 			)
 		: null
 	observer?.observe(sentinel)
@@ -293,6 +305,7 @@ export default function init(root) {
 		if (isOpen()) return
 		popup.hidden = false
 		root.classList.add('is-open')
+		simplebar.recalculate()
 		button.setAttribute('aria-expanded', 'true')
 		if (remoteUrl && !loaded && status !== 'loading') refresh()
 		else if (!remoteUrl) filterLocal()
@@ -471,7 +484,6 @@ export default function init(root) {
 	select.tabIndex = -1
 	select.setAttribute('aria-hidden', 'true')
 	field.append(button)
-	root.append(popup)
 	root.classList.add('is-enhanced')
 	sync()
 
@@ -481,6 +493,7 @@ export default function init(root) {
 		observer?.disconnect()
 		clearTimeout(debounceTimer)
 		clearTimeout(typedTimer)
+		simplebar.unMount()
 		button.remove()
 		popup.remove()
 		select.removeAttribute('tabindex')

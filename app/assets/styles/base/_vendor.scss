@@ -1,0 +1,7 @@
+@use "sass:meta";
+
+// Стили библиотек — в слое vendor: компоненты перекрывают их без повышения специфичности
+@layer vendor {
+	// Своя прокрутка списков (выпадающий список, модалки)
+	@include meta.load-css("simplebar/dist/simplebar.css");
+}
