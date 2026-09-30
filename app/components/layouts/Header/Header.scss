@@ -66,10 +66,12 @@
 		&__title {
 			text-transform: uppercase;
 
+			// Полное название в строку — с 1280; на 1024–1279 (наше, в макете нет) рядом
+			// с поиском и быстрыми ссылками оно не помещается — короткое в две строки
 			&--full {
 				display: none;
 
-				@include up(desktop) {
+				@include up(wide) {
 					@include text("site-title");
 
 					display: block;
@@ -83,7 +85,7 @@
 
 				max-width: 91px;
 
-				@include up(desktop) {
+				@include up(wide) {
 					display: none;
 				}
 			}
@@ -215,7 +217,11 @@
 				white-space: nowrap;
 			}
 
+			// Длинное имя не раздвигает шапку
 			@include up(desktop) {
+				max-width: 200px;
+				overflow: hidden;
+				text-overflow: ellipsis;
 				white-space: nowrap;
 			}
 		}
