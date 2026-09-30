@@ -50,6 +50,19 @@
 				<div class="tokens tokens--text" data-token-list="text"></div>
 			{{/story}}
 
+			{{#> story id="header" group="Каркас" title="Шапка" description='Figma: PC.HEADER.v2 (4652:8752), 360.HEADER (4865:1334). Данные — site.header в site.config.json. Подменю «Новости»: наведение мышью, стрелка, Escape. Бургер пока открывает простой список: полноэкранное меню 360.MainMenu v2 — следующий блок.'}}
+				{{#> state label="Гость" bg="page"}}
+					{{> layouts/Header/Header props=site.header}}
+				{{/state}}
+				{{#> state label="Вошёл" bg="page"}}
+					{{> layouts/Header/Header props=data.headerUser}}
+				{{/state}}
+				{{#> state label="Много пунктов меню" bg="page"}}
+					{{> layouts/Header/Header props=data.headerLong}}
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: шапка приходит с сервера вместе со страницей"}}{{/state}}
+			{{/story}}
+
 			{{#> story id="button" group="Компоненты" title="Кнопка" description='Figma: Button / S.Light.Left. props: text, icon, hiddenText, variant="light", size="s", href.'}}
 				{{#> state label="С иконкой и числом"}}
 					{{> components/Button/Button props=(obj href="#comments" icon="comment" hiddenText="Комментарии: " text="12" variant="light" size="s")}}
