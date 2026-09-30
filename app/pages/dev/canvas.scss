@@ -1,3 +1,8 @@
+@use "sass:list";
+@use "sass:map";
+@use "@/assets/styles/base/vars" as *;
+@use "@/assets/styles/base/mixins" as *;
+
 // Обвязка историй на холсте. Грузится только холстом, в CSS сайта не попадает,
 // поэтому значения свои, а не из токенов сайта.
 $canvas-muted: #6b6b73;
@@ -62,4 +67,77 @@ $canvas-frame: #b4b4bb;
 		outline: 1px dashed $canvas-frame;
 		outline-offset: -1px;
 	}
+}
+
+// Токены: образцы и списки имён строятся из карт в _vars.scss.
+// canvas.js читает имена из --token-colors / --token-text и рисует образцы.
+$token-color-names: ();
+@each $name, $value in $colors {
+	$token-color-names: list.append($token-color-names, $name);
+
+	.token-swatch--#{$name} {
+		--swatch: #{$value};
+	}
+}
+
+$token-text-names: ();
+@each $name, $style in $text-styles {
+	$token-text-names: list.append($token-text-names, $name);
+
+	.token-specimen--#{$name} {
+		@include text($name);
+	}
+}
+
+// Пустой список в Sass — не значение CSS, поэтому пустую карту отдаём пустой строкой
+@function token-list($names) {
+	@if list.length($names) == 0 {
+		@return "";
+	}
+	@return "#{$names}";
+}
+
+:root {
+	--token-colors: #{token-list($token-color-names)};
+	--token-text: #{token-list($token-text-names)};
+}
+
+.tokens {
+	&--colors {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+		gap: 16px;
+	}
+
+	&--text {
+		display: grid;
+		gap: 24px;
+	}
+
+	&__empty {
+		font-size: 14px;
+		color: $canvas-muted;
+	}
+}
+
+.token-swatch {
+	&__chip {
+		height: 72px;
+		background: var(--swatch);
+		border: 1px solid $canvas-frame;
+		border-radius: 8px;
+	}
+
+	&__name {
+		margin-top: 8px;
+		font-weight: 600;
+	}
+}
+
+.token-specimen__meta,
+.token-swatch__value {
+	margin-top: 4px;
+	font-family: monospace;
+	font-size: 12px;
+	color: $canvas-muted;
 }

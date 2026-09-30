@@ -38,19 +38,12 @@
 		{{/inline}}
 
 		<main class="stories">
-			{{#> story id="button" group="Компоненты" title="Кнопка" description="Заготовка из стартера, стили появятся по макету."}}
-				{{#> state label="Обычная"}}
-					{{> components/Button/Button props=(obj text="Отправить" type="submit")}}
-				{{/state}}
-				{{#> state label="Ссылка в новой вкладке"}}
-					{{> components/Button/Button props=(obj text="ВКонтакте" href="#" target="_blank")}}
-				{{/state}}
-				{{#> state label="Недоступна"}}
-					{{> components/Button/Button props=(obj text="Отправить" disabled=true)}}
-				{{/state}}
-				{{#> state label="Длинная подпись"}}
-					{{> components/Button/Button props=(obj text="Очень длинная подпись кнопки, которая не помещается в одну строку на узком экране")}}
-				{{/state}}
+			{{#> story id="colors" group="Основа" title="Цвета" description='Карта $colors в _vars.scss, в коде — palette("имя"). Список строится сам.'}}
+				<div class="tokens tokens--colors" data-token-list="colors"></div>
+			{{/story}}
+
+			{{#> story id="typography" group="Основа" title="Типографика" description='Карта $text-styles в _vars.scss, в коде — @include text("имя"). Размер пересчитывается при смене ширины.'}}
+				<div class="tokens tokens--text" data-token-list="text"></div>
 			{{/story}}
 		</main>
 	</body>
