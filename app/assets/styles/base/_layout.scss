@@ -107,7 +107,7 @@
 	}
 
 	// Основная колонка и боковая 385 (как «День рождения» на главной). Рядом — с 1280, до
-	// этого боковая под основной; на мобильном боковой нет (в макете 360 её нет).
+	// этого боковая под основной.
 	.page-columns {
 		display: grid;
 		gap: 20px;
@@ -118,10 +118,24 @@
 		}
 
 		&__aside {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
 			min-width: 0;
+		}
 
+		// Боковая только на десктопе (на мобильном её содержимого нет в макете)
+		&__aside--desktop {
 			@include down(desktop) {
 				display: none;
+			}
+		}
+
+		// Боковая слева, 350 (Figma: PC.News — фильтры и баннер), рядом — с 1024
+		&--start {
+			@include up(desktop) {
+				grid-template-columns: 350px minmax(0, 1fr);
+				gap: 10px;
 			}
 		}
 	}

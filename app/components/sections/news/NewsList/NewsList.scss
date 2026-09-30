@@ -1,0 +1,93 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: PC.News (4467:758), Frame 291: карточка, поля 20, заголовок H1 и «Новые в начале»,
+// ряды карточек 280 через 26.67 и 40, пагинация через 40.
+@layer components {
+	.news-list {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		min-width: 0;
+
+		@include up(desktop) {
+			gap: 40px;
+			padding: 20px;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+
+		&__head {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px 20px;
+			align-items: flex-end;
+			justify-content: space-between;
+		}
+
+		&__title {
+			@include text("h1-360");
+
+			min-width: 0;
+			color: palette("black-h");
+			overflow-wrap: anywhere;
+
+			@include up(desktop) {
+				@include text("h1");
+			}
+		}
+
+		&__sort {
+			@include text("m-400");
+
+			display: inline-flex;
+			flex: none;
+			gap: 4px;
+			align-items: center;
+			color: palette("main-blue");
+			transition: color $transition-default;
+
+			&:hover {
+				color: palette("blue-hover");
+			}
+		}
+
+		&__sort-icon {
+			width: 10px;
+			height: 6px;
+		}
+
+		// Мобильный — 2 колонки (и на 320); дальше — сколько поместится: от 200 на планшете,
+		// от 240 на десктопе (на 1920 ровно 4 по 280, промежуток 26.67 из макета)
+		&__grid {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 20px 10px;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			@include up(tablet) {
+				grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+				gap: 30px 20px;
+			}
+
+			@include up(desktop) {
+				grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+				gap: 40px 26.67px;
+			}
+		}
+
+		&__item {
+			min-width: 0;
+		}
+
+		&__empty {
+			@include text("m-400");
+
+			color: palette("dark-grey-txt");
+		}
+	}
+}

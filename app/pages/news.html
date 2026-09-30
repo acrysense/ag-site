@@ -8,14 +8,15 @@
 		<div class="wrapper">
 			{{> layouts/Header/Header props=(default data.header site.header) }}
 			<main class="wrapper__content">
-				{{!-- Дни рождения (1920 — 4704:1019, 360 — 4706:1361) --}}
+				{{!-- Раздел новостей (1920 — 4467:758; мобильного макета нет) --}}
 				<div class="container page-inner">
 					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.breadcrumbs) }}
-					<div class="page-columns">
-						{{> sections/birthdays/BirthdayCalendar/BirthdayCalendar props=data.calendar }}
-						<aside class="page-columns__aside page-columns__aside--desktop">
-							{{> sections/shared/Birthdays/Birthdays props=data.aside }}
+					<div class="page-columns page-columns--start">
+						<aside class="page-columns__aside">
+							{{> sections/news/NewsFilters/NewsFilters props=data.filters }}
+							{{> sections/shared/SideBanner/SideBanner props=data.banner }}
 						</aside>
+						{{> sections/news/NewsList/NewsList props=data.list }}
 					</div>
 				</div>
 			</main>

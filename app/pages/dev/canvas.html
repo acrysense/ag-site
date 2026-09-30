@@ -408,6 +408,40 @@
 				{{/state}}
 				{{#> state label="Выбор сделан" note="баннера нет: бэк не выводит его при cookie ag_cookie_consent, а если страница из кеша — скрывает скрипт"}}{{/state}}
 			{{/story}}
+
+			{{#> story id="news-list" group="Новости" title="Лента раздела" description='Figma: PC.News (4467:758). Карточки — как в «Новостях холдинга» на главной. Мобильного макета нет — наше: 2 колонки, пагинация без дальних страниц.'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container">{{> sections/news/NewsList/NewsList props=data.newsList}}</div>
+				{{/state}}
+				{{#> state label="Одна страница" bg="page"}}
+					<div class="container">{{> sections/news/NewsList/NewsList props=data.newsListOnePage}}</div>
+				{{/state}}
+				{{#> state label="Пусто" bg="page"}}
+					<div class="container">{{> sections/news/NewsList/NewsList props=data.newsListEmpty}}</div>
+				{{/state}}
+				{{#> state label="Длинный контент" bg="page"}}
+					<div class="container">{{> sections/news/NewsList/NewsList props=data.newsListLong}}</div>
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, переход по страницам и фильтрам — обычные ссылки"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="news-filters" group="Новости" title="Фильтры раздела" description='Figma: PC.News (4467:758), Frame 369. Десктоп — карточка слева; мобильный (наше) — строки «таблеток» с прокруткой вбок внутри блока.'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container"><div class="story-column-narrow">{{> sections/news/NewsFilters/NewsFilters props=data.newsFilters}}</div></div>
+				{{/state}}
+				{{#> state label="Вертикальный баннер (с 1024)" bg="page"}}
+					<div class="container"><div class="story-column-narrow">{{> sections/shared/SideBanner/SideBanner props=data.sideBanner}}</div></div>
+				{{/state}}
+			{{/story}}
+
+			{{#> story id="pagination" group="Компоненты" title="Постраничная навигация" description="Figma: Pagination (3172:13909). На мобильном дальние страницы скрыты, ряд переносится."}}
+				{{#> state label="Середина списка"}}
+					{{> components/Pagination/Pagination props=data.newsList.pagination}}
+				{{/state}}
+				{{#> state label="Одна страница"}}
+					{{> components/Pagination/Pagination props=data.newsListOnePage.pagination}}
+				{{/state}}
+			{{/story}}
 		</main>
 		{{> layouts/SiteModals/SiteModals props=data.siteModals}}
 	</body>

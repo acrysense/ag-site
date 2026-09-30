@@ -1,0 +1,12 @@
+{{!--
+	Вертикальный баннер в колонке (Figma: vertical-banner 4471:4972, 350×800). Картинка из
+	админки, текст — в ней, поэтому alt обязателен. props: url, alt, image { src, srcset }.
+	Нет картинки — блока нет. На мобильном и планшете не показываем (в колонке его нет).
+--}}
+{{#if props.image.src}}
+    <div class="side-banner">
+        {{#if props.url}}<a class="side-banner__link" href="{{props.url}}">{{/if}}
+        <img class="side-banner__image" src="{{props.image.src}}" {{#if props.image.srcset}}srcset="{{props.image.srcset}}"{{/if}} width="350" height="800" alt="{{props.alt}}" loading="lazy" decoding="async" />
+        {{#if props.url}}</a>{{/if}}
+    </div>
+{{/if}}

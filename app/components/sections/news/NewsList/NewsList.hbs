@@ -1,0 +1,25 @@
+{{!--
+	Лента раздела новостей (Figma: PC.News 4467:758 — Frame 291). props: title (раздел,
+	h1), sort { text, url } — «Новые в начале» (ссылка на обратный порядок), items [карточка
+	NewsCard], pagination (Pagination), emptyText.
+	Сетка — сколько поместится карточек от 240px (на 1920 — 4 по 280), на мобильном 2.
+	Мобильного макета нет — наше. Контракт — docs/contracts/news-list.md.
+--}}
+<section class="news-list" aria-labelledby="news-list-title">
+    <div class="news-list__head">
+        <h1 class="news-list__title" id="news-list-title">{{props.title}}</h1>
+        {{#if props.sort}}
+            <a class="news-list__sort" href="{{props.sort.url}}">{{props.sort.text}}{{> components/Icon/Icon name="chevron-down" class="news-list__sort-icon"}}</a>
+        {{/if}}
+    </div>
+    {{#if props.items.length}}
+        <ul class="news-list__grid" role="list">
+            {{#each props.items}}
+                <li class="news-list__item">{{> sections/shared/NewsCard/NewsCard props=this}}</li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p class="news-list__empty">{{default props.emptyText "В этом разделе пока нет новостей"}}</p>
+    {{/if}}
+    {{> components/Pagination/Pagination props=props.pagination}}
+</section>

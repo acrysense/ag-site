@@ -3,7 +3,7 @@
 	"data": {
 		"news": {
 			"title": "Новости холдинга",
-			"allUrl": "#",
+			"allUrl": "./news.html",
 			"items": [
 				{
 					"url": "#",

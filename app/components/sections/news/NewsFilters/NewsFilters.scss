@@ -1,0 +1,124 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: PC.News (4467:758), Frame 369 — карточка 350, поля 20: «Категории» (H3), ссылки
+// L/400 через 15 (текущая Blue.TXT), линия Form.Border, годы — кнопки S.Light (текущий BG.Main 2).
+// Мобильный — наше: категории и годы строками «таблеток», прокрутка вбок внутри блока.
+@layer components {
+	.news-filters {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		min-width: 0;
+
+		@include up(desktop) {
+			gap: 20px;
+			padding: 20px;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+	}
+
+	.news-filters__title {
+		@include visually-hidden;
+
+		@include up(desktop) {
+			position: static;
+			width: auto;
+			height: auto;
+			margin: 0;
+			overflow: visible;
+			clip-path: none;
+			white-space: normal;
+
+			@include text("h3");
+
+			color: palette("black-txt");
+		}
+	}
+
+	// Мобильный: строка без переноса, прокрутка вбок до краёв белого блока
+	.news-filters__list {
+		display: flex;
+		gap: 8px;
+		margin: 0 -10px;
+		padding: 0 10px;
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		list-style: none;
+		scrollbar-width: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		> li {
+			flex: none;
+		}
+
+		@include up(desktop) {
+			margin: 0;
+			padding: 0;
+			overflow: visible;
+		}
+	}
+
+	.news-filters__list--categories {
+		// В макете «Категории» — первый пункт того же списка, через 15, а не 20
+		@include up(desktop) {
+			margin-top: -5px;
+			flex-direction: column;
+			gap: 15px;
+			padding-bottom: 20px;
+			border-bottom: 1px solid palette("form-border");
+		}
+	}
+
+	.news-filters__list--years {
+		@include up(desktop) {
+			flex-wrap: wrap;
+			gap: 20px 10px;
+		}
+	}
+
+	// Мобильный: категории — такие же «таблетки», как годы; десктоп — ссылки списком
+	.news-filters__link,
+	.news-filters__chip {
+		@include text("m-400");
+
+		display: flex;
+		align-items: center;
+		height: 36px;
+		padding: 0 12px;
+		color: palette("black-txt");
+		white-space: nowrap;
+		background: palette("bg-info");
+		border-radius: $radius-button;
+		transition:
+			color $transition-default,
+			background-color $transition-default;
+
+		&[aria-current] {
+			background: palette("bg-main-2");
+		}
+	}
+
+	.news-filters__link {
+		@include up(desktop) {
+			@include text("l-400");
+
+			height: auto;
+			padding: 0;
+			white-space: normal;
+			background: none;
+
+			&:hover,
+			&[aria-current] {
+				color: palette("blue-txt");
+				background: none;
+			}
+		}
+	}
+}

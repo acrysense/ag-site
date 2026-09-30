@@ -445,3 +445,10 @@ $token-text-names: ();
 	flex-wrap: wrap;
 	gap: 10px;
 }
+
+// Колонка фильтров новостей на десктопе — 350, как на странице
+.story-column-narrow {
+	@include up(desktop) {
+		max-width: 350px;
+	}
+}

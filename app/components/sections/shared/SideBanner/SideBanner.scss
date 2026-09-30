@@ -1,0 +1,28 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: vertical-banner (4471:4972) — 350×800, скругление 20. Пропорция фиксирована: любая
+// картинка обрезается по cover.
+@layer components {
+	.side-banner {
+		display: none;
+		overflow: hidden;
+		border-radius: $radius-content-block;
+
+		@include up(desktop) {
+			display: block;
+		}
+	}
+
+	.side-banner__link {
+		display: block;
+	}
+
+	.side-banner__image {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 350 / 800;
+		object-fit: cover;
+	}
+}

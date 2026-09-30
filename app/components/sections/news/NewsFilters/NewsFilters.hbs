@@ -1,0 +1,26 @@
+{{!--
+	Фильтры раздела новостей (Figma: PC.News 4467:758 — Frame 369): категории и годы.
+	props: title («Категории»), categories [{ text, url, current }], yearsLabel,
+	years [{ text, url, current }]. Обычные ссылки (GET) — без JS.
+	Десктоп — карточка слева; мобильный (в макете нет, наше) — две строки «таблеток» с
+	прокруткой вбок внутри блока. Контракт — docs/contracts/news-list.md.
+--}}
+{{#if (or props.categories.length props.years.length)}}
+    <nav class="news-filters" aria-label="{{default props.label 'Фильтры новостей'}}" data-module="NewsFilters" data-path="sections/news">
+        {{#if props.categories.length}}
+            <h2 class="news-filters__title">{{default props.title "Категории"}}</h2>
+            <ul class="news-filters__list news-filters__list--categories" role="list">
+                {{#each props.categories}}
+                    <li><a class="news-filters__link" href="{{url}}" {{#if current}}aria-current="page"{{/if}}>{{text}}</a></li>
+                {{/each}}
+            </ul>
+        {{/if}}
+        {{#if props.years.length}}
+            <ul class="news-filters__list news-filters__list--years" role="list" aria-label="{{default props.yearsLabel 'Год'}}">
+                {{#each props.years}}
+                    <li><a class="news-filters__chip" href="{{url}}" {{#if current}}aria-current="true"{{/if}}>{{text}}</a></li>
+                {{/each}}
+            </ul>
+        {{/if}}
+    </nav>
+{{/if}}

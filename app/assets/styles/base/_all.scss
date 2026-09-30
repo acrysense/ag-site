@@ -9,6 +9,7 @@
 @forward "@/components/components/Field/Field";
 @forward "@/components/components/Checkbox/Checkbox";
 @forward "@/components/components/Form/Form";
+@forward "@/components/components/Pagination/Pagination";
 @forward "@/components/components/Tabs/Tabs";
 @forward "@/components/components/Breadcrumbs/Breadcrumbs";
 @forward "@/components/components/Select/Select";
@@ -28,5 +29,8 @@
 @forward "@/components/sections/shared/NewsCard/NewsCard";
 @forward "@/components/sections/shared/Birthdays/Birthdays";
 @forward "@/components/sections/birthdays/BirthdayCalendar/BirthdayCalendar";
+@forward "@/components/sections/shared/SideBanner/SideBanner";
+@forward "@/components/sections/news/NewsList/NewsList";
+@forward "@/components/sections/news/NewsFilters/NewsFilters";
 
 // @forward '@/components/sections/shared/';
