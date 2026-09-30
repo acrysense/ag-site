@@ -1,0 +1,47 @@
+{{!--
+	«День рождения» (Figma: 1920 — 4615:42940, 360 — 4865:1402). props: title, url (страница
+	дней рождения), todayTitle, upcomingTitle, today [человек], upcoming [человек].
+	Человек: { name, dateText, date (YYYY-MM-DD), url, image: { src, srcset } }.
+	Сегодня может не быть никого, одного или нескольких: нет именинников — подраздела нет;
+	нет ни сегодня, ни ближайших — блок не выводится. Нет фото — значок подарка. В широком блоке (1024–1279, во всю ширину)
+	«Сегодня» и «Ближайшие» — двумя колонками.
+	Контракт — docs/contracts/birthdays.md.
+--}}
+{{#*inline "birthdaysPerson"}}
+    <li class="birthdays__item">
+        {{#if url}}<a class="birthdays__person" href="{{url}}">{{else}}<div class="birthdays__person">{{/if}}
+            <span class="birthdays__avatar">
+                {{#if image.src}}
+                    <img class="birthdays__photo" src="{{image.src}}" {{#if image.srcset}}srcset="{{image.srcset}}"{{/if}} width="30" height="30" alt="" loading="lazy" decoding="async" />
+                {{else}}
+                    {{> components/Icon/Icon name="gift" class="birthdays__gift"}}
+                {{/if}}
+            </span>
+            <span class="birthdays__name">{{name}}</span>
+            {{#if date}}<time class="birthdays__date" datetime="{{date}}">{{dateText}}</time>{{else}}<span class="birthdays__date">{{dateText}}</span>{{/if}}
+        {{#if url}}</a>{{else}}</div>{{/if}}
+    </li>
+{{/inline}}
+{{#if (or props.today.length props.upcoming.length)}}
+    <section class="birthdays">
+        <h2 class="birthdays__title">{{#if props.url}}<a href="{{props.url}}">{{default props.title "День рождения"}}</a>{{else}}{{default props.title "День рождения"}}{{/if}}</h2>
+        <div class="birthdays__body">
+            {{#if props.today.length}}
+                <div class="birthdays__group birthdays__group--today">
+                    <h3 class="birthdays__subtitle">{{default props.todayTitle "Поздравляем сегодня"}}</h3>
+                    <ul class="birthdays__list" role="list">
+                        {{#each props.today}}{{> birthdaysPerson}}{{/each}}
+                    </ul>
+                </div>
+            {{/if}}
+            {{#if props.upcoming.length}}
+                <div class="birthdays__group birthdays__group--upcoming">
+                    <h3 class="birthdays__subtitle">{{default props.upcomingTitle "Ближайшие"}}</h3>
+                    <ul class="birthdays__list" role="list">
+                        {{#each props.upcoming}}{{> birthdaysPerson}}{{/each}}
+                    </ul>
+                </div>
+            {{/if}}
+        </div>
+    </section>
+{{/if}}

@@ -15,7 +15,9 @@
 					<div class="page-row page-row--posts">
 						{{> sections/home/PostList/PostList props=data.promo }}
 						{{> sections/home/PostList/PostList props=data.corporate }}
+						{{> sections/home/Birthdays/Birthdays props=data.birthdays }}
 					</div>
+					{{> sections/home/Stats/Stats props=data.stats }}
 					{{> sections/home/NewsFeed/NewsFeed props=data.news }}
 				</div>
 			</main>

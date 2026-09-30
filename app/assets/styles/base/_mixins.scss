@@ -14,6 +14,8 @@ $breakpoints: (
 	// По описанию TabBar в Figma: мобильная версия до 767px
 	tablet: 768,
 	desktop: 1024,
+	// Наша, не из макета: с неё помещается ряд «В цифрах» 1920 (заголовок 80px слева)
+	wide: 1280,
 	cap: $fluid-cap,
 );
 
@@ -83,7 +85,7 @@ $alias-bp: (
 }
 
 @function _next-bp-key($k) {
-	$order: (mobile, tablet, desktop, cap);
+	$order: (mobile, tablet, desktop, wide, cap);
 	$i: list.index($order, _bp-key($k));
 	@if $i == null {
 		@error 'Unknown breakpoint `#{$k}`';

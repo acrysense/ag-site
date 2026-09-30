@@ -58,7 +58,13 @@ $colors: (
 	// Без переменной в Figma: разделители быстрых ссылок в шапке (PC.HEADER.v2/User)
 	"divider": #d9d9d9,
 	// Без переменной в Figma: рамка выпадающего меню (Dropdown Menu, 4615:43188)
-	"dropdown-border": #ebedf0
+	"dropdown-border": #ebedf0,
+	// Без переменной в Figma: даты в «День рождения» (4615:42940). Контраст 3.5:1 — по макету
+	"date-grey": #888888,
+	// Без переменной в Figma: обводка аватара и конфетти в «День рождения»
+	"festive-pink": #ff69b4,
+	// Без переменной в Figma: обводка аватара и конфетти в «День рождения»
+	"festive-gold": #ffd700
 );
 
 // layout
@@ -104,6 +110,27 @@ $text-styles: (
 			weight: 700,
 			size: 28,
 			line-height: normal,
+		),
+	// Без переменной в Figma: заголовок «В цифрах» 1920 (RF Rufo Bold 80, строки через 80)
+	"display": (
+			family: heading,
+			weight: 700,
+			size: 80,
+			line-height: 80,
+		),
+	// Без переменной в Figma: число в «В цифрах» 1920 (RF Rufo Regular 80, блок 80)
+	"stat-number": (
+			family: heading,
+			weight: 400,
+			size: 80,
+			line-height: 80,
+		),
+	// Без переменной в Figma: число в «В цифрах» 360 (RF Rufo Regular 64, блок 80)
+	"stat-number-360": (
+			family: heading,
+			weight: 400,
+			size: 64,
+			line-height: 80,
 		),
 	// PC/HEADER/H2
 	"h2": (

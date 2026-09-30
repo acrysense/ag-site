@@ -1,0 +1,127 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: 360 — 4865:1438, 1920 — 4857:2701.
+// Мобильный: заголовок сверху, пункты столбиком. Планшет и узкий десктоп — наше: пункты
+// в ряд. С 1280 (wide) — как 1920: крупный заголовок слева, пункты справа.
+@layer components {
+	.stats {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		min-width: 0;
+		padding: 32px 10px;
+		background: palette("white");
+
+		@include up(desktop) {
+			gap: 20px;
+			padding: 0;
+			background: none;
+		}
+
+		@include up(wide) {
+			flex-direction: row;
+			align-items: center;
+			min-height: 200px;
+		}
+
+		&__title {
+			@include text("h2");
+
+			color: palette("black-h");
+
+			// Колонка 390 (Figma: Title). Поля 20 сверху и снизу: две строки по 80 дают ряд 200,
+			// как в макете (там строки по 40 с пустой строкой между ними)
+			@include up(wide) {
+				@include text("display");
+
+				flex: 0 0 390px;
+				padding: 20px 24px 20px 0;
+				text-transform: uppercase;
+			}
+		}
+
+		&__list {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			@include up(tablet) {
+				flex-direction: row;
+				gap: 0;
+			}
+
+			@include up(wide) {
+				flex: 1 1 0;
+				gap: 20px;
+				min-width: 0;
+			}
+		}
+
+		// Разделитель тенью, как обводка внутрь в Figma: рамка меняла бы размеры пунктов.
+		// Мобильный — снизу, с планшета — справа. Ширины 390/390/370 на 1920 — flex-grow
+		// по ширине без полей (342/322). Выравнивание по верху: числа на одной линии, даже
+		// когда подпись у соседа в две строки (в макете прижато вниз — на 1920 это то же).
+		&__item {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+			min-width: 0;
+			padding-block: 12px;
+
+			&:not(:last-child) {
+				box-shadow: inset 0 -1px palette("block-border");
+			}
+
+			@include up(tablet) {
+				flex: 1 1 0;
+				padding: 12px 24px;
+
+				&:first-child {
+					padding-left: 0;
+				}
+
+				&:not(:last-child) {
+					box-shadow: inset -1px 0 palette("form-border");
+				}
+			}
+
+			@include up(desktop) {
+				gap: 8px;
+				padding: 24px;
+			}
+
+			@include up(wide) {
+				flex: 342 1 0;
+				min-height: 160px;
+
+				&:first-child {
+					padding-left: 24px;
+				}
+
+				&:last-child {
+					flex-grow: 322;
+				}
+			}
+		}
+
+		&__value {
+			@include text("stat-number-360");
+
+			color: palette("yellow");
+
+			@include up(desktop) {
+				@include text("stat-number");
+			}
+		}
+
+		&__caption {
+			@include text("l-400");
+
+			color: palette("dark-grey-txt");
+		}
+	}
+}

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="385" height="520" viewBox="0 0 385 520" fill="none">
+<defs>
+<filter id="sy" x="-50%" y="-50%" width="200%" height="250%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#ffd700" flood-opacity="0.25"/></filter>
+<filter id="sp" x="-50%" y="-50%" width="200%" height="250%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#ff69b4" flood-opacity="0.25"/></filter>
+<filter id="sb" x="-50%" y="-50%" width="200%" height="250%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#0081ff" flood-opacity="0.25"/></filter>
+</defs>
+<circle cx="324" cy="44" r="4" fill="#ffd700" filter="url(#sy)"/>
+<circle cx="343" cy="63" r="3" fill="#ff69b4" filter="url(#sp)"/>
+<circle cx="305" cy="85" r="5" fill="#0081ff" filter="url(#sb)"/>
+<circle cx="284" cy="124" r="4" fill="#ffd700" filter="url(#sy)"/>
+<circle cx="353" cy="153" r="3" fill="#ff69b4" filter="url(#sp)"/>
+<circle cx="315" cy="185" r="5" fill="#0081ff" filter="url(#sb)"/>
+<circle cx="334" cy="224" r="4" fill="#ffd700" filter="url(#sy)"/>
+<circle cx="293" cy="243" r="3" fill="#ff69b4" filter="url(#sp)"/>
+<circle cx="325" cy="285" r="5" fill="#0081ff" filter="url(#sb)"/>
+<circle cx="344" cy="304" r="4" fill="#ffd700" filter="url(#sy)"/>
+<circle cx="313" cy="323" r="3" fill="#ff69b4" filter="url(#sp)"/>
+<circle cx="305" cy="355" r="5" fill="#0081ff" filter="url(#sb)"/>
+<circle cx="334" cy="384" r="4" fill="#ffd700" filter="url(#sy)"/>
+<circle cx="323" cy="403" r="3" fill="#ff69b4" filter="url(#sp)"/>
+<circle cx="315" cy="425" r="5" fill="#0081ff" filter="url(#sb)"/>
+<circle cx="344" cy="444" r="4" fill="#ffd700" filter="url(#sy)"/>
+<circle cx="303" cy="463" r="3" fill="#ff69b4" filter="url(#sp)"/>
+<circle cx="325" cy="485" r="5" fill="#0081ff" filter="url(#sb)"/>
+<circle cx="362" cy="32" r="12" fill="#0081ff" filter="url(#sb)"/>
+<rect x="350" y="120" width="2" height="12" fill="#ff69b4" opacity="0.5"/>
+<circle cx="350" cy="110" r="10" fill="#ff69b4" filter="url(#sp)"/>
+<rect x="320" y="184" width="2" height="12" fill="#ffd700" opacity="0.5"/>
+<circle cx="322" cy="172" r="12" fill="#ffd700" filter="url(#sy)"/>
+<rect x="340" y="280" width="2" height="12" fill="#0081ff" opacity="0.5"/>
+<circle cx="340" cy="270" r="10" fill="#0081ff" filter="url(#sb)"/>
+<rect x="310" y="344" width="2" height="12" fill="#ff69b4" opacity="0.5"/>
+<circle cx="312" cy="332" r="12" fill="#ff69b4" filter="url(#sp)"/>
+<rect x="350" y="400" width="2" height="12" fill="#ffd700" opacity="0.5"/>
+<circle cx="350" cy="390" r="10" fill="#ffd700" filter="url(#sy)"/>
+</svg>

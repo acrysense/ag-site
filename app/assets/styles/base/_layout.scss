@@ -59,17 +59,28 @@
 			gap: 20px;
 		}
 
-		// Колонки — по числу выведенных блоков: скрытый админом блок не оставляет дыру
+		// Колонки — по числу выведенных блоков: скрытый админом блок не оставляет дыру.
+		// Три в ряд — с 1280: уже третья колонка (385 на 1920) узка для имён, до 1280
+		// третий блок встаёт под двумя во всю ширину.
 		&--posts {
 			@include up(desktop) {
 				grid-template-columns: repeat(2, minmax(0, 1fr));
-
-				&:has(> :nth-child(3)) {
-					grid-template-columns: 587.5fr 587.5fr 385fr;
-				}
+				grid-auto-flow: row;
 
 				&:has(> :only-child) {
 					grid-template-columns: minmax(0, 1fr);
+				}
+			}
+
+			@include only(desktop) {
+				> :nth-child(3) {
+					grid-column: 1 / -1;
+				}
+			}
+
+			@include up(wide) {
+				&:has(> :nth-child(3)) {
+					grid-template-columns: 587.5fr 587.5fr 385fr;
 				}
 			}
 		}

@@ -238,6 +238,82 @@
 					"image": "./dev/img/post-2.jpg"
 				}
 			]
+		},
+		"birthdays": {
+			"title": "День рождения",
+			"url": "#",
+			"today": [
+				{
+					"url": "#",
+					"name": "Дрозд В.В.",
+					"date": "2026-03-15",
+					"dateText": "15 марта",
+					"image": {
+						"src": "./dev/img/person-1.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"name": "Дрозд В.В.",
+					"date": "2026-03-15",
+					"dateText": "15 марта",
+					"image": {
+						"src": "./dev/img/person-2.jpg"
+					}
+				}
+			],
+			"upcoming": [
+				{
+					"url": "#",
+					"name": "Дрозд В.В.",
+					"date": "2026-03-16",
+					"dateText": "16 марта"
+				},
+				{
+					"url": "#",
+					"name": "Волкова Т.В.",
+					"date": "2026-03-17",
+					"dateText": "17 марта",
+					"image": {
+						"src": "./dev/img/person-3.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"name": "Синицина К.В.",
+					"date": "2026-03-17",
+					"dateText": "17 марта",
+					"image": {
+						"src": "./dev/img/person-4.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"name": "Зайцев М.В.",
+					"date": "2026-03-20",
+					"dateText": "20 марта",
+					"image": {
+						"src": "./dev/img/person-5.jpg"
+					}
+				}
+			]
+		},
+		"stats": {
+			"title": "Аптека групп в цифрах",
+			"items": [
+				{
+					"value": "400+",
+					"caption": "аптек по всей территории Беларуси"
+				},
+				{
+					"value": "30",
+					"caption": "Надежный партнер с 30-летней историей"
+				},
+				{
+					"value": "2000+",
+					"caption": "работников в команде холдинга"
+				}
+			]
 		}
 	}
 }

@@ -1,0 +1,223 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: 360 — 4865:1402, 1920 — 4615:42940
+@layer components {
+	.birthdays {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		min-width: 0;
+		padding: 32px 10px;
+		background: palette("white");
+		container-type: inline-size;
+
+		// Десктоп: карточка с конфетти справа. Строки с белым фоном перекрывают конфетти —
+		// оно видно только в просветах, как в макете.
+		@include up(desktop) {
+			gap: 20px;
+			height: 100%;
+			padding: 20px;
+			overflow: clip;
+			background: palette("white") url("@/assets/images/decor/birthdays-confetti.svg")
+				no-repeat right -1px top -1px;
+			background-origin: border-box;
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+
+		&__title {
+			@include text("h2");
+
+			color: palette("black-h");
+
+			@include up(desktop) {
+				color: palette("main-blue");
+			}
+
+			a {
+				color: inherit;
+			}
+		}
+
+		&__body {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+
+			@include up(desktop) {
+				gap: 20px;
+			}
+
+			// Блок во всю ширину (планшет, десктоп 1024–1279) — группы рядом
+			@container (min-width: 640px) {
+				display: grid;
+				grid-auto-columns: minmax(0, 1fr);
+				grid-auto-flow: column;
+				gap: 40px;
+			}
+		}
+
+		&__group {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+
+			@include up(desktop) {
+				gap: 0;
+			}
+		}
+
+		&__subtitle {
+			@include text("h4");
+
+			display: flex;
+			align-items: center;
+			color: palette("dark-grey-txt");
+
+			@include up(desktop) {
+				min-height: 30px;
+			}
+		}
+
+		&__group--today &__subtitle {
+			@include up(desktop) {
+				min-height: 40px;
+				color: palette("main-blue");
+			}
+		}
+
+		// Группы рядом — подзаголовки одной высоты, чтобы строки не съезжали
+		@container (min-width: 640px) {
+			&__group--upcoming &__subtitle {
+				@include up(desktop) {
+					min-height: 40px;
+				}
+			}
+		}
+
+		&__list {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			@include up(desktop) {
+				gap: 0;
+			}
+		}
+
+		// Разделитель: на мобильном между строками с отступом 70, на десктопе под каждой
+		// строкой с отступом 40 (так в макетах)
+		&__item {
+			@include down(desktop) {
+				& + &::before {
+					display: block;
+					height: 1px;
+					margin: 0 0 16px 70px;
+					content: "";
+					background: palette("form-border");
+				}
+			}
+
+			@include up(desktop) {
+				position: relative;
+				padding-block: 5px;
+				background: palette("white");
+
+				&::after {
+					display: block;
+					height: 1px;
+					margin: 5px 0 0 40px;
+					content: "";
+					background: palette("form-border");
+				}
+			}
+		}
+
+		&__person {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			color: palette("black-txt");
+		}
+
+		a.birthdays__person:hover .birthdays__name {
+			color: palette("blue-hover");
+		}
+
+		&__avatar {
+			display: flex;
+			flex: none;
+			align-items: center;
+			justify-content: center;
+			width: 30px;
+			height: 30px;
+			overflow: hidden;
+			color: palette("white");
+			background: palette("grey");
+			border-radius: 50%;
+		}
+
+		&__photo {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		&__gift {
+			width: 18px;
+			height: 18px;
+		}
+
+		// Сегодня на десктопе — аватар 40 в цветном кольце 2px, фото 30 внутри
+		&__group--today &__avatar {
+			@include up(desktop) {
+				width: 40px;
+				height: 40px;
+				background-clip: content-box;
+				border: 2px solid palette("festive-pink");
+				padding: 3px;
+			}
+		}
+
+		&__group--today &__item:nth-child(3n + 2) &__avatar {
+			@include up(desktop) {
+				border-color: palette("festive-gold");
+			}
+		}
+
+		&__group--today &__item:nth-child(3n) &__avatar {
+			@include up(desktop) {
+				border-color: palette("main-blue");
+			}
+		}
+
+		&__group--today &__photo {
+			@include up(desktop) {
+				border-radius: 50%;
+			}
+		}
+
+		&__name {
+			@include text("m-400");
+
+			flex: 1 1 auto;
+			min-width: 0;
+			overflow-wrap: anywhere;
+			transition: color $transition-default;
+		}
+
+		// В макете колонка даты 110 с выравниванием вправо; по ширине текста — то же на вид,
+		// а имени остаётся больше места в узкой колонке
+		&__date {
+			@include text("m-400");
+
+			flex: none;
+			color: palette("date-grey");
+		}
+	}
+}

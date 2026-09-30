@@ -214,6 +214,44 @@
 				{{#> state label="Загрузка" note="не применимо: список приходит с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
+			{{#> story id="birthdays" group="Главная" title="День рождения" description='Figma: 1920 — 4615:42940, 360 — 4865:1402. Сегодня может не быть никого, одного или нескольких. Нет фото — значок подарка. На десктопе — третья колонка ряда с «Акциями».'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container"><div class="story-column">{{> sections/home/Birthdays/Birthdays props=data.birthdays}}</div></div>
+				{{/state}}
+				{{#> state label="Сегодня никого" bg="page"}}
+					<div class="container"><div class="story-column">{{> sections/home/Birthdays/Birthdays props=data.birthdaysNoToday}}</div></div>
+				{{/state}}
+				{{#> state label="Сегодня несколько" bg="page"}}
+					<div class="container"><div class="story-column">{{> sections/home/Birthdays/Birthdays props=data.birthdaysManyToday}}</div></div>
+				{{/state}}
+				{{#> state label="Только сегодня" bg="page"}}
+					<div class="container"><div class="story-column">{{> sections/home/Birthdays/Birthdays props=data.birthdaysOnlyToday}}</div></div>
+				{{/state}}
+				{{#> state label="Без фото" bg="page"}}
+					<div class="container"><div class="story-column">{{> sections/home/Birthdays/Birthdays props=data.birthdaysNoPhotos}}</div></div>
+				{{/state}}
+				{{#> state label="Пусто" bg="page"}}
+					<div class="container"><div class="story-column">{{> sections/home/Birthdays/Birthdays props=data.birthdaysEmpty}}</div></div>
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: список приходит с сервера вместе со страницей"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="stats" group="Главная" title="В цифрах" description='Figma: 1920 — 4857:2701, 360 — 4865:1438. Числа и подписи редактирует админ, пункт можно скрыть. С 1280 — крупный заголовок слева, как на 1920; на планшете и узком десктопе пункты в ряд под заголовком.'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container">{{> sections/home/Stats/Stats props=data.stats}}</div>
+				{{/state}}
+				{{#> state label="Два пункта" bg="page"}}
+					<div class="container">{{> sections/home/Stats/Stats props=data.statsTwo}}</div>
+				{{/state}}
+				{{#> state label="Длинный контент" bg="page"}}
+					<div class="container">{{> sections/home/Stats/Stats props=data.statsLong}}</div>
+				{{/state}}
+				{{#> state label="Пусто" bg="page"}}
+					<div class="container">{{> sections/home/Stats/Stats props=data.statsEmpty}}</div>
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: данные приходят с сервера вместе со страницей"}}{{/state}}
+			{{/story}}
+
 			{{#> story id="news-feed" group="Главная" title="Новости холдинга" description="Figma: 1920 — 4615:43032, 360 — 4865:1470. На мобильном 6 карточек в 2 колонки, на десктопе 5 в ряд. Карточка кликабельна целиком."}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container">{{> sections/home/NewsFeed/NewsFeed props=data.news}}</div>
