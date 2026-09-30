@@ -260,3 +260,45 @@ $alias-bp: (
 	white-space: nowrap;
 	border: 0;
 }
+
+// Поле-кнопка фильтров 46 (Figma: Input · Select в поиске, 2408:338): рамка Form.Border,
+// скругление 14, поля 15, текст M/400; открыто или в фокусе — рамка Form.Focus.
+// Селект (components/Select) нарисован теми же значениями.
+@mixin control-box {
+	display: flex;
+	gap: 6px;
+	align-items: center;
+	width: 100%;
+	height: 46px;
+	padding: 0 15px;
+	color: palette("black-txt");
+	text-align: left;
+	background: palette("white");
+	border: 1px solid palette("form-border");
+	border-radius: vars.$radius-button;
+	transition: border-color vars.$transition-default;
+}
+
+// Нижний лист на мобильном (Figma: Bottom sheet · Отдел 4786:2839, как у Modal): у нижнего края,
+// скругление сверху, тень вверх; над таб-баром и шапкой. Затемнение — sheet-backdrop.
+@mixin sheet {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 100;
+	max-height: calc(100dvh - 40px);
+	padding: 16px 10px calc(16px + env(safe-area-inset-bottom));
+	background: palette("white");
+	border: 0;
+	border-radius: vars.$radius-content-block vars.$radius-content-block 0 0;
+	box-shadow: vars.$shadow-sheet;
+}
+
+@mixin sheet-backdrop {
+	position: fixed;
+	inset: 0;
+	z-index: 99;
+	background: vars.$overlay-background;
+	backdrop-filter: blur(vars.$overlay-blur);
+}

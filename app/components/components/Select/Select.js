@@ -1,10 +1,15 @@
 import SimpleBar from 'simplebar'
 import { announce } from '@/utils/announce'
+import { isSheet, lockIfSheet } from '@/utils/sheet'
 
 // Выпадающий список. Без JS работает нативный <select> прозрачным слоем поверх поля. Здесь он
 // заменяется списком по макету (шаблон WAI-ARIA «combobox + listbox»): активный пункт —
 // aria-activedescendant, выбор пишется в <select> и вызывает у него change, поэтому форма и
 // автоотправка (data-select-submit) работают как с нативным списком.
+//
+// multiple — выбор нескольких: пункт переключается, список не закрывается; в поле —
+// «<placeholder>: N». С data-select-submit форма уходит один раз — при закрытии, если выбор
+// менялся (фильтр не перезагружает страницу на каждый пункт).
 //
 // Режимы:
 // - пункты из <option> (по умолчанию); с data-select-search — поиск по ним без запросов;
@@ -53,6 +58,9 @@ export default function init(root) {
 	const remoteUrl = root.dataset.selectUrl || ''
 	const searchable = root.hasAttribute('data-select-search')
 	const minChars = Math.max(1, Number(root.dataset.selectMinChars) || 2)
+	const multiple = select.multiple
+	const placeholder = value.dataset.placeholder || ''
+	const submits = select.hasAttribute('data-select-submit')
 	const id = `select-${++counter}`
 
 	let items = []
@@ -66,6 +74,9 @@ export default function init(root) {
 	let typed = ''
 	let typedTimer = 0
 	let pointer = { x: null, y: null }
+	let dirty = false // multiple: выбор менялся, пока список открыт
+	let pinned = new Set() // multiple: выбранные на момент открытия — стоят сверху
+	let release = null // блокировка прокрутки страницы под нижним листом
 	const cache = new Map()
 
 	const fromOptions = () =>
@@ -74,8 +85,20 @@ export default function init(root) {
 			text: option.textContent.trim(),
 		}))
 
+	const isSelected = (itemValue) =>
+		[...select.selectedOptions].some((option) => option.value === itemValue)
+
+	// Текст поля: выбранный пункт; у multiple — «Отдел: 2»; ничего не выбрано — заглушка серым
 	const sync = () => {
-		value.textContent = select.selectedOptions[0]?.textContent ?? ''
+		const count = select.selectedOptions.length
+		const empty = multiple ? !count : !select.value && Boolean(placeholder)
+		if (empty) value.textContent = placeholder
+		else if (multiple)
+			value.textContent = placeholder
+				? `${placeholder}: ${count}`
+				: [...select.selectedOptions].map((option) => option.textContent.trim()).join(', ')
+		else value.textContent = select.selectedOptions[0]?.textContent ?? ''
+		root.classList.toggle('is-placeholder', empty)
 	}
 
 	// Разметка: кнопка поверх поля, окно со строкой поиска, списком и строкой состояния
@@ -95,6 +118,34 @@ export default function init(root) {
 	const popup = document.createElement('div')
 	popup.className = 'select__popup'
 	popup.hidden = true
+
+	// multiple (фильтры, Figma: Dropdown List — с поиском 4764:2732): пункты с флажками, выбранные —
+	// сверху, под чертой — остальные. На мобильном окно — нижний лист (4786:2839): заголовок, ×,
+	// поиск, список и «Готово»; шапка, «Готово» и затемнение на десктопе скрыты стилями
+	let backdrop = null
+	const closers = []
+	if (multiple) {
+		root.classList.add('select--multi')
+		const head = document.createElement('div')
+		head.className = 'select__sheet-head'
+		const title = document.createElement('p')
+		title.className = 'select__sheet-title'
+		title.textContent = placeholder || label?.textContent || ''
+		const x = document.createElement('button')
+		x.type = 'button'
+		x.className = 'select__sheet-close'
+		x.setAttribute('aria-label', 'Закрыть')
+		const svg = checkIcon()
+		svg.setAttribute('class', 'icon select__sheet-close-icon')
+		svg.querySelector('use').setAttribute('href', '#icon-close')
+		x.append(svg)
+		head.append(title, x)
+		popup.append(head)
+		backdrop = document.createElement('div')
+		backdrop.className = 'select__backdrop'
+		backdrop.hidden = true
+		closers.push(x, backdrop)
+	}
 
 	let input = null
 	if (searchable) {
@@ -116,6 +167,7 @@ export default function init(root) {
 	list.className = 'select__list'
 	list.id = `${id}-list`
 	list.setAttribute('role', 'listbox')
+	if (multiple) list.setAttribute('aria-multiselectable', 'true')
 	if (label) list.setAttribute('aria-labelledby', `${id}-label`)
 
 	// Метка конца списка: видна — пора грузить следующую порцию
@@ -132,6 +184,15 @@ export default function init(root) {
 	const scroll = document.createElement('div')
 	scroll.className = 'select__scroll'
 	popup.append(scroll, statusBox)
+	if (multiple) {
+		const done = document.createElement('button')
+		done.type = 'button'
+		done.className = 'btn btn--general btn--m select__done'
+		done.textContent = 'Готово'
+		popup.append(done)
+		closers.push(done)
+		root.append(backdrop)
+	}
 	root.append(popup)
 	const simplebar = new SimpleBar(scroll, {
 		autoHide: false,
@@ -168,31 +229,52 @@ export default function init(root) {
 
 	const renderActive = ({ scroll = true } = {}) => {
 		const target = focusTarget()
-		list.querySelectorAll('.select__option').forEach((option, index) => {
-			option.classList.toggle('is-active', index === active)
+		list.querySelectorAll('.select__option').forEach((option) => {
+			option.classList.toggle('is-active', Number(option.dataset.index) === active)
 		})
-		const current = list.children[active]
-		if (current && current !== sentinel) {
+		const current = optionAt(active)
+		if (current) {
 			target.setAttribute('aria-activedescendant', current.id)
 			if (scroll) current.scrollIntoView({ block: 'nearest' })
 		} else target.removeAttribute('aria-activedescendant')
 	}
+
+	const optionAt = (index) => list.querySelector(`.select__option[data-index="${index}"]`)
 
 	const renderItems = () => {
 		const options = items.map((item, index) => {
 			const option = document.createElement('li')
 			option.className = 'select__option'
 			option.id = `${id}-option-${index}`
+			option.dataset.index = String(index)
 			option.setAttribute('role', 'option')
 			option.setAttribute(
 				'aria-selected',
-				String(item.value === select.value && select.selectedIndex >= 0)
+				String(
+					multiple
+						? isSelected(item.value)
+						: item.value === select.value && select.selectedIndex >= 0
+				)
 			)
 			const text = document.createElement('span')
+			text.className = 'select__option-text'
 			text.textContent = item.text
-			option.append(text, checkIcon())
+			if (multiple) {
+				const box = document.createElement('span')
+				box.className = 'select__box'
+				box.append(checkIcon())
+				option.append(box, text)
+			} else option.append(text, checkIcon())
 			return option
 		})
+		// Черта между выбранными (сверху) и остальными
+		const split = multiple ? items.findIndex((item) => !pinned.has(item.value)) : -1
+		if (split > 0) {
+			const divider = document.createElement('li')
+			divider.className = 'select__divider'
+			divider.setAttribute('role', 'presentation')
+			options.splice(split, 0, divider)
+		}
 		list.replaceChildren(...options)
 		if (remoteUrl) list.append(sentinel)
 		if (active >= items.length) active = items.length - 1
@@ -203,9 +285,14 @@ export default function init(root) {
 	const filterLocal = () => {
 		const q = query.trim().toLowerCase()
 		items = fromOptions().filter((item) => !q || item.text.toLowerCase().includes(q))
+		if (multiple)
+			items = [
+				...items.filter((item) => pinned.has(item.value)),
+				...items.filter((item) => !pinned.has(item.value)),
+			]
 		setStatus(items.length ? 'ready' : 'empty')
 		active = items.length ? 0 : -1
-		if (!q) active = Math.max(select.selectedIndex, 0)
+		if (!q && !multiple) active = Math.max(select.selectedIndex, 0)
 		renderItems()
 	}
 
@@ -305,8 +392,11 @@ export default function init(root) {
 	const open = () => {
 		if (isOpen()) return
 		popup.hidden = false
+		if (backdrop) backdrop.hidden = false
 		pointer = { x: null, y: null }
+		pinned = new Set([...select.selectedOptions].map((option) => option.value))
 		root.classList.add('is-open')
+		if (multiple) release = lockIfSheet()
 		simplebar.recalculate()
 		button.setAttribute('aria-expanded', 'true')
 		if (remoteUrl && !loaded && status !== 'loading') refresh()
@@ -318,21 +408,33 @@ export default function init(root) {
 			)
 			renderActive()
 		}
-		// Мало места снизу — окно открывается вверх
-		const rect = field.getBoundingClientRect()
-		const below = window.innerHeight - rect.bottom
-		root.classList.toggle('is-up', below < popup.offsetHeight + 12 && rect.top > below)
+		// Мало места снизу — окно открывается вверх (нижний лист — всегда снизу)
+		if (!(multiple && isSheet())) {
+			const rect = field.getBoundingClientRect()
+			const below = window.innerHeight - rect.bottom
+			root.classList.toggle('is-up', below < popup.offsetHeight + 12 && rect.top > below)
+		}
 		input?.focus()
 	}
 
 	const close = ({ focus = false } = {}) => {
 		if (!isOpen()) return
 		popup.hidden = true
+		popup.classList.remove('is-keys')
+		if (backdrop) backdrop.hidden = true
+		release?.()
+		release = null
 		root.classList.remove('is-open', 'is-up')
 		button.setAttribute('aria-expanded', 'false')
 		active = -1
 		renderActive()
 		if (focus) button.focus()
+		// multiple: выбор закончен — событие select:commit (фильтры применяются один раз)
+		if (multiple && dirty) {
+			select.dispatchEvent(new CustomEvent('select:commit', { bubbles: true }))
+			if (submits) select.form?.requestSubmit()
+		}
+		dirty = false
 	}
 
 	const choose = (index) => {
@@ -342,6 +444,15 @@ export default function init(root) {
 		if (!option) {
 			option = new Option(item.text, item.value)
 			select.append(option)
+		}
+		// multiple: пункт переключается, список остаётся открытым
+		if (multiple) {
+			option.selected = !option.selected
+			dirty = true
+			sync()
+			optionAt(index)?.setAttribute('aria-selected', String(option.selected))
+			select.dispatchEvent(new Event('change', { bubbles: true }))
+			return
 		}
 		const changed = !option.selected
 		option.selected = true
@@ -407,6 +518,8 @@ export default function init(root) {
 		}
 		if (actions[key]) {
 			event.preventDefault()
+			// Пункт под стрелками подсвечивается, только когда листают с клавиатуры
+			if (key !== 'Enter' && key !== 'Escape') popup.classList.add('is-keys')
 			actions[key]()
 		} else if (key === 'Tab') {
 			close()
@@ -448,9 +561,10 @@ export default function init(root) {
 			if (event.clientX === pointer.x && event.clientY === pointer.y) return
 			const moved = pointer.x !== null
 			pointer = { x: event.clientX, y: event.clientY }
+			popup.classList.remove('is-keys')
 			if (!moved) return
 			const option = event.target.closest('.select__option')
-			const index = [...list.children].indexOf(option)
+			const index = Number(option?.dataset.index)
 			if (option && index !== active) move(index, { scroll: false })
 		},
 		{ signal }
@@ -459,10 +573,12 @@ export default function init(root) {
 		'click',
 		(event) => {
 			const option = event.target.closest('.select__option')
-			if (option) choose([...list.children].indexOf(option))
+			if (option) choose(Number(option.dataset.index))
 		},
 		{ signal }
 	)
+
+	closers.forEach((el) => el.addEventListener('click', () => close({ focus: true }), { signal }))
 
 	document.addEventListener(
 		'pointerdown',
@@ -483,7 +599,18 @@ export default function init(root) {
 		'change',
 		() => {
 			sync()
-			if (select.hasAttribute('data-select-submit')) select.form?.requestSubmit()
+			if (submits && !multiple) select.form?.requestSubmit()
+		},
+		{ signal }
+	)
+
+	// Сброс формы: событие reset приходит до очистки полей — подпись обновляем следом
+	let resetTimer = 0
+	select.form?.addEventListener(
+		'reset',
+		() => {
+			clearTimeout(resetTimer)
+			resetTimer = setTimeout(sync)
 		},
 		{ signal }
 	)
@@ -501,11 +628,21 @@ export default function init(root) {
 		observer?.disconnect()
 		clearTimeout(debounceTimer)
 		clearTimeout(typedTimer)
+		clearTimeout(resetTimer)
+		release?.()
 		simplebar.unMount()
 		button.remove()
 		popup.remove()
+		backdrop?.remove()
 		select.removeAttribute('tabindex')
 		select.removeAttribute('aria-hidden')
-		root.classList.remove('is-enhanced', 'is-open', 'is-up', 'is-loading')
+		root.classList.remove(
+			'is-enhanced',
+			'is-open',
+			'is-up',
+			'is-loading',
+			'is-placeholder',
+			'select--multi'
+		)
 	}
 }

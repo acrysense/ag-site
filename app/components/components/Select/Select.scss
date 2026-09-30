@@ -50,6 +50,11 @@
 		color: palette("black-txt");
 		text-overflow: ellipsis;
 		white-space: nowrap;
+
+		// Ничего не выбрано — заглушка серым (фильтры поиска: «Должность»)
+		.select.is-placeholder & {
+			color: palette("dark-grey-txt");
+		}
 	}
 
 	// Нативный список и кнопка — прозрачным слоем на всё поле; кольцо фокуса рисует поле.
@@ -219,5 +224,157 @@
 		[aria-selected="true"] > & {
 			display: block;
 		}
+	}
+
+	// ---------- multiple: фильтры поиска ----------
+	// Figma: Dropdown List — с поиском (4764:2732): окно по ширине поля, поля 15, скругление 10,
+	// тень 0 5 20; поиск 36 со скруглением 7; пункты через 15 — флажок 20 и текст M/400;
+	// выбранные сверху, под ними черта Grey. Шрифт поиска — 16 (iOS), в макете 12.
+	.select--multi .select__popup {
+		gap: 15px;
+		padding: 15px;
+		border: 0;
+		border-radius: $radius-inner-block;
+		box-shadow: $shadow-list;
+
+		@include down(tablet) {
+			@include sheet;
+
+			top: auto;
+			gap: 12px;
+			border-radius: $radius-content-block $radius-content-block 0 0;
+			box-shadow: $shadow-sheet;
+		}
+	}
+
+	.select--multi .select__search {
+		height: 36px;
+		padding: 6px 15px;
+		background: palette("white");
+		border-color: palette("form-border");
+		border-radius: 7px;
+
+		@include down(tablet) {
+			margin-inline: 10px;
+		}
+	}
+
+	.select--multi .select__scroll {
+		@include down(tablet) {
+			max-height: min(320px, 50dvh);
+			margin-right: 0;
+			padding-inline: 10px;
+		}
+	}
+
+	.select--multi .select__list {
+		gap: 15px;
+	}
+
+	.select--multi .select__option {
+		justify-content: flex-start;
+		padding: 0;
+		line-height: 20px;
+		border-radius: 0;
+
+		&.is-active,
+		&[aria-selected="true"] {
+			color: palette("black-txt");
+			background: none;
+		}
+
+		// Под стрелками клавиатуры — синий текст (мышью — без подсветки, как в макете)
+		.is-keys &.is-active .select__option-text {
+			color: palette("blue-txt");
+		}
+
+		&:hover .select__option-text {
+			color: palette("blue-txt");
+		}
+	}
+
+	// Флажок 20: рамка Icon.Grey, отмеченный — галочка Black.TXT (как в макете, без заливки)
+	.select__box {
+		display: flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: 20px;
+		height: 20px;
+		color: palette("black-txt");
+		border: 1.5px solid palette("icon-grey");
+		border-radius: 5px;
+
+		.select__check {
+			width: 11px;
+			height: 8px;
+			color: inherit;
+		}
+
+		[aria-selected="true"] > & .select__check {
+			display: block;
+		}
+	}
+
+	.select__divider {
+		flex: none;
+		height: 1px;
+		background: palette("grey");
+	}
+
+	// Шапка листа, «Готово» и затемнение — только на мобильном
+	.select__sheet-head,
+	.select__done,
+	.select__backdrop {
+		display: none;
+	}
+
+	@include down(tablet) {
+		.select__sheet-head {
+			display: flex;
+			gap: 8px;
+			align-items: center;
+			padding-left: 10px;
+		}
+
+		.select__done {
+			display: inline-flex;
+			width: calc(100% - 20px);
+			margin-inline: 10px;
+		}
+
+		.select__backdrop:not([hidden]) {
+			@include sheet-backdrop;
+
+			display: block;
+		}
+	}
+
+	.select__sheet-title {
+		@include text("h4-360");
+
+		flex: 1 1 auto;
+		min-width: 0;
+		color: palette("black-txt");
+	}
+
+	.select__sheet-close {
+		display: flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		padding: 0;
+		color: palette("black-txt");
+		cursor: pointer;
+		background: palette("bg-main");
+		border: 0;
+		border-radius: 50%;
+	}
+
+	.select__sheet-close-icon {
+		width: 10px;
+		height: 10px;
 	}
 }

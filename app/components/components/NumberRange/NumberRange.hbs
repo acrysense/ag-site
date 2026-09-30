@@ -1,0 +1,11 @@
+{{!--
+	Числовой диапазон «от — до» (Figma: Filter.NumberRange 4779:4361 — зарплата в фильтрах
+	вакансий): два поля 46 через «—». Разряды — через пробел, в форму уходят только цифры.
+	props: label (для скринридера: «Зарплата»), nameFrom, nameTo, from, to, placeholderFrom
+	(«от»), placeholderTo («до»), submit — отправить форму, когда значение изменили, class.
+--}}
+<div class="number-range{{#if props.class}} {{props.class}}{{/if}}" role="group" aria-label="{{default props.label 'Диапазон'}}" data-module="NumberRange" data-path="components" {{#if props.submit}}data-number-range-submit{{/if}}>
+    <input class="number-range__input" type="text" inputmode="numeric" autocomplete="off" name="{{props.nameFrom}}" value="{{props.from}}" placeholder="{{default props.placeholderFrom 'от'}}" aria-label="{{default props.label 'Диапазон'}}: от" />
+    <span class="number-range__dash" aria-hidden="true">—</span>
+    <input class="number-range__input" type="text" inputmode="numeric" autocomplete="off" name="{{props.nameTo}}" value="{{props.to}}" placeholder="{{default props.placeholderTo 'до'}}" aria-label="{{default props.label 'Диапазон'}}: до" />
+</div>

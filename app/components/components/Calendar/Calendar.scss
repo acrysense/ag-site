@@ -1,0 +1,187 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Calendar.Range (4743:2251), пресеты — 4743:37841. Карточка 314: поля 16, всё через 12;
+// листание — кнопки 36 на BG.Main; дни 40×36 (на мобильном в нижнем листе — во всю ширину);
+// период — BG.Violet, начало и конец — Main Blue, сегодня — синяя обводка.
+// Кнопок пресетов в макете нет (режимы Week/Month/Year есть) — ряд «таблеток» наш, как вкладки
+// мобильного поиска (360.Search.Tab): выбранная — синяя рамка и текст.
+@layer components {
+	// Ширина — по сетке (314); в нижнем листе растягивается (DateRange)
+	.calendar {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		width: fit-content;
+		max-width: 100%;
+		min-width: 0;
+		padding: 16px;
+		background: palette("white");
+		border: 1px solid palette("block-border");
+		border-radius: $radius-button;
+		box-shadow: $shadow-calendar;
+	}
+
+	.calendar__presets {
+		display: flex;
+		gap: 6px;
+	}
+
+	.calendar__preset {
+		@include text("m-400");
+
+		flex: 1 1 0;
+		height: 32px;
+		padding: 0 12px;
+		color: palette("black-txt");
+		cursor: pointer;
+		background: palette("white");
+		border: 1px solid palette("block-border");
+		border-radius: $radius-inner-block;
+		transition:
+			color $transition-default,
+			border-color $transition-default;
+
+		&:hover {
+			color: palette("blue-txt");
+		}
+
+		&[aria-pressed="true"] {
+			color: palette("blue-txt");
+			border-color: palette("main-blue");
+		}
+	}
+
+	.calendar__head {
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.calendar__title {
+		@include text("m-500");
+
+		color: palette("black-txt");
+		text-align: center;
+	}
+
+	.calendar__nav {
+		display: flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		padding: 0;
+		color: palette("black-txt");
+		cursor: pointer;
+		background: palette("bg-main");
+		border: 0;
+		border-radius: $radius-inner-block;
+		transition: color $transition-default;
+
+		&:hover {
+			color: palette("main-blue");
+		}
+
+		&--next .calendar__nav-icon {
+			transform: rotate(180deg);
+		}
+	}
+
+	.calendar__nav-icon {
+		width: 16px;
+		height: 16px;
+	}
+
+	.calendar__weekdays,
+	.calendar__grid {
+		display: grid;
+		grid-template-columns: repeat(7, minmax(40px, 1fr));
+	}
+
+	.calendar__weekdays[hidden] {
+		display: none;
+	}
+
+	.calendar__weekday {
+		@include text("s-400");
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 24px;
+		color: palette("dark-grey-txt");
+
+		&.is-weekend {
+			color: palette("blue-txt");
+		}
+	}
+
+	.calendar__grid {
+		row-gap: 2px;
+
+		&--months {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	.calendar__day,
+	.calendar__month {
+		@include text("m-400");
+
+		height: 36px;
+		padding: 0;
+		color: palette("black-txt");
+		cursor: pointer;
+		background: none;
+		border: 1px solid transparent;
+		border-radius: 0;
+
+		&:hover:not(.is-start, .is-end) {
+			color: palette("blue-txt");
+		}
+
+		&.is-outside {
+			color: palette("icon-grey");
+		}
+
+		&.is-in-range {
+			background: palette("bg-violet");
+		}
+
+		&.is-today {
+			color: palette("blue-txt");
+			border-color: palette("main-blue");
+			border-radius: $radius-inner-block;
+		}
+
+		&.is-start,
+		&.is-end {
+			@include text("m-500");
+
+			color: palette("white");
+			background: palette("main-blue");
+			border-color: palette("main-blue");
+			border-radius: $radius-inner-block;
+		}
+	}
+
+	.calendar__actions {
+		display: flex;
+		gap: 10px;
+		justify-content: flex-end;
+
+		.btn--light {
+			@include text("m-400");
+
+			color: palette("black-txt");
+		}
+
+		.btn:disabled {
+			cursor: default;
+			opacity: 0.5;
+		}
+	}
+}

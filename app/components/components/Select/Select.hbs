@@ -7,6 +7,9 @@
 	выборе, search — поиск по пунктам, url — пункты с сервера (порциями, с поиском; в options
 	тогда только выбранный), minChars — с какой длины искать на сервере (по умолчанию 2),
 	searchPlaceholder, class.
+	Фильтры (Figma: поиск, 4733:1650): placeholder — серый текст, пока ничего не выбрано
+	(«Должность»); multiple — выбор нескольких: список не закрывается, в поле «Отдел: 2»,
+	с submit форма отправляется один раз — при закрытии списка; valueText — текст поля до JS.
 --}}
 <div
     class="select{{#if props.class}} {{props.class}}{{/if}}"
@@ -19,8 +22,8 @@
 >
     <label class="select__field">
         {{#if props.label}}<span class="select__label">{{props.label}}</span>{{/if}}
-        <span class="select__value" aria-hidden="true" data-select-value>{{#each props.options}}{{#if selected}}{{text}}{{/if}}{{/each}}</span>
-        <select class="select__control" name="{{props.name}}" {{#if props.id}}id="{{props.id}}"{{/if}} {{#if props.submit}}data-select-submit{{/if}}>
+        <span class="select__value" aria-hidden="true" data-select-value {{#if props.placeholder}}data-placeholder="{{props.placeholder}}"{{/if}}>{{#if props.multiple}}{{default props.valueText props.placeholder}}{{else}}{{#each props.options}}{{#if selected}}{{text}}{{/if}}{{/each}}{{/if}}</span>
+        <select class="select__control" name="{{props.name}}" {{#if props.id}}id="{{props.id}}"{{/if}} {{#if props.multiple}}multiple{{/if}} {{#if props.submit}}data-select-submit{{/if}}>
             {{#each props.options}}
                 <option value="{{value}}" {{#if selected}}selected{{/if}}>{{text}}</option>
             {{/each}}

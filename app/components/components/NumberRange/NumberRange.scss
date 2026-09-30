@@ -1,0 +1,37 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Filter.NumberRange (4779:4361): два поля по половине через «—» (Dark-grey, M/400),
+// между ними 8. Шрифт поля — 16 (iOS не увеличивает страницу), в макете 14.
+@layer components {
+	.number-range {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+		min-width: 0;
+	}
+
+	.number-range__input {
+		@include control-box;
+
+		flex: 1 1 0;
+		min-width: 0;
+		font: inherit;
+		font-size: $field-font-size-min;
+
+		&::placeholder {
+			color: palette("dark-grey-txt");
+		}
+
+		&:focus {
+			border-color: palette("form-focus");
+		}
+	}
+
+	.number-range__dash {
+		@include text("m-400");
+
+		flex: none;
+		color: palette("dark-grey-txt");
+	}
+}

@@ -74,7 +74,15 @@ $colors: (
 	// Без переменной в Figma: моя реакция (Comment/Reaction · Mine)
 	"blue-soft": #e5f2ff,
 	// Без переменной в Figma: мой 👎 (Comment/Reaction · Mine dislike)
-	"red-soft": #ffeded
+	"red-soft": #ffeded,
+	// BG/BG.Yellow — метка «Новости» в поиске
+	"bg-yellow": #fff0d6,
+	// BG/BG.Blue — метка и заглушка «Документы»
+	"bg-blue": #cddeff,
+	// BG/BG.Green — метка и заглушка «Вакансии»
+	"bg-green": #e8f6ee,
+	// Без переменной в Figma: заглушка материала неопределённого типа (Type=Other)
+	"bg-neutral": #eceef2
 );
 
 // layout
@@ -100,6 +108,10 @@ $shadow-popover: 0 8px 12px rgb(18 23 33 / 14%);
 $shadow-field-focus: 0 0 0 3px rgb(0 129 255 / 16%);
 // Comment/Delete confirm popover — мягкая тень подтверждения
 $shadow-popover-soft: 0 8px 24px -8px rgb(18 23 33 / 14%);
+// Без переменной в Figma: Calendar.Range (drop-shadow 0 8 12, 12%)
+$shadow-calendar: 0 8px 12px rgb(15 26 36 / 12%);
+// Без переменной в Figma: Dropdown List — с поиском (мультивыбор фильтров)
+$shadow-list: 0 5px 20px rgb(0 0 0 / 15%);
 
 // Без переменной в Figma: фон под модальным окном (Overlay, 4132:1034) — подсветка и размытие
 $overlay-background: rgb(245 248 250 / 60%);
@@ -312,6 +324,15 @@ $text-styles: (
 			weight: 700,
 			size: 12,
 			line-height: normal,
+		),
+	// Без стиля в Figma: подпись раздела над фильтрами (360, 4790:3536) — Inter Bold 12,
+	// разрядка 0.48 (заглавные — text-transform в блоке)
+	"s-700-caps": (
+			family: body,
+			weight: 700,
+			size: 12,
+			line-height: normal,
+			letter-spacing: 0.48,
 		),
 	// Без переменной в Figma: «Сегодня» в календаре дней рождения 1920 (Inter Semi Bold 12)
 	"s-600": (

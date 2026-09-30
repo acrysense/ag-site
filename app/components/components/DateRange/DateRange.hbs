@@ -1,0 +1,15 @@
+{{!--
+	Поле периода (Figma: поле 46 с иконкой календаря — фильтры поиска 4764:2795; календарь —
+	Calendar.Range 4743:2251). Без JS — два нативных поля даты (форма работает). JS рисует поле по
+	макету, по клику — календарь под полем (на мобильном — в нижнем листе, 4786:2977);
+	«Применить» пишет даты в поля, «Сбросить» очищает. Значение в форме — YYYY-MM-DD.
+	props: nameFrom, nameTo, from, to, placeholder («Дата публикации»; он же заголовок листа),
+	submit — отправить форму после выбора, class.
+--}}
+<div class="date-range{{#if props.class}} {{props.class}}{{/if}}" data-module="DateRange" data-path="components" {{#if props.submit}}data-date-range-submit{{/if}} data-placeholder="{{default props.placeholder 'Период'}}">
+    <span class="date-range__native">
+        <input class="date-range__input" type="date" name="{{props.nameFrom}}" value="{{props.from}}" aria-label="{{default props.placeholder 'Период'}}: с" data-date-range-from />
+        <span class="date-range__dash" aria-hidden="true">—</span>
+        <input class="date-range__input" type="date" name="{{props.nameTo}}" value="{{props.to}}" aria-label="{{default props.placeholder 'Период'}}: по" data-date-range-to />
+    </span>
+</div>

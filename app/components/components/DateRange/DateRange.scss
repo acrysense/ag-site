@@ -1,0 +1,157 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: поле периода в фильтрах поиска (4764:2795, 4779:3820) — 46, текст M/400, иконка
+// календаря 16; открыто — рамка Form.Focus. Календарь — под полем через 6 (Calendar.Range);
+// на мобильном — нижний лист «Дата публикации» (4786:2977): заголовок H4, × 36 на BG.Main.
+@layer components {
+	.date-range {
+		position: relative;
+		min-width: 0;
+	}
+
+	// Без JS: два нативных поля даты
+	.date-range__native {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+
+		.date-range.is-enhanced & {
+			display: none;
+		}
+	}
+
+	.date-range__input {
+		@include control-box;
+
+		flex: 1 1 0;
+		min-width: 0;
+		font: inherit;
+		font-size: $field-font-size-min;
+
+		&:focus {
+			border-color: palette("form-focus");
+		}
+	}
+
+	.date-range__dash {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.date-range__field {
+		@include control-box;
+
+		cursor: pointer;
+
+		.date-range.is-open & {
+			border-color: palette("form-focus");
+		}
+	}
+
+	.date-range__value {
+		@include text("m-400");
+
+		flex: 1 1 auto;
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		.date-range.is-placeholder & {
+			color: palette("dark-grey-txt");
+		}
+	}
+
+	.date-range__icon {
+		flex: none;
+		width: 16px;
+		height: 16px;
+		color: palette("main-blue");
+	}
+
+	.date-range__popup {
+		position: absolute;
+		top: calc(100% + 6px);
+		left: 0;
+		z-index: 20;
+
+		&[hidden] {
+			display: none;
+		}
+
+		.date-range.is-up & {
+			top: auto;
+			bottom: calc(100% + 6px);
+		}
+
+		@include down(tablet) {
+			@include sheet;
+
+			top: auto;
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+			overflow-y: auto;
+
+			.calendar {
+				width: auto;
+				box-shadow: none;
+			}
+		}
+	}
+
+	.date-range__head {
+		display: none;
+
+		@include down(tablet) {
+			display: flex;
+			gap: 8px;
+			align-items: center;
+			padding-left: 10px;
+		}
+	}
+
+	.date-range__title {
+		@include text("h4-360");
+
+		flex: 1 1 auto;
+		min-width: 0;
+		color: palette("black-txt");
+	}
+
+	.date-range__close {
+		display: flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		padding: 0;
+		color: palette("black-txt");
+		cursor: pointer;
+		background: palette("bg-main");
+		border: 0;
+		border-radius: 50%;
+	}
+
+	.date-range__close-icon {
+		width: 10px;
+		height: 10px;
+	}
+
+	.date-range__backdrop {
+		display: none;
+
+		@include down(tablet) {
+			@include sheet-backdrop;
+
+			display: block;
+
+			&[hidden] {
+				display: none;
+			}
+		}
+	}
+}
