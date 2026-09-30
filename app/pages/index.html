@@ -8,6 +8,8 @@
 		<div class="wrapper">
 			{{> layouts/Header/Header props=site.header }}
 			<main class="wrapper__content">
+				{{!-- Заголовок страницы для скринридеров и поиска: на главной он не виден (в макете нет) --}}
+				<h1 class="visually-hidden">{{site.siteName}}</h1>
 				{{!-- Блоки главной в порядке макета (PC.Main v2 — 4615:42781, 360.Main v2 — 4865:1332).
 				Готовые подключены, остальные добавляются по мере вёрстки. --}}
 				<div class="container page-blocks">

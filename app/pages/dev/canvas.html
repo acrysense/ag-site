@@ -102,6 +102,9 @@
 				{{#> state label="Много пунктов меню" bg="page"}}
 					{{> layouts/Header/Header props=data.headerLong}}
 				{{/state}}
+				{{#> state label="Длинное название и имя" bg="page"}}
+					{{> layouts/Header/Header props=data.headerLongText}}
+				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: шапка приходит с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
@@ -478,6 +481,10 @@
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container"><div class="story-column-narrow">{{> sections/news/NewsFilters/NewsFilters props=data.newsFilters}}</div></div>
 				{{/state}}
+				{{#> state label="Только категории (новость, журнал)" bg="page"}}
+					<div class="container"><div class="story-column-narrow">{{> sections/news/NewsFilters/NewsFilters props=data.newsFiltersCategories}}</div></div>
+				{{/state}}
+				{{#> state label="Пусто" note="блок не выводится (ни категорий, ни годов)"}}{{/state}}
 				{{#> state label="Вертикальный баннер (с 1024)" bg="page"}}
 					<div class="container"><div class="story-column-narrow">{{> sections/shared/SideBanner/SideBanner props=data.sideBanner}}</div></div>
 				{{/state}}

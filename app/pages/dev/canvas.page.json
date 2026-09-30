@@ -5420,24 +5420,24 @@
 		"article": {
 			"title": "Итоги программы «Лучшая аптека сезона»: 10 аптек-победителей",
 			"image": {
-				"src": "./dev/img/news-3.jpg",
+				"src": "./img/news-3.jpg",
 				"alt": "Награждение победителей программы",
 				"caption": "Награждение победителей в главном офисе"
 			},
-			"html": "<p>В марте в&nbsp;холдинге подвели итоги мотивационной программы «Лучшая аптека сезона». В&nbsp;ней участвовали 214 аптек из&nbsp;всех регионов, а&nbsp;победителей выбирали по&nbsp;продажам, отзывам покупателей и&nbsp;результатам обучения. Подробные правила — в&nbsp;<a href=\"#\">положении о&nbsp;программе</a>.</p>\n<h2>Как выбирали победителей</h2>\n<p>Каждая аптека получала баллы за&nbsp;выполнение плана, оценки тайных покупателей и&nbsp;прохождение курсов учебного центра. Итоговый рейтинг комиссия утвердила 28 марта.</p>\n<blockquote>«Приятно, что оценивали не&nbsp;только цифры, но&nbsp;и&nbsp;то, как мы&nbsp;работаем с&nbsp;людьми. Спасибо всей команде!» — заведующая аптекой №&nbsp;112</blockquote>\n<h3>Критерии оценки</h3>\n<ul>\n<li>выполнение плана продаж за&nbsp;квартал;</li>\n<li>средняя оценка тайного покупателя — не&nbsp;ниже 4,5;</li>\n<li>доля сотрудников, прошедших обязательные курсы.</li>\n</ul>\n<ol>\n<li>Регистрация аптек — до&nbsp;15 января.</li>\n<li>Оценка — с&nbsp;15 января по&nbsp;15 марта.</li>\n<li>Подведение итогов — 28 марта.</li>\n</ol>\n<h3>Итоги по регионам</h3>\n<table>\n<thead><tr><th>Регион</th><th>Аптек</th><th>Победителей</th><th>Средний балл</th></tr></thead>\n<tbody>\n<tr><td>Минск</td><td>86</td><td>5</td><td>4,8</td></tr>\n<tr><td>Минская область</td><td>41</td><td>2</td><td>4,6</td></tr>\n<tr><td>Брестская область</td><td>33</td><td>2</td><td>4,7</td></tr>\n<tr><td>Гродненская область</td><td>28</td><td>1</td><td>4,5</td></tr>\n</tbody>\n</table>\n<h3>Частые вопросы</h3>\n<details><summary>Когда будут вручены призы?</summary><p>Призы вручат до&nbsp;конца апреля на&nbsp;встречах в&nbsp;регионах. Точные даты сообщат руководители.</p></details>\n<details><summary>Можно ли участвовать в следующем сезоне?</summary><p>Да, регистрация откроется в&nbsp;сентябре. Условия будут опубликованы в&nbsp;разделе «Мотивационные проекты».</p></details>\n<details><summary>Куда задать вопрос по результатам?</summary><p>Напишите в&nbsp;отдел персонала через форму «Предложить тему» внизу страницы.</p></details>\n<figure><img src=\"./dev/img/news-2.jpg\" width=\"600\" height=\"600\" alt=\"Команда аптеки-победителя с дипломом\" loading=\"lazy\"><figcaption>Команда аптеки №&nbsp;112 — победитель сезона</figcaption></figure>\n<p>Следующий сезон программы стартует осенью. Следите за&nbsp;новостями!</p>",
+			"html": "<p>В марте в&nbsp;холдинге подвели итоги мотивационной программы «Лучшая аптека сезона». В&nbsp;ней участвовали 214 аптек из&nbsp;всех регионов, а&nbsp;победителей выбирали по&nbsp;продажам, отзывам покупателей и&nbsp;результатам обучения. Подробные правила — в&nbsp;<a href=\"#\">положении о&nbsp;программе</a>.</p>\n<h2>Как выбирали победителей</h2>\n<p>Каждая аптека получала баллы за&nbsp;выполнение плана, оценки тайных покупателей и&nbsp;прохождение курсов учебного центра. Итоговый рейтинг комиссия утвердила 28 марта.</p>\n<blockquote>«Приятно, что оценивали не&nbsp;только цифры, но&nbsp;и&nbsp;то, как мы&nbsp;работаем с&nbsp;людьми. Спасибо всей команде!» — заведующая аптекой №&nbsp;112</blockquote>\n<h3>Критерии оценки</h3>\n<ul>\n<li>выполнение плана продаж за&nbsp;квартал;</li>\n<li>средняя оценка тайного покупателя — не&nbsp;ниже 4,5;</li>\n<li>доля сотрудников, прошедших обязательные курсы.</li>\n</ul>\n<ol>\n<li>Регистрация аптек — до&nbsp;15 января.</li>\n<li>Оценка — с&nbsp;15 января по&nbsp;15 марта.</li>\n<li>Подведение итогов — 28 марта.</li>\n</ol>\n<h3>Итоги по регионам</h3>\n<table>\n<thead><tr><th>Регион</th><th>Аптек</th><th>Победителей</th><th>Средний балл</th></tr></thead>\n<tbody>\n<tr><td>Минск</td><td>86</td><td>5</td><td>4,8</td></tr>\n<tr><td>Минская область</td><td>41</td><td>2</td><td>4,6</td></tr>\n<tr><td>Брестская область</td><td>33</td><td>2</td><td>4,7</td></tr>\n<tr><td>Гродненская область</td><td>28</td><td>1</td><td>4,5</td></tr>\n</tbody>\n</table>\n<h3>Частые вопросы</h3>\n<details><summary>Когда будут вручены призы?</summary><p>Призы вручат до&nbsp;конца апреля на&nbsp;встречах в&nbsp;регионах. Точные даты сообщат руководители.</p></details>\n<details><summary>Можно ли участвовать в следующем сезоне?</summary><p>Да, регистрация откроется в&nbsp;сентябре. Условия будут опубликованы в&nbsp;разделе «Мотивационные проекты».</p></details>\n<details><summary>Куда задать вопрос по результатам?</summary><p>Напишите в&nbsp;отдел персонала через форму «Предложить тему» внизу страницы.</p></details>\n<figure><img src=\"./img/news-2.jpg\" width=\"600\" height=\"600\" alt=\"Команда аптеки-победителя с дипломом\" loading=\"lazy\"><figcaption>Команда аптеки №&nbsp;112 — победитель сезона</figcaption></figure>\n<p>Следующий сезон программы стартует осенью. Следите за&nbsp;новостями!</p>",
 			"gallery": {
 				"label": "Фотографии с награждения",
 				"slides": [
 					{
-						"src": "./dev/img/news-1.jpg",
+						"src": "./img/news-1.jpg",
 						"alt": "Зал перед награждением"
 					},
 					{
-						"src": "./dev/img/news-4.jpg",
+						"src": "./img/news-4.jpg",
 						"alt": "Победители на сцене"
 					},
 					{
-						"src": "./dev/img/post-1.jpg",
+						"src": "./img/post-1.jpg",
 						"alt": "Общее фото участников"
 					}
 				]
@@ -5469,15 +5469,15 @@
 			"label": "Фотографии с награждения",
 			"slides": [
 				{
-					"src": "./dev/img/news-1.jpg",
+					"src": "./img/news-1.jpg",
 					"alt": "Зал перед награждением"
 				},
 				{
-					"src": "./dev/img/news-4.jpg",
+					"src": "./img/news-4.jpg",
 					"alt": "Победители на сцене"
 				},
 				{
-					"src": "./dev/img/post-1.jpg",
+					"src": "./img/post-1.jpg",
 					"alt": "Общее фото участников"
 				}
 			]
@@ -5485,7 +5485,7 @@
 		"galleryOne": {
 			"slides": [
 				{
-					"src": "./dev/img/news-1.jpg",
+					"src": "./img/news-1.jpg",
 					"alt": "Зал перед награждением"
 				}
 			]
@@ -5710,7 +5710,7 @@
 						"sectionLabel": "Справочник",
 						"type": "person",
 						"image": {
-							"src": "./dev/img/person-1.jpg"
+							"src": "./img/person-1.jpg"
 						},
 						"titleHtml": "<mark>Иван</mark>ова Ольга Александровна",
 						"snippetHtml": "Провизор · Аптека №12, Минск, ул. Притыцкого, 34",
@@ -5722,7 +5722,7 @@
 						"sectionLabel": "Справочник",
 						"type": "person",
 						"image": {
-							"src": "./dev/img/person-2.jpg"
+							"src": "./img/person-2.jpg"
 						},
 						"titleHtml": "<mark>Иван</mark>чик Дмитрий Олегович",
 						"snippetHtml": "Менеджер по закупкам · Центральный офис",
@@ -5743,7 +5743,7 @@
 						"sectionLabel": "Справочник",
 						"type": "person",
 						"image": {
-							"src": "./dev/img/person-3.jpg"
+							"src": "./img/person-3.jpg"
 						},
 						"titleHtml": "<mark>Иван</mark>ькова Анна Игоревна",
 						"snippetHtml": "Специалист по продажам · Аптека №4, Гродно",
@@ -5755,7 +5755,7 @@
 						"sectionLabel": "Справочник",
 						"type": "person",
 						"image": {
-							"src": "./dev/img/person-4.jpg"
+							"src": "./img/person-4.jpg"
 						},
 						"titleHtml": "<mark>Иван</mark>овский Павел Андреевич",
 						"snippetHtml": "Руководитель направления · Центральный офис",
@@ -5902,7 +5902,7 @@
 						"sectionLabel": "Новости",
 						"type": "news",
 						"image": {
-							"src": "./dev/img/news-1.jpg"
+							"src": "./img/news-1.jpg"
 						},
 						"titleHtml": "<mark>Иван</mark> Купала: как мы провели летний корпоратив",
 						"snippetHtml": "Больше 300 сотрудников собрались на берегу озера, чтобы отметить праздник <mark>Иван</mark>а Купалы: конкурсы, венки и традиционный костёр…",
@@ -6520,7 +6520,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-1.jpg",
+						"src": "./img/journal-1.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6537,7 +6537,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-2.jpg",
+						"src": "./img/journal-2.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6554,7 +6554,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-2.jpg",
+						"src": "./img/journal-2.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6571,7 +6571,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-1.jpg",
+						"src": "./img/journal-1.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6588,7 +6588,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-2.jpg",
+						"src": "./img/journal-2.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6605,7 +6605,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-1.jpg",
+						"src": "./img/journal-1.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6622,7 +6622,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-1.jpg",
+						"src": "./img/journal-1.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6639,7 +6639,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-1.jpg",
+						"src": "./img/journal-1.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6656,7 +6656,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-2.jpg",
+						"src": "./img/journal-2.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6673,7 +6673,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-1.jpg",
+						"src": "./img/journal-1.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6690,7 +6690,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-1.jpg",
+						"src": "./img/journal-1.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6707,7 +6707,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-2.jpg",
+						"src": "./img/journal-2.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6724,7 +6724,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-1.jpg",
+						"src": "./img/journal-1.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6741,7 +6741,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-2.jpg",
+						"src": "./img/journal-2.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6758,7 +6758,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-2.jpg",
+						"src": "./img/journal-2.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6836,7 +6836,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-1.jpg",
+						"src": "./img/journal-1.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6876,7 +6876,7 @@
 						"sizeText": "1 024 МБ"
 					},
 					"image": {
-						"src": "./dev/img/journal-1.jpg",
+						"src": "./img/journal-1.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6893,7 +6893,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-2.jpg",
+						"src": "./img/journal-2.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6910,7 +6910,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-2.jpg",
+						"src": "./img/journal-2.jpg",
 						"width": 360,
 						"height": 360
 					},
@@ -6923,6 +6923,114 @@
 			"pagination": null,
 			"card": "journal",
 			"emptyText": "Выпусков пока нет"
+		},
+		"headerLongText": {
+			"homeUrl": "/",
+			"title": "Корпоративный сайт холдинга «Аптека групп» и всех его аптечных сетей Республики Беларусь",
+			"titleShort": "Корпоративный сайт холдинга и аптечных сетей",
+			"search": {
+				"action": "#",
+				"name": "q"
+			},
+			"menu": [
+				{
+					"text": "Главная",
+					"url": "/"
+				},
+				{
+					"text": "О холдинге",
+					"url": "#"
+				},
+				{
+					"text": "Новости",
+					"url": "#",
+					"children": [
+						{
+							"text": "Новости холдинга",
+							"url": "#"
+						},
+						{
+							"text": "HR-дайджест",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"text": "Карьера",
+					"url": "#"
+				},
+				{
+					"text": "База знаний",
+					"url": "#"
+				},
+				{
+					"text": "Галерея",
+					"url": "#"
+				}
+			],
+			"loginUrl": "#",
+			"loginText": "Войти в ЛК",
+			"id": "header-user",
+			"user": {
+				"name": "Владислава Митрофановна Константинопольская-Заболоцкая",
+				"initials": "ВМ",
+				"url": "#",
+				"links": [
+					{
+						"icon": "profile",
+						"label": "Личный кабинет",
+						"url": "#"
+					},
+					{
+						"icon": "edu",
+						"label": "Учебный портал",
+						"url": "#"
+					},
+					{
+						"icon": "crm",
+						"label": "CRM",
+						"url": "#"
+					}
+				]
+			}
+		},
+		"newsFiltersCategories": {
+			"title": "Категории",
+			"categories": [
+				{
+					"text": "Новости холдинга",
+					"url": "#"
+				},
+				{
+					"text": "СТМ",
+					"url": "#"
+				},
+				{
+					"text": "Товары",
+					"url": "#"
+				},
+				{
+					"text": "Мотивационные проекты",
+					"url": "#",
+					"current": true
+				},
+				{
+					"text": "Акции",
+					"url": "#"
+				},
+				{
+					"text": "Учебный центр",
+					"url": "#"
+				},
+				{
+					"text": "Интервью",
+					"url": "#"
+				},
+				{
+					"text": "Разное",
+					"url": "#"
+				}
+			]
 		}
 	}
 }

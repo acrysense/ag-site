@@ -22,7 +22,7 @@
                             {{else}}
                                 <picture class="hero__picture">
                                     {{#if image.desktop}}<source media="(min-width: 768px)" srcset="{{image.desktop}}" />{{/if}}
-                                    <img class="hero__image" src="{{default image.mobile image.desktop}}" alt="{{alt}}" {{#unless @first}}loading="lazy"{{/unless}} decoding="async" />
+                                    <img class="hero__image" src="{{default image.mobile image.desktop}}" width="1100" height="500" alt="{{alt}}" {{#unless @first}}loading="lazy"{{/unless}} decoding="async" />
                                 </picture>
                             {{/if}}
                             {{#if url}}</a>{{/if}}
