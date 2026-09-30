@@ -340,12 +340,21 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="select" group="Компоненты" title="Выпадающий список" description="Figma: Select — Месяц. Нативный select поверх поля: системный список, клавиатура; шрифт 16px против увеличения в iOS."}}
+			{{#> story id="select" group="Компоненты" title="Выпадающий список" description="Figma: Select — Месяц (4704:1079), открыт — 4706:1207. Список по макету поверх нативного select (без JS — системный). Поиск по пунктам; пункты с сервера — по открытию, с задержкой ввода, отменой прошлого запроса, кешем и порциями при прокрутке (в витрине — имитация сервера, запросы видны в консоли)."}}
 				{{#> state label="Обычное"}}
 					{{> components/Select/Select props=data.selectMonth}}
 				{{/state}}
 				{{#> state label="Длинное значение"}}
 					{{> components/Select/Select props=data.selectLong}}
+				{{/state}}
+				{{#> state label="С поиском по пунктам"}}
+					{{> components/Select/Select props=data.selectSearch}}
+				{{/state}}
+				{{#> state label="С сервера: поиск и порции"}}
+					{{> components/Select/Select props=data.selectRemote}}
+				{{/state}}
+				{{#> state label="С сервера: ошибка"}}
+					{{> components/Select/Select props=data.selectRemoteError}}
 				{{/state}}
 			{{/story}}
 		</main>

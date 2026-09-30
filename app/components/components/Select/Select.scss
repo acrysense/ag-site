@@ -1,15 +1,21 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: Select — Месяц (4704:1079): 46px, рамка Form.Border, подпись серым, значение
-// Black.TXT, стрелка 11.5×6.5. В фокусе — рамка Form.Focus и кольцо фокуса.
+// Figma: Select — Месяц (4704:1079), открыт — 4706:1207. Поле 46px, рамка Form.Border, подпись
+// серым, значение Black.TXT, стрелка 11.5×6.5; открыто — рамка Form.Focus, стрелка вверх.
+// Список: через 6px под полем, по его ширине, пункты 38px, выбранный — BG.Violet, Blue.TXT и
+// галочка, под курсором — BG.Main.
 @layer components {
 	.select {
+		position: relative;
+		min-width: 0;
+	}
+
+	.select__field {
 		position: relative;
 		display: flex;
 		gap: 6px;
 		align-items: center;
-		min-width: 0;
 		height: 46px;
 		padding: 0 15px;
 		background: palette("white");
@@ -17,7 +23,8 @@
 		border-radius: $radius-button;
 		transition: border-color $transition-default;
 
-		&:focus-within {
+		&:focus-within,
+		.select.is-open & {
 			border-color: palette("form-focus");
 		}
 
@@ -45,13 +52,18 @@
 		white-space: nowrap;
 	}
 
-	// Сам список — прозрачный на всё поле; кольцо фокуса рисует поле
-	.select__control {
+	// Нативный список и кнопка — прозрачным слоем на всё поле; кольцо фокуса рисует поле.
+	// Шрифт нативного 16px, чтобы iOS не увеличивал страницу
+	.select__control,
+	.select__button {
 		position: absolute;
 		inset: 0;
 		width: 100%;
+		padding: 0;
 		font-size: $field-font-size-min;
 		cursor: pointer;
+		background: none;
+		border: 0;
 		opacity: 0;
 		appearance: none;
 
@@ -60,10 +72,150 @@
 		}
 	}
 
+	.select.is-enhanced .select__control {
+		pointer-events: none;
+	}
+
 	.select__icon {
 		flex: none;
 		width: 11.5px;
 		height: 6.5px;
 		color: palette("dark-grey-txt");
+		transition: transform $transition-default;
+
+		.select.is-open & {
+			transform: rotate(180deg);
+		}
+	}
+
+	// Окно: строка поиска (если есть), список с прокруткой, строка состояния
+	.select__popup {
+		position: absolute;
+		top: calc(100% + 6px);
+		right: 0;
+		left: 0;
+		z-index: 20;
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		max-height: min(520px, 60vh);
+		padding: 6px;
+		background: palette("white");
+		border: 1px solid palette("block-border");
+		border-radius: $radius-button;
+		box-shadow: $shadow-dropdown;
+
+		&[hidden] {
+			display: none;
+		}
+
+		.select.is-up & {
+			top: auto;
+			bottom: calc(100% + 6px);
+		}
+	}
+
+	// Строки поиска в макете нет — поле в тех же цветах, что пункты
+	.select__search {
+		@include text("m-400");
+
+		flex: none;
+		height: 38px;
+		padding: 8px 10px;
+		font-size: $field-font-size-min;
+		color: palette("black-txt");
+		background: palette("bg-info");
+		border: 1px solid transparent;
+		border-radius: $radius-dropdown;
+
+		&::placeholder {
+			color: palette("dark-grey-txt");
+		}
+	}
+
+	.select__list {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		min-height: 0;
+		margin: 0;
+		padding: 0;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		list-style: none;
+
+		&:empty {
+			display: none;
+		}
+	}
+
+	.select__sentinel {
+		flex: none;
+		height: 1px;
+	}
+
+	.select__status {
+		@include text("m-400");
+
+		display: flex;
+		flex: none;
+		gap: 10px;
+		align-items: center;
+		justify-content: space-between;
+		padding: 8px 10px;
+		color: palette("dark-grey-txt");
+
+		&[hidden] {
+			display: none;
+		}
+	}
+
+	.select__retry {
+		@include text("m-400");
+
+		padding: 0;
+		color: palette("main-blue");
+		cursor: pointer;
+		background: none;
+		border: 0;
+
+		&:hover {
+			color: palette("blue-hover");
+		}
+	}
+
+	.select__option {
+		@include text("m-400");
+
+		display: flex;
+		flex: none;
+		gap: 10px;
+		align-items: center;
+		justify-content: space-between;
+		padding: 8px 10px;
+		color: palette("black-txt");
+		cursor: pointer;
+		border-radius: $radius-dropdown;
+
+		&.is-active {
+			background: palette("bg-main");
+		}
+
+		&[aria-selected="true"] {
+			color: palette("blue-txt");
+			background: palette("bg-violet");
+		}
+	}
+
+	.select__check {
+		display: none;
+		flex: none;
+		width: 13.8px;
+		height: 9.8px;
+		color: palette("main-blue");
+
+		[aria-selected="true"] > & {
+			display: block;
+		}
 	}
 }

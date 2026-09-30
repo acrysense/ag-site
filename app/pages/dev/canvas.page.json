@@ -4357,6 +4357,75 @@
 					"text": "Все"
 				}
 			]
+		},
+		"selectSearch": {
+			"label": "Юр. лицо:",
+			"name": "demo-company-search",
+			"search": true,
+			"options": [
+				{
+					"value": "",
+					"text": "Все",
+					"selected": true
+				},
+				{
+					"value": "1",
+					"text": "ООО «Аптека групп»"
+				},
+				{
+					"value": "2",
+					"text": "ООО «Адель Фарм»"
+				},
+				{
+					"value": "3",
+					"text": "ООО «Добрыя лекі»"
+				},
+				{
+					"value": "4",
+					"text": "ООО «Аптечка плюс»"
+				},
+				{
+					"value": "5",
+					"text": "ООО «Фармация Минск»"
+				},
+				{
+					"value": "6",
+					"text": "ООО «Здоровье плюс»"
+				},
+				{
+					"value": "7",
+					"text": "ООО «Белфармация Юг»"
+				},
+				{
+					"value": "8",
+					"text": "ООО «Аптечный склад»"
+				}
+			]
+		},
+		"selectRemote": {
+			"label": "Сотрудник:",
+			"name": "demo-employee",
+			"url": "/__mock/select",
+			"searchPlaceholder": "Фамилия или аптека",
+			"options": [
+				{
+					"value": "",
+					"text": "Не выбран",
+					"selected": true
+				}
+			]
+		},
+		"selectRemoteError": {
+			"label": "Сотрудник:",
+			"name": "demo-employee-error",
+			"url": "/__mock/select?fail=1",
+			"options": [
+				{
+					"value": "",
+					"text": "Не выбран",
+					"selected": true
+				}
+			]
 		}
 	}
 }

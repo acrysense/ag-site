@@ -1,17 +1,30 @@
 {{!--
-	Выпадающий список с подписью внутри поля (Figma: Select — Месяц, 4704:1079). Нативный
-	<select> прозрачный поверх: список — системный, работает с клавиатуры и на телефоне;
-	шрифт у него 16px, чтобы iOS не увеличивал страницу. Видимое значение — копия, её
-	обновляет JS. props: label, name, id, options [{ value, text, selected }], submit —
-	отправлять форму при выборе, class.
+	Выпадающий список с подписью внутри поля (Figma: Select — Месяц 4704:1079, открыт —
+	4706:1207). Основа — нативный <select>: без JS работает системный список. JS заменяет его
+	своим списком по макету (ARIA combobox + listbox, клавиатура) и пишет выбор обратно в
+	<select> — форма и отправка не меняются. Контракт — docs/contracts/select.md.
+	props: label, name, id, options [{ value, text, selected }], submit — отправлять форму при
+	выборе, search — поиск по пунктам, url — пункты с сервера (порциями, с поиском; в options
+	тогда только выбранный), minChars — с какой длины искать на сервере (по умолчанию 2),
+	searchPlaceholder, class.
 --}}
-<label class="select{{#if props.class}} {{props.class}}{{/if}}" data-module="Select" data-path="components">
-    {{#if props.label}}<span class="select__label">{{props.label}}</span>{{/if}}
-    <span class="select__value" aria-hidden="true" data-select-value>{{#each props.options}}{{#if selected}}{{text}}{{/if}}{{/each}}</span>
-    <select class="select__control" name="{{props.name}}" {{#if props.id}}id="{{props.id}}"{{/if}} {{#if props.submit}}data-select-submit{{/if}}>
-        {{#each props.options}}
-            <option value="{{value}}" {{#if selected}}selected{{/if}}>{{text}}</option>
-        {{/each}}
-    </select>
-    {{> components/Icon/Icon name="chevron-down" class="select__icon"}}
-</label>
+<div
+    class="select{{#if props.class}} {{props.class}}{{/if}}"
+    data-module="Select"
+    data-path="components"
+    {{#if props.url}}data-select-url="{{props.url}}"{{/if}}
+    {{#if (or props.search props.url)}}data-select-search{{/if}}
+    {{#if props.minChars}}data-select-min-chars="{{props.minChars}}"{{/if}}
+    {{#if props.searchPlaceholder}}data-select-search-placeholder="{{props.searchPlaceholder}}"{{/if}}
+>
+    <label class="select__field">
+        {{#if props.label}}<span class="select__label">{{props.label}}</span>{{/if}}
+        <span class="select__value" aria-hidden="true" data-select-value>{{#each props.options}}{{#if selected}}{{text}}{{/if}}{{/each}}</span>
+        <select class="select__control" name="{{props.name}}" {{#if props.id}}id="{{props.id}}"{{/if}} {{#if props.submit}}data-select-submit{{/if}}>
+            {{#each props.options}}
+                <option value="{{value}}" {{#if selected}}selected{{/if}}>{{text}}</option>
+            {{/each}}
+        </select>
+        {{> components/Icon/Icon name="chevron-down" class="select__icon"}}
+    </label>
+</div>
