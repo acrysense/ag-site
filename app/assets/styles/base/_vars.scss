@@ -53,15 +53,27 @@ $colors: (
 	"block-border": #dde3e9
 );
 
+// layout
+// Ширина контента на макете 1920 (Frame 456: поля 160 → 1600)
+$container-width: 1600px;
+// Поле по краям на десктопе уже ширины контента — в макете нет, наше
+$container-gutter-desktop: 20px;
+
+// shadow
+// Тень белых блоков (Radius-ContentBlock) — в Figma эффект без переменной
+$shadow-content-block: 0 2px 8px rgb(15 23 42 / 5%);
+
 // radius
 $radius-button: 14px; // Radius-Button
 $radius-content-block: 20px; // Radius-ContentBlock
 $radius-inner-block: 10px; // Radius-InnerBlock
 
 // text
-// Стили текста из переменных макета (в комментарии — имя в Figma).
-// Размеры фиксированные, как в макете: size и line-height — пиксели десктопного
-// макета, line-height: 1 — «100%». mobile — отличия мобильного макета, если есть.
+// Стили текста из переменных макета (в комментарии — имя в Figma). Мобильные стили
+// Figma (360/…) — отдельные записи: на одном мобильном экране встречаются и 360/…,
+// и PC/…, поэтому блок сам выбирает стиль для каждой ширины.
+// size и line-height — пиксели, letter-spacing — px. line-height «100» в переменных
+// Figma — это Auto, то есть normal: так высота текста в макете и считается.
 // Применяются через @include text("имя"); в витрине («Основа → Типографика») появляются сами.
 $text-styles: (
 	// PC/HEADER/H1
@@ -78,15 +90,27 @@ $text-styles: (
 			size: 26,
 			line-height: 28,
 		),
-	// PC/HEADER/H4, 360/HEADER/H4
+	// PC/HEADER/H4
 	"h4": (
 			family: heading,
 			weight: 700,
 			size: 18,
 			line-height: 24,
-			mobile: (
-				line-height: 1,
-			),
+		),
+	// 360/HEADER/H4
+	"h4-360": (
+			family: heading,
+			weight: 700,
+			size: 18,
+			line-height: normal,
+		),
+	// Без переменной в Figma: заголовок карточки новости на десктопе
+	"card-title": (
+			family: heading,
+			weight: 700,
+			size: 20,
+			line-height: 24,
+			letter-spacing: 0.2,
 		),
 	// PC/L/400
 	"l-400": (
@@ -100,17 +124,21 @@ $text-styles: (
 			family: body,
 			weight: 700,
 			size: 16,
-			line-height: 1,
+			line-height: normal,
 		),
-	// PC/M/400, 360/M/400
+	// PC/M/400
 	"m-400": (
 			family: body,
 			weight: 400,
 			size: 14,
 			line-height: 22,
-			mobile: (
-				line-height: 20,
-			),
+		),
+	// 360/M/400
+	"m-400-360": (
+			family: body,
+			weight: 400,
+			size: 14,
+			line-height: 20,
 		),
 	// PC/M/500
 	"m-500": (
@@ -124,14 +152,14 @@ $text-styles: (
 			family: body,
 			weight: 400,
 			size: 12,
-			line-height: 1,
+			line-height: normal,
 		),
 	// PC/XS/400
 	"xs-400": (
 			family: body,
 			weight: 400,
 			size: 11,
-			line-height: 1,
+			line-height: normal,
 		)
 );
 

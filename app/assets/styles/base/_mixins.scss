@@ -202,30 +202,14 @@ $alias-bp: (
 
 // Стиль текста из $text-styles. Способ задания размеров живёт только здесь:
 // блоки вызывают text("имя") и не знают, как он устроен.
-// Сейчас размеры фиксированные, как в макете (мобильный и десктопный используют
-// одни и те же размеры): font-size в rem, line-height — отношение к размеру.
-// Отличия мобильного макета (ключ mobile) действуют до десктопного брейкпоинта.
+// Размеры фиксированные, как в макете: font-size в rem, line-height и letter-spacing —
+// относительно размера шрифта.
 @function _px-to-rem($px) {
 	@return math.div($px, 16) * 1rem;
 }
 
-@function _leading($line-height, $size) {
-	// 1 и меньше 3 — уже отношение («100%» в Figma), иначе — пиксели
-	@if $line-height < 3 {
-		@return $line-height;
-	}
-	@return math.div(math.round(math.div($line-height, $size) * 10000), 10000);
-}
-
-// $only — какие свойства выводить (для десктопа после мобильных отличий)
-@mixin _text-values($style, $only: (size, line-height)) {
-	$size: map.get($style, size);
-	@if list.index($only, size) {
-		font-size: _px-to-rem($size);
-	}
-	@if list.index($only, line-height) {
-		line-height: _leading(map.get($style, line-height), $size);
-	}
+@function _ratio($value, $size) {
+	@return math.div(math.round(math.div($value, $size) * 10000), 10000);
 }
 
 @mixin text($name) {
@@ -233,7 +217,9 @@ $alias-bp: (
 	@if $style == null {
 		@error 'Unknown text style `#{$name}`: add it to $text-styles in _vars.scss';
 	}
-	@if map.get($style, size) == null or map.get($style, line-height) == null {
+	$size: map.get($style, size);
+	$line-height: map.get($style, line-height);
+	@if $size == null or $line-height == null {
 		@error 'Text style `#{$name}` needs size and line-height';
 	}
 
@@ -243,16 +229,17 @@ $alias-bp: (
 	} @else if $family == body {
 		font-family: vars.$font-base;
 	}
+	font-size: _px-to-rem($size);
 	font-weight: map.get($style, weight);
-
-	$mobile: map.get($style, mobile);
-	@if $mobile {
-		@include _text-values(map.merge($style, $mobile));
-
-		@include up(desktop) {
-			@include _text-values($style, map.keys($mobile));
-		}
+	// normal — Auto в Figma, иначе пиксели макета
+	@if $line-height == normal {
+		line-height: normal;
 	} @else {
-		@include _text-values($style);
+		line-height: _ratio($line-height, $size);
+	}
+
+	$letter-spacing: map.get($style, letter-spacing);
+	@if $letter-spacing {
+		letter-spacing: #{_ratio($letter-spacing, $size)}em;
 	}
 }

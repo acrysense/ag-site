@@ -21,16 +21,16 @@
 		}
 	}
 
+	// Макет 1920: контент 1600px по центру. На мобильном блоки во всю ширину и сами
+	// держат поля 10px. Поле 20px на десктопе уже 1640px — не из макета, наше.
 	.container {
 		width: 100%;
-		max-width: 1440px;
+		max-width: $container-width + $container-gutter-desktop * 2;
 		margin: 0 auto;
-		padding-right: 20px;
-		padding-left: 20px;
 
 		@include up(desktop) {
-			padding-right: 24px;
-			padding-left: 24px;
+			padding-right: $container-gutter-desktop;
+			padding-left: $container-gutter-desktop;
 		}
 	}
 }
