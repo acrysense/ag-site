@@ -40,3 +40,5 @@
 
 {{!-- Демо и dev: имитация сервера (поиск в шапке, комментарии, фильтры) — в сборке для CMS её нет --}}
 {{#if @root.demo}}<script type="module" src="/pages/dev/mock-server.js"></script>{{/if}}
+{{!-- Демо: «счётчик», который ждёт согласия на cookie (CookieBanner включит его после «Принять») --}}
+{{#if @root.demo}}<script type="text/plain" data-cookie-consent>window.__agDemoCounter = (window.__agDemoCounter || 0) + 1; console.info('[demo] счётчик включён после согласия на cookie')</script>{{/if}}
