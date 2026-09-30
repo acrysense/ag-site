@@ -32,8 +32,9 @@
 
         <div class="site-search__panel" id="{{default id 'site-search'}}-panel" data-site-search-panel>
             {{#if props.sections.length}}
-                <fieldset class="site-search__sections">
-                    <legend class="site-search__legend">Искать в разделе</legend>
+                {{!-- Не fieldset/legend: legend браузер рисует на рамке, мимо раскладки --}}
+                <div class="site-search__sections" role="radiogroup" aria-labelledby="{{default id 'site-search'}}-sections">
+                    <p class="site-search__legend" id="{{default id 'site-search'}}-sections">Искать в разделе</p>
                     <div class="site-search__section-list">
                         {{#each props.sections}}
                             <label class="site-search__section">
@@ -43,7 +44,7 @@
                             </label>
                         {{/each}}
                     </div>
-                </fieldset>
+                </div>
             {{/if}}
             <div class="site-search__content">
                 <div class="site-search__filters">

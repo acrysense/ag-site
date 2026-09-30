@@ -762,7 +762,7 @@
 					"nameFrom": "salary_from",
 					"nameTo": "salary_to",
 					"placeholderFrom": "Зарплата от",
-					"placeholderTo": "до"
+					"placeholderTo": "до, BYN"
 				},
 				{
 					"type": "select",

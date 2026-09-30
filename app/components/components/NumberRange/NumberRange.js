@@ -1,6 +1,7 @@
 // Числовой диапазон: в поле — только цифры, разряды через пробел («1 500»); курсор при этом
 // не прыгает. В форму уходят цифры без пробелов (событие formdata). Изменили значение и ушли
-// из поля (или Enter) — change; с data-number-range-submit — отправка формы.
+// из поля (или Enter) — change; «до» меньше «от» — значения меняются местами; с
+// data-number-range-submit — отправка формы.
 const group = (digits) => digits.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 
 export default function init(root) {
@@ -32,6 +33,12 @@ export default function init(root) {
 		input.addEventListener(
 			'change',
 			() => {
+				// «до» меньше «от» — меняем местами (Figma: Filter.NumberRange, 4730:239)
+				const [from, to] = inputs.map(
+					(field) => Number(field.value.replace(/\D/g, '')) || 0
+				)
+				if (inputs[1].value && inputs[0].value && to < from)
+					[inputs[0].value, inputs[1].value] = [inputs[1].value, inputs[0].value]
 				if (root.hasAttribute('data-number-range-submit')) form?.requestSubmit()
 			},
 			{ signal }

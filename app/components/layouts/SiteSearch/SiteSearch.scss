@@ -44,6 +44,11 @@
 		.site-search.is-open & {
 			border-color: palette("form-focus");
 		}
+
+		// 360.Search.Field (4785:2696): рамка синяя и в покое
+		@include down(desktop) {
+			border-color: palette("form-focus");
+		}
 	}
 
 	.site-search__icon {
@@ -167,12 +172,14 @@
 			display: flex;
 		}
 
+		// Окно — по ширине поля, но не уже 700 (как в макете): на узком десктопе поле в шапке
+		// сжимается, окно выходит из-под него вправо (в пределах экрана)
 		@include up(desktop) {
 			position: absolute;
 			top: calc(100% + 7px);
-			right: 0;
 			left: 0;
 			z-index: 30;
+			width: max(100%, min(700px, calc(100vw - 40px)));
 			background: palette("white");
 			border: 1px solid palette("block-border");
 			border-radius: $radius-content-block;
@@ -183,9 +190,6 @@
 	.site-search__sections {
 		flex: none;
 		min-width: 0;
-		margin: 0;
-		padding: 0;
-		border: 0;
 
 		@include up(desktop) {
 			display: flex;
@@ -271,6 +275,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
+		container: site-search-filters / inline-size;
 
 		@include up(desktop) {
 			padding: 4px 8px 4px;
@@ -314,14 +319,19 @@
 		}
 	}
 
+	// 2 колонки — только когда есть место (окно 700 — 458 под фильтры); на узком десктопе поле
+	// в шапке уже, и фильтры встают в столбик
 	.site-search__filter-list {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
 		gap: 12px;
 
 		@include up(desktop) {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
 			gap: 10px;
+		}
+
+		@container site-search-filters (min-width: 440px) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
 

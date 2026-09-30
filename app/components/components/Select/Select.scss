@@ -241,7 +241,10 @@
 	// Figma: Dropdown List — с поиском (4764:2732): окно по ширине поля, поля 15, скругление 10,
 	// тень 0 5 20; поиск 36 со скруглением 7; пункты через 15 — флажок 20 и текст M/400;
 	// выбранные сверху, под ними черта Grey. Шрифт поиска — 16 (iOS), в макете 12.
+	// Окно не уже 240: на узком поле названия не ломаются в три строки
 	.select--multi .select__popup {
+		right: auto;
+		width: max(100%, 240px);
 		gap: 15px;
 		padding: 15px;
 		border: 0;
@@ -264,6 +267,14 @@
 		background: palette("white");
 		border-color: palette("form-border");
 		border-radius: 7px;
+		transition: border-color $transition-default;
+
+		// Фокус — рамка Form.Focus, как у полей (вместо системной обводки)
+		&:focus-visible {
+			border-color: palette("form-focus");
+			outline: none;
+			box-shadow: 0 0 0 1px palette("form-focus");
+		}
 
 		@include down(tablet) {
 			margin-inline: 10px;
