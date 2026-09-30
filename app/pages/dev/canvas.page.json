@@ -265,8 +265,26 @@
 			"loginText": "Войти в ЛК",
 			"id": "header-user",
 			"user": {
-				"name": "Волкова Анна",
-				"url": "#"
+				"name": "Владислава Митрофановна",
+				"initials": "ВМ",
+				"url": "#",
+				"links": [
+					{
+						"icon": "profile",
+						"label": "Личный кабинет",
+						"url": "#"
+					},
+					{
+						"icon": "edu",
+						"label": "Учебный портал",
+						"url": "#"
+					},
+					{
+						"icon": "crm",
+						"label": "CRM",
+						"url": "#"
+					}
+				]
 			}
 		},
 		"headerLong": {

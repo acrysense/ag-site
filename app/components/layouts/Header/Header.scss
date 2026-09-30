@@ -107,8 +107,54 @@
 			padding-right: 10px;
 
 			@include up(desktop) {
+				gap: 4px;
 				padding-right: 0;
 			}
+		}
+
+		// Быстрые ссылки вошедшего (PC.HEADER.v2/User, 4652:8833): кнопки 40×40,
+		// иконка 24 со смещением как в макете, справа разделитель
+		&__quick {
+			display: none;
+
+			@include up(desktop) {
+				display: flex;
+				gap: 5px;
+				margin: 0;
+				padding: 0 20px 0 0;
+				list-style: none;
+			}
+		}
+
+		&__quick-link {
+			position: relative;
+			display: block;
+			width: 40px;
+			height: 40px;
+			color: palette("black-txt");
+			transition: color $transition-default;
+
+			&:hover {
+				color: palette("blue-hover");
+			}
+
+			&::after {
+				position: absolute;
+				top: 5px;
+				left: 39px;
+				width: 0.5px;
+				height: 30px;
+				content: "";
+				background: palette("divider");
+			}
+		}
+
+		&__quick-icon {
+			position: absolute;
+			top: 8px;
+			left: 5px;
+			width: 24px;
+			height: 24px;
 		}
 
 		&__user {
@@ -116,15 +162,27 @@
 			gap: 5px;
 			align-items: center;
 			color: palette("black-txt");
+
+			@include up(desktop) {
+				gap: 10px;
+			}
 		}
 
+		// Заглушка без фото: на мобильном Icon.Grey, на десктопе Grey с инициалами (как в макете)
 		&__avatar {
-			display: block;
+			display: flex;
+			flex: none;
+			align-items: center;
+			justify-content: center;
 			width: 30px;
 			height: 30px;
 			overflow: hidden;
 			background: palette("icon-grey");
 			border-radius: 50%;
+
+			@include up(desktop) {
+				background: palette("grey");
+			}
 
 			img {
 				width: 100%;
@@ -133,11 +191,44 @@
 			}
 		}
 
-		// В файле иконка смотрит вправо, в макете — вниз
+		&__initials {
+			display: none;
+
+			@include up(desktop) {
+				@include text("s-400");
+
+				display: block;
+				color: palette("white");
+			}
+		}
+
+		// Имя видно на десктопе; на мобильном остаётся для скринридера
+		&__user-name {
+			@include text("m-400");
+
+			@include down(desktop) {
+				position: absolute;
+				width: 1px;
+				height: 1px;
+				overflow: hidden;
+				clip-path: inset(50%);
+				white-space: nowrap;
+			}
+
+			@include up(desktop) {
+				white-space: nowrap;
+			}
+		}
+
+		// В файле иконка смотрит вправо, в макете — вниз. Имя и стрелка — через 5px
 		&__user-arrow {
 			width: 16px;
 			height: 16px;
 			transform: rotate(90deg);
+
+			@include up(desktop) {
+				margin-left: -5px;
+			}
 		}
 
 		// Мобильный гость: «Button M.General, 36 px» из описания 360.HEADER.

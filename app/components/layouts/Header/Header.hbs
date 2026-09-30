@@ -2,7 +2,9 @@
 	Шапка сайта (Figma: PC.HEADER.v2 — 4652:8752, 360.HEADER — 4865:1334).
 	props: id, homeUrl, title (полное название), titleShort (мобильное), search (см. SearchField),
 	menu — пункты [{ text, url, current, children: [{ text, url, current }] }],
-	user — { name, avatar, url } для вошедшего, иначе кнопка входа: loginUrl, loginText.
+	user — для вошедшего: { name, initials, avatar, url, links: [{ icon, label, url }] }
+	(links — быстрые ссылки на десктопе: личный кабинет, учебный портал, CRM),
+	иначе кнопка входа: loginUrl, loginText.
 	Контракт — docs/contracts/header.md.
 --}}
 <header class="header" data-module="Header" data-path="layouts">
@@ -20,10 +22,28 @@
 
         <div class="header__actions">
             {{#if props.user}}
+                {{#if props.user.links}}
+                    <ul class="header__quick" role="list">
+                        {{#each props.user.links}}
+                            <li>
+                                <a class="header__quick-link" href="{{url}}" title="{{label}}">
+                                    <span class="visually-hidden">{{label}}</span>
+                                    {{> components/Icon/Icon name=icon class="header__quick-icon"}}
+                                </a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                {{/if}}
                 {{!-- Меню под аватаром в макете не нарисовано: пока ссылка на личный кабинет --}}
                 <a class="header__user" href="{{props.user.url}}">
-                    <span class="header__avatar">{{#if props.user.avatar}}<img src="{{props.user.avatar}}" width="30" height="30" alt="" />{{/if}}</span>
-                    <span class="visually-hidden">Личный кабинет: {{props.user.name}}</span>
+                    <span class="header__avatar">
+                        {{#if props.user.avatar}}
+                            <img src="{{props.user.avatar}}" width="30" height="30" alt="" />
+                        {{else}}
+                            <span class="header__initials" aria-hidden="true">{{props.user.initials}}</span>
+                        {{/if}}
+                    </span>
+                    <span class="header__user-name">{{props.user.name}}</span>
                     {{> components/Icon/Icon name="angle-right" class="header__user-arrow"}}
                 </a>
             {{else}}
