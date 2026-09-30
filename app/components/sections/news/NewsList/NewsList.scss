@@ -44,7 +44,8 @@
 			@include text("m-400");
 
 			display: inline-flex;
-			flex: none;
+			flex: 0 1 auto;
+			min-width: 0;
 			gap: 4px;
 			align-items: center;
 			color: palette("main-blue");
@@ -56,6 +57,7 @@
 		}
 
 		&__sort-icon {
+			flex: none;
 			width: 10px;
 			height: 6px;
 		}

@@ -13,6 +13,9 @@
 		font-family: $font-base;
 		line-height: 1.5;
 		color: palette("black-txt");
+		// Слово, которое не помещается в строку (длинный email, ссылка, название без пробелов),
+		// переносится в любом месте, а не раздвигает блок и страницу. Обычный текст не меняется
+		overflow-wrap: anywhere;
 		// Фон страниц в макете — BG/BG.Main
 		background: palette("bg-main");
 		// viewport-fit=cover: в альбомной ориентации iPhone контент не уходит под вырез

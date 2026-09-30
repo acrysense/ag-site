@@ -71,11 +71,16 @@
 			&--full {
 				display: none;
 
+				// Обычное название — в строку (389px); длиннее 400 — две строки и многоточие, чтобы
+				// не раздвигать шапку (название правит админ)
 				@include up(wide) {
 					@include text("site-title");
 
-					display: block;
-					white-space: nowrap;
+					display: -webkit-box;
+					max-width: 400px;
+					overflow: hidden;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: 2;
 				}
 			}
 
@@ -83,7 +88,12 @@
 			&--short {
 				@include text("site-title-360");
 
+				display: -webkit-box;
 				max-width: 91px;
+				overflow: hidden;
+				overflow-wrap: anywhere;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 2;
 
 				@include up(wide) {
 					display: none;

@@ -109,7 +109,8 @@
 
 			@include up(desktop) {
 				flex-direction: row;
-				gap: 48px;
+				flex-wrap: wrap;
+				gap: 12px 48px;
 			}
 		}
 
@@ -120,11 +121,14 @@
 			display: flex;
 			gap: 10px;
 			align-items: center;
+			min-width: 0;
 			color: palette("black-txt");
-			white-space: nowrap;
+			// Длинный адрес почты переносится, а не растягивает страницу
+			overflow-wrap: anywhere;
 		}
 
 		&__contact-icon {
+			flex: none;
 			width: 20px;
 			height: 20px;
 		}

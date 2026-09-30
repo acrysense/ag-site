@@ -272,7 +272,7 @@
 		&__tile-text {
 			@include text("m-500-360");
 
-			overflow-wrap: break-word;
+			overflow-wrap: anywhere;
 		}
 	}
 
