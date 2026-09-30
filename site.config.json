@@ -1,6 +1,5 @@
 {
-	"template": "vite",
-	"siteName": "Vite",
+	"siteName": "Корпоративный сайт холдинга «Аптека групп»",
 	"siteUrl": "",
 	"lang": "ru",
 	"meta": [
@@ -18,8 +17,8 @@
 	],
 	"link": [],
 	"seoDefaults": {
-		"title": "Vite — стартовая страница",
-		"description": "Стартовый проект на Vite: быстрый и гибкий старт.",
+		"title": "Корпоративный сайт холдинга «Аптека групп»",
+		"description": "",
 		"ogImage": "",
 		"twitterCard": "summary_large_image"
 	},

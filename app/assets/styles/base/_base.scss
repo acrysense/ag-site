@@ -13,6 +13,8 @@
 		font-family: $font-base;
 		line-height: 1.5;
 		color: palette("black-txt");
+		// Фон страниц в макете — BG/BG.Main
+		background: palette("bg-main");
 	}
 
 	// iOS зумит страницу при фокусе на поле с шрифтом меньше 16px.

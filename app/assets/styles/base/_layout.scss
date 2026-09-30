@@ -33,4 +33,17 @@
 			padding-left: $container-gutter-desktop;
 		}
 	}
+
+	// Колонка блоков страницы: на мобильном блоки во всю ширину через 10px,
+	// на десктопе через 40px и с полями 40 сверху и снизу (PC.Main v2, Frame 456)
+	.page-blocks {
+		display: grid;
+		gap: 10px;
+		padding-block: 10px;
+
+		@include up(desktop) {
+			gap: 40px;
+			padding-block: 40px;
+		}
+	}
 }
