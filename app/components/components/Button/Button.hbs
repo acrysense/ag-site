@@ -1,17 +1,23 @@
+{{!--
+	Кнопка или ссылка в виде кнопки.
+	props: text, icon (имя из app/assets/icons), hiddenText (начало доступного имени, не видно),
+	variant (light), size (s), href, target, download, type, disabled, class, attrs.
+	Варианты из Figma: light + s — «S.Light.Left».
+--}}
 {{#if props.href}}
     <a
-        class="btn{{#if props.variant}} btn--{{props.variant}}{{/if}}{{#if props.class}} {{props.class}}{{/if}}"
+        class="btn{{#if props.variant}} btn--{{props.variant}}{{/if}}{{#if props.size}} btn--{{props.size}}{{/if}}{{#if props.class}} {{props.class}}{{/if}}"
         href="{{props.href}}"
         {{#if props.target}}target="{{props.target}}"{{/if}}
         {{#if (eq props.target '_blank')}}rel="noopener noreferrer"{{/if}}
         {{#if props.download}}download{{/if}}
         {{{attrs props.attrs}}}
-    >{{default props.text ''}}</a>
+    >{{#if props.icon}}{{> components/Icon/Icon name=props.icon class="btn__icon"}}{{/if}}{{#if props.hiddenText}}<span class="visually-hidden">{{props.hiddenText}}</span>{{/if}}{{#if props.text}}<span class="btn__text">{{props.text}}</span>{{/if}}</a>
 {{else}}
     <button
-        class="btn{{#if props.variant}} btn--{{props.variant}}{{/if}}{{#if props.class}} {{props.class}}{{/if}}"
+        class="btn{{#if props.variant}} btn--{{props.variant}}{{/if}}{{#if props.size}} btn--{{props.size}}{{/if}}{{#if props.class}} {{props.class}}{{/if}}"
         type="{{default props.type 'button'}}"
         {{#if props.disabled}}disabled{{/if}}
         {{{attrs props.attrs}}}
-    >{{default props.text ''}}</button>
+    >{{#if props.icon}}{{> components/Icon/Icon name=props.icon class="btn__icon"}}{{/if}}{{#if props.hiddenText}}<span class="visually-hidden">{{props.hiddenText}}</span>{{/if}}{{#if props.text}}<span class="btn__text">{{props.text}}</span>{{/if}}</button>
 {{/if}}

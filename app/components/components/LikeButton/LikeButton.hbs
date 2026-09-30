@@ -1,0 +1,13 @@
+{{!--
+	Отметка «Нравится» (Figma: Button S.Light.Left с иконкой Like / Like bold).
+	props: count, liked, url — адрес POST для бэка (контракт: docs/contracts/news-feed.md), class.
+	Без url отметка переключается только на странице (витрина, статичная вёрстка).
+--}}
+<button
+    class="btn btn--light btn--s like-button{{#if props.class}} {{props.class}}{{/if}}"
+    type="button"
+    aria-pressed="{{#if props.liked}}true{{else}}false{{/if}}"
+    data-module="LikeButton"
+    data-path="components"
+    {{#if props.url}}data-like-url="{{props.url}}"{{/if}}
+>{{> components/Icon/Icon name="like" class="btn__icon like-button__icon like-button__icon--off"}}{{> components/Icon/Icon name="like-filled" class="btn__icon like-button__icon like-button__icon--on"}}<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count {{#unless props.count}}hidden{{/unless}}>{{props.count}}</span></button>

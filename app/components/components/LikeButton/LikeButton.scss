@@ -1,0 +1,24 @@
+@use "@/assets/styles/base/mixins" as *;
+
+@layer components {
+	.like-button {
+		&__icon--on {
+			display: none;
+			color: palette("red");
+		}
+
+		&[aria-pressed="true"] {
+			.like-button__icon--off {
+				display: none;
+			}
+
+			.like-button__icon--on {
+				display: block;
+			}
+		}
+
+		&[aria-busy="true"] {
+			cursor: progress;
+		}
+	}
+}
