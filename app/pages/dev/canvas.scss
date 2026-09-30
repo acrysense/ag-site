@@ -66,10 +66,17 @@ body:has(.stories) {
 	}
 }
 
-// В одиночном режиме заголовок и описание показывает оболочка
+// В одиночном режиме заголовок и описание показывает оболочка, а карточки состояний
+// идут во всю ширину: блоки сайта получают ту же ширину, что на настоящей странице
 .is-single-story {
 	.stories {
-		padding-top: 16px;
+		padding: 16px 0 48px;
+	}
+
+	.story-state,
+	.story-state__frame--page {
+		border-inline-width: 0;
+		border-radius: 0;
 	}
 
 	.story__header {
@@ -109,6 +116,14 @@ body:has(.stories) {
 
 	&__frame {
 		padding: 16px;
+
+		// Фон страницы сайта под блоком (блоки на макете лежат на BG.Main); без полей
+		// по бокам — отступы блоку даёт .container, как на странице
+		&--page {
+			padding-inline: 0;
+			background: palette("bg-main");
+			border-radius: 0 0 13px 13px;
+		}
 	}
 
 	// Неприменимое состояние — одна строка без карточки

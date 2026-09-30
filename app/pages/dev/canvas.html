@@ -37,7 +37,7 @@
 					{{label}}
 					{{#if note}}<span class="story-state__note">{{note}}</span>{{/if}}
 				</h3>
-				{{#unless note}}<div class="story-state__frame">{{> @partial-block}}</div>{{/unless}}
+				{{#unless note}}<div class="story-state__frame{{#if bg}} story-state__frame--{{bg}}{{/if}}">{{> @partial-block}}</div>{{/unless}}
 			</section>
 		{{/inline}}
 
@@ -48,6 +48,48 @@
 
 			{{#> story id="typography" group="Основа" title="Типографика" description='Карта $text-styles в _vars.scss, в коде — @include text("имя"). Размер пересчитывается при смене ширины.'}}
 				<div class="tokens tokens--text" data-token-list="text"></div>
+			{{/story}}
+
+			{{#> story id="button" group="Компоненты" title="Кнопка" description='Figma: Button / S.Light.Left. props: text, icon, hiddenText, variant="light", size="s", href.'}}
+				{{#> state label="С иконкой и числом"}}
+					{{> components/Button/Button props=(obj href="#comments" icon="comment" hiddenText="Комментарии: " text="12" variant="light" size="s")}}
+				{{/state}}
+				{{#> state label="Большое число"}}
+					{{> components/Button/Button props=(obj href="#comments" icon="comment" hiddenText="Комментарии: " text="123456" variant="light" size="s")}}
+				{{/state}}
+				{{#> state label="Без числа"}}
+					{{> components/Button/Button props=(obj href="#comments" icon="comment" hiddenText="Комментарии" variant="light" size="s")}}
+				{{/state}}
+			{{/story}}
+
+			{{#> story id="like" group="Компоненты" title="Нравится" description="Кнопка-переключатель (aria-pressed). В витрине без бэка отметка меняется только на странице; с data-like-url уходит POST с bitrix_sessid, при ошибке откатывается и объявляется скринридеру."}}
+				{{#> state label="Не отмечено"}}
+					{{> components/LikeButton/LikeButton props=(obj count=4)}}
+				{{/state}}
+				{{#> state label="Отмечено"}}
+					{{> components/LikeButton/LikeButton props=(obj count=17 liked=true)}}
+				{{/state}}
+				{{#> state label="Без отметок"}}
+					{{> components/LikeButton/LikeButton props=(obj count=0)}}
+				{{/state}}
+				{{#> state label="Ошибка" note="после неудачного запроса отметка возвращается как была, скринридер слышит сообщение"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="news-feed" group="Главная" title="Новости холдинга" description="Figma: 1920 — 4615:43032, 360 — 4865:1470. На мобильном 6 карточек в 2 колонки, на десктопе 5 в ряд. Карточка кликабельна целиком."}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container">{{> sections/home/NewsFeed/NewsFeed props=data.news}}</div>
+				{{/state}}
+				{{#> state label="Одна новость" bg="page"}}
+					<div class="container">{{> sections/home/NewsFeed/NewsFeed props=data.newsOne}}</div>
+				{{/state}}
+				{{#> state label="Пусто" bg="page"}}
+					<div class="container">{{> sections/home/NewsFeed/NewsFeed props=data.newsEmpty}}</div>
+				{{/state}}
+				{{#> state label="Длинный контент" bg="page"}}
+					<div class="container">{{> sections/home/NewsFeed/NewsFeed props=data.newsLong}}</div>
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: новости приходят с сервера вместе со страницей"}}{{/state}}
+				{{#> state label="Ошибка" note="не применимо: при ошибке бэк не выводит блок, как при пустом списке"}}{{/state}}
 			{{/story}}
 		</main>
 	</body>
