@@ -10,9 +10,10 @@
 		gap: 20px;
 		min-width: 0;
 
+		// Поля 20 вместе с рамкой (в Figma она внутри карточки)
 		@include up(desktop) {
 			gap: 40px;
-			padding: 20px;
+			padding: 19px;
 			background: palette("white");
 			border: 1px solid palette("block-border");
 			border-radius: $radius-content-block;
@@ -77,6 +78,24 @@
 			@include up(desktop) {
 				grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 				gap: 40px 26.67px;
+			}
+		}
+
+		// Журнал (Figma PC.Journal): на 1920 — 3 обложки по 360 через 60, ряды через 40.
+		// Колонки заданы явно (обложки крупные): мобильный — 2, планшет — 3 (выдача во всю
+		// ширину), 1024–1279 — 2 (рядом сайдбар), с 1280 — 3; промежуток плавный, 60 на 1920
+		&__grid--journal {
+			@include up(tablet) {
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+			}
+
+			@include up(desktop) {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 40px min(60px, 3.125vw);
+			}
+
+			@include up(wide) {
+				grid-template-columns: repeat(3, minmax(0, 1fr));
 			}
 		}
 

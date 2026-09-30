@@ -1,7 +1,8 @@
 {{!--
 	Лента раздела новостей (Figma: PC.News 4467:758 — Frame 291). props: title (раздел,
 	h1), sort { text, url } — «Новые в начале» (ссылка на обратный порядок), items [карточка
-	NewsCard], pagination (Pagination), emptyText.
+	NewsCard], pagination (Pagination), emptyText; card: journal — выпуски журнала (JournalCard,
+	Figma PC.Journal 4520:23829: сетка по 360, на 1920 — 3 в ряд).
 	Сетка — сколько поместится карточек от 240px (на 1920 — 4 по 280), на мобильном 2.
 	Мобильного макета нет — наше. Контракт — docs/contracts/news-list.md.
 --}}
@@ -13,9 +14,11 @@
         {{/if}}
     </div>
     {{#if props.items.length}}
-        <ul class="news-list__grid" role="list">
+        <ul class="news-list__grid{{#if (eq props.card 'journal')}} news-list__grid--journal{{/if}}" role="list">
             {{#each props.items}}
-                <li class="news-list__item">{{> sections/shared/NewsCard/NewsCard props=this}}</li>
+                <li class="news-list__item">
+                    {{#if (eq ../props.card 'journal')}}{{> sections/news/JournalCard/JournalCard props=this}}{{else}}{{> sections/shared/NewsCard/NewsCard props=this}}{{/if}}
+                </li>
             {{/each}}
         </ul>
     {{else}}

@@ -1,0 +1,467 @@
+{
+	"title": "HR-дайджест — журнал холдинга «Аптека групп»",
+	"data": {
+		"header": {
+			"homeUrl": "/",
+			"title": "Корпоративный сайт холдинга “Аптека групп”",
+			"titleShort": "Корпоративный сайт холдинга",
+			"search": {
+				"action": "#",
+				"name": "q"
+			},
+			"menu": [
+				{
+					"text": "Главная",
+					"url": "/"
+				},
+				{
+					"text": "О холдинге",
+					"url": "#"
+				},
+				{
+					"text": "Новости",
+					"url": "#",
+					"children": [
+						{
+							"text": "Новости холдинга",
+							"url": "#"
+						},
+						{
+							"text": "HR-дайджест",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"text": "Карьера",
+					"url": "#"
+				},
+				{
+					"text": "База знаний",
+					"url": "#"
+				},
+				{
+					"text": "Галерея",
+					"url": "#"
+				}
+			],
+			"loginUrl": "#",
+			"loginText": "Войти в ЛК",
+			"user": {
+				"name": "Владислава Митрофановна",
+				"initials": "ВМ",
+				"url": "#",
+				"links": [
+					{
+						"icon": "profile",
+						"label": "Личный кабинет",
+						"url": "#"
+					},
+					{
+						"icon": "edu",
+						"label": "Учебный портал",
+						"url": "#"
+					},
+					{
+						"icon": "crm",
+						"label": "CRM",
+						"url": "#"
+					}
+				]
+			}
+		},
+		"breadcrumbs": [
+			{
+				"title": "Главная",
+				"url": "./index.html"
+			},
+			{
+				"title": "Новости холдинга",
+				"url": "./news.html"
+			},
+			{
+				"title": "HR-дайджест"
+			}
+		],
+		"filters": {
+			"title": "Категории",
+			"categories": [
+				{
+					"text": "Журнал холдинга",
+					"url": "#"
+				},
+				{
+					"text": "Журнал PR",
+					"url": "#"
+				},
+				{
+					"text": "Сотрудник месяца",
+					"url": "#"
+				},
+				{
+					"text": "Ударник",
+					"url": "#",
+					"current": true
+				},
+				{
+					"text": "Вечерний холдинг",
+					"url": "#"
+				},
+				{
+					"text": "The AG News",
+					"url": "#"
+				}
+			],
+			"years": [
+				{
+					"text": "2026",
+					"url": "#"
+				},
+				{
+					"text": "2025",
+					"url": "#",
+					"current": true
+				},
+				{
+					"text": "2024",
+					"url": "#"
+				},
+				{
+					"text": "2023",
+					"url": "#"
+				},
+				{
+					"text": "2022",
+					"url": "#"
+				},
+				{
+					"text": "2021",
+					"url": "#"
+				}
+			]
+		},
+		"banner": {
+			"url": "#",
+			"alt": "Тонометры и аксессуары — скидка до −10%. Надёжный контроль здоровья",
+			"image": {
+				"src": "./dev/img/side-banner.jpg"
+			}
+		},
+		"list": {
+			"title": "HR-дайджест",
+			"sort": {
+				"text": "Новые в начале",
+				"url": "#"
+			},
+			"items": [
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-1.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-2.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-2.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-1.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-2.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": true
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-1.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-1.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-1.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-2.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-1.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-1.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-2.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-1.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-2.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-2.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				}
+			],
+			"pagination": {
+				"prev": {
+					"url": "#"
+				},
+				"next": {
+					"url": "#"
+				},
+				"pages": [
+					{
+						"number": 1,
+						"url": "#"
+					},
+					{
+						"number": 2,
+						"current": true
+					},
+					{
+						"number": 3,
+						"url": "#"
+					},
+					{
+						"number": 4,
+						"url": "#",
+						"far": true
+					},
+					{
+						"gap": true
+					},
+					{
+						"number": 22,
+						"url": "#",
+						"far": true
+					},
+					{
+						"number": 23,
+						"url": "#",
+						"far": true
+					},
+					{
+						"number": 24,
+						"url": "#",
+						"far": true
+					},
+					{
+						"number": 25,
+						"url": "#"
+					}
+				],
+				"total": 835
+			},
+			"card": "journal",
+			"emptyText": "Выпусков пока нет"
+		}
+	}
+}

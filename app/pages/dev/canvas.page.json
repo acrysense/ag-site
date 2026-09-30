@@ -6146,7 +6146,7 @@
 						"from": "1500",
 						"to": "2500",
 						"placeholderFrom": "Зарплата от",
-						"placeholderTo": "до"
+						"placeholderTo": "до, BYN"
 					},
 					{
 						"type": "select",
@@ -6504,6 +6504,425 @@
 					"meta": "PDF · 12,4 МБ · Библиотека / Регламенты / Приёмка / Архив 2024 · обновлено 02.09.2026"
 				}
 			]
+		},
+		"journalList": {
+			"title": "HR-дайджест",
+			"sort": {
+				"text": "Новые в начале",
+				"url": "#"
+			},
+			"items": [
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-1.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-2.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-2.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-1.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-2.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": true
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-1.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-1.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-1.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-2.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-1.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-1.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-2.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-1.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-2.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-2.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				}
+			],
+			"pagination": {
+				"prev": {
+					"url": "#"
+				},
+				"next": {
+					"url": "#"
+				},
+				"pages": [
+					{
+						"number": 1,
+						"url": "#"
+					},
+					{
+						"number": 2,
+						"current": true
+					},
+					{
+						"number": 3,
+						"url": "#"
+					},
+					{
+						"number": 4,
+						"url": "#",
+						"far": true
+					},
+					{
+						"gap": true
+					},
+					{
+						"number": 22,
+						"url": "#",
+						"far": true
+					},
+					{
+						"number": 23,
+						"url": "#",
+						"far": true
+					},
+					{
+						"number": 24,
+						"url": "#",
+						"far": true
+					},
+					{
+						"number": 25,
+						"url": "#"
+					}
+				],
+				"total": 835
+			},
+			"card": "journal",
+			"emptyText": "Выпусков пока нет"
+		},
+		"journalListOne": {
+			"title": "HR-дайджест",
+			"sort": {
+				"text": "Новые в начале",
+				"url": "#"
+			},
+			"items": [
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-1.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				}
+			],
+			"pagination": null,
+			"card": "journal",
+			"emptyText": "Выпусков пока нет"
+		},
+		"journalListEmpty": {
+			"title": "HR-дайджест",
+			"sort": {
+				"text": "Новые в начале",
+				"url": "#"
+			},
+			"items": [],
+			"pagination": null,
+			"card": "journal",
+			"emptyText": "Выпусков пока нет"
+		},
+		"journalListLong": {
+			"title": "HR-дайджест",
+			"sort": {
+				"text": "Новые в начале",
+				"url": "#"
+			},
+			"items": [
+				{
+					"title": "HR-дайджест. Итоги 2025 года: очень длинное название выпуска, которое не помещается в две строки карточки",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1 024 МБ"
+					},
+					"image": {
+						"src": "./dev/img/journal-1.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 1234,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-2.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				},
+				{
+					"title": "HR-дайджест. Итоги 2025",
+					"readUrl": "#",
+					"file": {
+						"url": "#",
+						"sizeText": "1.2Гб"
+					},
+					"image": {
+						"src": "./dev/img/journal-2.jpg",
+						"width": 360,
+						"height": 360
+					},
+					"date": "2025-03-12",
+					"dateText": "12.03.2025",
+					"likes": 24,
+					"liked": false
+				}
+			],
+			"pagination": null,
+			"card": "journal",
+			"emptyText": "Выпусков пока нет"
 		}
 	}
 }

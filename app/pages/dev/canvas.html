@@ -458,6 +458,22 @@
 				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, переход по страницам и фильтрам — обычные ссылки"}}{{/state}}
 			{{/story}}
 
+			{{#> story id="journal-list" group="Новости" title="Журнал" description='Figma: PC.Journal (4520:23829). Та же лента раздела (NewsList, card: journal): обложки 1:1, «Читать», «Скачать · размер», «Нравится». На 1920 — 3 по 360 через 60; с 1280 — 3, 1024–1279 — 2, планшет — 3, мобильный — 2 (наше).'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container">{{> sections/news/NewsList/NewsList props=data.journalList}}</div>
+				{{/state}}
+				{{#> state label="Один выпуск" bg="page"}}
+					<div class="container">{{> sections/news/NewsList/NewsList props=data.journalListOne}}</div>
+				{{/state}}
+				{{#> state label="Пусто" bg="page"}}
+					<div class="container">{{> sections/news/NewsList/NewsList props=data.journalListEmpty}}</div>
+				{{/state}}
+				{{#> state label="Длинный контент" bg="page"}}
+					<div class="container">{{> sections/news/NewsList/NewsList props=data.journalListLong}}</div>
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, страницы и фильтры — обычные ссылки"}}{{/state}}
+			{{/story}}
+
 			{{#> story id="news-filters" group="Новости" title="Фильтры раздела" description='Figma: PC.News (4467:758), Frame 369. Десктоп — карточка слева; мобильный (наше) — строки «таблеток» с прокруткой вбок внутри блока.'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container"><div class="story-column-narrow">{{> sections/news/NewsFilters/NewsFilters props=data.newsFilters}}</div></div>
