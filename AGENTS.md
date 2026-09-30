@@ -50,6 +50,8 @@ The main requirement of the spec: everything the admin edits must not be hard-co
 - Do not change reset/base/layout without checking visual consequences.
 - Do not add global styles that can affect the whole project.
 - Add new styles next to the corresponding component or section.
+- In `_all.scss` shared `components/` are forwarded first, then layouts and sections: a block
+  refines a shared component with its own single class, no double-class specificity hacks.
 - Library styles go to `@layer vendor`.
 - `overflow-x: clip`, never `hidden`, on page-level containers (sticky header).
 - Never `outline: none` without a replacement. Recolor the ring via `--focus-ring-color`.
