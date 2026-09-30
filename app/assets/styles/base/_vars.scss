@@ -45,6 +45,8 @@ $colors: (
 	"bg-main-2": #d9dde0,
 	// BG/BG.Info
 	"bg-info": #f3f6fc,
+	// BG/BG.Violet
+	"bg-violet": #f2f5ff,
 	// BG/Grey
 	"bg-grey": #d2dce5,
 	// BG/BG.Purple
@@ -131,6 +133,13 @@ $text-styles: (
 			weight: 400,
 			size: 64,
 			line-height: 80,
+		),
+	// 360/HEADER/H1
+	"h1-360": (
+			family: heading,
+			weight: 700,
+			size: 32,
+			line-height: 34,
 		),
 	// PC/HEADER/H2
 	"h2": (
@@ -251,6 +260,20 @@ $text-styles: (
 			family: body,
 			weight: 700,
 			size: 12,
+			line-height: normal,
+		),
+	// Без переменной в Figma: «Сегодня» в календаре дней рождения 1920 (Inter Semi Bold 12)
+	"s-600": (
+			family: body,
+			weight: 600,
+			size: 12,
+			line-height: normal,
+		),
+	// PC/XS/500 (в Figma Semi Bold)
+	"xs-500": (
+			family: body,
+			weight: 600,
+			size: 10,
 			line-height: normal,
 		),
 	// PC/XS/400

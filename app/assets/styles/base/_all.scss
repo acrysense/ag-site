@@ -5,12 +5,13 @@
 
 @forward "@/components/sections/home/HeroBanners/HeroBanners";
 @forward "@/components/sections/home/PostList/PostList";
-@forward "@/components/sections/home/Birthdays/Birthdays";
 @forward "@/components/sections/home/Stats/Stats";
 @forward "@/components/sections/home/NewsFeed/NewsFeed";
 @forward "@/components/sections/home/WideBanner/WideBanner";
 @forward "@/components/sections/home/Leaders/Leaders";
 @forward "@/components/sections/shared/NewsCard/NewsCard";
+@forward "@/components/sections/shared/Birthdays/Birthdays";
+@forward "@/components/sections/birthdays/BirthdayCalendar/BirthdayCalendar";
 
 // @forward '@/components/sections/shared/';
 
@@ -21,3 +22,5 @@
 @forward "@/components/components/SearchField/SearchField";
 @forward "@/components/components/Sheet/Sheet";
 @forward "@/components/components/Tabs/Tabs";
+@forward "@/components/components/Breadcrumbs/Breadcrumbs";
+@forward "@/components/components/Select/Select";

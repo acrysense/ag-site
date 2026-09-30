@@ -247,7 +247,7 @@
 		},
 		"birthdays": {
 			"title": "День рождения",
-			"url": "#",
+			"url": "./birthdays.html",
 			"today": [
 				{
 					"url": "#",

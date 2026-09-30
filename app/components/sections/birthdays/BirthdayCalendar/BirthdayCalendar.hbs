@@ -1,0 +1,64 @@
+{{!--
+	Календарь дней рождения (Figma: 1920 — 4704:1065, 360 — 4706:1407). Одна разметка:
+	на десктопе сетка месяца 7 колонок, на мобильном и планшете — список дней, где есть
+	именинники. props: title, titleMuted (месяц), filters { action, selects [Select] },
+	weekdays [7 названий], days [день], empty, emptyText.
+	День: { date (YYYY-MM-DD), day, month («сентября»), monthShort («авг» — у дней соседнего
+	месяца), weekday, weekend, past, today, otherMonth, people [{ url, name, company,
+	image: { src, srcset } }] }. Бэк отдаёт целые недели с понедельника.
+	Контракт — docs/contracts/birthday-calendar.md.
+--}}
+<section class="birthday-calendar" aria-labelledby="birthday-calendar-title">
+    <div class="birthday-calendar__top">
+        <h1 class="birthday-calendar__title" id="birthday-calendar-title">{{props.title}}{{#if props.titleMuted}}, <span class="birthday-calendar__title-muted">{{props.titleMuted}}</span>{{/if}}</h1>
+        {{#if props.filters.selects.length}}
+            <form class="birthday-calendar__filters" method="get" action="{{props.filters.action}}">
+                {{#each props.filters.selects}}
+                    {{> components/Select/Select props=(obj label=label name=name id=id options=options submit=true class="birthday-calendar__filter")}}
+                {{/each}}
+                <button class="visually-hidden" type="submit">{{default props.filters.submitText "Показать"}}</button>
+            </form>
+        {{/if}}
+    </div>
+    {{#if props.empty}}<p class="birthday-calendar__empty">{{default props.emptyText "В этом месяце дней рождения нет"}}</p>{{/if}}
+    {{#if props.days.length}}
+        <div class="birthday-calendar__month">
+            <ul class="birthday-calendar__weekdays" role="list" aria-hidden="true">
+                {{#each (default props.weekdays (arr "Понедельник" "Вторник" "Среда" "Четверг" "Пятница" "Суббота" "Воскресенье"))}}
+                    <li class="birthday-calendar__weekday-name">{{this}}</li>
+                {{/each}}
+            </ul>
+            <ol class="birthday-calendar__days" role="list">
+                {{#each props.days}}
+                    <li class="birthday-calendar__day{{#if weekend}} is-weekend{{/if}}{{#if past}} is-past{{/if}}{{#if today}} is-today{{/if}}{{#if otherMonth}} is-other-month{{/if}}{{#unless people.length}} is-empty{{/unless}}">
+                        <p class="birthday-calendar__date">
+                            <time class="birthday-calendar__num" datetime="{{date}}">{{day}}<span class="birthday-calendar__month-name"> {{month}}</span></time>
+                            {{#if monthShort}}<span class="birthday-calendar__month-short" aria-hidden="true">{{monthShort}}</span>{{/if}}
+                            <span class="birthday-calendar__weekday">{{weekday}}</span>
+                            {{#if today}}<span class="birthday-calendar__today">Сегодня</span>{{/if}}
+                        </p>
+                        {{#if people.length}}
+                            <ul class="birthday-calendar__people" role="list">
+                                {{#each people}}
+                                    <li class="birthday-calendar__person">
+                                        {{#if url}}<a class="birthday-calendar__person-main" href="{{url}}">{{else}}<span class="birthday-calendar__person-main">{{/if}}
+                                            <span class="birthday-calendar__avatar">
+                                                {{#if image.src}}
+                                                    <img class="birthday-calendar__photo" src="{{image.src}}" {{#if image.srcset}}srcset="{{image.srcset}}"{{/if}} width="40" height="40" alt="" loading="lazy" decoding="async" />
+                                                {{else}}
+                                                    {{> components/Icon/Icon name="gift" class="birthday-calendar__gift"}}
+                                                {{/if}}
+                                            </span>
+                                            <span class="birthday-calendar__name">{{name}}</span>
+                                        {{#if url}}</a>{{else}}</span>{{/if}}
+                                        {{#if company}}<span class="birthday-calendar__company">{{company}}</span>{{/if}}
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        {{/if}}
+                    </li>
+                {{/each}}
+            </ol>
+        </div>
+    {{/if}}
+</section>

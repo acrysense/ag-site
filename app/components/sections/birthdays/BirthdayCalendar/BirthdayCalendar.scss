@@ -1,0 +1,357 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: 1920 — 4704:1065 (белая карточка, сетка месяца 7 × 165), 360 — 4706:1407 (список
+// дней с именинниками). Сетка — с 1024; ниже — список, как на 360.
+@layer components {
+	.birthday-calendar {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		min-width: 0;
+
+		@include up(desktop) {
+			gap: 30px;
+			padding: 20px;
+			background: palette("white");
+			border-radius: $radius-content-block;
+		}
+
+		&__top {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+
+			@include up(desktop) {
+				gap: 20px;
+			}
+		}
+
+		&__title {
+			@include text("h1-360");
+
+			color: palette("black-h");
+
+			@include up(desktop) {
+				@include text("h1");
+			}
+		}
+
+		&__title-muted {
+			color: palette("icon-grey");
+		}
+
+		&__filters {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+
+			@include up(tablet) {
+				flex-flow: row wrap;
+				gap: 10px;
+			}
+		}
+
+		// Ширины из макета 1920: «Месяц» 220, «Юр. лицо» 300
+		&__filter {
+			@include up(tablet) {
+				flex: 0 1 220px;
+
+				& + & {
+					flex-basis: 300px;
+				}
+			}
+		}
+
+		&__empty {
+			@include text("m-400");
+
+			color: palette("dark-grey-txt");
+		}
+
+		// Названия дней недели — только над сеткой
+		&__weekdays {
+			display: none;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			@include up(desktop) {
+				display: grid;
+				grid-template-columns: repeat(7, minmax(0, 1fr));
+			}
+		}
+
+		&__weekday-name {
+			@include text("m-400");
+
+			display: flex;
+			align-items: center;
+			min-width: 0;
+			height: 44px;
+			padding: 0 8px;
+			overflow: hidden;
+			white-space: nowrap;
+
+			&:nth-child(n + 6) {
+				color: palette("dark-grey-txt");
+				background: palette("bg-info");
+			}
+		}
+
+		&__days {
+			display: flex;
+			flex-direction: column;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			@include up(desktop) {
+				display: grid;
+				grid-template-columns: repeat(7, minmax(0, 1fr));
+			}
+		}
+
+		&__day {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			min-width: 0;
+			padding: 14px 10px;
+			border-top: 1px solid palette("block-border");
+
+			// Мобильный: только дни этого месяца с именинниками
+			@include down(desktop) {
+				&.is-empty,
+				&.is-other-month {
+					display: none;
+				}
+			}
+
+			// Ряд — по самому высокому дню, не ниже 121 с линией (8 сверху, 12 снизу)
+			@include up(desktop) {
+				gap: 8px;
+				min-height: 121px;
+				padding: 8px 8px 12px;
+			}
+
+			&.is-weekend {
+				background: palette("bg-info");
+			}
+
+			&.is-today {
+				background: palette("bg-violet");
+
+				@include up(desktop) {
+					border: 1.5px solid palette("main-blue");
+					border-radius: $radius-inner-block;
+				}
+			}
+		}
+
+		&__date {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			align-items: center;
+			color: palette("black-txt");
+
+			@include up(desktop) {
+				gap: 6px;
+				min-height: 22px;
+			}
+		}
+
+		.is-past &__date {
+			color: palette("dark-grey-txt");
+		}
+
+		&__num {
+			@include text("m-500-360");
+
+			@include up(desktop) {
+				@include text("s-400");
+			}
+		}
+
+		.is-other-month &__num {
+			color: palette("icon-grey");
+		}
+
+		// Сегодня на десктопе — число в синей плашке
+		.is-today &__num {
+			@include up(desktop) {
+				@include text("s-600");
+
+				padding: 2px 7px;
+				color: palette("white");
+				background: palette("main-blue");
+				border-radius: 11px;
+			}
+		}
+
+		// Месяц на десктопе не виден (он в заголовке), но читается скринридером; у дней
+		// соседнего месяца вместо него короткое «авг»
+		&__month-name {
+			@include up(desktop) {
+				@include visually-hidden;
+			}
+		}
+
+		&__month-short {
+			@include text("s-400");
+
+			display: none;
+			color: palette("icon-grey");
+
+			@include up(desktop) {
+				display: inline;
+				margin-left: -3px;
+			}
+		}
+
+		&__weekday {
+			@include text("s-400");
+
+			color: palette("dark-grey-txt");
+
+			@include up(desktop) {
+				@include visually-hidden;
+			}
+		}
+
+		.is-weekend:not(.is-past) &__weekday {
+			color: palette("blue-txt");
+		}
+
+		&__today {
+			@include text("xs-500");
+
+			padding: 2px 8px;
+			color: palette("white");
+			background: palette("main-blue");
+			border-radius: $radius-inner-block;
+
+			@include up(desktop) {
+				@include text("s-600");
+
+				padding: 0;
+				color: palette("blue-txt");
+				background: none;
+			}
+		}
+
+		&__people {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			@include up(desktop) {
+				gap: 4px;
+			}
+		}
+
+		// Прошедшие дни бледнее (в макете 0.55 на 360 и 0.5 на 1920)
+		.is-past &__people {
+			opacity: 0.55;
+
+			@include up(desktop) {
+				opacity: 0.5;
+			}
+		}
+
+		&__person {
+			display: grid;
+			grid-template-columns: 40px minmax(0, 1fr);
+			column-gap: 10px;
+			align-items: center;
+
+			@include up(desktop) {
+				display: block;
+			}
+		}
+
+		&__person-main {
+			display: contents;
+			color: palette("black-txt");
+
+			@include up(desktop) {
+				display: flex;
+				gap: 6px;
+				align-items: center;
+			}
+		}
+
+		a.birthday-calendar__person-main:hover .birthday-calendar__name {
+			color: palette("blue-txt");
+		}
+
+		&__avatar {
+			display: flex;
+			grid-row: span 2;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			overflow: hidden;
+			color: palette("white");
+			background: palette("grey");
+			border-radius: 50%;
+
+			@include up(desktop) {
+				flex: none;
+				width: 20px;
+				height: 20px;
+			}
+		}
+
+		&__photo {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		&__gift {
+			width: 24px;
+			height: 24px;
+
+			@include up(desktop) {
+				width: 12px;
+				height: 12px;
+			}
+		}
+
+		&__name {
+			@include text("m-400");
+
+			min-width: 0;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			transition: color $transition-default;
+
+			@include up(desktop) {
+				@include text("s-400");
+			}
+		}
+
+		&__company {
+			@include text("s-400");
+
+			grid-column: 2;
+			min-width: 0;
+			overflow: hidden;
+			color: palette("dark-grey-txt");
+			text-overflow: ellipsis;
+			white-space: nowrap;
+
+			@include up(desktop) {
+				display: none;
+			}
+		}
+	}
+}

@@ -2278,6 +2278,2085 @@
 			"url": "#",
 			"id": "leaders-e",
 			"lists": []
+		},
+		"calendar": {
+			"title": "Дни рождения",
+			"titleMuted": "сентябрь",
+			"filters": {
+				"action": "",
+				"selects": [
+					{
+						"label": "Месяц:",
+						"name": "month",
+						"options": [
+							{
+								"value": "1",
+								"text": "Январь"
+							},
+							{
+								"value": "2",
+								"text": "Февраль"
+							},
+							{
+								"value": "3",
+								"text": "Март"
+							},
+							{
+								"value": "4",
+								"text": "Апрель"
+							},
+							{
+								"value": "5",
+								"text": "Май"
+							},
+							{
+								"value": "6",
+								"text": "Июнь"
+							},
+							{
+								"value": "7",
+								"text": "Июль"
+							},
+							{
+								"value": "8",
+								"text": "Август"
+							},
+							{
+								"value": "9",
+								"text": "Сентябрь",
+								"selected": true
+							},
+							{
+								"value": "10",
+								"text": "Октябрь"
+							},
+							{
+								"value": "11",
+								"text": "Ноябрь"
+							},
+							{
+								"value": "12",
+								"text": "Декабрь"
+							}
+						]
+					},
+					{
+						"label": "Юр. лицо:",
+						"name": "company",
+						"options": [
+							{
+								"value": "",
+								"text": "Все",
+								"selected": true
+							},
+							{
+								"value": "1",
+								"text": "ООО «Аптека групп»"
+							},
+							{
+								"value": "2",
+								"text": "ООО «Адель Фарм»"
+							},
+							{
+								"value": "3",
+								"text": "ООО «Добрыя лекі»"
+							},
+							{
+								"value": "4",
+								"text": "ООО «Аптечка плюс»"
+							}
+						]
+					}
+				]
+			},
+			"days": [
+				{
+					"date": "2026-08-31",
+					"day": 31,
+					"month": "августа",
+					"weekday": "понедельник",
+					"otherMonth": true,
+					"monthShort": "авг",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Дрозд В.В.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Волкова Т.В.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-01",
+					"day": 1,
+					"month": "сентября",
+					"weekday": "вторник",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Синицина К.В.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Зайцев М.В.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-5.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-02",
+					"day": 2,
+					"month": "сентября",
+					"weekday": "среда",
+					"past": true
+				},
+				{
+					"date": "2026-09-03",
+					"day": 3,
+					"month": "сентября",
+					"weekday": "четверг",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Иванова О.А.",
+							"company": "ООО «Адель Фарм»"
+						},
+						{
+							"url": "#",
+							"name": "Рябова А.А.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Сорокина Д.А.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-04",
+					"day": 4,
+					"month": "сентября",
+					"weekday": "пятница",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Березова С.Н.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-05",
+					"day": 5,
+					"month": "сентября",
+					"weekday": "суббота",
+					"weekend": true,
+					"past": true
+				},
+				{
+					"date": "2026-09-06",
+					"day": 6,
+					"month": "сентября",
+					"weekday": "воскресенье",
+					"weekend": true,
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Браун К.К.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-5.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-07",
+					"day": 7,
+					"month": "сентября",
+					"weekday": "понедельник",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Петров С.В.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Медведева Т.В.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Ковалёв А.И.",
+							"company": "ООО «Добрыя лекі»"
+						},
+						{
+							"url": "#",
+							"name": "Ковальчук Н.П.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-08",
+					"day": 8,
+					"month": "сентября",
+					"weekday": "вторник",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Лебедева Е.С.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-5.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Новик Д.Г.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-09",
+					"day": 9,
+					"month": "сентября",
+					"weekday": "среда",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Шевчук И.М.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-10",
+					"day": 10,
+					"month": "сентября",
+					"weekday": "четверг",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Жук О.В.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Климович Л.А.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Мороз А.П.",
+							"company": "ООО «Адель Фарм»"
+						},
+						{
+							"url": "#",
+							"name": "Кравченко Ю.Н.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Козловская М.С.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-11",
+					"day": 11,
+					"month": "сентября",
+					"weekday": "пятница",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Бондаренко Е.А.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Савицкая Г.И.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-12",
+					"day": 12,
+					"month": "сентября",
+					"weekday": "суббота",
+					"weekend": true,
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Романович В.Д.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-5.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-13",
+					"day": 13,
+					"month": "сентября",
+					"weekday": "воскресенье",
+					"weekend": true,
+					"past": true
+				},
+				{
+					"date": "2026-09-14",
+					"day": 14,
+					"month": "сентября",
+					"weekday": "понедельник",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Ткачук А.С.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Мельник О.Н.",
+							"company": "ООО «Аптечка плюс»"
+						},
+						{
+							"url": "#",
+							"name": "Гончарова Л.М.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-15",
+					"day": 15,
+					"month": "сентября",
+					"weekday": "вторник",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Гончарова Л.М.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Кузьмич Р.В.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-5.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Пашкевич Н.Л.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Василевская-Константинопольская О.Л.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Лукашевич И.Л.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Дрозд В.В.",
+							"company": "ООО «Добрыя лекі»"
+						},
+						{
+							"url": "#",
+							"name": "Волкова Т.В.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-5.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-16",
+					"day": 16,
+					"month": "сентября",
+					"weekday": "среда",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Волкова Т.В.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Синицина К.В.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-17",
+					"day": 17,
+					"month": "сентября",
+					"weekday": "четверг",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Зайцев М.В.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-18",
+					"day": 18,
+					"month": "сентября",
+					"weekday": "пятница",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Иванова О.А.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Рябова А.А.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-5.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Сорокина Д.А.",
+							"company": "ООО «Добрыя лекі»"
+						}
+					]
+				},
+				{
+					"date": "2026-09-19",
+					"day": 19,
+					"month": "сентября",
+					"weekday": "суббота",
+					"weekend": true,
+					"past": true
+				},
+				{
+					"date": "2026-09-20",
+					"day": 20,
+					"month": "сентября",
+					"weekday": "воскресенье",
+					"weekend": true,
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Березова С.Н.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Браун К.К.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-21",
+					"day": 21,
+					"month": "сентября",
+					"weekday": "понедельник",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Петров С.В.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-22",
+					"day": 22,
+					"month": "сентября",
+					"weekday": "вторник",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Медведева Т.В.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-5.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Ковалёв А.И.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Ковальчук Н.П.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Лебедева Е.С.",
+							"company": "ООО «Добрыя лекі»"
+						}
+					]
+				},
+				{
+					"date": "2026-09-23",
+					"day": 23,
+					"month": "сентября",
+					"weekday": "среда",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Новик Д.Г.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Шевчук И.М.",
+							"company": "ООО «Добрыя лекі»"
+						}
+					]
+				},
+				{
+					"date": "2026-09-24",
+					"day": 24,
+					"month": "сентября",
+					"weekday": "четверг",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Жук О.В.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-25",
+					"day": 25,
+					"month": "сентября",
+					"weekday": "пятница",
+					"today": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Дрозд В.В.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Волкова Т.В.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-26",
+					"day": 26,
+					"month": "сентября",
+					"weekday": "суббота",
+					"weekend": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Козловская М.С.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-27",
+					"day": 27,
+					"month": "сентября",
+					"weekday": "воскресенье",
+					"weekend": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Бондаренко Е.А.",
+							"company": "ООО «Добрыя лекі»"
+						}
+					]
+				},
+				{
+					"date": "2026-09-28",
+					"day": 28,
+					"month": "сентября",
+					"weekday": "понедельник",
+					"people": [
+						{
+							"url": "#",
+							"name": "Левченко П.Р.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Савицкая Г.И.",
+							"company": "ООО «Адель Фарм»"
+						}
+					]
+				},
+				{
+					"date": "2026-09-29",
+					"day": 29,
+					"month": "сентября",
+					"weekday": "вторник",
+					"people": [
+						{
+							"url": "#",
+							"name": "Романович В.Д.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-30",
+					"day": 30,
+					"month": "сентября",
+					"weekday": "среда",
+					"people": [
+						{
+							"url": "#",
+							"name": "Ткачук А.С.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Мельник О.Н.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-5.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-10-01",
+					"day": 1,
+					"month": "октября",
+					"weekday": "четверг",
+					"otherMonth": true,
+					"monthShort": "окт",
+					"people": [
+						{
+							"url": "#",
+							"name": "Гончарова Л.М.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-10-02",
+					"day": 2,
+					"month": "октября",
+					"weekday": "пятница",
+					"otherMonth": true,
+					"monthShort": "окт",
+					"people": [
+						{
+							"url": "#",
+							"name": "Кузьмич Р.В.",
+							"company": "ООО «Адель Фарм»"
+						}
+					]
+				},
+				{
+					"date": "2026-10-03",
+					"day": 3,
+					"month": "октября",
+					"weekday": "суббота",
+					"otherMonth": true,
+					"monthShort": "окт",
+					"weekend": true
+				},
+				{
+					"date": "2026-10-04",
+					"day": 4,
+					"month": "октября",
+					"weekday": "воскресенье",
+					"otherMonth": true,
+					"monthShort": "окт",
+					"weekend": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Пашкевич Н.Л.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Василевская-Константинопольская О.Л.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						}
+					]
+				}
+			]
+		},
+		"calendarEmpty": {
+			"title": "Дни рождения",
+			"titleMuted": "сентябрь",
+			"filters": {
+				"action": "",
+				"selects": [
+					{
+						"label": "Месяц:",
+						"name": "month",
+						"options": [
+							{
+								"value": "1",
+								"text": "Январь"
+							},
+							{
+								"value": "2",
+								"text": "Февраль"
+							},
+							{
+								"value": "3",
+								"text": "Март"
+							},
+							{
+								"value": "4",
+								"text": "Апрель"
+							},
+							{
+								"value": "5",
+								"text": "Май"
+							},
+							{
+								"value": "6",
+								"text": "Июнь"
+							},
+							{
+								"value": "7",
+								"text": "Июль"
+							},
+							{
+								"value": "8",
+								"text": "Август"
+							},
+							{
+								"value": "9",
+								"text": "Сентябрь",
+								"selected": true
+							},
+							{
+								"value": "10",
+								"text": "Октябрь"
+							},
+							{
+								"value": "11",
+								"text": "Ноябрь"
+							},
+							{
+								"value": "12",
+								"text": "Декабрь"
+							}
+						]
+					},
+					{
+						"label": "Юр. лицо:",
+						"name": "company",
+						"options": [
+							{
+								"value": "",
+								"text": "Все",
+								"selected": true
+							},
+							{
+								"value": "1",
+								"text": "ООО «Аптека групп»"
+							},
+							{
+								"value": "2",
+								"text": "ООО «Адель Фарм»"
+							},
+							{
+								"value": "3",
+								"text": "ООО «Добрыя лекі»"
+							},
+							{
+								"value": "4",
+								"text": "ООО «Аптечка плюс»"
+							}
+						]
+					}
+				]
+			},
+			"days": [
+				{
+					"date": "2026-08-31",
+					"day": 31,
+					"month": "августа",
+					"weekday": "понедельник",
+					"otherMonth": true,
+					"monthShort": "авг",
+					"past": true
+				},
+				{
+					"date": "2026-09-01",
+					"day": 1,
+					"month": "сентября",
+					"weekday": "вторник",
+					"past": true
+				},
+				{
+					"date": "2026-09-02",
+					"day": 2,
+					"month": "сентября",
+					"weekday": "среда",
+					"past": true
+				},
+				{
+					"date": "2026-09-03",
+					"day": 3,
+					"month": "сентября",
+					"weekday": "четверг",
+					"past": true
+				},
+				{
+					"date": "2026-09-04",
+					"day": 4,
+					"month": "сентября",
+					"weekday": "пятница",
+					"past": true
+				},
+				{
+					"date": "2026-09-05",
+					"day": 5,
+					"month": "сентября",
+					"weekday": "суббота",
+					"weekend": true,
+					"past": true
+				},
+				{
+					"date": "2026-09-06",
+					"day": 6,
+					"month": "сентября",
+					"weekday": "воскресенье",
+					"weekend": true,
+					"past": true
+				},
+				{
+					"date": "2026-09-07",
+					"day": 7,
+					"month": "сентября",
+					"weekday": "понедельник",
+					"past": true
+				},
+				{
+					"date": "2026-09-08",
+					"day": 8,
+					"month": "сентября",
+					"weekday": "вторник",
+					"past": true
+				},
+				{
+					"date": "2026-09-09",
+					"day": 9,
+					"month": "сентября",
+					"weekday": "среда",
+					"past": true
+				},
+				{
+					"date": "2026-09-10",
+					"day": 10,
+					"month": "сентября",
+					"weekday": "четверг",
+					"past": true
+				},
+				{
+					"date": "2026-09-11",
+					"day": 11,
+					"month": "сентября",
+					"weekday": "пятница",
+					"past": true
+				},
+				{
+					"date": "2026-09-12",
+					"day": 12,
+					"month": "сентября",
+					"weekday": "суббота",
+					"weekend": true,
+					"past": true
+				},
+				{
+					"date": "2026-09-13",
+					"day": 13,
+					"month": "сентября",
+					"weekday": "воскресенье",
+					"weekend": true,
+					"past": true
+				},
+				{
+					"date": "2026-09-14",
+					"day": 14,
+					"month": "сентября",
+					"weekday": "понедельник",
+					"past": true
+				},
+				{
+					"date": "2026-09-15",
+					"day": 15,
+					"month": "сентября",
+					"weekday": "вторник",
+					"past": true
+				},
+				{
+					"date": "2026-09-16",
+					"day": 16,
+					"month": "сентября",
+					"weekday": "среда",
+					"past": true
+				},
+				{
+					"date": "2026-09-17",
+					"day": 17,
+					"month": "сентября",
+					"weekday": "четверг",
+					"past": true
+				},
+				{
+					"date": "2026-09-18",
+					"day": 18,
+					"month": "сентября",
+					"weekday": "пятница",
+					"past": true
+				},
+				{
+					"date": "2026-09-19",
+					"day": 19,
+					"month": "сентября",
+					"weekday": "суббота",
+					"weekend": true,
+					"past": true
+				},
+				{
+					"date": "2026-09-20",
+					"day": 20,
+					"month": "сентября",
+					"weekday": "воскресенье",
+					"weekend": true,
+					"past": true
+				},
+				{
+					"date": "2026-09-21",
+					"day": 21,
+					"month": "сентября",
+					"weekday": "понедельник",
+					"past": true
+				},
+				{
+					"date": "2026-09-22",
+					"day": 22,
+					"month": "сентября",
+					"weekday": "вторник",
+					"past": true
+				},
+				{
+					"date": "2026-09-23",
+					"day": 23,
+					"month": "сентября",
+					"weekday": "среда",
+					"past": true
+				},
+				{
+					"date": "2026-09-24",
+					"day": 24,
+					"month": "сентября",
+					"weekday": "четверг",
+					"past": true
+				},
+				{
+					"date": "2026-09-25",
+					"day": 25,
+					"month": "сентября",
+					"weekday": "пятница",
+					"today": true
+				},
+				{
+					"date": "2026-09-26",
+					"day": 26,
+					"month": "сентября",
+					"weekday": "суббота",
+					"weekend": true
+				},
+				{
+					"date": "2026-09-27",
+					"day": 27,
+					"month": "сентября",
+					"weekday": "воскресенье",
+					"weekend": true
+				},
+				{
+					"date": "2026-09-28",
+					"day": 28,
+					"month": "сентября",
+					"weekday": "понедельник"
+				},
+				{
+					"date": "2026-09-29",
+					"day": 29,
+					"month": "сентября",
+					"weekday": "вторник"
+				},
+				{
+					"date": "2026-09-30",
+					"day": 30,
+					"month": "сентября",
+					"weekday": "среда"
+				},
+				{
+					"date": "2026-10-01",
+					"day": 1,
+					"month": "октября",
+					"weekday": "четверг",
+					"otherMonth": true,
+					"monthShort": "окт"
+				},
+				{
+					"date": "2026-10-02",
+					"day": 2,
+					"month": "октября",
+					"weekday": "пятница",
+					"otherMonth": true,
+					"monthShort": "окт"
+				},
+				{
+					"date": "2026-10-03",
+					"day": 3,
+					"month": "октября",
+					"weekday": "суббота",
+					"otherMonth": true,
+					"monthShort": "окт",
+					"weekend": true
+				},
+				{
+					"date": "2026-10-04",
+					"day": 4,
+					"month": "октября",
+					"weekday": "воскресенье",
+					"otherMonth": true,
+					"monthShort": "окт",
+					"weekend": true
+				}
+			],
+			"empty": true
+		},
+		"calendarNoFilters": {
+			"title": "Дни рождения",
+			"titleMuted": "сентябрь",
+			"days": [
+				{
+					"date": "2026-08-31",
+					"day": 31,
+					"month": "августа",
+					"weekday": "понедельник",
+					"otherMonth": true,
+					"monthShort": "авг",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Дрозд В.В.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Волкова Т.В.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-01",
+					"day": 1,
+					"month": "сентября",
+					"weekday": "вторник",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Синицина К.В.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Зайцев М.В.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-5.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-02",
+					"day": 2,
+					"month": "сентября",
+					"weekday": "среда",
+					"past": true
+				},
+				{
+					"date": "2026-09-03",
+					"day": 3,
+					"month": "сентября",
+					"weekday": "четверг",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Иванова О.А.",
+							"company": "ООО «Адель Фарм»"
+						},
+						{
+							"url": "#",
+							"name": "Рябова А.А.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Сорокина Д.А.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-04",
+					"day": 4,
+					"month": "сентября",
+					"weekday": "пятница",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Березова С.Н.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-05",
+					"day": 5,
+					"month": "сентября",
+					"weekday": "суббота",
+					"weekend": true,
+					"past": true
+				},
+				{
+					"date": "2026-09-06",
+					"day": 6,
+					"month": "сентября",
+					"weekday": "воскресенье",
+					"weekend": true,
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Браун К.К.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-5.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-07",
+					"day": 7,
+					"month": "сентября",
+					"weekday": "понедельник",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Петров С.В.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Медведева Т.В.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Ковалёв А.И.",
+							"company": "ООО «Добрыя лекі»"
+						},
+						{
+							"url": "#",
+							"name": "Ковальчук Н.П.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-08",
+					"day": 8,
+					"month": "сентября",
+					"weekday": "вторник",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Лебедева Е.С.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-5.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Новик Д.Г.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-09",
+					"day": 9,
+					"month": "сентября",
+					"weekday": "среда",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Шевчук И.М.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-10",
+					"day": 10,
+					"month": "сентября",
+					"weekday": "четверг",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Жук О.В.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Климович Л.А.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Мороз А.П.",
+							"company": "ООО «Адель Фарм»"
+						},
+						{
+							"url": "#",
+							"name": "Кравченко Ю.Н.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Козловская М.С.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-11",
+					"day": 11,
+					"month": "сентября",
+					"weekday": "пятница",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Бондаренко Е.А.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Савицкая Г.И.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-12",
+					"day": 12,
+					"month": "сентября",
+					"weekday": "суббота",
+					"weekend": true,
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Романович В.Д.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-5.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-13",
+					"day": 13,
+					"month": "сентября",
+					"weekday": "воскресенье",
+					"weekend": true,
+					"past": true
+				},
+				{
+					"date": "2026-09-14",
+					"day": 14,
+					"month": "сентября",
+					"weekday": "понедельник",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Ткачук А.С.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Мельник О.Н.",
+							"company": "ООО «Аптечка плюс»"
+						},
+						{
+							"url": "#",
+							"name": "Гончарова Л.М.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-15",
+					"day": 15,
+					"month": "сентября",
+					"weekday": "вторник",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Гончарова Л.М.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Кузьмич Р.В.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-5.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Пашкевич Н.Л.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Василевская-Константинопольская О.Л.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Лукашевич И.Л.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Дрозд В.В.",
+							"company": "ООО «Добрыя лекі»"
+						},
+						{
+							"url": "#",
+							"name": "Волкова Т.В.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-5.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-16",
+					"day": 16,
+					"month": "сентября",
+					"weekday": "среда",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Волкова Т.В.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Синицина К.В.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-17",
+					"day": 17,
+					"month": "сентября",
+					"weekday": "четверг",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Зайцев М.В.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-18",
+					"day": 18,
+					"month": "сентября",
+					"weekday": "пятница",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Иванова О.А.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Рябова А.А.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-5.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Сорокина Д.А.",
+							"company": "ООО «Добрыя лекі»"
+						}
+					]
+				},
+				{
+					"date": "2026-09-19",
+					"day": 19,
+					"month": "сентября",
+					"weekday": "суббота",
+					"weekend": true,
+					"past": true
+				},
+				{
+					"date": "2026-09-20",
+					"day": 20,
+					"month": "сентября",
+					"weekday": "воскресенье",
+					"weekend": true,
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Березова С.Н.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Браун К.К.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-21",
+					"day": 21,
+					"month": "сентября",
+					"weekday": "понедельник",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Петров С.В.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-22",
+					"day": 22,
+					"month": "сентября",
+					"weekday": "вторник",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Медведева Т.В.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-5.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Ковалёв А.И.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Ковальчук Н.П.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Лебедева Е.С.",
+							"company": "ООО «Добрыя лекі»"
+						}
+					]
+				},
+				{
+					"date": "2026-09-23",
+					"day": 23,
+					"month": "сентября",
+					"weekday": "среда",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Новик Д.Г.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Шевчук И.М.",
+							"company": "ООО «Добрыя лекі»"
+						}
+					]
+				},
+				{
+					"date": "2026-09-24",
+					"day": 24,
+					"month": "сентября",
+					"weekday": "четверг",
+					"past": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Жук О.В.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-25",
+					"day": 25,
+					"month": "сентября",
+					"weekday": "пятница",
+					"today": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Дрозд В.В.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-2.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Волкова Т.В.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-26",
+					"day": 26,
+					"month": "сентября",
+					"weekday": "суббота",
+					"weekend": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Козловская М.С.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-27",
+					"day": 27,
+					"month": "сентября",
+					"weekday": "воскресенье",
+					"weekend": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Бондаренко Е.А.",
+							"company": "ООО «Добрыя лекі»"
+						}
+					]
+				},
+				{
+					"date": "2026-09-28",
+					"day": 28,
+					"month": "сентября",
+					"weekday": "понедельник",
+					"people": [
+						{
+							"url": "#",
+							"name": "Левченко П.Р.",
+							"company": "ООО «Аптечка плюс»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Савицкая Г.И.",
+							"company": "ООО «Адель Фарм»"
+						}
+					]
+				},
+				{
+					"date": "2026-09-29",
+					"day": 29,
+					"month": "сентября",
+					"weekday": "вторник",
+					"people": [
+						{
+							"url": "#",
+							"name": "Романович В.Д.",
+							"company": "ООО «Адель Фарм»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-09-30",
+					"day": 30,
+					"month": "сентября",
+					"weekday": "среда",
+					"people": [
+						{
+							"url": "#",
+							"name": "Ткачук А.С.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Мельник О.Н.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-5.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-10-01",
+					"day": 1,
+					"month": "октября",
+					"weekday": "четверг",
+					"otherMonth": true,
+					"monthShort": "окт",
+					"people": [
+						{
+							"url": "#",
+							"name": "Гончарова Л.М.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-1.jpg"
+							}
+						}
+					]
+				},
+				{
+					"date": "2026-10-02",
+					"day": 2,
+					"month": "октября",
+					"weekday": "пятница",
+					"otherMonth": true,
+					"monthShort": "окт",
+					"people": [
+						{
+							"url": "#",
+							"name": "Кузьмич Р.В.",
+							"company": "ООО «Адель Фарм»"
+						}
+					]
+				},
+				{
+					"date": "2026-10-03",
+					"day": 3,
+					"month": "октября",
+					"weekday": "суббота",
+					"otherMonth": true,
+					"monthShort": "окт",
+					"weekend": true
+				},
+				{
+					"date": "2026-10-04",
+					"day": 4,
+					"month": "октября",
+					"weekday": "воскресенье",
+					"otherMonth": true,
+					"monthShort": "окт",
+					"weekend": true,
+					"people": [
+						{
+							"url": "#",
+							"name": "Пашкевич Н.Л.",
+							"company": "ООО «Добрыя лекі»",
+							"image": {
+								"src": "./img/person-3.jpg"
+							}
+						},
+						{
+							"url": "#",
+							"name": "Василевская-Константинопольская О.Л.",
+							"company": "ООО «Аптека групп»",
+							"image": {
+								"src": "./img/person-4.jpg"
+							}
+						}
+					]
+				}
+			]
+		},
+		"crumbs": [
+			{
+				"title": "Главная",
+				"url": "#"
+			},
+			{
+				"title": "Дни рождения"
+			}
+		],
+		"crumbsLong": [
+			{
+				"title": "Главная",
+				"url": "#"
+			},
+			{
+				"title": "О холдинге",
+				"url": "#"
+			},
+			{
+				"title": "Структура и справочник сотрудников",
+				"url": "#"
+			},
+			{
+				"title": "ООО «Аптека групп» — отдел маркетинга и коммуникаций"
+			}
+		],
+		"selectMonth": {
+			"label": "Месяц:",
+			"name": "demo-month",
+			"options": [
+				{
+					"value": "8",
+					"text": "Август"
+				},
+				{
+					"value": "9",
+					"text": "Сентябрь",
+					"selected": true
+				}
+			]
+		},
+		"selectLong": {
+			"label": "Юр. лицо:",
+			"name": "demo-company",
+			"options": [
+				{
+					"value": "1",
+					"text": "ООО «Аптечная сеть „Добрыя лекі“ и партнёры»",
+					"selected": true
+				},
+				{
+					"value": "2",
+					"text": "Все"
+				}
+			]
 		}
 	}
 }

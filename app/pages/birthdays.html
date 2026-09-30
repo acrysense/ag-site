@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="{{ lang }}">
+	<head>
+		{{> layouts/Head/Head }}
+		<script type="module" src="/app.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			{{> layouts/Header/Header props=(default data.header site.header) }}
+			<main class="wrapper__content">
+				{{!-- Дни рождения (1920 — 4704:1019, 360 — 4706:1361) --}}
+				<div class="container page-inner">
+					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.breadcrumbs) }}
+					<div class="page-columns">
+						{{> sections/birthdays/BirthdayCalendar/BirthdayCalendar props=data.calendar }}
+						<aside class="page-columns__aside">
+							{{> sections/shared/Birthdays/Birthdays props=data.aside }}
+						</aside>
+					</div>
+				</div>
+			</main>
+			{{> layouts/Footer/Footer props=site.footer }}
+		</div>
+		{{> layouts/MainMenu/MainMenu props=site.mainMenu }}
+		{{> layouts/TabBar/TabBar props=site.tabBar }}
+	</body>
+</html>

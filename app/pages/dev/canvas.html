@@ -219,22 +219,22 @@
 
 			{{#> story id="birthdays" group="Главная" title="День рождения" description='Figma: 1920 — 4615:42940, 360 — 4865:1402. Сегодня может не быть никого, одного или нескольких. Нет фото — значок подарка. На десктопе — третья колонка ряда с «Акциями».'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container"><div class="story-column">{{> sections/home/Birthdays/Birthdays props=data.birthdays}}</div></div>
+					<div class="container"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdays}}</div></div>
 				{{/state}}
 				{{#> state label="Сегодня никого" bg="page"}}
-					<div class="container"><div class="story-column">{{> sections/home/Birthdays/Birthdays props=data.birthdaysNoToday}}</div></div>
+					<div class="container"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysNoToday}}</div></div>
 				{{/state}}
 				{{#> state label="Сегодня несколько" bg="page"}}
-					<div class="container"><div class="story-column">{{> sections/home/Birthdays/Birthdays props=data.birthdaysManyToday}}</div></div>
+					<div class="container"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysManyToday}}</div></div>
 				{{/state}}
 				{{#> state label="Только сегодня" bg="page"}}
-					<div class="container"><div class="story-column">{{> sections/home/Birthdays/Birthdays props=data.birthdaysOnlyToday}}</div></div>
+					<div class="container"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysOnlyToday}}</div></div>
 				{{/state}}
 				{{#> state label="Без фото" bg="page"}}
-					<div class="container"><div class="story-column">{{> sections/home/Birthdays/Birthdays props=data.birthdaysNoPhotos}}</div></div>
+					<div class="container"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysNoPhotos}}</div></div>
 				{{/state}}
 				{{#> state label="Пусто" bg="page"}}
-					<div class="container"><div class="story-column">{{> sections/home/Birthdays/Birthdays props=data.birthdaysEmpty}}</div></div>
+					<div class="container"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysEmpty}}</div></div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: список приходит с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
@@ -314,6 +314,38 @@
 				{{/state}}
 				{{#> state label="Три вкладки"}}
 					{{> components/Tabs/Tabs props=(obj id="tabs-demo-3" label="Пример" items=(arr (obj title="Все") (obj title="Сегодня") (obj title="В этом месяце")))}}
+				{{/state}}
+			{{/story}}
+
+			{{#> story id="birthday-calendar" group="Дни рождения" title="Календарь" description='Figma: 1920 — 4704:1065, 360 — 4706:1407. Сетка месяца с 1024, ниже — список дней с именинниками. Прошедшие дни бледнее, выходные — фон BG.Info, сегодня — BG.Violet.'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container">{{> sections/birthdays/BirthdayCalendar/BirthdayCalendar props=data.calendar}}</div>
+				{{/state}}
+				{{#> state label="Без фильтров" bg="page"}}
+					<div class="container">{{> sections/birthdays/BirthdayCalendar/BirthdayCalendar props=data.calendarNoFilters}}</div>
+				{{/state}}
+				{{#> state label="Пусто" bg="page"}}
+					<div class="container">{{> sections/birthdays/BirthdayCalendar/BirthdayCalendar props=data.calendarEmpty}}</div>
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: месяц приходит с сервера, смена фильтра перезагружает страницу"}}{{/state}}
+				{{#> state label="Длинный контент" note="в «Обычном»: 7 человек в один день и ФИО на две строки — строка обрезается «…»"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="breadcrumbs" group="Компоненты" title="Хлебные крошки" description="Figma: 4704:1060 (1920), 4706:1408 (360). Последний пункт — текущая страница, без ссылки."}}
+				{{#> state label="Два пункта"}}
+					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.crumbs)}}
+				{{/state}}
+				{{#> state label="Длинные"}}
+					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.crumbsLong)}}
+				{{/state}}
+			{{/story}}
+
+			{{#> story id="select" group="Компоненты" title="Выпадающий список" description="Figma: Select — Месяц. Нативный select поверх поля: системный список, клавиатура; шрифт 16px против увеличения в iOS."}}
+				{{#> state label="Обычное"}}
+					{{> components/Select/Select props=data.selectMonth}}
+				{{/state}}
+				{{#> state label="Длинное значение"}}
+					{{> components/Select/Select props=data.selectLong}}
 				{{/state}}
 			{{/story}}
 		</main>
