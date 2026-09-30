@@ -1,0 +1,20 @@
+{{!--
+	Поле поиска (Figma: Search.Field 700px и 360.Search.Field 340px).
+	props: action (адрес страницы поиска), name (по умолчанию q), value, placeholder, id, class.
+	Сейчас обычная форма GET: работает и без JS. Выпадающее окно с разделами и фильтрами и
+	полноэкранный поиск на мобильном — отдельный блок.
+--}}
+<form class="search-field{{#if props.class}} {{props.class}}{{/if}}" action="{{props.action}}" method="get" role="search">
+    <label class="visually-hidden" for="{{default props.id 'search'}}">Поиск по сайту</label>
+    {{> components/Icon/Icon name="search" class="search-field__icon"}}
+    <input
+        class="search-field__input"
+        id="{{default props.id 'search'}}"
+        type="search"
+        name="{{default props.name 'q'}}"
+        value="{{props.value}}"
+        placeholder="{{default props.placeholder 'Начать поиск'}}"
+        autocomplete="off"
+        enterkeyhint="search"
+    />
+</form>

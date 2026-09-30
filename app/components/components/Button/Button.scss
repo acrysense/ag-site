@@ -20,6 +20,19 @@
 		}
 	}
 
+	// Figma: Button General — синяя, «Войти в ЛК»
+	.btn--general {
+		@include text("m-500");
+
+		color: palette("white");
+		background: palette("main-blue");
+		transition: background-color $transition-default;
+
+		&:hover {
+			background: palette("blue-hover");
+		}
+	}
+
 	// Figma: Button / S.Light.Left
 	.btn--light {
 		color: palette("black-txt");
@@ -31,6 +44,13 @@
 
 		height: 36px;
 		padding: 6px 12px;
+		border-radius: $radius-button;
+	}
+
+	// Высота 46: PC.HEADER.v2 «Войти в ЛК»
+	.btn--l {
+		height: 46px;
+		padding: 12px 24px;
 		border-radius: $radius-button;
 	}
 }
