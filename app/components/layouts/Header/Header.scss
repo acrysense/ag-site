@@ -21,7 +21,10 @@
 			@include up(desktop) {
 				grid-template-areas: "brand search actions";
 				// Поиск по центру, пока хватает места; уже — сжимается до 240px
-				grid-template-columns: minmax(max-content, 1fr) minmax(240px, 700px) minmax(max-content, 1fr);
+				grid-template-columns: minmax(max-content, 1fr) minmax(240px, 700px) minmax(
+						max-content,
+						1fr
+					);
 				// Зазор между колонками — наш, на макете 1920 места с запасом
 				column-gap: 24px;
 				height: 64px;
