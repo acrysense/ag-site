@@ -314,6 +314,59 @@
 					"caption": "работников в команде холдинга"
 				}
 			]
+		},
+		"wideBanner": {
+			"label": "Баннеры партнёров",
+			"slides": [
+				{
+					"url": "#",
+					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
+					"image": {
+						"desktop": "./dev/img/wide-desktop.jpg",
+						"mobile": "./dev/img/wide-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
+					"image": {
+						"desktop": "./dev/img/wide-desktop.jpg",
+						"mobile": "./dev/img/wide-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
+					"image": {
+						"desktop": "./dev/img/wide-desktop.jpg",
+						"mobile": "./dev/img/wide-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
+					"image": {
+						"desktop": "./dev/img/wide-desktop.jpg",
+						"mobile": "./dev/img/wide-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
+					"image": {
+						"desktop": "./dev/img/wide-desktop.jpg",
+						"mobile": "./dev/img/wide-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
+					"image": {
+						"desktop": "./dev/img/wide-desktop.jpg",
+						"mobile": "./dev/img/wide-mobile.jpg"
+					}
+				}
+			]
 		}
 	}
 }

@@ -1,0 +1,102 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: 360 — 4865:40484 (белый блок, картинка 340×190, точки под ней),
+// 1920 — 4617:43487 (1600×340 в рамке, стрелки 40px в 20px от края, точек нет).
+// Планшет (768–1023) в макете не нарисован: десктопная картинка, точки как на мобильном.
+@layer components {
+	.wide-banner {
+		position: relative;
+		display: grid;
+		gap: 12px;
+		min-width: 0;
+		padding: 20px 10px;
+		background: palette("white");
+
+		@include up(desktop) {
+			padding: 0;
+			background: none;
+		}
+
+		&__track {
+			border-radius: $radius-content-block;
+		}
+
+		// Рамка поверх картинки, как обводка внутрь в Figma: не меняет высоту 340
+		@include up(desktop) {
+			&::after {
+				position: absolute;
+				inset: 0;
+				pointer-events: none;
+				content: "";
+				border: 1px solid palette("block-border");
+				border-radius: $radius-content-block;
+			}
+		}
+
+		&__slide {
+			aspect-ratio: 340 / 190;
+
+			@include up(tablet) {
+				aspect-ratio: 1600 / 340;
+			}
+		}
+
+		&__link,
+		&__picture {
+			display: block;
+			height: 100%;
+		}
+
+		&__image {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		// В макете стрелки на 19px ниже центра — ставим по центру, как в баннерах сверху
+		&__arrow {
+			position: absolute;
+			top: 50%;
+			display: none;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			padding: 0;
+			color: palette("black-txt");
+			background: palette("bg-info");
+			border: 0;
+			border-radius: 50%;
+			transform: translateY(-50%);
+
+			@include up(desktop) {
+				display: flex;
+			}
+
+			&--prev {
+				left: 20px;
+			}
+
+			&--next {
+				right: 20px;
+			}
+		}
+
+		&__arrow-icon {
+			width: 16px;
+			height: 16px;
+		}
+
+		&__arrow--prev &__arrow-icon {
+			transform: rotate(180deg);
+		}
+
+		// Двойной класс: стили общих компонентов подключаются после секций
+		&__dots.carousel__dots {
+			@include up(desktop) {
+				display: none;
+			}
+		}
+	}
+}

@@ -268,6 +268,23 @@
 				{{#> state label="Загрузка" note="не применимо: новости приходят с сервера вместе со страницей"}}{{/state}}
 				{{#> state label="Ошибка" note="не применимо: при ошибке бэк не выводит блок, как при пустом списке"}}{{/state}}
 			{{/story}}
+
+			{{#> story id="wide-banner" group="Главная" title="Растянутый баннер" description='Figma: 1920 — 4617:43487, 360 — 4865:40484. Карусель во всю ширину: на десктопе стрелки, на мобильном точки. У слайда две картинки: для десктопа (с 768) и мобильного.'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container">{{> sections/home/WideBanner/WideBanner props=data.wideBanner}}</div>
+				{{/state}}
+				{{#> state label="Один слайд" bg="page"}}
+					<div class="container">{{> sections/home/WideBanner/WideBanner props=data.wideBannerOne}}</div>
+				{{/state}}
+				{{#> state label="Без мобильной картинки" bg="page"}}
+					<div class="container">{{> sections/home/WideBanner/WideBanner props=data.wideBannerNoMobile}}</div>
+				{{/state}}
+				{{#> state label="Пусто" bg="page"}}
+					<div class="container">{{> sections/home/WideBanner/WideBanner props=data.wideBannerEmpty}}</div>
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: баннеры приходят с сервера вместе со страницей"}}{{/state}}
+				{{#> state label="Длинный контент" note="не применимо: текст в картинке"}}{{/state}}
+			{{/story}}
 		</main>
 	</body>
 </html>

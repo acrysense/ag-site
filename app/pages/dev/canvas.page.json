@@ -1784,6 +1784,95 @@
 		"statsEmpty": {
 			"title": "Аптека групп в цифрах",
 			"items": []
+		},
+		"wideBanner": {
+			"label": "Баннеры партнёров",
+			"slides": [
+				{
+					"url": "#",
+					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
+					"image": {
+						"desktop": "./img/wide-desktop.jpg",
+						"mobile": "./img/wide-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
+					"image": {
+						"desktop": "./img/wide-desktop.jpg",
+						"mobile": "./img/wide-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
+					"image": {
+						"desktop": "./img/wide-desktop.jpg",
+						"mobile": "./img/wide-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
+					"image": {
+						"desktop": "./img/wide-desktop.jpg",
+						"mobile": "./img/wide-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
+					"image": {
+						"desktop": "./img/wide-desktop.jpg",
+						"mobile": "./img/wide-mobile.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
+					"image": {
+						"desktop": "./img/wide-desktop.jpg",
+						"mobile": "./img/wide-mobile.jpg"
+					}
+				}
+			]
+		},
+		"wideBannerOne": {
+			"label": "Баннеры партнёров",
+			"slides": [
+				{
+					"url": "#",
+					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
+					"image": {
+						"desktop": "./img/wide-desktop.jpg",
+						"mobile": "./img/wide-mobile.jpg"
+					}
+				}
+			]
+		},
+		"wideBannerNoMobile": {
+			"label": "Баннеры партнёров",
+			"slides": [
+				{
+					"url": "#",
+					"alt": "BIODERMA",
+					"image": {
+						"desktop": "./img/wide-desktop.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "BIODERMA",
+					"image": {
+						"desktop": "./img/wide-desktop.jpg"
+					}
+				}
+			]
+		},
+		"wideBannerEmpty": {
+			"label": "Баннеры партнёров",
+			"slides": []
 		}
 	}
 }

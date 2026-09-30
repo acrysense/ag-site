@@ -1,0 +1,32 @@
+{{!--
+	Растянутый баннер (Figma: 1920 — 4617:43487, 360 — 4865:40484): карусель во всю ширину.
+	props: label, slides [{ url, alt, image: { desktop, mobile } }].
+	На десктопе стрелки, на мобильном точки под картинкой (так в макетах). Один слайд — ни
+	стрелок, ни точек; нет слайдов — блок не выводится. Текст — в картинке, alt обязателен.
+	Контракт — docs/contracts/wide-banner.md.
+--}}
+{{#if props.slides.length}}
+    <section class="wide-banner carousel" aria-roledescription="карусель" aria-label="{{default props.label 'Баннеры'}}" data-module="Carousel" data-path="components" data-carousel-loop>
+        <div class="carousel__track wide-banner__track" data-carousel-track>
+            {{#each props.slides}}
+                <div class="carousel__slide wide-banner__slide" role="group" aria-roledescription="слайд" aria-label="{{add @index 1}} из {{../props.slides.length}}">
+                    {{#if url}}<a class="wide-banner__link" href="{{url}}">{{/if}}
+                    <picture class="wide-banner__picture">
+                        {{#if image.desktop}}<source media="(min-width: 768px)" srcset="{{image.desktop}}" />{{/if}}
+                        <img class="wide-banner__image" src="{{default image.mobile image.desktop}}" alt="{{alt}}" loading="lazy" decoding="async" />
+                    </picture>
+                    {{#if url}}</a>{{/if}}
+                </div>
+            {{/each}}
+        </div>
+        {{#if props.slides.[1]}}
+            <button class="wide-banner__arrow wide-banner__arrow--prev" type="button" aria-label="Предыдущий баннер" data-carousel-prev>
+                {{> components/Icon/Icon name="angle-right" class="wide-banner__arrow-icon"}}
+            </button>
+            <button class="wide-banner__arrow wide-banner__arrow--next" type="button" aria-label="Следующий баннер" data-carousel-next>
+                {{> components/Icon/Icon name="angle-right" class="wide-banner__arrow-icon"}}
+            </button>
+            <div class="carousel__dots wide-banner__dots" data-carousel-dots></div>
+        {{/if}}
+    </section>
+{{/if}}
