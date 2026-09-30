@@ -88,12 +88,13 @@
         {{/if}}
     </div>
 
-    {{#if props.logout}}
-        {{#> components/Modal/Modal props=(obj id=(default props.logoutId 'main-menu-logout') title=props.logout.title text=props.logout.text size="s" variant="confirm" close=false)}}
+    {{#with props.logout}}
+        {{!-- Внутри блока модалки props — её параметры, поэтому данные выхода через with --}}
+        {{#> components/Modal/Modal props=(obj id=(default ../props.logoutId 'main-menu-logout') title=title text=text size="s" variant="confirm" close=false)}}
             <div class="modal__actions">
-                {{> components/Button/Button props=(obj href=props.logout.url text="Выйти" variant="error" size="l")}}
+                {{> components/Button/Button props=(obj href=url text="Выйти" variant="error" size="l")}}
                 {{> components/Button/Button props=(obj text="Отмена" variant="light" size="l" attrs=(obj data-modal-close="" autofocus=""))}}
             </div>
         {{/components/Modal/Modal}}
-    {{/if}}
+    {{/with}}
 </dialog>
