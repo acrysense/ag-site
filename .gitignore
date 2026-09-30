@@ -46,5 +46,3 @@ node_modules/.cache/
 # tests/coverage
 coverage/
 .nyc_output/
-# RF Rufo — платный шрифт: не в публичный репозиторий до решения по лицензии
-app/assets/fonts/RFRufo/
