@@ -1096,6 +1096,91 @@
 				],
 				"where": "пункт меню шапки"
 			}
+		],
+		"iconRows": [
+			{
+				"title": "Шапка вошедшего — быстрые ссылки",
+				"size": 24,
+				"icons": [
+					"profile",
+					"edu",
+					"crm"
+				]
+			},
+			{
+				"title": "TabBar — «Новости и обучение»",
+				"size": 20,
+				"icons": [
+					"profile",
+					"news",
+					"edu"
+				],
+				"note": "без бургера «Меню»: отдельная иконка, толще допустимо"
+			},
+			{
+				"title": "TabBar — «Справочник и CRM»",
+				"size": 20,
+				"icons": [
+					"profile",
+					"directory",
+					"case"
+				],
+				"note": "без бургера «Меню»"
+			},
+			{
+				"title": "Карточка новости — реакции",
+				"size": 16,
+				"icons": [
+					"comment",
+					"like"
+				]
+			},
+			{
+				"title": "Мобильное меню — CRM",
+				"size": 20,
+				"icons": [
+					"case",
+					"home",
+					"pharmacy",
+					"manager",
+					"profile",
+					"calendar",
+					"tasks"
+				]
+			},
+			{
+				"title": "Мобильное меню — Личный кабинет",
+				"size": 20,
+				"icons": [
+					"profile",
+					"edu",
+					"multiplier",
+					"box",
+					"apple",
+					"motivation"
+				]
+			},
+			{
+				"title": "Мобильное меню — плитки портала",
+				"size": 20,
+				"icons": [
+					"home",
+					"news",
+					"directory",
+					"wiki",
+					"case",
+					"gallery"
+				]
+			},
+			{
+				"title": "Мобильное меню — стрелки строк",
+				"size": 16,
+				"icons": [
+					"chevron-up",
+					"chevron-right",
+					"external-link"
+				]
+			}
 		]
 	}
 }

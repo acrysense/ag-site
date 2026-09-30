@@ -388,3 +388,46 @@ $token-text-names: ();
 		}
 	}
 }
+
+// Ряды иконок, как они стоят вместе на сайте, и разброс толщины в ряду
+.token-row {
+	display: grid;
+	gap: 10px;
+	margin: 0;
+	padding: 12px;
+	background: $canvas-card;
+	border: 1px solid $canvas-line;
+	border-radius: 12px;
+
+	&__head {
+		display: grid;
+		gap: 2px;
+	}
+
+	&__spread {
+		font-family: $canvas-mono;
+		font-size: 12px;
+		color: $canvas-pass;
+
+		&.is-uneven {
+			color: $canvas-fail;
+		}
+	}
+
+	&__icons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px 18px;
+		color: palette("black-txt");
+	}
+
+	&__item {
+		display: grid;
+		gap: 4px;
+		justify-items: center;
+
+		.token-icon__stroke {
+			font-size: 10px;
+		}
+	}
+}

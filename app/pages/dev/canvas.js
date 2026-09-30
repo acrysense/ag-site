@@ -214,6 +214,9 @@ async function strokeWidth(name, size) {
 }
 
 // Ориентир: иконки 20px в макете в основном 1.1–1.4px; тоньше 1 — заметно тоньше соседей
+// В ряду иконки должны быть одной толщины: разброс больше 0.25px уже заметен глазом
+const ROW_SPREAD = 0.25
+
 async function renderIconStrokes() {
 	for (const node of document.querySelectorAll('[data-icon-stroke]')) {
 		const name = node.closest('[data-icon]').dataset.icon
@@ -224,13 +227,35 @@ async function renderIconStrokes() {
 			if (value !== null) values.push({ size, value })
 		}
 		const filled = name.endsWith('-filled')
+		node.dataset.stroke = values.length ? String(values[0].value) : ''
+		const inRow = node.closest('[data-icon-row]')
 		node.textContent = filled
 			? 'залитая — толщина не считается'
-			: values.map(({ size, value }) => `${value.toFixed(2)}px при ${size}px`).join(' · ')
+			: inRow
+				? `${values[0]?.value.toFixed(2)}`
+				: values.map(({ size, value }) => `${value.toFixed(2)}px при ${size}px`).join(' · ')
 		const min = Math.min(...values.map(({ value }) => value))
 		const max = Math.max(...values.map(({ value }) => value))
-		node.classList.toggle('is-thin', !filled && min < 1)
-		node.classList.toggle('is-thick', !filled && max > 1.6)
+		if (!node.closest('[data-icon-row]')) {
+			node.classList.toggle('is-thin', !filled && min < 1)
+			node.classList.toggle('is-thick', !filled && max > 1.6)
+		}
+	}
+
+	for (const row of document.querySelectorAll('[data-icon-row]')) {
+		const strokes = [...row.querySelectorAll('[data-icon-stroke]')]
+			.map((node) => Number(node.dataset.stroke))
+			.filter((value) => value > 0)
+		const spread = Math.max(...strokes) - Math.min(...strokes)
+		const label = row.querySelector('[data-row-spread]')
+		label.textContent = `толщина ${Math.min(...strokes).toFixed(2)}–${Math.max(...strokes).toFixed(2)}px, разброс ${spread.toFixed(2)}px`
+		label.classList.toggle('is-uneven', spread > ROW_SPREAD)
+		// Выбивающиеся в ряду — дальше всех от медианы ряда
+		const median = [...strokes].sort((a, b) => a - b)[Math.floor(strokes.length / 2)]
+		for (const node of row.querySelectorAll('[data-icon-stroke]')) {
+			const off = Math.abs(Number(node.dataset.stroke) - median) > ROW_SPREAD / 2 + 0.01
+			node.classList.toggle('is-thick', off && spread > ROW_SPREAD)
+		}
 	}
 }
 

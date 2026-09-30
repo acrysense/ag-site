@@ -69,6 +69,27 @@
 						{{/each}}
 					</div>
 				{{/state}}
+				{{#> state label="Ряды на сайте"}}
+					<div class="tokens tokens--icons" data-icon-list>
+						{{#each data.iconRows}}
+							<figure class="token-row" data-icon-row>
+								<figcaption class="token-row__head">
+									<span class="token-icon__name">{{title}}</span>
+									{{#if note}}<span class="token-icon__where">{{note}}</span>{{/if}}
+									<span class="token-row__spread" data-row-spread></span>
+								</figcaption>
+								<div class="token-row__icons">
+									{{#each icons}}
+										<span class="token-row__item" data-icon="{{this}}">
+											<span class="token-icon__sample token-icon__sample--{{../size}}">{{> components/Icon/Icon name=this class="token-icon__svg"}}</span>
+											<span class="token-icon__stroke" data-icon-stroke data-sizes="{{../size}}"></span>
+										</span>
+									{{/each}}
+								</div>
+							</figure>
+						{{/each}}
+					</div>
+				{{/state}}
 			{{/story}}
 
 			{{#> story id="header" group="Каркас" title="Шапка" description='Figma: PC.HEADER.v2 (4652:8752), 360.HEADER (4865:1334). Данные — site.header в site.config.json. Подменю «Новости»: наведение мышью, стрелка, Escape. Бургер открывает мобильное меню — см. «Мобильное меню».'}}
