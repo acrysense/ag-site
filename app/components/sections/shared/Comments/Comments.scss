@@ -583,8 +583,7 @@
 			height: 16px;
 		}
 
-		// Всплывающие панели: реакции — над строкой действий, меню и удаление — под ней.
-		// Сдвиг внутрь экрана — скрипт (translate)
+		// Всплывающие панели: место у кнопки и сдвиг внутрь экрана задаёт скрипт
 		&__picker,
 		&__menu,
 		&__confirm {
@@ -596,8 +595,6 @@
 		}
 
 		&__picker {
-			bottom: calc(100% + 6px);
-			left: 0;
 			display: flex;
 			gap: 2px;
 			padding: 4px;
@@ -624,12 +621,6 @@
 			&[aria-pressed="true"] {
 				background: palette("bg-info");
 			}
-		}
-
-		&__menu,
-		&__confirm {
-			top: calc(100% + 6px);
-			right: 0;
 		}
 
 		&__menu {

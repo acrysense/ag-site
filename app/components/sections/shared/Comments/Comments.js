@@ -196,10 +196,16 @@ export default function init(root) {
 		if (focus) anchor.focus()
 	}
 
-	const openPopover = (anchor, el, host) => {
+	// Панель — у своей кнопки: реакции над ней, меню и удаление под ней, от левого края кнопки
+	// (Figma 4502:1218, 4518:1781, 4518:1964); у края экрана сдвигается внутрь.
+	// Фокус внутрь — только если открыли с клавиатуры (мышью — без рамки фокуса на пункте)
+	const openPopover = (anchor, el, host, { above = false, keyboard = false } = {}) => {
 		const same = popover?.anchor === anchor
 		closePopover()
 		if (same) return
+		el.style.left = `${anchor.offsetLeft}px`
+		if (above) el.style.bottom = `${host.clientHeight - anchor.offsetTop + 6}px`
+		else el.style.top = `${anchor.offsetTop + anchor.offsetHeight + 6}px`
 		host.append(el)
 		anchor.setAttribute('aria-expanded', 'true')
 		anchor.classList.add('is-active')
@@ -207,7 +213,7 @@ export default function init(root) {
 		const rect = el.getBoundingClientRect()
 		const overflow = rect.right - (document.documentElement.clientWidth - 8)
 		if (overflow > 0) el.style.translate = `${-Math.min(overflow, rect.left - 8)}px 0`
-		el.querySelector('button')?.focus()
+		if (keyboard) el.querySelector('button')?.focus()
 	}
 
 	document.addEventListener(
@@ -444,7 +450,7 @@ export default function init(root) {
 		}
 	}
 
-	const openPicker = (node, anchor) => {
+	const openPicker = (node, anchor, keyboard) => {
 		const mine = new Set(node.data.myReactions || [])
 		const picker = h('div', {
 			class: 'comment__picker',
@@ -487,10 +493,10 @@ export default function init(root) {
 			},
 			{ signal }
 		)
-		openPopover(anchor, picker, node.actionsEl)
+		openPopover(anchor, picker, node.actionsEl, { above: true, keyboard })
 	}
 
-	const openMenu = (node, anchor) => {
+	const openMenu = (node, anchor, keyboard) => {
 		const menu = h('div', {
 			class: 'comment__menu',
 			role: 'menu',
@@ -547,7 +553,7 @@ export default function init(root) {
 			},
 			{ signal }
 		)
-		openPopover(anchor, menu, node.actionsEl)
+		openPopover(anchor, menu, node.actionsEl, { keyboard })
 	}
 
 	const confirmDelete = (node, anchor) => {
@@ -595,8 +601,8 @@ export default function init(root) {
 			},
 			{ signal }
 		)
-		openPopover(anchor, box, node.actionsEl)
-		cancel.focus()
+		// Подтверждение — всегда с фокусом на «Отмена» (alertdialog)
+		openPopover(anchor, box, node.actionsEl, { keyboard: true })
 	}
 
 	const markDeleted = (node) => {
@@ -884,7 +890,12 @@ export default function init(root) {
 				icon('plus-small', 'comment__plus'),
 				'Реакция'
 			)
-			addReaction.addEventListener('click', () => openPicker(node, addReaction), { signal })
+			// detail 0 — нажатие с клавиатуры (Enter, пробел)
+			addReaction.addEventListener(
+				'click',
+				(event) => openPicker(node, addReaction, event.detail === 0),
+				{ signal }
+			)
 			const reply = h('button', {
 				class: 'comment__reply',
 				type: 'button',
@@ -906,7 +917,9 @@ export default function init(root) {
 				},
 				icon('more', 'comment__more-icon')
 			)
-			more.addEventListener('click', () => openMenu(node, more), { signal })
+			more.addEventListener('click', (event) => openMenu(node, more, event.detail === 0), {
+				signal,
+			})
 			node.actionsEl.append(more)
 		}
 
