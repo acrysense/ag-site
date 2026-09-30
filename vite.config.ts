@@ -687,7 +687,11 @@ export default defineConfig(({ mode }) => {
 
 					const baseMeta = [
 						{ charset: 'utf-8' },
-						{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
+						// viewport-fit=cover — для env(safe-area-inset-*): TabBar и шторки над полосой iPhone
+						{
+							name: 'viewport',
+							content: 'width=device-width, initial-scale=1, viewport-fit=cover',
+						},
 						...(Array.isArray(site.meta) ? site.meta : []).filter(
 							(m: any) => !('charset' in m) && m?.name !== 'viewport'
 						),

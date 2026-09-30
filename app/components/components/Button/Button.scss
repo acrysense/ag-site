@@ -47,10 +47,30 @@
 		border-radius: $radius-button;
 	}
 
-	// Высота 46: PC.HEADER.v2 «Войти в ЛК»
-	.btn--l {
+	// Высота 46: PC.HEADER.v2 «Войти в ЛК» (на мобильном шапка уменьшает до 36 — M.General)
+	.btn--m {
 		height: 46px;
 		padding: 12px 24px;
 		border-radius: $radius-button;
+	}
+
+	// Figma: L (Error, L.Light) — во всю ширину, 16px жирный
+	.btn--l {
+		@include text("l-500");
+
+		width: 100%;
+		padding: 15px 26px;
+		border-radius: $radius-button;
+	}
+
+	// Figma: L.Light — светлая с синим текстом
+	.btn--light.btn--l {
+		color: palette("main-blue");
+	}
+
+	// Figma: Error — красная, «Выйти»
+	.btn--error {
+		color: palette("white");
+		background: palette("red");
 	}
 }

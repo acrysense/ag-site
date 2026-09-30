@@ -1,13 +1,12 @@
 // Шапка: подменю открываются наведением мышью на десктопе, нажатием на стрелку
 // (тач, клавиатура) и закрываются по Escape, клику снаружи и уходу фокуса.
-// Бургер показывает меню на мобильном.
+// Бургер открывает мобильное меню (layouts/MainMenu) через data-main-menu-open.
 const desktop = window.matchMedia('(min-width: 1024px)')
 
 export default function init(root) {
 	const controller = new AbortController()
 	const { signal } = controller
 	const items = [...root.querySelectorAll('[data-submenu]')]
-	const burger = root.querySelector('[data-header-burger]')
 
 	const toggleOf = (item) => item.querySelector('[data-submenu-toggle]')
 
@@ -79,26 +78,7 @@ export default function init(root) {
 		{ signal }
 	)
 
-	burger?.addEventListener(
-		'click',
-		() => {
-			const open = burger.getAttribute('aria-expanded') !== 'true'
-			burger.setAttribute('aria-expanded', String(open))
-			root.classList.toggle('is-nav-open', open)
-		},
-		{ signal }
-	)
-
-	// На десктопе мобильное состояние бургера не нужно
-	desktop.addEventListener(
-		'change',
-		() => {
-			closeAll()
-			burger?.setAttribute('aria-expanded', 'false')
-			root.classList.remove('is-nav-open')
-		},
-		{ signal }
-	)
+	desktop.addEventListener('change', () => closeAll(), { signal })
 
 	return () => controller.abort()
 }

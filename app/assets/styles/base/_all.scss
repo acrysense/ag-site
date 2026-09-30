@@ -1,5 +1,7 @@
 @forward "@/components/layouts/Header/Header";
 @forward "@/components/layouts/Footer/Footer";
+@forward "@/components/layouts/MainMenu/MainMenu";
+@forward "@/components/layouts/TabBar/TabBar";
 
 @forward "@/components/sections/home/NewsFeed/NewsFeed";
 @forward "@/components/sections/shared/NewsCard/NewsCard";
@@ -10,3 +12,4 @@
 @forward "@/components/components/Icon/Icon";
 @forward "@/components/components/LikeButton/LikeButton";
 @forward "@/components/components/SearchField/SearchField";
+@forward "@/components/components/Sheet/Sheet";

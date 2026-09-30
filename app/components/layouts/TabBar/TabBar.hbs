@@ -1,0 +1,26 @@
+{{!--
+	Нижняя навигация на мобильном, до 767px (Figma: 360.TabBar — 4870:1538, пункт — 4554:521).
+	props: items — [{ icon, text, url, current, menu }]; menu: true — пункт открывает мобильное
+	меню. Набор зависит от доступа: «Меню · Кабинет · Новости · Обучение» или
+	«Меню · Кабинет · Справочник · CRM». static — без фиксации, menuOpen — пункт «Меню» активен
+	(оба для витрины; на странице активность ставит layouts/MainMenu).
+--}}
+<nav class="tab-bar{{#if props.static}} tab-bar--static{{/if}}" aria-label="Быстрая навигация">
+    <ul class="tab-bar__list" role="list">
+        {{#each props.items}}
+            <li class="tab-bar__cell">
+                {{#if menu}}
+                    <button class="tab-bar__item{{#if ../props.menuOpen}} is-active{{/if}}" type="button" aria-controls="main-menu" aria-expanded="{{#if ../props.menuOpen}}true{{else}}false{{/if}}" {{#unless ../props.static}}data-main-menu-open{{/unless}}>
+                        {{> components/Icon/Icon name=icon class="tab-bar__icon"}}
+                        <span class="tab-bar__label">{{text}}</span>
+                    </button>
+                {{else}}
+                    <a class="tab-bar__item" href="{{url}}" {{#if current}}aria-current="page"{{/if}}>
+                        {{> components/Icon/Icon name=icon class="tab-bar__icon"}}
+                        <span class="tab-bar__label">{{text}}</span>
+                    </a>
+                {{/if}}
+            </li>
+        {{/each}}
+    </ul>
+</nav>

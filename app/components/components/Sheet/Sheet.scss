@@ -1,0 +1,53 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Bottom sheet · Выйти из аккаунта? (4568:1079)
+@layer components {
+	.sheet {
+		width: 100%;
+		max-width: 100%;
+		max-height: 100%;
+		margin: auto 0 0;
+		padding: 0;
+		color: palette("black-txt");
+		background: none;
+		border: 0;
+
+		// В макете фон под шторкой размыт и слегка высветлен; параметров эффекта в Figma
+		// нет — подобрано по скриншоту экрана 4568:929
+		&::backdrop {
+			background: rgb(255 255 255 / 30%);
+			backdrop-filter: blur(6px);
+		}
+
+		&--static {
+			position: static;
+			display: block;
+		}
+
+		&__panel {
+			display: grid;
+			gap: 8px;
+			padding: 24px 10px calc(16px + env(safe-area-inset-bottom));
+			background: palette("white");
+			border-radius: $radius-content-block $radius-content-block 0 0;
+			box-shadow: $shadow-sheet;
+		}
+
+		&__text {
+			display: grid;
+			gap: 8px;
+			padding: 0 10px 12px;
+		}
+
+		&__title {
+			@include text("h4-360");
+		}
+
+		&__description {
+			@include text("m-400-360");
+
+			color: palette("dark-grey-txt");
+		}
+	}
+}

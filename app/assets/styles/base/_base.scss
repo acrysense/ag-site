@@ -15,6 +15,9 @@
 		color: palette("black-txt");
 		// Фон страниц в макете — BG/BG.Main
 		background: palette("bg-main");
+		// viewport-fit=cover: в альбомной ориентации iPhone контент не уходит под вырез
+		padding-right: env(safe-area-inset-right);
+		padding-left: env(safe-area-inset-left);
 	}
 
 	// iOS зумит страницу при фокусе на поле с шрифтом меньше 16px.

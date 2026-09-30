@@ -1,8 +1,9 @@
 {{!--
 	Кнопка или ссылка в виде кнопки.
 	props: text, icon (имя из app/assets/icons), hiddenText (начало доступного имени, не видно),
-	variant (light, general), size (s, l), href, target, download, type, disabled, class, attrs.
-	Варианты из Figma: light + s — «S.Light.Left», general + l — «Войти в ЛК» в шапке.
+	variant (light, general, error), size (s, m, l), href, target, download, type, disabled, class, attrs.
+	Варианты из Figma: light + s — «S.Light.Left», general + m — «Войти в ЛК» в шапке,
+	error + l — «Error», light + l — «L.Light».
 --}}
 {{#if props.href}}
     <a

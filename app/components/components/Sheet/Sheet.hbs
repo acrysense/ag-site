@@ -1,0 +1,15 @@
+{{!--
+	Нижняя шторка с подтверждением (Figma: Bottom sheet · Выйти из аккаунта? — 4568:1079).
+	props: id, title, text, open — показать сразу без затемнения (витрина).
+	Кнопки — в блоке партиала; закрывает кнопка с data-sheet-close.
+	Открывается кнопкой с data-sheet-open="<id>". Нативный <dialog>: фокус внутри, Escape.
+--}}
+<dialog class="sheet{{#if props.open}} sheet--static{{/if}}" id="{{props.id}}" aria-labelledby="{{props.id}}-title" {{#if props.open}}open{{/if}} data-module="Sheet" data-path="components">
+    <div class="sheet__panel">
+        <div class="sheet__text">
+            <h2 class="sheet__title" id="{{props.id}}-title">{{props.title}}</h2>
+            {{#if props.text}}<p class="sheet__description">{{props.text}}</p>{{/if}}
+        </div>
+        {{> @partial-block}}
+    </div>
+</dialog>

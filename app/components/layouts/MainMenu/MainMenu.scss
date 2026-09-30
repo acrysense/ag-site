@@ -1,0 +1,272 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: 360.MainMenu v2 (4558:842). Только до десктопного брейкпоинта.
+@layer components {
+	.main-menu {
+		position: fixed;
+		inset: 0;
+		z-index: 50;
+		width: 100%;
+		max-width: 100%;
+		height: 100%;
+		max-height: 100%;
+		margin: 0;
+		padding: 0;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		color: palette("black-txt");
+		background: palette("bg-main");
+		border: 0;
+
+		&[open] {
+			display: flex;
+			flex-direction: column;
+		}
+
+		// Витрина: открытое меню внутри карточки состояния, без фиксации
+		&--static {
+			position: relative;
+			z-index: auto;
+			min-height: 100vh;
+		}
+
+		&__header {
+			display: flex;
+			flex: none;
+			align-items: center;
+			justify-content: space-between;
+			height: 56px;
+			padding: 0 8px 0 14px;
+		}
+
+		&__title {
+			@include text("h3-360");
+		}
+
+		&__close,
+		&__logout {
+			display: flex;
+			flex: none;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			padding: 0;
+			color: palette("black-txt");
+			background: palette("white");
+			border: 0;
+			border-radius: 20px;
+		}
+
+		&__logout {
+			background: palette("bg-main");
+		}
+
+		&__close-icon {
+			width: 14px;
+			height: 14px;
+		}
+
+		// Снизу 76px: над контентом лежит TabBar (60) — как в макете
+		&__content {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			padding: 12px 10px calc(76px + env(safe-area-inset-bottom));
+		}
+
+		&__profile {
+			display: flex;
+			gap: 12px;
+			align-items: center;
+			padding: 14px;
+			background: palette("white");
+			border-radius: $radius-inner-block;
+		}
+
+		&__avatar {
+			flex: none;
+			width: 48px;
+			height: 48px;
+			overflow: hidden;
+			background: palette("bg-grey");
+			border-radius: 50%;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+
+		&__profile-text {
+			display: flex;
+			flex: 1 1 auto;
+			flex-direction: column;
+			gap: 4px;
+			min-width: 0;
+		}
+
+		&__name {
+			@include text("l-500-360");
+		}
+
+		&__role {
+			@include text("s-400-360");
+
+			color: palette("dark-grey-txt");
+		}
+
+		&__profile-link {
+			@include text("s-500-360");
+
+			align-self: flex-start;
+			color: palette("blue-txt");
+		}
+
+		// Подписи разделов: в макете 360/S/500 с разрядкой 0.48px и верхним регистром
+		&__label {
+			@include text("s-500-360");
+
+			padding: 8px 0 0 4px;
+			letter-spacing: 0.04em;
+			color: palette("dark-grey-txt");
+			text-transform: uppercase;
+		}
+
+		&__card {
+			overflow: hidden;
+			background: palette("white");
+			border-radius: $radius-inner-block;
+		}
+
+		&__icon {
+			width: 20px;
+			height: 20px;
+		}
+
+		&__group,
+		&__row {
+			display: flex;
+			gap: 12px;
+			align-items: center;
+			width: 100%;
+			padding: 14px;
+			color: inherit;
+			text-align: left;
+			background: none;
+			border: 0;
+		}
+
+		&__group {
+			padding-block: 10px;
+			border-bottom: 1px solid palette("form-border");
+
+			&[aria-expanded="false"] {
+				border-bottom-color: transparent;
+			}
+		}
+
+		&__group-text {
+			display: flex;
+			flex: 1 1 auto;
+			flex-direction: column;
+			gap: 2px;
+			min-width: 0;
+		}
+
+		&__group-title {
+			@include text("m-500-360");
+		}
+
+		&__group-meta {
+			@include text("s-400-360");
+
+			overflow: hidden;
+			color: palette("dark-grey-txt");
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		&__group-arrow,
+		&__row-arrow {
+			flex: none;
+			width: 16px;
+			height: 16px;
+			color: palette("icon-grey");
+		}
+
+		&__group[aria-expanded="false"] &__group-arrow {
+			transform: rotate(180deg);
+		}
+
+		&__list {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			li + li {
+				border-top: 1px solid palette("form-border");
+			}
+		}
+
+		&__row-text {
+			@include text("m-400-360");
+
+			flex: 1 1 auto;
+			min-width: 0;
+		}
+
+		&__logo {
+			flex: none;
+			width: 20px;
+			height: 20px;
+			object-fit: contain;
+		}
+
+		// Плитки портала: 2 колонки, текущий раздел — синяя рамка и подпись
+		&__tiles {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 10px;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		&__tile {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			height: 100%;
+			padding: 14px;
+			color: palette("black-txt");
+			background: palette("white");
+			border: 1px solid transparent;
+			border-radius: $radius-inner-block;
+
+			&[aria-current="page"] {
+				color: palette("main-blue");
+				border-color: palette("main-blue");
+			}
+		}
+
+		&__tile-icon {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 36px;
+			height: 36px;
+			color: palette("black-txt");
+			background: palette("bg-info");
+			border-radius: 18px;
+		}
+
+		&__tile-text {
+			@include text("m-500-360");
+
+			overflow-wrap: break-word;
+		}
+	}
+}

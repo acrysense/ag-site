@@ -33,6 +33,8 @@ $colors: (
 	"main-blue": #0081ff,
 	// Blue.Hover
 	"blue-hover": #0d75da,
+	// Blue.TXT — то же значение, что Blue.Hover, но отдельная переменная в Figma
+	"blue-txt": #0d75da,
 	// Yellow
 	"yellow": #c9a84c,
 	// Red
@@ -43,6 +45,8 @@ $colors: (
 	"bg-main-2": #d9dde0,
 	// BG/BG.Info
 	"bg-info": #f3f6fc,
+	// BG/Grey
+	"bg-grey": #d2dce5,
 	// BG/BG.Purple
 	"bg-purple": #f9dbdb,
 	// Forms/Form.Focus
@@ -71,6 +75,9 @@ $shadow-content-block: 0 2px 8px rgb(15 23 42 / 5%);
 // Без переменной в Figma: скругление выпадающего меню
 $radius-dropdown: 8px;
 
+// Без переменной в Figma: тень нижней шторки (Bottom sheet · Выйти из аккаунта?)
+$shadow-sheet: 0 -8px 24px rgb(15 26 36 / 12%);
+
 // radius
 $radius-button: 14px; // Radius-Button
 $radius-content-block: 20px; // Radius-ContentBlock
@@ -97,6 +104,13 @@ $text-styles: (
 			weight: 700,
 			size: 26,
 			line-height: 28,
+		),
+	// 360/HEADER/H3
+	"h3-360": (
+			family: heading,
+			weight: 700,
+			size: 22,
+			line-height: normal,
 		),
 	// PC/HEADER/H4
 	"h4": (
@@ -149,6 +163,13 @@ $text-styles: (
 			size: 16,
 			line-height: normal,
 		),
+	// 360/L/500
+	"l-500-360": (
+			family: body,
+			weight: 700,
+			size: 16,
+			line-height: normal,
+		),
 	// PC/M/400
 	"m-400": (
 			family: body,
@@ -170,10 +191,31 @@ $text-styles: (
 			size: 14,
 			line-height: 22,
 		),
+	// 360/M/500
+	"m-500-360": (
+			family: body,
+			weight: 700,
+			size: 14,
+			line-height: 22,
+		),
 	// PC/S/400
 	"s-400": (
 			family: body,
 			weight: 400,
+			size: 12,
+			line-height: normal,
+		),
+	// 360/S/400
+	"s-400-360": (
+			family: body,
+			weight: 400,
+			size: 12,
+			line-height: normal,
+		),
+	// 360/S/500
+	"s-500-360": (
+			family: body,
+			weight: 700,
 			size: 12,
 			line-height: normal,
 		),

@@ -1,0 +1,97 @@
+{{!--
+	Мобильное меню по бургеру и пункту «Меню» в TabBar (Figma: 360.MainMenu v2 — 4558:842).
+	props: title, user { name, role, url, urlText, avatar }, logout { url, title, text },
+	groups — раскрывающиеся разделы [{ label, title, icon, meta, expanded, items: [{ icon, text, url, current }] }],
+	portal { label, items: [{ icon, text, url, current }] }, join { label, items: [{ logo, text, url }] }.
+	id (по умолчанию main-menu — на него ссылаются бургер и TabBar), open — открыто сразу (витрина).
+	Открывается кнопками с data-main-menu-open. Контракт — docs/contracts/main-menu.md.
+--}}
+<dialog class="main-menu{{#if props.open}} main-menu--static{{/if}}" id="{{default props.id 'main-menu'}}" aria-label="{{default props.title 'Меню'}}" {{#if props.open}}open{{/if}} data-module="MainMenu" data-path="layouts">
+    <div class="main-menu__header">
+        <h2 class="main-menu__title">{{default props.title 'Меню'}}</h2>
+        <button class="main-menu__close" type="button" data-main-menu-close>
+            <span class="visually-hidden">Закрыть меню</span>
+            {{> components/Icon/Icon name="close" class="main-menu__close-icon"}}
+        </button>
+    </div>
+
+    <div class="main-menu__content">
+        {{#if props.user}}
+            <div class="main-menu__profile">
+                <span class="main-menu__avatar">{{#if props.user.avatar}}<img src="{{props.user.avatar}}" width="48" height="48" alt="" />{{/if}}</span>
+                <div class="main-menu__profile-text">
+                    <p class="main-menu__name">{{props.user.name}}</p>
+                    {{#if props.user.role}}<p class="main-menu__role">{{props.user.role}}</p>{{/if}}
+                    <a class="main-menu__profile-link" href="{{props.user.url}}">{{default props.user.urlText 'Моя страница'}}</a>
+                </div>
+                {{#if props.logout}}
+                    <button class="main-menu__logout" type="button" data-sheet-open="{{default props.id 'main-menu'}}-logout">
+                        <span class="visually-hidden">Выйти из аккаунта</span>
+                        {{> components/Icon/Icon name="exit" class="main-menu__icon"}}
+                    </button>
+                {{/if}}
+            </div>
+        {{/if}}
+
+        {{#each props.groups}}
+            <p class="main-menu__label">{{label}}</p>
+            <div class="main-menu__card">
+                <button class="main-menu__group" type="button" aria-expanded="{{#if expanded}}true{{else}}false{{/if}}" aria-controls="{{default ../props.id 'main-menu'}}-group-{{@index}}" data-main-menu-group>
+                    {{> components/Icon/Icon name=icon class="main-menu__icon"}}
+                    <span class="main-menu__group-text">
+                        <span class="main-menu__group-title">{{title}}</span>
+                        {{#if meta}}<span class="main-menu__group-meta">{{meta}}</span>{{/if}}
+                    </span>
+                    {{> components/Icon/Icon name="chevron-up" class="main-menu__group-arrow"}}
+                </button>
+                <ul class="main-menu__list" id="{{default ../props.id 'main-menu'}}-group-{{@index}}" role="list" {{#unless expanded}}hidden{{/unless}}>
+                    {{#each items}}
+                        <li>
+                            <a class="main-menu__row" href="{{url}}" {{#if current}}aria-current="page"{{/if}}>
+                                {{> components/Icon/Icon name=icon class="main-menu__icon"}}
+                                <span class="main-menu__row-text">{{text}}</span>
+                                {{> components/Icon/Icon name="chevron-right" class="main-menu__row-arrow"}}
+                            </a>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/each}}
+
+        {{#if props.portal}}
+            <p class="main-menu__label">{{props.portal.label}}</p>
+            <ul class="main-menu__tiles" role="list">
+                {{#each props.portal.items}}
+                    <li>
+                        <a class="main-menu__tile" href="{{url}}" {{#if current}}aria-current="page"{{/if}}>
+                            <span class="main-menu__tile-icon">{{> components/Icon/Icon name=icon class="main-menu__icon"}}</span>
+                            <span class="main-menu__tile-text">{{text}}</span>
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
+        {{/if}}
+
+        {{#if props.join}}
+            <p class="main-menu__label">{{props.join.label}}</p>
+            <ul class="main-menu__card main-menu__list" role="list">
+                {{#each props.join.items}}
+                    <li>
+                        <a class="main-menu__row" href="{{url}}" target="_blank" rel="noopener noreferrer">
+                            <img class="main-menu__logo" src="{{logo}}" width="20" height="20" alt="" />
+                            <span class="main-menu__row-text">{{text}}<span class="visually-hidden"> (откроется в новой вкладке)</span></span>
+                            {{> components/Icon/Icon name="external-link" class="main-menu__row-arrow"}}
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
+        {{/if}}
+    </div>
+
+    {{#if props.logout}}
+        {{#> components/Sheet/Sheet props=(obj id=(default props.logoutId 'main-menu-logout') title=props.logout.title text=props.logout.text)}}
+            {{> components/Button/Button props=(obj href=props.logout.url text="Выйти" variant="error" size="l")}}
+            {{> components/Button/Button props=(obj text="Отмена" variant="light" size="l" attrs=(obj data-sheet-close=""))}}
+        {{/components/Sheet/Sheet}}
+    {{/if}}
+</dialog>

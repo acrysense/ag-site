@@ -11,7 +11,8 @@ $default-range: xl !default;
 
 $breakpoints: (
 	mobile: 0,
-	tablet: 744,
+	// По описанию TabBar в Figma: мобильная версия до 767px
+	tablet: 768,
 	desktop: 1024,
 	cap: $fluid-cap,
 );

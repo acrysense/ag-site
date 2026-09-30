@@ -47,16 +47,16 @@
                     {{> components/Icon/Icon name="angle-right" class="header__user-arrow"}}
                 </a>
             {{else}}
-                {{> components/Button/Button props=(obj href=props.loginUrl text=(default props.loginText 'Войти в ЛК') variant="general" size="l" class="header__login")}}
+                {{> components/Button/Button props=(obj href=props.loginUrl text=(default props.loginText 'Войти в ЛК') variant="general" size="m" class="header__login")}}
             {{/if}}
-            <button class="header__burger" type="button" aria-expanded="false" aria-controls="{{default props.id 'header'}}-nav" data-header-burger>
+            <button class="header__burger" type="button" aria-expanded="false" aria-controls="main-menu" data-main-menu-open>
                 <span class="visually-hidden">Меню</span>
                 {{> components/Icon/Icon name="menu" class="header__burger-icon"}}
             </button>
         </div>
     </div>
 
-    <nav class="header__nav" id="{{default props.id 'header'}}-nav" aria-label="Основное меню" data-header-nav>
+    <nav class="header__nav" aria-label="Основное меню">
         <ul class="menu" role="list">
             {{#each props.menu}}
                 <li class="menu__item" {{#if children}}data-submenu{{/if}}>

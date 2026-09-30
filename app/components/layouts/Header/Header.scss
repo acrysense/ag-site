@@ -232,7 +232,7 @@
 		}
 
 		// Мобильный гость: «Button M.General, 36 px» из описания 360.HEADER.
-		// Через __actions — чтобы перебить размер .btn--l из общей кнопки
+		// Через __actions — чтобы перебить размер .btn--m из общей кнопки
 		&__actions &__login {
 			@include down(desktop) {
 				height: 36px;
@@ -261,53 +261,35 @@
 			height: 30px;
 		}
 
-		// Меню: на десктопе — строка под шапкой; на мобильном скрыто до бургера.
-		// Полноэкранное мобильное меню (360.MainMenu v2) — отдельный блок, пока здесь
-		// простой список, чтобы бургер работал.
+		// Меню — строка под шапкой на десктопе; на мобильном — layouts/MainMenu
 		&__nav {
 			display: none;
-			border-top: 1px solid palette("form-border");
 
 			@include up(desktop) {
 				display: flex;
 				align-items: center;
 				min-height: 50px;
 				padding: 0 30px;
-			}
-		}
-
-		&.is-nav-open &__nav {
-			@include down(desktop) {
-				display: block;
-				padding: 0 10px 10px;
+				border-top: 1px solid palette("form-border");
 			}
 		}
 	}
 
+	// Основное меню шапки (только десктоп: на мобильном — layouts/MainMenu)
 	.menu {
 		display: flex;
-		flex-direction: column;
+		flex-wrap: wrap;
+		column-gap: 40px;
 		margin: 0;
 		padding: 0;
 		list-style: none;
 
-		@include up(desktop) {
-			flex-direction: row;
-			flex-wrap: wrap;
-			column-gap: 40px;
-		}
-
 		&__item {
 			position: relative;
 			display: flex;
-			flex-wrap: wrap;
+			gap: 2px;
 			align-items: center;
-
-			@include up(desktop) {
-				flex-wrap: nowrap;
-				gap: 2px;
-				min-height: 46px;
-			}
+			min-height: 46px;
 		}
 
 		&__link,
@@ -322,12 +304,6 @@
 
 		&__link {
 			@include text("m-400");
-
-			padding: 12px 0;
-
-			@include up(desktop) {
-				padding: 0;
-			}
 		}
 
 		// Открытый пункт в макете — Blue.Hover
@@ -335,24 +311,18 @@
 			color: palette("blue-hover");
 		}
 
-		// Стрелка 10px, область нажатия больше
+		// Стрелка 10px, область нажатия 24px
 		&__toggle {
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			width: 32px;
-			height: 32px;
-			margin: -11px -11px -11px -9px;
+			width: 24px;
+			height: 24px;
+			margin: 0 -7px;
 			padding: 0;
 			color: palette("black-txt");
 			background: none;
 			border: 0;
-
-			@include up(desktop) {
-				width: 24px;
-				height: 24px;
-				margin: 0 -7px;
-			}
 		}
 
 		&__item.is-open > &__toggle,
@@ -371,35 +341,26 @@
 		}
 
 		// Figma: Dropdown Menu (4615:43188). Шрифт в макете Poppins — на сайте его нет, Inter.
+		// Из макета: на 6px выше низа пункта и на 4px левее
 		&__submenu {
-			flex-basis: 100%;
+			position: absolute;
+			top: calc(100% - 6px);
+			left: -4px;
+			width: 222px;
 			margin: 0;
-			padding: 0 0 0 16px;
+			padding: 10px 0;
 			list-style: none;
-
-			@include up(desktop) {
-				position: absolute;
-				// Из макета: на 6px выше низа пункта и на 4px левее
-				top: calc(100% - 6px);
-				left: -4px;
-				width: 222px;
-				padding: 10px 0;
-				background: palette("white");
-				border: 1px solid palette("dropdown-border");
-				border-radius: $radius-dropdown;
-				box-shadow: $shadow-content-block;
-			}
+			background: palette("white");
+			border: 1px solid palette("dropdown-border");
+			border-radius: $radius-dropdown;
+			box-shadow: $shadow-content-block;
 		}
 
 		&__sublink {
 			@include text("m-400-360");
 
 			display: block;
-			padding: 10px 0;
-
-			@include up(desktop) {
-				padding: 10px 16px;
-			}
+			padding: 10px 16px;
 		}
 	}
 }
