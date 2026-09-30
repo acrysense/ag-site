@@ -384,10 +384,10 @@
 					{{> components/Select/Select props=data.selectRemoteError}}
 				{{/state}}
 				{{#> state label="Мультивыбор (фильтр): выбрано 2"}}
-					<div class="story-column-narrow">{{> components/Select/Select props=(lookup data.searchDirectory.filters.filters 1)}}</div>
+					<div class="story-column-narrow">{{#with (lookup data.searchDirectory.filters.filters 1)}}{{> components/Select/Select props=(obj name=name placeholder=placeholder options=options multiple=true search=true searchPlaceholder=searchPlaceholder valueText=valueText)}}{{/with}}</div>
 				{{/state}}
 				{{#> state label="Мультивыбор: ничего не выбрано"}}
-					<div class="story-column-narrow">{{> components/Select/Select props=(lookup data.searchDirectory.filters.filters 2)}}</div>
+					<div class="story-column-narrow">{{#with (lookup data.searchDirectory.filters.filters 2)}}{{> components/Select/Select props=(obj name=name placeholder=placeholder options=options multiple=true search=true searchPlaceholder=searchPlaceholder valueText=valueText)}}{{/with}}</div>
 				{{/state}}
 			{{/story}}
 

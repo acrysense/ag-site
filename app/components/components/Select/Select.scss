@@ -145,6 +145,17 @@
 		min-height: 0;
 		max-height: min(280px, 45vh);
 		margin-right: -6px;
+
+		// Ползунок 3px посередине зазора 6px: по 1.5px до рамки и до пунктов. Тянуть можно за
+		// всю дорожку (8px) — узкая только видимая полоса
+		.simplebar-track.simplebar-vertical::before {
+			inset: 2px 1.5px 2px 3.5px;
+		}
+
+		.simplebar-scrollbar::before {
+			right: 1.5px;
+			left: 3.5px;
+		}
 	}
 
 	.select__list {
