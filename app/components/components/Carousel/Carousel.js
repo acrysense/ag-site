@@ -2,6 +2,8 @@
 // сами, JS — стрелки, точки, номер текущего кадра и видео в кадрах. Без сторонних библиотек.
 // Разметка: [data-carousel-track] с кадрами, [data-carousel-prev], [data-carousel-next],
 // [data-carousel-dots] (точки создаются здесь). data-carousel-loop — после последнего к первому.
+// Кадр может быть уже дорожки (несколько карточек на экране): стрелки листают по экрану.
+// Всё поместилось без прокрутки — стрелок и точек нет (класс is-single).
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 
 export default function init(root) {
@@ -24,11 +26,30 @@ export default function init(root) {
 		}
 	}
 
-	const current = () => Math.round(track.scrollLeft / track.clientWidth)
+	// Шаг — расстояние между соседними кадрами с промежутком; на экране perView кадров
+	const step = () => slides[1].offsetLeft - slides[0].offsetLeft || track.clientWidth || 1
+	const perView = () =>
+		Math.max(1, Math.round((track.clientWidth + step() - slides[0].offsetWidth) / step()))
+	const current = () => Math.round(track.scrollLeft / step())
 
 	const go = (index) => {
 		const count = slides.length
 		const target = loop ? (index + count) % count : Math.min(Math.max(index, 0), count - 1)
+		scrollToSlide(target)
+	}
+
+	// Стрелки: на экран вперёд или назад; у края с loop — к другому краю
+	const page = (direction) => {
+		const index = current()
+		const size = perView()
+		const last = Math.max(0, slides.length - size)
+		let target = index + direction * size
+		if (target > last) target = index >= last && loop ? 0 : last
+		if (target < 0) target = index <= 0 && loop ? last : 0
+		scrollToSlide(target)
+	}
+
+	const scrollToSlide = (target) => {
 		track.scrollTo({
 			left: slides[target].offsetLeft - slides[0].offsetLeft,
 			behavior: reducedMotion.matches ? 'auto' : 'smooth',
@@ -60,12 +81,16 @@ export default function init(root) {
 		})
 	}
 
-	root.querySelector('[data-carousel-prev]')?.addEventListener('click', () => go(current() - 1), {
+	root.querySelector('[data-carousel-prev]')?.addEventListener('click', () => page(-1), {
 		signal,
 	})
-	root.querySelector('[data-carousel-next]')?.addEventListener('click', () => go(current() + 1), {
-		signal,
+	root.querySelector('[data-carousel-next]')?.addEventListener('click', () => page(1), { signal })
+
+	// Листать нечего (всё поместилось или блок скрыт) — стрелки и точки прячутся
+	const observer = new ResizeObserver(() => {
+		root.classList.toggle('is-single', track.scrollWidth <= track.clientWidth + 1)
 	})
+	observer.observe(track)
 
 	track.addEventListener(
 		'scroll',
@@ -80,6 +105,7 @@ export default function init(root) {
 
 	return () => {
 		controller.abort()
+		observer.disconnect()
 		cancelAnimationFrame(frame)
 		dots?.replaceChildren()
 		videos.forEach((video) => video?.pause())
