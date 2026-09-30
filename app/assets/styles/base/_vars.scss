@@ -8,35 +8,49 @@ $font-base:
 	Roboto,
 	Arial,
 	sans-serif;
-$font-heading:
-	"RF Rufo",
-	"Arial Narrow",
-	Arial,
-	sans-serif;
+$font-heading: "RF Rufo", "Arial Narrow", Arial, sans-serif;
 
 // colors
 // Все цвета проекта: имя → значение из переменных макета (в комментарии — имя в Figma).
 // Берутся через palette("имя"); в витрине («Основа → Цвета») появляются сами.
 // Переменные с одинаковым значением и именем на двух языках сведены в одну.
 $colors: (
-	"white": #ffffff, // White, Белый
-	"black-txt": #0f1a24, // Black.TXT
-	"black-h": #000000, // Black.H — уточняется, нужен ли второй чёрный
-	"dark-grey-txt": #737f8c, // Dark-grey.TXT
-	"seryi": #6c757d, // Серый
-	"grey": #d3d8de, // Grey
-	"icon-grey": #adb4c1, // Icon.Grey
-	"main-blue": #0081ff, // Main Blue
-	"blue-hover": #0d75da, // Blue.Hover
-	"yellow": #c9a84c, // Yellow
-	"red": #bc4141, // Red
-	"bg-main": #eaeef2, // BG/BG.Main
-	"bg-main-2": #d9dde0, // BG/BG.Main 2
-	"bg-info": #f3f6fc, // BG/BG.Info
-	"bg-purple": #f9dbdb, // BG/BG.Purple
-	"form-focus": #0057ff, // Forms/Form.Focus
-	"form-border": #e1e1e1, // Forms/Form.Border
-	"block-border": #dde3e9, // Forms/Block.Berder
+	// White, Белый
+	"white": #ffffff,
+	// Black.TXT
+	"black-txt": #0f1a24,
+	// Black.H — уточняется, нужен ли второй чёрный
+	"black-h": #000000,
+	// Dark-grey.TXT
+	"dark-grey-txt": #737f8c,
+	// Серый
+	"seryi": #6c757d,
+	// Grey
+	"grey": #d3d8de,
+	// Icon.Grey
+	"icon-grey": #adb4c1,
+	// Main Blue
+	"main-blue": #0081ff,
+	// Blue.Hover
+	"blue-hover": #0d75da,
+	// Yellow
+	"yellow": #c9a84c,
+	// Red
+	"red": #bc4141,
+	// BG/BG.Main
+	"bg-main": #eaeef2,
+	// BG/BG.Main 2
+	"bg-main-2": #d9dde0,
+	// BG/BG.Info
+	"bg-info": #f3f6fc,
+	// BG/BG.Purple
+	"bg-purple": #f9dbdb,
+	// Forms/Form.Focus
+	"form-focus": #0057ff,
+	// Forms/Form.Border
+	"form-border": #e1e1e1,
+	// Forms/Block.Berder
+	"block-border": #dde3e9
 );
 
 // radius
@@ -50,15 +64,75 @@ $radius-inner-block: 10px; // Radius-InnerBlock
 // макета, line-height: 1 — «100%». mobile — отличия мобильного макета, если есть.
 // Применяются через @include text("имя"); в витрине («Основа → Типографика») появляются сами.
 $text-styles: (
-	"h1": (family: heading, weight: 700, size: 32, line-height: 32), // PC/HEADER/H1
-	"h2": (family: heading, weight: 700, size: 26, line-height: 28), // PC/HEADER/H2
-	"h4": (family: heading, weight: 700, size: 18, line-height: 24, mobile: (line-height: 1)), // PC/HEADER/H4, 360/HEADER/H4
-	"l-400": (family: body, weight: 400, size: 16, line-height: 24), // PC/L/400
-	"l-500": (family: body, weight: 700, size: 16, line-height: 1), // PC/L/500
-	"m-400": (family: body, weight: 400, size: 14, line-height: 22, mobile: (line-height: 20)), // PC/M/400, 360/M/400
-	"m-500": (family: body, weight: 700, size: 14, line-height: 22), // PC/M/500
-	"s-400": (family: body, weight: 400, size: 12, line-height: 1), // PC/S/400
-	"xs-400": (family: body, weight: 400, size: 11, line-height: 1), // PC/XS/400
+	// PC/HEADER/H1
+	"h1": (
+			family: heading,
+			weight: 700,
+			size: 32,
+			line-height: 32,
+		),
+	// PC/HEADER/H2
+	"h2": (
+			family: heading,
+			weight: 700,
+			size: 26,
+			line-height: 28,
+		),
+	// PC/HEADER/H4, 360/HEADER/H4
+	"h4": (
+			family: heading,
+			weight: 700,
+			size: 18,
+			line-height: 24,
+			mobile: (
+				line-height: 1,
+			),
+		),
+	// PC/L/400
+	"l-400": (
+			family: body,
+			weight: 400,
+			size: 16,
+			line-height: 24,
+		),
+	// PC/L/500
+	"l-500": (
+			family: body,
+			weight: 700,
+			size: 16,
+			line-height: 1,
+		),
+	// PC/M/400, 360/M/400
+	"m-400": (
+			family: body,
+			weight: 400,
+			size: 14,
+			line-height: 22,
+			mobile: (
+				line-height: 20,
+			),
+		),
+	// PC/M/500
+	"m-500": (
+			family: body,
+			weight: 700,
+			size: 14,
+			line-height: 22,
+		),
+	// PC/S/400
+	"s-400": (
+			family: body,
+			weight: 400,
+			size: 12,
+			line-height: 1,
+		),
+	// PC/XS/400
+	"xs-400": (
+			family: body,
+			weight: 400,
+			size: 11,
+			line-height: 1,
+		)
 );
 
 // fields
