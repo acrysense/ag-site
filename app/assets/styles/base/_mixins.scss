@@ -5,8 +5,9 @@
 
 $fluid-cap: 2560 !default;
 $mq-epsilon: 0.02 !default;
-// Диапазон по умолчанию для vw-range и миксинов ниже: ширина десктопного макета
-$default-range: lg !default;
+// Диапазон по умолчанию для vw-range и миксинов ниже: ширина десктопного макета.
+// Макеты my.apteka-group.by: десктоп 1920, мобильный 360.
+$default-range: xl !default;
 
 $breakpoints: (
 	mobile: 0,
@@ -19,7 +20,7 @@ $vw-ranges: (
 	mobile: (
 		from: map.get($breakpoints, mobile),
 		to: map.get($breakpoints, tablet),
-		base: 375,
+		base: 360,
 	),
 	tablet: (
 		from: map.get($breakpoints, tablet),
