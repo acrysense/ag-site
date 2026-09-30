@@ -54,7 +54,9 @@ The main requirement of the spec: everything the admin edits must not be hard-co
 - `overflow-x: clip`, never `hidden`, on page-level containers (sticky header).
 - Never `outline: none` without a replacement. Recolor the ring via `--focus-ring-color`.
 - Form fields are never below 16px (iOS zoom). Do not forbid zoom in the viewport.
-- HTML from the Bitrix visual editor goes inside `.content`; do not require wrappers from the admin.
+- HTML from the Bitrix visual editor will get a `.content` module styled from the mockup; do not
+  require wrappers from the admin.
+- Do not style by guess: values come from the mockup. Until it exists, leave tokens empty.
 
 ## Blocks and Bitrix
 
