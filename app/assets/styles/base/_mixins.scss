@@ -246,3 +246,17 @@ $alias-bp: (
 		letter-spacing: #{_ratio($letter-spacing, $size)}em;
 	}
 }
+
+// Скрыть визуально, оставить скринридеру (как класс .visually-hidden) — для частей текста,
+// которые видны только на одной ширине
+@mixin visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	border: 0;
+}

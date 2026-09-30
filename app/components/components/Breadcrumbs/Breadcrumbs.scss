@@ -1,0 +1,46 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: 1920 — 4704:1060 (текущая страница Black.TXT, разделитель Icon.Grey),
+// 360 — 4706:1408 (всё Dark-grey.TXT)
+@layer components {
+	.breadcrumbs__list {
+		@include text("s-400");
+
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0 6px;
+		margin: 0;
+		padding: 0;
+		color: palette("dark-grey-txt");
+		list-style: none;
+	}
+
+	.breadcrumbs__item {
+		display: flex;
+		gap: 6px;
+
+		& + &::before {
+			content: "/";
+
+			@include up(desktop) {
+				color: palette("icon-grey");
+			}
+		}
+	}
+
+	.breadcrumbs__link {
+		color: inherit;
+		transition: color $transition-default;
+
+		&:hover {
+			color: palette("blue-hover");
+		}
+	}
+
+	.breadcrumbs__current {
+		@include up(desktop) {
+			color: palette("black-txt");
+		}
+	}
+}

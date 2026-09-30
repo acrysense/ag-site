@@ -1,0 +1,13 @@
+{{!--
+	Хлебные крошки (Figma: 1920 — 4704:1060, 360 — 4706:1408). props: items [{ title, url }] —
+	последний пункт без url, это текущая страница; class. Нет пунктов — ничего не выводится.
+--}}
+{{#if props.items.length}}
+    <nav class="breadcrumbs{{#if props.class}} {{props.class}}{{/if}}" aria-label="Хлебные крошки">
+        <ol class="breadcrumbs__list">
+            {{#each props.items}}
+                <li class="breadcrumbs__item">{{#if url}}<a class="breadcrumbs__link" href="{{url}}">{{title}}</a>{{else}}<span class="breadcrumbs__current" aria-current="page">{{title}}</span>{{/if}}</li>
+            {{/each}}
+        </ol>
+    </nav>
+{{/if}}
