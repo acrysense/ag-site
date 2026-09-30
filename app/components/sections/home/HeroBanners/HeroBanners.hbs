@@ -27,13 +27,16 @@
                         </div>
                     {{/each}}
                 </div>
-                <button class="hero__arrow hero__arrow--prev" type="button" aria-label="Предыдущий баннер" data-carousel-prev>
-                    {{> components/Icon/Icon name="angle-right" class="hero__arrow-icon"}}
-                </button>
-                <button class="hero__arrow hero__arrow--next" type="button" aria-label="Следующий баннер" data-carousel-next>
-                    {{> components/Icon/Icon name="angle-right" class="hero__arrow-icon"}}
-                </button>
-                <div class="carousel__dots hero__dots" data-carousel-dots></div>
+                {{!-- Один слайд — листать нечего: стрелок и точек нет в разметке --}}
+                {{#if props.slides.[1]}}
+                    <button class="hero__arrow hero__arrow--prev" type="button" aria-label="Предыдущий баннер" data-carousel-prev>
+                        {{> components/Icon/Icon name="angle-right" class="hero__arrow-icon"}}
+                    </button>
+                    <button class="hero__arrow hero__arrow--next" type="button" aria-label="Следующий баннер" data-carousel-next>
+                        {{> components/Icon/Icon name="angle-right" class="hero__arrow-icon"}}
+                    </button>
+                    <div class="carousel__dots hero__dots" data-carousel-dots></div>
+                {{/if}}
             </div>
         {{/if}}
         {{#if props.promos.length}}
