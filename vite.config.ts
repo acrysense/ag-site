@@ -716,6 +716,9 @@ export default defineConfig(({ mode }) => {
 
 						page: { canonical },
 						head: { title, description, ogImage, twitterCard },
+						// Данные страницы для шаблона: ключ data в <page>.page.json
+						// (демо-контент витрины и статических страниц)
+						data: pageCfg.data || {},
 					}
 				},
 			}),
