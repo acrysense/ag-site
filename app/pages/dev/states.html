@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="{{ lang }}">
+	<head>
+		{{> layouts/Head/Head }}
+		<meta name="robots" content="noindex, nofollow" />
+		<script type="module" src="/app.js"></script>
+		<script type="module" src="./states.js"></script>
+	</head>
+	<body>
+		{{!--
+			Служебная страница: каждый блок во всех состояниях.
+			Не попадает в сборку для CMS (--mode cms), см. DEV_PAGES_GLOB в vite.config.ts.
+
+			Новый блок: секция с data-dev-block="<id>" и карточки состояний
+			{{#> state label="…"}} разметка блока {{/state}}. Состояние, которого у блока
+			быть не может, помечается note="не применимо: …", а не пропускается молча.
+			Рамка 320px ниже грузит эту же страницу с ?only=<id>.
+		--}}
+		{{#*inline "state"}}
+			<figure class="dev-state">
+				<figcaption class="dev-state__label">
+					{{label}}
+					{{#if note}}<span class="dev-state__note">— {{note}}</span>{{/if}}
+				</figcaption>
+				<div class="dev-state__frame">{{#if note}}{{else}}{{> @partial-block}}{{/if}}</div>
+			</figure>
+		{{/inline}}
+
+		<main class="dev">
+			<div class="dev__intro">
+				<h1>Состояния блоков</h1>
+				<p>
+					Обычное, загрузка, пусто, ошибка, длинный контент и минимальная ширина 320px. Пунктирная рамка
+					показывает место, которое занимает блок: у пустого блока рамка должна схлопнуться.
+				</p>
+				<nav class="dev__nav" aria-label="Блоки">
+					<a href="#dev-button">Button — пример</a>
+				</nav>
+			</div>
+
+			{{!-- Пример оформления блока. В проекте замените своими блоками. --}}
+			<section class="dev__block" id="dev-button" data-dev-block="button">
+				<h2 class="dev__block-title">Button — пример</h2>
+				<div class="dev__grid">
+					{{#> state label="Обычное"}}
+						{{> components/Button/Button props=(obj text="Отправить" type="submit")}}
+						{{> components/Button/Button props=(obj text="Ссылка в новой вкладке" href="#" target="_blank")}}
+					{{/state}}
+
+					{{#> state label="Загрузка" note="не применимо: состояние отправки показывает форма"}}{{/state}}
+
+					{{#> state label="Пусто" note="не применимо: кнопка без подписи не выводится"}}{{/state}}
+
+					{{#> state label="Ошибка" note="не применимо: ошибку показывает форма"}}{{/state}}
+
+					{{#> state label="Длинный контент"}}
+						{{> components/Button/Button props=(obj text="Очень длинная подпись кнопки, которая не помещается в одну строку на узком экране")}}
+					{{/state}}
+
+					{{#> state label="Недоступна"}}
+						{{> components/Button/Button props=(obj text="Отправить" disabled=true)}}
+					{{/state}}
+				</div>
+
+				<div class="dev__mobile">
+					<iframe src="?only=button" title="Button на ширине 320px" loading="lazy"></iframe>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

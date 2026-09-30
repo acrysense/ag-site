@@ -1,0 +1,189 @@
+@use "sass:math";
+@use "sass:map";
+@use "sass:list";
+
+$fluid-cap: 2560 !default;
+$mq-epsilon: 0.02 !default;
+
+$breakpoints: (
+	mobile: 0,
+	tablet: 744,
+	desktop: 1024,
+	cap: $fluid-cap,
+);
+
+$vw-ranges: (
+	mobile: (
+		from: map.get($breakpoints, mobile),
+		to: map.get($breakpoints, tablet),
+		base: 375,
+	),
+	tablet: (
+		from: map.get($breakpoints, tablet),
+		to: map.get($breakpoints, desktop),
+		base: 744,
+	),
+	desktop1440: (
+		from: map.get($breakpoints, desktop),
+		to: map.get($breakpoints, cap),
+		base: 1440,
+	),
+	desktop1920: (
+		from: map.get($breakpoints, desktop),
+		to: map.get($breakpoints, cap),
+		base: 1920,
+	),
+);
+
+$alias-range: (
+	sm: mobile,
+	md: tablet,
+	lg: desktop1440,
+	xl: desktop1920,
+	m: mobile,
+	t: tablet,
+	d: desktop1440,
+	w: desktop1920,
+);
+
+$alias-bp: (
+	sm: mobile,
+	md: tablet,
+);
+
+@function _range-key($k) {
+	@if map.has-key($vw-ranges, $k) {
+		@return $k;
+	}
+	@return map.get($alias-range, $k);
+}
+
+@function _r($k) {
+	@return map.get($vw-ranges, _range-key($k));
+}
+
+@function _rv($k, $n) {
+	@return map.get(_r($k), $n);
+}
+
+@function _bp-key($k) {
+	@if map.has-key($breakpoints, $k) {
+		@return $k;
+	}
+	@return map.get($alias-bp, $k);
+}
+
+@function _bp($k) {
+	@return map.get($breakpoints, _bp-key($k));
+}
+
+@function _next-bp-key($k) {
+	$order: (mobile, tablet, desktop, cap);
+	$i: list.index($order, _bp-key($k));
+	@if $i == null {
+		@error 'Unknown breakpoint `#{$k}`';
+	}
+	@if $i >= list.length($order) {
+		@return null;
+	}
+	@return list.nth($order, $i + 1);
+}
+
+@function vw-clamp($valueAt, $baseWidth, $from, $to) {
+	$k: math.div($valueAt, $baseWidth) * 100vw;
+
+	$a: $valueAt * math.div($from, $baseWidth);
+	$b: $valueAt * math.div($to, $baseWidth);
+
+	$lower: math.min($a, $b);
+	$upper: math.max($a, $b);
+
+	@return clamp(#{$lower}px, #{$k}, #{$upper}px);
+}
+
+@function vw-range($px, $range: lg) {
+	$n: $px;
+	@if not math.is-unitless($px) {
+		$n: math.div($px, 1px);
+	}
+	@return vw-clamp($n, _rv($range, base), _rv($range, from), _rv($range, to));
+}
+
+@mixin prop-vw($prop, $valueAt, $range) {
+	$base: _rv($range, base);
+	$from: _rv($range, from);
+	$to: _rv($range, to);
+	#{$prop}: vw-clamp($valueAt, $base, $from, $to);
+}
+
+@mixin up($key) {
+	$min: _bp($key);
+	@if $min <= 0 {
+		@content;
+	} @else {
+		@media (min-width: #{$min}px) {
+			@content;
+		}
+	}
+}
+@mixin down($key) {
+	$k: _bp-key($key);
+	$max: _bp($k) - $mq-epsilon;
+
+	@if $k == cap or $max <= 0 {
+		@content;
+	} @else {
+		@media (max-width: #{$max}px) {
+			@content;
+		}
+	}
+}
+
+@mixin only($key) {
+	$fromK: _bp-key($key);
+	$from: _bp($fromK);
+	$next: _next-bp-key($fromK);
+
+	@if $fromK == mobile {
+		$to: _bp($next) - 0.02;
+		@media (max-width: #{$to}px) {
+			@content;
+		}
+	} @else if $next == null {
+		@media (min-width: #{$from}px) {
+			@content;
+		}
+	} @else {
+		$to: _bp($next) - 0.02;
+		@media (min-width: #{$from}px) and (max-width: #{$to}px) {
+			@content;
+		}
+	}
+}
+
+@mixin width-cols($cols, $gapPx, $range: lg) {
+	width: calc((100% - #{$gapPx}px * (#{$cols} - 1)) / #{$cols});
+	width: calc((100% - #{vw-range($gapPx, $range)} * (#{$cols} - 1)) / #{$cols});
+}
+
+@mixin border-side($side, $px, $style: solid, $color: currentColor, $range: lg) {
+	border-#{$side}-style: $style;
+	border-#{$side}-color: $color;
+	border-#{$side}-width: vw-range($px, $range);
+}
+
+@mixin border-all($px, $style: solid, $color: currentColor, $range: lg) {
+	border-style: $style;
+	border-color: $color;
+	border-width: vw-range($px, $range);
+}
+
+@mixin prop-plus($prop, $percent, $px, $range: lg) {
+	#{$prop}: calc(#{$percent} + #{$px}px);
+	#{$prop}: calc(#{$percent} + #{vw-range($px, $range)});
+}
+
+@mixin prop-minus($prop, $percent, $px, $range: lg) {
+	#{$prop}: calc(#{$percent} - #{$px}px);
+	#{$prop}: calc(#{$percent} - #{vw-range($px, $range)});
+}

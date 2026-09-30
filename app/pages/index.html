@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="{{ lang }}">
+	<head>
+		{{> layouts/Head/Head }}
+		<script type="module" src="/app.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			{{> layouts/Header/Header }}
+			<main class="wrapper__content">
+				{{> sections/home/Main/Main }}
+			</main>
+			{{> layouts/Footer/Footer }}
+		</div>
+	</body>
+</html>

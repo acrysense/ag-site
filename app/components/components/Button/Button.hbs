@@ -1,0 +1,17 @@
+{{#if props.href}}
+    <a
+        class="btn{{#if props.variant}} btn--{{props.variant}}{{/if}}{{#if props.class}} {{props.class}}{{/if}}"
+        href="{{props.href}}"
+        {{#if props.target}}target="{{props.target}}"{{/if}}
+        {{#if (eq props.target '_blank')}}rel="noopener noreferrer"{{/if}}
+        {{#if props.download}}download{{/if}}
+        {{{attrs props.attrs}}}
+    >{{default props.text ''}}</a>
+{{else}}
+    <button
+        class="btn{{#if props.variant}} btn--{{props.variant}}{{/if}}{{#if props.class}} {{props.class}}{{/if}}"
+        type="{{default props.type 'button'}}"
+        {{#if props.disabled}}disabled{{/if}}
+        {{{attrs props.attrs}}}
+    >{{default props.text ''}}</button>
+{{/if}}

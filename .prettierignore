@@ -1,0 +1,6 @@
+dist/
+node_modules/
+public/
+app/**/*.html
+app/**/*.hbs
+app/assets/styles/base/_fonts.generated.scss

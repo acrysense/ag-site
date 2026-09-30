@@ -1,0 +1,46 @@
+{
+	"name": "vite-starter",
+	"version": "1.0.0",
+	"description": "A lean Vite starter for multi-page HTML/Handlebars projects.",
+	"private": true,
+	"engines": {
+		"node": ">=22.16.0"
+	},
+	"scripts": {
+		"fonts": "node tools/build-fonts.mjs",
+		"predev": "npm run fonts",
+		"dev": "vite",
+		"prebuild": "npm run fonts",
+		"build": "vite build",
+		"preview": "vite preview",
+		"format": "prettier --write \"app/**/*.{scss,js,ts,json,md}\""
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"autoprefixer": "^10.6.1",
+		"fast-glob": "^3.3.3",
+		"handlebars": "^4.7.9",
+		"postcss": "^8.5.28",
+		"prettier": "^3.9.9",
+		"sass": "^1.105.1",
+		"typescript": "^5.9.2",
+		"vite": "^7.3.6"
+	},
+	"browserslist": {
+		"production": [
+			"cover 99%",
+			"last 2 ios_saf versions",
+			"Firefox ESR",
+			"not dead",
+			"not op_mini all",
+			"not ie <= 11"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
+}

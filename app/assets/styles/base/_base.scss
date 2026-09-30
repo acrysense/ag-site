@@ -1,0 +1,39 @@
+@use "@/assets/styles/base/vars" as *;
+
+@layer base {
+	html {
+		font-size: 16px;
+	}
+
+	body {
+		// clip, а не hidden: hidden делает body scroll-контейнером, и
+		// position: sticky у шапки перестаёт работать
+		overflow-x: clip;
+		font-family: $font-base;
+		line-height: 1.5;
+		color: $color-full-black;
+	}
+
+	// iOS зумит страницу при фокусе на поле с шрифтом меньше 16px.
+	// Поэтому минимум 16px, а масштаб во viewport не запрещаем (таблицы, фото).
+	input,
+	select,
+	textarea {
+		font-size: max(#{$field-font-size-min}, 1em);
+	}
+
+	a {
+		transition: color $transition-default;
+	}
+
+	svg {
+		transition: color $transition-default;
+	}
+
+	// Глобальное кольцо фокуса с клавиатуры. outline: none без замены запрещён:
+	// меняйте цвет через --focus-ring-color, а не убирайте кольцо.
+	:focus-visible {
+		outline: $focus-ring-width solid var(--focus-ring-color, currentColor);
+		outline-offset: $focus-ring-offset;
+	}
+}

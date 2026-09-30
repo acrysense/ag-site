@@ -1,0 +1,159 @@
+@layer reset {
+	html {
+		box-sizing: border-box;
+		-webkit-text-size-adjust: 100%;
+		text-size-adjust: 100%;
+		tab-size: 4;
+		font-synthesis: none;
+		word-break: normal;
+	}
+
+	*,
+	*::before,
+	*::after {
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		background-repeat: no-repeat;
+	}
+
+	body,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p,
+	ul,
+	ol,
+	li,
+	dl,
+	dd,
+	figure,
+	blockquote,
+	pre,
+	hr {
+		margin: 0;
+		padding: 0;
+	}
+
+	hr {
+		border: 0;
+		height: 0;
+	}
+
+	img,
+	picture,
+	video,
+	canvas {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+
+	svg {
+		display: block;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	button,
+	input,
+	select,
+	textarea,
+	optgroup {
+		margin: 0;
+		font: inherit;
+		color: inherit;
+		line-height: inherit;
+	}
+
+	// Нативный вид полей снимается (iOS: тени, скругления, стрелка select).
+	// Чекбоксы, радио и range не трогаем: без своих стилей они стали бы невидимыми,
+	// а CMS выводит их в стандартных формах и в контенте редактора.
+	input:not([type="checkbox"], [type="radio"], [type="range"]),
+	select {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+	}
+
+	input[type="number"] {
+		-moz-appearance: textfield;
+	}
+
+	input[type="number"]::-webkit-outer-spin-button,
+	input[type="number"]::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	[type="search"] {
+		-webkit-appearance: textfield;
+		outline-offset: -2px;
+	}
+
+	::-webkit-search-decoration {
+		-webkit-appearance: none;
+	}
+
+	::-webkit-file-upload-button {
+		-webkit-appearance: button;
+		font: inherit;
+		color: inherit;
+	}
+
+	button,
+	[type="button"],
+	[type="reset"],
+	[type="submit"],
+	[role="button"] {
+		cursor: pointer;
+	}
+
+	[disabled] {
+		cursor: default;
+	}
+
+	fieldset {
+		margin: 0;
+		padding: 0;
+		border: none;
+	}
+
+	legend {
+		padding: 0;
+		color: inherit;
+	}
+
+	table {
+		border-color: inherit;
+		text-indent: 0;
+	}
+
+	summary {
+		display: list-item;
+	}
+
+	progress {
+		vertical-align: baseline;
+	}
+
+	[hidden] {
+		display: none !important;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		:before,
+		:after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+		}
+	}
+}

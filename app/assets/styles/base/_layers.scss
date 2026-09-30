@@ -1,0 +1,5 @@
+// vendor — стили библиотек (Swiper и т. п.). Идёт сразу после reset, поэтому
+// base/components перекрывают его без повышения специфичности. Подключение:
+// @use "sass:meta";
+// @layer vendor { @include meta.load-css("swiper/css"); }
+@layer reset, vendor, base, layout, components, utilities;

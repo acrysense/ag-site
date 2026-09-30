@@ -1,0 +1,39 @@
+{{#each baseMeta}}
+    <meta {{{attrs this}}} />
+{{/each}}
+
+<title>{{head.title}}</title>
+
+<meta name="description" content="{{or head.description site.seoDefaults.description 'Описание сайта'}}" />
+
+{{#each meta}}
+    <meta {{{attrs this}}} />
+{{/each}}
+
+{{#each linkPreload}}
+    <link {{{attrs this}}} />
+{{/each}}
+
+{{#each linkOther}}
+    <link {{{attrs this}}} />
+{{/each}}
+
+{{#if page.canonical}}
+    <link rel="canonical" href="{{page.canonical}}" />
+{{/if}}
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="{{or site.ogLocale 'ru_RU'}}" />
+<meta property="og:site_name" content="{{or site.siteName head.title 'Vite'}}" />
+<meta property="og:title" content="{{or head.title site.siteName 'Vite'}}" />
+<meta property="og:description" content="{{or head.description site.seoDefaults.description 'Описание сайта'}}" />
+{{#if head.ogImage}}
+    <meta property="og:image" content="{{head.ogImage}}" />
+{{/if}}
+
+<meta name="twitter:card" content="{{or head.twitterCard 'summary_large_image'}}" />
+<meta name="twitter:title" content="{{or head.title site.siteName 'Vite'}}" />
+<meta name="twitter:description" content="{{or head.description site.seoDefaults.description 'Описание сайта'}}" />
+{{#if head.ogImage}}
+    <meta name="twitter:image" content="{{head.ogImage}}" />
+{{/if}}

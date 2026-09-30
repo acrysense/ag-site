@@ -1,0 +1,36 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+@layer layout {
+	html.is-locked {
+		overflow: hidden;
+	}
+
+	body.is-locked {
+		position: fixed;
+		inset: 0;
+		width: 100%;
+	}
+
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+		min-height: 100svh;
+		&__content {
+			flex: 1 1 auto;
+		}
+	}
+
+	.container {
+		width: 100%;
+		max-width: 1440px;
+		margin: 0 auto;
+		padding-right: 20px;
+		padding-left: 20px;
+
+		@include up(desktop) {
+			padding-right: 24px;
+			padding-left: 24px;
+		}
+	}
+}

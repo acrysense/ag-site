@@ -1,0 +1,20 @@
+{
+    "useTabs": true,
+    "tabWidth": 4,
+    "printWidth": 100,
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "es5",
+    "overrides": [
+        {
+            "files": ["*.html", "*.hbs", "*.handlebars"],
+            "options": {
+                "htmlWhitespaceSensitivity": "ignore",
+                "singleAttributePerLine": false,
+                "bracketSameLine": false,
+                "printWidth": 140
+            }
+        },
+        { "files": "*.scss", "options": { "singleQuote": false } }
+    ]
+}

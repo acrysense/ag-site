@@ -1,0 +1,28 @@
+// fonts
+$font-base:
+	"Helvetica Neue",
+	system-ui,
+	-apple-system,
+	"Segoe UI",
+	Roboto,
+	Arial,
+	sans-serif;
+
+// colors
+$color-white: #ffffff;
+$color-full-black: #000000;
+
+// fields
+$field-font-size-min: 16px;
+
+// focus
+// Цвет кольца по умолчанию — currentColor. На заливках, где текст совпадает с фоном
+// вокруг (белая подпись на цветной кнопке у белого фона), переопределяйте локально:
+// .footer { --focus-ring-color: #{$color-white}; }
+$focus-ring-width: 2px;
+$focus-ring-offset: 2px;
+
+// transition
+$transition-default: 0.25s ease-in-out;
+$transition-vs: 0.467s cubic-bezier(0.16, 1, 0.3, 1);
+$transition-fast: 0.467s ease;
