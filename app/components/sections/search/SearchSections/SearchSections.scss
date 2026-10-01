@@ -110,10 +110,13 @@
 		gap: 0;
 	}
 
+	// Flex: переносы и отступы разметки вокруг числа (шаблон Битрикса, форматирование при
+	// сборке) не попадают в строку; пробелы вокруг «·» хранит только сама точка
 	.search-sections--tabs .search-sections__count {
-		white-space: pre;
+		display: flex;
 
 		&::before {
+			white-space: pre;
 			content: " · ";
 		}
 	}
