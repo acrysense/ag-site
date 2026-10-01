@@ -3,12 +3,12 @@
     "file": "assets/js/announce-CzTc7via.js",
     "name": "announce"
   },
-  "_app-2dLV5fI1.css": {
-    "file": "assets/css/app-2dLV5fI1.css",
-    "src": "_app-2dLV5fI1.css"
+  "_app-C3LYQgdl.css": {
+    "file": "assets/css/app-C3LYQgdl.css",
+    "src": "_app-C3LYQgdl.css"
   },
-  "_app-B2uKbEV5.js": {
-    "file": "assets/js/app-B2uKbEV5.js",
+  "_app-D6tsjf5d.js": {
+    "file": "assets/js/app-D6tsjf5d.js",
     "name": "app",
     "dynamicImports": [
       "components/components/Calendar/Calendar.js",
@@ -35,7 +35,7 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-2dLV5fI1.css"
+      "assets/css/app-C3LYQgdl.css"
     ]
   },
   "_icon-RHyGVOjg.js": {
@@ -275,13 +275,13 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-g6mxRKKv.js",
+    "file": "assets/js/dev-canvas-AMmRp-E7.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
       "_mock-server-MkG1XQrQ.js",
-      "_app-B2uKbEV5.js"
+      "_app-D6tsjf5d.js"
     ],
     "css": [
       "assets/css/dev-canvas-ALVq7VmV.css"
