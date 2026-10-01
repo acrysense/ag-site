@@ -1,0 +1,37 @@
+{{!--
+	Поле «прикрепить файл» (Figma: Поле · Резюме в заявке на вакансию 4593:618 — как Input 46px,
+	справа скрепка, под полем подсказка). Нажатие по полю открывает выбор файла (настоящий
+	input type="file" лежит поверх). Выбран файл — его имя вместо подсказки и × «Удалить файл».
+	props: id, name, label, placeholder, hint, accept (".pdf,.doc,.docx"), maxSize (байты),
+	errorSize, errorType (тексты ошибок), required, class.
+	Размер и тип проверяет модуль Form при отправке; бэк проверяет то же самое.
+--}}
+<div class="field file-field{{#if props.class}} {{props.class}}{{/if}}" data-module="FileField" data-path="components">
+    <label class="field__label" for="{{props.id}}">{{props.label}}</label>
+    <div class="file-field__box">
+        <input
+            class="file-field__input"
+            type="file"
+            id="{{props.id}}"
+            name="{{props.name}}"
+            {{#if props.accept}}accept="{{props.accept}}"{{/if}}
+            {{#if props.maxSize}}data-max-size="{{props.maxSize}}"{{/if}}
+            {{#if props.errorSize}}data-error-size="{{props.errorSize}}"{{/if}}
+            {{#if props.errorType}}data-error-type="{{props.errorType}}"{{/if}}
+            {{#if props.required}}required{{/if}}
+            aria-describedby="{{props.id}}-text{{#if props.hint}} {{props.id}}-hint{{/if}}"
+        />
+        <span class="file-field__control" aria-hidden="true">
+            <span class="file-field__text" id="{{props.id}}-text" data-file-text data-placeholder="{{props.placeholder}}">{{props.placeholder}}</span>
+            {{> components/Icon/Icon name="clip" class="file-field__icon"}}
+        </span>
+        <button class="file-field__clear" type="button" aria-label="Удалить файл" data-file-clear hidden>
+            {{> components/Icon/Icon name="close" class="file-field__clear-icon"}}
+        </button>
+    </div>
+    {{#if props.hint}}<p class="field__hint" id="{{props.id}}-hint">{{props.hint}}</p>{{/if}}
+    <p class="field__error" id="{{props.id}}-error" hidden>
+        {{> components/Icon/Icon name="alert" class="field__error-icon"}}
+        <span data-field-error></span>
+    </p>
+</div>

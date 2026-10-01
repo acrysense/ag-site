@@ -44,6 +44,13 @@
 			}
 		}
 
+		// Широкое окно в две колонки (Figma: вакансия подробно 4590:510 — 1040)
+		&--xl {
+			@include up(tablet) {
+				max-width: 1040px;
+			}
+		}
+
 		&--static {
 			position: static;
 			display: block;

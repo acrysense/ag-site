@@ -1,0 +1,90 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Doc/Checkbox (4528:212) — строка с полями 5 сверху и снизу, между частями 10: флажок 18
+// (рамка Icon.Grey, скругление 5; отмеченный — Main Blue с белой галочкой), название M/400
+// Black.TXT, число 13/19 Dark-grey.TXT. Неактивный (0) — прозрачность 50%, как у Checkbox.
+@layer components {
+	.filter-checkbox {
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		padding-block: 5px;
+		cursor: pointer;
+
+		&.is-disabled {
+			cursor: default;
+			opacity: 0.5;
+		}
+	}
+
+	.filter-checkbox__input {
+		@include visually-hidden;
+	}
+
+	.filter-checkbox__box {
+		display: flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: 18px;
+		height: 18px;
+		color: palette("white");
+		background: palette("white");
+		border: 1px solid palette("icon-grey");
+		border-radius: 5px;
+		transition:
+			background-color $transition-default,
+			border-color $transition-default;
+
+		.filter-checkbox__input:checked + & {
+			background: palette("main-blue");
+			border-color: palette("main-blue");
+		}
+
+		// Фокус с клавиатуры — рамка Form.Focus, как у полей
+		.filter-checkbox__input:focus-visible + & {
+			border-color: palette("form-focus");
+		}
+	}
+
+	.filter-checkbox__check {
+		width: 10px;
+		height: 7px;
+		opacity: 0;
+
+		.filter-checkbox__input:checked + .filter-checkbox__box & {
+			opacity: 1;
+		}
+	}
+
+	.filter-checkbox__text {
+		@include text("m-400");
+
+		flex: 1 1 auto;
+		min-width: 0;
+		color: palette("black-txt");
+		overflow-wrap: anywhere;
+		transition: color $transition-default;
+	}
+
+	.filter-checkbox__count {
+		@include text("s-13");
+
+		flex: none;
+		line-height: 19px;
+		color: palette("dark-grey-txt");
+	}
+
+	// Наведение (наше): название Blue.TXT, рамка флажка Main Blue
+	.filter-checkbox:not(.is-disabled):hover .filter-checkbox__text,
+	.filter-checkbox__input:focus-visible ~ .filter-checkbox__text {
+		color: palette("blue-txt");
+	}
+
+	.filter-checkbox:not(.is-disabled):hover
+		.filter-checkbox__input:not(:checked)
+		+ .filter-checkbox__box {
+		border-color: palette("main-blue");
+	}
+}

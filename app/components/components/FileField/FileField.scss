@@ -1,0 +1,106 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Поле · Резюме (4593:618) — вид Input (46, рамка Form.Border, скругление 14, поля 15),
+// подсказка Dark-grey.TXT, справа скрепка 16 Black.TXT. Выбранный файл — имя Black.TXT в строку
+// с многоточием и × вместо скрепки (наше, в макете нет).
+@layer components {
+	.file-field__box {
+		position: relative;
+	}
+
+	// Настоящий input поверх поля: нажатие открывает выбор файла, фокус с клавиатуры — на нём
+	.file-field__input {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		font-size: $field-font-size-min;
+		cursor: pointer;
+		opacity: 0;
+	}
+
+	.file-field__control {
+		@include text("m-400");
+
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		height: 46px;
+		padding: 0 15px;
+		color: palette("dark-grey-txt");
+		background: palette("white");
+		border: 1px solid palette("form-border");
+		border-radius: $radius-button;
+		transition: border-color $transition-default;
+
+		.file-field__input:hover + &,
+		.file-field__input:focus-visible + & {
+			border-color: palette("icon-grey");
+		}
+
+		.file-field__input:focus + & {
+			@include field-focus;
+		}
+
+		.file-field.is-invalid & {
+			border-color: palette("red");
+		}
+
+		.file-field.has-file & {
+			padding-right: 46px;
+			color: palette("black-txt");
+		}
+	}
+
+	.file-field__text {
+		flex: 1 1 auto;
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.file-field__icon {
+		flex: none;
+		width: 16px;
+		height: 16px;
+		color: palette("black-txt");
+
+		.file-field.has-file & {
+			display: none;
+		}
+	}
+
+	// × поверх поля справа, цель 46×46
+	.file-field__clear {
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 46px;
+		height: 46px;
+		padding: 0;
+		color: palette("icon-grey");
+		cursor: pointer;
+		background: none;
+		border: 0;
+		transition: color $transition-default;
+
+		&[hidden] {
+			display: none;
+		}
+
+		&:hover,
+		&:focus-visible {
+			color: palette("main-blue");
+		}
+	}
+
+	.file-field__clear-icon {
+		width: 14px;
+		height: 14px;
+	}
+}

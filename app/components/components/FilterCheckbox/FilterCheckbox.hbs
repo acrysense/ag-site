@@ -1,0 +1,12 @@
+{{!--
+	Пункт фильтра с флажком (Figma: Doc/Checkbox 4528:212): флажок 18, название, справа — сколько
+	останется при выборе. 0 — неактивный (серый), по описанию компонента в ките.
+	props: id, name (с [] для нескольких), value, text, count, countLabel (начало подписи числа
+	для скринридера, по умолчанию «найдено»), checked, disabled.
+--}}
+<label class="filter-checkbox{{#if props.disabled}} is-disabled{{/if}}" for="{{props.id}}">
+    <input class="filter-checkbox__input" type="checkbox" id="{{props.id}}" name="{{props.name}}" value="{{props.value}}" {{#if props.checked}}checked{{/if}} {{#if props.disabled}}disabled{{/if}} />
+    <span class="filter-checkbox__box" aria-hidden="true">{{> components/Icon/Icon name="check" class="filter-checkbox__check"}}</span>
+    <span class="filter-checkbox__text">{{props.text}}</span>
+    {{#if (isSet props.count)}}<span class="filter-checkbox__count"><span class="visually-hidden">, {{default props.countLabel "найдено"}}: </span>{{props.count}}</span>{{/if}}
+</label>

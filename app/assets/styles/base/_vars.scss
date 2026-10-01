@@ -293,6 +293,13 @@ $text-styles: (
 			size: 14,
 			line-height: 22,
 		),
+	// Без переменной в Figma: название группы фильтра вакансий (Inter Medium 15/22, 4607:549)
+	"filter-title": (
+			family: body,
+			weight: 500,
+			size: 15,
+			line-height: 22,
+		),
 	// PC/M/500
 	"m-500": (
 			family: body,

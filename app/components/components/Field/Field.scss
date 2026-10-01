@@ -63,6 +63,14 @@
 		resize: none;
 	}
 
+	// Подсказка под полем (Figma: «Необязательно — HR увидит…» 4593:618) — S/400 Dark-grey.TXT
+	.field__hint {
+		@include text("s-400");
+
+		line-height: 16px;
+		color: palette("dark-grey-txt");
+	}
+
 	.field__error {
 		@include text("s-400");
 

@@ -1,7 +1,9 @@
 import { announce } from '@/utils/announce'
 
 // Отправка формы без перезагрузки (короткие формы: «Предложить тему», отклик на вакансию…).
-// - Проверка — при отправке (форма короткая): пустые обязательные, согласие, почта.
+// - Проверка — при отправке (форма короткая): пустые обязательные, согласие, почта, телефон,
+//   файл (размер data-max-size в байтах и тип из accept; тексты — data-error-size и
+//   data-error-type, иначе общие).
 //   Ошибка — у поля: цвет, значок, текст, aria-invalid и aria-describedby; фокус на первое.
 //   Во время ввода ошибка только снимается, новые не появляются.
 // - Отправка: кнопка неактивна, на форме aria-busy, в кнопке значок загрузки, надпись та же.
@@ -15,6 +17,9 @@ const TEXT = {
 	required: 'Заполните поле',
 	consent: 'Нужно ваше согласие',
 	email: 'Проверьте адрес почты',
+	tel: 'Проверьте номер телефона',
+	fileSize: 'Файл слишком большой',
+	fileType: 'Этот тип файла не подходит',
 	invalid: 'Проверьте поля формы',
 	failed: 'Не удалось отправить. Попробуйте ещё раз.',
 	sent: 'Отправлено',
@@ -94,9 +99,36 @@ export default function init(form) {
 
 	const check = (el) => {
 		if (el.type === 'checkbox') return el.required && !el.checked ? TEXT.consent : ''
+		if (el.type === 'file') return checkFile(el)
 		const value = el.value.trim()
 		if (el.required && !value) return TEXT.required
 		if (el.type === 'email' && value && el.validity.typeMismatch) return TEXT.email
+		// Телефон: цифры, пробелы, скобки, дефисы и «+» в начале; цифр — от 7 до 15
+		if (el.type === 'tel' && value) {
+			const digits = value.replace(/\D/g, '').length
+			if (!/^\+?[\d\s()-]+$/.test(value) || digits < 7 || digits > 15) return TEXT.tel
+		}
+		return ''
+	}
+
+	// Тип из accept: расширения (.pdf) и MIME (application/pdf, image/*)
+	const checkFile = (el) => {
+		const file = el.files?.[0]
+		if (!file) return el.required ? TEXT.required : ''
+		const max = Number(el.dataset.maxSize) || 0
+		if (max && file.size > max) return el.dataset.errorSize || TEXT.fileSize
+		const name = file.name.toLowerCase()
+		const accept = el.accept
+			.split(',')
+			.map((item) => item.trim().toLowerCase())
+			.filter(Boolean)
+		const fits = (rule) =>
+			rule.startsWith('.')
+				? name.endsWith(rule)
+				: rule.endsWith('/*')
+					? file.type.startsWith(rule.slice(0, -1))
+					: file.type === rule
+		if (accept.length && !accept.some(fits)) return el.dataset.errorType || TEXT.fileType
 		return ''
 	}
 
@@ -105,11 +137,14 @@ export default function init(form) {
 		setFormError('')
 	}
 
-	// Значения формы для сравнения с исходными (без служебных полей)
+	// Значения формы для сравнения с исходными (без служебных полей); у файла — его имя
 	const snapshot = () =>
 		[...new FormData(form)]
-			.filter(([name, value]) => name !== 'sessid' && typeof value === 'string')
-			.map(([name, value]) => `${name}=${value.trim()}`)
+			.filter(([name]) => name !== 'sessid')
+			.map(
+				([name, value]) =>
+					`${name}=${typeof value === 'string' ? value.trim() : value.name}`
+			)
 			.join('&')
 	let initial = snapshot()
 	const updateDirty = () => form.toggleAttribute('data-form-dirty', snapshot() !== initial)
