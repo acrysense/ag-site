@@ -2,10 +2,11 @@
 	«Аптека групп в цифрах» (Figma: 1920 — 4857:2701, 360 — 4865:1438). props: title,
 	items [{ value, caption }]. Пункты, число и подпись редактирует админ; скрытый пункт
 	бэк не выводит, пусто — блок не выводится. На 1920 заголовок крупно слева и в верхнем
-	регистре (регистр — стилем, в админке пишут как обычно). Контракт — docs/contracts/stats.md.
+	регистре (регистр — стилем, в админке пишут как обычно). При первом показе числа набегают
+	от 0 (Stats.js). Контракт — docs/contracts/stats.md.
 --}}
 {{#if props.items.length}}
-    <section class="stats">
+    <section class="stats" data-module="Stats" data-path="sections/home">
         <h2 class="stats__title">{{default props.title "Аптека групп в цифрах"}}</h2>
         <ul class="stats__list" role="list">
             {{#each props.items}}

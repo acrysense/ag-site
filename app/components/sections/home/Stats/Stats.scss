@@ -124,4 +124,23 @@
 			color: palette("dark-grey-txt");
 		}
 	}
+
+	// Счётчик (Stats.js): итоговое число держит ширину прозрачным, бегущее — поверх
+	.stats__value.is-counting {
+		display: grid;
+		justify-items: start;
+	}
+
+	.stats__value-final,
+	.stats__value-count {
+		grid-area: 1 / 1;
+	}
+
+	.stats__value-final {
+		color: transparent;
+	}
+
+	.stats__value-count {
+		font-variant-numeric: tabular-nums;
+	}
 }

@@ -385,3 +385,6 @@ $duration-popup: 0.2s;
 $duration-overlay: 0.3s;
 // Параллакс в каруселях баннеров: картинка отстаёт от кадра на эту долю ширины
 $parallax-shift: 30%;
+// Проявление блоков при прокрутке (components/Reveal): медленнее окон — мягко, без рывка
+$duration-reveal: 0.9s;
+$reveal-shift: 16px;
