@@ -1,0 +1,38 @@
+{
+	"title": "Вход сотрудника — корпоративный сайт холдинга «Аптека групп»",
+	"robots": "noindex",
+	"description": "Вход для сотрудников холдинга «Аптека групп».",
+	"data": {
+		"form": {
+			"card": {
+				"homeUrl": "./index.html",
+				"title": "Вход сотрудника",
+				"text": "Корпоративный портал холдинга «Аптека групп»"
+			},
+			"action": "./index-user.html",
+			"hidden": [
+				{
+					"name": "AUTH_FORM",
+					"value": "Y"
+				},
+				{
+					"name": "TYPE",
+					"value": "AUTH"
+				}
+			],
+			"fields": {
+				"login": "Логин",
+				"password": "Пароль",
+				"loginName": "USER_LOGIN",
+				"passwordName": "USER_PASSWORD"
+			},
+			"help": {
+				"text": "Не удается войти?",
+				"url": "./restore-password.html"
+			},
+			"submit": "Войти",
+			"error": "Несуществующий пользователь или пароль",
+			"login": "Iavanov_K_D"
+		}
+	}
+}

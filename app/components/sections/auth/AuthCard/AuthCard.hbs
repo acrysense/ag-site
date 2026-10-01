@@ -1,0 +1,20 @@
+{{!--
+	Страница входа (перенесено из старой вёрстки my.ag-html-v2: вход, сброс пароля, код из SMS):
+	логотип, белая карточка с заголовком и текстом, форма — в блоке партиала. Фон — иллюстрация
+	(на десктопе за карточкой, на мобильном — под ней). Без шапки и подвала.
+	props: id (префикс id заголовка), homeUrl, logo, title, text. Контракт — docs/contracts/auth.md.
+--}}
+<main class="auth">
+    <div class="auth__inner">
+        <a class="auth__logo" href="{{default props.homeUrl '/'}}" aria-label="{{default props.homeLabel 'На главную'}}">
+            <img src="{{default props.logo '/assets/images/logo.svg'}}" width="57" height="52" alt="" />
+        </a>
+        <section class="auth__card" aria-labelledby="{{default props.id 'auth'}}-title">
+            <div class="auth__top">
+                <h1 class="auth__title" id="{{default props.id 'auth'}}-title">{{props.title}}</h1>
+                {{#if props.text}}<p class="auth__text">{{props.text}}</p>{{/if}}
+            </div>
+            {{> @partial-block}}
+        </section>
+    </div>
+</main>

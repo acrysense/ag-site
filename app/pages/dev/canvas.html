@@ -474,6 +474,14 @@
 				{{#> state label="Выбор сделан" note="баннера нет: бэк не выводит его при cookie ag_cookie_consent, а если страница из кеша — скрывает скрипт"}}{{/state}}
 			{{/story}}
 
+			{{#> story id="auth" group="Авторизация" title="Вход, сброс пароля, код" description='Перенос старой вёрстки my.ag-html-v2 (вход, сброс пароля по SMS, код) на компоненты сайта: Input с «глазом» и «Не удается войти?» (кит 2405:788), кнопка General. Обычные POST-формы Битрикса: пустые поля и формат номера проверяет Form, остальные ошибки выводит сервер. Страницы: login, login-error, restore-password, restore-password-code.'}}
+				{{#> state label="Вход" bg="page"}}{{> sections/auth/AuthLogin/AuthLogin props=data.authLogin}}{{/state}}
+				{{#> state label="Ошибка входа (с сервера)" bg="page"}}{{> sections/auth/AuthLogin/AuthLogin props=data.authLoginError}}{{/state}}
+				{{#> state label="Сброс пароля" bg="page"}}{{> sections/auth/AuthRestore/AuthRestore props=data.authRestore}}{{/state}}
+				{{#> state label="Код из SMS (идёт отсчёт)" bg="page"}}{{> sections/auth/AuthCode/AuthCode props=data.authCode}}{{/state}}
+				{{#> state label="Загрузка" note="кнопка неактивна со значком загрузки, пока страница уходит на сервер (модуль Form)"}}{{/state}}
+			{{/story}}
+
 			{{#> story id="career-list" group="Карьера" title="Карьерный шанс — список" description='Figma: PC.Career (4588:83). Белая карточка: заголовок, «Новые в начале», вводный текст, карточки (3 в ряд с 1280, 2 — с 768, 1 — на мобильном), страницы и «Всего». До 1024 — кнопка «Фильтры · N». «Подробнее» (и вся карточка) открывает окно вакансии.'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container">{{> sections/career/VacancyList/VacancyList props=data.careerList}}</div>

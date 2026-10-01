@@ -1,0 +1,23 @@
+{{!--
+	Код из SMS: поле кода, «Вернуться к форме входа», «Запросить код повторно» (отсчёт 60 с —
+	модуль AuthResend), «Войти». Обычная POST-форма; «Запросить повторно» — та же форма с
+	name=resend без проверки полей (formnovalidate); «неверный код» — сервер (error — под полем).
+	props: id (префикс id полей, по умолчанию auth), action, hidden, fields { code, codeName }, back { text, url }, resend { text, countdown
+	(«Запросить код повторно через {s} с»), wait (сколько секунд ещё ждать — бэк, после отправки
+	кода; 0 — можно сразу) }, error, submit; card (AuthCard). Контракт — docs/contracts/auth.md.
+--}}
+{{#with props as |form|}}
+    {{#> sections/auth/AuthCard/AuthCard props=form.card}}
+        <form class="auth-form" action="{{form.action}}" method="post" data-module="Form" data-path="components" data-form-native>
+            {{#each form.hidden}}<input type="hidden" name="{{name}}" value="{{value}}" />{{/each}}
+            <div class="auth-form__fields">
+                {{> components/Field/Field props=(obj id=(concat (default form.id "auth") "-code") name=(default form.fields.codeName "code") label=form.fields.code labelHidden=true placeholder=form.fields.code autocomplete="one-time-code" inputmode="numeric" required=true maxlength=10 error=form.error link=form.back)}}
+            </div>
+            {{#if form.resend}}
+                <button class="auth-form__resend" type="submit" name="resend" value="Y" formnovalidate data-module="AuthResend" data-path="sections/auth" {{#if form.resend.wait}}data-resend-wait="{{form.resend.wait}}"{{/if}} data-resend-countdown="{{default form.resend.countdown 'Запросить код повторно через {s} с'}}">{{default form.resend.text "Запросить код повторно"}}</button>
+            {{/if}}
+            <p class="form-error" role="alert" data-form-error hidden></p>
+            {{> components/Button/Button props=(obj text=(default form.submit "Войти") variant="general" size="m" type="submit" class="auth-form__submit")}}
+        </form>
+    {{/sections/auth/AuthCard/AuthCard}}
+{{/with}}

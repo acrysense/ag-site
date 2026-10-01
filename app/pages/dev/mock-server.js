@@ -24,6 +24,18 @@ const people = Array.from({ length: 240 }, (_, i) => ({
 }))
 const PAGE = 20
 
+// 6) Вход, сброс пароля, код (data-form-native): статика не принимает POST — прошедшая проверку
+// форма переходит на action без параметров (пароль в адрес не попадает); «Запросить код
+// повторно» — перезагрузка страницы
+document.addEventListener('submit', (event) => {
+	const form = event.target
+	if (!(form instanceof HTMLFormElement) || !form.hasAttribute('data-form-native')) return
+	if (event.defaultPrevented) return
+	event.preventDefault()
+	if (event.submitter?.formNoValidate) window.location.reload()
+	else window.location.assign(new URL(form.getAttribute('action') || '', window.location.href))
+})
+
 const realFetch = window.fetch.bind(window)
 window.fetch = async (input, init = {}) => {
 	const source = input instanceof URL ? input.href : typeof input === 'string' ? input : input.url

@@ -1,0 +1,129 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Вход (перенос старой вёрстки my.ag-html-v2 на компоненты сайта): фон BG.Main с иллюстрацией,
+// логотип, белая карточка 420 (поля 40, скругление 20) — заголовок H2 и текст M/400 Dark-grey.TXT
+// по центру, поля Input, кнопка General. На мобильном — карточка во всю ширину с полями 24,
+// иллюстрация под ней. Макета в новом Figma нет — наше, по киту (Input · Extended 2405:788).
+@layer components {
+	.auth {
+		display: flex;
+		min-height: 100vh;
+		min-height: 100dvh;
+		padding: 40px 10px calc(190px + env(safe-area-inset-bottom));
+		background: palette("bg-main") url("@/assets/images/auth/auth-bg-mobile.svg") center bottom
+			20px / 320px auto no-repeat;
+
+		@include up(desktop) {
+			align-items: center;
+			padding: 60px 20px;
+			background-image: url("@/assets/images/auth/auth-bg.svg");
+			background-position: center calc(50% + 60px);
+			background-size: min(1598px, 100% - 40px) auto;
+		}
+	}
+
+	.auth__inner {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		align-items: center;
+		width: 100%;
+		max-width: 420px;
+		margin: 0 auto;
+
+		@include up(desktop) {
+			gap: 40px;
+		}
+	}
+
+	.auth__logo {
+		display: flex;
+		transition: opacity $transition-default;
+
+		img {
+			width: 70px;
+			height: auto;
+		}
+
+		&:hover {
+			opacity: 0.9;
+		}
+	}
+
+	.auth__card {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		width: 100%;
+		padding: 24px 16px;
+		background: palette("white");
+		border-radius: $radius-content-block;
+		box-shadow: $shadow-content-block;
+
+		@include up(tablet) {
+			gap: 30px;
+			padding: 40px;
+		}
+	}
+
+	.auth__top {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		text-align: center;
+	}
+
+	.auth__title {
+		@include text("h2");
+
+		color: palette("black-h");
+	}
+
+	.auth__text {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+		text-wrap: balance;
+	}
+
+	// Форма входа: поля через 10, общая ошибка и кнопка через 20
+	.auth-form {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.auth-form__fields {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.auth-form__submit {
+		width: 100%;
+	}
+
+	// «Запросить код повторно» — текстовая кнопка по центру; пока идёт отсчёт — серая
+	.auth-form__resend {
+		@include text("m-400");
+
+		align-self: center;
+		padding: 0;
+		color: palette("main-blue");
+		cursor: pointer;
+		background: none;
+		border: 0;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+
+		&:disabled {
+			color: palette("dark-grey-txt");
+			cursor: default;
+		}
+	}
+}

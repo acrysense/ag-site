@@ -1,0 +1,22 @@
+{{!--
+	Вход сотрудника: логин, пароль с «глазом», «Не удается войти?», «Войти». Обычная POST-форма
+	(компонент входа Битрикса), проверка пустых полей — модуль Form; ошибку входа выводит сервер
+	(error — над кнопкой, оба поля красные).
+	props: id (префикс id полей, по умолчанию auth), action, hidden [{ name, value }] (служебные поля компонента), fields { login, password,
+	loginName, passwordName }, login (введённый логин после ошибки), help { text, url }, error,
+	submit; card (AuthCard). Контракт — docs/contracts/auth.md.
+--}}
+{{!-- Внутри блока карточки props — её параметры, поэтому форма — через with --}}
+{{#with props as |form|}}
+    {{#> sections/auth/AuthCard/AuthCard props=form.card}}
+        <form class="auth-form" action="{{form.action}}" method="post" data-module="Form" data-path="components" data-form-native>
+            {{#each form.hidden}}<input type="hidden" name="{{name}}" value="{{value}}" />{{/each}}
+            <div class="auth-form__fields">
+                {{> components/Field/Field props=(obj id=(concat (default form.id "auth") "-login") name=(default form.fields.loginName "login") label=form.fields.login labelHidden=true placeholder=form.fields.login autocomplete="username" required=true maxlength=100 invalid=form.error value=form.login)}}
+                {{> components/Field/Field props=(obj id=(concat (default form.id "auth") "-password") name=(default form.fields.passwordName "password") type="password" label=form.fields.password labelHidden=true placeholder=form.fields.password autocomplete="current-password" required=true reveal=true invalid=form.error link=form.help)}}
+            </div>
+            <p class="form-error" role="alert" data-form-error {{#unless form.error}}hidden{{/unless}}>{{form.error}}</p>
+            {{> components/Button/Button props=(obj text=(default form.submit "Войти") variant="general" size="m" type="submit" class="auth-form__submit")}}
+        </form>
+    {{/sections/auth/AuthCard/AuthCard}}
+{{/with}}

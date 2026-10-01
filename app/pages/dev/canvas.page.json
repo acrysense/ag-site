@@ -8325,6 +8325,114 @@
 				}
 			],
 			"static": true
+		},
+		"authLogin": {
+			"card": {
+				"homeUrl": "./index.html",
+				"title": "Вход сотрудника",
+				"text": "Корпоративный портал холдинга «Аптека групп»",
+				"id": "story-auth-login"
+			},
+			"action": "#",
+			"hidden": [
+				{
+					"name": "AUTH_FORM",
+					"value": "Y"
+				},
+				{
+					"name": "TYPE",
+					"value": "AUTH"
+				}
+			],
+			"fields": {
+				"login": "Логин",
+				"password": "Пароль",
+				"loginName": "USER_LOGIN",
+				"passwordName": "USER_PASSWORD"
+			},
+			"help": {
+				"text": "Не удается войти?",
+				"url": "./restore-password.html"
+			},
+			"submit": "Войти",
+			"id": "story-auth-login"
+		},
+		"authLoginError": {
+			"card": {
+				"homeUrl": "./index.html",
+				"title": "Вход сотрудника",
+				"text": "Корпоративный портал холдинга «Аптека групп»",
+				"id": "story-auth-error"
+			},
+			"action": "#",
+			"hidden": [
+				{
+					"name": "AUTH_FORM",
+					"value": "Y"
+				},
+				{
+					"name": "TYPE",
+					"value": "AUTH"
+				}
+			],
+			"fields": {
+				"login": "Логин",
+				"password": "Пароль",
+				"loginName": "USER_LOGIN",
+				"passwordName": "USER_PASSWORD"
+			},
+			"help": {
+				"text": "Не удается войти?",
+				"url": "./restore-password.html"
+			},
+			"submit": "Войти",
+			"error": "Несуществующий пользователь или пароль",
+			"login": "Iavanov_K_D",
+			"id": "story-auth-error"
+		},
+		"authRestore": {
+			"card": {
+				"homeUrl": "./index.html",
+				"title": "Сброс пароля",
+				"text": "Укажите номер телефона — на него придёт SMS с кодом входа.",
+				"id": "story-auth-restore"
+			},
+			"action": "#",
+			"fields": {
+				"phone": "Номер телефона",
+				"phonePlaceholder": "Например, +375 (29) 123-11-12",
+				"phoneName": "USER_PHONE_NUMBER"
+			},
+			"back": {
+				"text": "Вернуться к форме входа",
+				"url": "./login.html"
+			},
+			"submit": "Отправить код",
+			"id": "story-auth-restore"
+		},
+		"authCode": {
+			"card": {
+				"homeUrl": "./index.html",
+				"title": "Код из SMS",
+				"text": "Укажите код из SMS для входа в профиль. Пароль можно изменить в настройках личного кабинета.",
+				"id": "story-auth-code"
+			},
+			"action": "#",
+			"fields": {
+				"code": "Код",
+				"codeName": "SMS_CODE"
+			},
+			"back": {
+				"text": "Вернуться к форме входа",
+				"url": "./login.html"
+			},
+			"resend": {
+				"text": "Запросить код повторно",
+				"countdown": "Запросить код повторно через {s} с",
+				"wait": 60
+			},
+			"submit": "Войти",
+			"id": "story-auth-code"
 		}
 	}
 }
