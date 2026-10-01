@@ -13,16 +13,34 @@
 		container-type: inline-size;
 
 		// Десктоп: карточка с конфетти справа. Строки с белым фоном перекрывают конфетти —
-		// оно видно только в просветах, как в макете.
+		// оно видно только в просветах, как в макете. Конфетти — два слоя вперемешку
+		// (::before и ::after), под содержимым блока.
 		@include up(desktop) {
+			position: relative;
 			gap: 20px;
 			height: 100%;
 			padding: 20px;
 			overflow: clip;
-			background: palette("white") url("@/assets/images/decor/birthdays-confetti.svg")
-				no-repeat right -1px top -1px;
-			background-origin: border-box;
+			background: palette("white");
 			border: 1px solid palette("block-border");
+			isolation: isolate;
+
+			&::before,
+			&::after {
+				position: absolute;
+				top: -2px;
+				right: -2px;
+				z-index: -1;
+				width: 385px;
+				height: 520px;
+				pointer-events: none;
+				content: "";
+				background: url("@/assets/images/decor/birthdays-confetti-a.svg") no-repeat;
+			}
+
+			&::after {
+				background-image: url("@/assets/images/decor/birthdays-confetti-b.svg");
+			}
 			border-radius: $radius-content-block;
 			box-shadow: $shadow-content-block;
 		}
@@ -244,5 +262,29 @@
 	// Наведение (наше): заголовок-ссылка — Blue.TXT
 	.birthdays__title-link:hover {
 		color: palette("blue-txt");
+	}
+
+	// Конфетти покачивается (наше): два слоя плавают вверх-вниз с разным ритмом, соседние кружки
+	// двигаются вразнобой, как шарики в воздухе. Только transform — без перерисовки картинки.
+	@media (prefers-reduced-motion: no-preference) {
+		.birthdays::before {
+			animation: birthdays-float-a 6s ease-in-out infinite;
+		}
+
+		.birthdays::after {
+			animation: birthdays-float-b 7.5s ease-in-out -2s infinite;
+		}
+	}
+
+	@keyframes birthdays-float-a {
+		50% {
+			transform: translate(-2px, -6px);
+		}
+	}
+
+	@keyframes birthdays-float-b {
+		50% {
+			transform: translate(2px, -5px);
+		}
 	}
 }
