@@ -734,17 +734,27 @@ export default defineConfig(({ mode }) => {
 
 					const title = pageCfg.title || site.seoDefaults?.title || site.siteName || ''
 					const description = pageCfg.description || site.seoDefaults?.description || ''
-					const ogImage = pageCfg.ogImage || site.seoDefaults?.ogImage || ''
+					// Полный адрес сайта: SITE_URL при сборке (демо на GitHub Pages) или siteUrl в конфиге.
+					// Превью ссылок (Telegram, VK) требует абсолютных адресов картинки и страницы
+					const siteUrl = process.env.SITE_URL || site.siteUrl || ''
+					const absolute = (p: string) => {
+						if (!p || /^https?:/i.test(p)) return p
+						const local = withBase(p)
+						return siteUrl ? new URL(local, siteUrl).toString() : local
+					}
+					const ogImage = absolute(pageCfg.ogImage || site.seoDefaults?.ogImage || '')
+					const ogType = pageCfg.ogType || 'website'
 					const twitterCard =
 						pageCfg.twitterCard ||
 						site.seoDefaults?.twitterCard ||
 						'summary_large_image'
 
+					// Относительно siteUrl (с его папкой: /ag-site/ на GitHub Pages)
 					let canonical = pageCfg.canonical || ''
-					if (!canonical && site.siteUrl) {
+					if (!canonical && siteUrl) {
 						canonical = new URL(
-							outName === 'index' ? '/' : `/${outName}.html`,
-							site.siteUrl
+							outName === 'index' ? '' : `${outName}.html`,
+							siteUrl.endsWith('/') ? siteUrl : `${siteUrl}/`
 						).toString()
 					}
 
@@ -761,7 +771,7 @@ export default defineConfig(({ mode }) => {
 						linkOther,
 
 						page: { canonical },
-						head: { title, description, ogImage, twitterCard },
+						head: { title, description, ogImage, ogType, twitterCard },
 						// Данные страницы для шаблона: ключ data в <page>.page.json
 						// (демо-контент витрины и статических страниц)
 						data: pageCfg.data || {},

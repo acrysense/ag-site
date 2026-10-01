@@ -11,7 +11,7 @@ if [ $# -eq 0 ]; then
 	exit 1
 fi
 
-BASE=/ag-site/ npm run build
+BASE=/ag-site/ SITE_URL=https://acrysense.github.io/ag-site/ npm run build
 
 OUT=$(mktemp -d)
 INDEX=$(mktemp -u)
