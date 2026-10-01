@@ -469,13 +469,13 @@
 							"url": "#"
 						},
 						{
-							"icon": "apple",
-							"text": "Конкурс",
+							"icon": "motivation",
+							"text": "Мотивация",
 							"url": "#"
 						},
 						{
-							"icon": "motivation",
-							"text": "Мотивация",
+							"icon": "apple",
+							"text": "Конкурсы",
 							"url": "#"
 						}
 					]
@@ -627,13 +627,13 @@
 							"url": "#"
 						},
 						{
-							"icon": "apple",
-							"text": "Конкурс",
+							"icon": "motivation",
+							"text": "Мотивация",
 							"url": "#"
 						},
 						{
-							"icon": "motivation",
-							"text": "Мотивация",
+							"icon": "apple",
+							"text": "Конкурсы",
 							"url": "#"
 						}
 					]
@@ -746,13 +746,13 @@
 							"url": "#"
 						},
 						{
-							"icon": "apple",
-							"text": "Конкурс",
+							"icon": "motivation",
+							"text": "Мотивация",
 							"url": "#"
 						},
 						{
-							"icon": "motivation",
-							"text": "Мотивация",
+							"icon": "apple",
+							"text": "Конкурсы",
 							"url": "#"
 						}
 					]
