@@ -75,6 +75,10 @@ The main requirement of the spec: everything the admin edits must not be hard-co
   grey text → Blue.TXT, blue links → Blue.Hover, icon buttons → Main Blue, fields → Icon.Grey
   border (focus and error states stay on top), image links → image opacity 0.9. The current item
   (selected tab, active dot) needs no hover. Details: `docs/design-review/open-questions.md`.
+- Keyboard focus looks like hover: every `:hover` rule gets a `:focus-visible` pair; no outlines over
+  elements (base removes them on links and buttons). Fields recolor the border (`field-focus`).
+  Current items and image links keep a thin outline inside the element. Dialogs opened by pointer
+  focus the dialog itself, by keyboard — the first control.
 
 ## Forms
 
