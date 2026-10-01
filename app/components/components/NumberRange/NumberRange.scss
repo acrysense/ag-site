@@ -24,7 +24,7 @@
 		}
 
 		&:focus {
-			border-color: palette("form-focus");
+			@include field-focus;
 		}
 	}
 

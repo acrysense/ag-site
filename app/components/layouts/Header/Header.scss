@@ -251,7 +251,7 @@
 		&__login {
 			@include down(desktop) {
 				height: 36px;
-				padding-block: 7px;
+				padding: 7px 12px;
 			}
 		}
 

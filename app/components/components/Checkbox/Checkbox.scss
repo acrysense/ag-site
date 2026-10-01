@@ -1,9 +1,9 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: Checkbox (3540:10340) — 24px, скругление 7, рамка Icon.Grey; подпись 13px Black.TXT,
-// ссылка Blue.TXT с подчёркиванием. Отмеченного состояния в макете нет — наше: Main Blue с
-// белой галочкой.
+// Figma: Checkbox (кит 3540:10341) — 24px, скругление 7, рамка Icon.Grey; отмеченный — Green с
+// белой галочкой; неактивный — прозрачность 50%. Подпись 13px Black.TXT, ссылка Blue.TXT с
+// подчёркиванием.
 @layer components {
 	.checkbox__row {
 		display: flex;
@@ -32,8 +32,12 @@
 			border-color $transition-default;
 
 		.checkbox__input:checked + & {
-			background: palette("main-blue");
-			border-color: palette("main-blue");
+			background: palette("green");
+			border-color: palette("green");
+		}
+
+		.checkbox__input:disabled + & {
+			opacity: 0.5;
 		}
 
 		.checkbox__input:focus-visible + & {
@@ -71,8 +75,8 @@
 		margin-left: 34px;
 	}
 
-	// Наведение (наше): рамка флажка Main Blue
+	// Наведение (наше): рамка флажка Green — цвет отмеченного
 	.checkbox__row:hover .checkbox__input:not(:checked) + .checkbox__box {
-		border-color: palette("main-blue");
+		border-color: palette("green");
 	}
 }

@@ -33,9 +33,13 @@
 			border-color: palette("form-focus");
 		}
 
+		// Фокус с клавиатуры — синяя рамка, как у полей (кольцо у кнопки внутри снято)
 		&:has(:focus-visible) {
-			outline: $focus-ring-width solid var(--focus-ring-color, #{palette("form-focus")});
-			outline-offset: $focus-ring-offset;
+			@include field-focus;
+		}
+
+		:focus-visible {
+			outline: none;
 		}
 	}
 
@@ -281,9 +285,7 @@
 
 		// Фокус — рамка Form.Focus, как у полей (вместо системной обводки)
 		&:focus-visible {
-			border-color: palette("form-focus");
-			outline: none;
-			box-shadow: 0 0 0 1px palette("form-focus");
+			@include field-focus;
 		}
 
 		@include down(tablet) {

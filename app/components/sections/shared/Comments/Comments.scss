@@ -162,7 +162,7 @@
 			}
 
 			&:focus-within {
-				border-color: palette("main-blue");
+				@include field-focus;
 			}
 
 			.comment-form.is-error & {

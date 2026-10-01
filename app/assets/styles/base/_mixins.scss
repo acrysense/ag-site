@@ -282,6 +282,17 @@ $alias-bp: (
 	&:hover {
 		border-color: palette("icon-grey");
 	}
+
+	&:focus-visible {
+		@include field-focus;
+	}
+}
+
+// Фокус поля (Figma: Input · Focus 2408:190): рамка перекрашивается в Form.Focus, толщина та же,
+// без отдельного кольца поверх. Кольцо заменено цветом рамки, не убрано
+@mixin field-focus($color: palette("form-focus")) {
+	border-color: $color;
+	outline: none;
 }
 
 // Нижний лист на мобильном (Figma: Bottom sheet · Отдел 4786:2839, как у Modal): у нижнего края,
