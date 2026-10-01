@@ -204,6 +204,11 @@ variable fonts настраиваются в `fonts.config.json`:
 }
 ```
 
+Шрифт можно разбить на наборы символов: последнее слово имени файла — набор
+(`Inter-Variable-cyrillic.woff2`, `Inter-Variable-latin.woff2`), диапазон символов — в `subsets`
+в `fonts.config.json`. Генератор добавит `unicode-range`, и браузер скачает только те файлы,
+символы которых есть на странице. Inter так и подключён: файлы наборов взяты с Google Fonts.
+
 ## Raw assets
 
 На production build файлы копируются без изменения структуры:
