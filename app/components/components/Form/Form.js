@@ -11,6 +11,9 @@ import { announce } from '@/utils/announce'
 //   Ошибки полей от сервера — к полям, остальное — над кнопкой; ничего не глотается.
 // - Успех: data-form-success="<id окна>" — форма закрывается и открывается окно «Спасибо»,
 //   иначе сообщение над кнопкой. Результат объявляется скринридеру.
+// - data-form-native — обычная отправка (вход в Битриксе: страница перезагружается, ошибку
+//   выводит сервер): та же проверка, затем форма уходит сама; кнопка с formnovalidate («Запросить
+//   код повторно») отправляет без проверки.
 // - Изменённая форма помечается data-form-dirty: модалка перед закрытием спросит. Изменённая —
 //   значит отличается от исходной (пробелы по краям не в счёт): написал и стёр — не изменена.
 const TEXT = {
@@ -35,6 +38,7 @@ export default function init(form) {
 	const submit = form.querySelector('[type="submit"]')
 	const formError = form.querySelector('[data-form-error]')
 	let request = null
+	let busyTimer = 0
 
 	form.noValidate = true
 
@@ -81,6 +85,8 @@ export default function init(form) {
 	// Чистка текста: пробелы по краям и в концах строк, не больше одной пустой строки подряд.
 	// Длину ограничивает maxlength; бэк проверяет то же самое (фронт можно обойти)
 	const normalize = (el) => {
+		// Пароль не трогаем, даже открытый «глазом» (тогда у поля type="text")
+		if (/password/.test(el.autocomplete || '')) return
 		if (!(
 			el instanceof HTMLTextAreaElement ||
 			(el instanceof HTMLInputElement && TEXT_TYPES.has(el.type))
@@ -173,7 +179,9 @@ export default function init(form) {
 	form.addEventListener(
 		'submit',
 		async (event) => {
-			event.preventDefault()
+			const native = form.hasAttribute('data-form-native')
+			if (native && event.submitter?.formNoValidate) return
+			if (!native || request) event.preventDefault()
 			if (request) return
 			setFormError('')
 
@@ -187,8 +195,15 @@ export default function init(form) {
 				} else clearError(el)
 			}
 			if (invalid.length) {
+				event.preventDefault()
 				invalid[0].focus()
 				announce(TEXT.invalid)
+				return
+			}
+
+			// Обычная отправка: браузер уходит сам; кнопка неактивна после того, как он собрал данные
+			if (native) {
+				busyTimer = setTimeout(() => setBusy(true))
 				return
 			}
 
@@ -257,9 +272,12 @@ export default function init(form) {
 		{ signal }
 	)
 	form.addEventListener('focusout', (event) => normalize(event.target), { signal })
+	// Вернулись «Назад» на страницу из кеша — кнопка снова активна
+	window.addEventListener('pageshow', (event) => event.persisted && setBusy(false), { signal })
 
 	return () => {
 		controller.abort()
+		clearTimeout(busyTimer)
 		request?.abort()
 	}
 }

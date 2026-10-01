@@ -54,6 +54,66 @@
 		}
 	}
 
+	.field__box {
+		position: relative;
+		display: block;
+	}
+
+	// Пароль с «глазом» (Figma: Input · Extended 2405:788): значок 16 справа в поле, Black.TXT;
+	// поле в фокусе — Main Blue. Место под кнопку — поле справа 46
+	.field--reveal .field__control {
+		padding-right: 46px;
+	}
+
+	.field__reveal {
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 46px;
+		height: 46px;
+		padding: 0;
+		color: palette("black-txt");
+		cursor: pointer;
+		background: none;
+		border: 0;
+		transition: color $transition-default;
+
+		.field__control:focus + &,
+		&:hover,
+		&:focus-visible {
+			color: palette("main-blue");
+		}
+	}
+
+	.field__reveal-icon {
+		width: 16px;
+		height: 16px;
+
+		.field__reveal[aria-pressed="true"] &--show,
+		.field__reveal[aria-pressed="false"] &--hide {
+			display: none;
+		}
+	}
+
+	// Ссылка под полем («Не удается войти?», Figma 2405:788): 12/16 Black.TXT, через 10 от поля
+	.field__link {
+		@include text("s-400");
+
+		align-self: flex-start;
+		margin-top: 8px;
+		line-height: 16px;
+		color: palette("black-txt");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-txt");
+		}
+	}
+
 	.field--multiline .field__control {
 		display: block;
 		min-height: 100px;
