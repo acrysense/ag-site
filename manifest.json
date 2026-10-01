@@ -3,12 +3,8 @@
     "file": "assets/js/announce-CzTc7via.js",
     "name": "announce"
   },
-  "_app-CvNR35ML.css": {
-    "file": "assets/css/app-CvNR35ML.css",
-    "src": "_app-CvNR35ML.css"
-  },
-  "_app-D1tpQSJ0.js": {
-    "file": "assets/js/app-D1tpQSJ0.js",
+  "_app-BfPWX9en.js": {
+    "file": "assets/js/app-BfPWX9en.js",
     "name": "app",
     "dynamicImports": [
       "components/components/Calendar/Calendar.js",
@@ -36,8 +32,12 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-CvNR35ML.css"
+      "assets/css/app-Cvi8A53G.css"
     ]
+  },
+  "_app-Cvi8A53G.css": {
+    "file": "assets/css/app-Cvi8A53G.css",
+    "src": "_app-Cvi8A53G.css"
   },
   "_icon-RHyGVOjg.js": {
     "file": "assets/js/icon-RHyGVOjg.js",
@@ -282,13 +282,13 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-C43ES-LE.js",
+    "file": "assets/js/dev-canvas-CYR6smpp.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
       "_mock-server-MkG1XQrQ.js",
-      "_app-D1tpQSJ0.js"
+      "_app-BfPWX9en.js"
     ],
     "css": [
       "assets/css/dev-canvas-ALVq7VmV.css"
@@ -414,7 +414,7 @@
     "src": "pages/dev/img/wide-mobile.webp"
   },
   "pages/dev/ui.html": {
-    "file": "assets/js/dev-ui-DpQ17HMF.js",
+    "file": "assets/js/dev-ui-Chg87beM.js",
     "name": "dev-ui",
     "src": "pages/dev/ui.html",
     "isEntry": true,
@@ -422,7 +422,7 @@
       "_mock-server-MkG1XQrQ.js"
     ],
     "css": [
-      "assets/css/dev-ui-B3yuv34e.css"
+      "assets/css/dev-ui-DG2Ikop1.css"
     ]
   }
 }
