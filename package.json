@@ -16,6 +16,7 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"deploy:pages": "bash tools/deploy-pages.sh",
+		"deploy:natix": "bash tools/deploy-natix.sh",
 		"format": "prettier --write \"app/**/*.{scss,js,ts,json,md}\""
 	},
 	"keywords": [],

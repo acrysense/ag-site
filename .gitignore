@@ -46,3 +46,6 @@ node_modules/.cache/
 # tests/coverage
 coverage/
 .nyc_output/
+
+# deploy to natix: worktree, staging, build log (tools/deploy-natix.sh)
+.deploy/
