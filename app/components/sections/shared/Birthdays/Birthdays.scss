@@ -288,27 +288,33 @@
 		color: palette("blue-txt");
 	}
 
-	// Конфетти покачивается (наше): два слоя плавают вверх-вниз с разным ритмом, соседние кружки
-	// двигаются вразнобой, как шарики в воздухе. Только transform — без перерисовки картинки.
+	// Конфетти покачивается (наше): два слоя плавают навстречу друг другу с разным ритмом и чуть
+	// поворачиваются — дальние кружки качаются сильнее, соседние двигаются вразнобой, как шарики
+	// в воздухе. Только transform — без перерисовки картинки.
 	@media (prefers-reduced-motion: no-preference) {
+		.birthdays::before,
+		.birthdays::after {
+			transform-origin: 85% 0;
+		}
+
 		.birthdays::before {
-			animation: birthdays-float-a 6s ease-in-out infinite;
+			animation: birthdays-float-a 5s ease-in-out infinite;
 		}
 
 		.birthdays::after {
-			animation: birthdays-float-b 7.5s ease-in-out -2s infinite;
+			animation: birthdays-float-b 6.5s ease-in-out -2.5s infinite;
 		}
 	}
 
 	@keyframes birthdays-float-a {
 		50% {
-			transform: translate(-2px, -6px);
+			transform: translate(-3px, -10px) rotate(-1.5deg);
 		}
 	}
 
 	@keyframes birthdays-float-b {
 		50% {
-			transform: translate(2px, -5px);
+			transform: translate(3px, 8px) rotate(1.5deg);
 		}
 	}
 }
