@@ -3,8 +3,8 @@
     "file": "assets/js/announce-CzTc7via.js",
     "name": "announce"
   },
-  "_app-CIP5xc68.js": {
-    "file": "assets/js/app-CIP5xc68.js",
+  "_app--H7HXmCq.js": {
+    "file": "assets/js/app--H7HXmCq.js",
     "name": "app",
     "dynamicImports": [
       "components/components/Calendar/Calendar.js",
@@ -31,12 +31,12 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-CIXopMfQ.css"
+      "assets/css/app-JgU7WEfi.css"
     ]
   },
-  "_app-CIXopMfQ.css": {
-    "file": "assets/css/app-CIXopMfQ.css",
-    "src": "_app-CIXopMfQ.css"
+  "_app-JgU7WEfi.css": {
+    "file": "assets/css/app-JgU7WEfi.css",
+    "src": "_app-JgU7WEfi.css"
   },
   "_icon-RHyGVOjg.js": {
     "file": "assets/js/icon-RHyGVOjg.js",
@@ -187,7 +187,7 @@
     "isDynamicEntry": true
   },
   "components/layouts/CookieBanner/CookieBanner.js": {
-    "file": "assets/js/CookieBanner-DcQabcyN.js",
+    "file": "assets/js/CookieBanner-cClq3wKO.js",
     "name": "CookieBanner",
     "src": "components/layouts/CookieBanner/CookieBanner.js",
     "isDynamicEntry": true
@@ -275,13 +275,13 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-Gxncfh0L.js",
+    "file": "assets/js/dev-canvas-1dejV20W.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
       "_mock-server-MkG1XQrQ.js",
-      "_app-CIP5xc68.js"
+      "_app--H7HXmCq.js"
     ],
     "css": [
       "assets/css/dev-canvas-ALVq7VmV.css"
