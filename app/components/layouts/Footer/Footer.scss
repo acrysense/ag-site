@@ -140,11 +140,17 @@
 			}
 		}
 
-		// В макете #73808C — на единицу от Dark-grey.TXT, берём переменную
+		// В макете #73808C — на единицу от Dark-grey.TXT, берём переменную. На десктопе копирайт
+		// держит свою строку (не сжимается от соседних ссылок), но не шире 45% — если длинный
 		&__copyright {
 			@include text("m-400");
 
 			color: palette("dark-grey-txt");
+
+			@include up(desktop) {
+				flex: none;
+				max-width: 45%;
+			}
 		}
 
 		// Стиль текста на самом списке: иначе у пунктов высота строки 24px от страницы
@@ -158,14 +164,24 @@
 			padding: 0;
 			list-style: none;
 
+			// Десктоп: список справа, ссылки в нём слева направо и переносятся; «•» Grey — только
+			// между ссылками одной строки: точка стоит в промежутке слева от ссылки, у первой в
+			// строке она вне списка и обрезается (clip-path), в начале строки не висит
 			@include up(desktop) {
+				flex: 0 1 auto;
 				flex-direction: row;
 				flex-wrap: wrap;
-				gap: 4px 14px;
+				gap: 4px 28px;
+				margin-left: auto;
+				clip-path: inset(0);
 
-				// Разделитель «•» Grey между ссылками
-				li + li::before {
-					margin-right: 14px;
+				li {
+					position: relative;
+				}
+
+				li::before {
+					position: absolute;
+					right: calc(100% + 11px);
 					color: palette("grey");
 					content: "•";
 				}
