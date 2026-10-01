@@ -3,7 +3,7 @@
 	props: id, name, label, labelHidden (подпись только для скринридера — у строк в макете её
 	нет, есть подсказка), type (text, email, tel…), multiline (многострочное), placeholder,
 	value, required, autocomplete, maxlength, maxRows (многострочное растёт до стольких строк,
-	потом прокрутка; по умолчанию 8), class.
+	дальше текст не вводится — прокрутки внутри нет; по умолчанию 8), class.
 	Многострочное не растягивается мышью — растёт по высоте само (utils/autosize.js).
 	Длину ограничивает maxlength, лишние пробелы и пустые строки чистит модуль Form.
 	Ошибку под полем выводит модуль Form: цвет, значок и текст, aria-invalid и aria-describedby.

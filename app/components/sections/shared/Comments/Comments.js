@@ -321,7 +321,7 @@ export default function init(root) {
 		}
 		update()
 
-		// Высота растёт с текстом (utils/autosize по data-autosize), дальше — прокрутка
+		// Высота растёт с текстом (utils/autosize по data-autosize), дальше текст не вводится
 		input.addEventListener('input', update, { signal })
 		input.addEventListener(
 			'keydown',

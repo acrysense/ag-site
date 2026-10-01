@@ -1,3 +1,6 @@
+// Многострочное поле растёт по высоте с текстом, прокрутки внутри нет никогда.
+// data-autosize-max-rows — предел: дошли до него — новый текст не вводится (вставка обрезается
+// по месту), удалять можно всегда. Длину ограничивает maxlength.
 const SELECTOR = 'textarea[data-autosize]'
 const bound = new WeakMap()
 const observers = new WeakMap()
@@ -24,20 +27,56 @@ function getMetrics(el) {
 	return { styles, border, padding, isBorderBox: styles.boxSizing === 'border-box' }
 }
 
-function resize(el) {
-	const { styles, border, padding, isBorderBox } = getMetrics(el)
+// Предел высоты содержимого (scrollHeight) или null
+function getLimit(el) {
 	const maxRows = getMaxRows(el)
-	const maxHeight = maxRows
-		? Math.ceil(maxRows * getLineHeightPx(el, styles) + padding + (isBorderBox ? border : 0))
-		: null
+	if (!maxRows) return null
+	const { styles, padding } = getMetrics(el)
+	return Math.ceil(maxRows * getLineHeightPx(el, styles) + padding)
+}
 
+function overflows(el, limit) {
 	el.style.height = 'auto'
+	return el.scrollHeight > limit + 1
+}
 
-	const naturalHeight = el.scrollHeight + (isBorderBox ? border : 0)
-	const targetHeight = maxHeight ? Math.min(naturalHeight, maxHeight) : naturalHeight
+// Высота — по тексту. Текст, который уже не помещается (поле сузилось, значение от бэка),
+// не прячется под прокрутку: поле становится выше
+function resize(el) {
+	const { border, isBorderBox } = getMetrics(el)
+	el.style.height = 'auto'
+	el.style.height = `${Math.ceil(el.scrollHeight + (isBorderBox ? border : 0))}px`
+	el.style.overflowY = 'hidden'
+}
 
-	el.style.height = `${Math.ceil(targetHeight)}px`
-	el.style.overflowY = maxHeight && naturalHeight > maxHeight ? 'auto' : 'hidden'
+// Новый текст не поместился — оставляем столько вставленного, сколько влезает
+function fit(el, previous) {
+	const limit = getLimit(el)
+	if (!limit || previous === null || !overflows(el, limit)) return false
+	const value = el.value
+	let start = 0
+	while (start < previous.length && value[start] === previous[start]) start++
+	let end = 0
+	while (
+		end < previous.length - start &&
+		end < value.length - start &&
+		value[value.length - 1 - end] === previous[previous.length - 1 - end]
+	)
+		end++
+	const before = value.slice(0, start)
+	const inserted = value.slice(start, value.length - end)
+	const after = value.slice(value.length - end)
+	let low = 0
+	let high = inserted.length
+	while (low < high) {
+		const middle = Math.ceil((low + high) / 2)
+		el.value = before + inserted.slice(0, middle) + after
+		if (overflows(el, limit)) high = middle - 1
+		else low = middle
+	}
+	el.value = before + inserted.slice(0, low) + after
+	el.setSelectionRange(start + low, start + low)
+	return el.value !== value
 }
 
 function collect(root) {
@@ -55,7 +94,26 @@ function bind(el) {
 	let active = true
 	let timer
 	let resetFrame
-	const onInput = () => resize(el)
+	let previous = null
+	// Значение до ввода. При наборе через IME (и на клавиатурах Android) — до начала набора,
+	// проверка — после его окончания
+	const onBeforeInput = (event) => {
+		if (!event.isComposing) previous = el.value
+	}
+	const onCompositionStart = () => {
+		previous = el.value
+	}
+	const check = () => {
+		// Обрезали — сообщаем остальным (счётчики, проверка формы) уже итоговое значение
+		if (fit(el, previous)) el.dispatchEvent(new Event('input', { bubbles: true }))
+		previous = null
+		resize(el)
+	}
+	const onInput = (event) => {
+		if (event.isComposing) resize(el)
+		else check()
+	}
+	const onResize = () => resize(el)
 	const onReset = () => {
 		cancelAnimationFrame(resetFrame)
 		resetFrame = requestAnimationFrame(() => active && resize(el))
@@ -65,12 +123,15 @@ function bind(el) {
 		timer = setTimeout(() => active && resize(el), 50)
 	}
 
-	el.addEventListener('input', onInput, { passive: true })
+	el.addEventListener('beforeinput', onBeforeInput)
+	el.addEventListener('compositionstart', onCompositionStart)
+	el.addEventListener('compositionend', check)
+	el.addEventListener('input', onInput)
 	el.form?.addEventListener('reset', onReset)
 	window.addEventListener('resize', onWindowResize)
 
 	const resizeObserver =
-		typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(onInput)
+		typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(onResize)
 	resizeObserver?.observe(el)
 
 	const cleanup = () => {
@@ -79,6 +140,9 @@ function bind(el) {
 		clearTimeout(timer)
 		cancelAnimationFrame(resetFrame)
 		resizeObserver?.disconnect()
+		el.removeEventListener('beforeinput', onBeforeInput)
+		el.removeEventListener('compositionstart', onCompositionStart)
+		el.removeEventListener('compositionend', check)
 		el.removeEventListener('input', onInput)
 		el.form?.removeEventListener('reset', onReset)
 		window.removeEventListener('resize', onWindowResize)
