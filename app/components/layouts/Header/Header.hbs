@@ -1,6 +1,6 @@
 {{!--
 	Шапка сайта (Figma: PC.HEADER.v2 — 4652:8752, 360.HEADER — 4865:1334).
-	props: id, homeUrl, logo { desktop, mobile } (по умолчанию — логотипы из assets), title (полное
+	props: id, homeUrl, homeLabel (имя ссылки-логотипа, «На главную»), logo { desktop, mobile } (по умолчанию — логотипы из assets), title (полное
 	название), titleShort (мобильное), search { value } — запрос в строке поиска (окно поиска —
 	layouts/SiteSearch, настройки — site.search),
 	menu — пункты [{ text, url, current, children: [{ text, url, current }] }]; пункт с подменю без url
@@ -13,15 +13,18 @@
 --}}
 <header class="header" data-module="Header" data-path="layouts">
     <div class="header__top">
-        <a class="header__brand" href="{{default props.homeUrl '/'}}">
+        {{!-- Ссылка на главную — только логотип; название сайта — текст, без наведения --}}
+        <div class="header__brand">
             {{!-- Логотип меняется через админку (ТЗ: праздничные логотипы): logo { desktop, mobile } --}}
-            <picture class="header__logo">
-                <source media="(min-width: 1024px)" srcset="{{default props.logo.desktop '/assets/images/logo.svg'}}" width="57" height="52" />
-                <img src="{{default props.logo.mobile '/assets/images/logo-mobile.svg'}}" width="40" height="40" alt="" />
-            </picture>
+            <a class="header__logo-link" href="{{default props.homeUrl '/'}}" aria-label="{{default props.homeLabel 'На главную'}}">
+                <picture class="header__logo">
+                    <source media="(min-width: 1024px)" srcset="{{default props.logo.desktop '/assets/images/logo.svg'}}" width="57" height="52" />
+                    <img src="{{default props.logo.mobile '/assets/images/logo-mobile.svg'}}" width="40" height="40" alt="" />
+                </picture>
+            </a>
             <span class="header__title header__title--full">{{props.title}}</span>
             <span class="header__title header__title--short">{{default props.titleShort props.title}}</span>
-        </a>
+        </div>
 
         {{!-- Поиск: разделы и фильтры — общие для сайта (site.search), запрос — со страницы --}}
         {{> layouts/SiteSearch/SiteSearch props=@root.site.search query=props.search.value id=(default props.id 'header') class="header__search"}}

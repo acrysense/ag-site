@@ -376,17 +376,26 @@
 		}
 	}
 
-	// Наведение (наше, только цвет): название, имя пользователя — Blue.TXT, бургер — Main Blue
-	.header__brand:hover .header__title,
+	// Наведение (наше, только цвет): имя пользователя — Blue.TXT, бургер — Main Blue. Название
+	// сайта — не ссылка, без наведения; логотип-ссылка — картинка чуть прозрачнее (0.9)
 	.header__user:hover .header__user-name,
-	.header__brand:focus-visible .header__title,
 	.header__user:focus-visible .header__user-name {
 		color: palette("blue-txt");
 	}
 
-	.header__title,
 	.header__user-name {
 		transition: color $transition-default;
+	}
+
+	.header__logo-link {
+		display: flex;
+		flex: none;
+		border-radius: 2px;
+		transition: opacity $transition-default;
+
+		&:hover {
+			opacity: 0.9;
+		}
 	}
 
 	.header__burger:hover,
