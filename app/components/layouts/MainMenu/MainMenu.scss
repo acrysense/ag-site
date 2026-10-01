@@ -307,11 +307,10 @@
 	.main-menu__group:hover,
 	.main-menu__tile:hover,
 	.main-menu__logout:hover,
-// «Моя страница» — Blue.Hover
 	.main-menu__row:focus-visible,
-.main-menu__group:focus-visible,
-.main-menu__tile:focus-visible,
-.main-menu__logout:focus-visible {
+	.main-menu__group:focus-visible,
+	.main-menu__tile:focus-visible,
+	.main-menu__logout:focus-visible {
 		color: palette("blue-txt");
 	}
 
