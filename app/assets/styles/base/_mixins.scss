@@ -401,6 +401,12 @@ $alias-bp: (
 		height: 100%;
 		object-fit: cover;
 	}
+
+	// Фото загрузилось (utils/broken-images.js) — инициалы прячем: у фото с прозрачным фоном
+	// (PNG) они бы просвечивали
+	&:has(> img.is-loaded) > :not(img) {
+		visibility: hidden;
+	}
 }
 
 // Инициалы в аватаре: «ВА» — две буквы, по размеру кружка (38% ширины), где браузер умеет
@@ -441,5 +447,11 @@ $alias-bp: (
 	// Фото — над заготовкой
 	img {
 		position: relative;
+	}
+
+	// Фото загрузилось (utils/broken-images.js) — значка нет: при наведении фото прозрачнее (0.9),
+	// и значок просвечивал бы сквозь него
+	&:has(img.is-loaded)::before {
+		content: none;
 	}
 }

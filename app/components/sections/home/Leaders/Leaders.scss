@@ -137,6 +137,16 @@ $leaders-gap: 14.5px; // 1920: 5 карточек по 300 в 1558 — пром�
 			height: 40%;
 		}
 
+		// Фото загрузилось (utils/broken-images.js) — значка и фона заготовки под ним нет: фото
+		// прозрачное (0.9), и они бы просвечивали
+		&__photo:has(.leaders__photo-img.is-loaded) {
+			background: none;
+
+			.leaders__photo-icon {
+				display: none;
+			}
+		}
+
 		&__info {
 			display: flex;
 			flex-direction: column;
