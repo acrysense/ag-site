@@ -8,6 +8,9 @@
 // прокрутки. Встаёт на паузу, пока на карусели мышь (или палец) и фокус с клавиатуры, пока её не
 // видно (за экраном, вкладка в фоне); при «уменьшить движение» выключено. Активная точка-полоска
 // заполняется за время до следующего кадра и замирает на паузе (класс has-progress).
+// Кадр с видео держится, пока идёт ролик, но не дольше VIDEO_MAX; ролик короче интервала крутится
+// по кругу (атрибут loop), пока интервал не пройдёт.
+const VIDEO_MAX = 15000
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 
 export default function init(root) {
@@ -20,6 +23,7 @@ export default function init(root) {
 	const autoplay = Number(root.dataset.carouselAutoplay) * 1000 || 0
 	let frame = 0
 	let timer = 0
+	let total = autoplay
 	let remaining = autoplay
 	let startedAt = 0
 	let progress = null
@@ -88,14 +92,27 @@ export default function init(root) {
 	// Видео в кадрах: играет только видимое и только если не просили уменьшить движение
 	const videos = slides.map((slide) => slide.querySelector('video'))
 
+	let shown = -1
 	const render = () => {
 		const index = current()
 		dotButtons.forEach((button, i) => button.setAttribute('aria-current', String(i === index)))
 		videos.forEach((video, i) => {
 			if (!video) return
-			if (i === index && !reducedMotion.matches) video.play().catch(() => {})
-			else video.pause()
+			if (i !== index) return video.pause()
+			// Ролик на кадре, куда только что пришли, — с начала: отсчёт кадра идёт по его длине
+			if (index !== shown) video.currentTime = 0
+			if (!reducedMotion.matches) video.play().catch(() => {})
 		})
+		shown = index
+	}
+
+	// Время кадра: интервал или длина ролика (не короче интервала и не дольше VIDEO_MAX).
+	// Длина неизвестна, пока не загрузились метаданные, — до тех пор интервал
+	const duration = () => {
+		const length = videos[current()]?.duration * 1000
+		return Number.isFinite(length) && length > 0
+			? Math.min(Math.max(length, autoplay), Math.max(VIDEO_MAX, autoplay))
+			: autoplay
 	}
 
 	// Заполнение активной точки повторяет таймер: тот же остаток, та же пауза
@@ -105,11 +122,13 @@ export default function init(root) {
 			progress?.cancel()
 			progress = fill?.animate(
 				[{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0 0 0)' }],
-				{ duration: autoplay, fill: 'both' }
+				{ duration: total, fill: 'both' }
 			)
 		}
 		if (!progress) return
-		progress.currentTime = autoplay - remaining
+		if (progress.effect.getTiming().duration !== total)
+			progress.effect.updateTiming({ duration: total })
+		progress.currentTime = total - remaining
 		if (timer) progress.play()
 		else progress.pause()
 	}
@@ -142,9 +161,21 @@ export default function init(root) {
 	const restart = () => {
 		clearTimeout(timer)
 		timer = 0
-		remaining = autoplay
+		total = duration()
+		remaining = total
 		schedule()
 	}
+
+	// Метаданные ролика на текущем кадре пришли — отсчёт кадра по его длине
+	videos.forEach((video, i) => {
+		video?.addEventListener(
+			'loadedmetadata',
+			() => {
+				if (autoplay && i === current()) restart()
+			},
+			{ signal }
+		)
+	})
 
 	root.querySelector('[data-carousel-prev]')?.addEventListener('click', () => page(-1), {
 		signal,
@@ -192,6 +223,7 @@ export default function init(root) {
 	)
 
 	render()
+	if (autoplay) restart()
 
 	return () => {
 		controller.abort()
