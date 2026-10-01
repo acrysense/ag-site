@@ -46,22 +46,24 @@
 		<script type="text/plain" data-cookie-consent>
 			window.__agDemoCounter = (window.__agDemoCounter || 0) + 1; console.info('[demo] счётчик включён после согласия на cookie')
 		</script>
-		<script type="module" crossorigin src="/ag-site/assets/js/mock-server-MkG1XQrQ.js"></script>
-		<script type="module" crossorigin src="/ag-site/assets/js/app-BfPWX9en.js"></script>
-		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-Cvi8A53G.css" />
+		<script type="module" crossorigin src="/ag-site/assets/js/mock-server-4ErjQ4nh.js"></script>
+		<script type="module" crossorigin src="/ag-site/assets/js/app-DFucVLOl.js"></script>
+		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-Do0jzvWg.css" />
 	</head>
 	<body>
 		<div class="wrapper">
 			<header class="header" data-module="Header" data-path="layouts">
 				<div class="header__top">
-					<a class="header__brand" href="/ag-site/">
-						<picture class="header__logo">
-							<source media="(min-width: 1024px)" srcset="/ag-site/assets/images/logo-CXuolww_.svg" width="57" height="52" />
-							<img src="/ag-site/assets/images/logo-mobile-CY1jZkm6.svg" width="40" height="40" alt="" />
-						</picture>
+					<div class="header__brand">
+						<a class="header__logo-link" href="/ag-site/" aria-label="На главную">
+							<picture class="header__logo">
+								<source media="(min-width: 1024px)" srcset="/ag-site/assets/images/logo-CXuolww_.svg" width="57" height="52" />
+								<img src="/ag-site/assets/images/logo-mobile-CY1jZkm6.svg" width="40" height="40" alt="" />
+							</picture>
+						</a>
 						<span class="header__title header__title--full">Корпоративный сайт холдинга “Аптека групп”</span>
 						<span class="header__title header__title--short">Корпоративный сайт холдинга</span>
-					</a>
+					</div>
 
 					<div
 						class="site-search header__search"
@@ -2605,7 +2607,7 @@
 						type="button"
 						aria-expanded="true"
 						aria-controls="main-menu-group-0"
-						data-main-menu-group
+						data-main-menu-group="crm"
 					>
 						<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 							<use href="/ag-site/assets/icons/sprite.svg#icon-case"></use>
@@ -2694,7 +2696,7 @@
 						type="button"
 						aria-expanded="true"
 						aria-controls="main-menu-group-1"
-						data-main-menu-group
+						data-main-menu-group="cabinet"
 					>
 						<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 							<use href="/ag-site/assets/icons/sprite.svg#icon-profile"></use>
