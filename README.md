@@ -165,6 +165,22 @@ npm run deploy:pages -- index index-user search
 `.html`) и отправляет их в ветку `gh-pages`; рабочая ветка не переключается. Каждая выкладка
 заменяет прошлую — перечисляйте все страницы, которые должны остаться.
 
+## Выкладка в репозиторий клиента (natix)
+
+Одна папка — два репозитория, как в `ag`: GitHub (`origin`, разработка) и
+`git.natix.ru/…/my.ag-html-v2` (remote `natix`, ветка `master`, нужен VPN). В natix уходят
+исходники и сборка под Битрикс (`BASE=/bitrix/templates/ag-site/`, `--mode cms`) поверх его
+истории — без force-push:
+
+```sh
+npm run deploy:natix -- --dry-run   # собрать и показать разницу, ничего не отправлять
+npm run deploy:natix                # то же + подтверждение и пуш
+```
+
+Ветка natix выгружается в `.deploy/natix` (git worktree, игнорируется). Служебные файлы
+(`.github`, `.claude`, настройки редактора, деплой-скрипты) в natix не уезжают; `dist` у natix в
+`.gitignore` — добавляется принудительно. Перед выкладкой `main` должна совпадать с GitHub.
+
 ## SVG sprite
 
 Положите отдельные SVG-иконки в `app/assets/icons`. Локальный plugin собирает их в файл
