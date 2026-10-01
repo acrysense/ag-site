@@ -1678,6 +1678,60 @@
 				}
 			]
 		},
+		"birthdaysOverflowToday": {
+			"title": "День рождения",
+			"url": "#",
+			"today": [
+				{
+					"url": "#",
+					"name": "Дрозд В.В.",
+					"date": "2026-03-15",
+					"dateText": "15 марта",
+					"image": {
+						"src": "./img/person-1.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"name": "Дрозд В.В.",
+					"date": "2026-03-15",
+					"dateText": "15 марта",
+					"image": {
+						"src": "./img/person-2.jpg"
+					}
+				},
+				{
+					"name": "Ковалевская-Прищепова А.Б.",
+					"date": "2026-03-15",
+					"dateText": "15 марта",
+					"image": {
+						"src": "./img/person-3.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"name": "Зайцев М.В.",
+					"date": "2026-03-15",
+					"dateText": "15 марта",
+					"image": {
+						"src": "./img/person-5.jpg"
+					}
+				},
+				{
+					"url": "#",
+					"name": "Дрозд В.В.",
+					"date": "2026-03-15",
+					"dateText": "15 марта",
+					"image": {
+						"src": "./img/person-1.jpg"
+					}
+				}
+			],
+			"todayMore": {
+				"count": 4
+			},
+			"upcoming": []
+		},
 		"birthdaysOnlyToday": {
 			"title": "День рождения",
 			"url": "#",

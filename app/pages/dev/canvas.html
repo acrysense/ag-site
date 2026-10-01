@@ -247,7 +247,7 @@
 				{{#> state label="Загрузка" note="не применимо: список приходит с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="birthdays" group="Главная" title="День рождения" description='Figma: 1920 — 4615:42940, 360 — 4865:1402. Сегодня может не быть никого, одного или нескольких. Нет фото — значок подарка. На десктопе — третья колонка ряда с «Акциями».'}}
+			{{#> story id="birthdays" group="Главная" title="День рождения" description='Figma: 1920 — 4615:42940, 360 — 4865:1402. На главной всего 6 строк: сначала сегодня, ближайшие — сколько влезет; сегодня больше 6 — 5 и «+N Все именинники сегодня». Сегодня может не быть никого, одного или нескольких. Нет фото — значок подарка. На десктопе — третья колонка ряда с «Акциями».'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdays}}</div></div>
 				{{/state}}
@@ -256,6 +256,9 @@
 				{{/state}}
 				{{#> state label="Сегодня несколько" bg="page"}}
 					<div class="container"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysManyToday}}</div></div>
+				{{/state}}
+				{{#> state label="Сегодня больше шести" bg="page"}}
+					<div class="container"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysOverflowToday}}</div></div>
 				{{/state}}
 				{{#> state label="Только сегодня" bg="page"}}
 					<div class="container"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysOnlyToday}}</div></div>

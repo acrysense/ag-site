@@ -1,7 +1,10 @@
 {{!--
 	«День рождения» (Figma: 1920 — 4615:42940, 360 — 4865:1402, ссылка — 4706:1271).
 	props: title, url (страница дней рождения: «→» у заголовка и ссылка внизу), allText,
-	todayTitle, upcomingTitle, today [человек], upcoming [человек].
+	todayTitle, upcomingTitle, today [человек], upcoming [человек],
+	todayMore { count, url, text } — сегодняшние, что не поместились (на главной всего 6 строк:
+	сегодня больше 6 — 5 человек и строка «+N Все именинники сегодня →»; url — по умолчанию url
+	блока, text — по умолчанию «Все именинники сегодня»).
 	Человек: { name, dateText, date (YYYY-MM-DD), url, image: { src, srcset } }.
 	Сегодня может не быть никого, одного или нескольких: нет именинников — подраздела нет;
 	нет ни сегодня, ни ближайших — блок не выводится. Нет фото — значок подарка. В широком
@@ -32,6 +35,14 @@
                     <h3 class="birthdays__subtitle">{{default props.todayTitle "Поздравляем сегодня"}}</h3>
                     <ul class="birthdays__list" role="list">
                         {{#each props.today}}{{> birthdaysPerson}}{{/each}}
+                        {{#if props.todayMore.count}}
+                            <li class="birthdays__item">
+                                {{#if (default props.todayMore.url props.url)}}<a class="birthdays__person birthdays__more" href="{{default props.todayMore.url props.url}}">{{else}}<div class="birthdays__person birthdays__more">{{/if}}
+                                    <span class="birthdays__more-count" aria-hidden="true">+{{props.todayMore.count}}</span>
+                                    <span class="birthdays__name">{{default props.todayMore.text "Все именинники сегодня"}}<span class="visually-hidden">, ещё {{props.todayMore.count}}</span> <span aria-hidden="true">→</span></span>
+                                {{#if (default props.todayMore.url props.url)}}</a>{{else}}</div>{{/if}}
+                            </li>
+                        {{/if}}
                     </ul>
                 </div>
             {{/if}}

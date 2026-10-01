@@ -206,6 +206,30 @@
 			object-fit: cover;
 		}
 
+		// «+N» у строки «Все именинники сегодня» — на месте аватара, того же размера (наше)
+		&__more-count {
+			@include text("s-400");
+
+			display: flex;
+			flex: none;
+			align-items: center;
+			justify-content: center;
+			width: 30px;
+			height: 30px;
+			color: palette("main-blue");
+			background: palette("bg-info");
+			border-radius: 50%;
+
+			@include up(desktop) {
+				width: 40px;
+				height: 40px;
+			}
+		}
+
+		&__more .birthdays__name {
+			color: palette("main-blue");
+		}
+
 		&__gift {
 			width: 18px;
 			height: 18px;
