@@ -404,6 +404,29 @@ function handlebarsPlugin({ partialDirectory, helpers, context }) {
 	}
 }
 
+// Наведение — только там, где оно есть (мышь, тачпад). На телефоне :hover «залипает» после
+// нажатия: свёрнутый пункт меню остаётся синим. Селекторы с :hover уходят в
+// @media (hover: hover) сразу за своим правилом; пара :focus-visible из того же списка остаётся
+// снаружи — клавиатура работает везде. В SCSS пишем как обычно, в CSS шаблона — уже готовое.
+function hoverOnly() {
+	const params = '(hover: hover)'
+	return {
+		postcssPlugin: 'hover-only',
+		Rule(rule, { AtRule }) {
+			if (!rule.selector.includes(':hover')) return
+			if (rule.parent?.type === 'atrule' && rule.parent.params === params) return
+			const hover = rule.selectors.filter((s: string) => s.includes(':hover'))
+			const rest = rule.selectors.filter((s: string) => !s.includes(':hover'))
+			const media = new AtRule({ name: 'media', params })
+			media.append(rule.clone({ selectors: hover }))
+			if (!rest.length) return rule.replaceWith(media)
+			rule.selectors = rest
+			rule.after(media)
+		},
+	}
+}
+hoverOnly.postcss = true
+
 function escapeRegExp(value: string) {
 	return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }
@@ -804,7 +827,7 @@ export default defineConfig(({ mode }) => {
 		css: {
 			devSourcemap: true,
 			postcss: {
-				plugins: [autoprefixer()],
+				plugins: [autoprefixer(), hoverOnly()],
 			},
 		},
 	}
