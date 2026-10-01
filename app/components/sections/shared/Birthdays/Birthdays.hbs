@@ -1,6 +1,6 @@
 {{!--
 	«День рождения» (Figma: 1920 — 4615:42940, 360 — 4865:1402, ссылка — 4706:1271).
-	props: title, url (страница дней рождения: «→» у заголовка и ссылка внизу), allText,
+	props: title, url (страница дней рождения: ссылка в заголовке и внизу), allText,
 	todayTitle, upcomingTitle, today [человек], upcoming [человек],
 	todayMore { count, url, text } — сегодняшние, что не поместились (на главной всего 6 строк:
 	сегодня больше 6 — 5 человек и строка «+N Все именинники сегодня →»; url — по умолчанию url
@@ -28,7 +28,7 @@
 {{/inline}}
 {{#if (or props.today.length props.upcoming.length)}}
     <section class="birthdays">
-        <h2 class="birthdays__title">{{#if props.url}}<a class="birthdays__title-link" href="{{props.url}}">{{default props.title "День рождения"}}<span class="birthdays__arrow" aria-hidden="true">→</span></a>{{else}}{{default props.title "День рождения"}}{{/if}}</h2>
+        <h2 class="birthdays__title">{{#if props.url}}<a class="birthdays__title-link" href="{{props.url}}">{{default props.title "День рождения"}}</a>{{else}}{{default props.title "День рождения"}}{{/if}}</h2>
         <div class="birthdays__body">
             {{#if props.today.length}}
                 <div class="birthdays__group birthdays__group--today">
