@@ -1,0 +1,1 @@
+function i(t,e){if(!t||!e||t.scrollWidth<=t.clientWidth)return;const n=t.getBoundingClientRect().left,l=e.getBoundingClientRect().left-n+t.scrollLeft;t.scrollLeft=Math.max(0,l-(t.clientWidth-e.offsetWidth)/2)}export{i as r};

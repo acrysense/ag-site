@@ -1,0 +1,1 @@
+function r(n="text",t=""){const e=document.createElement("span");return e.className=`skeleton skeleton--${n}${t?` ${t}`:""}`,e.setAttribute("aria-hidden","true"),e}function o(n=3,t=""){const e=document.createElement("span");e.className=`skeleton-lines${t?` ${t}`:""}`,e.setAttribute("aria-hidden","true");for(let s=0;s<n;s++)e.append(r("text"));return e}export{o as a,r as s};

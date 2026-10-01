@@ -1,0 +1,1 @@
+let t;function n(e){t||(t=document.createElement("div"),t.className="visually-hidden",t.setAttribute("role","status"),t.setAttribute("aria-live","polite"),document.body.append(t)),t.textContent="",setTimeout(()=>{t.textContent=e},50)}export{n as a};

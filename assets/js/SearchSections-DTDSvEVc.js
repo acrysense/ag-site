@@ -1,0 +1,1 @@
+import{r as t}from"./reveal-in-row-RAMtI7uy.js";function s(e){const r=e.querySelector(".search-sections__list");return t(r,r?.querySelector("[aria-current]")?.closest("li")),()=>{}}export{s as default};
