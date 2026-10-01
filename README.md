@@ -141,12 +141,23 @@ HTML-файлы из `app/pages` становятся отдельными entry
 
 Helper `attrs` автоматически обрабатывает URL-подобные атрибуты и `srcset` в объектах.
 
+## Флаги страницы (`<страница>.page.json`)
+
+- `"auth": true` — вид для вошедшего: шапка `site.headerUser` (аватар и меню под ним), мобильное
+  меню `site.mainMenu` (профиль, CRM, кабинет). Без флага — гость: `site.header` («Войти в ЛК») и
+  `site.mainMenuGuest` (карточка входа вместо профиля, без разделов кабинета).
+- `"extends": "index"` — данные другой страницы (поверх — свои поля и `data`).
+- `"robots": "noindex"` — служебная страница не индексируется.
+
+Главная в двух видах: `index.html` (гость) и `index-user.html` (вошедший) — общее тело в
+`layouts/HomePage`.
+
 ## Демо на GitHub Pages
 
 https://acrysense.github.io/ag-site/ — выкладываются только проверенные страницы:
 
 ```sh
-npm run deploy:pages -- index search
+npm run deploy:pages -- index index-user search
 ```
 
 Скрипт собирает сайт с `BASE=/ag-site/`, оставляет перечисленные страницы (имя файла без
