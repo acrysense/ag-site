@@ -3,8 +3,12 @@
     "file": "assets/js/announce-CzTc7via.js",
     "name": "announce"
   },
-  "_app--H7HXmCq.js": {
-    "file": "assets/js/app--H7HXmCq.js",
+  "_app-Btae7p6E.css": {
+    "file": "assets/css/app-Btae7p6E.css",
+    "src": "_app-Btae7p6E.css"
+  },
+  "_app-C2URobGq.js": {
+    "file": "assets/js/app-C2URobGq.js",
     "name": "app",
     "dynamicImports": [
       "components/components/Calendar/Calendar.js",
@@ -31,12 +35,8 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-JgU7WEfi.css"
+      "assets/css/app-Btae7p6E.css"
     ]
-  },
-  "_app-JgU7WEfi.css": {
-    "file": "assets/css/app-JgU7WEfi.css",
-    "src": "_app-JgU7WEfi.css"
   },
   "_icon-RHyGVOjg.js": {
     "file": "assets/js/icon-RHyGVOjg.js",
@@ -128,7 +128,7 @@
     ]
   },
   "components/components/Form/Form.js": {
-    "file": "assets/js/Form-BksF1XPV.js",
+    "file": "assets/js/Form-4LQ9WME3.js",
     "name": "Form",
     "src": "components/components/Form/Form.js",
     "isDynamicEntry": true,
@@ -146,7 +146,7 @@
     ]
   },
   "components/components/Modal/Modal.js": {
-    "file": "assets/js/Modal-WQ2gzk6K.js",
+    "file": "assets/js/Modal-B-jsKmDV.js",
     "name": "Modal",
     "src": "components/components/Modal/Modal.js",
     "isDynamicEntry": true,
@@ -275,13 +275,13 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-1dejV20W.js",
+    "file": "assets/js/dev-canvas-B65WB79I.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
       "_mock-server-MkG1XQrQ.js",
-      "_app--H7HXmCq.js"
+      "_app-C2URobGq.js"
     ],
     "css": [
       "assets/css/dev-canvas-ALVq7VmV.css"
