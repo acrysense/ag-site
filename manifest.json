@@ -3,8 +3,8 @@
     "file": "assets/js/announce-CzTc7via.js",
     "name": "announce"
   },
-  "_app-BFoLMHOU.js": {
-    "file": "assets/js/app-BFoLMHOU.js",
+  "_app-0i2Wa2ZM.js": {
+    "file": "assets/js/app-0i2Wa2ZM.js",
     "name": "app",
     "dynamicImports": [
       "components/components/Calendar/Calendar.js",
@@ -31,12 +31,12 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-Cot766hh.css"
+      "assets/css/app-0vBCaEXs.css"
     ]
   },
-  "_app-Cot766hh.css": {
-    "file": "assets/css/app-Cot766hh.css",
-    "src": "_app-Cot766hh.css"
+  "_app-0vBCaEXs.css": {
+    "file": "assets/css/app-0vBCaEXs.css",
+    "src": "_app-0vBCaEXs.css"
   },
   "_icon-RHyGVOjg.js": {
     "file": "assets/js/icon-RHyGVOjg.js",
@@ -275,13 +275,13 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-Dp65zSJA.js",
+    "file": "assets/js/dev-canvas-jWCaMTFp.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
       "_mock-server-MkG1XQrQ.js",
-      "_app-BFoLMHOU.js"
+      "_app-0i2Wa2ZM.js"
     ],
     "css": [
       "assets/css/dev-canvas-ALVq7VmV.css"
