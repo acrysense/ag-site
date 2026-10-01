@@ -2,13 +2,15 @@
 	Календарь дней рождения (Figma: 1920 — 4704:1065, 360 — 4706:1407). Одна разметка:
 	на десктопе сетка месяца 7 колонок, на мобильном и планшете — список дней, где есть
 	именинники. props: title, titleMuted (месяц), filters { action, selects [Select] },
-	weekdays [7 названий], days [день], empty, emptyText.
+	weekdays [7 названий], days [день], empty, emptyText, earlierText — подпись кнопки «Показать
+	с 1 сентября» (до 1024 дни раньше текущей недели свёрнуты, как в макете 360).
 	День: { date (YYYY-MM-DD), day, month («сентября»), monthShort («авг» — у дней соседнего
-	месяца), weekday, weekend, past, today, otherMonth, people [{ url, name, company,
+	месяца), weekday, weekend, past, today, otherMonth, earlier (раньше понедельника текущей
+	недели — только у текущего месяца), people [{ url, name, company,
 	image: { src, srcset } }] }. Бэк отдаёт целые недели с понедельника.
 	Контракт — docs/contracts/birthday-calendar.md.
 --}}
-<section class="birthday-calendar" aria-labelledby="birthday-calendar-title">
+<section class="birthday-calendar" aria-labelledby="birthday-calendar-title" data-module="BirthdayCalendar" data-path="sections/birthdays">
     <div class="birthday-calendar__top">
         <h1 class="birthday-calendar__title" id="birthday-calendar-title">{{props.title}}{{#if props.titleMuted}}, <span class="birthday-calendar__title-muted">{{props.titleMuted}}</span>{{/if}}</h1>
         {{#if props.filters.selects.length}}
@@ -28,9 +30,14 @@
                     <li class="birthday-calendar__weekday-name">{{this}}</li>
                 {{/each}}
             </ul>
+            {{!-- До 1024: дни раньше текущей недели свёрнуты (скрипт), кнопка их раскрывает. Без
+            скрипта видны все дни --}}
+            {{#if props.earlierText}}
+                <button class="btn btn--light btn--m birthday-calendar__earlier" type="button" hidden data-birthday-earlier>{{props.earlierText}}</button>
+            {{/if}}
             <ol class="birthday-calendar__days" role="list">
                 {{#each props.days}}
-                    <li class="birthday-calendar__day{{#if weekend}} is-weekend{{/if}}{{#if past}} is-past{{/if}}{{#if today}} is-today{{/if}}{{#if otherMonth}} is-other-month{{/if}}{{#unless people.length}} is-empty{{/unless}}">
+                    <li class="birthday-calendar__day{{#if weekend}} is-weekend{{/if}}{{#if past}} is-past{{/if}}{{#if today}} is-today{{/if}}{{#if otherMonth}} is-other-month{{/if}}{{#if earlier}} is-earlier{{/if}}{{#unless people.length}} is-empty{{/unless}}">
                         <p class="birthday-calendar__date">
                             <time class="birthday-calendar__num" datetime="{{date}}">{{day}}<span class="birthday-calendar__month-name"> {{month}}</span></time>
                             {{#if monthShort}}<span class="birthday-calendar__month-short" aria-hidden="true">{{monthShort}}</span>{{/if}}

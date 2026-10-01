@@ -121,10 +121,12 @@
 			padding: 14px 10px;
 			border-top: 1px solid palette("block-border");
 
-			// Мобильный: только дни этого месяца с именинниками
+			// Мобильный: только дни этого месяца с именинниками; раньше текущей недели — свёрнуты
+			// (Figma 360: список с понедельника текущей недели), кнопка «Показать с 1 …»
 			@include down(desktop) {
 				&.is-empty,
-				&.is-other-month {
+				&.is-other-month,
+				.birthday-calendar.is-collapsed &.is-earlier {
 					display: none;
 				}
 			}
@@ -356,6 +358,16 @@
 			@include up(desktop) {
 				display: none;
 			}
+		}
+	}
+
+	// «Показать с 1 сентября» — только до 1024, во всю ширину над списком
+	.birthday-calendar__earlier {
+		width: 100%;
+		margin-bottom: 12px;
+
+		@include up(desktop) {
+			display: none;
 		}
 	}
 }

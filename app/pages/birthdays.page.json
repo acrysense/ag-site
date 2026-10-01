@@ -1,5 +1,6 @@
 {
 	"title": "Дни рождения — корпоративный сайт холдинга «Аптека групп»",
+	"auth": true,
 	"description": "Дни рождения коллег холдинга «Аптека групп»: календарь по месяцам и ближайшие праздники.",
 	"data": {
 		"header": {
@@ -49,8 +50,8 @@
 			"loginUrl": "#",
 			"loginText": "Войти в ЛК",
 			"user": {
-				"name": "Владислава Митрофановна",
-				"initials": "ВМ",
+				"name": "Волкова Анна",
+				"initials": "ВА",
 				"url": "#",
 				"links": [
 					{
@@ -67,6 +68,52 @@
 						"icon": "crm",
 						"label": "CRM",
 						"url": "#"
+					}
+				],
+				"menu": [
+					{
+						"label": "Моя страница",
+						"url": "#",
+						"icon": "profile"
+					},
+					{
+						"label": "Учебный портал",
+						"url": "#",
+						"icon": "edu"
+					},
+					{
+						"label": "Коэффициент",
+						"url": "#",
+						"icon": "multiplier"
+					},
+					{
+						"label": "Пакеты",
+						"url": "#",
+						"icon": "box"
+					},
+					{
+						"label": "Мотивация",
+						"url": "#",
+						"icon": "motivation"
+					},
+					{
+						"label": "Конкурсы",
+						"url": "#",
+						"icon": "apple"
+					},
+					{
+						"divider": true
+					},
+					{
+						"label": "Настройки",
+						"url": "#",
+						"icon": "settings"
+					},
+					{
+						"label": "Выйти",
+						"url": "#",
+						"icon": "exit",
+						"modal": "main-menu-logout"
 					}
 				]
 			}
@@ -196,7 +243,8 @@
 								"src": "./dev/img/person-3.webp"
 							}
 						}
-					]
+					],
+					"earlier": true
 				},
 				{
 					"date": "2026-09-01",
@@ -221,14 +269,16 @@
 								"src": "./dev/img/person-5.webp"
 							}
 						}
-					]
+					],
+					"earlier": true
 				},
 				{
 					"date": "2026-09-02",
 					"day": 2,
 					"month": "сентября",
 					"weekday": "среда",
-					"past": true
+					"past": true,
+					"earlier": true
 				},
 				{
 					"date": "2026-09-03",
@@ -258,7 +308,8 @@
 								"src": "./dev/img/person-3.webp"
 							}
 						}
-					]
+					],
+					"earlier": true
 				},
 				{
 					"date": "2026-09-04",
@@ -275,7 +326,8 @@
 								"src": "./dev/img/person-4.webp"
 							}
 						}
-					]
+					],
+					"earlier": true
 				},
 				{
 					"date": "2026-09-05",
@@ -283,7 +335,8 @@
 					"month": "сентября",
 					"weekday": "суббота",
 					"weekend": true,
-					"past": true
+					"past": true,
+					"earlier": true
 				},
 				{
 					"date": "2026-09-06",
@@ -301,7 +354,8 @@
 								"src": "./dev/img/person-5.webp"
 							}
 						}
-					]
+					],
+					"earlier": true
 				},
 				{
 					"date": "2026-09-07",
@@ -339,7 +393,8 @@
 								"src": "./dev/img/person-4.webp"
 							}
 						}
-					]
+					],
+					"earlier": true
 				},
 				{
 					"date": "2026-09-08",
@@ -364,7 +419,8 @@
 								"src": "./dev/img/person-1.webp"
 							}
 						}
-					]
+					],
+					"earlier": true
 				},
 				{
 					"date": "2026-09-09",
@@ -381,7 +437,8 @@
 								"src": "./dev/img/person-2.webp"
 							}
 						}
-					]
+					],
+					"earlier": true
 				},
 				{
 					"date": "2026-09-10",
@@ -427,7 +484,8 @@
 								"src": "./dev/img/person-2.webp"
 							}
 						}
-					]
+					],
+					"earlier": true
 				},
 				{
 					"date": "2026-09-11",
@@ -452,7 +510,8 @@
 								"src": "./dev/img/person-4.webp"
 							}
 						}
-					]
+					],
+					"earlier": true
 				},
 				{
 					"date": "2026-09-12",
@@ -470,7 +529,8 @@
 								"src": "./dev/img/person-5.webp"
 							}
 						}
-					]
+					],
+					"earlier": true
 				},
 				{
 					"date": "2026-09-13",
@@ -478,7 +538,8 @@
 					"month": "сентября",
 					"weekday": "воскресенье",
 					"weekend": true,
-					"past": true
+					"past": true,
+					"earlier": true
 				},
 				{
 					"date": "2026-09-14",
@@ -508,7 +569,8 @@
 								"src": "./dev/img/person-3.webp"
 							}
 						}
-					]
+					],
+					"earlier": true
 				},
 				{
 					"date": "2026-09-15",
@@ -570,7 +632,8 @@
 								"src": "./dev/img/person-5.webp"
 							}
 						}
-					]
+					],
+					"earlier": true
 				},
 				{
 					"date": "2026-09-16",
@@ -595,7 +658,8 @@
 								"src": "./dev/img/person-2.webp"
 							}
 						}
-					]
+					],
+					"earlier": true
 				},
 				{
 					"date": "2026-09-17",
@@ -612,7 +676,8 @@
 								"src": "./dev/img/person-3.webp"
 							}
 						}
-					]
+					],
+					"earlier": true
 				},
 				{
 					"date": "2026-09-18",
@@ -642,7 +707,8 @@
 							"name": "Сорокина Д.А.",
 							"company": "ООО «Добрыя лекі»"
 						}
-					]
+					],
+					"earlier": true
 				},
 				{
 					"date": "2026-09-19",
@@ -650,7 +716,8 @@
 					"month": "сентября",
 					"weekday": "суббота",
 					"weekend": true,
-					"past": true
+					"past": true,
+					"earlier": true
 				},
 				{
 					"date": "2026-09-20",
@@ -676,7 +743,8 @@
 								"src": "./dev/img/person-3.webp"
 							}
 						}
-					]
+					],
+					"earlier": true
 				},
 				{
 					"date": "2026-09-21",
@@ -958,7 +1026,8 @@
 						}
 					]
 				}
-			]
+			],
+			"earlierText": "Показать с 1 сентября"
 		},
 		"aside": {
 			"title": "Скоро праздник",
