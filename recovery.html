@@ -5,9 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 		<meta name="format-detection" content="telephone=no" />
 
-		<title>Сброс пароля — корпоративный сайт холдинга «Аптека групп»</title>
+		<title>Восстановление пароля — корпоративный сайт холдинга «Аптека групп»</title>
 
-		<meta name="description" content="Сброс пароля по SMS для сотрудников холдинга «Аптека групп»." />
+		<meta name="description" content="Восстановление доступа к порталу холдинга «Аптека групп»." />
 
 		<meta name="robots" content="noindex" />
 
@@ -16,83 +16,61 @@
 
 		<link rel="icon" href="/ag-site/favicon.svg" type="image/svg+xml" />
 
-		<link rel="canonical" href="https://acrysense.github.io/ag-site/restore-password.html" />
+		<link rel="canonical" href="https://acrysense.github.io/ag-site/recovery.html" />
 
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://acrysense.github.io/ag-site/restore-password.html" />
+		<meta property="og:url" content="https://acrysense.github.io/ag-site/recovery.html" />
 		<meta property="og:locale" content="ru_RU" />
 		<meta property="og:site_name" content="Корпоративный сайт холдинга «Аптека групп»" />
-		<meta property="og:title" content="Сброс пароля — корпоративный сайт холдинга «Аптека групп»" />
-		<meta property="og:description" content="Сброс пароля по SMS для сотрудников холдинга «Аптека групп»." />
+		<meta property="og:title" content="Восстановление пароля — корпоративный сайт холдинга «Аптека групп»" />
+		<meta property="og:description" content="Восстановление доступа к порталу холдинга «Аптека групп»." />
 		<meta property="og:image" content="https://acrysense.github.io/ag-site/og-default.jpg" />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content="Сброс пароля — корпоративный сайт холдинга «Аптека групп»" />
+		<meta property="og:image:alt" content="Восстановление пароля — корпоративный сайт холдинга «Аптека групп»" />
 
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="Сброс пароля — корпоративный сайт холдинга «Аптека групп»" />
-		<meta name="twitter:description" content="Сброс пароля по SMS для сотрудников холдинга «Аптека групп»." />
+		<meta name="twitter:title" content="Восстановление пароля — корпоративный сайт холдинга «Аптека групп»" />
+		<meta name="twitter:description" content="Восстановление доступа к порталу холдинга «Аптека групп»." />
 		<meta name="twitter:image" content="https://acrysense.github.io/ag-site/og-default.jpg" />
 
 		<script type="text/plain" data-cookie-consent>
 			window.__agDemoCounter = (window.__agDemoCounter || 0) + 1; console.info('[demo] счётчик включён после согласия на cookie')
 		</script>
 		<script type="module" crossorigin src="/ag-site/assets/js/mock-server-CNqGOPyr.js"></script>
-		<script type="module" crossorigin src="/ag-site/assets/js/app-T3K0ur_6.js"></script>
-		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-DtoirH3w.css" />
+		<script type="module" crossorigin src="/ag-site/assets/js/app-DwYqxLM0.js"></script>
+		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-Cp0UTHvQ.css" />
 	</head>
 	<body>
 		<main class="auth">
-			<div class="auth__inner">
-				<a class="auth__logo" href="./index.html" aria-label="На главную">
-					<img src="/ag-site/assets/images/logo-CXuolww_.svg" width="57" height="52" alt="" />
-				</a>
+			<a class="auth__back" href="./index.html">
+				<svg class="icon auth__back-icon" aria-hidden="true" focusable="false">
+					<use href="/ag-site/assets/icons/sprite.svg#icon-arrow-back"></use>
+				</svg>
+				<span>К порталу</span>
+			</a>
+			<div class="auth__main">
+				<img
+					class="auth__logo"
+					src="/ag-site/assets/images/logotype-BSAnmV5C.svg"
+					width="118"
+					height="120"
+					alt="Аптека групп холдинг"
+				/>
 				<section class="auth__card" aria-labelledby="auth-title">
 					<div class="auth__top">
-						<h1 class="auth__title" id="auth-title">Сброс пароля</h1>
-						<p class="auth__text">Укажите номер телефона — на него придёт SMS с кодом входа.</p>
+						<h1 class="auth__title" id="auth-title">Восстановление пароля</h1>
+						<p class="auth__text">
+							Для восстановления доступа к порталу обратитесь в техподдержку по адресу
+							<a href="mailto:support@aptphg.by">support@aptphg.by</a>
+						</p>
 					</div>
-					<form
-						class="auth-form"
-						action="./restore-password-code.html"
-						method="post"
-						data-module="Form"
-						data-path="components"
-						data-form-native
-					>
-						<div class="auth-form__fields">
-							<div class="field">
-								<label class="field__label visually-hidden" for="auth-phone">Номер телефона</label>
-								<span class="field__box">
-									<input
-										class="field__control"
-										id="auth-phone"
-										name="USER_PHONE_NUMBER"
-										type="tel"
-										placeholder="Например, +375 (29) 123-11-12"
-										autocomplete="tel"
-										inputmode="tel"
-										required
-										maxlength="25"
-									/>
-								</span>
-
-								<p class="field__error" id="auth-phone-error" hidden>
-									<svg class="icon field__error-icon" aria-hidden="true" focusable="false">
-										<use href="/ag-site/assets/icons/sprite.svg#icon-alert"></use>
-									</svg>
-									<span data-field-error></span>
-								</p>
-								<a class="field__link" href="./login.html">Вернуться к форме входа</a>
-							</div>
-						</div>
-						<p class="form-error" role="alert" data-form-error hidden></p>
-						<button class="btn btn--general btn--m auth-form__submit" type="submit">
-							<span class="btn__text">Отправить код</span>
-						</button>
-					</form>
+					<a class="btn btn--general btn--m auth-form__submit" href="./login.html">
+						<span class="btn__text">К форме входа</span>
+					</a>
 				</section>
 			</div>
+			<p class="auth__slogan">Вместе – мы команда!</p>
 		</main>
 		<dialog
 			class="modal modal--s modal--confirm"

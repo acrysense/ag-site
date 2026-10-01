@@ -38,15 +38,25 @@
 			window.__agDemoCounter = (window.__agDemoCounter || 0) + 1; console.info('[demo] счётчик включён после согласия на cookie')
 		</script>
 		<script type="module" crossorigin src="/ag-site/assets/js/mock-server-CNqGOPyr.js"></script>
-		<script type="module" crossorigin src="/ag-site/assets/js/app-T3K0ur_6.js"></script>
-		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-DtoirH3w.css" />
+		<script type="module" crossorigin src="/ag-site/assets/js/app-DwYqxLM0.js"></script>
+		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-Cp0UTHvQ.css" />
 	</head>
 	<body>
 		<main class="auth">
-			<div class="auth__inner">
-				<a class="auth__logo" href="./index.html" aria-label="На главную">
-					<img src="/ag-site/assets/images/logo-CXuolww_.svg" width="57" height="52" alt="" />
-				</a>
+			<a class="auth__back" href="./index.html">
+				<svg class="icon auth__back-icon" aria-hidden="true" focusable="false">
+					<use href="/ag-site/assets/icons/sprite.svg#icon-arrow-back"></use>
+				</svg>
+				<span>К порталу</span>
+			</a>
+			<div class="auth__main">
+				<img
+					class="auth__logo"
+					src="/ag-site/assets/images/logotype-BSAnmV5C.svg"
+					width="118"
+					height="120"
+					alt="Аптека групп холдинг"
+				/>
 				<section class="auth__card" aria-labelledby="auth-title">
 					<div class="auth__top">
 						<h1 class="auth__title" id="auth-title">Вход сотрудника</h1>
@@ -120,7 +130,7 @@
 									</svg>
 									<span data-field-error></span>
 								</p>
-								<a class="field__link" href="./restore-password.html">Не удается войти?</a>
+								<a class="field__link" href="./recovery.html">Восстановление пароля</a>
 							</div>
 						</div>
 						<p class="form-error" role="alert" data-form-error hidden></p>
@@ -130,6 +140,7 @@
 					</form>
 				</section>
 			</div>
+			<p class="auth__slogan">Вместе – мы команда!</p>
 		</main>
 		<dialog
 			class="modal modal--s modal--confirm"

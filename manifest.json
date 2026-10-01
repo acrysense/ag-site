@@ -3,12 +3,12 @@
     "file": "assets/js/announce-CzTc7via.js",
     "name": "announce"
   },
-  "_app-DtoirH3w.css": {
-    "file": "assets/css/app-DtoirH3w.css",
-    "src": "_app-DtoirH3w.css"
+  "_app-Cp0UTHvQ.css": {
+    "file": "assets/css/app-Cp0UTHvQ.css",
+    "src": "_app-Cp0UTHvQ.css"
   },
-  "_app-T3K0ur_6.js": {
-    "file": "assets/js/app-T3K0ur_6.js",
+  "_app-DwYqxLM0.js": {
+    "file": "assets/js/app-DwYqxLM0.js",
     "name": "app",
     "dynamicImports": [
       "components/components/Calendar/Calendar.js",
@@ -29,7 +29,6 @@
       "components/layouts/Header/Header.js",
       "components/layouts/MainMenu/MainMenu.js",
       "components/layouts/SiteSearch/SiteSearch.js",
-      "components/sections/auth/AuthResend/AuthResend.js",
       "components/sections/birthdays/BirthdayCalendar/BirthdayCalendar.js",
       "components/sections/career/VacancyApply/VacancyApply.js",
       "components/sections/career/VacancyFilters/VacancyFilters.js",
@@ -41,11 +40,10 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-DtoirH3w.css"
+      "assets/css/app-Cp0UTHvQ.css"
     ],
     "assets": [
-      "assets/images/auth-bg-mobile-C5be7WJt.svg",
-      "assets/images/auth-bg-CXiUxQml.svg"
+      "assets/images/auth-ag-m2GDsMwR.svg"
     ]
   },
   "_filter-panel-CxDryH0e.js": {
@@ -92,13 +90,9 @@
     "file": "assets/js/skeleton-Bj9dw7Ib.js",
     "name": "skeleton"
   },
-  "assets/images/auth/auth-bg-mobile.svg": {
-    "file": "assets/images/auth-bg-mobile-C5be7WJt.svg",
-    "src": "assets/images/auth/auth-bg-mobile.svg"
-  },
-  "assets/images/auth/auth-bg.svg": {
-    "file": "assets/images/auth-bg-CXiUxQml.svg",
-    "src": "assets/images/auth/auth-bg.svg"
+  "assets/images/decor/auth-ag.svg": {
+    "file": "assets/images/auth-ag-m2GDsMwR.svg",
+    "src": "assets/images/decor/auth-ag.svg"
   },
   "assets/images/logo-mobile.svg": {
     "file": "assets/images/logo-mobile-CY1jZkm6.svg",
@@ -107,6 +101,10 @@
   "assets/images/logo.svg": {
     "file": "assets/images/logo-CXuolww_.svg",
     "src": "assets/images/logo.svg"
+  },
+  "assets/images/logotype.svg": {
+    "file": "assets/images/logotype-BSAnmV5C.svg",
+    "src": "assets/images/logotype.svg"
   },
   "components/components/Calendar/Calendar.js": {
     "file": "assets/js/Calendar-BR7C4FOL.js",
@@ -258,15 +256,6 @@
       "_skeleton-Bj9dw7Ib.js"
     ]
   },
-  "components/sections/auth/AuthResend/AuthResend.js": {
-    "file": "assets/js/AuthResend-AjdenirM.js",
-    "name": "AuthResend",
-    "src": "components/sections/auth/AuthResend/AuthResend.js",
-    "isDynamicEntry": true,
-    "imports": [
-      "_announce-CzTc7via.js"
-    ]
-  },
   "components/sections/birthdays/BirthdayCalendar/BirthdayCalendar.js": {
     "file": "assets/js/BirthdayCalendar-B60Nd0kF.js",
     "name": "BirthdayCalendar",
@@ -346,16 +335,16 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-Co2KVGK4.js",
+    "file": "assets/js/dev-canvas-0DEq23x-.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
       "_mock-server-CNqGOPyr.js",
-      "_app-T3K0ur_6.js"
+      "_app-DwYqxLM0.js"
     ],
     "css": [
-      "assets/css/dev-canvas-Bd3wWTvM.css"
+      "assets/css/dev-canvas-B9lA4Ypm.css"
     ],
     "assets": [
       "assets/images/logo-CXuolww_.svg",
@@ -380,6 +369,7 @@
       "assets/images/leader-3-CcIOKFln.webp",
       "assets/images/leader-4-mXrw-axB.webp",
       "assets/images/leader-5-BxHvXs3_.webp",
+      "assets/images/logotype-BSAnmV5C.svg",
       "assets/images/journal-1-CvFQH_nj.webp",
       "assets/images/journal-2-3hgfWDPs.webp",
       "assets/images/side-banner-DNv6ADL6.webp"
