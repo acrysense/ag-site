@@ -46,10 +46,11 @@
     "file": "assets/js/index-DeDpOBIY.js",
     "name": "index"
   },
-  "_mock-server-BvGJ_xri.js": {
-    "file": "assets/js/mock-server-BvGJ_xri.js",
+  "_mock-server-DGBNd_6V.js": {
+    "file": "assets/js/mock-server-DGBNd_6V.js",
     "name": "mock-server",
     "assets": [
+      "assets/images/person-2-BSdhiEQf.webp",
       "assets/images/news-1-C8UetQQG.webp",
       "assets/images/news-3-Cg1MkcK5.webp"
     ]
@@ -274,12 +275,12 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-oq_5-q8C.js",
+    "file": "assets/js/dev-canvas-BiPhXIwQ.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
-      "_mock-server-BvGJ_xri.js",
+      "_mock-server-DGBNd_6V.js",
       "_app-rmNDqBVp.js"
     ],
     "css": [
@@ -406,12 +407,12 @@
     "src": "pages/dev/img/wide-mobile.webp"
   },
   "pages/dev/ui.html": {
-    "file": "assets/js/dev-ui-CrvWELMh.js",
+    "file": "assets/js/dev-ui-CA4Nq_ni.js",
     "name": "dev-ui",
     "src": "pages/dev/ui.html",
     "isEntry": true,
     "imports": [
-      "_mock-server-BvGJ_xri.js"
+      "_mock-server-DGBNd_6V.js"
     ],
     "css": [
       "assets/css/dev-ui-B3yuv34e.css"
