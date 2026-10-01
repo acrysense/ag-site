@@ -2,15 +2,16 @@
 // <div data-module="Reveal" data-path="components">, проявляются его дочерние блоки; у ряда
 // с data-reveal-row — каждый блок ряда отдельно. Скрываются только блоки ниже первого экрана
 // (что видно при загрузке, не мигает); блок проявляется один раз, когда показался на экране:
-// прозрачность и небольшой подъём, соседние — друг за другом. Без JS и при «уменьшить
-// движение» всё видно сразу.
+// прозрачность и небольшой подъём, соседние — друг за другом. Без JS, при «уменьшить
+// движение» и с панелью Битрикса всё видно сразу.
 const STAGGER = 90
 const MAX_STAGGER = 4
 const DONE_AFTER = 1300
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 
 export default function init(root) {
-	if (reducedMotion.matches) return
+	// В режиме правки Битрикса (панель #bx-panel) админ видит все блоки сразу
+	if (reducedMotion.matches || document.getElementById('bx-panel')) return
 
 	const targets = [...root.children]
 		.flatMap((child) => (child.hasAttribute('data-reveal-row') ? [...child.children] : [child]))
