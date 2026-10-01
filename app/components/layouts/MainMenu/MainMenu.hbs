@@ -44,7 +44,7 @@
         {{#each props.groups}}
             <p class="main-menu__label">{{label}}</p>
             <div class="main-menu__card">
-                <button class="main-menu__group" type="button" aria-expanded="{{#if expanded}}true{{else}}false{{/if}}" aria-controls="{{default ../props.id 'main-menu'}}-group-{{@index}}" data-main-menu-group>
+                <button class="main-menu__group" type="button" aria-expanded="{{#if expanded}}true{{else}}false{{/if}}" aria-controls="{{default ../props.id 'main-menu'}}-group-{{@index}}" data-main-menu-group="{{default key title}}">
                     {{> components/Icon/Icon name=icon class="main-menu__icon"}}
                     <span class="main-menu__group-text">
                         <span class="main-menu__group-title">{{title}}</span>

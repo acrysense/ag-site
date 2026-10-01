@@ -279,6 +279,7 @@
 		},
 		"groups": [
 			{
+				"key": "crm",
 				"label": "CRM",
 				"title": "CRM",
 				"icon": "case",
@@ -318,6 +319,7 @@
 				]
 			},
 			{
+				"key": "cabinet",
 				"label": "Личный кабинет",
 				"title": "Личный кабинет",
 				"icon": "profile",
