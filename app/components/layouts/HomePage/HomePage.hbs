@@ -1,0 +1,30 @@
+{{!--
+	Тело главной: общее для index.html (гость) и index-user.html (вошедший). Какая шапка и
+	мобильное меню — решает флаг auth в <страница>.page.json (site.header / site.headerUser).
+--}}
+<div class="wrapper">
+    {{> layouts/Header/Header props=site.header }}
+    <main class="wrapper__content">
+        {{!-- Заголовок страницы для скринридеров и поиска: на главной он не виден (в макете нет) --}}
+        <h1 class="visually-hidden">{{site.siteName}}</h1>
+        {{!-- Блоки главной в порядке макета (PC.Main v2 — 4615:42781, 360.Main v2 — 4865:1332).
+        Готовые подключены, остальные добавляются по мере вёрстки. --}}
+        <div class="container page-blocks" data-module="Reveal" data-path="components">
+            {{> sections/home/HeroBanners/HeroBanners props=data.hero }}
+            <div class="page-row page-row--posts" data-reveal-row>
+                {{> sections/home/PostList/PostList props=data.promo }}
+                {{> sections/home/PostList/PostList props=data.corporate }}
+                {{> sections/shared/Birthdays/Birthdays props=data.birthdays }}
+            </div>
+            {{> sections/home/Stats/Stats props=data.stats }}
+            {{> sections/home/NewsFeed/NewsFeed props=data.news }}
+            {{> sections/home/WideBanner/WideBanner props=data.wideBanner }}
+            {{> sections/home/Leaders/Leaders props=data.leaders }}
+        </div>
+    </main>
+    {{> layouts/Footer/Footer props=site.footer }}
+</div>
+{{> layouts/MainMenu/MainMenu props=site.mainMenu }}
+{{> layouts/TabBar/TabBar props=site.tabBar }}
+{{> layouts/SiteModals/SiteModals props=site.modals }}
+{{> layouts/CookieBanner/CookieBanner props=site.cookies }}

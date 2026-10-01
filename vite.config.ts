@@ -704,7 +704,23 @@ export default defineConfig(({ mode }) => {
 
 					const outName = outNameFromHtmlPath(absoluteHtmlPath)
 					const pageJsonPath = absoluteHtmlPath.replace(/\.html$/, '.page.json')
-					const pageCfg = loadJSON(pageJsonPath) || {}
+					let pageCfg = loadJSON(pageJsonPath) || {}
+					// "extends": "index" — данные другой страницы (та же главная, другой вид)
+					if (pageCfg.extends) {
+						const base =
+							loadJSON(
+								resolve(path.dirname(pageJsonPath), `${pageCfg.extends}.page.json`)
+							) || {}
+						pageCfg = { ...base, ...pageCfg, data: { ...base.data, ...pageCfg.data } }
+					}
+					// "auth": true — вид для вошедшего: шапка с аватаром и меню, мобильное меню с
+					// профилем и разделами кабинета. Без флага — гость (вход в ЛК)
+					const auth = Boolean(pageCfg.auth)
+					const siteView = {
+						...site,
+						header: (auth && site.headerUser) || site.header,
+						mainMenu: auth ? site.mainMenu : site.mainMenuGuest || site.mainMenu,
+					}
 
 					const title = pageCfg.title || site.seoDefaults?.title || site.siteName || ''
 					const description = pageCfg.description || site.seoDefaults?.description || ''
@@ -723,11 +739,14 @@ export default defineConfig(({ mode }) => {
 					}
 
 					return {
-						site,
+						site: siteView,
+						auth,
 						lang: site.lang || 'ru',
 
 						baseMeta,
-						meta: [],
+						// "robots": "noindex" в .page.json — служебная страница (например, вид главной
+						// для вошедшего в демо)
+						meta: pageCfg.robots ? [{ name: 'robots', content: pageCfg.robots }] : [],
 						linkPreload,
 						linkOther,
 

@@ -119,6 +119,151 @@
 		"loginUrl": "#",
 		"loginText": "Войти в ЛК"
 	},
+	"headerUser": {
+		"homeUrl": "/",
+		"title": "Корпоративный сайт холдинга “Аптека групп”",
+		"titleShort": "Корпоративный сайт холдинга",
+		"search": {
+			"action": "#",
+			"name": "q"
+		},
+		"menu": [
+			{
+				"text": "Главная",
+				"url": "/",
+				"current": true
+			},
+			{
+				"text": "О холдинге",
+				"children": [
+					{
+						"text": "Структура",
+						"url": "#"
+					},
+					{
+						"text": "Справочник",
+						"url": "#"
+					}
+				]
+			},
+			{
+				"text": "Новости",
+				"url": "#",
+				"children": [
+					{
+						"text": "Новости холдинга",
+						"url": "#"
+					},
+					{
+						"text": "HR-дайджест",
+						"url": "#"
+					}
+				]
+			},
+			{
+				"text": "Карьера",
+				"url": "#",
+				"children": [
+					{
+						"text": "Вакансии",
+						"url": "#"
+					},
+					{
+						"text": "Карьерный шанс",
+						"url": "#"
+					}
+				]
+			},
+			{
+				"text": "База знаний",
+				"url": "#",
+				"children": [
+					{
+						"text": "Учебный портал",
+						"url": "#"
+					},
+					{
+						"text": "Нормативные документы",
+						"url": "#"
+					}
+				]
+			},
+			{
+				"text": "Галерея",
+				"url": "#"
+			}
+		],
+		"loginUrl": "#",
+		"loginText": "Войти в ЛК",
+		"user": {
+			"name": "Волкова Анна",
+			"initials": "ВА",
+			"url": "#",
+			"links": [
+				{
+					"icon": "profile",
+					"label": "Личный кабинет",
+					"url": "#"
+				},
+				{
+					"icon": "edu",
+					"label": "Учебный портал",
+					"url": "#"
+				},
+				{
+					"icon": "crm",
+					"label": "CRM",
+					"url": "#"
+				}
+			],
+			"menu": [
+				{
+					"label": "Моя страница",
+					"url": "#",
+					"icon": "profile"
+				},
+				{
+					"label": "Учебный портал",
+					"url": "#",
+					"icon": "edu"
+				},
+				{
+					"label": "Коэффициент",
+					"url": "#",
+					"icon": "multiplier"
+				},
+				{
+					"label": "Пакеты",
+					"url": "#",
+					"icon": "box"
+				},
+				{
+					"label": "Мотивация",
+					"url": "#",
+					"icon": "motivation"
+				},
+				{
+					"label": "Конкурсы",
+					"url": "#",
+					"icon": "apple"
+				},
+				{
+					"divider": true
+				},
+				{
+					"label": "Настройки",
+					"url": "#",
+					"icon": "settings"
+				},
+				{
+					"label": "Выйти",
+					"url": "#",
+					"icon": "exit",
+					"modal": "main-menu-logout"
+				}
+			]
+		}
+	},
 	"mainMenu": {
 		"title": "Меню",
 		"user": {
@@ -272,6 +417,81 @@
 					"url": "#"
 				}
 			]
+		}
+	},
+	"mainMenuGuest": {
+		"title": "Меню",
+		"portal": {
+			"label": "Портал",
+			"items": [
+				{
+					"icon": "home",
+					"text": "Главная",
+					"url": "/",
+					"current": true
+				},
+				{
+					"icon": "news",
+					"text": "Новости",
+					"url": "#"
+				},
+				{
+					"icon": "directory",
+					"text": "Справочник сотрудников",
+					"url": "#"
+				},
+				{
+					"icon": "wiki",
+					"text": "База знаний",
+					"url": "#"
+				},
+				{
+					"icon": "case",
+					"text": "Вакансии",
+					"url": "#"
+				},
+				{
+					"icon": "gallery",
+					"text": "Галерея",
+					"url": "#"
+				}
+			]
+		},
+		"join": {
+			"label": "Присоединяйтесь",
+			"items": [
+				{
+					"logo": "/assets/images/brands/apte4ka.png",
+					"text": "Гипермаркет Аптечка+",
+					"url": "#"
+				},
+				{
+					"logo": "/assets/images/brands/adel.svg",
+					"text": "Аптеки ADEL",
+					"url": "#"
+				},
+				{
+					"logo": "/assets/images/brands/dleki.svg",
+					"text": "Аптеки Добрыя лекi",
+					"url": "#"
+				},
+				{
+					"logo": "/assets/images/brands/feelingood.png",
+					"text": "Клуб FeelinGood",
+					"url": "#"
+				},
+				{
+					"logo": "/assets/images/brands/aptekaby.svg",
+					"text": "Сервис Apteka.by",
+					"url": "#"
+				}
+			]
+		},
+		"login": {
+			"title": "Войдите в личный кабинет",
+			"text": "CRM, мотивация, учебный портал и другие разделы — после входа",
+			"button": "Войти в ЛК",
+			"url": "#"
 		}
 	},
 	"tabBar": {

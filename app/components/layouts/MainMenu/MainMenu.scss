@@ -91,6 +91,34 @@
 			border-radius: $radius-inner-block;
 		}
 
+		// Гость: карточка входа на месте профиля (наше): заголовок, пояснение, кнопка во всю ширину
+		&__login {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+			padding: 14px;
+			background: palette("white");
+			border-radius: $radius-inner-block;
+		}
+
+		&__login-title {
+			@include text("m-500");
+
+			margin: 0;
+		}
+
+		&__login-text {
+			@include text("s-400");
+
+			margin: 0;
+			color: palette("dark-grey-txt");
+		}
+
+		&__login-button {
+			width: 100%;
+			margin-top: 10px;
+		}
+
 		&__avatar {
 			flex: none;
 			width: 48px;
