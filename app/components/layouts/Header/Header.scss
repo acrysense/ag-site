@@ -414,4 +414,72 @@
 	.menu__toggle {
 		transition: color $transition-default;
 	}
+
+	// Меню под аватаром (кит: Dropdown menu 2725:18877): белая карточка, поля 20, скругление 10,
+	// тень списков; пункты 14/20 через 20, значок 20 через 15, разделитель Grey. Шрифт кита Poppins —
+	// на сайте Inter. Справа под аватаром; на мобильном — тоже
+	.header__user-menu {
+		position: relative;
+	}
+
+	button.header__user {
+		padding: 0;
+		font: inherit;
+		cursor: pointer;
+		background: none;
+		border: 0;
+	}
+
+	.header__user-menu.is-open .header__user-arrow {
+		transform: rotate(-90deg);
+	}
+
+	.header__user-arrow {
+		transition: transform $transition-default;
+	}
+
+	.user-menu {
+		position: absolute;
+		top: calc(100% + 10px);
+		right: 0;
+		z-index: 20;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		min-width: 240px;
+		margin: 0;
+		padding: 20px;
+		list-style: none;
+		background: palette("white");
+		border-radius: $radius-inner-block;
+		box-shadow: $shadow-list;
+
+		@include appear;
+	}
+
+	.user-menu__link {
+		@include text("m-400-360");
+
+		display: flex;
+		gap: 15px;
+		align-items: center;
+		color: palette("black-txt");
+		white-space: nowrap;
+		transition: color $transition-default;
+
+		&:hover {
+			color: palette("blue-txt");
+		}
+	}
+
+	.user-menu__icon {
+		flex: none;
+		width: 20px;
+		height: 20px;
+	}
+
+	.user-menu__divider {
+		height: 1px;
+		background: palette("grey");
+	}
 }

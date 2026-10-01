@@ -130,10 +130,51 @@
 	}
 
 	// Строки поиска в макете нет — поле в тех же цветах, что пункты
+	// Поиск по пунктам и свой крестик справа
+	.select__search-box {
+		position: relative;
+		display: flex;
+		flex: none;
+	}
+
+	.select__search-clear {
+		position: absolute;
+		top: 50%;
+		right: 6px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 24px;
+		height: 24px;
+		padding: 0;
+		color: palette("icon-grey");
+		cursor: pointer;
+		background: none;
+		border: 0;
+		transform: translateY(-50%);
+		transition: color $transition-default;
+
+		// Наведение (наше, как у кнопок-значков): Main Blue
+		&:hover {
+			color: palette("main-blue");
+		}
+
+		&[hidden] {
+			display: none;
+		}
+	}
+
+	.select__search-clear-icon {
+		width: 10px;
+		height: 10px;
+	}
+
 	.select__search {
 		@include text("m-400");
 
-		flex: none;
+		flex: 1 1 auto;
+		min-width: 0;
+		padding-right: 34px;
 		height: 38px;
 		padding: 8px 10px;
 		font-size: $field-font-size-min;
@@ -144,6 +185,11 @@
 
 		&::placeholder {
 			color: palette("dark-grey-txt");
+		}
+
+		&::-webkit-search-cancel-button {
+			display: none;
+			appearance: none;
 		}
 	}
 
@@ -277,7 +323,7 @@
 
 	.select--multi .select__search {
 		height: 36px;
-		padding: 6px 15px;
+		padding: 6px 34px 6px 15px;
 		background: palette("white");
 		border-color: palette("form-border");
 		border-radius: 7px;

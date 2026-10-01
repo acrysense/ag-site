@@ -136,6 +136,7 @@ export default function init(root) {
 	}
 
 	let input = null
+	let clearSearch = null
 	if (searchable) {
 		input = document.createElement('input')
 		input.type = 'search'
@@ -148,7 +149,17 @@ export default function init(root) {
 		input.setAttribute('aria-expanded', 'true')
 		input.setAttribute('aria-controls', `${id}-list`)
 		input.setAttribute('aria-labelledby', labelledby)
-		popup.append(input)
+		// Крестик — свой (браузерный у type="search" разный в Chrome/Safari и нет в Firefox)
+		clearSearch = document.createElement('button')
+		clearSearch.type = 'button'
+		clearSearch.className = 'select__search-clear'
+		clearSearch.setAttribute('aria-label', 'Очистить поиск')
+		clearSearch.hidden = true
+		clearSearch.append(createIcon('close', 'select__search-clear-icon'))
+		const searchBox = document.createElement('div')
+		searchBox.className = 'select__search-box'
+		searchBox.append(input, clearSearch)
+		popup.append(searchBox)
 	}
 
 	const list = document.createElement('ul')
@@ -524,6 +535,7 @@ export default function init(root) {
 		'input',
 		() => {
 			query = input.value
+			clearSearch.hidden = !input.value
 			clearTimeout(debounceTimer)
 			if (!remoteUrl) {
 				filterLocal()
@@ -531,6 +543,16 @@ export default function init(root) {
 			}
 			// На сервер — после паузы в наборе
 			debounceTimer = setTimeout(load, DEBOUNCE)
+		},
+		{ signal }
+	)
+
+	clearSearch?.addEventListener(
+		'click',
+		() => {
+			input.value = ''
+			input.dispatchEvent(new Event('input'))
+			input.focus()
 		},
 		{ signal }
 	)

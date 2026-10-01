@@ -5,7 +5,8 @@
 	layouts/SiteSearch, настройки — site.search),
 	menu — пункты [{ text, url, current, children: [{ text, url, current }] }]; пункт с подменю без url
 	(ТЗ: «О холдинге» не кликабелен) — целиком кнопка подменю,
-	user — для вошедшего: { name, initials, avatar, url, links: [{ icon, label, url }] }
+	user — для вошедшего: { name, initials, avatar, url, links: [{ icon, label, url }],
+	menu: [{ label, url, icon, modal } | { divider: true }] — меню под аватаром }
 	(links — быстрые ссылки на десктопе: личный кабинет, учебный портал, CRM),
 	иначе кнопка входа: loginUrl, loginText.
 	Контракт — docs/contracts/header.md.
@@ -39,18 +40,44 @@
                         {{/each}}
                     </ul>
                 {{/if}}
-                {{!-- Меню под аватаром в макете не нарисовано: пока ссылка на личный кабинет --}}
-                <a class="header__user" href="{{props.user.url}}">
+                {{#*inline "headerUserInner"}}
                     <span class="header__avatar">
-                        {{#if props.user.avatar}}
-                            <img src="{{props.user.avatar}}" width="30" height="30" alt="" />
+                        {{#if user.avatar}}
+                            <img src="{{user.avatar}}" width="30" height="30" alt="" />
                         {{else}}
-                            <span class="header__initials" aria-hidden="true">{{props.user.initials}}</span>
+                            <span class="header__initials" aria-hidden="true">{{user.initials}}</span>
                         {{/if}}
                     </span>
-                    <span class="header__user-name">{{props.user.name}}</span>
+                    <span class="header__user-name">{{user.name}}</span>
                     {{> components/Icon/Icon name="angle-right" class="header__user-arrow"}}
-                </a>
+                {{/inline}}
+                {{#if props.user.menu.length}}
+                    {{!-- Меню под аватаром (кит: Dropdown menu 2725:18877). Пункт: { label, url, icon }
+                    или { divider: true }; modal — id окна, которое пункт открывает (выход) --}}
+                    <div class="header__user-menu" data-user-menu>
+                        <button class="header__user" type="button" aria-expanded="false" aria-controls="{{default props.id 'header'}}-user-menu" data-user-menu-toggle>
+                            {{> headerUserInner user=props.user}}
+                            <span class="visually-hidden">— меню профиля</span>
+                        </button>
+                        <ul class="user-menu" id="{{default props.id 'header'}}-user-menu" role="list" hidden>
+                            {{#each props.user.menu}}
+                                {{#if divider}}
+                                    <li class="user-menu__divider" aria-hidden="true"></li>
+                                {{else}}
+                                    <li>
+                                        <a class="user-menu__link" href="{{url}}"{{#if modal}} data-modal-open="{{modal}}"{{/if}}>
+                                            {{#if icon}}{{> components/Icon/Icon name=icon class="user-menu__icon"}}{{/if}}
+                                            <span>{{label}}</span>
+                                        </a>
+                                    </li>
+                                {{/if}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                {{else}}
+                    {{!-- Без пунктов меню — ссылка в личный кабинет --}}
+                    <a class="header__user" href="{{props.user.url}}">{{> headerUserInner user=props.user}}</a>
+                {{/if}}
             {{else}}
                 {{> components/Button/Button props=(obj href=props.loginUrl text=(default props.loginText 'Войти в ЛК') variant="general" size="m" class="header__login")}}
             {{/if}}

@@ -284,6 +284,27 @@
 						"label": "CRM",
 						"url": "#"
 					}
+				],
+				"menu": [
+					{
+						"label": "Моя страница",
+						"url": "#",
+						"icon": "profile"
+					},
+					{
+						"label": "Настройки",
+						"url": "#",
+						"icon": "settings"
+					},
+					{
+						"divider": true
+					},
+					{
+						"label": "Выйти",
+						"url": "#",
+						"icon": "exit",
+						"modal": "main-menu-logout"
+					}
 				]
 			}
 		},
@@ -7044,6 +7065,27 @@
 						"icon": "crm",
 						"label": "CRM",
 						"url": "#"
+					}
+				],
+				"menu": [
+					{
+						"label": "Моя страница",
+						"url": "#",
+						"icon": "profile"
+					},
+					{
+						"label": "Настройки",
+						"url": "#",
+						"icon": "settings"
+					},
+					{
+						"divider": true
+					},
+					{
+						"label": "Выйти",
+						"url": "#",
+						"icon": "exit",
+						"modal": "main-menu-logout"
 					}
 				]
 			}

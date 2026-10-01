@@ -75,6 +75,10 @@
                         <button class="btn btn--general btn--m site-search__all" type="submit" data-site-search-all>Все результаты</button>
                     </div>
                 </div>
+                {{!-- Выбраны фильтры, запроса нет — поиск по фильтрам (в макете состояния нет) --}}
+                <div class="site-search__footer site-search__footer--apply" hidden data-site-search-apply>
+                    <button class="btn btn--general btn--m site-search__all" type="submit">Найти</button>
+                </div>
             </div>
         </div>
     </form>

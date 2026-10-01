@@ -547,6 +547,13 @@
 	}
 
 	// «в Справочнике» — только на мобильном (на десктопе раздел виден в сайдбаре)
+	// «Найти в …» на десктопе — по ширине полей фильтров (у них поля по 8)
+	.site-search__footer--apply {
+		@include up(desktop) {
+			padding: 6px 8px 4px;
+		}
+	}
+
 	.site-search__all-in {
 		@include up(desktop) {
 			display: none;

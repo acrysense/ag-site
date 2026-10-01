@@ -1,6 +1,8 @@
 // Шапка: подменю открываются наведением мышью на десктопе, нажатием на стрелку
 // (тач, клавиатура) и закрываются по Escape, клику снаружи и уходу фокуса.
 // Бургер открывает мобильное меню (layouts/MainMenu) через data-main-menu-open.
+// Меню под аватаром [data-user-menu]: по клику; закрывается по Escape (фокус — на аватар),
+// клику снаружи, уходу фокуса и выбору пункта.
 const desktop = window.matchMedia('(min-width: 1024px)')
 
 export default function init(root) {
@@ -79,6 +81,57 @@ export default function init(root) {
 	)
 
 	desktop.addEventListener('change', () => closeAll(), { signal })
+
+	const userMenu = root.querySelector('[data-user-menu]')
+	if (userMenu) {
+		const toggle = userMenu.querySelector('[data-user-menu-toggle]')
+		const panel = userMenu.querySelector('.user-menu')
+		const isOpen = () => userMenu.classList.contains('is-open')
+		const setUserMenu = (open) => {
+			toggle.setAttribute('aria-expanded', String(open))
+			panel.hidden = !open
+			userMenu.classList.toggle('is-open', open)
+		}
+
+		toggle.addEventListener(
+			'click',
+			() => {
+				closeAll()
+				setUserMenu(!isOpen())
+			},
+			{ signal }
+		)
+		panel.addEventListener(
+			'click',
+			(event) => event.target.closest('a') && setUserMenu(false),
+			{
+				signal,
+			}
+		)
+		userMenu.addEventListener(
+			'focusout',
+			(event) => {
+				if (!userMenu.contains(event.relatedTarget)) setUserMenu(false)
+			},
+			{ signal }
+		)
+		document.addEventListener(
+			'click',
+			(event) => {
+				if (isOpen() && !userMenu.contains(event.target)) setUserMenu(false)
+			},
+			{ signal }
+		)
+		document.addEventListener(
+			'keydown',
+			(event) => {
+				if (event.key !== 'Escape' || !isOpen()) return
+				setUserMenu(false)
+				toggle.focus()
+			},
+			{ signal }
+		)
+	}
 
 	return () => controller.abort()
 }

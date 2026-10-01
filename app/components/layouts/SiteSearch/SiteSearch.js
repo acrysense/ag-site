@@ -59,6 +59,7 @@ export default function init(root) {
 	const emptyTitle = root.querySelector('[data-site-search-empty-title]')
 	const allButton = root.querySelector('[data-site-search-all]')
 	const footer = root.querySelector('[data-site-search-footer]')
+	const apply = root.querySelector('[data-site-search-apply]')
 	const chip = root.querySelector('[data-site-search-chip]')
 	const chipText = root.querySelector('[data-site-search-chip-text]')
 	const clear = root.querySelector('[data-site-search-clear]')
@@ -123,6 +124,16 @@ export default function init(root) {
 		summaryText.textContent = n ? `Фильтры: ${chosen.map(filterText).join(', ')}` : 'Фильтры'
 		root.classList.toggle('has-filters', n > 0)
 		root.querySelectorAll('.site-search__empty-reset').forEach((el) => (el.hidden = !n))
+		updateApply()
+	}
+
+	// Фильтры выбраны, а запроса нет — кнопка «Найти в разделе» (с запросом — «Все результаты»)
+	const updateApply = () => {
+		if (!apply) return
+		const show = query().length < MIN_CHARS && activeFilters().length > 0
+		apply.hidden = !show
+		if (show)
+			apply.firstElementChild.textContent = `Найти ${currentSection()?.dataset.where || `в разделе «${sectionName()}»`}`
 	}
 
 	const resetFilters = () => {
@@ -409,6 +420,7 @@ export default function init(root) {
 		() => {
 			clear.hidden = !input.value
 			if (!isOpen()) open()
+			updateApply()
 			scheduleSuggest()
 		},
 		{ signal }
@@ -419,6 +431,7 @@ export default function init(root) {
 			input.value = ''
 			clear.hidden = true
 			showResults(false)
+			updateApply()
 			input.focus()
 		},
 		{ signal }
