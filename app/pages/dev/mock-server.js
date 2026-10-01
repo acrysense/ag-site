@@ -451,7 +451,8 @@ async function mockSearchSuggest(url, init) {
 async function mockSearchFilters(url, init) {
 	const section = url.searchParams.get('section') || 'directory'
 	console.info('[mock-search-filters]', section)
-	await wait(600, init.signal)
+	// Дольше остальных — чтобы в демо был виден скелетон
+	await wait(900, init.signal)
 	const template = document.querySelector(`template[data-site-search-demo="${section}"]`)
 	return new Response(template ? template.innerHTML : '', {
 		headers: { 'Content-Type': 'text/html' },

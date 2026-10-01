@@ -188,6 +188,11 @@
 		padding: 8px 10px;
 		color: palette("dark-grey-txt");
 
+		// Пунктов нет — строка на месте первого пункта, без лишнего воздуха сверху и снизу
+		.select__scroll[hidden] + & {
+			padding-block: 0;
+		}
+
 		&[hidden] {
 			display: none;
 		}

@@ -81,8 +81,8 @@ $colors: (
 	"red-soft": #ffeded,
 	// Наше, в Figma нет: незаполненная часть прогресса в точке карусели (Blue.Hover 25% на белом)
 	"blue-progress": #c3ddf6,
-	// Наше, в Figma нет: скелетон загрузки — BG.Main 70% на белом (светлее, чем серые плашки)
-	"skeleton": #f0f3f6,
+	// Наше, в Figma нет: скелетон загрузки — светлее BG.Main, чтобы не было «серых плашек»
+	"skeleton": #edf0f4,
 	// BG/BG.Yellow — метка «Новости» в поиске
 	"bg-yellow": #fff0d6,
 	// BG/BG.Blue — метка и заглушка «Документы»
@@ -391,8 +391,8 @@ $duration-popup: 0.2s;
 $duration-overlay: 0.3s;
 // Параллакс в каруселях баннеров: картинка отстаёт от кадра на эту долю ширины
 $parallax-shift: 30%;
-// Блик скелетона: один проход
-$duration-skeleton: 1.6s;
+// Блик скелетона: один проход по плашке
+$duration-skeleton: 1.3s;
 // Проявление блоков при прокрутке (components/Reveal): медленнее окон — мягко, без рывка
 $duration-reveal: 0.9s;
 $reveal-shift: 16px;

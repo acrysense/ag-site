@@ -199,6 +199,8 @@ export default function init(root) {
 		status = state
 		statusBox.replaceChildren()
 		statusBox.hidden = state === 'ready'
+		// Пунктов нет («Ничего не найдено», первая загрузка) — пустой список не занимает места
+		scroll.hidden = state !== 'ready' && !items.length
 		root.classList.toggle('is-loading', state === 'loading')
 		if (state === 'loading') statusBox.textContent = TEXT.loading
 		if (state === 'empty') statusBox.textContent = TEXT.empty
