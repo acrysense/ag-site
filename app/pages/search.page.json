@@ -1,5 +1,6 @@
 {
 	"title": "Результаты поиска «иван» — корпоративный сайт «Аптека групп»",
+	"auth": true,
 	"description": "Поиск по порталу холдинга «Аптека групп»: сотрудники, новости, документы и вакансии.",
 	"data": {
 		"header": {
@@ -50,8 +51,8 @@
 			"loginUrl": "#",
 			"loginText": "Войти в ЛК",
 			"user": {
-				"name": "Владислава Митрофановна",
-				"initials": "ВМ",
+				"name": "Волкова Анна",
+				"initials": "ВА",
 				"url": "#",
 				"links": [
 					{
@@ -68,6 +69,52 @@
 						"icon": "crm",
 						"label": "CRM",
 						"url": "#"
+					}
+				],
+				"menu": [
+					{
+						"label": "Моя страница",
+						"url": "#",
+						"icon": "profile"
+					},
+					{
+						"label": "Учебный портал",
+						"url": "#",
+						"icon": "edu"
+					},
+					{
+						"label": "Коэффициент",
+						"url": "#",
+						"icon": "multiplier"
+					},
+					{
+						"label": "Пакеты",
+						"url": "#",
+						"icon": "box"
+					},
+					{
+						"label": "Мотивация",
+						"url": "#",
+						"icon": "motivation"
+					},
+					{
+						"label": "Конкурсы",
+						"url": "#",
+						"icon": "apple"
+					},
+					{
+						"divider": true
+					},
+					{
+						"label": "Настройки",
+						"url": "#",
+						"icon": "settings"
+					},
+					{
+						"label": "Выйти",
+						"url": "#",
+						"icon": "exit",
+						"modal": "main-menu-logout"
 					}
 				]
 			}
