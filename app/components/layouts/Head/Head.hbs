@@ -4,7 +4,7 @@
 
 <title>{{head.title}}</title>
 
-<meta name="description" content="{{or head.description site.seoDefaults.description 'Описание сайта'}}" />
+<meta name="description" content="{{or head.description site.seoDefaults.description}}" />
 
 {{#each meta}}
     <meta {{{attrs this}}} />
@@ -24,16 +24,16 @@
 
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="{{or site.ogLocale 'ru_RU'}}" />
-<meta property="og:site_name" content="{{or site.siteName head.title 'Vite'}}" />
-<meta property="og:title" content="{{or head.title site.siteName 'Vite'}}" />
-<meta property="og:description" content="{{or head.description site.seoDefaults.description 'Описание сайта'}}" />
+<meta property="og:site_name" content="{{or site.siteName head.title}}" />
+<meta property="og:title" content="{{or head.title site.siteName}}" />
+<meta property="og:description" content="{{or head.description site.seoDefaults.description}}" />
 {{#if head.ogImage}}
     <meta property="og:image" content="{{head.ogImage}}" />
 {{/if}}
 
 <meta name="twitter:card" content="{{or head.twitterCard 'summary_large_image'}}" />
-<meta name="twitter:title" content="{{or head.title site.siteName 'Vite'}}" />
-<meta name="twitter:description" content="{{or head.description site.seoDefaults.description 'Описание сайта'}}" />
+<meta name="twitter:title" content="{{or head.title site.siteName}}" />
+<meta name="twitter:description" content="{{or head.description site.seoDefaults.description}}" />
 {{#if head.ogImage}}
     <meta name="twitter:image" content="{{head.ogImage}}" />
 {{/if}}

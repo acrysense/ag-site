@@ -31,8 +31,10 @@
 	}
 
 	// Точки: 10px, активная — полоска 25px Blue.Hover (Figma: Frame 356)
+	// Точки создаёт JS — высота заложена заранее, чтобы блок не сдвигался, когда они появятся
 	.carousel__dots {
 		display: flex;
+		min-height: 10px;
 		gap: 5px;
 		justify-content: center;
 	}

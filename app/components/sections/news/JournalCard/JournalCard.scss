@@ -93,4 +93,9 @@
 		width: 40px;
 		padding: 0;
 	}
+
+	// Пока картинка грузится — светлая заготовка вместо белой дыры (цвет скелетона, без блика)
+	.journal-card__cover {
+		background-color: palette("skeleton");
+	}
 }

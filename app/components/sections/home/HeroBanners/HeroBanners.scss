@@ -227,4 +227,17 @@ $promo-column: calc((100% - 66.4px) / 3);
 	.hero__promo:hover img {
 		opacity: 0.9;
 	}
+
+	// Пока картинка грузится — светлая заготовка вместо белой дыры (цвет скелетона, без блика)
+	.hero__slide,
+	.hero__promo {
+		background-color: palette("skeleton");
+	}
+
+	// На десктопе у промо свой фон из макета
+	.hero__promo {
+		@include up(desktop) {
+			background-color: palette("bg-purple");
+		}
+	}
 }

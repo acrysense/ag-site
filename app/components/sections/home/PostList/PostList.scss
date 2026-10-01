@@ -165,4 +165,9 @@
 	.post-list__title a:hover {
 		color: palette("blue-txt");
 	}
+
+	// Пока картинка грузится — светлая заготовка вместо белой дыры (цвет скелетона, без блика)
+	.post-list__image {
+		background-color: palette("skeleton");
+	}
 }

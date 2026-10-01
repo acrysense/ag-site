@@ -119,4 +119,9 @@
 	.news-card__link:hover {
 		color: palette("blue-hover");
 	}
+
+	// Пока картинка грузится — светлая заготовка вместо белой дыры (цвет скелетона, без блика)
+	.news-card__media {
+		background-color: palette("skeleton");
+	}
 }

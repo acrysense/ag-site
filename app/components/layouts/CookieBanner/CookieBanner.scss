@@ -83,6 +83,12 @@
 	.cookie-banner {
 		@include appear(translateY(8px), $duration-overlay);
 
+		// Мобильный: прижата к низу — выезжает снизу целиком, без просвечивания
+		@include down(tablet) {
+			--appear-shift: translateY(100%);
+			--appear-opacity: 1;
+		}
+
 		&.is-instant {
 			transition: none;
 		}

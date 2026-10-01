@@ -15,10 +15,30 @@
 			"content": "telephone=no"
 		}
 	],
-	"link": [],
+	"link": [
+		{
+			"rel": "preload",
+			"href": "/fonts/RFRufo/RFRufo-Bold.woff2",
+			"as": "font",
+			"type": "font/woff2",
+			"crossorigin": ""
+		},
+		{
+			"rel": "preload",
+			"href": "/fonts/RFRufo/RFRufo-Regular.woff2",
+			"as": "font",
+			"type": "font/woff2",
+			"crossorigin": ""
+		},
+		{
+			"rel": "icon",
+			"href": "/favicon.svg",
+			"type": "image/svg+xml"
+		}
+	],
 	"seoDefaults": {
 		"title": "Корпоративный сайт холдинга «Аптека групп»",
-		"description": "",
+		"description": "Корпоративный портал холдинга «Аптека групп»: новости, дни рождения коллег, лидеры месяца, журнал и справочник сотрудников.",
 		"ogImage": "",
 		"twitterCard": "summary_large_image"
 	},

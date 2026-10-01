@@ -115,4 +115,9 @@
 	.wide-banner__link:hover img {
 		opacity: 0.9;
 	}
+
+	// Пока картинка грузится — светлая заготовка вместо белой дыры (цвет скелетона, без блика)
+	.wide-banner__slide {
+		background-color: palette("skeleton");
+	}
 }
