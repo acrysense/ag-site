@@ -7,8 +7,8 @@
     "file": "assets/css/app-CvNR35ML.css",
     "src": "_app-CvNR35ML.css"
   },
-  "_app-DMM_YlEq.js": {
-    "file": "assets/js/app-DMM_YlEq.js",
+  "_app-D1tpQSJ0.js": {
+    "file": "assets/js/app-D1tpQSJ0.js",
     "name": "app",
     "dynamicImports": [
       "components/components/Calendar/Calendar.js",
@@ -93,7 +93,7 @@
     ]
   },
   "components/components/Carousel/Carousel.js": {
-    "file": "assets/js/Carousel-CmUOze8R.js",
+    "file": "assets/js/Carousel-CJqAMzLA.js",
     "name": "Carousel",
     "src": "components/components/Carousel/Carousel.js",
     "isDynamicEntry": true
@@ -282,13 +282,13 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-CDZxwx8L.js",
+    "file": "assets/js/dev-canvas-C43ES-LE.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
       "_mock-server-MkG1XQrQ.js",
-      "_app-DMM_YlEq.js"
+      "_app-D1tpQSJ0.js"
     ],
     "css": [
       "assets/css/dev-canvas-ALVq7VmV.css"
