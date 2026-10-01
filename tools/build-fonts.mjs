@@ -18,9 +18,10 @@ async function readConfig() {
 				varWght: config.defaults?.varWght || '300 700',
 			},
 			families: config.families || {},
+			subsets: config.subsets || {},
 		}
 	} catch {
-		return { defaults: { display: 'swap', varWght: '300 700' }, families: {} }
+		return { defaults: { display: 'swap', varWght: '300 700' }, families: {}, subsets: {} }
 	}
 }
 
@@ -56,6 +57,12 @@ function isVariable(fileName) {
 	return /\[.*wght.*]/.test(name) || /(?:variablefont|variable|[-_]vf)(?:[-_.]|$)/.test(name)
 }
 
+// Набор символов — последнее слово имени файла (Inter-Variable-cyrillic.woff2), диапазон — из
+// subsets в fonts.config.json. Браузер качает только те файлы, символы которых есть на странице.
+function subsetRange(fileName, subsets) {
+	return subsets[tokens(fileName).at(-1)] || null
+}
+
 function isItalic(fileName) {
 	return tokens(fileName).includes('italic')
 }
@@ -72,7 +79,7 @@ async function copy(file, target) {
 	await fs.copyFile(file, target)
 }
 
-function emitFace({ family, sourceWoff2, sourceWoff, style, weight, display }) {
+function emitFace({ family, sourceWoff2, sourceWoff, style, weight, display, unicodeRange }) {
 	const sources = [`url("${sourceWoff2}") format("woff2")`]
 	if (sourceWoff) sources.push(`url("${sourceWoff}") format("woff")`)
 
@@ -83,6 +90,7 @@ function emitFace({ family, sourceWoff2, sourceWoff, style, weight, display }) {
 		`\tfont-weight: ${weight};`,
 		`\tfont-style: ${style};`,
 		`\tfont-display: ${display};`,
+		...(unicodeRange ? [`\tunicode-range: ${unicodeRange};`] : []),
 		'}',
 	].join('\n')
 }
@@ -141,6 +149,7 @@ for (const file of files.sort()) {
 			style,
 			weight: variable ? variableWeight : guessWeight(fileName),
 			display: config.defaults.display,
+			unicodeRange: subsetRange(fileName, config.subsets),
 		})
 	)
 }
