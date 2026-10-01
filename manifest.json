@@ -3,12 +3,12 @@
     "file": "assets/js/announce-CzTc7via.js",
     "name": "announce"
   },
-  "_app-Btae7p6E.css": {
-    "file": "assets/css/app-Btae7p6E.css",
-    "src": "_app-Btae7p6E.css"
+  "_app-CvNR35ML.css": {
+    "file": "assets/css/app-CvNR35ML.css",
+    "src": "_app-CvNR35ML.css"
   },
-  "_app-C2URobGq.js": {
-    "file": "assets/js/app-C2URobGq.js",
+  "_app-DMM_YlEq.js": {
+    "file": "assets/js/app-DMM_YlEq.js",
     "name": "app",
     "dynamicImports": [
       "components/components/Calendar/Calendar.js",
@@ -27,6 +27,7 @@
       "components/layouts/Header/Header.js",
       "components/layouts/MainMenu/MainMenu.js",
       "components/layouts/SiteSearch/SiteSearch.js",
+      "components/sections/birthdays/BirthdayCalendar/BirthdayCalendar.js",
       "components/sections/home/Stats/Stats.js",
       "components/sections/news/NewsFilters/NewsFilters.js",
       "components/sections/search/SearchFilters/SearchFilters.js",
@@ -35,7 +36,7 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-Btae7p6E.css"
+      "assets/css/app-CvNR35ML.css"
     ]
   },
   "_icon-RHyGVOjg.js": {
@@ -220,6 +221,12 @@
       "_skeleton-Bj9dw7Ib.js"
     ]
   },
+  "components/sections/birthdays/BirthdayCalendar/BirthdayCalendar.js": {
+    "file": "assets/js/BirthdayCalendar-B60Nd0kF.js",
+    "name": "BirthdayCalendar",
+    "src": "components/sections/birthdays/BirthdayCalendar/BirthdayCalendar.js",
+    "isDynamicEntry": true
+  },
   "components/sections/home/Stats/Stats.js": {
     "file": "assets/js/Stats-CG9lLhOp.js",
     "name": "Stats",
@@ -275,13 +282,13 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-B65WB79I.js",
+    "file": "assets/js/dev-canvas-CDZxwx8L.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
       "_mock-server-MkG1XQrQ.js",
-      "_app-C2URobGq.js"
+      "_app-DMM_YlEq.js"
     ],
     "css": [
       "assets/css/dev-canvas-ALVq7VmV.css"
