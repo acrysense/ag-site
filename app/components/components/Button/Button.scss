@@ -28,7 +28,8 @@
 		background: palette("main-blue");
 		transition: background-color $transition-default;
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			background: palette("blue-hover");
 		}
 	}
@@ -101,16 +102,6 @@
 		}
 	}
 
-	// Фокус с клавиатуры на заливных кнопках — белая обводка внутри (синяя на синем не видна)
-	.btn--general,
-	.btn--error {
-		--focus-ring-color: #{palette("white")};
-
-		&:focus-visible {
-			outline-offset: -4px;
-		}
-	}
-
 	// Figma: Error — красная, «Выйти»
 	.btn--error {
 		color: palette("white");
@@ -122,7 +113,8 @@
 	.btn--light {
 		transition: color $transition-default;
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			color: palette("blue-txt");
 		}
 	}
@@ -130,7 +122,8 @@
 	.btn--error {
 		transition: background-color $transition-default;
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			background: color-mix(in srgb, palette("red") 88%, palette("black-txt"));
 		}
 	}

@@ -100,7 +100,8 @@ $leaders-gap: 14.5px; // 1920: 5 карточек по 300 в 1558 — пром�
 			text-align: center;
 		}
 
-		a.leaders__card:hover .leaders__name {
+		a.leaders__card:hover .leaders__name,
+		a.leaders__card:focus-visible .leaders__name {
 			color: palette("blue-hover");
 		}
 
@@ -239,16 +240,19 @@ $leaders-gap: 14.5px; // 1920: 5 карточек по 300 в 1558 — пром�
 	.leaders__arrow {
 		transition: color $transition-default;
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			color: palette("main-blue");
 		}
 	}
 
-	.leaders__all:hover {
+	.leaders__all:hover,
+	.leaders__all:focus-visible {
 		color: palette("blue-hover");
 	}
 
-	.leaders__title a:hover {
+	.leaders__title a:hover,
+	.leaders__title a:focus-visible {
 		color: palette("blue-txt");
 	}
 

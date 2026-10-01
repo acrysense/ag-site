@@ -116,7 +116,8 @@
 			background: none;
 
 			&:hover,
-			&[aria-current] {
+			&[aria-current],
+			&:focus-visible {
 				color: palette("blue-txt");
 				background: none;
 			}
@@ -124,7 +125,8 @@
 	}
 
 	// Наведение на год (наше): Blue.TXT
-	.news-filters__chip:hover:not([aria-current]) {
+	.news-filters__chip:hover:not([aria-current]),
+	.news-filters__chip:focus-visible:not([aria-current]) {
 		color: palette("blue-txt");
 	}
 }

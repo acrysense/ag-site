@@ -146,7 +146,8 @@
 		text-decoration: none;
 		transition: color $transition-default;
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			color: palette("blue-hover");
 		}
 
@@ -186,7 +187,8 @@
 	.search-filters__close {
 		transition: color $transition-default;
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			color: palette("main-blue");
 		}
 	}

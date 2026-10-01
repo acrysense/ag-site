@@ -288,7 +288,9 @@
 
 		// ФИО — ссылка на профиль: при наведении Blue.TXT, плавно. Подчёркивание из макета
 		// (4706:1265) убрано по решению: оно не анимируется и выглядит как задержка
-		a.birthday-calendar__person-main:hover .birthday-calendar__name {
+		a.birthday-calendar__person-main:hover .birthday-calendar__name,
+// (4706:1265) убрано по решению: оно не анимируется и выглядит как задержка
+		a.birthday-calendar__person-main:focus-visible .birthday-calendar__name {
 			color: palette("blue-txt");
 		}
 

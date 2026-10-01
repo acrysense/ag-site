@@ -69,7 +69,8 @@
 			content: "";
 		}
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			color: palette("blue-hover");
 		}
 	}

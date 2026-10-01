@@ -235,7 +235,8 @@
 		transition: color $transition-default;
 
 		&:hover,
-		&:has(:checked) {
+		&:has(:checked),
+		&:focus-visible {
 			color: palette("blue-txt");
 		}
 
@@ -243,9 +244,9 @@
 			background: palette("bg-violet");
 		}
 
+		// Фокус — как наведение (Blue.TXT); выбранный раздел и так подсвечен
 		&:has(:focus-visible) {
-			outline: $focus-ring-width solid var(--focus-ring-color, #{palette("form-focus")});
-			outline-offset: $focus-ring-offset;
+			color: palette("blue-txt");
 		}
 	}
 
@@ -315,7 +316,8 @@
 		border: 0;
 		transition: color $transition-default;
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			color: palette("blue-hover");
 		}
 	}
@@ -439,7 +441,8 @@
 		transition: background-color $transition-default;
 
 		&:hover,
-		.is-active > & {
+		.is-active > &,
+		&:focus-visible {
 			background: palette("bg-info");
 		}
 	}
@@ -719,7 +722,8 @@
 	}
 
 	// Наведение (наше): рамка поля — Icon.Grey (в фокусе и на мобильном — синяя), крестики — Main Blue
-	.site-search__field:hover:not(:focus-within) {
+	.site-search__field:hover:not(:focus-within),
+	.site-search__field:focus-visible:not(:focus-within) {
 		@include up(desktop) {
 			border-color: palette("icon-grey");
 		}
@@ -730,7 +734,8 @@
 	.site-search__chip {
 		transition: color $transition-default;
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			color: palette("main-blue");
 		}
 	}

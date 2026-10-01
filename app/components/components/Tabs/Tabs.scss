@@ -35,7 +35,8 @@
 	}
 
 	// Наведение на невыбранную вкладку (наше): Blue.TXT
-	.tabs__tab:hover:not([aria-selected="true"]) {
+	.tabs__tab:hover:not([aria-selected="true"]),
+	.tabs__tab:focus-visible:not([aria-selected="true"]) {
 		color: palette("blue-txt");
 	}
 }

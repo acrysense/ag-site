@@ -40,9 +40,9 @@
 			opacity: 0.5;
 		}
 
+		// Фокус с клавиатуры — рамка Form.Focus (как у полей), без кольца
 		.checkbox__input:focus-visible + & {
-			outline: $focus-ring-width solid palette("form-focus");
-			outline-offset: $focus-ring-offset;
+			border-color: palette("form-focus");
 		}
 
 		.checkbox.is-invalid & {
@@ -76,7 +76,8 @@
 	}
 
 	// Наведение (наше): рамка флажка Green — цвет отмеченного
-	.checkbox__row:hover .checkbox__input:not(:checked) + .checkbox__box {
+	.checkbox__row:hover .checkbox__input:not(:checked) + .checkbox__box,
+	.checkbox__row:focus-visible .checkbox__input:not(:checked) + .checkbox__box {
 		border-color: palette("green");
 	}
 }

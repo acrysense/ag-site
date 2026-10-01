@@ -40,7 +40,8 @@
 		}
 
 		// Наведение (наше): рамка Icon.Grey; фокус и ошибка — ниже, перекрывают
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			border-color: palette("icon-grey");
 		}
 

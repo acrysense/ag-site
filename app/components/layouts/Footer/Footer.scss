@@ -86,7 +86,8 @@
 			transition: border-color $transition-default;
 		}
 
-		&__social-link:hover &__social-icon {
+		&__social-link:hover &__social-icon,
+		&__social-link:focus-visible &__social-icon {
 			border-color: palette("icon-grey");
 		}
 
@@ -175,14 +176,16 @@
 			color: palette("dark-grey-txt");
 			transition: color $transition-default;
 
-			&:hover {
+			&:hover,
+			&:focus-visible {
 				color: palette("black-txt");
 			}
 		}
 	}
 
 	// Наведение на контакты (наше): текст и значок Blue.TXT
-	.footer__contact:hover {
+	.footer__contact:hover,
+	.footer__contact:focus-visible {
 		color: palette("blue-txt");
 	}
 }

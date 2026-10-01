@@ -42,7 +42,8 @@
 			color $transition-default,
 			border-color $transition-default;
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			color: palette("blue-txt");
 		}
 
@@ -81,7 +82,8 @@
 		border-radius: $radius-inner-block;
 		transition: color $transition-default;
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			color: palette("main-blue");
 		}
 
@@ -139,7 +141,8 @@
 		border: 1px solid transparent;
 		border-radius: 0;
 
-		&:hover:not(.is-start, .is-end) {
+		&:hover:not(.is-start, .is-end),
+		&:focus-visible:not(.is-start, .is-end) {
 			color: palette("blue-txt");
 		}
 

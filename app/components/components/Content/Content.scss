@@ -43,7 +43,8 @@
 			color: palette("main-blue");
 			transition: color $transition-default;
 
-			&:hover {
+			&:hover,
+			&:focus-visible {
 				color: palette("blue-hover");
 			}
 		}
@@ -192,7 +193,8 @@
 	.content summary {
 		transition: color $transition-default;
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			color: palette("blue-txt");
 		}
 	}

@@ -61,7 +61,8 @@
 		color: palette("blue-txt");
 		transition: color $transition-default;
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			color: palette("blue-hover");
 		}
 	}

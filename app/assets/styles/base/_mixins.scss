@@ -279,7 +279,8 @@ $alias-bp: (
 	transition: border-color vars.$transition-default;
 
 	// Наведение (наше): рамка Icon.Grey; фокус и «открыто» блок задаёт после миксина
-	&:hover {
+	&:hover,
+	&:focus-visible {
 		border-color: palette("icon-grey");
 	}
 

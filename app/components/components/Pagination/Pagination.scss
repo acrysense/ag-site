@@ -57,7 +57,9 @@
 	}
 
 	a.pagination__page:hover,
-	a.pagination__step:hover {
+	a.pagination__step:hover,
+	a.pagination__page:focus-visible,
+	a.pagination__step:focus-visible {
 		color: palette("black-txt");
 	}
 

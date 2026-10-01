@@ -56,7 +56,8 @@
 	}
 
 	// Наведение (наше): «Показать все» — Blue.Hover
-	.news-feed__all:hover {
+	.news-feed__all:hover,
+	.news-feed__all:focus-visible {
 		color: palette("blue-hover");
 	}
 }

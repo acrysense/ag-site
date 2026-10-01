@@ -39,19 +39,40 @@
 		transition: color $transition-default;
 	}
 
-	// Фокус с клавиатуры: обводка Form.Focus вплотную к элементу (по его скруглению), без
-	// зазора — как рамка. outline: none без замены запрещён: цвет меняйте через
-	// --focus-ring-color (на синей кнопке — белая внутри, см. Button)
+	// Фокус с клавиатуры выглядит как наведение: в каждом правиле :hover есть пара :focus-visible
+	// (цвет у ссылок и текстов, фон у кнопок, рамка у полей). Обводки поверх нет.
+	// Запасной вариант — тонкая обводка Form.Focus внутри элемента (не распирает его): для
+	// картинок-ссылок, текущих пунктов (у них нет наведения) и остального без своего вида.
+	// outline: none без замены запрещён: цвет запасной обводки — --focus-ring-color
 	:focus-visible {
 		outline: $focus-ring-width solid var(--focus-ring-color, #{palette("form-focus")});
-		outline-offset: $focus-ring-offset;
+		outline-offset: calc(#{$focus-ring-width} * -1);
 	}
 
-	// Ссылки-текст: обводка со скруглением и 2px воздуха, чтобы не резала буквы. :where — без
-	// веса: у блоков со своими скруглением и отступом обводки остаются их
-	:where(a):focus-visible {
-		border-radius: 4px;
-		outline-offset: 2px;
+	// Ссылки и кнопки: вид фокуса — из их правил наведения
+	:where(a, button, summary):focus-visible:not([aria-current], [aria-selected="true"]) {
+		outline: none;
+	}
+
+	// Текущая ссылка (пункт меню, страница) — наведения у неё нет: подчёркивание
+	:where(a)[aria-current]:focus-visible {
+		outline: none;
+		text-decoration: underline;
+		text-underline-offset: 0.25em;
+	}
+
+	// Выбранная вкладка, текущая кнопка (синие) — белая рамка внутри
+	:where(button)[aria-selected="true"]:focus-visible,
+	:where(button)[aria-current="true"]:focus-visible {
+		--focus-ring-color: #{palette("white")};
+
+		outline-offset: calc(#{$focus-ring-width} * -2);
+	}
+
+	// Картинка-ссылка (баннеры): наведение — лёгкое притемнение, с клавиатуры его не видно —
+	// обводка внутри картинки
+	:where(a):focus-visible:not([aria-current]):has(> img, > picture) {
+		outline: $focus-ring-width solid var(--focus-ring-color, #{palette("form-focus")});
 	}
 
 	// Не загрузилась (utils/broken-images) — прячем значок и alt браузера, видна заготовка блока.

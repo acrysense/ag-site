@@ -9,7 +9,8 @@ import { announce } from '@/utils/announce'
 //   Ошибки полей от сервера — к полям, остальное — над кнопкой; ничего не глотается.
 // - Успех: data-form-success="<id окна>" — форма закрывается и открывается окно «Спасибо»,
 //   иначе сообщение над кнопкой. Результат объявляется скринридеру.
-// - Изменённая форма помечается data-form-dirty: модалка перед закрытием спросит.
+// - Изменённая форма помечается data-form-dirty: модалка перед закрытием спросит. Изменённая —
+//   значит отличается от исходной (пробелы по краям не в счёт): написал и стёр — не изменена.
 const TEXT = {
 	required: 'Заполните поле',
 	consent: 'Нужно ваше согласие',
@@ -104,6 +105,15 @@ export default function init(form) {
 		setFormError('')
 	}
 
+	// Значения формы для сравнения с исходными (без служебных полей)
+	const snapshot = () =>
+		[...new FormData(form)]
+			.filter(([name, value]) => name !== 'sessid' && typeof value === 'string')
+			.map(([name, value]) => `${name}=${value.trim()}`)
+			.join('&')
+	let initial = snapshot()
+	const updateDirty = () => form.toggleAttribute('data-form-dirty', snapshot() !== initial)
+
 	const setBusy = (busy) => {
 		form.toggleAttribute('aria-busy', busy)
 		if (busy) form.setAttribute('aria-busy', 'true')
@@ -114,6 +124,7 @@ export default function init(form) {
 
 	const succeed = (message) => {
 		form.reset()
+		initial = snapshot()
 		form.removeAttribute('data-form-dirty')
 		clearAll()
 		const target = form.dataset.formSuccess
@@ -197,12 +208,19 @@ export default function init(form) {
 	const onInput = (event) => {
 		const el = event.target
 		if (!el.name) return
-		form.setAttribute('data-form-dirty', '')
+		updateDirty()
 		if (el.getAttribute('aria-invalid') === 'true' && !check(el)) clearError(el)
 	}
 	form.addEventListener('input', onInput, { signal })
 	form.addEventListener('change', onInput, { signal })
-	form.addEventListener('form:reset', clearAll, { signal })
+	form.addEventListener(
+		'form:reset',
+		() => {
+			initial = snapshot()
+			clearAll()
+		},
+		{ signal }
+	)
 	form.addEventListener('focusout', (event) => normalize(event.target), { signal })
 
 	return () => {

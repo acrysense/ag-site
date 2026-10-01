@@ -44,7 +44,8 @@
 			border-color $transition-default;
 
 		&:hover,
-		&[aria-current] {
+		&[aria-current],
+		&:focus-visible {
 			color: palette("blue-txt");
 		}
 

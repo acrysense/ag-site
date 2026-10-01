@@ -62,14 +62,16 @@
 			gap: 12px;
 			width: 100%;
 			max-height: inherit;
-			padding: 16px 10px calc(16px + env(safe-area-inset-bottom));
+			// Снизу отступа нет: он внутри прокрутки (modal__content), чтобы содержимое
+			// докручивалось до низа окна, а не обрезалось над полосой отступа
+			padding: 16px 10px 0;
 			background: palette("white");
 			border-radius: $radius-content-block $radius-content-block 0 0;
 			box-shadow: $shadow-sheet;
 
 			@include up(tablet) {
 				gap: var(--modal-gap);
-				padding: 32px;
+				padding: 32px 32px 0;
 				border-radius: $radius-content-block;
 				box-shadow: $shadow-content-block;
 			}
@@ -150,10 +152,10 @@
 			display: flex;
 			flex-direction: column;
 			gap: var(--modal-gap);
-			padding-inline: 20px;
+			padding: 0 20px calc(16px + env(safe-area-inset-bottom));
 
 			@include up(tablet) {
-				padding-inline: 16px;
+				padding: 0 16px 32px;
 			}
 		}
 
@@ -203,13 +205,17 @@
 		// По центру (успех): только крестик сверху, содержимое по центру; на десктопе поля 40
 		&--center &__panel {
 			@include up(tablet) {
-				padding: 40px;
+				padding: 40px 40px 0;
 			}
 		}
 
 		&--center &__content {
 			align-items: center;
 			text-align: center;
+
+			@include up(tablet) {
+				padding-bottom: 40px;
+			}
 
 			> .btn {
 				align-self: stretch;
@@ -281,7 +287,8 @@
 	.modal__close {
 		transition: color $transition-default;
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			color: palette("main-blue");
 		}
 	}

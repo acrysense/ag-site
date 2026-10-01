@@ -24,7 +24,8 @@
 		transition: border-color $transition-default;
 
 		// Наведение (наше): рамка Icon.Grey; фокус и ошибка — ниже, перекрывают
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			border-color: palette("icon-grey");
 		}
 
@@ -155,7 +156,8 @@
 		transition: color $transition-default;
 
 		// Наведение (наше, как у кнопок-значков): Main Blue
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			color: palette("main-blue");
 		}
 
@@ -257,7 +259,8 @@
 		background: none;
 		border: 0;
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			color: palette("blue-hover");
 		}
 	}
@@ -370,7 +373,8 @@
 			color: palette("blue-txt");
 		}
 
-		&:hover .select__option-text {
+		&:hover .select__option-text,
+		&:focus-visible .select__option-text {
 			color: palette("blue-txt");
 		}
 	}

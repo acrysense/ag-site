@@ -11,6 +11,12 @@ import { lockBody } from '@/utils/scroll-lock'
 // Форма с несохранёнными изменениями ([data-form-dirty], ставит модуль Form) перед закрытием
 // спрашивает подтверждение — окно с data-modal-discard (одно на странице). «Закрыть» в нём
 // сбрасывает форму и закрывает оба окна.
+// Чем пользовались последним — клавиатурой или указателем: окно, открытое не кликом
+// (подтверждение по Escape, «Спасибо» после отправки с Enter), ставит фокус так же
+let keyboardLast = false
+document.addEventListener('keydown', () => (keyboardLast = true), true)
+document.addEventListener('pointerdown', () => (keyboardLast = false), true)
+
 export default function init(dialog) {
 	const controller = new AbortController()
 	const { signal } = controller
@@ -28,7 +34,7 @@ export default function init(dialog) {
 
 	// keyboard — открыли с клавиатуры: фокус на первую кнопку или поле. Пальцем или мышью —
 	// на само окно (без обводки на кнопке; Tab ведёт дальше по окну)
-	const open = (keyboard = false) => {
+	const open = (keyboard = keyboardLast) => {
 		if (dialog.open) return
 		dialog.showModal()
 		release?.()

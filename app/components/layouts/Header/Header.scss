@@ -146,7 +146,8 @@
 			color: palette("black-txt");
 			transition: color $transition-default;
 
-			&:hover {
+			&:hover,
+			&:focus-visible {
 				color: palette("blue-hover");
 			}
 
@@ -294,7 +295,8 @@
 			color: palette("black-txt");
 			transition: color $transition-default;
 
-			&:hover {
+			&:hover,
+			&:focus-visible {
 				color: palette("blue-hover");
 			}
 		}
@@ -323,7 +325,8 @@
 		}
 
 		&__item.is-open > &__toggle,
-		&__toggle:hover {
+		&__toggle:hover,
+		&__toggle:focus-visible {
 			color: palette("blue-hover");
 		}
 
@@ -375,7 +378,9 @@
 
 	// Наведение (наше, только цвет): название, имя пользователя — Blue.TXT, бургер — Main Blue
 	.header__brand:hover .header__title,
-	.header__user:hover .header__user-name {
+	.header__user:hover .header__user-name,
+	.header__brand:focus-visible .header__title,
+	.header__user:focus-visible .header__user-name {
 		color: palette("blue-txt");
 	}
 
@@ -384,7 +389,8 @@
 		transition: color $transition-default;
 	}
 
-	.header__burger:hover {
+	.header__burger:hover,
+	.header__burger:focus-visible {
 		color: palette("main-blue");
 	}
 
@@ -449,7 +455,8 @@
 		white-space: nowrap;
 		transition: color $transition-default;
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			color: palette("blue-txt");
 		}
 	}

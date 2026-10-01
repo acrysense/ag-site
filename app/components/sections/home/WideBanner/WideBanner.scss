@@ -103,7 +103,8 @@
 	.wide-banner__arrow {
 		transition: color $transition-default;
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			color: palette("main-blue");
 		}
 	}
@@ -112,7 +113,8 @@
 		transition: opacity $transition-default;
 	}
 
-	.wide-banner__link:hover img {
+	.wide-banner__link:hover img,
+	.wide-banner__link:focus-visible img {
 		opacity: 0.9;
 	}
 

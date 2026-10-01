@@ -306,7 +306,12 @@
 	.main-menu__row:hover,
 	.main-menu__group:hover,
 	.main-menu__tile:hover,
-	.main-menu__logout:hover {
+	.main-menu__logout:hover,
+// «Моя страница» — Blue.Hover
+	.main-menu__row:focus-visible,
+.main-menu__group:focus-visible,
+.main-menu__tile:focus-visible,
+.main-menu__logout:focus-visible {
 		color: palette("blue-txt");
 	}
 
@@ -321,11 +326,13 @@
 			border-color $transition-default;
 	}
 
-	.main-menu__close:hover {
+	.main-menu__close:hover,
+	.main-menu__close:focus-visible {
 		color: palette("main-blue");
 	}
 
-	.main-menu__profile-link:hover {
+	.main-menu__profile-link:hover,
+	.main-menu__profile-link:focus-visible {
 		color: palette("blue-hover");
 	}
 

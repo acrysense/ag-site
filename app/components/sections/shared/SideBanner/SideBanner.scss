@@ -31,7 +31,8 @@
 		transition: opacity $transition-default;
 	}
 
-	.side-banner__link:hover img {
+	.side-banner__link:hover img,
+	.side-banner__link:focus-visible img {
 		opacity: 0.9;
 	}
 }

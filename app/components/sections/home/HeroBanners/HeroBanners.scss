@@ -213,7 +213,8 @@ $promo-column: calc((100% - 66.4px) / 3);
 	.hero__arrow {
 		transition: color $transition-default;
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			color: palette("main-blue");
 		}
 	}
@@ -224,7 +225,9 @@ $promo-column: calc((100% - 66.4px) / 3);
 	}
 
 	.hero__slide-link:hover img,
-	.hero__promo:hover img {
+	.hero__promo:hover img,
+	.hero__slide-link:focus-visible img,
+	.hero__promo:focus-visible img {
 		opacity: 0.9;
 	}
 

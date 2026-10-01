@@ -66,7 +66,8 @@
 			border: 0;
 			transition: color $transition-default;
 
-			&:hover {
+			&:hover,
+			&:focus-visible {
 				color: palette("blue-hover");
 			}
 		}
@@ -86,7 +87,8 @@
 				color $transition-default,
 				border-color $transition-default;
 
-			&:hover:not(:disabled) {
+			&:hover:not(:disabled),
+			&:focus-visible:not(:disabled) {
 				color: palette("main-blue");
 				border-color: palette("main-blue");
 			}
@@ -157,7 +159,8 @@
 				box-shadow $transition-default;
 
 			// Наведение (наше): рамка Icon.Grey
-			&:hover {
+			&:hover,
+			&:focus-visible {
 				border-color: palette("icon-grey");
 			}
 
@@ -315,7 +318,8 @@
 		a.comment__name {
 			transition: color $transition-default;
 
-			&:hover {
+			&:hover,
+			&:focus-visible {
 				color: palette("main-blue");
 			}
 		}
@@ -424,7 +428,8 @@
 				content: "";
 			}
 
-			&:hover {
+			&:hover,
+			&:focus-visible {
 				color: palette("main-blue");
 			}
 		}
@@ -488,7 +493,8 @@
 			border-radius: $radius-button;
 			transition: border-color $transition-default;
 
-			&:hover:not(:disabled) {
+			&:hover:not(:disabled),
+			&:focus-visible:not(:disabled) {
 				border-color: palette("grey");
 			}
 
@@ -529,7 +535,8 @@
 
 			&:hover,
 			&.is-active,
-			&[aria-expanded="true"] {
+			&[aria-expanded="true"],
+			&:focus-visible {
 				background: palette("bg-info");
 			}
 		}
@@ -564,7 +571,8 @@
 			transition: background-color $transition-default;
 
 			&:hover,
-			&.is-active {
+			&.is-active,
+			&:focus-visible {
 				background: palette("bg-info");
 			}
 		}
@@ -609,7 +617,8 @@
 			transition: background-color $transition-default;
 
 			&:hover,
-			&[aria-pressed="true"] {
+			&[aria-pressed="true"],
+			&:focus-visible {
 				background: palette("bg-info");
 			}
 		}
@@ -753,7 +762,8 @@
 			cursor: pointer;
 			transition: color $transition-default;
 
-			&:hover:not(:disabled) {
+			&:hover:not(:disabled),
+			&:focus-visible:not(:disabled) {
 				color: palette("blue-hover");
 			}
 

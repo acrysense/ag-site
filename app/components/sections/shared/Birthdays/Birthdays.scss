@@ -74,7 +74,8 @@
 			color: palette("main-blue");
 			transition: color $transition-default;
 
-			&:hover {
+			&:hover,
+			&:focus-visible {
 				color: palette("blue-hover");
 			}
 		}
@@ -183,7 +184,8 @@
 			color: palette("black-txt");
 		}
 
-		a.birthdays__person:hover .birthdays__name {
+		a.birthdays__person:hover .birthdays__name,
+		a.birthdays__person:focus-visible .birthdays__name {
 			color: palette("blue-hover");
 		}
 
@@ -284,7 +286,8 @@
 	}
 
 	// Наведение (наше): заголовок-ссылка — Blue.TXT
-	.birthdays__title-link:hover {
+	.birthdays__title-link:hover,
+	.birthdays__title-link:focus-visible {
 		color: palette("blue-txt");
 	}
 
