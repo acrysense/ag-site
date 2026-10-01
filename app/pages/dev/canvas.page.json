@@ -292,12 +292,37 @@
 						"icon": "profile"
 					},
 					{
-						"label": "Настройки",
+						"label": "Учебный портал",
 						"url": "#",
-						"icon": "settings"
+						"icon": "edu"
+					},
+					{
+						"label": "Коэффициент",
+						"url": "#",
+						"icon": "multiplier"
+					},
+					{
+						"label": "Пакеты",
+						"url": "#",
+						"icon": "box"
+					},
+					{
+						"label": "Мотивация",
+						"url": "#",
+						"icon": "motivation"
+					},
+					{
+						"label": "Конкурсы",
+						"url": "#",
+						"icon": "apple"
 					},
 					{
 						"divider": true
+					},
+					{
+						"label": "Настройки",
+						"url": "#",
+						"icon": "settings"
 					},
 					{
 						"label": "Выйти",
@@ -7074,12 +7099,37 @@
 						"icon": "profile"
 					},
 					{
-						"label": "Настройки",
+						"label": "Учебный портал",
 						"url": "#",
-						"icon": "settings"
+						"icon": "edu"
+					},
+					{
+						"label": "Коэффициент",
+						"url": "#",
+						"icon": "multiplier"
+					},
+					{
+						"label": "Пакеты",
+						"url": "#",
+						"icon": "box"
+					},
+					{
+						"label": "Мотивация",
+						"url": "#",
+						"icon": "motivation"
+					},
+					{
+						"label": "Конкурсы",
+						"url": "#",
+						"icon": "apple"
 					},
 					{
 						"divider": true
+					},
+					{
+						"label": "Настройки",
+						"url": "#",
+						"icon": "settings"
 					},
 					{
 						"label": "Выйти",
