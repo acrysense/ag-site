@@ -1,0 +1,25 @@
+{{!--
+	Карточка вакансии (Figma: Vacancy card 4588:520): метки (отдел, город), должность, юр. лицо
+	и адрес, «Опубликовано …» и «Подробнее». Вся карточка нажимается: «Подробнее» открывает окно
+	вакансии (data-modal-open), без JS — страница вакансии (url).
+	props: id, url, title, tags [{ text }], company, address, date (YYYY-MM-DD), dateText
+	(«Опубликовано 18.09.2026»), moreText («Подробнее»). Контракт — docs/contracts/career.md.
+--}}
+<article class="vacancy-card">
+    {{#if props.tags.length}}
+        <ul class="vacancy-card__tags" role="list">
+            {{#each props.tags}}<li class="vacancy-card__tag">{{text}}</li>{{/each}}
+        </ul>
+    {{/if}}
+    <h3 class="vacancy-card__title" id="vacancy-{{props.id}}-card-title">{{props.title}}</h3>
+    {{#if (or props.company props.address)}}
+        <p class="vacancy-card__place">
+            {{#if props.company}}<span class="vacancy-card__company">{{props.company}}</span>{{/if}}
+            {{#if props.address}}<span class="vacancy-card__address">{{props.address}}</span>{{/if}}
+        </p>
+    {{/if}}
+    <div class="vacancy-card__footer">
+        {{#if props.dateText}}<time class="vacancy-card__date" {{#if props.date}}datetime="{{props.date}}"{{/if}}>{{props.dateText}}</time>{{/if}}
+        <a class="vacancy-card__more" href="{{props.url}}" data-modal-open="vacancy-{{props.id}}" aria-describedby="vacancy-{{props.id}}-card-title">{{default props.moreText "Подробнее"}}</a>
+    </div>
+</article>

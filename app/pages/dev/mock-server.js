@@ -59,6 +59,26 @@ async function mockForm(init) {
 	const body = init.body instanceof FormData ? init.body : new FormData()
 	console.info('[mock-form]', Object.fromEntries(body.entries()))
 	await new Promise((resolve) => setTimeout(resolve, 800))
+	// Заявка на вакансию: телефон с «111» — ошибка поля, «сбой» в сообщении — ошибка сервера
+	if (body.has('vacancy')) {
+		const reply = (data, status) =>
+			new Response(JSON.stringify(data), {
+				status,
+				headers: { 'Content-Type': 'application/json' },
+			})
+		if (
+			String(body.get('message') || '')
+				.toLowerCase()
+				.includes('сбой')
+		)
+			return new Response('', { status: 500 })
+		if (String(body.get('phone') || '').includes('111'))
+			return reply(
+				{ ok: false, errors: { phone: 'Этот номер не найден в справочнике' } },
+				422
+			)
+		return reply({ ok: true, message: 'Заявка принята' }, 200)
+	}
 	const topic = String(body.get('topic') || '').toLowerCase()
 	const json = (data, status) =>
 		new Response(JSON.stringify(data), {

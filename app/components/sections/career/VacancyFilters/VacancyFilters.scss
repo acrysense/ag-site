@@ -1,0 +1,231 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma, 1920: «Фильтры вакансий» (4607:523) — белая карточка 350, поля 20 (с рамкой 1px — 21),
+// шапка: «Фильтры» H3 и «Сбросить» M/400 Main Blue; группы через черту Block.Border с полями 20;
+// название группы 15/22 Medium, пункты Doc/Checkbox через 6, «Показать ещё N» 14/20 Main Blue.
+// До 1024 (в макете нет, наше) — панель на весь экран, как фильтры поиска (4790:3529): шапка 56,
+// внизу «Сбросить» и «Показать N вакансий».
+@layer components {
+	.vacancy-filters {
+		display: none;
+		min-width: 0;
+
+		&.is-open {
+			position: fixed;
+			inset: 0;
+			z-index: 95;
+			display: flex;
+			flex-direction: column;
+			background: palette("white");
+		}
+
+		@include up(desktop) {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			padding: 20px;
+			background: palette("white");
+			border-radius: $radius-content-block;
+		}
+	}
+
+	.vacancy-filters__head {
+		display: flex;
+		flex: none;
+		gap: 10px;
+		align-items: center;
+		height: 56px;
+		padding: 0 8px 0 14px;
+
+		@include up(desktop) {
+			height: auto;
+			padding: 0 0 20px;
+			border-bottom: 1px solid palette("block-border");
+		}
+	}
+
+	.vacancy-filters__title {
+		@include text("h3-360");
+
+		flex: 1 1 auto;
+		min-width: 0;
+		color: palette("black-txt");
+
+		@include up(desktop) {
+			@include text("h3");
+		}
+	}
+
+	// «Сбросить» в шапке — на десктопе; на мобильном — кнопка внизу панели
+	.vacancy-filters__reset {
+		@include text("m-400");
+
+		display: none;
+		flex: none;
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+
+		@include up(desktop) {
+			display: block;
+		}
+	}
+
+	.vacancy-filters__close {
+		display: flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		padding: 0;
+		color: palette("black-txt");
+		cursor: pointer;
+		background: palette("bg-main");
+		border: 0;
+		border-radius: 50%;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("main-blue");
+		}
+
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.vacancy-filters__close-icon {
+		width: 10px;
+		height: 10px;
+	}
+
+	.vacancy-filters__body {
+		display: flex;
+		flex: 1 1 auto;
+		flex-direction: column;
+		min-height: 0;
+		padding: 0 14px 20px;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+
+		@include up(desktop) {
+			padding: 0;
+			overflow: visible;
+		}
+	}
+
+	.vacancy-filters__group {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		min-width: 0;
+		margin: 0;
+		padding: 0;
+		border: 0;
+
+		& + & {
+			margin-top: 20px;
+			padding-top: 20px;
+			border-top: 1px solid palette("block-border");
+		}
+	}
+
+	.vacancy-filters__legend {
+		@include text("filter-title");
+
+		float: left;
+		width: 100%;
+		margin-bottom: 0;
+		padding: 0;
+		color: palette("black-txt");
+
+		// float снимает у legend особое место в рамке fieldset — дальше обычный поток
+		+ * {
+			clear: both;
+		}
+	}
+
+	.vacancy-filters__options {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		> [hidden] {
+			display: none;
+		}
+	}
+
+	.vacancy-filters__more {
+		@include text("m-400");
+
+		align-self: flex-start;
+		padding: 0;
+		background: none;
+		border: 0;
+		cursor: pointer;
+		line-height: 20px;
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+
+	.vacancy-filters__actions {
+		display: flex;
+		flex: none;
+		gap: 10px;
+		padding: 10px 10px calc(14px + env(safe-area-inset-bottom));
+		border-top: 1px solid palette("form-border");
+
+		@include up(desktop) {
+			display: none;
+		}
+
+		.btn--light {
+			@include text("m-400");
+
+			color: palette("black-txt");
+		}
+	}
+
+	.vacancy-filters__submit {
+		flex: 1 1 auto;
+		min-width: 0;
+
+		&[aria-busy="true"] {
+			cursor: progress;
+		}
+	}
+
+	// Появление (наше): панель проявляется и чуть поднимается, как фильтры поиска
+	@include down(desktop) {
+		.vacancy-filters {
+			@include appear-when("&.is-open", flex, translateY(16px), $duration-overlay);
+		}
+	}
+
+	// Витрина: панель на месте (не на весь экран), чтобы её было видно на 360; после правила
+	// появления — оно прячет блок до 1024
+	.vacancy-filters--static {
+		@include down(desktop) {
+			display: flex;
+			flex-direction: column;
+			background: palette("white");
+			opacity: 1;
+			transform: none;
+		}
+	}
+}

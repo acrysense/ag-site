@@ -1,0 +1,21 @@
+{{!--
+	«Как это работает» (Figma: 4588:456): белая карточка, заголовок H3 и шаги с номером в кружке.
+	props: title, items [{ title, text }]. Нет шагов — блок не выводится.
+	Контракт — docs/contracts/career.md.
+--}}
+{{#if props.items.length}}
+    <section class="career-steps{{#if props.class}} {{props.class}}{{/if}}" aria-labelledby="career-steps-title">
+        <h2 class="career-steps__title" id="career-steps-title">{{default props.title "Как это работает"}}</h2>
+        <ol class="career-steps__list" role="list">
+            {{#each props.items}}
+                <li class="career-steps__item">
+                    <span class="career-steps__number" aria-hidden="true">{{add @index 1}}</span>
+                    <span class="career-steps__text">
+                        <span class="career-steps__name">{{title}}</span>
+                        {{#if text}}<span class="career-steps__description">{{text}}</span>{{/if}}
+                    </span>
+                </li>
+            {{/each}}
+        </ol>
+    </section>
+{{/if}}

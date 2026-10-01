@@ -1,0 +1,38 @@
+{{!--
+	Заявка на вакансию (Figma: Modal card — заявка 4593:587, 560) и «Заявка принята» (4593:647).
+	Одно окно на страницу: кнопка «Откликнуться» в окне вакансии подставляет вакансию (скрытое
+	поле vacancy и подпись под заголовком — data-vacancy-apply, data-vacancy-apply-title).
+	Данные из профиля (ФИО, должность) приходят с бэка; телефон обязателен, почта — из профиля,
+	можно поправить. Отправка — модуль Form (docs/contracts/form.md).
+	props: id, title, action, profile { label, name, position }, fields { phone, phonePlaceholder,
+	email, resume, resumePlaceholder, resumeHint, message, messagePlaceholder }, email (из
+	профиля), resume { accept, maxSize, errorSize, errorType }, consent { text, link }, submit,
+	success { title, text, close }, open и successOpen (витрина: показать сразу). Контракт — docs/contracts/career.md.
+--}}
+{{#with props}}
+    {{#> components/Modal/Modal props=(obj id=id title=title size="l" class="vacancy-apply" open=open)}}
+        <form class="modal__form vacancy-apply__form" action="{{action}}" method="post" enctype="multipart/form-data" data-module="Form" data-path="components" data-form-success="{{id}}-success">
+            <input type="hidden" name="vacancy" value="" data-vacancy-apply-id />
+            <p class="vacancy-apply__vacancy" data-vacancy-apply-subtitle data-module="VacancyApply" data-path="sections/career" hidden></p>
+            {{#if profile}}
+                <div class="vacancy-apply__profile">
+                    <p class="vacancy-apply__profile-label">{{default profile.label "Данные из профиля"}}</p>
+                    <p class="vacancy-apply__profile-name">{{profile.name}}</p>
+                    {{#if profile.position}}<p class="vacancy-apply__profile-position">{{profile.position}}</p>{{/if}}
+                </div>
+            {{/if}}
+            <div class="modal__fields vacancy-apply__fields">
+                {{> components/Field/Field props=(obj id=(concat id "-phone") name="phone" type="tel" label=fields.phone placeholder=fields.phonePlaceholder autocomplete="tel" required=true maxlength=25)}}
+                {{> components/Field/Field props=(obj id=(concat id "-email") name="email" type="email" label=fields.email value=email placeholder=fields.emailPlaceholder autocomplete="email" maxlength=150)}}
+                {{> components/FileField/FileField props=(obj id=(concat id "-resume") name="resume" label=fields.resume placeholder=fields.resumePlaceholder hint=fields.resumeHint accept=resume.accept maxSize=resume.maxSize errorSize=resume.errorSize errorType=resume.errorType)}}
+                {{> components/Field/Field props=(obj id=(concat id "-message") name="message" label=fields.message placeholder=fields.messagePlaceholder multiline=true maxlength=2000)}}
+            </div>
+            {{> components/Checkbox/Checkbox props=(obj id=(concat id "-consent") name="consent" text=consent.text link=consent.link required=true)}}
+            <p class="form-error" role="alert" data-form-error hidden></p>
+            {{> components/Button/Button props=(obj text=(default submit "Отправить заявку") variant="general" size="m" type="submit" class="modal__submit")}}
+        </form>
+    {{/components/Modal/Modal}}
+    {{#> components/Modal/Modal props=(obj id=(concat id "-success") title=success.title text=success.text variant="center" icon="success" open=successOpen)}}
+        {{> components/Button/Button props=(obj text=(default success.close "Вернуться к вакансиям") variant="general" size="m" attrs=(obj data-modal-close=""))}}
+    {{/components/Modal/Modal}}
+{{/with}}

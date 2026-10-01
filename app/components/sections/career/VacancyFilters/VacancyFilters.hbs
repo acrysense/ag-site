@@ -1,0 +1,47 @@
+{{!--
+	Фильтры вакансий (Figma: PC.Career 4588:83 — «Фильтры вакансий» 4607:523): группы флажков
+	(Область, Город, Юр. лицо, Отдел) с числом вакансий, «Показать ещё N», «Сбросить».
+	С 1024 — карточка слева, выбор применяется сразу (GET-форма). До 1024 (в макете нет, наше) —
+	панель на весь экран по кнопке «Фильтры · N» (data-vacancy-filters-open), выбор применяется
+	кнопкой «Показать N вакансий», число пересчитывается на лету (countUrl).
+	props: id, action, resetUrl, countUrl, countText («Показать 24 вакансии»), hidden [{ name,
+	value }] — что сохранить в адресе (сортировка), groups [{ title, name («city[]»), moreText
+	(«Показать ещё 3»), options [{ value, text, count, checked, extra }] }]. extra — пункт за
+	«Показать ещё» (бэк отмечает пункты после первых 5–7; выбранные — не прячет).
+	static — витрина: на мобильном панель показана на месте, не на весь экран.
+	Контракт — docs/contracts/career.md.
+--}}
+{{#if props.groups.length}}
+    <form class="vacancy-filters{{#if props.static}} vacancy-filters--static{{/if}}{{#if props.class}} {{props.class}}{{/if}}" id="{{default props.id 'vacancy-filters'}}" action="{{props.action}}" method="get" aria-labelledby="{{default props.id 'vacancy-filters'}}-title" data-module="VacancyFilters" data-path="sections/career" {{#if props.countUrl}}data-count-url="{{props.countUrl}}"{{/if}}>
+        {{#each props.hidden}}<input type="hidden" name="{{name}}" value="{{value}}" />{{/each}}
+        <div class="vacancy-filters__head">
+            <h2 class="vacancy-filters__title" id="{{default props.id 'vacancy-filters'}}-title">{{default props.title "Фильтры"}}</h2>
+            {{#if props.resetUrl}}<a class="vacancy-filters__reset" href="{{props.resetUrl}}">{{default props.resetText "Сбросить"}}</a>{{/if}}
+            <button class="vacancy-filters__close" type="button" aria-label="Закрыть фильтры" data-vacancy-filters-close>
+                {{> components/Icon/Icon name="close" class="vacancy-filters__close-icon"}}
+            </button>
+        </div>
+        <div class="vacancy-filters__body">
+            {{#with (default props.id 'vacancy-filters') as |fid|}}
+                {{#each ../props.groups as |group gi|}}
+                    <fieldset class="vacancy-filters__group">
+                        <legend class="vacancy-filters__legend">{{group.title}}</legend>
+                        <ul class="vacancy-filters__options" role="list">
+                            {{#each group.options as |option oi|}}
+                                <li {{#if option.extra}}hidden data-filter-extra{{/if}}>
+                                    {{> components/FilterCheckbox/FilterCheckbox props=(obj id=(concat fid '-' gi '-' oi) name=group.name value=option.value text=option.text count=option.count countLabel="вакансий" checked=option.checked disabled=(eq option.count 0))}}
+                                </li>
+                            {{/each}}
+                        </ul>
+                        {{#if group.moreText}}<button class="vacancy-filters__more" type="button" data-filter-more>{{group.moreText}}</button>{{/if}}
+                    </fieldset>
+                {{/each}}
+            {{/with}}
+            <noscript><button class="btn btn--light btn--m" type="submit">Показать</button></noscript>
+        </div>
+        <div class="vacancy-filters__actions">
+            {{#if props.resetUrl}}<a class="btn btn--light btn--m" href="{{props.resetUrl}}">{{default props.resetText "Сбросить"}}</a>{{/if}}
+            <button class="btn btn--general btn--m vacancy-filters__submit" type="submit" data-vacancy-filters-count>{{default props.countText "Показать вакансии"}}</button>
+        </div>
+    </form>
+{{/if}}

@@ -1,0 +1,86 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: «Как это работает» (4588:456) — белая карточка, поля 20, через 20: заголовок H3, шаги:
+// кружок 28 BG.Info с номером S/600 Blue.TXT, через 12 текст — название M/700 и описание M/400
+// Dark-grey.TXT через 4.
+@layer components {
+	.career-steps {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		min-width: 0;
+		padding: 20px;
+		background: palette("bg-info");
+		border-radius: $radius-content-block;
+
+		// На мобильном страница — белый блок, поэтому карточка BG.Info; на десктопе — белая
+		@include up(desktop) {
+			background: palette("white");
+		}
+	}
+
+	.career-steps__title {
+		@include text("h3-360");
+
+		color: palette("black-txt");
+
+		@include up(desktop) {
+			@include text("h3");
+		}
+	}
+
+	.career-steps__list {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.career-steps__item {
+		display: flex;
+		gap: 12px;
+		align-items: flex-start;
+	}
+
+	.career-steps__number {
+		@include text("s-600");
+
+		display: flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: 28px;
+		height: 28px;
+		color: palette("blue-txt");
+		background: palette("white");
+		border-radius: 50%;
+
+		@include up(desktop) {
+			background: palette("bg-info");
+		}
+	}
+
+	.career-steps__text {
+		display: flex;
+		flex: 1 1 auto;
+		flex-direction: column;
+		gap: 4px;
+		min-width: 0;
+		overflow-wrap: anywhere;
+	}
+
+	.career-steps__name {
+		@include text("m-500");
+
+		color: palette("black-txt");
+	}
+
+	.career-steps__description {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+	}
+}

@@ -7,6 +7,8 @@
 @forward "@/components/components/Modal/Modal";
 @forward "@/components/components/Field/Field";
 @forward "@/components/components/Checkbox/Checkbox";
+@forward "@/components/components/FilterCheckbox/FilterCheckbox";
+@forward "@/components/components/FileField/FileField";
 @forward "@/components/components/Form/Form";
 @forward "@/components/components/Pagination/Pagination";
 @forward "@/components/components/Tabs/Tabs";
@@ -47,5 +49,11 @@
 @forward "@/components/sections/search/SearchSections/SearchSections";
 @forward "@/components/sections/search/SearchFilters/SearchFilters";
 @forward "@/components/sections/search/SearchResults/SearchResults";
+@forward "@/components/sections/career/VacancyFilters/VacancyFilters";
+@forward "@/components/sections/career/VacancyCard/VacancyCard";
+@forward "@/components/sections/career/VacancyList/VacancyList";
+@forward "@/components/sections/career/VacancyModal/VacancyModal";
+@forward "@/components/sections/career/VacancyApply/VacancyApply";
+@forward "@/components/sections/career/CareerSteps/CareerSteps";
 
 // @forward '@/components/sections/shared/';

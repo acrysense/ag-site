@@ -1,0 +1,185 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Modal card — вакансия (4590:510) — 1040, поля 40, колонки 340 и описание через 40 |
+// черта Form.Border | 40. Слева через 24: должность H2, метки (BG.Info, скругление 14, поля
+// 6/12, S/400 Dark-grey.TXT, через 8), параметры через 14 (подпись S/400 Dark-grey.TXT, значение
+// M/400 через 2), плашка BG.Green (поля 10/14, скругление 10, S/400 Green) после отступа 8,
+// кнопка General во всю ширину. Справа: разделы через 28 — заголовок H4, пункты M/400 через 8.
+// Крестик 20 в 24 от края. До 768 (в макете нет, наше) — шторка в одну колонку.
+@layer components {
+	.vacancy-modal__layout {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		min-width: 0;
+
+		@include up(tablet) {
+			display: grid;
+			grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+			grid-template-rows: auto auto 1fr;
+			grid-template-areas:
+				"head content"
+				"params content"
+				"actions content";
+			column-gap: 81px;
+			row-gap: 24px;
+		}
+	}
+
+	.vacancy-modal__head {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		grid-area: head;
+	}
+
+	.vacancy-modal__title {
+		@include text("h2");
+
+		color: palette("black-txt");
+		overflow-wrap: anywhere;
+	}
+
+	.vacancy-modal__tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.vacancy-modal__tag {
+		@include text("s-400");
+
+		padding: 6px 12px;
+		color: palette("dark-grey-txt");
+		background: palette("bg-info");
+		border-radius: $radius-button;
+	}
+
+	.vacancy-modal__params {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+		grid-area: params;
+		margin: 0;
+	}
+
+	.vacancy-modal__param {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		min-width: 0;
+		overflow-wrap: anywhere;
+	}
+
+	.vacancy-modal__label {
+		@include text("s-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.vacancy-modal__value {
+		@include text("m-400");
+
+		margin: 0;
+		color: palette("black-txt");
+	}
+
+	.vacancy-modal__actions {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		grid-area: actions;
+		align-self: start;
+
+		@include up(tablet) {
+			margin-top: 8px;
+		}
+	}
+
+	.vacancy-modal__note {
+		@include text("s-400");
+
+		padding: 10px 14px;
+		color: palette("green");
+		background: palette("bg-green");
+		border-radius: $radius-inner-block;
+	}
+
+	.vacancy-modal__button {
+		width: 100%;
+	}
+
+	// Описание из редактора: разделы через 28, заголовок H4, пункты через 8, «•» вместо круга
+	.vacancy-modal__content {
+		grid-area: content;
+
+		@include up(tablet) {
+			position: relative;
+			padding-right: 24px;
+
+			// Черта Form.Border посередине промежутка 81 (40 | 1 | 40), во всю высоту окна
+			&::before {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: -41px;
+				width: 1px;
+				background: palette("form-border");
+				content: "";
+			}
+		}
+
+		> * + * {
+			margin-top: 28px;
+		}
+
+		h2,
+		h3,
+		h4 {
+			@include text("h4");
+
+			color: palette("black-txt");
+
+			+ * {
+				margin-top: 12px;
+			}
+		}
+
+		// Точка у края колонки, текст через 16 (в макете «•» и два пробела)
+		ul {
+			padding-left: 16px;
+		}
+
+		li + li {
+			margin-top: 8px;
+		}
+	}
+
+	// Окно 1040: поля 40, крестик в 24 от края поверх (шапки-строки нет — заголовок в колонке)
+	.vacancy-modal .modal__panel {
+		@include up(tablet) {
+			position: relative;
+			grid-template-rows: minmax(0, 1fr);
+			padding: 40px 40px 0;
+		}
+	}
+
+	.vacancy-modal .modal__header {
+		@include up(tablet) {
+			position: absolute;
+			top: 24px;
+			right: 24px;
+			z-index: 1;
+		}
+	}
+
+	.vacancy-modal .modal__content {
+		@include up(tablet) {
+			padding-bottom: 40px;
+		}
+	}
+}

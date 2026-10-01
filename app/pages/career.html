@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="{{ lang }}" data-icons="{{sprite}}">
+	<head>
+		{{> layouts/Head/Head }}
+		<link rel="stylesheet" href="/assets/styles/main.scss" />
+		<script type="module" src="/app.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			{{> layouts/Header/Header props=(default data.header site.header) }}
+			<main class="wrapper__content">
+				{{!-- «Карьерный шанс» (1920 — 4588:83, окна 4590:510, 4593:236, 4593:647; мобильного макета нет) --}}
+				<div class="container page-inner">
+					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.breadcrumbs) }}
+					<div class="page-columns page-columns--start page-columns--split">
+						{{> sections/career/VacancyFilters/VacancyFilters props=data.filters }}
+						{{> sections/career/VacancyList/VacancyList props=data.list }}
+						{{> sections/career/CareerSteps/CareerSteps props=data.steps }}
+					</div>
+				</div>
+			</main>
+			{{> layouts/Footer/Footer props=site.footer }}
+		</div>
+		{{> layouts/MainMenu/MainMenu props=site.mainMenu }}
+		{{> layouts/TabBar/TabBar props=site.tabBar }}
+		{{> sections/career/VacancyApply/VacancyApply props=data.apply }}
+		{{> layouts/SiteModals/SiteModals props=site.modals }}
+		{{> layouts/CookieBanner/CookieBanner props=site.cookies }}
+	</body>
+</html>

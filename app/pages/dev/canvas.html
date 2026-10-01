@@ -474,6 +474,73 @@
 				{{#> state label="Выбор сделан" note="баннера нет: бэк не выводит его при cookie ag_cookie_consent, а если страница из кеша — скрывает скрипт"}}{{/state}}
 			{{/story}}
 
+			{{#> story id="career-list" group="Карьера" title="Карьерный шанс — список" description='Figma: PC.Career (4588:83). Белая карточка: заголовок, «Новые в начале», вводный текст, карточки (3 в ряд с 1280, 2 — с 768, 1 — на мобильном), страницы и «Всего». До 1024 — кнопка «Фильтры · N». «Подробнее» (и вся карточка) открывает окно вакансии.'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container">{{> sections/career/VacancyList/VacancyList props=data.careerList}}</div>
+				{{/state}}
+				{{#> state label="Одна вакансия" bg="page"}}
+					<div class="container">{{> sections/career/VacancyList/VacancyList props=data.careerListOne}}</div>
+				{{/state}}
+				{{#> state label="Пусто (выбраны фильтры)" bg="page"}}
+					<div class="container">{{> sections/career/VacancyList/VacancyList props=data.careerListEmpty}}</div>
+				{{/state}}
+				{{#> state label="Длинный контент" bg="page"}}
+					<div class="container">{{> sections/career/VacancyList/VacancyList props=data.careerListLong}}</div>
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, фильтры, сортировка и страницы — обычные GET-переходы"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="vacancy-filters" group="Карьера" title="Фильтры вакансий" description='Figma: «Фильтры вакансий» (4607:523), пункт — Doc/Checkbox (4528:212). С 1024 — карточка, выбор применяется сразу; до 1024 — панель на весь экран по «Фильтры · N» с «Показать N вакансий» (число — с сервера, в витрине имитация). «Показать ещё N» открывает остальные пункты группы; 0 вакансий — пункт неактивный.'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container"><div class="story-column-narrow">{{> sections/career/VacancyFilters/VacancyFilters props=data.vacancyFilters}}</div></div>
+				{{/state}}
+				{{#> state label="Выбраны (в т. ч. за «Показать ещё»), длинное название" bg="page"}}
+					<div class="container"><div class="story-column-narrow">{{> sections/career/VacancyFilters/VacancyFilters props=data.vacancyFiltersChecked}}</div></div>
+				{{/state}}
+				{{#> state label="Пусто" note="групп нет — блок не выводится, кнопки «Фильтры» в списке тоже нет (бэк не передаёт filtersId)"}}{{/state}}
+				{{#> state label="Панель до 1024 (на странице — на весь экран, здесь — на месте)" bg="page"}}
+					<div class="container"><div class="story-column-narrow">{{> sections/career/VacancyFilters/VacancyFilters props=data.vacancyFiltersStatic}}</div></div>
+				{{/state}}
+			{{/story}}
+
+			{{#> story id="career-steps" group="Карьера" title="Как это работает" description='Figma: 4588:456. Шаги правит админ. На мобильном — плашка BG.Info под списком (страница — белый блок).'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container"><div class="story-column-narrow">{{> sections/career/CareerSteps/CareerSteps props=data.careerSteps}}</div></div>
+				{{/state}}
+				{{#> state label="Один шаг" bg="page"}}
+					<div class="container"><div class="story-column-narrow">{{> sections/career/CareerSteps/CareerSteps props=data.careerStepsOne}}</div></div>
+				{{/state}}
+				{{#> state label="Пусто" note="шагов нет — блок не выводится"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="vacancy-modal" group="Карьера" title="Окно вакансии" description='Figma: 4590:510 (1040). Слева — должность, метки, параметры, плашка и «Откликнуться» (открывает заявку); справа — описание из редактора. До 768 — шторка в одну колонку, описание перед кнопкой.'}}
+				{{#> state label="Сотрудник" bg="page"}}
+					{{> sections/career/VacancyModal/VacancyModal props=data.vacancyModal list=data.vacancyModalList}}
+				{{/state}}
+				{{#> state label="Гость" bg="page"}}
+					{{> sections/career/VacancyModal/VacancyModal props=data.vacancyModalGuest list=data.vacancyModalListGuest}}
+				{{/state}}
+				{{#> state label="Мало данных" bg="page"}}
+					{{> sections/career/VacancyModal/VacancyModal props=data.vacancyModalShort list=data.vacancyModalList}}
+				{{/state}}
+			{{/story}}
+
+			{{#> story id="vacancy-apply" group="Карьера" title="Заявка на вакансию" description='Figma: 4593:587, «Заявка принята» 4593:647. Данные из профиля — с бэка; телефон обязателен; резюме — PDF или DOC до 5 МБ (проверка при отправке). В витрине сервер имитируется: телефон с «111» — ошибка поля, сообщение со словом «сбой» — общая ошибка.'}}
+				{{#> state label="Форма" bg="page"}}
+					{{> sections/career/VacancyApply/VacancyApply props=data.vacancyApplyStatic}}
+				{{/state}}
+				{{#> state label="Заявка принята" bg="page"}}
+					{{> sections/career/VacancyApply/VacancyApply props=data.vacancyApplySuccess}}
+				{{/state}}
+				{{#> state label="Живое окно"}}
+					<div class="story-row">
+						{{> components/Button/Button props=(obj text="Откликнуться" variant="general" size="m" attrs=(obj data-modal-open="vacancy-apply" data-vacancy-apply="101" data-vacancy-apply-title="Провизор / фармацевт · ЛибертФарм, Минск"))}}
+					</div>
+				{{/state}}
+				{{#> state label="Отправка" note="в живом окне: кнопка неактивна, в ней значок загрузки, на форме aria-busy"}}{{/state}}
+				{{#> state label="Ошибка" note="в живом окне: пустой телефон, неверный номер, файл не того типа или больше 5 МБ, без согласия; телефон с «111» или «сбой» в сообщении"}}{{/state}}
+			{{/story}}
+
 			{{#> story id="news-list" group="Новости" title="Лента раздела" description='Figma: PC.News (4467:758). Карточки — как в «Новостях холдинга» на главной. Мобильного макета нет — наше: 2 колонки, пагинация без дальних страниц.'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container">{{> sections/news/NewsList/NewsList props=data.newsList}}</div>
@@ -628,6 +695,7 @@
 				{{#> state label="Ошибка" note="страница поиска отдаётся бэком целиком; ошибка подсчёта в панели — на кнопке остаётся прошлое число"}}{{/state}}
 			{{/story}}
 		</main>
+		{{> sections/career/VacancyApply/VacancyApply props=data.vacancyApply}}
 		{{> layouts/SiteModals/SiteModals props=data.siteModals}}
 	</body>
 </html>

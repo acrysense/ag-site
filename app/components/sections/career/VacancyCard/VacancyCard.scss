@@ -1,0 +1,110 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Vacancy card (4588:520) — BG.Info, рамка Block.Border, скругление 20, поля 20, части
+// через 20: метки (белые, скругление 10, поля 6/12, S/400 Dark-grey.TXT, через 8), должность H4
+// Black.TXT, юр. лицо M/400 и адрес S/400 Dark-grey.TXT, низ — дата S/400 Dark-grey.TXT и
+// «Подробнее» S/400 Main Blue по краям. Карточки ряда одной высоты: низ прижат к низу.
+@layer components {
+	.vacancy-card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		height: 100%;
+		min-width: 0;
+		padding: 19px;
+		background: palette("bg-info");
+		border: 1px solid palette("block-border");
+		border-radius: $radius-content-block;
+	}
+
+	.vacancy-card__tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.vacancy-card__tag {
+		@include text("s-400");
+
+		min-width: 0;
+		padding: 6px 12px;
+		color: palette("dark-grey-txt");
+		background: palette("white");
+		border-radius: $radius-inner-block;
+		overflow-wrap: anywhere;
+	}
+
+	.vacancy-card__title {
+		@include text("h4");
+
+		color: palette("black-txt");
+		overflow-wrap: anywhere;
+		transition: color $transition-default;
+	}
+
+	.vacancy-card__place {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+		overflow-wrap: anywhere;
+	}
+
+	.vacancy-card__company {
+		@include text("m-400");
+
+		color: palette("black-txt");
+	}
+
+	.vacancy-card__address {
+		@include text("s-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.vacancy-card__footer {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px 12px;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: auto;
+	}
+
+	.vacancy-card__date {
+		@include text("s-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	// Ссылка растянута на всю карточку
+	.vacancy-card__more {
+		@include text("s-400");
+
+		margin-left: auto;
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&::after {
+			position: absolute;
+			inset: 0;
+			border-radius: inherit;
+			content: "";
+		}
+	}
+
+	// Наведение (наше): вся карточка — ссылка; должность Blue.TXT, «Подробнее» Blue.Hover
+	.vacancy-card:has(.vacancy-card__more:hover) .vacancy-card__title,
+	.vacancy-card:has(.vacancy-card__more:focus-visible) .vacancy-card__title {
+		color: palette("blue-txt");
+	}
+
+	.vacancy-card__more:hover,
+	.vacancy-card__more:focus-visible {
+		color: palette("blue-hover");
+	}
+}

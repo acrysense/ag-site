@@ -141,6 +141,31 @@
 			}
 		}
 
+		// Боковая из двух частей с основной между ними в разметке (Figma: «Карьерный шанс» 4588:83 —
+		// фильтры, список, «Как это работает»): на мобильном — по порядку разметки, с 1024 вторая
+		// часть боковой (__aside-end) — под первой, основная (__main) — справа на обе строки
+		&--split {
+			@include up(desktop) {
+				grid-template-rows: auto minmax(0, 1fr);
+			}
+		}
+
+		&--split > &__main {
+			min-width: 0;
+
+			@include up(desktop) {
+				grid-column: 2;
+				grid-row: 1 / span 2;
+			}
+		}
+
+		&--split > &__aside-end {
+			@include up(desktop) {
+				grid-column: 1;
+				grid-row: 2;
+			}
+		}
+
 		// Колонки через 20 (Figma: результаты поиска 4733:1650); после --start — перекрывает его
 		&--gap-20 {
 			@include up(desktop) {

@@ -1,0 +1,47 @@
+{{!--
+	Окно вакансии (Figma: Modal card — вакансия 4590:510, 1040): слева должность (H2), метки,
+	параметры (подпись S/400 и значение M/400), плашка «Вы сотрудник холдинга…» и «Откликнуться»;
+	справа через черту — описание (HTML из визуального редактора: заголовки и списки). До 768 —
+	шторка снизу, всё в одну колонку: описание перед кнопкой.
+	props: вакансия — id, title, tags, params [{ label, value }], description (HTML), applyTitle
+	(«Провизор / фармацевт · ЛибертФарм, Минск» — подпись в окне заявки), open (витрина:
+	показать сразу); list — общее для всех
+	вакансий: applyId (окно заявки), applyText, note (плашка, только вошедшему), loginUrl и
+	loginText (гость: вместо отклика — вход). Контракт — docs/contracts/career.md.
+--}}
+{{!-- Внутри блока окна props — параметры самого окна, поэтому вакансия и общее — через with --}}
+{{#with props as |vacancy|}}
+{{#with (default ../list (obj)) as |shared|}}
+{{#> components/Modal/Modal props=(obj id=(concat "vacancy-" vacancy.id) labelledby=(concat "vacancy-" vacancy.id "-title") size="xl" class="vacancy-modal" open=vacancy.open)}}
+    <div class="vacancy-modal__layout">
+        <div class="vacancy-modal__head">
+            <h2 class="vacancy-modal__title" id="vacancy-{{vacancy.id}}-title">{{vacancy.title}}</h2>
+            {{#if vacancy.tags.length}}
+                <ul class="vacancy-modal__tags" role="list">
+                    {{#each vacancy.tags}}<li class="vacancy-modal__tag">{{text}}</li>{{/each}}
+                </ul>
+            {{/if}}
+        </div>
+        {{#if vacancy.params.length}}
+            <dl class="vacancy-modal__params">
+                {{#each vacancy.params}}
+                    <div class="vacancy-modal__param">
+                        <dt class="vacancy-modal__label">{{label}}</dt>
+                        <dd class="vacancy-modal__value">{{value}}</dd>
+                    </div>
+                {{/each}}
+            </dl>
+        {{/if}}
+        {{#if vacancy.description}}<div class="content vacancy-modal__content">{{{vacancy.description}}}</div>{{/if}}
+        <div class="vacancy-modal__actions">
+            {{#if shared.loginUrl}}
+                {{> components/Button/Button props=(obj href=shared.loginUrl text=(default shared.loginText "Войти, чтобы откликнуться") variant="general" size="m" class="vacancy-modal__button")}}
+            {{else}}
+                {{#if shared.note}}<p class="vacancy-modal__note">{{shared.note}}</p>{{/if}}
+                {{> components/Button/Button props=(obj text=(default shared.applyText "Откликнуться") variant="general" size="m" class="vacancy-modal__button" attrs=(obj data-modal-open=shared.applyId data-vacancy-apply=vacancy.id data-vacancy-apply-title=vacancy.applyTitle))}}
+            {{/if}}
+        </div>
+    </div>
+{{/components/Modal/Modal}}
+{{/with}}
+{{/with}}

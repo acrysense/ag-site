@@ -1,0 +1,128 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: PC.Career (4588:83), Frame 291 — белая карточка, поля 20, части через 40: заголовок H1
+// и «Новые в начале» (M/400 Main Blue), вводный текст M/400 до 800, карточки 386 через 21 и 20
+// (3 в ряд), страницы и «Всего: 24». До 1024 (наше) — в белом блоке страницы через 16, кнопка
+// «Фильтры · N», карточки в 1 колонку, с 768 — в 2; 1024–1279 — 2 (рядом сайдбар), с 1280 — 3.
+@layer components {
+	.vacancy-list {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		min-width: 0;
+
+		@include up(desktop) {
+			gap: 40px;
+			padding: 20px;
+			background: palette("white");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+	}
+
+	.vacancy-list__head {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px 20px;
+		align-items: flex-end;
+		justify-content: space-between;
+	}
+
+	.vacancy-list__title {
+		@include text("h1-360");
+
+		min-width: 0;
+		color: palette("black-h");
+		overflow-wrap: anywhere;
+
+		@include up(desktop) {
+			@include text("h1");
+		}
+	}
+
+	.vacancy-list__sort {
+		@include text("m-400");
+
+		display: inline-flex;
+		gap: 4px;
+		align-items: center;
+		min-width: 0;
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+
+	.vacancy-list__sort-icon {
+		flex: none;
+		width: 10px;
+		height: 6px;
+	}
+
+	.vacancy-list__intro {
+		@include text("m-400");
+
+		max-width: 800px;
+		color: palette("black-txt");
+		overflow-wrap: anywhere;
+	}
+
+	// Кнопка панели фильтров — только до 1024 (на десктопе фильтры в сайдбаре)
+	.vacancy-list__filters {
+		align-self: flex-start;
+
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.vacancy-list__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 20px 21px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		@include up(tablet) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		@include up(wide) {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	.vacancy-list__item {
+		min-width: 0;
+	}
+
+	.vacancy-list__empty {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		align-items: flex-start;
+	}
+
+	.vacancy-list__empty-text {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.vacancy-list__reset {
+		@include text("m-400");
+
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+}

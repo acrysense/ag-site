@@ -1,0 +1,38 @@
+{{!--
+	Список вакансий «Карьерный шанс» (Figma: PC.Career 4588:83 — Frame 291): белая карточка,
+	заголовок H1 и «Новые в начале», вводный текст, карточки (на 1920 — 3 в ряд), страницы и
+	«Всего: 24». До 1024 (наше) — кнопка «Фильтры · N» открывает панель фильтров (VacancyFilters).
+	Окна вакансий (VacancyModal) выводятся здесь же, после списка — по одному на карточку.
+	props: title, sort { text, url } (ссылка на обратный порядок), intro, filtersId, filtersText
+	(«Фильтры»), activeFilters (число выбранных), items [вакансия: VacancyCard + VacancyModal],
+	empty { text, resetText, resetUrl }, pagination (Pagination), applyId, applyText, note,
+	loginUrl, loginText (для окон). Контракт — docs/contracts/career.md.
+--}}
+<section class="vacancy-list{{#if props.class}} {{props.class}}{{/if}}" aria-labelledby="vacancy-list-title">
+    <div class="vacancy-list__head">
+        <h1 class="vacancy-list__title" id="vacancy-list-title">{{props.title}}</h1>
+        {{#if props.sort}}
+            <a class="vacancy-list__sort" href="{{props.sort.url}}">{{props.sort.text}}{{> components/Icon/Icon name="chevron-down" class="vacancy-list__sort-icon"}}</a>
+        {{/if}}
+    </div>
+    {{#if props.intro}}<p class="vacancy-list__intro">{{props.intro}}</p>{{/if}}
+    {{#if props.filtersId}}
+        <button class="btn btn--light btn--m vacancy-list__filters" type="button" data-vacancy-filters-open="{{props.filtersId}}" aria-controls="{{props.filtersId}}" aria-expanded="false">{{default props.filtersText "Фильтры"}}{{#if props.activeFilters}} · {{props.activeFilters}}{{/if}}</button>
+    {{/if}}
+    {{#if props.items.length}}
+        <ul class="vacancy-list__grid" role="list">
+            {{#each props.items}}
+                <li class="vacancy-list__item">{{> sections/career/VacancyCard/VacancyCard props=this}}</li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <div class="vacancy-list__empty">
+            <p class="vacancy-list__empty-text">{{default props.empty.text "Вакансий не найдено"}}</p>
+            {{#if props.empty.resetUrl}}<a class="vacancy-list__reset" href="{{props.empty.resetUrl}}">{{default props.empty.resetText "Сбросить фильтры"}}</a>{{/if}}
+        </div>
+    {{/if}}
+    {{> components/Pagination/Pagination props=props.pagination}}
+    {{#each props.items}}
+        {{> sections/career/VacancyModal/VacancyModal props=this list=../props}}
+    {{/each}}
+</section>
