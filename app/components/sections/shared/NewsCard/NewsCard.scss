@@ -35,10 +35,13 @@
 			gap: 10px;
 		}
 
+		// Место под заголовок — всегда на все строки (на 360 — 3, с 1024 — 2), даже если он
+		// короче: анонс у карточек ряда начинается на одном уровне, кнопки под ним — тоже
 		&__title {
 			@include text("h4-360");
 
 			display: -webkit-box;
+			min-height: 3lh;
 			overflow: hidden;
 			color: palette("black-h");
 			-webkit-box-orient: vertical;
@@ -47,6 +50,7 @@
 			@include up(desktop) {
 				@include text("card-title");
 
+				min-height: 2lh;
 				-webkit-line-clamp: 2;
 			}
 		}
