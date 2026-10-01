@@ -277,8 +277,9 @@
 		gap: 12px;
 		container: site-search-filters / inline-size;
 
+		// Сверху без отступа: «Фильтры · …» на одной линии с «Искать в разделе» слева
 		@include up(desktop) {
-			padding: 4px 8px 4px;
+			padding: 0 8px 4px;
 		}
 	}
 
@@ -319,8 +320,9 @@
 		}
 	}
 
-	// 2 колонки — только когда есть место (окно 700 — 458 под фильтры); на узком десктопе поле
-	// в шапке уже, и фильтры встают в столбик
+	// В окне на десктопе (458 под фильтры) — в столбик: в две колонки по 224 не помещались период
+	// дат и длинные значения (решили сами, в макете две колонки). Две колонки — где места
+	// больше: поиск на весь экран на планшете
 	.site-search__filter-list {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
@@ -330,7 +332,7 @@
 			gap: 10px;
 		}
 
-		@container site-search-filters (min-width: 440px) {
+		@container site-search-filters (min-width: 560px) {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}

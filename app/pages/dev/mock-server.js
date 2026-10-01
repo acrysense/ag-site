@@ -316,7 +316,7 @@ async function mockSearchCount(url, init) {
 // до 6 подсказок раздела, совпадение в <mark>; каждый выбранный фильтр убавляет выдачу.
 // GET /__mock/search-filters?section= → HTML фильтров раздела (берётся из <template
 // data-site-search-demo>, которые демо-страницы выводят в поиске). Задержка 400 мс.
-const photo = (n) => new URL(`./img/person-${n}.jpg`, import.meta.url).href
+const photo = (n) => new URL(`./img/person-${n}.webp`, import.meta.url).href
 const suggestData = {
 	directory: [
 		[
