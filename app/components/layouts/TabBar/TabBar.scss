@@ -44,7 +44,9 @@
 			justify-content: center;
 			width: 100%;
 			height: 59px;
-			padding: 10px 4px 8px;
+			// 9/7, а не 10/8: иначе слот 24 + 4 + строка подписи (15) не помещаются и подпись
+			// сжимается — у «Обучение» срезался хвост «у»
+			padding: 9px 4px 7px;
 			color: palette("dark-grey-txt");
 			background: none;
 			border: 0;
@@ -73,10 +75,15 @@
 			margin: 2px;
 		}
 
+		// Подпись не сжимается; запас 2px сверху и снизу внутри (отрицательные поля — место то же):
+		// overflow: hidden для многоточия не срезает хвосты «у», «д»
 		&__label {
 			@include text("s-500-360");
 
+			flex: none;
 			max-width: 100%;
+			margin-block: -2px;
+			padding-block: 2px;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
