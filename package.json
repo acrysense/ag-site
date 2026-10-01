@@ -15,6 +15,7 @@
 		"prebuild": "npm run fonts",
 		"build": "vite build",
 		"preview": "vite preview",
+		"deploy:pages": "bash tools/deploy-pages.sh",
 		"format": "prettier --write \"app/**/*.{scss,js,ts,json,md}\""
 	},
 	"keywords": [],
