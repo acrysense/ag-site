@@ -27,7 +27,7 @@
                         {{#each this}}
                             <li class="post-list__item">
                                 <a class="post-list__link" href="{{url}}">
-                                    {{#if image}}<img class="post-list__image" src="{{image}}" width="80" height="80" alt="" loading="lazy" decoding="async" />{{/if}}
+                                    {{#if image}}<span class="post-list__thumb"><img class="post-list__image" src="{{image}}" width="80" height="80" alt="" loading="lazy" decoding="async" /></span>{{/if}}
                                     <span class="post-list__text">{{title}}</span>
                                 </a>
                             </li>

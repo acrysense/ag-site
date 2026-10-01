@@ -378,3 +378,67 @@ $alias-bp: (
 		}
 	}
 }
+
+// Аватар пользователя: инициалы есть всегда, фото — поверх. Нет фото или оно не загрузилось
+// (img.is-broken) — видны инициалы. Размер кружка задаёт блок
+@mixin avatar($background) {
+	position: relative;
+	display: flex;
+	flex: none;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	color: palette("white");
+	background: $background;
+	border-radius: 50%;
+	container-type: inline-size;
+
+	img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+// Инициалы в аватаре: «ВА» — две буквы, по размеру кружка (38% ширины), где браузер умеет
+// единицы контейнера; иначе 12px
+@mixin avatar-initials {
+	@include text("s-600");
+
+	font-size: 12px;
+	line-height: 1;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	user-select: none;
+
+	@supports (font-size: 1cqi) {
+		font-size: 38cqi;
+	}
+}
+
+// Заготовка под картинкой: светлый фон и значок «картинка» по центру. Пока фото грузится, его нет
+// или оно не загрузилось (img.is-broken) — видна заготовка; загрузилось — закрывает её
+@mixin image-placeholder {
+	position: relative;
+	background-color: palette("skeleton");
+
+	&::before {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: clamp(24px, 14%, 48px);
+		aspect-ratio: 1;
+		pointer-events: none;
+		content: "";
+		background-color: palette("icon-grey");
+		translate: -50% -50%;
+		mask: url("@/assets/images/placeholder.svg") center / contain no-repeat;
+	}
+
+	// Фото — над заготовкой
+	img {
+		position: relative;
+	}
+}

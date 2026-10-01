@@ -20,11 +20,11 @@
                     {{#each items}}
                         <li class="carousel__slide leaders__item">
                             {{#if url}}<a class="leaders__card" href="{{url}}">{{else}}<div class="leaders__card">{{/if}}
-                                {{#if image.src}}
-                                    <img class="leaders__photo" src="{{image.src}}" {{#if image.srcset}}srcset="{{image.srcset}}" sizes="(min-width: 1024px) 300px, 50vw"{{/if}} width="300" height="300" alt="" loading="lazy" decoding="async" />
-                                {{else}}
-                                    <span class="leaders__photo leaders__photo--empty">{{> components/Icon/Icon name="profile" class="leaders__photo-icon"}}</span>
-                                {{/if}}
+                                {{!-- Значок профиля всегда, фото поверх: нет фото или оно не загрузилось — значок --}}
+                                <span class="leaders__photo">
+                                    {{> components/Icon/Icon name="profile" class="leaders__photo-icon"}}
+                                    {{#if image.src}}<img class="leaders__photo-img" src="{{image.src}}" {{#if image.srcset}}srcset="{{image.srcset}}" sizes="(min-width: 1024px) 300px, 50vw"{{/if}} width="300" height="300" alt="" loading="lazy" decoding="async" />{{/if}}
+                                </span>
                                 <span class="leaders__info">
                                     <span class="leaders__name">{{name}}</span>
                                     {{#if position}}<span class="leaders__position">{{position}}</span>{{/if}}

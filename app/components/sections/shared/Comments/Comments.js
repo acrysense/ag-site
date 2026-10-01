@@ -46,6 +46,16 @@ const fullDate = (iso) =>
 	new Date(iso).toLocaleString('ru-RU', { dateStyle: 'long', timeStyle: 'short' })
 
 // Небольшой помощник разметки: h('div', { class: 'x', text: '…' }, ...дети)
+// «Волкова Анна» → «ВА»
+const initialsOf = (name = '') =>
+	String(name)
+		.trim()
+		.split(/\s+/)
+		.slice(0, 2)
+		.map((word) => word[0] || '')
+		.join('')
+		.toUpperCase()
+
 const h = (tag, attrs = {}, ...children) => {
 	const el = document.createElement(tag)
 	for (const [key, value] of Object.entries(attrs)) {
@@ -826,16 +836,13 @@ export default function init(root) {
 			text: relativeTime(data.createdAt),
 		})
 		const author = data.author || {}
-		const avatar = author.avatar
-			? h('img', {
-					class: 'comment__avatar',
-					src: author.avatar,
-					width: 30,
-					height: 30,
-					alt: '',
-					loading: 'lazy',
-				})
-			: h('span', { class: 'comment__avatar', 'aria-hidden': 'true' })
+		// Инициалы всегда, фото поверх: нет фото или битое — видны инициалы
+		const avatar = h('span', { class: 'comment__avatar', 'aria-hidden': 'true' })
+		avatar.append(h('span', { class: 'comment__initials', text: initialsOf(author.name) }))
+		if (author.avatar)
+			avatar.append(
+				h('img', { src: author.avatar, width: 30, height: 30, alt: '', loading: 'lazy' })
+			)
 		node.scoreEl = h('span', { class: 'comment__score' })
 		node.editedEl = h('span', {
 			class: 'comment__edited',

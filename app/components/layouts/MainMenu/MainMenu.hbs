@@ -19,7 +19,7 @@
     <div class="main-menu__content">
         {{#if props.user}}
             <div class="main-menu__profile">
-                <span class="main-menu__avatar">{{#if props.user.avatar}}<img src="{{props.user.avatar}}" width="48" height="48" alt="" />{{/if}}</span>
+                <span class="main-menu__avatar"><span class="main-menu__initials" aria-hidden="true">{{default props.user.initials (initials props.user.name)}}</span>{{#if props.user.avatar}}<img src="{{props.user.avatar}}" width="48" height="48" alt="" />{{/if}}</span>
                 <div class="main-menu__profile-text">
                     <p class="main-menu__name">{{props.user.name}}</p>
                     {{#if props.user.role}}<p class="main-menu__role">{{props.user.role}}</p>{{/if}}

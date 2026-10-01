@@ -283,13 +283,16 @@
 			min-width: 0;
 		}
 
+		// Без фото — инициалы
 		&__avatar {
-			flex: none;
+			@include avatar(palette("icon-grey"));
+
 			width: 30px;
 			height: 30px;
-			object-fit: cover;
-			background: palette("grey");
-			border-radius: 50%;
+		}
+
+		&__initials {
+			@include avatar-initials;
 		}
 
 		&__meta {

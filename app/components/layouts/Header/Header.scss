@@ -180,38 +180,20 @@
 			}
 		}
 
-		// Заглушка без фото: на мобильном Icon.Grey, на десктопе Grey с инициалами (как в макете)
+		// Без фото — инициалы (на мобильном фон Icon.Grey, на десктопе Grey — как в макетах)
 		&__avatar {
-			display: flex;
-			flex: none;
-			align-items: center;
-			justify-content: center;
+			@include avatar(palette("icon-grey"));
+
 			width: 30px;
 			height: 30px;
-			overflow: hidden;
-			background: palette("icon-grey");
-			border-radius: 50%;
 
 			@include up(desktop) {
 				background: palette("grey");
 			}
-
-			img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-			}
 		}
 
 		&__initials {
-			display: none;
-
-			@include up(desktop) {
-				@include text("s-400");
-
-				display: block;
-				color: palette("white");
-			}
+			@include avatar-initials;
 		}
 
 		// Имя видно на десктопе; на мобильном остаётся для скринридера

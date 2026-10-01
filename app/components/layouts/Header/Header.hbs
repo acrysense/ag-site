@@ -41,12 +41,10 @@
                     </ul>
                 {{/if}}
                 {{#*inline "headerUserInner"}}
+                    {{!-- Инициалы всегда, фото поверх: нет фото или битое — видны инициалы --}}
                     <span class="header__avatar">
-                        {{#if user.avatar}}
-                            <img src="{{user.avatar}}" width="30" height="30" alt="" />
-                        {{else}}
-                            <span class="header__initials" aria-hidden="true">{{user.initials}}</span>
-                        {{/if}}
+                        <span class="header__initials" aria-hidden="true">{{default user.initials (initials user.name)}}</span>
+                        {{#if user.avatar}}<img src="{{user.avatar}}" width="30" height="30" alt="" />{{/if}}
                     </span>
                     <span class="header__user-name">{{user.name}}</span>
                     {{> components/Icon/Icon name="angle-right" class="header__user-arrow"}}

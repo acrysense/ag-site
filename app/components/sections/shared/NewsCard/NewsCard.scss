@@ -120,8 +120,9 @@
 		color: palette("blue-hover");
 	}
 
-	// Пока картинка грузится — светлая заготовка вместо белой дыры (цвет скелетона, без блика)
+	// Заготовка под картинкой (миксин image-placeholder): пока грузится, если её нет или она не
+	// загрузилась — светлый фон и значок «картинка»
 	.news-card__media {
-		background-color: palette("skeleton");
+		@include image-placeholder;
 	}
 }

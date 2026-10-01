@@ -584,6 +584,16 @@ export default defineConfig(({ mode }) => {
 					default(v: any, fb: any) {
 						return v !== undefined && v !== null && v !== '' ? v : fb
 					},
+					// Инициалы по имени: «Волкова Анна» → «ВА» (на бэке — так же, две первые буквы)
+					initials(name: any) {
+						return String(name || '')
+							.trim()
+							.split(/\s+/)
+							.slice(0, 2)
+							.map((word) => word[0] || '')
+							.join('')
+							.toUpperCase()
+					},
 					// Повторить n раз: {{#each (range 3)}}
 					range(n: any) {
 						return Array.from({ length: Math.max(0, Number(n) || 0) }, (_, i) => i)
