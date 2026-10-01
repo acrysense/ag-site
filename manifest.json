@@ -3,8 +3,12 @@
     "file": "assets/js/announce-CzTc7via.js",
     "name": "announce"
   },
-  "_app-FgCvlSQ2.js": {
-    "file": "assets/js/app-FgCvlSQ2.js",
+  "_app-2dLV5fI1.css": {
+    "file": "assets/css/app-2dLV5fI1.css",
+    "src": "_app-2dLV5fI1.css"
+  },
+  "_app-B2uKbEV5.js": {
+    "file": "assets/js/app-B2uKbEV5.js",
     "name": "app",
     "dynamicImports": [
       "components/components/Calendar/Calendar.js",
@@ -31,12 +35,8 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-TpWwQk2V.css"
+      "assets/css/app-2dLV5fI1.css"
     ]
-  },
-  "_app-TpWwQk2V.css": {
-    "file": "assets/css/app-TpWwQk2V.css",
-    "src": "_app-TpWwQk2V.css"
   },
   "_icon-RHyGVOjg.js": {
     "file": "assets/js/icon-RHyGVOjg.js",
@@ -146,7 +146,7 @@
     ]
   },
   "components/components/Modal/Modal.js": {
-    "file": "assets/js/Modal-D7hw_7aB.js",
+    "file": "assets/js/Modal-WQ2gzk6K.js",
     "name": "Modal",
     "src": "components/components/Modal/Modal.js",
     "isDynamicEntry": true,
@@ -199,7 +199,7 @@
     "isDynamicEntry": true
   },
   "components/layouts/MainMenu/MainMenu.js": {
-    "file": "assets/js/MainMenu-CZSYjqaL.js",
+    "file": "assets/js/MainMenu-D7K7oTXn.js",
     "name": "MainMenu",
     "src": "components/layouts/MainMenu/MainMenu.js",
     "isDynamicEntry": true,
@@ -275,13 +275,13 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-BM7iO6nZ.js",
+    "file": "assets/js/dev-canvas-g6mxRKKv.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
       "_mock-server-MkG1XQrQ.js",
-      "_app-FgCvlSQ2.js"
+      "_app-B2uKbEV5.js"
     ],
     "css": [
       "assets/css/dev-canvas-ALVq7VmV.css"
