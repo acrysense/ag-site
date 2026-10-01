@@ -10,7 +10,7 @@
 					"title": "Если бы холдинг «Аптека групп» был произведением искусства",
 					"excerpt": "Вас позвали на новогодний корпоратив, корпаратив или карпаратив? Куда отправиться, чтобы не выглядеть невеждой? Верный ответ подскажут правило и советы опытных преподавателей.",
 					"image": {
-						"src": "./dev/img/news-1.jpg",
+						"src": "./dev/img/news-1.webp",
 						"width": 600,
 						"height": 600
 					},
@@ -26,7 +26,7 @@
 					"title": "Если бы холдинг «Аптека групп»",
 					"excerpt": "Вас позвали на новогодний корпоратив, корпаратив или карпаратив? Куда отправиться, чтобы не выглядеть невеждой? Верный ответ подскажут правило и советы опытных преподавателей.",
 					"image": {
-						"src": "./dev/img/news-2.jpg",
+						"src": "./dev/img/news-2.webp",
 						"width": 600,
 						"height": 600
 					},
@@ -42,7 +42,7 @@
 					"title": "Если бы холдинг «Аптека групп» был",
 					"excerpt": "Вас позвали на новогодний корпоратив, корпаратив или карпаратив?",
 					"image": {
-						"src": "./dev/img/news-3.jpg",
+						"src": "./dev/img/news-3.webp",
 						"width": 600,
 						"height": 600
 					},
@@ -58,7 +58,7 @@
 					"title": "Если бы холдинг «Аптека групп» был произведением искусства",
 					"excerpt": "Вас позвали на новогодний корпоратив",
 					"image": {
-						"src": "./dev/img/news-4.jpg",
+						"src": "./dev/img/news-4.webp",
 						"width": 600,
 						"height": 600
 					},
@@ -74,7 +74,7 @@
 					"title": "Если бы холдинг «Аптека групп» был произведением искусства",
 					"excerpt": "Вас позвали на новогодний корпоратив, корпаратив или карпаратив? Куда отправиться, чтобы не выглядеть невеждой? Верный ответ подскажут правило и советы опытных преподавателей.",
 					"image": {
-						"src": "./dev/img/news-4.jpg",
+						"src": "./dev/img/news-4.webp",
 						"width": 600,
 						"height": 600
 					},
@@ -90,7 +90,7 @@
 					"title": "Если бы холдинг «Аптека групп» был произведением искусства",
 					"excerpt": "Вас позвали на новогодний корпоратив, корпаратив или карпаратив? Куда отправиться, чтобы не выглядеть невеждой? Верный ответ подскажут правило и советы опытных преподавателей.",
 					"image": {
-						"src": "./dev/img/news-1.jpg",
+						"src": "./dev/img/news-1.webp",
 						"width": 600,
 						"height": 600
 					},
@@ -109,48 +109,48 @@
 					"url": "#",
 					"alt": "Uriage: уход для проблемной кожи",
 					"image": {
-						"desktop": "./dev/img/banner-desktop.jpg",
-						"mobile": "./dev/img/banner-mobile.jpg"
+						"desktop": "./dev/img/banner-desktop.webp",
+						"mobile": "./dev/img/banner-mobile.webp"
 					}
 				},
 				{
 					"url": "#",
 					"alt": "Аптечка при простуде — скидки до −23%",
 					"image": {
-						"desktop": "./dev/img/banner-desktop.jpg",
-						"mobile": "./dev/img/banner-mobile.jpg"
+						"desktop": "./dev/img/banner-desktop.webp",
+						"mobile": "./dev/img/banner-mobile.webp"
 					}
 				},
 				{
 					"url": "#",
 					"alt": "Всё для гигиены полости рта — скидки до −15%",
 					"image": {
-						"desktop": "./dev/img/banner-desktop.jpg",
-						"mobile": "./dev/img/banner-mobile.jpg"
+						"desktop": "./dev/img/banner-desktop.webp",
+						"mobile": "./dev/img/banner-mobile.webp"
 					}
 				},
 				{
 					"url": "#",
 					"alt": "Uriage: уход для проблемной кожи",
 					"image": {
-						"desktop": "./dev/img/banner-desktop.jpg",
-						"mobile": "./dev/img/banner-mobile.jpg"
+						"desktop": "./dev/img/banner-desktop.webp",
+						"mobile": "./dev/img/banner-mobile.webp"
 					}
 				},
 				{
 					"url": "#",
 					"alt": "Аптечка при простуде — скидки до −23%",
 					"image": {
-						"desktop": "./dev/img/banner-desktop.jpg",
-						"mobile": "./dev/img/banner-mobile.jpg"
+						"desktop": "./dev/img/banner-desktop.webp",
+						"mobile": "./dev/img/banner-mobile.webp"
 					}
 				},
 				{
 					"url": "#",
 					"alt": "Всё для гигиены полости рта — скидки до −15%",
 					"image": {
-						"desktop": "./dev/img/banner-desktop.jpg",
-						"mobile": "./dev/img/banner-mobile.jpg"
+						"desktop": "./dev/img/banner-desktop.webp",
+						"mobile": "./dev/img/banner-mobile.webp"
 					}
 				}
 			],
@@ -159,16 +159,16 @@
 					"url": "#",
 					"alt": "Аптечка при простуде — скидки до −23%",
 					"image": {
-						"desktop": "./dev/img/promo-1-desktop.jpg",
-						"mobile": "./dev/img/promo-1-mobile.jpg"
+						"desktop": "./dev/img/promo-1-desktop.webp",
+						"mobile": "./dev/img/promo-1-mobile.webp"
 					}
 				},
 				{
 					"url": "#",
 					"alt": "Всё для гигиены полости рта — скидки до −15%",
 					"image": {
-						"desktop": "./dev/img/promo-2-desktop.jpg",
-						"mobile": "./dev/img/promo-2-mobile.jpg"
+						"desktop": "./dev/img/promo-2-desktop.webp",
+						"mobile": "./dev/img/promo-2-mobile.webp"
 					}
 				}
 			]
@@ -180,32 +180,32 @@
 				{
 					"url": "#",
 					"title": "Bonjour, уважаемые коллеги! С 7 сентября в аптеках ADEL, «Добрыя лекi»",
-					"image": "./dev/img/post-1.jpg"
+					"image": "./dev/img/post-1.webp"
 				},
 				{
 					"url": "#",
 					"title": "С 7 сентября по 31 декабря 2026 года (до последнего «подарка») в 329 аптеках ADEL,  «Добрыя лекi»",
-					"image": "./dev/img/post-2.jpg"
+					"image": "./dev/img/post-2.webp"
 				},
 				{
 					"url": "#",
 					"title": "С 7 сентября по 31 декабря 2026 года в 12 аптеках ADEL стартует акция «Подарок за покупку от Dr. Ceruocle",
-					"image": "./dev/img/post-3.jpg"
+					"image": "./dev/img/post-3.webp"
 				},
 				{
 					"url": "#",
 					"title": "Rovectin – корейская косметика для требовательной кожи",
-					"image": "./dev/img/post-4.jpg"
+					"image": "./dev/img/post-4.webp"
 				},
 				{
 					"url": "#",
 					"title": "Bonjour, уважаемые коллеги! С 7 сентября в аптеках ADEL, «Добрыя лекi»",
-					"image": "./dev/img/post-1.jpg"
+					"image": "./dev/img/post-1.webp"
 				},
 				{
 					"url": "#",
 					"title": "С 7 сентября по 31 декабря 2026 года (до последнего «подарка») в 329 аптеках ADEL,  «Добрыя лекi»",
-					"image": "./dev/img/post-2.jpg"
+					"image": "./dev/img/post-2.webp"
 				}
 			]
 		},
@@ -216,32 +216,32 @@
 				{
 					"url": "#",
 					"title": "Bonjour, уважаемые коллеги! С 7 сентября в аптеках ADEL, «Добрыя лекi»",
-					"image": "./dev/img/post-1.jpg"
+					"image": "./dev/img/post-1.webp"
 				},
 				{
 					"url": "#",
 					"title": "С 7 сентября по 31 декабря 2026 года (до последнего «подарка») в 329 аптеках ADEL,  «Добрыя лекi»",
-					"image": "./dev/img/post-2.jpg"
+					"image": "./dev/img/post-2.webp"
 				},
 				{
 					"url": "#",
 					"title": "С 7 сентября по 31 декабря 2026 года в 12 аптеках ADEL стартует акция «Подарок за покупку от Dr. Ceruocle",
-					"image": "./dev/img/post-3.jpg"
+					"image": "./dev/img/post-3.webp"
 				},
 				{
 					"url": "#",
 					"title": "Rovectin – корейская косметика для требовательной кожи",
-					"image": "./dev/img/post-4.jpg"
+					"image": "./dev/img/post-4.webp"
 				},
 				{
 					"url": "#",
 					"title": "Bonjour, уважаемые коллеги! С 7 сентября в аптеках ADEL, «Добрыя лекi»",
-					"image": "./dev/img/post-1.jpg"
+					"image": "./dev/img/post-1.webp"
 				},
 				{
 					"url": "#",
 					"title": "С 7 сентября по 31 декабря 2026 года (до последнего «подарка») в 329 аптеках ADEL,  «Добрыя лекi»",
-					"image": "./dev/img/post-2.jpg"
+					"image": "./dev/img/post-2.webp"
 				}
 			]
 		},
@@ -255,7 +255,7 @@
 					"date": "2026-03-15",
 					"dateText": "15 марта",
 					"image": {
-						"src": "./dev/img/person-1.jpg"
+						"src": "./dev/img/person-1.webp"
 					}
 				},
 				{
@@ -264,7 +264,7 @@
 					"date": "2026-03-15",
 					"dateText": "15 марта",
 					"image": {
-						"src": "./dev/img/person-2.jpg"
+						"src": "./dev/img/person-2.webp"
 					}
 				}
 			],
@@ -281,7 +281,7 @@
 					"date": "2026-03-17",
 					"dateText": "17 марта",
 					"image": {
-						"src": "./dev/img/person-3.jpg"
+						"src": "./dev/img/person-3.webp"
 					}
 				},
 				{
@@ -290,7 +290,7 @@
 					"date": "2026-03-17",
 					"dateText": "17 марта",
 					"image": {
-						"src": "./dev/img/person-4.jpg"
+						"src": "./dev/img/person-4.webp"
 					}
 				},
 				{
@@ -299,7 +299,7 @@
 					"date": "2026-03-20",
 					"dateText": "20 марта",
 					"image": {
-						"src": "./dev/img/person-5.jpg"
+						"src": "./dev/img/person-5.webp"
 					}
 				}
 			]
@@ -328,48 +328,48 @@
 					"url": "#",
 					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
 					"image": {
-						"desktop": "./dev/img/wide-desktop.jpg",
-						"mobile": "./dev/img/wide-mobile.jpg"
+						"desktop": "./dev/img/wide-desktop.webp",
+						"mobile": "./dev/img/wide-mobile.webp"
 					}
 				},
 				{
 					"url": "#",
 					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
 					"image": {
-						"desktop": "./dev/img/wide-desktop.jpg",
-						"mobile": "./dev/img/wide-mobile.jpg"
+						"desktop": "./dev/img/wide-desktop.webp",
+						"mobile": "./dev/img/wide-mobile.webp"
 					}
 				},
 				{
 					"url": "#",
 					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
 					"image": {
-						"desktop": "./dev/img/wide-desktop.jpg",
-						"mobile": "./dev/img/wide-mobile.jpg"
+						"desktop": "./dev/img/wide-desktop.webp",
+						"mobile": "./dev/img/wide-mobile.webp"
 					}
 				},
 				{
 					"url": "#",
 					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
 					"image": {
-						"desktop": "./dev/img/wide-desktop.jpg",
-						"mobile": "./dev/img/wide-mobile.jpg"
+						"desktop": "./dev/img/wide-desktop.webp",
+						"mobile": "./dev/img/wide-mobile.webp"
 					}
 				},
 				{
 					"url": "#",
 					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
 					"image": {
-						"desktop": "./dev/img/wide-desktop.jpg",
-						"mobile": "./dev/img/wide-mobile.jpg"
+						"desktop": "./dev/img/wide-desktop.webp",
+						"mobile": "./dev/img/wide-mobile.webp"
 					}
 				},
 				{
 					"url": "#",
 					"alt": "BIODERMA: аптечный уход со скидкой до −10%",
 					"image": {
-						"desktop": "./dev/img/wide-desktop.jpg",
-						"mobile": "./dev/img/wide-mobile.jpg"
+						"desktop": "./dev/img/wide-desktop.webp",
+						"mobile": "./dev/img/wide-mobile.webp"
 					}
 				}
 			]
@@ -387,7 +387,7 @@
 							"name": "Волкова Анна",
 							"position": "Заведующая аптекой",
 							"image": {
-								"src": "./dev/img/leader-1.jpg"
+								"src": "./dev/img/leader-1.webp"
 							},
 							"award": {
 								"icon": "award-trophy",
@@ -399,7 +399,7 @@
 							"name": "Федорович Светлана",
 							"position": "Фармацевт",
 							"image": {
-								"src": "./dev/img/leader-2.jpg"
+								"src": "./dev/img/leader-2.webp"
 							},
 							"award": {
 								"icon": "award-podium",
@@ -411,7 +411,7 @@
 							"name": "Кот Евгений",
 							"position": "Заведующий аптекой",
 							"image": {
-								"src": "./dev/img/leader-3.jpg"
+								"src": "./dev/img/leader-3.webp"
 							},
 							"award": {
 								"icon": "award-leaf",
@@ -423,7 +423,7 @@
 							"name": "Иванов Алексей",
 							"position": "Фармацевт",
 							"image": {
-								"src": "./dev/img/leader-4.jpg"
+								"src": "./dev/img/leader-4.webp"
 							},
 							"award": {
 								"icon": "award-trophy",
@@ -435,7 +435,7 @@
 							"name": "Синичкина Елена",
 							"position": "Провизор",
 							"image": {
-								"src": "./dev/img/leader-5.jpg"
+								"src": "./dev/img/leader-5.webp"
 							},
 							"award": {
 								"icon": "award-pro",
@@ -447,7 +447,7 @@
 							"name": "Федорович Светлана",
 							"position": "Фармацевт",
 							"image": {
-								"src": "./dev/img/leader-2.jpg"
+								"src": "./dev/img/leader-2.webp"
 							},
 							"award": {
 								"icon": "award-leaf",
@@ -459,7 +459,7 @@
 							"name": "Волкова Анна",
 							"position": "Заведующая аптекой",
 							"image": {
-								"src": "./dev/img/leader-1.jpg"
+								"src": "./dev/img/leader-1.webp"
 							},
 							"award": {
 								"icon": "award-pro",
@@ -476,7 +476,7 @@
 							"name": "Кот Евгений",
 							"position": "Заведующий аптекой",
 							"image": {
-								"src": "./dev/img/leader-3.jpg"
+								"src": "./dev/img/leader-3.webp"
 							},
 							"award": {
 								"icon": "award-pro",
@@ -488,7 +488,7 @@
 							"name": "Синичкина Елена",
 							"position": "Провизор",
 							"image": {
-								"src": "./dev/img/leader-5.jpg"
+								"src": "./dev/img/leader-5.webp"
 							},
 							"award": {
 								"icon": "award-trophy",
@@ -500,7 +500,7 @@
 							"name": "Иванов Алексей",
 							"position": "Фармацевт",
 							"image": {
-								"src": "./dev/img/leader-4.jpg"
+								"src": "./dev/img/leader-4.webp"
 							},
 							"award": {
 								"icon": "award-leaf",

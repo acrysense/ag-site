@@ -184,7 +184,7 @@
 							"name": "Дрозд В.В.",
 							"company": "ООО «Адель Фарм»",
 							"image": {
-								"src": "./dev/img/person-2.jpg"
+								"src": "./dev/img/person-2.webp"
 							}
 						},
 						{
@@ -192,7 +192,7 @@
 							"name": "Волкова Т.В.",
 							"company": "ООО «Аптечка плюс»",
 							"image": {
-								"src": "./dev/img/person-3.jpg"
+								"src": "./dev/img/person-3.webp"
 							}
 						}
 					]
@@ -209,7 +209,7 @@
 							"name": "Синицина К.В.",
 							"company": "ООО «Аптечка плюс»",
 							"image": {
-								"src": "./dev/img/person-4.jpg"
+								"src": "./dev/img/person-4.webp"
 							}
 						},
 						{
@@ -217,7 +217,7 @@
 							"name": "Зайцев М.В.",
 							"company": "ООО «Адель Фарм»",
 							"image": {
-								"src": "./dev/img/person-5.jpg"
+								"src": "./dev/img/person-5.webp"
 							}
 						}
 					]
@@ -246,7 +246,7 @@
 							"name": "Рябова А.А.",
 							"company": "ООО «Аптечка плюс»",
 							"image": {
-								"src": "./dev/img/person-2.jpg"
+								"src": "./dev/img/person-2.webp"
 							}
 						},
 						{
@@ -254,7 +254,7 @@
 							"name": "Сорокина Д.А.",
 							"company": "ООО «Адель Фарм»",
 							"image": {
-								"src": "./dev/img/person-3.jpg"
+								"src": "./dev/img/person-3.webp"
 							}
 						}
 					]
@@ -271,7 +271,7 @@
 							"name": "Березова С.Н.",
 							"company": "ООО «Аптека групп»",
 							"image": {
-								"src": "./dev/img/person-4.jpg"
+								"src": "./dev/img/person-4.webp"
 							}
 						}
 					]
@@ -297,7 +297,7 @@
 							"name": "Браун К.К.",
 							"company": "ООО «Адель Фарм»",
 							"image": {
-								"src": "./dev/img/person-5.jpg"
+								"src": "./dev/img/person-5.webp"
 							}
 						}
 					]
@@ -314,7 +314,7 @@
 							"name": "Петров С.В.",
 							"company": "ООО «Добрыя лекі»",
 							"image": {
-								"src": "./dev/img/person-1.jpg"
+								"src": "./dev/img/person-1.webp"
 							}
 						},
 						{
@@ -322,7 +322,7 @@
 							"name": "Медведева Т.В.",
 							"company": "ООО «Аптека групп»",
 							"image": {
-								"src": "./dev/img/person-2.jpg"
+								"src": "./dev/img/person-2.webp"
 							}
 						},
 						{
@@ -335,7 +335,7 @@
 							"name": "Ковальчук Н.П.",
 							"company": "ООО «Аптека групп»",
 							"image": {
-								"src": "./dev/img/person-4.jpg"
+								"src": "./dev/img/person-4.webp"
 							}
 						}
 					]
@@ -352,7 +352,7 @@
 							"name": "Лебедева Е.С.",
 							"company": "ООО «Добрыя лекі»",
 							"image": {
-								"src": "./dev/img/person-5.jpg"
+								"src": "./dev/img/person-5.webp"
 							}
 						},
 						{
@@ -360,7 +360,7 @@
 							"name": "Новик Д.Г.",
 							"company": "ООО «Аптека групп»",
 							"image": {
-								"src": "./dev/img/person-1.jpg"
+								"src": "./dev/img/person-1.webp"
 							}
 						}
 					]
@@ -377,7 +377,7 @@
 							"name": "Шевчук И.М.",
 							"company": "ООО «Аптека групп»",
 							"image": {
-								"src": "./dev/img/person-2.jpg"
+								"src": "./dev/img/person-2.webp"
 							}
 						}
 					]
@@ -394,7 +394,7 @@
 							"name": "Жук О.В.",
 							"company": "ООО «Адель Фарм»",
 							"image": {
-								"src": "./dev/img/person-3.jpg"
+								"src": "./dev/img/person-3.webp"
 							}
 						},
 						{
@@ -402,7 +402,7 @@
 							"name": "Климович Л.А.",
 							"company": "ООО «Аптечка плюс»",
 							"image": {
-								"src": "./dev/img/person-4.jpg"
+								"src": "./dev/img/person-4.webp"
 							}
 						},
 						{
@@ -415,7 +415,7 @@
 							"name": "Кравченко Ю.Н.",
 							"company": "ООО «Аптечка плюс»",
 							"image": {
-								"src": "./dev/img/person-1.jpg"
+								"src": "./dev/img/person-1.webp"
 							}
 						},
 						{
@@ -423,7 +423,7 @@
 							"name": "Козловская М.С.",
 							"company": "ООО «Адель Фарм»",
 							"image": {
-								"src": "./dev/img/person-2.jpg"
+								"src": "./dev/img/person-2.webp"
 							}
 						}
 					]
@@ -440,7 +440,7 @@
 							"name": "Бондаренко Е.А.",
 							"company": "ООО «Добрыя лекі»",
 							"image": {
-								"src": "./dev/img/person-3.jpg"
+								"src": "./dev/img/person-3.webp"
 							}
 						},
 						{
@@ -448,7 +448,7 @@
 							"name": "Савицкая Г.И.",
 							"company": "ООО «Аптека групп»",
 							"image": {
-								"src": "./dev/img/person-4.jpg"
+								"src": "./dev/img/person-4.webp"
 							}
 						}
 					]
@@ -466,7 +466,7 @@
 							"name": "Романович В.Д.",
 							"company": "ООО «Аптека групп»",
 							"image": {
-								"src": "./dev/img/person-5.jpg"
+								"src": "./dev/img/person-5.webp"
 							}
 						}
 					]
@@ -491,7 +491,7 @@
 							"name": "Ткачук А.С.",
 							"company": "ООО «Адель Фарм»",
 							"image": {
-								"src": "./dev/img/person-1.jpg"
+								"src": "./dev/img/person-1.webp"
 							}
 						},
 						{
@@ -504,7 +504,7 @@
 							"name": "Гончарова Л.М.",
 							"company": "ООО «Адель Фарм»",
 							"image": {
-								"src": "./dev/img/person-3.jpg"
+								"src": "./dev/img/person-3.webp"
 							}
 						}
 					]
@@ -521,7 +521,7 @@
 							"name": "Гончарова Л.М.",
 							"company": "ООО «Аптека групп»",
 							"image": {
-								"src": "./dev/img/person-4.jpg"
+								"src": "./dev/img/person-4.webp"
 							}
 						},
 						{
@@ -529,7 +529,7 @@
 							"name": "Кузьмич Р.В.",
 							"company": "ООО «Добрыя лекі»",
 							"image": {
-								"src": "./dev/img/person-5.jpg"
+								"src": "./dev/img/person-5.webp"
 							}
 						},
 						{
@@ -537,7 +537,7 @@
 							"name": "Пашкевич Н.Л.",
 							"company": "ООО «Аптека групп»",
 							"image": {
-								"src": "./dev/img/person-1.jpg"
+								"src": "./dev/img/person-1.webp"
 							}
 						},
 						{
@@ -545,7 +545,7 @@
 							"name": "Василевская-Константинопольская О.Л.",
 							"company": "ООО «Добрыя лекі»",
 							"image": {
-								"src": "./dev/img/person-2.jpg"
+								"src": "./dev/img/person-2.webp"
 							}
 						},
 						{
@@ -553,7 +553,7 @@
 							"name": "Лукашевич И.Л.",
 							"company": "ООО «Аптека групп»",
 							"image": {
-								"src": "./dev/img/person-3.jpg"
+								"src": "./dev/img/person-3.webp"
 							}
 						},
 						{
@@ -566,7 +566,7 @@
 							"name": "Волкова Т.В.",
 							"company": "ООО «Аптека групп»",
 							"image": {
-								"src": "./dev/img/person-5.jpg"
+								"src": "./dev/img/person-5.webp"
 							}
 						}
 					]
@@ -583,7 +583,7 @@
 							"name": "Волкова Т.В.",
 							"company": "ООО «Аптечка плюс»",
 							"image": {
-								"src": "./dev/img/person-1.jpg"
+								"src": "./dev/img/person-1.webp"
 							}
 						},
 						{
@@ -591,7 +591,7 @@
 							"name": "Синицина К.В.",
 							"company": "ООО «Адель Фарм»",
 							"image": {
-								"src": "./dev/img/person-2.jpg"
+								"src": "./dev/img/person-2.webp"
 							}
 						}
 					]
@@ -608,7 +608,7 @@
 							"name": "Зайцев М.В.",
 							"company": "ООО «Адель Фарм»",
 							"image": {
-								"src": "./dev/img/person-3.jpg"
+								"src": "./dev/img/person-3.webp"
 							}
 						}
 					]
@@ -625,7 +625,7 @@
 							"name": "Иванова О.А.",
 							"company": "ООО «Добрыя лекі»",
 							"image": {
-								"src": "./dev/img/person-4.jpg"
+								"src": "./dev/img/person-4.webp"
 							}
 						},
 						{
@@ -633,7 +633,7 @@
 							"name": "Рябова А.А.",
 							"company": "ООО «Аптека групп»",
 							"image": {
-								"src": "./dev/img/person-5.jpg"
+								"src": "./dev/img/person-5.webp"
 							}
 						},
 						{
@@ -664,7 +664,7 @@
 							"name": "Березова С.Н.",
 							"company": "ООО «Адель Фарм»",
 							"image": {
-								"src": "./dev/img/person-2.jpg"
+								"src": "./dev/img/person-2.webp"
 							}
 						},
 						{
@@ -672,7 +672,7 @@
 							"name": "Браун К.К.",
 							"company": "ООО «Аптечка плюс»",
 							"image": {
-								"src": "./dev/img/person-3.jpg"
+								"src": "./dev/img/person-3.webp"
 							}
 						}
 					]
@@ -689,7 +689,7 @@
 							"name": "Петров С.В.",
 							"company": "ООО «Аптечка плюс»",
 							"image": {
-								"src": "./dev/img/person-4.jpg"
+								"src": "./dev/img/person-4.webp"
 							}
 						}
 					]
@@ -706,7 +706,7 @@
 							"name": "Медведева Т.В.",
 							"company": "ООО «Аптека групп»",
 							"image": {
-								"src": "./dev/img/person-5.jpg"
+								"src": "./dev/img/person-5.webp"
 							}
 						},
 						{
@@ -714,7 +714,7 @@
 							"name": "Ковалёв А.И.",
 							"company": "ООО «Добрыя лекі»",
 							"image": {
-								"src": "./dev/img/person-1.jpg"
+								"src": "./dev/img/person-1.webp"
 							}
 						},
 						{
@@ -722,7 +722,7 @@
 							"name": "Ковальчук Н.П.",
 							"company": "ООО «Аптека групп»",
 							"image": {
-								"src": "./dev/img/person-2.jpg"
+								"src": "./dev/img/person-2.webp"
 							}
 						},
 						{
@@ -744,7 +744,7 @@
 							"name": "Новик Д.Г.",
 							"company": "ООО «Аптека групп»",
 							"image": {
-								"src": "./dev/img/person-4.jpg"
+								"src": "./dev/img/person-4.webp"
 							}
 						},
 						{
@@ -766,7 +766,7 @@
 							"name": "Жук О.В.",
 							"company": "ООО «Добрыя лекі»",
 							"image": {
-								"src": "./dev/img/person-1.jpg"
+								"src": "./dev/img/person-1.webp"
 							}
 						}
 					]
@@ -783,7 +783,7 @@
 							"name": "Дрозд В.В.",
 							"company": "ООО «Аптечка плюс»",
 							"image": {
-								"src": "./dev/img/person-2.jpg"
+								"src": "./dev/img/person-2.webp"
 							}
 						},
 						{
@@ -791,7 +791,7 @@
 							"name": "Волкова Т.В.",
 							"company": "ООО «Адель Фарм»",
 							"image": {
-								"src": "./dev/img/person-3.jpg"
+								"src": "./dev/img/person-3.webp"
 							}
 						}
 					]
@@ -808,7 +808,7 @@
 							"name": "Козловская М.С.",
 							"company": "ООО «Адель Фарм»",
 							"image": {
-								"src": "./dev/img/person-4.jpg"
+								"src": "./dev/img/person-4.webp"
 							}
 						}
 					]
@@ -838,7 +838,7 @@
 							"name": "Левченко П.Р.",
 							"company": "ООО «Аптечка плюс»",
 							"image": {
-								"src": "./dev/img/person-1.jpg"
+								"src": "./dev/img/person-1.webp"
 							}
 						},
 						{
@@ -859,7 +859,7 @@
 							"name": "Романович В.Д.",
 							"company": "ООО «Адель Фарм»",
 							"image": {
-								"src": "./dev/img/person-3.jpg"
+								"src": "./dev/img/person-3.webp"
 							}
 						}
 					]
@@ -875,7 +875,7 @@
 							"name": "Ткачук А.С.",
 							"company": "ООО «Добрыя лекі»",
 							"image": {
-								"src": "./dev/img/person-4.jpg"
+								"src": "./dev/img/person-4.webp"
 							}
 						},
 						{
@@ -883,7 +883,7 @@
 							"name": "Мельник О.Н.",
 							"company": "ООО «Аптека групп»",
 							"image": {
-								"src": "./dev/img/person-5.jpg"
+								"src": "./dev/img/person-5.webp"
 							}
 						}
 					]
@@ -901,7 +901,7 @@
 							"name": "Гончарова Л.М.",
 							"company": "ООО «Аптека групп»",
 							"image": {
-								"src": "./dev/img/person-1.jpg"
+								"src": "./dev/img/person-1.webp"
 							}
 						}
 					]
@@ -944,7 +944,7 @@
 							"name": "Пашкевич Н.Л.",
 							"company": "ООО «Добрыя лекі»",
 							"image": {
-								"src": "./dev/img/person-3.jpg"
+								"src": "./dev/img/person-3.webp"
 							}
 						},
 						{
@@ -952,7 +952,7 @@
 							"name": "Василевская-Константинопольская О.Л.",
 							"company": "ООО «Аптека групп»",
 							"image": {
-								"src": "./dev/img/person-4.jpg"
+								"src": "./dev/img/person-4.webp"
 							}
 						}
 					]
@@ -968,7 +968,7 @@
 					"name": "Дрозд В.В.",
 					"dateText": "25 сентября",
 					"image": {
-						"src": "./dev/img/person-1.jpg"
+						"src": "./dev/img/person-1.webp"
 					}
 				},
 				{
@@ -976,7 +976,7 @@
 					"name": "Волкова Т.В.",
 					"dateText": "25 сентября",
 					"image": {
-						"src": "./dev/img/person-2.jpg"
+						"src": "./dev/img/person-2.webp"
 					}
 				}
 			],
@@ -991,7 +991,7 @@
 					"name": "Бондаренко Е.А.",
 					"dateText": "27 сентября, вс",
 					"image": {
-						"src": "./dev/img/person-3.jpg"
+						"src": "./dev/img/person-3.webp"
 					}
 				},
 				{
@@ -999,7 +999,7 @@
 					"name": "Левченко П.Р.",
 					"dateText": "28 сентября, пн",
 					"image": {
-						"src": "./dev/img/person-4.jpg"
+						"src": "./dev/img/person-4.webp"
 					}
 				},
 				{
@@ -1007,7 +1007,7 @@
 					"name": "Савицкая Г.И.",
 					"dateText": "28 сентября, пн",
 					"image": {
-						"src": "./dev/img/person-5.jpg"
+						"src": "./dev/img/person-5.webp"
 					}
 				},
 				{
@@ -1015,7 +1015,7 @@
 					"name": "Романович В.Д.",
 					"dateText": "29 сентября, вт",
 					"image": {
-						"src": "./dev/img/person-1.jpg"
+						"src": "./dev/img/person-1.webp"
 					}
 				},
 				{
@@ -1023,7 +1023,7 @@
 					"name": "Ткачук А.С.",
 					"dateText": "30 сентября, ср",
 					"image": {
-						"src": "./dev/img/person-2.jpg"
+						"src": "./dev/img/person-2.webp"
 					}
 				},
 				{
@@ -1031,7 +1031,7 @@
 					"name": "Мельник О.Н.",
 					"dateText": "30 сентября, ср",
 					"image": {
-						"src": "./dev/img/person-3.jpg"
+						"src": "./dev/img/person-3.webp"
 					}
 				},
 				{
@@ -1039,7 +1039,7 @@
 					"name": "Гончарова Л.М.",
 					"dateText": "1 октября, чт",
 					"image": {
-						"src": "./dev/img/person-4.jpg"
+						"src": "./dev/img/person-4.webp"
 					}
 				},
 				{
@@ -1047,7 +1047,7 @@
 					"name": "Кузьмич Р.В.",
 					"dateText": "2 октября, пт",
 					"image": {
-						"src": "./dev/img/person-5.jpg"
+						"src": "./dev/img/person-5.webp"
 					}
 				}
 			]

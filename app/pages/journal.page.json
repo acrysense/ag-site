@@ -144,7 +144,7 @@
 			"url": "#",
 			"alt": "Тонометры и аксессуары — скидка до −10%. Надёжный контроль здоровья",
 			"image": {
-				"src": "./dev/img/side-banner.jpg"
+				"src": "./dev/img/side-banner.webp"
 			}
 		},
 		"list": {
@@ -162,7 +162,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-1.jpg",
+						"src": "./dev/img/journal-1.webp",
 						"width": 360,
 						"height": 360
 					},
@@ -179,7 +179,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-2.jpg",
+						"src": "./dev/img/journal-2.webp",
 						"width": 360,
 						"height": 360
 					},
@@ -196,7 +196,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-2.jpg",
+						"src": "./dev/img/journal-2.webp",
 						"width": 360,
 						"height": 360
 					},
@@ -213,7 +213,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-1.jpg",
+						"src": "./dev/img/journal-1.webp",
 						"width": 360,
 						"height": 360
 					},
@@ -230,7 +230,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-2.jpg",
+						"src": "./dev/img/journal-2.webp",
 						"width": 360,
 						"height": 360
 					},
@@ -247,7 +247,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-1.jpg",
+						"src": "./dev/img/journal-1.webp",
 						"width": 360,
 						"height": 360
 					},
@@ -264,7 +264,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-1.jpg",
+						"src": "./dev/img/journal-1.webp",
 						"width": 360,
 						"height": 360
 					},
@@ -281,7 +281,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-1.jpg",
+						"src": "./dev/img/journal-1.webp",
 						"width": 360,
 						"height": 360
 					},
@@ -298,7 +298,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-2.jpg",
+						"src": "./dev/img/journal-2.webp",
 						"width": 360,
 						"height": 360
 					},
@@ -315,7 +315,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-1.jpg",
+						"src": "./dev/img/journal-1.webp",
 						"width": 360,
 						"height": 360
 					},
@@ -332,7 +332,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-1.jpg",
+						"src": "./dev/img/journal-1.webp",
 						"width": 360,
 						"height": 360
 					},
@@ -349,7 +349,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-2.jpg",
+						"src": "./dev/img/journal-2.webp",
 						"width": 360,
 						"height": 360
 					},
@@ -366,7 +366,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-1.jpg",
+						"src": "./dev/img/journal-1.webp",
 						"width": 360,
 						"height": 360
 					},
@@ -383,7 +383,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-2.jpg",
+						"src": "./dev/img/journal-2.webp",
 						"width": 360,
 						"height": 360
 					},
@@ -400,7 +400,7 @@
 						"sizeText": "1.2Гб"
 					},
 					"image": {
-						"src": "./dev/img/journal-2.jpg",
+						"src": "./dev/img/journal-2.webp",
 						"width": 360,
 						"height": 360
 					},

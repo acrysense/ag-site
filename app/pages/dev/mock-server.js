@@ -361,7 +361,7 @@ const suggestData = {
 			'Иван Купала: как мы провели летний корпоратив',
 			'Новости · 08.07.2026',
 			'news',
-			new URL('./img/news-1.jpg', import.meta.url).href,
+			new URL('./img/news-1.webp', import.meta.url).href,
 		],
 		[
 			'Приказ о назначении: Иванов С.П. — директор по развитию',
@@ -373,7 +373,7 @@ const suggestData = {
 			'Итоги программы «Лучшая аптека сезона»',
 			'Новости · 28.03.2026',
 			'news',
-			new URL('./img/news-3.jpg', import.meta.url).href,
+			new URL('./img/news-3.webp', import.meta.url).href,
 		],
 	],
 	documents: [

@@ -298,7 +298,7 @@
 						"sectionLabel": "Справочник",
 						"type": "person",
 						"image": {
-							"src": "./dev/img/person-1.jpg"
+							"src": "./dev/img/person-1.webp"
 						},
 						"titleHtml": "<mark>Иван</mark>ова Ольга Александровна",
 						"snippetHtml": "Провизор · Аптека №12, Минск, ул. Притыцкого, 34",
@@ -310,7 +310,7 @@
 						"sectionLabel": "Справочник",
 						"type": "person",
 						"image": {
-							"src": "./dev/img/person-2.jpg"
+							"src": "./dev/img/person-2.webp"
 						},
 						"titleHtml": "<mark>Иван</mark>чик Дмитрий Олегович",
 						"snippetHtml": "Менеджер по закупкам · Центральный офис",
@@ -331,7 +331,7 @@
 						"sectionLabel": "Справочник",
 						"type": "person",
 						"image": {
-							"src": "./dev/img/person-3.jpg"
+							"src": "./dev/img/person-3.webp"
 						},
 						"titleHtml": "<mark>Иван</mark>ькова Анна Игоревна",
 						"snippetHtml": "Специалист по продажам · Аптека №4, Гродно",
@@ -343,7 +343,7 @@
 						"sectionLabel": "Справочник",
 						"type": "person",
 						"image": {
-							"src": "./dev/img/person-4.jpg"
+							"src": "./dev/img/person-4.webp"
 						},
 						"titleHtml": "<mark>Иван</mark>овский Павел Андреевич",
 						"snippetHtml": "Руководитель направления · Центральный офис",
