@@ -67,7 +67,7 @@
 		background: palette("grey");
 	}
 
-	// Прогресс автолистания (наше): активная полоска заполняется Blue.Hover слева направо за время
+	// Прогресс автолистания (наше): активная полоска (светло-синяя) заполняется Blue.Hover за время
 	// до следующего кадра, на паузе замирает. Без автолистания — сплошная, как в макете
 	.carousel__dot-fill {
 		position: absolute;
@@ -78,7 +78,7 @@
 	}
 
 	.carousel.has-progress .carousel__dot[aria-current="true"] {
-		background: palette("grey");
+		background: palette("blue-progress");
 
 		.carousel__dot-fill {
 			display: block;
