@@ -3,12 +3,8 @@
     "file": "assets/js/announce-CzTc7via.js",
     "name": "announce"
   },
-  "_app-BtHf-NR9.css": {
-    "file": "assets/css/app-BtHf-NR9.css",
-    "src": "_app-BtHf-NR9.css"
-  },
-  "_app-rmNDqBVp.js": {
-    "file": "assets/js/app-rmNDqBVp.js",
+  "_app-BFoLMHOU.js": {
+    "file": "assets/js/app-BFoLMHOU.js",
     "name": "app",
     "dynamicImports": [
       "components/components/Calendar/Calendar.js",
@@ -35,8 +31,12 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-BtHf-NR9.css"
+      "assets/css/app-Cot766hh.css"
     ]
+  },
+  "_app-Cot766hh.css": {
+    "file": "assets/css/app-Cot766hh.css",
+    "src": "_app-Cot766hh.css"
   },
   "_icon-RHyGVOjg.js": {
     "file": "assets/js/icon-RHyGVOjg.js",
@@ -46,8 +46,8 @@
     "file": "assets/js/index-DeDpOBIY.js",
     "name": "index"
   },
-  "_mock-server-DGBNd_6V.js": {
-    "file": "assets/js/mock-server-DGBNd_6V.js",
+  "_mock-server-MkG1XQrQ.js": {
+    "file": "assets/js/mock-server-MkG1XQrQ.js",
     "name": "mock-server",
     "assets": [
       "assets/images/person-2-BSdhiEQf.webp",
@@ -168,7 +168,7 @@
     "isDynamicEntry": true
   },
   "components/components/Select/Select.js": {
-    "file": "assets/js/Select-BBOeEki4.js",
+    "file": "assets/js/Select-C8F0ykjW.js",
     "name": "Select",
     "src": "components/components/Select/Select.js",
     "isDynamicEntry": true,
@@ -275,16 +275,16 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-BiPhXIwQ.js",
+    "file": "assets/js/dev-canvas-Dp65zSJA.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
-      "_mock-server-DGBNd_6V.js",
-      "_app-rmNDqBVp.js"
+      "_mock-server-MkG1XQrQ.js",
+      "_app-BFoLMHOU.js"
     ],
     "css": [
-      "assets/css/dev-canvas-BsCcRHtj.css"
+      "assets/css/dev-canvas-ALVq7VmV.css"
     ],
     "assets": [
       "assets/images/logo-CXuolww_.svg",
@@ -407,12 +407,12 @@
     "src": "pages/dev/img/wide-mobile.webp"
   },
   "pages/dev/ui.html": {
-    "file": "assets/js/dev-ui-CA4Nq_ni.js",
+    "file": "assets/js/dev-ui-DpQ17HMF.js",
     "name": "dev-ui",
     "src": "pages/dev/ui.html",
     "isEntry": true,
     "imports": [
-      "_mock-server-DGBNd_6V.js"
+      "_mock-server-MkG1XQrQ.js"
     ],
     "css": [
       "assets/css/dev-ui-B3yuv34e.css"
