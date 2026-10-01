@@ -67,6 +67,24 @@
 		background: palette("grey");
 	}
 
+	// Прогресс автолистания (наше): активная полоска заполняется Blue.Hover слева направо за время
+	// до следующего кадра, на паузе замирает. Без автолистания — сплошная, как в макете
+	.carousel__dot-fill {
+		position: absolute;
+		inset: 0;
+		display: none;
+		background: palette("blue-hover");
+		border-radius: inherit;
+	}
+
+	.carousel.has-progress .carousel__dot[aria-current="true"] {
+		background: palette("grey");
+
+		.carousel__dot-fill {
+			display: block;
+		}
+	}
+
 	// Параллакс (класс carousel--parallax, наше): при листании картинка в кадре едет медленнее
 	// самого кадра — новый слайд как будто выезжает из-под старого. Анимация привязана к прокрутке
 	// дорожки, без JS: работает и при свайпе, и от стрелок. Где браузер не умеет (Firefox) и при

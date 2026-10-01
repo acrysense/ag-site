@@ -5,8 +5,9 @@
 // Кадр может быть уже дорожки (несколько карточек на экране): стрелки листают по экрану.
 // Всё поместилось без прокрутки — стрелок и точек нет (класс is-single).
 // data-carousel-autoplay="5" — автолистание раз в 5 с, по кругу; отсчёт заново после любой
-// прокрутки. Стоит, пока на карусели мышь (или палец) и фокус с клавиатуры, пока её не видно
-// (за экраном, вкладка в фоне) и при «уменьшить движение».
+// прокрутки. Встаёт на паузу, пока на карусели мышь (или палец) и фокус с клавиатуры, пока её не
+// видно (за экраном, вкладка в фоне); при «уменьшить движение» выключено. Активная точка-полоска
+// заполняется за время до следующего кадра и замирает на паузе (класс has-progress).
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 
 export default function init(root) {
@@ -19,6 +20,9 @@ export default function init(root) {
 	const autoplay = Number(root.dataset.carouselAutoplay) * 1000 || 0
 	let frame = 0
 	let timer = 0
+	let remaining = autoplay
+	let startedAt = 0
+	let progress = null
 	let hovered = false
 	let visible = false
 
@@ -70,6 +74,12 @@ export default function init(root) {
 				button.className = 'carousel__dot'
 				button.setAttribute('aria-label', `Слайд ${index + 1} из ${slides.length}`)
 				button.addEventListener('click', () => go(index), { signal })
+				if (autoplay)
+					button.append(
+						Object.assign(document.createElement('span'), {
+							className: 'carousel__dot-fill',
+						})
+					)
 				dots.append(button)
 				return button
 			})
@@ -88,16 +98,52 @@ export default function init(root) {
 		})
 	}
 
+	// Заполнение активной точки повторяет таймер: тот же остаток, та же пауза
+	const syncProgress = () => {
+		const fill = dotButtons[current()]?.firstElementChild
+		if (progress?.effect.target !== fill) {
+			progress?.cancel()
+			progress = fill?.animate(
+				[{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0 0 0)' }],
+				{ duration: autoplay, fill: 'both' }
+			)
+		}
+		if (!progress) return
+		progress.currentTime = autoplay - remaining
+		if (timer) progress.play()
+		else progress.pause()
+	}
+
+	// Пауза сохраняет остаток времени, продолжение досчитывает его
 	const schedule = () => {
-		clearTimeout(timer)
+		if (!autoplay) return
 		const active = document.activeElement
 		const focused = root.contains(active) && active.matches(':focus-visible')
-		if (!autoplay || hovered || focused || !visible || document.hidden) return
-		if (reducedMotion.matches || root.classList.contains('is-single')) return
-		timer = setTimeout(() => {
-			page(1, true)
-			schedule()
-		}, autoplay)
+		const enabled = !reducedMotion.matches && !root.classList.contains('is-single')
+		const run = enabled && !hovered && !focused && visible && !document.hidden
+		root.classList.toggle('has-progress', enabled)
+		if (!run && timer) {
+			clearTimeout(timer)
+			timer = 0
+			remaining -= performance.now() - startedAt
+		}
+		if (run && !timer) {
+			startedAt = performance.now()
+			timer = setTimeout(() => {
+				timer = 0
+				page(1, true)
+				restart()
+			}, remaining)
+		}
+		syncProgress()
+	}
+
+	// Новый кадр (или прокрутка рукой) — отсчёт с начала
+	const restart = () => {
+		clearTimeout(timer)
+		timer = 0
+		remaining = autoplay
+		schedule()
 	}
 
 	root.querySelector('[data-carousel-prev]')?.addEventListener('click', () => page(-1), {
@@ -137,8 +183,10 @@ export default function init(root) {
 		'scroll',
 		() => {
 			cancelAnimationFrame(frame)
-			frame = requestAnimationFrame(render)
-			schedule()
+			frame = requestAnimationFrame(() => {
+				render()
+				restart()
+			})
 		},
 		{ signal }
 	)
@@ -151,6 +199,7 @@ export default function init(root) {
 		viewport.disconnect()
 		cancelAnimationFrame(frame)
 		clearTimeout(timer)
+		progress?.cancel()
 		dots?.replaceChildren()
 		videos.forEach((video) => video?.pause())
 	}
