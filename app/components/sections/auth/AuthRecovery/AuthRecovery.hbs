@@ -1,0 +1,11 @@
+{{!--
+	Восстановление пароля — как в ЛК (ag): без формы, текст «обратитесь в техподдержку» с почтой
+	и кнопка «К форме входа». Текст и почту правит админ.
+	props: card (AuthCard: title, text, link { text, url: mailto }), button { text, url }.
+	Контракт — docs/contracts/auth.md.
+--}}
+{{#with props as |page|}}
+    {{#> sections/auth/AuthCard/AuthCard props=page.card}}
+        {{> components/Button/Button props=(obj href=page.button.url text=(default page.button.text "К форме входа") variant="general" size="m" class="auth-form__submit")}}
+    {{/sections/auth/AuthCard/AuthCard}}
+{{/with}}

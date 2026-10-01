@@ -6,8 +6,8 @@
 		<script type="module" src="/app.js"></script>
 	</head>
 	<body>
-		{{!-- Вход — как в ЛК (ag); без шапки и подвала --}}
-		{{> sections/auth/AuthLogin/AuthLogin props=data.form }}
+		{{!-- Восстановление пароля — как в ЛК (ag); без шапки и подвала --}}
+		{{> sections/auth/AuthRecovery/AuthRecovery props=data.page }}
 		{{> layouts/SiteModals/SiteModals props=site.modals }}
 		{{> layouts/CookieBanner/CookieBanner props=site.cookies }}
 	</body>

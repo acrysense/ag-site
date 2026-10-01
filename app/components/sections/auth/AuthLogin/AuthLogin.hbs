@@ -1,10 +1,10 @@
 {{!--
-	Вход сотрудника: логин, пароль с «глазом», «Не удается войти?», «Войти». Обычная POST-форма
-	(компонент входа Битрикса), проверка пустых полей — модуль Form; ошибку входа выводит сервер
-	(error — над кнопкой, оба поля красные).
-	props: id (префикс id полей, по умолчанию auth), action, hidden [{ name, value }] (служебные поля компонента), fields { login, password,
-	loginName, passwordName }, login (введённый логин после ошибки), help { text, url }, error,
-	submit; card (AuthCard). Контракт — docs/contracts/auth.md.
+	Вход сотрудника — как в ЛК (ag): логин, пароль с «глазом», «Восстановление пароля», «Войти».
+	Обычная POST-форма (компонент входа Битрикса): пустые поля проверяет модуль Form, ошибку входа
+	выводит сервер (error — над кнопкой, оба поля красные).
+	props: id, action, hidden [{ name, value }] (служебные поля компонента), fields { login,
+	password, loginName, passwordName }, login (введённый логин после ошибки), help { text, url },
+	error, submit; card (AuthCard). Контракт — docs/contracts/auth.md.
 --}}
 {{!-- Внутри блока карточки props — её параметры, поэтому форма — через with --}}
 {{#with props as |form|}}

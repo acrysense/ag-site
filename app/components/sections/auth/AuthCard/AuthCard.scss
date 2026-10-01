@@ -1,93 +1,168 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Вход (перенос старой вёрстки my.ag-html-v2 на компоненты сайта): фон BG.Main с иллюстрацией,
-// логотип, белая карточка 420 (поля 40, скругление 20) — заголовок H2 и текст M/400 Dark-grey.TXT
-// по центру, поля Input, кнопка General. На мобильном — карточка во всю ширину с полями 24,
-// иллюстрация под ней. Макета в новом Figma нет — наше, по киту (Input · Extended 2405:788).
+// Вход — как в ЛК (ag, sections/shared/Auth; размеры ag на 1920): фон #F5F8FA, «← К порталу»
+// 12px слева сверху (с 1280 — с чертой сверху), логотип 118×120 (мобильный 99×100) через 40,
+// карточка 440 — белая, поля 40, скругление 20; заголовок H2 (мобильный 22), текст M/400
+// Black.TXT; форма через 40. Справа внизу «AG» 815×740 (с 768); полоса слогана — BG.Grey,
+// RF Rufo 32 заглавными Dark-grey.TXT, поля 42. До 768 карточки нет — форма на фоне.
 @layer components {
 	.auth {
+		position: relative;
+		z-index: 0;
 		display: flex;
+		flex-direction: column;
 		min-height: 100vh;
 		min-height: 100dvh;
-		padding: 40px 10px calc(190px + env(safe-area-inset-bottom));
-		background: palette("bg-main") url("@/assets/images/auth/auth-bg-mobile.svg") center bottom
-			20px / 320px auto no-repeat;
+		overflow: hidden;
+		background: palette("bg-auth");
 
-		@include up(desktop) {
-			align-items: center;
-			padding: 60px 20px;
-			background-image: url("@/assets/images/auth/auth-bg.svg");
-			background-position: center calc(50% + 60px);
-			background-size: min(1598px, 100% - 40px) auto;
+		// Крупное «AG» справа внизу, над полосой слогана
+		@include up(tablet) {
+			&::before {
+				position: absolute;
+				right: -3.4vw;
+				bottom: 100px;
+				z-index: -1;
+				width: min(815px, 42.5vw);
+				aspect-ratio: 815 / 740;
+				content: "";
+				background: url("@/assets/images/decor/auth-ag.svg") center / contain no-repeat;
+			}
 		}
 	}
 
-	.auth__inner {
+	.auth__back {
+		@include text("s-400");
+
+		position: absolute;
+		top: 20px;
+		left: 10px;
+		z-index: 1;
 		display: flex;
+		gap: 10px;
+		align-items: center;
+		color: palette("black-txt");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("main-blue");
+		}
+
+		@include up(tablet) {
+			top: 40px;
+			left: 40px;
+		}
+
+		@include up(wide) {
+			padding-top: 10px;
+			border-top: 1px solid palette("black-txt");
+		}
+	}
+
+	.auth__back-icon {
+		flex: none;
+		width: 12px;
+		height: 16px;
+	}
+
+	.auth__main {
+		display: flex;
+		flex: 1 0 auto;
 		flex-direction: column;
-		gap: 30px;
 		align-items: center;
 		width: 100%;
-		max-width: 420px;
+		max-width: 440px;
 		margin: 0 auto;
+		padding: 76px 10px 40px;
 
-		@include up(desktop) {
-			gap: 40px;
+		@include up(tablet) {
+			padding: 120px 0 60px;
 		}
 	}
 
 	.auth__logo {
-		display: flex;
-		transition: opacity $transition-default;
+		width: 99px;
+		height: 100px;
+		margin-bottom: 20px;
+		object-fit: contain;
 
-		img {
-			width: 70px;
-			height: auto;
-		}
-
-		&:hover {
-			opacity: 0.9;
+		@include up(tablet) {
+			width: 118px;
+			height: 120px;
+			margin-bottom: 40px;
 		}
 	}
 
 	.auth__card {
 		display: flex;
 		flex-direction: column;
-		gap: 24px;
+		gap: 40px;
 		width: 100%;
-		padding: 24px 16px;
-		background: palette("white");
-		border-radius: $radius-content-block;
-		box-shadow: $shadow-content-block;
+		padding: 10px;
 
 		@include up(tablet) {
-			gap: 30px;
 			padding: 40px;
+			background: palette("white");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
 		}
 	}
 
 	.auth__top {
 		display: flex;
 		flex-direction: column;
-		gap: 12px;
+		gap: 10px;
 		text-align: center;
 	}
 
 	.auth__title {
-		@include text("h2");
+		@include text("h3-360");
 
-		color: palette("black-h");
+		color: palette("black-txt");
+
+		@include up(tablet) {
+			@include text("h2");
+		}
 	}
 
 	.auth__text {
 		@include text("m-400");
 
-		color: palette("dark-grey-txt");
+		color: palette("black-txt");
 		text-wrap: balance;
+
+		a {
+			color: palette("main-blue");
+			transition: color $transition-default;
+
+			&:hover,
+			&:focus-visible {
+				color: palette("blue-hover");
+			}
+		}
 	}
 
-	// Форма входа: поля через 10, общая ошибка и кнопка через 20
+	// Полоса слогана внизу страницы
+	.auth__slogan {
+		@include text("auth-slogan-360");
+
+		flex: none;
+		padding: 25px 10px calc(25px + env(safe-area-inset-bottom));
+		color: palette("dark-grey-txt");
+		text-align: center;
+		text-transform: uppercase;
+		background: palette("bg-grey");
+
+		@include up(tablet) {
+			@include text("auth-slogan");
+
+			padding: 42px 20px;
+		}
+	}
+
+	// Форма входа: поля через 10, под паролем ссылка, ошибка и кнопка через 20
 	.auth-form {
 		display: flex;
 		flex-direction: column;
@@ -102,28 +177,5 @@
 
 	.auth-form__submit {
 		width: 100%;
-	}
-
-	// «Запросить код повторно» — текстовая кнопка по центру; пока идёт отсчёт — серая
-	.auth-form__resend {
-		@include text("m-400");
-
-		align-self: center;
-		padding: 0;
-		color: palette("main-blue");
-		cursor: pointer;
-		background: none;
-		border: 0;
-		transition: color $transition-default;
-
-		&:hover,
-		&:focus-visible {
-			color: palette("blue-hover");
-		}
-
-		&:disabled {
-			color: palette("dark-grey-txt");
-			cursor: default;
-		}
 	}
 }

@@ -92,7 +92,9 @@ $colors: (
 	// Без переменной в Figma: заглушка материала неопределённого типа (Type=Other)
 	"bg-neutral": #eceef2,
 	// Без переменной в Figma: сайдбар «Искать в разделе» в окне поиска (4764:2652)
-	"bg-soft": #f8f9fb
+	"bg-soft": #f8f9fb,
+	// Фон страницы входа — как в ЛК (ag, $color-bg-light)
+	"bg-auth": #f5f8fa
 );
 
 // layout
@@ -156,6 +158,19 @@ $text-styles: (
 			weight: 700,
 			size: 28,
 			line-height: normal,
+		),
+	// Слоган на странице входа — как в ЛК (ag): RF Rufo Regular 32/32, на мобильном 22
+	"auth-slogan": (
+			family: heading,
+			weight: 400,
+			size: 32,
+			line-height: 32,
+		),
+	"auth-slogan-360": (
+			family: heading,
+			weight: 400,
+			size: 22,
+			line-height: 22,
 		),
 	// Без переменной в Figma: заголовок «В цифрах» 1920 (RF Rufo Bold 80, строки через 80)
 	"display": (

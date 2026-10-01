@@ -474,11 +474,10 @@
 				{{#> state label="Выбор сделан" note="баннера нет: бэк не выводит его при cookie ag_cookie_consent, а если страница из кеша — скрывает скрипт"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="auth" group="Авторизация" title="Вход, сброс пароля, код" description='Перенос старой вёрстки my.ag-html-v2 (вход, сброс пароля по SMS, код) на компоненты сайта: Input с «глазом» и «Не удается войти?» (кит 2405:788), кнопка General. Обычные POST-формы Битрикса: пустые поля и формат номера проверяет Form, остальные ошибки выводит сервер. Страницы: login, login-error, restore-password, restore-password-code.'}}
+			{{#> story id="auth" group="Авторизация" title="Вход и восстановление пароля" description='Как в ЛК (ag, sections/shared/Auth): «К порталу», логотип, карточка, «AG» справа внизу, полоса слогана. Поля и кнопка — компоненты сайта (Input с «глазом», General). Вход — обычная POST-форма Битрикса: пустые поля проверяет Form, ошибку входа выводит сервер. Восстановление — без формы: обратиться в техподдержку. Страницы: login, recovery.'}}
 				{{#> state label="Вход" bg="page"}}{{> sections/auth/AuthLogin/AuthLogin props=data.authLogin}}{{/state}}
 				{{#> state label="Ошибка входа (с сервера)" bg="page"}}{{> sections/auth/AuthLogin/AuthLogin props=data.authLoginError}}{{/state}}
-				{{#> state label="Сброс пароля" bg="page"}}{{> sections/auth/AuthRestore/AuthRestore props=data.authRestore}}{{/state}}
-				{{#> state label="Код из SMS (идёт отсчёт)" bg="page"}}{{> sections/auth/AuthCode/AuthCode props=data.authCode}}{{/state}}
+				{{#> state label="Восстановление пароля" bg="page"}}{{> sections/auth/AuthRecovery/AuthRecovery props=data.authRecovery}}{{/state}}
 				{{#> state label="Загрузка" note="кнопка неактивна со значком загрузки, пока страница уходит на сервер (модуль Form)"}}{{/state}}
 			{{/story}}
 

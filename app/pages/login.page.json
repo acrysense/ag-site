@@ -5,9 +5,13 @@
 	"data": {
 		"form": {
 			"card": {
-				"homeUrl": "./index.html",
+				"back": {
+					"text": "К порталу",
+					"url": "./index.html"
+				},
 				"title": "Вход сотрудника",
-				"text": "Корпоративный портал холдинга «Аптека групп»"
+				"text": "Корпоративный портал холдинга «Аптека групп»",
+				"slogan": "Вместе – мы команда!"
 			},
 			"action": "./index-user.html",
 			"hidden": [
@@ -27,8 +31,8 @@
 				"passwordName": "USER_PASSWORD"
 			},
 			"help": {
-				"text": "Не удается войти?",
-				"url": "./restore-password.html"
+				"text": "Восстановление пароля",
+				"url": "./recovery.html"
 			},
 			"submit": "Войти"
 		}

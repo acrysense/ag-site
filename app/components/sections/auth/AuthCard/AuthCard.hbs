@@ -1,20 +1,26 @@
 {{!--
-	Страница входа (перенесено из старой вёрстки my.ag-html-v2: вход, сброс пароля, код из SMS):
-	логотип, белая карточка с заголовком и текстом, форма — в блоке партиала. Фон — иллюстрация
-	(на десктопе за карточкой, на мобильном — под ней). Без шапки и подвала.
-	props: id (префикс id заголовка), homeUrl, logo, title, text. Контракт — docs/contracts/auth.md.
+	Страница входа — как в ЛК (ag, sections/shared/Auth): «← К порталу», логотип с подписью,
+	белая карточка с заголовком и текстом, содержимое — в блоке партиала; на десктопе справа
+	внизу крупное «AG», внизу полоса со слоганом. Без шапки и подвала.
+	props: id (префикс id заголовка), back { text, url } («К порталу»), logo, title, text,
+	slogan («Вместе – мы команда!»). Контракт — docs/contracts/auth.md.
 --}}
 <main class="auth">
-    <div class="auth__inner">
-        <a class="auth__logo" href="{{default props.homeUrl '/'}}" aria-label="{{default props.homeLabel 'На главную'}}">
-            <img src="{{default props.logo '/assets/images/logo.svg'}}" width="57" height="52" alt="" />
+    {{#if props.back}}
+        <a class="auth__back" href="{{props.back.url}}">
+            {{> components/Icon/Icon name="arrow-back" class="auth__back-icon"}}
+            <span>{{default props.back.text "К порталу"}}</span>
         </a>
+    {{/if}}
+    <div class="auth__main">
+        <img class="auth__logo" src="{{default props.logo '/assets/images/logotype.svg'}}" width="118" height="120" alt="Аптека групп холдинг" />
         <section class="auth__card" aria-labelledby="{{default props.id 'auth'}}-title">
             <div class="auth__top">
                 <h1 class="auth__title" id="{{default props.id 'auth'}}-title">{{props.title}}</h1>
-                {{#if props.text}}<p class="auth__text">{{props.text}}</p>{{/if}}
+                {{#if props.text}}<p class="auth__text">{{props.text}}{{#if props.link}} <a href="{{props.link.url}}">{{props.link.text}}</a>{{/if}}</p>{{/if}}
             </div>
             {{> @partial-block}}
         </section>
     </div>
+    {{#if props.slogan}}<p class="auth__slogan">{{props.slogan}}</p>{{/if}}
 </main>
