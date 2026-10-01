@@ -1,6 +1,7 @@
 // Согласие на cookie (контракт — docs/contracts/cookie-banner.md).
-// - Выбор («accepted» или «declined») пишется в cookie на год, баннер скрывается. Если cookie уже
-//   есть (страница из кеша) — баннер скрывается сразу, без анимации.
+// - В разметке баннер скрыт: скрипт показывает его, только если выбора ещё нет (с появлением).
+//   Так он не мелькает при перезагрузке, пока скрипт не запустился. Выбор («accepted» или
+//   «declined») пишется в cookie на год, баннер скрывается.
 // - Счётчики и прочее, что требует согласия, бэк выводит выключенными:
 //   <script type="text/plain" data-cookie-consent src="…"></script> (или с кодом внутри).
 //   После «Принять» (и на каждой следующей странице, если согласие уже есть) скрипт их включает.
@@ -39,11 +40,8 @@ export default function init(root) {
 
 	if (saved === 'accepted') enableConsentScripts()
 
-	if (!isStatic && saved) {
-		// Выбор уже сделан — прячем без анимации, чтобы баннер не мелькал при загрузке
-		root.classList.add('is-instant')
-		root.hidden = true
-	}
+	// Выбора ещё нет — показываем (выезжает с анимацией появления)
+	if (!isStatic && !saved) root.hidden = false
 
 	root.addEventListener(
 		'click',
@@ -67,7 +65,6 @@ export default function init(root) {
 			const trigger = event.target.closest('[data-cookie-settings]')
 			if (!trigger || isStatic) return
 			event.preventDefault()
-			root.classList.remove('is-instant')
 			root.hidden = false
 			root.querySelector('[data-cookie-choice]')?.focus()
 		},
