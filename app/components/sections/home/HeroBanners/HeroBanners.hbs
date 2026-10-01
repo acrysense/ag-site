@@ -1,6 +1,7 @@
 {{!--
 	Баннеры главной (Figma: 1920 — 4615:42835, 360 — 4865:1335): слайдер и промо справа.
-	props: slides [{ url, alt, image: { desktop, mobile }, video: { src, poster } }], promos [{ url, alt, image: { desktop, mobile } }].
+	props: slides [{ url, alt, image: { desktop, mobile }, video: { src, poster } }], promos [{ url, alt, image: { desktop, mobile } }],
+	autoplay — автолистание слайдера, секунды (по умолчанию 5; 0 — выключено).
 	Слайды и промо на десктопе — 2.2:1, картинки взаимозаменяемы; мобильная картинка промо
 	необязательна (нет — десктопная целиком).
 	ТЗ: слайдер — смесь картинок и видео. Видео без звука, по кругу; при «уменьшить движение»
@@ -12,7 +13,7 @@
 {{#if (or props.slides.length props.promos.length)}}
     <section class="hero{{#unless props.promos.length}} hero--no-promos{{/unless}}{{#unless props.slides.length}} hero--no-slides{{/unless}}" aria-label="{{default props.label 'Баннеры'}}">
         {{#if props.slides.length}}
-            <div class="hero__slider carousel" role="region" aria-roledescription="карусель" aria-label="Баннеры" data-module="Carousel" data-path="components" data-carousel-loop>
+            <div class="hero__slider carousel carousel--parallax" role="region" aria-roledescription="карусель" aria-label="Баннеры" data-module="Carousel" data-path="components" data-carousel-loop data-carousel-autoplay="{{default props.autoplay 5}}">
                 <div class="carousel__track hero__track" data-carousel-track>
                     {{#each props.slides}}
                         <div class="carousel__slide hero__slide" role="group" aria-roledescription="слайд" aria-label="{{add @index 1}} из {{../props.slides.length}}">

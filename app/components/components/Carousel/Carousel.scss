@@ -66,4 +66,32 @@
 	.carousel__dot:hover:not([aria-current="true"]) {
 		background: palette("grey");
 	}
+
+	// Параллакс (класс carousel--parallax, наше): при листании картинка в кадре едет медленнее
+	// самого кадра — новый слайд как будто выезжает из-под старого. Анимация привязана к прокрутке
+	// дорожки, без JS: работает и при свайпе, и от стрелок. Где браузер не умеет (Firefox) и при
+	// «уменьшить движение» — обычное листание.
+	@supports (view-timeline: --carousel-slide inline) {
+		@media (prefers-reduced-motion: no-preference) {
+			.carousel--parallax .carousel__slide {
+				overflow: clip;
+				view-timeline: --carousel-slide inline;
+			}
+
+			.carousel--parallax .carousel__slide :is(img, video) {
+				animation: carousel-parallax linear both;
+				animation-timeline: --carousel-slide;
+			}
+		}
+	}
+
+	@keyframes carousel-parallax {
+		from {
+			translate: calc(-1 * #{$parallax-shift}) 0;
+		}
+
+		to {
+			translate: $parallax-shift 0;
+		}
+	}
 }
