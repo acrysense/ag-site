@@ -765,8 +765,20 @@ export default defineConfig(({ mode }) => {
 
 						baseMeta,
 						// "robots": "noindex" в .page.json — служебная страница (например, вид главной
-						// для вошедшего в демо)
-						meta: pageCfg.robots ? [{ name: 'robots', content: pageCfg.robots }] : [],
+						// для вошедшего в демо). DEMO_NOINDEX=1 (выкладка демо) — noindex на всех: в поиск
+						// не попадает, а превью ссылок в мессенджерах работают (robots.txt не трогаем —
+						// его запрет некоторые сервисы превью соблюдают)
+						meta:
+							process.env.DEMO_NOINDEX || pageCfg.robots
+								? [
+										{
+											name: 'robots',
+											content: process.env.DEMO_NOINDEX
+												? 'noindex'
+												: pageCfg.robots,
+										},
+									]
+								: [],
 						linkPreload,
 						linkOther,
 

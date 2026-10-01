@@ -2,7 +2,8 @@
 # Демо на GitHub Pages: https://acrysense.github.io/ag-site/
 # Выкладываются только перечисленные страницы — остальные по мере проверки:
 #   npm run deploy:pages -- index search
-# Сборка с BASE=/ag-site/ уходит в ветку gh-pages (рабочая ветка не переключается).
+# Сборка с BASE=/ag-site/ уходит в ветку gh-pages (рабочая ветка не переключается). Демо закрыто от
+# поиска (noindex на страницах), превью ссылок в мессенджерах работают.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -11,7 +12,7 @@ if [ $# -eq 0 ]; then
 	exit 1
 fi
 
-BASE=/ag-site/ SITE_URL=https://acrysense.github.io/ag-site/ npm run build
+BASE=/ag-site/ SITE_URL=https://acrysense.github.io/ag-site/ DEMO_NOINDEX=1 npm run build
 
 OUT=$(mktemp -d)
 INDEX=$(mktemp -u)
