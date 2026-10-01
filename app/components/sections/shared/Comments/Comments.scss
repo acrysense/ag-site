@@ -96,35 +96,24 @@
 			}
 		}
 
-		// Скелетон первой загрузки: строки по три полосы (Figma 4504:1502)
+		// Скелетон первой загрузки (components/Skeleton): комментарии по три строки — имя,
+		// длинная и средняя строка текста (Figma 4504:1502)
 		&__skeleton {
 			display: flex;
 			flex-direction: column;
-			gap: 8px;
+			gap: 16px;
+		}
 
-			> span {
-				display: block;
-				height: 11px;
-				background: palette("bg-main");
-				border-radius: 6px;
-				animation: comments-pulse 1.2s ease-in-out infinite alternate;
+		&__skeleton-item > .skeleton:nth-child(1) {
+			width: 35%;
+		}
 
-				&:nth-child(3n + 1) {
-					width: 35%;
-				}
+		&__skeleton-item > .skeleton:nth-child(2) {
+			width: 92%;
+		}
 
-				&:nth-child(3n + 2) {
-					width: 92%;
-				}
-
-				&:nth-child(3n) {
-					width: 68%;
-
-					&:not(:last-child) {
-						margin-bottom: 8px;
-					}
-				}
-			}
+		&__skeleton-item > .skeleton:nth-child(3) {
+			width: 68%;
 		}
 
 		// Комментарии отключены (Figma 4519:1883)
@@ -144,12 +133,6 @@
 			flex: none;
 			width: 20px;
 			height: 20px;
-		}
-	}
-
-	@keyframes comments-pulse {
-		to {
-			opacity: 0.5;
 		}
 	}
 

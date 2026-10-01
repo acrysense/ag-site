@@ -152,8 +152,17 @@ if (import.meta.hot) import.meta.hot.on('vite:afterUpdate', renderTokens)
 // до края и берём медиану по центральным линиям. Для разбора с дизайнером, только витрина.
 const SCALE = 8
 
+// Символы берём из файла спрайта (<html data-icons>)
+let sprite
+const spriteSymbol = async (name) => {
+	sprite ??= fetch(document.documentElement.dataset.icons)
+		.then((response) => response.text())
+		.then((text) => new DOMParser().parseFromString(text, 'image/svg+xml'))
+	return (await sprite).getElementById(`icon-${name}`)
+}
+
 async function strokeWidth(name, size) {
-	const symbol = document.getElementById(`icon-${name}`)
+	const symbol = await spriteSymbol(name)
 	if (!symbol) return null
 	const box = symbol.getAttribute('viewBox')
 	const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${size * SCALE}" height="${size * SCALE}" viewBox="${box}" color="#000">${symbol.innerHTML}</svg>`
@@ -260,7 +269,7 @@ async function renderIconStrokes() {
 	}
 }
 
-// Спрайт монтируется на DOMContentLoaded — ждём его
+// Ждём шрифты и картинки, чтобы ряды иконок не прыгали во время замера
 if (document.querySelector('[data-icon-list]')) {
 	window.addEventListener('load', renderIconStrokes, { once: true })
 }

@@ -458,3 +458,40 @@ $token-text-names: ();
 	max-width: 700px;
 	min-height: 620px;
 }
+
+// Скелетон: размеры заготовок в истории (в блоках их задаёт сам блок)
+.story-skeleton {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.story-skeleton__text {
+	width: 40%;
+}
+
+.story-skeleton__row {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+}
+
+.story-skeleton__circle {
+	width: 48px;
+	height: 48px;
+}
+
+.story-skeleton__media {
+	width: 160px;
+	aspect-ratio: 16 / 9;
+}
+
+.story-skeleton__thumb {
+	flex: none;
+	width: 40px;
+	height: 40px;
+}
+
+.story-skeleton__grow {
+	flex: 1 1 auto;
+}

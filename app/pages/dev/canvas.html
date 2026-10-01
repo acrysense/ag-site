@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ lang }}">
+<html lang="{{ lang }}" data-icons="{{sprite}}">
 	<head>
 		{{> layouts/Head/Head }}
 		<meta name="robots" content="noindex, nofollow" />
@@ -371,6 +371,31 @@
 				{{#> state label="Длинные"}}
 					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.crumbsLong)}}
 				{{/state}}
+			{{/story}}
+
+			{{#> story id="skeleton" group="Компоненты" title="Скелетон" description='Наше, в макете нет. Заготовка на месте загружаемого содержимого: светлая основа и мягкий блик, все заготовки на экране переливаются одной волной. Где стоит: фильтры поиска в шапке, первые подсказки поиска, первая загрузка комментариев, «Показать ещё» в результатах поиска. При «уменьшить движение» — без блика. Разметка — components/Skeleton, из JS — utils/skeleton.js.'}}
+				{{#> state label="Варианты"}}
+					<div class="story-column story-skeleton">
+						{{> components/Skeleton/Skeleton props=(obj variant="text" class="story-skeleton__text")}}
+						{{> components/Skeleton/Skeleton props=(obj variant="lines" lines=4)}}
+						{{> components/Skeleton/Skeleton props=(obj variant="field")}}
+						<div class="story-skeleton__row">
+							{{> components/Skeleton/Skeleton props=(obj variant="circle" class="story-skeleton__circle")}}
+							{{> components/Skeleton/Skeleton props=(obj variant="media" class="story-skeleton__media")}}
+						</div>
+					</div>
+				{{/state}}
+				{{#> state label="Пункт списка: картинка и две строки"}}
+					<div class="story-column story-skeleton">
+						{{#each (range 3)}}
+							<div class="story-skeleton__row">
+								{{> components/Skeleton/Skeleton props=(obj variant="media" class="story-skeleton__thumb")}}
+								{{> components/Skeleton/Skeleton props=(obj variant="lines" lines=2 class="story-skeleton__grow")}}
+							</div>
+						{{/each}}
+					</div>
+				{{/state}}
+				{{#> state label="Пусто, ошибка" note="не применимо: заготовка видна только пока идёт загрузка"}}{{/state}}
 			{{/story}}
 
 			{{#> story id="select" group="Компоненты" title="Выпадающий список" description="Figma: Select — Месяц (4704:1079), открыт — 4706:1207. Список по макету поверх нативного select (без JS — системный). Поиск по пунктам; пункты с сервера — по открытию, с задержкой ввода, отменой прошлого запроса, кешем и порциями при прокрутке (в витрине — имитация сервера, запросы видны в консоли)."}}

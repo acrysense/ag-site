@@ -156,4 +156,11 @@
 
 		color: palette("icon-grey");
 	}
+
+	// Заготовка пункта при «Показать ещё» (SearchResults.js, components/Skeleton)
+	[data-search-skeleton] .search-result__text {
+		gap: 10px;
+		align-items: stretch;
+		padding-top: 4px;
+	}
 }

@@ -12,7 +12,7 @@
 // createCalendar(container, { from, to, onChange, onApply, onReset }) → { get, set, destroy }.
 // from/to — строки YYYY-MM-DD или ''. onApply/onReset — есть, значит, есть кнопки
 // «Применить»/«Сбросить».
-const SVG = 'http://www.w3.org/2000/svg'
+import { createIcon as icon } from '@/utils/icon'
 const MONTHS = [
 	'Январь',
 	'Февраль',
@@ -79,17 +79,6 @@ const same = (a, b) => Boolean(a && b) && a.getTime() === b.getTime()
 const addDays = (date, n) => day(date.getFullYear(), date.getMonth(), date.getDate() + n)
 const mondayIndex = (date) => (date.getDay() + 6) % 7
 const startOfDay = (date) => day(date.getFullYear(), date.getMonth(), date.getDate())
-
-const icon = (name, className) => {
-	const svg = document.createElementNS(SVG, 'svg')
-	svg.setAttribute('class', `icon ${className}`)
-	svg.setAttribute('aria-hidden', 'true')
-	svg.setAttribute('focusable', 'false')
-	const use = document.createElementNS(SVG, 'use')
-	use.setAttribute('href', `#icon-${name}`)
-	svg.append(use)
-	return svg
-}
 
 const button = (className, text) => {
 	const el = document.createElement('button')

@@ -26,9 +26,7 @@
     <div class="comments__list" data-comments-list>
         {{#unless props.initial}}
             <div class="comments__skeleton" aria-hidden="true">
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
+                {{#each (range 3)}}{{> components/Skeleton/Skeleton props=(obj variant="lines" class="comments__skeleton-item")}}{{/each}}
             </div>
         {{/unless}}
     </div>

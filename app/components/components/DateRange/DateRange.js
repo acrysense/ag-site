@@ -1,23 +1,12 @@
 import { createCalendar, formatDate, fromIso } from '@/components/components/Calendar/Calendar'
 import { isSheet, lockIfSheet } from '@/utils/sheet'
+import { createIcon as icon } from '@/utils/icon'
 
 // Поле периода: кнопка «07.09.2026 — 18.09.2026» (пусто — подпись серым) и календарь в окне.
 // Выбор в календаре — черновик: в поля формы он попадает по «Применить» («Сбросить» — очищает);
 // закрытие без «Применить» (Esc, клик вне, ×) черновик отбрасывает. После записи — change на
 // поле «с», с data-date-range-submit — отправка формы.
-const SVG = 'http://www.w3.org/2000/svg'
 let counter = 0
-
-const icon = (name, className) => {
-	const svg = document.createElementNS(SVG, 'svg')
-	svg.setAttribute('class', `icon ${className}`)
-	svg.setAttribute('aria-hidden', 'true')
-	svg.setAttribute('focusable', 'false')
-	const use = document.createElementNS(SVG, 'use')
-	use.setAttribute('href', `#icon-${name}`)
-	svg.append(use)
-	return svg
-}
 
 export default function init(root) {
 	const controller = new AbortController()

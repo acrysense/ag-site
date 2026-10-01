@@ -1,6 +1,8 @@
 import { announce } from '@/utils/announce'
 import { lockBody } from '@/utils/scroll-lock'
 import { revealInRow } from '@/utils/reveal-in-row'
+import { createIcon as icon } from '@/utils/icon'
+import { skeleton, skeletonLines } from '@/utils/skeleton'
 
 // Поиск в шапке (контракт — docs/contracts/site-search.md).
 // - Фокус в поле — окно: разделы (радиокнопки section), фильтры раздела, подсказки. До 1024 окно
@@ -17,7 +19,6 @@ import { revealInRow } from '@/utils/reveal-in-row'
 const DESKTOP = '(min-width: 1024px)'
 const MIN_CHARS = 2
 const DELAY = 300
-const SVG = 'http://www.w3.org/2000/svg'
 const PREVIEW_ICONS = {
 	person: ['profile', 'l'],
 	news: ['news', 'l'],
@@ -41,17 +42,6 @@ const escapeHtml = (value) =>
 	)
 // Разрешён только <mark>: всё экранируем и возвращаем метки совпадений
 const markOnly = (html) => escapeHtml(html).replace(/&lt;(\/?)mark&gt;/g, '<$1mark>')
-
-const icon = (name, className) => {
-	const svg = document.createElementNS(SVG, 'svg')
-	svg.setAttribute('class', `icon ${className}`)
-	svg.setAttribute('aria-hidden', 'true')
-	svg.setAttribute('focusable', 'false')
-	const use = document.createElementNS(SVG, 'use')
-	use.setAttribute('href', `#icon-${name}`)
-	svg.append(use)
-	return svg
-}
 
 let counter = 0
 
@@ -268,6 +258,19 @@ export default function init(root) {
 		}
 	}
 
+	// Первый запрос (подсказок ещё нет) — заготовки пунктов; дальше старые подсказки остаются,
+	// пока не придут новые
+	const suggestSkeleton = () => {
+		const li = document.createElement('li')
+		li.className = 'site-search__item site-search__item--skeleton'
+		li.setAttribute('aria-hidden', 'true')
+		const row = document.createElement('span')
+		row.className = 'site-search__link'
+		row.append(skeleton('media', 'site-search__preview'), skeletonLines(2, 'site-search__text'))
+		li.append(row)
+		return li
+	}
+
 	const suggest = async () => {
 		if (query().length < MIN_CHARS || !suggestUrl) {
 			suggestRequest?.abort()
@@ -278,6 +281,14 @@ export default function init(root) {
 		const own = new AbortController()
 		suggestRequest = own
 		results.setAttribute('aria-busy', 'true')
+		if (!items.length) {
+			showResults(true)
+			list.replaceChildren(...Array.from({ length: 3 }, suggestSkeleton))
+			list.hidden = false
+			info.hidden = true
+			empty.hidden = true
+			footer.hidden = true
+		}
 		const url = new URL(suggestUrl, window.location.href)
 		params().forEach((value, key) => url.searchParams.append(key, value))
 		// Как у стандартного bitrix:search.title — бэк отличает AJAX-запрос подсказок
@@ -318,12 +329,7 @@ export default function init(root) {
 
 	// ---------- Разделы: фильтры с сервера ----------
 
-	const skeleton = (n) =>
-		Array.from({ length: n }, () => {
-			const cell = document.createElement('span')
-			cell.className = 'site-search__skeleton'
-			return cell
-		})
+	const fieldSkeletons = (n) => Array.from({ length: n }, () => skeleton('field'))
 
 	const loadFilters = async (section) => {
 		filtersRequest?.abort()
@@ -331,7 +337,7 @@ export default function init(root) {
 		filtersRequest = own
 		sectionLabel.textContent = sectionName()
 		filterList.setAttribute('aria-busy', 'true')
-		filterList.replaceChildren(...skeleton(Math.max(2, filterList.children.length || 2)))
+		filterList.replaceChildren(...fieldSkeletons(Math.max(2, filterList.children.length || 2)))
 		updateSummaries()
 		try {
 			let html = ''

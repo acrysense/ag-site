@@ -9,8 +9,6 @@ import { format as formatCode } from 'prettier'
 
 const APP_ROOT = resolve(__dirname, 'app')
 const ICONS_ROOT = resolve(APP_ROOT, 'assets/icons')
-const SVG_SPRITE_ID = 'virtual:svg-icons-register'
-const RESOLVED_SVG_SPRITE_ID = `\0${SVG_SPRITE_ID}`
 let BASE: string = '/'
 
 const isExternalLike = (p: string) =>
@@ -446,59 +444,42 @@ function createSvgSymbol(file: string) {
 	return `<symbol id="${symbolId}"${attributes}>${content}</symbol>`
 }
 
+// Спрайт иконок — отдельный файл assets/icons/sprite.svg (в dev отдаётся сервером, в сборке
+// кладётся в dist). Иконки в разметке — <use href="…/sprite.svg#icon-имя">: рисуются без JS,
+// файл кешируется браузером, в шаблон Битрикса переносится как есть.
+const SPRITE_FILE = 'assets/icons/sprite.svg'
+
+function buildSprite() {
+	const files = fg.sync('**/*.svg', { cwd: ICONS_ROOT, absolute: true }).sort()
+	// Без комментариев и лишних пробелов между тегами: файл грузится на каждой странице
+	return `<svg xmlns="http://www.w3.org/2000/svg">${files.map(createSvgSymbol).join('')}</svg>`
+		.replace(/<!--[\s\S]*?-->/g, '')
+		.replace(/>\s+</g, '><')
+		.replace(/\s{2,}/g, ' ')
+}
+
 function svgSpritePlugin() {
 	return {
 		name: 'local-svg-sprite',
-		resolveId(id: string) {
-			if (id === SVG_SPRITE_ID) return RESOLVED_SVG_SPRITE_ID
-		},
-		load(id: string) {
-			if (id !== RESOLVED_SVG_SPRITE_ID) return
-
-			const files = fg.sync('**/*.svg', { cwd: ICONS_ROOT, absolute: true }).sort()
-			files.forEach((file) => this.addWatchFile(file))
-			const symbols = files.map(createSvgSymbol).join('')
-			const sprite = symbols
-				? `<svg id="svg-icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">${symbols}</svg>`
-				: ''
-
-			return `
-				const sprite = ${JSON.stringify(sprite)};
-				const spriteId = 'svg-icon-sprite';
-				function mountSprite() {
-					document.getElementById(spriteId)?.remove();
-					if (!sprite || !document.body) return;
-					const template = document.createElement('template');
-					template.innerHTML = sprite;
-					document.body.prepend(template.content.firstElementChild);
-				}
-				if (document.readyState === 'loading') {
-					document.addEventListener('DOMContentLoaded', mountSprite, { once: true });
-				} else {
-					mountSprite();
-				}
-				if (import.meta.hot) import.meta.hot.dispose(() => document.getElementById(spriteId)?.remove());
-			`
-		},
-		// Новая или удалённая иконка в dev: без этого спрайт собирался только при запуске
-		// сервера, и добавленные иконки не появлялись до перезапуска
 		configureServer(server) {
+			server.middlewares.use((req, res, next) => {
+				if (req.url?.split('?')[0] !== `/${SPRITE_FILE}`) return next()
+				res.setHeader('Content-Type', 'image/svg+xml')
+				res.setHeader('Cache-Control', 'no-cache')
+				res.end(buildSprite())
+			})
+			// Новая, изменённая или удалённая иконка — перезагрузка страницы
 			const onIconsChange = (file: string) => {
-				if (!file.startsWith(ICONS_ROOT) || !file.endsWith('.svg')) return
-				const module = server.moduleGraph.getModuleById(RESOLVED_SVG_SPRITE_ID)
-				if (module) server.moduleGraph.invalidateModule(module)
-				server.ws.send({ type: 'full-reload' })
+				if (file.startsWith(ICONS_ROOT) && file.endsWith('.svg')) {
+					server.ws.send({ type: 'full-reload' })
+				}
 			}
 			server.watcher.on('add', onIconsChange)
+			server.watcher.on('change', onIconsChange)
 			server.watcher.on('unlink', onIconsChange)
 		},
-		handleHotUpdate({ file, server }) {
-			if (file.startsWith(ICONS_ROOT) && file.endsWith('.svg')) {
-				const module = server.moduleGraph.getModuleById(RESOLVED_SVG_SPRITE_ID)
-				if (module) server.moduleGraph.invalidateModule(module)
-				server.ws.send({ type: 'full-reload' })
-				return []
-			}
+		generateBundle() {
+			this.emitFile({ type: 'asset', fileName: SPRITE_FILE, source: buildSprite() })
 		},
 	}
 }
@@ -602,6 +583,10 @@ export default defineConfig(({ mode }) => {
 					},
 					default(v: any, fb: any) {
 						return v !== undefined && v !== null && v !== '' ? v : fb
+					},
+					// Повторить n раз: {{#each (range 3)}}
+					range(n: any) {
+						return Array.from({ length: Math.max(0, Number(n) || 0) }, (_, i) => i)
 					},
 					add(a: any, b: any) {
 						return Number(a) + Number(b)
@@ -754,6 +739,8 @@ export default defineConfig(({ mode }) => {
 						// Демо и dev (не --mode cms): на статических страницах можно подключить
 						// имитацию сервера (pages/dev/mock-server.js), в шаблон для Битрикса она не попадёт
 						demo: mode !== 'cms',
+						// Файл спрайта иконок: <use href="{{@root.sprite}}#icon-…">, <html data-icons>
+						sprite: withBase(`/${SPRITE_FILE}`),
 					}
 				},
 			}),

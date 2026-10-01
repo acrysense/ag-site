@@ -1,6 +1,7 @@
 import SimpleBar from 'simplebar'
 import { announce } from '@/utils/announce'
 import { isSheet, lockIfSheet } from '@/utils/sheet'
+import { createIcon } from '@/utils/icon'
 
 // Выпадающий список. Без JS работает нативный <select> прозрачным слоем поверх поля. Здесь он
 // заменяется списком по макету (шаблон WAI-ARIA «combobox + listbox»): активный пункт —
@@ -17,7 +18,6 @@ import { isSheet, lockIfSheet } from '@/utils/sheet'
 //   поиск — через 300 мс после ввода и от minChars символов; прошлый запрос отменяется;
 //   ответы кешируются по запросу; следующая порция — при прокрутке к концу, по одному
 //   запросу за раз. Формат ответа — docs/contracts/select.md.
-const SVG = 'http://www.w3.org/2000/svg'
 const DEBOUNCE = 300
 const CACHE_LIMIT = 30
 const TEXT = {
@@ -31,16 +31,7 @@ const TEXT = {
 }
 let counter = 0
 
-const checkIcon = () => {
-	const svg = document.createElementNS(SVG, 'svg')
-	svg.setAttribute('class', 'icon select__check')
-	svg.setAttribute('aria-hidden', 'true')
-	svg.setAttribute('focusable', 'false')
-	const use = document.createElementNS(SVG, 'use')
-	use.setAttribute('href', '#icon-check')
-	svg.append(use)
-	return svg
-}
+const checkIcon = () => createIcon('check', 'select__check')
 
 // bitrix_sessid: из ядра Битрикса, если оно на странице (запрос только читает, но заголовок
 // не мешает и нужен, если бэк проверяет его для всех AJAX)
@@ -135,10 +126,7 @@ export default function init(root) {
 		x.type = 'button'
 		x.className = 'select__sheet-close'
 		x.setAttribute('aria-label', 'Закрыть')
-		const svg = checkIcon()
-		svg.setAttribute('class', 'icon select__sheet-close-icon')
-		svg.querySelector('use').setAttribute('href', '#icon-close')
-		x.append(svg)
+		x.append(createIcon('close', 'select__sheet-close-icon'))
 		head.append(title, x)
 		popup.append(head)
 		backdrop = document.createElement('div')

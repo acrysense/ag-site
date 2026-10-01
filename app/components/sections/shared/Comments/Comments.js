@@ -1,4 +1,5 @@
 import { announce } from '@/utils/announce'
+import { createIcon as icon } from '@/utils/icon'
 
 // Комментарии: дерево с ответами, реакциями (👍/👎 — они же голос), модерацией.
 // Контракт API — docs/contracts/comments.md (он же вкладка «Для бэкенда» прототипа в ag).
@@ -22,7 +23,6 @@ const REPLY_PAGE = 20
 // Как в ag (utils/comment-limits.js): длина и число переносов; бэк проверяет то же
 const MAX_LENGTH = 500
 const MAX_BREAKS = 10
-const SVG = 'http://www.w3.org/2000/svg'
 
 const plural = (n, one, few, many) => {
 	const mod10 = n % 10
@@ -57,17 +57,6 @@ const h = (tag, attrs = {}, ...children) => {
 	}
 	el.append(...children.filter(Boolean))
 	return el
-}
-
-const icon = (name, className) => {
-	const svg = document.createElementNS(SVG, 'svg')
-	svg.setAttribute('class', `icon ${className}`)
-	svg.setAttribute('aria-hidden', 'true')
-	svg.setAttribute('focusable', 'false')
-	const use = document.createElementNS(SVG, 'use')
-	use.setAttribute('href', `#icon-${name}`)
-	svg.append(use)
-	return svg
 }
 
 const sessid = () => window.BX?.bitrix_sessid?.() || ''

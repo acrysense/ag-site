@@ -1,4 +1,3 @@
-import 'virtual:svg-icons-register'
 import '@/assets/styles/main.scss'
 import { mount, unmount } from '@/core/mount'
 import { autosize } from '@/utils/autosize'

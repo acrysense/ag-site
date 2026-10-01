@@ -1,18 +1,9 @@
 // Текст из визуального редактора Битрикса (.content). Админ вставляет обычный HTML — обёртки
 // добавляем сами: таблицы — в блок с прокруткой вбок (на телефоне не распирают страницу),
 // в заголовок раскрывающегося блока (<details><summary>) — стрелку из спрайта.
-const SVG = 'http://www.w3.org/2000/svg'
+import { createIcon } from '@/utils/icon'
 
-const chevron = () => {
-	const svg = document.createElementNS(SVG, 'svg')
-	svg.setAttribute('class', 'icon content__summary-icon')
-	svg.setAttribute('aria-hidden', 'true')
-	svg.setAttribute('focusable', 'false')
-	const use = document.createElementNS(SVG, 'use')
-	use.setAttribute('href', '#icon-chevron-down')
-	svg.append(use)
-	return svg
-}
+const chevron = () => createIcon('chevron-down', 'content__summary-icon')
 
 export default function init(root) {
 	const added = []

@@ -335,24 +335,6 @@
 		}
 	}
 
-	.site-search__skeleton {
-		display: block;
-		height: 46px;
-		background: palette("bg-main");
-		border-radius: $radius-button;
-		animation: site-search-pulse 1.2s ease-in-out infinite alternate;
-
-		@media (prefers-reduced-motion: reduce) {
-			animation: none;
-		}
-	}
-
-	@keyframes site-search-pulse {
-		to {
-			opacity: 0.5;
-		}
-	}
-
 	.site-search__filters-error {
 		@include text("m-400");
 
@@ -506,6 +488,16 @@
 			width: 20px;
 			height: 20px;
 		}
+	}
+
+	// Заготовка пункта, пока грузятся первые подсказки (components/Skeleton)
+	.site-search__item--skeleton .site-search__link {
+		pointer-events: none;
+	}
+
+	.site-search__item--skeleton .site-search__text {
+		gap: 8px;
+		max-width: 320px;
 	}
 
 	.site-search__text {

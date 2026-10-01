@@ -8,7 +8,11 @@ $font-base:
 	Roboto,
 	Arial,
 	sans-serif;
-$font-heading: "RF Rufo", "Arial Narrow", Arial, sans-serif;
+// Пока RF Rufo грузится — системный узкий шрифт (Mac, iPhone, Android): обычный Arial почти вдвое
+// шире, название в шапке и заголовки перестраивались бы
+$font-heading:
+	"RF Rufo", "Arial Narrow", "Avenir Next Condensed", "Roboto Condensed", sans-serif-condensed,
+	Arial, sans-serif;
 
 // colors
 // Все цвета проекта: имя → значение из переменных макета (в комментарии — имя в Figma).
@@ -77,6 +81,8 @@ $colors: (
 	"red-soft": #ffeded,
 	// Наше, в Figma нет: незаполненная часть прогресса в точке карусели (Blue.Hover 25% на белом)
 	"blue-progress": #c3ddf6,
+	// Наше, в Figma нет: скелетон загрузки — BG.Main 70% на белом (светлее, чем серые плашки)
+	"skeleton": #f0f3f6,
 	// BG/BG.Yellow — метка «Новости» в поиске
 	"bg-yellow": #fff0d6,
 	// BG/BG.Blue — метка и заглушка «Документы»
@@ -385,6 +391,8 @@ $duration-popup: 0.2s;
 $duration-overlay: 0.3s;
 // Параллакс в каруселях баннеров: картинка отстаёт от кадра на эту долю ширины
 $parallax-shift: 30%;
+// Блик скелетона: один проход
+$duration-skeleton: 1.6s;
 // Проявление блоков при прокрутке (components/Reveal): медленнее окон — мягко, без рывка
 $duration-reveal: 0.9s;
 $reveal-shift: 16px;

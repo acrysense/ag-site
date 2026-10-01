@@ -1,0 +1,13 @@
+{{!--
+	Скелетон загрузки (наше). props: variant — text (строка), lines (несколько строк), field
+	(поле), circle, media; lines — число строк для variant="lines" (по умолчанию 3); class.
+	Размер круга и картинки задаёт блок через class. Скрыт от скринридера: у контейнера
+	загрузки — aria-busy. Из JS — utils/skeleton.js.
+--}}
+{{#if (eq props.variant "lines")}}
+    <span class="skeleton-lines{{#if props.class}} {{props.class}}{{/if}}" aria-hidden="true">
+        {{#each (range (default props.lines 3))}}<span class="skeleton skeleton--text"></span>{{/each}}
+    </span>
+{{else}}
+    <span class="skeleton skeleton--{{default props.variant 'text'}}{{#if props.class}} {{props.class}}{{/if}}" aria-hidden="true"></span>
+{{/if}}
