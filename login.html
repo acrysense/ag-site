@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="ru" data-icons="/ag-site/assets/icons/sprite.svg">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta name="format-detection" content="telephone=no" />
+
+		<title>Вход сотрудника — корпоративный сайт холдинга «Аптека групп»</title>
+
+		<meta name="description" content="Вход для сотрудников холдинга «Аптека групп»." />
+
+		<meta name="robots" content="noindex" />
+
+		<link rel="preload" href="/ag-site/fonts/RFRufo/RFRufo-Bold.woff2" as="font" type="font/woff2" crossorigin="" />
+		<link rel="preload" href="/ag-site/fonts/RFRufo/RFRufo-Regular.woff2" as="font" type="font/woff2" crossorigin="" />
+
+		<link rel="icon" href="/ag-site/favicon.svg" type="image/svg+xml" />
+
+		<link rel="canonical" href="https://acrysense.github.io/ag-site/login.html" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://acrysense.github.io/ag-site/login.html" />
+		<meta property="og:locale" content="ru_RU" />
+		<meta property="og:site_name" content="Корпоративный сайт холдинга «Аптека групп»" />
+		<meta property="og:title" content="Вход сотрудника — корпоративный сайт холдинга «Аптека групп»" />
+		<meta property="og:description" content="Вход для сотрудников холдинга «Аптека групп»." />
+		<meta property="og:image" content="https://acrysense.github.io/ag-site/og-default.jpg" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Вход сотрудника — корпоративный сайт холдинга «Аптека групп»" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Вход сотрудника — корпоративный сайт холдинга «Аптека групп»" />
+		<meta name="twitter:description" content="Вход для сотрудников холдинга «Аптека групп»." />
+		<meta name="twitter:image" content="https://acrysense.github.io/ag-site/og-default.jpg" />
+
+		<script type="text/plain" data-cookie-consent>
+			window.__agDemoCounter = (window.__agDemoCounter || 0) + 1; console.info('[demo] счётчик включён после согласия на cookie')
+		</script>
+		<script type="module" crossorigin src="/ag-site/assets/js/mock-server-CNqGOPyr.js"></script>
+		<script type="module" crossorigin src="/ag-site/assets/js/app-T3K0ur_6.js"></script>
+		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-DtoirH3w.css" />
+	</head>
+	<body>
+		<main class="auth">
+			<div class="auth__inner">
+				<a class="auth__logo" href="./index.html" aria-label="На главную">
+					<img src="/ag-site/assets/images/logo-CXuolww_.svg" width="57" height="52" alt="" />
+				</a>
+				<section class="auth__card" aria-labelledby="auth-title">
+					<div class="auth__top">
+						<h1 class="auth__title" id="auth-title">Вход сотрудника</h1>
+						<p class="auth__text">Корпоративный портал холдинга «Аптека групп»</p>
+					</div>
+					<form
+						class="auth-form"
+						action="./index-user.html"
+						method="post"
+						data-module="Form"
+						data-path="components"
+						data-form-native
+					>
+						<input type="hidden" name="AUTH_FORM" value="Y" />
+						<input type="hidden" name="TYPE" value="AUTH" />
+						<div class="auth-form__fields">
+							<div class="field">
+								<label class="field__label visually-hidden" for="auth-login">Логин</label>
+								<span class="field__box">
+									<input
+										class="field__control"
+										id="auth-login"
+										name="USER_LOGIN"
+										type="text"
+										placeholder="Логин"
+										autocomplete="username"
+										required
+										maxlength="100"
+									/>
+								</span>
+
+								<p class="field__error" id="auth-login-error" hidden>
+									<svg class="icon field__error-icon" aria-hidden="true" focusable="false">
+										<use href="/ag-site/assets/icons/sprite.svg#icon-alert"></use>
+									</svg>
+									<span data-field-error></span>
+								</p>
+							</div>
+							<div class="field field--reveal" data-module="Field" data-path="components">
+								<label class="field__label visually-hidden" for="auth-password">Пароль</label>
+								<span class="field__box">
+									<input
+										class="field__control"
+										id="auth-password"
+										name="USER_PASSWORD"
+										type="password"
+										placeholder="Пароль"
+										autocomplete="current-password"
+										required
+									/>
+									<button
+										class="field__reveal"
+										type="button"
+										aria-label="Показать пароль"
+										aria-pressed="false"
+										aria-controls="auth-password"
+										data-field-reveal
+									>
+										<svg class="icon field__reveal-icon field__reveal-icon--show" aria-hidden="true" focusable="false">
+											<use href="/ag-site/assets/icons/sprite.svg#icon-eye"></use>
+										</svg>
+										<svg class="icon field__reveal-icon field__reveal-icon--hide" aria-hidden="true" focusable="false">
+											<use href="/ag-site/assets/icons/sprite.svg#icon-eye-off"></use>
+										</svg>
+									</button>
+								</span>
+
+								<p class="field__error" id="auth-password-error" hidden>
+									<svg class="icon field__error-icon" aria-hidden="true" focusable="false">
+										<use href="/ag-site/assets/icons/sprite.svg#icon-alert"></use>
+									</svg>
+									<span data-field-error></span>
+								</p>
+								<a class="field__link" href="./restore-password.html">Не удается войти?</a>
+							</div>
+						</div>
+						<p class="form-error" role="alert" data-form-error hidden></p>
+						<button class="btn btn--general btn--m auth-form__submit" type="submit">
+							<span class="btn__text">Войти</span>
+						</button>
+					</form>
+				</section>
+			</div>
+		</main>
+		<dialog
+			class="modal modal--s modal--confirm"
+			id="modal-discard"
+			aria-labelledby="modal-discard-title"
+			aria-describedby="modal-discard-text"
+			data-modal-discard
+			data-module="Modal"
+			data-path="components"
+		>
+			<div class="modal__panel">
+				<div class="modal__header">
+					<h2 class="modal__title" id="modal-discard-title">Закрыть форму?</h2>
+				</div>
+				<div class="modal__body">
+					<div class="modal__content">
+						<p class="modal__text" id="modal-discard-text">Введённые данные не сохранятся.</p>
+						<div class="modal__actions">
+							<button class="btn btn--error btn--l" type="button" data-modal-discard-confirm="">
+								<span class="btn__text">Закрыть</span>
+							</button>
+							<button class="btn btn--light btn--l" type="button" autofocus="" data-modal-close="">
+								<span class="btn__text">Продолжить заполнение</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</dialog>
+		<dialog
+			class="modal modal--l"
+			id="suggest-topic"
+			aria-labelledby="suggest-topic-title"
+			data-module="Modal"
+			data-path="components"
+		>
+			<div class="modal__panel">
+				<div class="modal__header">
+					<h2 class="modal__title" id="suggest-topic-title">Предложить тему</h2>
+					<button class="modal__close" type="button" aria-label="Закрыть" data-modal-close>
+						<svg class="icon modal__close-icon" aria-hidden="true" focusable="false">
+							<use href="/ag-site/assets/icons/sprite.svg#icon-close"></use>
+						</svg>
+					</button>
+				</div>
+				<div class="modal__body">
+					<div class="modal__content">
+						<form
+							class="modal__form"
+							action="/ajax/suggest-topic.php"
+							method="post"
+							data-module="Form"
+							data-path="components"
+							data-form-success="suggest-topic-success"
+						>
+							<p class="modal__text">Расскажите, какую тему стоит осветить в новостях холдинга — мы передадим её редакции.</p>
+							<div class="modal__fields">
+								<div class="field">
+									<label class="field__label visually-hidden" for="suggest-topic-name">Ваше имя</label>
+									<span class="field__box">
+										<input
+											class="field__control"
+											id="suggest-topic-name"
+											name="name"
+											type="text"
+											placeholder="Ваше имя"
+											autocomplete="name"
+											required
+											maxlength="100"
+										/>
+									</span>
+
+									<p class="field__error" id="suggest-topic-name-error" hidden>
+										<svg class="icon field__error-icon" aria-hidden="true" focusable="false">
+											<use href="/ag-site/assets/icons/sprite.svg#icon-alert"></use>
+										</svg>
+										<span data-field-error></span>
+									</p>
+								</div>
+								<div class="field">
+									<label class="field__label visually-hidden" for="suggest-topic-contact">Email или телефон для связи</label>
+									<span class="field__box">
+										<input
+											class="field__control"
+											id="suggest-topic-contact"
+											name="contact"
+											type="text"
+											placeholder="Email или телефон для связи"
+											autocomplete="email"
+											required
+											maxlength="150"
+										/>
+									</span>
+
+									<p class="field__error" id="suggest-topic-contact-error" hidden>
+										<svg class="icon field__error-icon" aria-hidden="true" focusable="false">
+											<use href="/ag-site/assets/icons/sprite.svg#icon-alert"></use>
+										</svg>
+										<span data-field-error></span>
+									</p>
+								</div>
+								<div class="field field--multiline">
+									<label class="field__label" for="suggest-topic-topic">Тема обращения</label>
+									<textarea
+										class="field__control"
+										id="suggest-topic-topic"
+										name="topic"
+										rows="3"
+										data-autosize
+										data-autosize-max-rows="8"
+										placeholder="Опишите тему, которую хотите предложить редакции"
+										required
+										maxlength="2000"
+									></textarea>
+
+									<p class="field__error" id="suggest-topic-topic-error" hidden>
+										<svg class="icon field__error-icon" aria-hidden="true" focusable="false">
+											<use href="/ag-site/assets/icons/sprite.svg#icon-alert"></use>
+										</svg>
+										<span data-field-error></span>
+									</p>
+								</div>
+							</div>
+							<div class="checkbox">
+								<label class="checkbox__row" for="suggest-topic-consent">
+									<input class="checkbox__input" type="checkbox" id="suggest-topic-consent" name="consent" value="Y" required />
+									<span class="checkbox__box" aria-hidden="true">
+										<svg class="icon checkbox__check" aria-hidden="true" focusable="false">
+											<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
+										</svg>
+									</span>
+									<span class="checkbox__text">
+										Я согласен(-на) на обработку персональных данных в соответствии с
+										<a href="#" target="_blank" rel="noopener noreferrer">Политикой обработки персональных данных.</a>
+									</span>
+								</label>
+								<p class="field__error" id="suggest-topic-consent-error" hidden>
+									<svg class="icon field__error-icon" aria-hidden="true" focusable="false">
+										<use href="/ag-site/assets/icons/sprite.svg#icon-alert"></use>
+									</svg>
+									<span data-field-error></span>
+								</p>
+							</div>
+							<p class="form-error" role="alert" data-form-error hidden></p>
+							<button class="btn btn--general btn--m modal__submit" type="submit">
+								<span class="btn__text">Отправить</span>
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</dialog>
+		<dialog
+			class="modal modal--m modal--center"
+			id="suggest-topic-success"
+			aria-labelledby="suggest-topic-success-title"
+			aria-describedby="suggest-topic-success-text"
+			data-module="Modal"
+			data-path="components"
+		>
+			<div class="modal__panel">
+				<div class="modal__header">
+					<button class="modal__close" type="button" aria-label="Закрыть" data-modal-close>
+						<svg class="icon modal__close-icon" aria-hidden="true" focusable="false">
+							<use href="/ag-site/assets/icons/sprite.svg#icon-close"></use>
+						</svg>
+					</button>
+				</div>
+				<div class="modal__body">
+					<div class="modal__content">
+						<span class="modal__icon modal__icon--success">
+							<svg class="icon modal__icon-glyph" aria-hidden="true" focusable="false">
+								<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
+							</svg>
+						</span>
+						<h2 class="modal__title" id="suggest-topic-success-title">Спасибо! Ваше обращение передано в редакцию</h2>
+						<p class="modal__text" id="suggest-topic-success-text">Мы свяжемся с вами, если потребуются детали.</p>
+						<button class="btn btn--general btn--m" type="button" data-modal-close="">
+							<span class="btn__text">Закрыть</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</dialog>
+		<section
+			class="cookie-banner"
+			aria-labelledby="cookie-banner-title"
+			data-module="CookieBanner"
+			data-path="layouts"
+			data-cookie-name="ag_cookie_consent"
+			hidden
+		>
+			<h2 class="cookie-banner__title" id="cookie-banner-title">Обработка файлов cookie</h2>
+			<p class="cookie-banner__text">
+				Мы используем файлы cookie для корректной работы портала.
+				<br />
+				<a class="cookie-banner__link" href="#">Политика обработки файлов cookie</a>
+			</p>
+			<div class="cookie-banner__actions">
+				<button class="btn btn--general btn--m" type="button" data-cookie-choice="accepted">
+					<span class="btn__text">Принять</span>
+				</button>
+				<button class="btn btn--light btn--m" type="button" data-cookie-choice="declined">
+					<span class="btn__text">Отклонить</span>
+				</button>
+			</div>
+		</section>
+	</body>
+</html>

@@ -3,12 +3,12 @@
     "file": "assets/js/announce-CzTc7via.js",
     "name": "announce"
   },
-  "_app-774wwo2_.css": {
-    "file": "assets/css/app-774wwo2_.css",
-    "src": "_app-774wwo2_.css"
+  "_app-DtoirH3w.css": {
+    "file": "assets/css/app-DtoirH3w.css",
+    "src": "_app-DtoirH3w.css"
   },
-  "_app-BdqwTSqv.js": {
-    "file": "assets/js/app-BdqwTSqv.js",
+  "_app-T3K0ur_6.js": {
+    "file": "assets/js/app-T3K0ur_6.js",
     "name": "app",
     "dynamicImports": [
       "components/components/Calendar/Calendar.js",
@@ -16,6 +16,7 @@
       "components/components/Content/Content.js",
       "components/components/CopyLink/CopyLink.js",
       "components/components/DateRange/DateRange.js",
+      "components/components/Field/Field.js",
       "components/components/FileField/FileField.js",
       "components/components/Form/Form.js",
       "components/components/LikeButton/LikeButton.js",
@@ -28,6 +29,7 @@
       "components/layouts/Header/Header.js",
       "components/layouts/MainMenu/MainMenu.js",
       "components/layouts/SiteSearch/SiteSearch.js",
+      "components/sections/auth/AuthResend/AuthResend.js",
       "components/sections/birthdays/BirthdayCalendar/BirthdayCalendar.js",
       "components/sections/career/VacancyApply/VacancyApply.js",
       "components/sections/career/VacancyFilters/VacancyFilters.js",
@@ -39,7 +41,11 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-774wwo2_.css"
+      "assets/css/app-DtoirH3w.css"
+    ],
+    "assets": [
+      "assets/images/auth-bg-mobile-C5be7WJt.svg",
+      "assets/images/auth-bg-CXiUxQml.svg"
     ]
   },
   "_filter-panel-CxDryH0e.js": {
@@ -58,8 +64,8 @@
     "file": "assets/js/index-DeDpOBIY.js",
     "name": "index"
   },
-  "_mock-server-4ErjQ4nh.js": {
-    "file": "assets/js/mock-server-4ErjQ4nh.js",
+  "_mock-server-CNqGOPyr.js": {
+    "file": "assets/js/mock-server-CNqGOPyr.js",
     "name": "mock-server",
     "assets": [
       "assets/images/person-2-BSdhiEQf.webp",
@@ -85,6 +91,14 @@
   "_skeleton-Bj9dw7Ib.js": {
     "file": "assets/js/skeleton-Bj9dw7Ib.js",
     "name": "skeleton"
+  },
+  "assets/images/auth/auth-bg-mobile.svg": {
+    "file": "assets/images/auth-bg-mobile-C5be7WJt.svg",
+    "src": "assets/images/auth/auth-bg-mobile.svg"
+  },
+  "assets/images/auth/auth-bg.svg": {
+    "file": "assets/images/auth-bg-CXiUxQml.svg",
+    "src": "assets/images/auth/auth-bg.svg"
   },
   "assets/images/logo-mobile.svg": {
     "file": "assets/images/logo-mobile-CY1jZkm6.svg",
@@ -139,6 +153,12 @@
       "_scroll-lock-CkQIV5rM.js"
     ]
   },
+  "components/components/Field/Field.js": {
+    "file": "assets/js/Field-D_nqkPH1.js",
+    "name": "Field",
+    "src": "components/components/Field/Field.js",
+    "isDynamicEntry": true
+  },
   "components/components/FileField/FileField.js": {
     "file": "assets/js/FileField-VoELY5o0.js",
     "name": "FileField",
@@ -146,7 +166,7 @@
     "isDynamicEntry": true
   },
   "components/components/Form/Form.js": {
-    "file": "assets/js/Form-DzaioRQQ.js",
+    "file": "assets/js/Form-BVobdcKx.js",
     "name": "Form",
     "src": "components/components/Form/Form.js",
     "isDynamicEntry": true,
@@ -238,6 +258,15 @@
       "_skeleton-Bj9dw7Ib.js"
     ]
   },
+  "components/sections/auth/AuthResend/AuthResend.js": {
+    "file": "assets/js/AuthResend-AjdenirM.js",
+    "name": "AuthResend",
+    "src": "components/sections/auth/AuthResend/AuthResend.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_announce-CzTc7via.js"
+    ]
+  },
   "components/sections/birthdays/BirthdayCalendar/BirthdayCalendar.js": {
     "file": "assets/js/BirthdayCalendar-B60Nd0kF.js",
     "name": "BirthdayCalendar",
@@ -317,13 +346,13 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-D7jGY3dJ.js",
+    "file": "assets/js/dev-canvas-Co2KVGK4.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
-      "_mock-server-4ErjQ4nh.js",
-      "_app-BdqwTSqv.js"
+      "_mock-server-CNqGOPyr.js",
+      "_app-T3K0ur_6.js"
     ],
     "css": [
       "assets/css/dev-canvas-Bd3wWTvM.css"
@@ -449,12 +478,12 @@
     "src": "pages/dev/img/wide-mobile.webp"
   },
   "pages/dev/ui.html": {
-    "file": "assets/js/dev-ui-DvEIPs3u.js",
+    "file": "assets/js/dev-ui-CITkreOK.js",
     "name": "dev-ui",
     "src": "pages/dev/ui.html",
     "isEntry": true,
     "imports": [
-      "_mock-server-4ErjQ4nh.js"
+      "_mock-server-CNqGOPyr.js"
     ],
     "css": [
       "assets/css/dev-ui-DG2Ikop1.css"

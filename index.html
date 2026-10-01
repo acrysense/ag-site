@@ -46,9 +46,9 @@
 		<script type="text/plain" data-cookie-consent>
 			window.__agDemoCounter = (window.__agDemoCounter || 0) + 1; console.info('[demo] счётчик включён после согласия на cookie')
 		</script>
-		<script type="module" crossorigin src="/ag-site/assets/js/mock-server-4ErjQ4nh.js"></script>
-		<script type="module" crossorigin src="/ag-site/assets/js/app-BdqwTSqv.js"></script>
-		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-774wwo2_.css" />
+		<script type="module" crossorigin src="/ag-site/assets/js/mock-server-CNqGOPyr.js"></script>
+		<script type="module" crossorigin src="/ag-site/assets/js/app-T3K0ur_6.js"></script>
+		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-DtoirH3w.css" />
 	</head>
 	<body>
 		<div class="wrapper">
@@ -2449,16 +2449,19 @@
 							<div class="modal__fields">
 								<div class="field">
 									<label class="field__label visually-hidden" for="suggest-topic-name">Ваше имя</label>
-									<input
-										class="field__control"
-										id="suggest-topic-name"
-										name="name"
-										type="text"
-										placeholder="Ваше имя"
-										autocomplete="name"
-										required
-										maxlength="100"
-									/>
+									<span class="field__box">
+										<input
+											class="field__control"
+											id="suggest-topic-name"
+											name="name"
+											type="text"
+											placeholder="Ваше имя"
+											autocomplete="name"
+											required
+											maxlength="100"
+										/>
+									</span>
+
 									<p class="field__error" id="suggest-topic-name-error" hidden>
 										<svg class="icon field__error-icon" aria-hidden="true" focusable="false">
 											<use href="/ag-site/assets/icons/sprite.svg#icon-alert"></use>
@@ -2468,16 +2471,19 @@
 								</div>
 								<div class="field">
 									<label class="field__label visually-hidden" for="suggest-topic-contact">Email или телефон для связи</label>
-									<input
-										class="field__control"
-										id="suggest-topic-contact"
-										name="contact"
-										type="text"
-										placeholder="Email или телефон для связи"
-										autocomplete="email"
-										required
-										maxlength="150"
-									/>
+									<span class="field__box">
+										<input
+											class="field__control"
+											id="suggest-topic-contact"
+											name="contact"
+											type="text"
+											placeholder="Email или телефон для связи"
+											autocomplete="email"
+											required
+											maxlength="150"
+										/>
+									</span>
+
 									<p class="field__error" id="suggest-topic-contact-error" hidden>
 										<svg class="icon field__error-icon" aria-hidden="true" focusable="false">
 											<use href="/ag-site/assets/icons/sprite.svg#icon-alert"></use>
@@ -2498,6 +2504,7 @@
 										required
 										maxlength="2000"
 									></textarea>
+
 									<p class="field__error" id="suggest-topic-topic-error" hidden>
 										<svg class="icon field__error-icon" aria-hidden="true" focusable="false">
 											<use href="/ag-site/assets/icons/sprite.svg#icon-alert"></use>
