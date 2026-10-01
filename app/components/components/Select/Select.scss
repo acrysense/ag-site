@@ -288,6 +288,8 @@
 
 	.select--multi .select__scroll {
 		@include down(tablet) {
+			// vh — для браузеров без dvh (Chrome до 108)
+			max-height: min(320px, 50vh);
 			max-height: min(320px, 50dvh);
 			margin-right: 0;
 			padding-inline: 10px;

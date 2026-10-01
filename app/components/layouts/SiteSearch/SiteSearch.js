@@ -379,6 +379,8 @@ export default function init(root) {
 	const open = () => {
 		if (isOpen()) return
 		root.classList.add('is-open')
+		// Шапка поднимается над таб-баром и cookie (без :has — для старых браузеров)
+		root.closest('.header')?.classList.add('has-search-open')
 		input.setAttribute('aria-expanded', 'true')
 		chip.hidden = true
 		if (isFull()) {
@@ -391,6 +393,7 @@ export default function init(root) {
 	const close = () => {
 		if (!isOpen()) return
 		root.classList.remove('is-open', 'is-filters-open')
+		root.closest('.header')?.classList.remove('has-search-open')
 		input.setAttribute('aria-expanded', 'false')
 		summary.setAttribute('aria-expanded', 'false')
 		release?.()
@@ -547,5 +550,6 @@ export default function init(root) {
 		filtersRequest?.abort()
 		release?.()
 		root.classList.remove('is-open', 'is-filters-open', 'has-query', 'has-filters')
+		root.closest('.header')?.classList.remove('has-search-open')
 	}
 }

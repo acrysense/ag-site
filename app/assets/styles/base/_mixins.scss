@@ -292,6 +292,8 @@ $alias-bp: (
 	bottom: 0;
 	left: 0;
 	z-index: 100;
+	// vh — для браузеров без dvh (Chrome до 108)
+	max-height: calc(100vh - 40px);
 	max-height: calc(100dvh - 40px);
 	padding: 16px 10px calc(16px + env(safe-area-inset-bottom));
 	background: palette("white");

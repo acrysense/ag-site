@@ -620,7 +620,7 @@
 	// ---------- До 1024: окно на весь экран ----------
 	// Поиск живёт в шапке (у неё свой z-index), поэтому на время окна шапка поднимается над
 	// таб-баром и баннером cookie
-	.header:has(.site-search.is-open) {
+	.header.has-search-open {
 		@include down(desktop) {
 			z-index: 90;
 		}
