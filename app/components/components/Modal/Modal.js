@@ -26,7 +26,9 @@ export default function init(dialog) {
 		release = null
 	}
 
-	const open = () => {
+	// keyboard — открыли с клавиатуры: фокус на первую кнопку или поле. Пальцем или мышью —
+	// на само окно (без обводки на кнопке; Tab ведёт дальше по окну)
+	const open = (keyboard = false) => {
 		if (dialog.open) return
 		dialog.showModal()
 		release?.()
@@ -41,7 +43,11 @@ export default function init(dialog) {
 		const target =
 			dialog.querySelector('[autofocus]') ||
 			dialog.querySelector('button, [href], input, select, textarea, [tabindex="0"]')
-		target?.focus()
+		if (keyboard) target?.focus()
+		else {
+			dialog.tabIndex = -1
+			dialog.focus()
+		}
 		dialog.dispatchEvent(new CustomEvent('modal:opened'))
 	}
 
@@ -80,7 +86,8 @@ export default function init(dialog) {
 			const opener = event.target.closest(`[data-modal-open="${CSS.escape(dialog.id)}"]`)
 			if (!opener) return
 			event.preventDefault()
-			open()
+			// detail 0 — нажатие с клавиатуры (Enter, пробел)
+			open(event.detail === 0)
 		},
 		{ signal }
 	)

@@ -39,10 +39,23 @@
 		transition: color $transition-default;
 	}
 
-	// Глобальное кольцо фокуса с клавиатуры. outline: none без замены запрещён:
-	// меняйте цвет через --focus-ring-color, а не убирайте кольцо.
+	// Фокус с клавиатуры: обводка Form.Focus вплотную к элементу (по его скруглению), без
+	// зазора — как рамка. outline: none без замены запрещён: цвет меняйте через
+	// --focus-ring-color (на синей кнопке — белая внутри, см. Button)
 	:focus-visible {
-		outline: $focus-ring-width solid var(--focus-ring-color, currentColor);
+		outline: $focus-ring-width solid var(--focus-ring-color, #{palette("form-focus")});
 		outline-offset: $focus-ring-offset;
+	}
+
+	// Ссылки-текст: обводка со скруглением и 2px воздуха, чтобы не резала буквы. :where — без
+	// веса: у блоков со своими скруглением и отступом обводки остаются их
+	:where(a):focus-visible {
+		border-radius: 4px;
+		outline-offset: 2px;
+	}
+
+	// Окно или меню, открытое пальцем или мышью, держит фокус на себе — без обводки
+	dialog:focus {
+		outline: none;
 	}
 }

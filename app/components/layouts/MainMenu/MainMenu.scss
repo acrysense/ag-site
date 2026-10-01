@@ -304,35 +304,71 @@
 		color: palette("blue-hover");
 	}
 
-	// Появление (наше): меню проявляется и чуть опускается (со стороны бургера), закрытие —
-	// обратно; раскрытие групп — проявление
+	// Появление (наше): сначала проявляется фон, затем блоки по очереди поднимаются на 12px —
+	// короткой волной сверху вниз. Закрытие — просто гаснет, быстрее. Без сдвига всего меню:
+	// под ним не мелькает страница
 	.main-menu {
 		opacity: 0;
-		transform: translateY(-8px);
 		transition:
 			opacity $duration-popup $ease-out,
-			transform $duration-popup $ease-out,
 			display $duration-popup allow-discrete,
 			overlay $duration-popup allow-discrete;
 
 		&[open] {
 			opacity: 1;
-			transform: none;
-			transition-duration: $duration-overlay;
+			transition-duration: $duration-popup;
 
 			@starting-style {
 				opacity: 0;
-				transform: translateY(-8px);
 			}
 		}
 
 		&--static {
 			opacity: 1;
-			transform: none;
 		}
 	}
 
-	.main-menu__list {
-		@include appear;
+	.main-menu[open]:not(.main-menu--static) {
+		.main-menu__header,
+		.main-menu__content > * {
+			transition:
+				opacity $duration-reveal-item $ease-out,
+				transform $duration-reveal-item $ease-out;
+			transition-delay: calc(#{$duration-popup} * 0.4 + var(--menu-i, 0) * 40ms);
+
+			@starting-style {
+				opacity: 0;
+				transform: translateY(12px);
+			}
+		}
+
+		.main-menu__content > :nth-child(1) {
+			--menu-i: 1;
+		}
+
+		.main-menu__content > :nth-child(2) {
+			--menu-i: 2;
+		}
+
+		.main-menu__content > :nth-child(3) {
+			--menu-i: 3;
+		}
+
+		.main-menu__content > :nth-child(4) {
+			--menu-i: 4;
+		}
+
+		.main-menu__content > :nth-child(5) {
+			--menu-i: 5;
+		}
+
+		.main-menu__content > :nth-child(n + 6) {
+			--menu-i: 6;
+		}
+	}
+
+	// Сворачивание группы — по высоте (MainMenu.js): на время анимации содержимое обрезается
+	.main-menu__list.is-animating {
+		overflow: hidden;
 	}
 }

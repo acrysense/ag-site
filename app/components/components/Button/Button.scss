@@ -101,6 +101,16 @@
 		}
 	}
 
+	// Фокус с клавиатуры на заливных кнопках — белая обводка внутри (синяя на синем не видна)
+	.btn--general,
+	.btn--error {
+		--focus-ring-color: #{palette("white")};
+
+		&:focus-visible {
+			outline-offset: -4px;
+		}
+	}
+
 	// Figma: Error — красная, «Выйти»
 	.btn--error {
 		color: palette("white");

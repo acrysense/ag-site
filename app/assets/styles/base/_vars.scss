@@ -374,8 +374,9 @@ $field-font-size-min: 16px;
 // Цвет кольца по умолчанию — currentColor. На заливках, где текст совпадает с фоном
 // вокруг (белая подпись на цветной кнопке у белого фона), переопределяйте локально:
 // .footer { --focus-ring-color: #{palette("white")}; }
+// Обводка — вплотную, без зазора (как рамка); цвет по умолчанию Form.Focus
 $focus-ring-width: 2px;
-$focus-ring-offset: 2px;
+$focus-ring-offset: 0;
 
 // transition
 $transition-default: 0.25s ease-in-out;
@@ -393,6 +394,8 @@ $duration-overlay: 0.3s;
 $parallax-shift: 30%;
 // Блик скелетона: один проход по плашке
 $duration-skeleton: 1.3s;
+// Пункты, проявляющиеся волной (мобильное меню)
+$duration-reveal-item: 0.35s;
 // Проявление блоков при прокрутке (components/Reveal): медленнее окон — мягко, без рывка
 $duration-reveal: 0.9s;
 $reveal-shift: 16px;

@@ -4,6 +4,8 @@ import { lockBody } from '@/utils/scroll-lock'
 // TabBar). Немодальное: TabBar остаётся поверх и доступен, как в макете, а основная
 // страница (.wrapper) на время открытия становится inert.
 const desktop = window.matchMedia('(min-width: 1024px)')
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+const COLLAPSE = { duration: 260, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
 
 export default function init(dialog) {
 	const controller = new AbortController()
@@ -25,7 +27,9 @@ export default function init(dialog) {
 		}
 	}
 
-	const open = (trigger) => {
+	// keyboard — открыли с клавиатуры: фокус на «Закрыть». Пальцем или мышью — на само меню
+	// (show() сам ставит фокус на первую кнопку — переносим, без обводки на крестике)
+	const open = (trigger, keyboard = false) => {
 		if (dialog.open) return
 		returnFocus = trigger
 		dialog.show()
@@ -35,7 +39,11 @@ export default function init(dialog) {
 		const wrapper = page()
 		if (wrapper) wrapper.inert = true
 		setOpeners(true)
-		dialog.querySelector('[data-main-menu-close]')?.focus()
+		if (keyboard) dialog.querySelector('[data-main-menu-close]')?.focus()
+		else {
+			dialog.tabIndex = -1
+			dialog.focus({ preventScroll: true })
+		}
 	}
 
 	// Уборка сразу при закрытии: событие close у <dialog> приходит асинхронно, и если
@@ -57,6 +65,40 @@ export default function init(dialog) {
 		cleanup()
 	}
 
+	// Группа раскрывается и сворачивается по высоте (а не скачком); повторный клик во время
+	// анимации разворачивает её от текущей высоты
+	const running = new Map()
+	const toggleGroup = (group) => {
+		const list = document.getElementById(group.getAttribute('aria-controls'))
+		const expand = group.getAttribute('aria-expanded') !== 'true'
+		group.setAttribute('aria-expanded', String(expand))
+		if (!list) return
+		const from = list.hidden ? 0 : list.getBoundingClientRect().height
+		running.get(list)?.cancel()
+		list.hidden = false
+		const to = expand ? list.scrollHeight : 0
+		if (reducedMotion.matches || from === to) {
+			list.hidden = !expand
+			return
+		}
+		const animation = list.animate(
+			[
+				{ height: `${from}px`, opacity: expand ? 0 : 1 },
+				{ height: `${to}px`, opacity: expand ? 1 : 0 },
+			],
+			{ ...COLLAPSE, fill: 'none' }
+		)
+		list.classList.add('is-animating')
+		running.set(list, animation)
+		// Отменённая (перебитая новым кликом) анимация ничего не трогает — список уже у новой
+		animation.onfinish = () => {
+			if (running.get(list) !== animation) return
+			running.delete(list)
+			list.classList.remove('is-animating')
+			list.hidden = !expand
+		}
+	}
+
 	// Закрытие не через close() (например, form method="dialog") — уборка по событию
 	dialog.addEventListener('close', () => !dialog.open && release && cleanup(), { signal })
 
@@ -67,7 +109,7 @@ export default function init(dialog) {
 			if (!trigger || isStatic || trigger.getAttribute('aria-controls') !== dialog.id) return
 			event.preventDefault()
 			if (dialog.open) close()
-			else open(trigger)
+			else open(trigger, event.detail === 0)
 		},
 		{ signal }
 	)
@@ -80,11 +122,7 @@ export default function init(dialog) {
 				return
 			}
 			const group = event.target.closest('[data-main-menu-group]')
-			if (!group) return
-			const list = document.getElementById(group.getAttribute('aria-controls'))
-			const expanded = group.getAttribute('aria-expanded') !== 'true'
-			group.setAttribute('aria-expanded', String(expanded))
-			if (list) list.hidden = !expanded
+			if (group) toggleGroup(group)
 		},
 		{ signal }
 	)
@@ -105,6 +143,7 @@ export default function init(dialog) {
 
 	return () => {
 		controller.abort()
+		running.forEach((animation) => animation.cancel())
 		if (!isStatic) close()
 		release?.()
 	}
