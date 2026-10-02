@@ -3,12 +3,8 @@
     "file": "assets/js/announce-CzTc7via.js",
     "name": "announce"
   },
-  "_app-C7OZ_McS.css": {
-    "file": "assets/css/app-C7OZ_McS.css",
-    "src": "_app-C7OZ_McS.css"
-  },
-  "_app-CV-mqIVg.js": {
-    "file": "assets/js/app-CV-mqIVg.js",
+  "_app-Bpef4505.js": {
+    "file": "assets/js/app-Bpef4505.js",
     "name": "app",
     "dynamicImports": [
       "components/components/Calendar/Calendar.js",
@@ -40,11 +36,15 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-C7OZ_McS.css"
+      "assets/css/app-COHII_kI.css"
     ],
     "assets": [
       "assets/images/auth-ag-m2GDsMwR.svg"
     ]
+  },
+  "_app-COHII_kI.css": {
+    "file": "assets/css/app-COHII_kI.css",
+    "src": "_app-COHII_kI.css"
   },
   "_filter-panel-CxDryH0e.js": {
     "file": "assets/js/filter-panel-CxDryH0e.js",
@@ -338,13 +338,13 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-5RNfEsQZ.js",
+    "file": "assets/js/dev-canvas-IfXY9pBj.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
       "_pages-nav-CGkOGvNx.js",
-      "_app-CV-mqIVg.js"
+      "_app-Bpef4505.js"
     ],
     "css": [
       "assets/css/dev-canvas-B9lA4Ypm.css"
