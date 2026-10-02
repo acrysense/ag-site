@@ -3,8 +3,8 @@
     "file": "assets/js/announce-CzTc7via.js",
     "name": "announce"
   },
-  "_app-BNSJfy_y.js": {
-    "file": "assets/js/app-BNSJfy_y.js",
+  "_app-B-emO8H3.js": {
+    "file": "assets/js/app-B-emO8H3.js",
     "name": "app",
     "dynamicImports": [
       "components/components/Calendar/Calendar.js",
@@ -58,21 +58,21 @@
     "file": "assets/js/icon-RHyGVOjg.js",
     "name": "icon"
   },
-  "_pages-nav-D9btX8BV.css": {
-    "file": "assets/css/pages-nav-D9btX8BV.css",
-    "src": "_pages-nav-D9btX8BV.css"
-  },
-  "_pages-nav-gM-Xp9bL.js": {
-    "file": "assets/js/pages-nav-gM-Xp9bL.js",
+  "_pages-nav-Csy2Zpp4.js": {
+    "file": "assets/js/pages-nav-Csy2Zpp4.js",
     "name": "pages-nav",
     "css": [
-      "assets/css/pages-nav-D9btX8BV.css"
+      "assets/css/pages-nav-DwdJsEIP.css"
     ],
     "assets": [
       "assets/images/person-2-BSdhiEQf.webp",
       "assets/images/news-1-C8UetQQG.webp",
       "assets/images/news-3-Cg1MkcK5.webp"
     ]
+  },
+  "_pages-nav-DwdJsEIP.css": {
+    "file": "assets/css/pages-nav-DwdJsEIP.css",
+    "src": "_pages-nav-DwdJsEIP.css"
   },
   "_reveal-in-row-RAMtI7uy.js": {
     "file": "assets/js/reveal-in-row-RAMtI7uy.js",
@@ -185,12 +185,12 @@
     ]
   },
   "components/components/Modal/Modal.js": {
-    "file": "assets/js/Modal-jZ8Zbb6P.js",
+    "file": "assets/js/Modal-DjhpMk8-.js",
     "name": "Modal",
     "src": "components/components/Modal/Modal.js",
     "isDynamicEntry": true,
     "imports": [
-      "_pages-nav-gM-Xp9bL.js",
+      "_pages-nav-Csy2Zpp4.js",
       "_scroll-lock-CkQIV5rM.js"
     ]
   },
@@ -207,12 +207,12 @@
     "isDynamicEntry": true
   },
   "components/components/Select/Select.js": {
-    "file": "assets/js/Select-BReCYt4n.js",
+    "file": "assets/js/Select-DX9ag_z6.js",
     "name": "Select",
     "src": "components/components/Select/Select.js",
     "isDynamicEntry": true,
     "imports": [
-      "_pages-nav-gM-Xp9bL.js",
+      "_pages-nav-Csy2Zpp4.js",
       "_announce-CzTc7via.js",
       "_sheet-BupPjGD7.js",
       "_icon-RHyGVOjg.js",
@@ -338,13 +338,13 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-C1-5lUP0.js",
+    "file": "assets/js/dev-canvas-B2rnJuwh.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
-      "_pages-nav-gM-Xp9bL.js",
-      "_app-BNSJfy_y.js"
+      "_pages-nav-Csy2Zpp4.js",
+      "_app-B-emO8H3.js"
     ],
     "css": [
       "assets/css/dev-canvas-B9lA4Ypm.css"
@@ -471,24 +471,24 @@
     "src": "pages/dev/img/wide-mobile.webp"
   },
   "pages/dev/pages.html": {
-    "file": "assets/js/dev-pages-CH6ZVdxf.js",
+    "file": "assets/js/dev-pages-Bc14j-u5.js",
     "name": "dev-pages",
     "src": "pages/dev/pages.html",
     "isEntry": true,
     "imports": [
-      "_pages-nav-gM-Xp9bL.js"
+      "_pages-nav-Csy2Zpp4.js"
     ],
     "css": [
       "assets/css/dev-pages-B-ujVolq.css"
     ]
   },
   "pages/dev/ui.html": {
-    "file": "assets/js/dev-ui-D7rwo_am.js",
+    "file": "assets/js/dev-ui-CEevHH6j.js",
     "name": "dev-ui",
     "src": "pages/dev/ui.html",
     "isEntry": true,
     "imports": [
-      "_pages-nav-gM-Xp9bL.js"
+      "_pages-nav-Csy2Zpp4.js"
     ],
     "css": [
       "assets/css/dev-ui-DG2Ikop1.css"
