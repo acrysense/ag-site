@@ -164,7 +164,7 @@ $pages-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
 	&__grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
 		gap: 12px;
 		margin: 0;
 		padding: 0;
@@ -175,6 +175,7 @@ $pages-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 	&__card {
 		position: relative;
 		display: flex;
+		min-width: 0;
 		flex-direction: column;
 		gap: 4px;
 		padding: 16px 52px 16px 16px;
@@ -215,8 +216,11 @@ $pages-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 		}
 	}
 
+	// Подпись для скринридера — в углу карточки, а не в конце длинного названия (не выходит за край)
 	&__hidden {
 		position: absolute;
+		top: 0;
+		left: 0;
 		width: 1px;
 		height: 1px;
 		overflow: hidden;

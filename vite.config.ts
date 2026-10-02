@@ -506,7 +506,9 @@ function buildPagesIndex(dev: boolean) {
 		.sort((a, b) => a.order - b.order || a.title.localeCompare(b.title, 'ru'))
 	return JSON.stringify({
 		pagesUrl: withBase(dev ? '/dev/pages.html' : '/dev-pages.html'),
-		showcaseUrl: withBase(dev ? '/dev/ui.html' : '/dev-ui.html'),
+		// Витрина компонентов в навигации пока не показывается (правки по ней — отдельно);
+		// вернуть: withBase(dev ? '/dev/ui.html' : '/dev-ui.html')
+		showcaseUrl: null,
 		pages,
 	})
 }
