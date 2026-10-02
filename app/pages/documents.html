@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="{{ lang }}" data-icons="{{sprite}}">
+	<head>
+		{{> layouts/Head/Head }}
+		<link rel="stylesheet" href="/assets/styles/main.scss" />
+		<script type="module" src="/app.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			{{> layouts/Header/Header props=(default data.header site.header) }}
+			<main class="wrapper__content">
+				{{!-- Библиотека — «Документы» (1920 — 4526:83, компоненты и состояния 4526:29698; мобильного макета нет) --}}
+				<div class="container page-inner">
+					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.breadcrumbs) }}
+					<div class="page-columns page-columns--start">
+						<div class="page-columns__aside">
+							{{> sections/documents/DocumentsFolders/DocumentsFolders props=data.folders }}
+							{{> sections/documents/DocumentsFilters/DocumentsFilters props=data.filters }}
+						</div>
+						{{> sections/documents/DocumentsList/DocumentsList props=data.list }}
+					</div>
+				</div>
+			</main>
+			{{> layouts/Footer/Footer props=site.footer }}
+		</div>
+		{{> layouts/MainMenu/MainMenu props=site.mainMenu }}
+		{{> layouts/TabBar/TabBar props=site.tabBar }}
+		{{> layouts/SiteModals/SiteModals props=site.modals }}
+		{{> layouts/CookieBanner/CookieBanner props=site.cookies }}
+	</body>
+</html>

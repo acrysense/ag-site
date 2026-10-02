@@ -22,6 +22,9 @@
 @forward "@/components/components/NumberRange/NumberRange";
 @forward "@/components/components/Reveal/Reveal";
 @forward "@/components/components/Skeleton/Skeleton";
+@forward "@/components/components/FileType/FileType";
+@forward "@/components/components/Tooltip/Tooltip";
+@forward "@/components/components/Toast/Toast";
 
 @forward "@/components/layouts/Header/Header";
 @forward "@/components/layouts/Footer/Footer";
@@ -57,5 +60,9 @@
 @forward "@/components/sections/career/VacancyApply/VacancyApply";
 @forward "@/components/sections/career/CareerSteps/CareerSteps";
 @forward "@/components/sections/auth/AuthCard/AuthCard";
+@forward "@/components/sections/documents/DocumentsFolders/DocumentsFolders";
+@forward "@/components/sections/documents/DocumentsFilters/DocumentsFilters";
+@forward "@/components/sections/documents/DocumentRow/DocumentRow";
+@forward "@/components/sections/documents/DocumentsList/DocumentsList";
 
 // @forward '@/components/sections/shared/';

@@ -94,7 +94,27 @@ $colors: (
 	// Без переменной в Figma: сайдбар «Искать в разделе» в окне поиска (4764:2652)
 	"bg-soft": #f8f9fb,
 	// Фон страницы входа — как в ЛК (ag, $color-bg-light)
-	"bg-auth": #f5f8fa
+	"bg-auth": #f5f8fa,
+	// Без переменных в Figma: значки типа файла (Doc/File type, 4526:29709) — фон и подпись
+	"file-pdf-bg": #fdecea,
+	"file-pdf": #d93a2b,
+	"file-doc-bg": #e8f0fc,
+	"file-doc": #2b6cd9,
+	"file-xls-bg": #e6f4ec,
+	"file-xls": #1d8a4e,
+	"file-ppt-bg": #fcede4,
+	"file-ppt": #d9622b,
+	"file-zip-bg": #f6efd9,
+	"file-zip": #8a6d1d,
+	// Без переменной в Figma: вторая строка подсказки (Doc/Tooltip, 4526:29712)
+	"tooltip-meta": #b8c2cc,
+	// Без переменных в Figma: «Ссылка скопирована» у кнопки (Doc/Icon button · Copied) — фон и галочка
+	"copied-bg": #e5f5eb,
+	"copied": #1c8a57,
+	// Без переменной в Figma: галочка в тосте на тёмном (Doc/Toast)
+	"toast-icon": #66d999,
+	// Без переменной в Figma: значок папки (Doc/Tree item)
+	"folder-icon": #1f1f1f
 );
 
 // layout
@@ -131,6 +151,8 @@ $overlay-blur: 2.5px;
 
 // Без переменной в Figma: тень нижней шторки (Bottom sheet · Выйти из аккаунта?)
 $shadow-sheet: 0 -8px 24px rgb(15 26 36 / 12%);
+// Без переменной в Figma: тень тоста (Doc/Toast, drop-shadow 0 6 8, 18%)
+$shadow-toast: 0 6px 8px rgb(18 23 33 / 18%);
 
 // radius
 $radius-button: 14px; // Radius-Button
@@ -328,6 +350,46 @@ $text-styles: (
 			weight: 700,
 			size: 14,
 			line-height: 22,
+		),
+	// Без переменных в Figma: библиотека документов (4526:29698) — шапка таблицы и имя в
+	// подсказке (13/19), подсказка и счётчик папки (12/17), тост (Medium 14/20), значок типа
+	// файла (Bold 11/16, разрядка 0.44), заголовок «Документы не найдены» (Semi Bold 16/23)
+	"s-13-19": (
+			family: body,
+			weight: 400,
+			size: 13,
+			line-height: 19,
+		),
+	"s-13-19-medium": (
+			family: body,
+			weight: 500,
+			size: 13,
+			line-height: 19,
+		),
+	"s-12-17": (
+			family: body,
+			weight: 400,
+			size: 12,
+			line-height: 17,
+		),
+	"m-medium-20": (
+			family: body,
+			weight: 500,
+			size: 14,
+			line-height: 20,
+		),
+	"file-type": (
+			family: body,
+			weight: 700,
+			size: 11,
+			line-height: 16,
+			letter-spacing: 0.44,
+		),
+	"empty-title": (
+			family: body,
+			weight: 600,
+			size: 16,
+			line-height: 23,
 		),
 	// Без переменной в Figma: подпись согласия в форме (Inter 13, высота строки Auto)
 	"s-13": (

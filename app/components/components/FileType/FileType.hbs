@@ -1,0 +1,6 @@
+{{!--
+	Значок типа файла (Figma: Doc/File type 4526:29709): плашка 40×40 с подписью по расширению.
+	props: type — pdf, doc (.doc/.docx), xls (.xls/.xlsx/.csv), ppt (.ppt/.pptx), zip (.zip/.rar/.7z);
+	другой тип — серая плашка (в макете нет, наше). text — подпись, по умолчанию type (заглавными).
+--}}
+<span class="file-type file-type--{{default props.type 'other'}}{{#if props.class}} {{props.class}}{{/if}}" aria-hidden="true">{{default props.text props.type}}</span>

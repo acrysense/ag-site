@@ -1,0 +1,277 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma, 1920: «Документы — фильтры» (4528:304) — белая карточка 350 с рамкой Block.Border,
+// скругление 20, поля 20, части через 20: шапка «Фильтры» H3 и «Сбросить» 14/20 Main Blue, черта
+// Form.Border; группа — название 15/22 Medium, пункты Doc/Checkbox через 6, «Показать ещё N»;
+// годы — «таблетки» 36 BG.Info через 10, выбранная — BG.Main 2 (4531:567).
+// До 1024 (в макете нет, наше) — панель на весь экран, как фильтры вакансий: шапка 56, внизу
+// «Сбросить» и «Показать N документов».
+@layer components {
+	.documents-filters {
+		display: none;
+		min-width: 0;
+
+		&.is-open {
+			position: fixed;
+			inset: 0;
+			z-index: 95;
+			display: flex;
+			flex-direction: column;
+			background: palette("white");
+		}
+
+		@include up(desktop) {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			padding: 20px;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+		}
+	}
+
+	.documents-filters__head {
+		display: flex;
+		flex: none;
+		gap: 10px;
+		align-items: center;
+		height: 56px;
+		padding: 0 8px 0 14px;
+
+		@include up(desktop) {
+			height: auto;
+			padding: 0 0 20px;
+			border-bottom: 1px solid palette("form-border");
+		}
+	}
+
+	.documents-filters__title {
+		@include text("h3-360");
+
+		flex: 1 1 auto;
+		min-width: 0;
+		color: palette("black-txt");
+
+		@include up(desktop) {
+			@include text("h3");
+		}
+	}
+
+	// «Сбросить» в шапке — на десктопе; на мобильном — кнопка внизу панели
+	.documents-filters__reset {
+		@include text("m-400-360");
+
+		display: none;
+		flex: none;
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+
+		@include up(desktop) {
+			display: block;
+		}
+	}
+
+	.documents-filters__close {
+		display: flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		padding: 0;
+		color: palette("black-txt");
+		cursor: pointer;
+		background: palette("bg-main");
+		border: 0;
+		border-radius: 50%;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("main-blue");
+		}
+
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.documents-filters__close-icon {
+		width: 10px;
+		height: 10px;
+	}
+
+	.documents-filters__body {
+		display: flex;
+		flex: 1 1 auto;
+		flex-direction: column;
+		min-height: 0;
+		padding: 0 14px 20px;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+
+		@include up(desktop) {
+			padding: 0;
+			overflow: visible;
+		}
+	}
+
+	.documents-filters__group {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		min-width: 0;
+		margin: 0;
+		padding: 0;
+		border: 0;
+
+		& + & {
+			margin-top: 20px;
+			padding-top: 20px;
+			border-top: 1px solid palette("form-border");
+		}
+	}
+
+	.documents-filters__legend {
+		@include text("filter-title");
+
+		float: left;
+		width: 100%;
+		padding: 0;
+		color: palette("black-txt");
+
+		// float снимает у legend особое место в рамке fieldset — дальше обычный поток
+		+ * {
+			clear: both;
+		}
+	}
+
+	.documents-filters__options {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		> [hidden] {
+			display: none;
+		}
+	}
+
+	.documents-filters__more {
+		@include text("m-400-360");
+
+		align-self: flex-start;
+		padding: 0;
+		color: palette("main-blue");
+		cursor: pointer;
+		background: none;
+		border: 0;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+
+	// Годы: под названием через 10 (у флажков — 6)
+	.documents-filters__chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		margin: 4px 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.documents-filters__chip {
+		@include text("m-400");
+
+		display: flex;
+		align-items: center;
+		height: 36px;
+		padding: 0 12px;
+		color: palette("black-txt");
+		white-space: nowrap;
+		cursor: pointer;
+		background: palette("bg-info");
+		border-radius: $radius-button;
+		transition:
+			color $transition-default,
+			background-color $transition-default;
+
+		&:has(:checked) {
+			background: palette("bg-main-2");
+		}
+
+		// Наведение и фокус с клавиатуры (наше): Blue.TXT, как годы новостей
+		&:hover,
+		&:has(:focus-visible) {
+			color: palette("blue-txt");
+		}
+
+		&.is-disabled {
+			color: palette("black-txt");
+			cursor: default;
+			opacity: 0.5;
+		}
+	}
+
+	.documents-filters__chip-input {
+		@include visually-hidden;
+	}
+
+	.documents-filters__actions {
+		display: flex;
+		flex: none;
+		gap: 10px;
+		padding: 10px 10px calc(14px + env(safe-area-inset-bottom));
+		border-top: 1px solid palette("form-border");
+
+		@include up(desktop) {
+			display: none;
+		}
+
+		.btn--light {
+			@include text("m-400");
+
+			color: palette("black-txt");
+		}
+	}
+
+	.documents-filters__submit {
+		flex: 1 1 auto;
+		min-width: 0;
+
+		&[aria-busy="true"] {
+			cursor: progress;
+		}
+	}
+
+	// Появление (наше): панель проявляется и чуть поднимается, как фильтры вакансий
+	@include down(desktop) {
+		.documents-filters {
+			@include appear-when("&.is-open", flex, translateY(16px), $duration-overlay);
+		}
+	}
+
+	// Витрина: панель на месте (не на весь экран), чтобы её было видно на 360
+	.documents-filters--static {
+		@include down(desktop) {
+			display: flex;
+			flex-direction: column;
+			background: palette("white");
+			opacity: 1;
+			transform: none;
+		}
+	}
+}

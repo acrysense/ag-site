@@ -1,0 +1,260 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: PC.Library (4526:83), Frame 291 — белая карточка, поля 20: заголовок H1 Black.H и
+// число Dark-grey.TXT через 12 по базовой линии, справа «Новые в начале»; через 24 — шапка
+// колонок 13/19 Dark-grey.TXT (поля 10/16, черта Block.Border) и строки; через 24 — страницы
+// и «Всего». Поиск (4532:798): поле 300, рамка, скругление 14, поля 9/14, лупа 16 через 10,
+// под ним «Найдено: N» 13/19. Пусто (4532:866): значок 32, «Документы не найдены» Semi Bold
+// 16/23, текст 14/20 Dark-grey.TXT через 8, через 16 — кнопка 36 «Сбросить фильтры».
+// Чипы выбранных фильтров в макете описаны, но не нарисованы — наши (как «таблетки» годов).
+// До 1024 (наше): без карточки, части через 16, кнопка «Фильтры · N» рядом с поиском.
+@layer components {
+	.documents-list {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		min-width: 0;
+
+		@include up(desktop) {
+			gap: 24px;
+			padding: 20px;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+		}
+	}
+
+	.documents-list__head {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px 20px;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.documents-list__title {
+		@include text("h1-360");
+
+		min-width: 0;
+		color: palette("black-h");
+		overflow-wrap: anywhere;
+
+		@include up(desktop) {
+			@include text("h1");
+		}
+	}
+
+	.documents-list__count {
+		margin-left: 4px;
+		color: palette("dark-grey-txt");
+		white-space: nowrap;
+	}
+
+	.documents-list__tools {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		align-items: center;
+	}
+
+	.documents-list__search {
+		display: flex;
+		flex: 1 1 180px;
+		gap: 10px;
+		align-items: center;
+		min-width: 0;
+		max-width: 100%;
+		padding: 0 14px 0 0;
+		background: palette("white");
+		border: 1px solid palette("form-border");
+		border-radius: $radius-button;
+		transition: border-color $transition-default;
+
+		&:hover {
+			border-color: palette("icon-grey");
+		}
+
+		&:focus-within {
+			border-color: palette("main-blue");
+		}
+
+		@include up(desktop) {
+			flex: 0 1 300px;
+		}
+	}
+
+	// Лупа — кнопка «Найти»: поле 14 слева входит в неё
+	.documents-list__search-submit {
+		display: flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: 30px;
+		height: 38px;
+		margin-right: -10px;
+		padding: 0 0 0 4px;
+		color: palette("black-txt");
+		cursor: pointer;
+		background: none;
+		border: 0;
+		border-radius: $radius-button 0 0 $radius-button;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("main-blue");
+		}
+	}
+
+	.documents-list__search-icon {
+		width: 16px;
+		height: 16px;
+	}
+
+	// Поле 14/20 по макету; до 1024 — 16, чтобы iOS не увеличивал страницу
+	.documents-list__search-input {
+		@include text("m-400-360");
+
+		flex: 1 1 auto;
+		min-width: 0;
+		height: 38px;
+		padding: 0 0 0 10px;
+		font-size: $field-font-size-min;
+		color: palette("black-txt");
+		background: none;
+		border: 0;
+		// Кольцо фокуса — рамка всего поля (focus-within)
+		outline: none;
+
+		&::placeholder {
+			color: palette("dark-grey-txt");
+			opacity: 1;
+		}
+
+		@include up(desktop) {
+			@include text("m-400-360");
+		}
+	}
+
+	// Кнопка панели фильтров — только до 1024 (на десктопе фильтры в сайдбаре)
+	.documents-list__filters {
+		flex: none;
+
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.documents-list__chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		align-items: center;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.documents-list__chip {
+		@include text("m-400-360");
+
+		display: flex;
+		gap: 8px;
+		align-items: center;
+		height: 32px;
+		padding: 0 10px 0 12px;
+		color: palette("black-txt");
+		background: palette("bg-info");
+		border-radius: $radius-button;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-txt");
+		}
+	}
+
+	.documents-list__chip-icon {
+		flex: none;
+		width: 8px;
+		height: 8px;
+	}
+
+	.documents-list__chips-reset {
+		@include text("m-400-360");
+
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+
+	.documents-list__found {
+		@include text("s-13-19");
+
+		color: palette("dark-grey-txt");
+	}
+
+	// Шапка колонок — с 1280, сетка как у строки (DocumentRow)
+	.documents-list__columns {
+		@include text("s-13-19");
+
+		display: none;
+		color: palette("dark-grey-txt");
+
+		@include up(wide) {
+			display: grid;
+			grid-template-columns: 40px minmax(0, 1fr) 90px 100px 80px 64px;
+			column-gap: 16px;
+			padding: 10px 16px;
+			border-bottom: 1px solid palette("block-border");
+		}
+	}
+
+	.documents-list__rows {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.documents-list__empty {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		align-items: center;
+		padding: 48px 0;
+		text-align: center;
+	}
+
+	.documents-list__empty-icon {
+		width: 32px;
+		height: 32px;
+		padding: 0 3.8px;
+		color: palette("black-txt");
+	}
+
+	.documents-list__empty-title {
+		@include text("empty-title");
+
+		color: palette("black-txt");
+	}
+
+	.documents-list__empty-text {
+		@include text("m-400-360");
+
+		color: palette("dark-grey-txt");
+	}
+
+	// Button (4532:873): 36, поля 12, Regular 14/22 — в ките M, но ниже обычной
+	.documents-list__empty-reset {
+		@include text("m-400");
+
+		height: 36px;
+		margin-top: 8px;
+		padding: 0 12px;
+	}
+}

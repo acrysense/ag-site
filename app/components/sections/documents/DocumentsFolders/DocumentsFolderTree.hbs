@@ -1,0 +1,27 @@
+{{!--
+	Уровень дерева папок (DocumentsFolders), вызывает себя для подпапок.
+	items — папки уровня, id — основа id вложенных списков, hidden — уровень свёрнут.
+--}}
+<ul class="documents-folders__list" role="list" {{#if id}}id="{{id}}"{{/if}} {{#if hidden}}hidden{{/if}}>
+    {{#each items}}
+        <li class="documents-folders__item">
+            <div class="documents-folders__row{{#if current}} is-current{{/if}}">
+                {{#if children.length}}
+                    <button class="documents-folders__expand" type="button" aria-expanded="{{#if expanded}}true{{else}}false{{/if}}" aria-controls="{{../id}}-{{@index}}" aria-label="Подпапки «{{title}}»" data-folders-expand>
+                        {{> components/Icon/Icon name="chevron-right" class="documents-folders__chevron"}}
+                    </button>
+                {{else}}
+                    <span class="documents-folders__spacer"></span>
+                {{/if}}
+                <a class="documents-folders__link" href="{{url}}" {{#if current}}aria-current="page"{{/if}}>
+                    {{> components/Icon/Icon name="folder" class="documents-folders__icon"}}
+                    <span class="documents-folders__name">{{title}}</span>
+                    {{#if (isSet count)}}<span class="documents-folders__count"><span class="visually-hidden">, документов: </span>{{count}}</span>{{/if}}
+                </a>
+            </div>
+            {{#if children.length}}
+                {{> sections/documents/DocumentsFolders/DocumentsFolderTree items=children id=(concat ../id '-' @index) hidden=(not expanded)}}
+            {{/if}}
+        </li>
+    {{/each}}
+</ul>

@@ -21,6 +21,34 @@ export const plural = (n, one, few, many) => {
 	return many
 }
 
+// «Показать ещё N» в группе флажков: [data-filter-more] открывает спрятанные пункты
+// [data-filter-extra] своей группы и ставит фокус на первый из них. Выбранный пункт среди
+// спрятанных — группа открыта сразу. group — селектор группы.
+export function filterMore(root, group) {
+	const controller = new AbortController()
+
+	const reveal = (element, focus = false) => {
+		const extras = [...element.querySelectorAll('[data-filter-extra]')]
+		extras.forEach((item) => (item.hidden = false))
+		element.querySelector('[data-filter-more]')?.remove()
+		if (focus) extras[0]?.querySelector('input')?.focus()
+	}
+
+	root.querySelectorAll(group).forEach((element) => {
+		if (element.querySelector('[data-filter-extra] input:checked')) reveal(element)
+	})
+	root.addEventListener(
+		'click',
+		(event) => {
+			const more = event.target.closest('[data-filter-more]')
+			if (more) reveal(more.closest(group), true)
+		},
+		{ signal: controller.signal }
+	)
+
+	return () => controller.abort()
+}
+
 export function filterPanel(
 	root,
 	{ open: openAttr, close: closeSelector, count: countSelector, countUrl = '', countText }

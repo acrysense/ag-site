@@ -548,6 +548,74 @@
 				{{#> state label="Ошибка" note="в живом окне: пустой телефон, неверный номер, файл не того типа или больше 5 МБ, без согласия; телефон с «111» или «сбой» в сообщении"}}{{/state}}
 			{{/story}}
 
+			{{#> story id="documents-list" group="Библиотека" title="Документы — список" description='Figma: PC.Library (4526:83), состояния 4531:543. Белая карточка: папка и число, «Новые в начале», поиск, выбранные фильтры чипами, шапка колонок (с 1280) и строки, страницы и «Всего». До 1280 размер и дата — под названием, колонки «Загрузил» нет; до 1024 — без карточки, кнопка «Фильтры · N».'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsList}}</div>
+				{{/state}}
+				{{#> state label="Один документ" bg="page"}}
+					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListOne}}</div>
+				{{/state}}
+				{{#> state label="Применены фильтры (чипы)" bg="page"}}
+					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListFiltered}}</div>
+				{{/state}}
+				{{#> state label="Поиск: совпадение выделено, путь к папке" bg="page"}}
+					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListSearch}}</div>
+				{{/state}}
+				{{#> state label="Пусто: ничего не найдено" bg="page"}}
+					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListEmpty}}</div>
+				{{/state}}
+				{{#> state label="Пусто: в папке нет документов" bg="page"}}
+					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListFolderEmpty}}</div>
+				{{/state}}
+				{{#> state label="Длинное: название, компания, размер; другой тип файла; без автора и размера" bg="page"}}
+					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListLong}}</div>
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, фильтры, поиск, сортировка и страницы — обычные GET-переходы"}}{{/state}}
+				{{#> state label="Ошибка" note="не применимо: ошибку загрузки страницы показывает сервер. Не скопировалась ссылка — сообщение для скринридера, галочки и тоста нет"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="document-row" group="Библиотека" title="Строка документа" description='Figma: Doc/Row (4526:29793), Doc/File type, Doc/Avatar, Doc/Icon button, Doc/Tooltip, Doc/Toast. Наведение на строку — фон BG.Info. Аватар и кнопки — подсказки при наведении и с клавиатуры. «Скопировать ссылку» — галочка на 2 с и тост внизу экрана.'}}
+				{{#> state label="Строки (наведите на аватар и кнопки, нажмите «Скопировать ссылку»)"}}
+					<div class="container"><ul class="documents-list__rows" role="list">{{#each data.documentRows}}{{> sections/documents/DocumentRow/DocumentRow props=this}}{{/each}}</ul></div>
+				{{/state}}
+				{{#> state label="Типы файлов"}}
+					<div class="story-row">
+						{{> components/FileType/FileType props=(obj type="pdf")}}
+						{{> components/FileType/FileType props=(obj type="doc")}}
+						{{> components/FileType/FileType props=(obj type="xls")}}
+						{{> components/FileType/FileType props=(obj type="ppt")}}
+						{{> components/FileType/FileType props=(obj type="zip")}}
+						{{> components/FileType/FileType props=(obj type="other" text="TXT")}}
+					</div>
+				{{/state}}
+			{{/story}}
+
+			{{#> story id="documents-folders" group="Библиотека" title="Папки документов" description='Figma: «Документы — папки» (4528:218), пункт Doc/Tree item (4528:200). Шеврон раскрывает подпапки, текущая папка подсвечена. До 1024 — плашка «Папки · текущая», дерево раскрывается по нажатию.'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFolders/DocumentsFolders props=data.documentsFolders}}</div></div>
+				{{/state}}
+				{{#> state label="Одна папка" bg="page"}}
+					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFolders/DocumentsFolders props=data.documentsFoldersOne}}</div></div>
+				{{/state}}
+				{{#> state label="Длинные названия, три уровня, большие числа" bg="page"}}
+					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFolders/DocumentsFolders props=data.documentsFoldersLong}}</div></div>
+				{{/state}}
+				{{#> state label="Пусто" note="папок нет — блок не выводится"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="documents-filters" group="Библиотека" title="Фильтры документов" description='Figma: «Документы — фильтры» (4528:304), выбранные — 4531:548. Компания — флажки Doc/Checkbox с «Показать ещё N», год — «таблетки». С 1024 выбор применяется сразу; до 1024 — панель на весь экран по «Фильтры · N» с «Показать N документов».'}}
+				{{#> state label="Обычное (на мобильном — панель на месте)" bg="page"}}
+					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFilters/DocumentsFilters props=data.documentsFilters}}</div></div>
+				{{/state}}
+				{{#> state label="Выбраны (в т. ч. за «Показать ещё») и год" bg="page"}}
+					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFilters/DocumentsFilters props=data.documentsFiltersChecked}}</div></div>
+				{{/state}}
+				{{#> state label="Варианты без документов — неактивные" bg="page"}}
+					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFilters/DocumentsFilters props=data.documentsFiltersZero}}</div></div>
+				{{/state}}
+				{{#> state label="Пусто" note="групп нет — блок не выводится, кнопки «Фильтры» в списке тоже нет"}}{{/state}}
+			{{/story}}
+
 			{{#> story id="sort-menu" group="Новости" title="Сортировка списка" description='Новости, журнал, вакансии. Текущий порядок текстом со стрелкой (Figma PC.News 4467:758), по клику — список как у «По алфавиту» в поиске (Dropdown list 4706:1207): пункты — ссылки, наведение — серый фон, текущий — синий на светлом с галочкой. До 768 — нижний лист с заголовком и затемнением. Esc, ×, затемнение, клик мимо закрывают.'}}
 				{{#> state label="Два варианта" bg="page"}}<div class="container"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenu}}</div></div>{{/state}}
 				{{#> state label="Три варианта" bg="page"}}<div class="container"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenuThree}}</div></div>{{/state}}

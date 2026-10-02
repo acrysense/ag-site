@@ -1,0 +1,268 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma, 1920: «Документы — папки» (4528:218) — белая карточка 350 с рамкой Block.Border,
+// скругление 20, поля 20: «Папки» H3, дерево через 16. Пункт Doc/Tree item (4528:200): поля
+// 7 8 7 6, части через 8, скругление 10; шеврон 14 (нет подпапок — место пустое), папка 18,
+// название 14/22 в строку с многоточием, число — плашка BG.Info 1/7, скругление 8, 12/17
+// Dark-grey.TXT. Текущая: фон BG.Info, название Blue.Hover, плашка числа белая. Уровень — +20.
+// До 1024 (наше): плашка BG.Info «Папки · текущая» на всю ширину, дерево раскрывается под ней.
+@layer components {
+	.documents-folders {
+		min-width: 0;
+		background: palette("bg-info");
+		border-radius: $radius-button;
+
+		@include up(desktop) {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+			padding: 20px;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+		}
+	}
+
+	.documents-folders__title {
+		@include text("h3");
+
+		color: palette("black-txt");
+	}
+
+	.documents-folders__title-text {
+		@include down(desktop) {
+			display: none;
+		}
+	}
+
+	.documents-folders__toggle {
+		@include text("m-400");
+
+		display: flex;
+		gap: 8px;
+		align-items: center;
+		width: 100%;
+		min-height: 46px;
+		padding: 0 14px;
+		color: palette("black-txt");
+		text-align: left;
+		cursor: pointer;
+		background: none;
+		border: 0;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-txt");
+		}
+
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.documents-folders__toggle-icon {
+		flex: none;
+		width: 18px;
+		height: 18px;
+		color: palette("folder-icon");
+	}
+
+	.documents-folders__toggle-text {
+		display: flex;
+		flex: 1 1 auto;
+		gap: 6px;
+		min-width: 0;
+		white-space: nowrap;
+	}
+
+	// Текущая папка рядом с «Папки»: серым, длинная — с многоточием
+	.documents-folders__toggle-current {
+		min-width: 0;
+		overflow: hidden;
+		color: palette("dark-grey-txt");
+		text-overflow: ellipsis;
+
+		&::before {
+			content: "· ";
+		}
+	}
+
+	.documents-folders__toggle-arrow {
+		flex: none;
+		width: 12px;
+		height: 7px;
+		transition: transform $transition-default;
+
+		.documents-folders.is-open & {
+			transform: rotate(180deg);
+		}
+	}
+
+	.documents-folders__tree {
+		display: none;
+		padding: 0 6px 6px;
+
+		.documents-folders.is-open & {
+			display: block;
+		}
+
+		@include up(desktop) {
+			display: block;
+			padding: 0;
+		}
+	}
+
+	.documents-folders__list {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		&[hidden] {
+			display: none;
+		}
+
+		// Подпапки: отступ 20 на уровень, от пункта — 2, как между пунктами
+		.documents-folders__list {
+			margin-top: 2px;
+			padding-left: 20px;
+		}
+	}
+
+	.documents-folders__row {
+		position: relative;
+		display: flex;
+		gap: 8px;
+		align-items: center;
+		padding: 7px 8px 7px 6px;
+		border-radius: $radius-inner-block;
+		transition: background-color $transition-default;
+
+		&.is-current {
+			background: palette("bg-info");
+
+			// На мобильном плашка уже BG.Info — текущая белая
+			@include down(desktop) {
+				background: palette("white");
+			}
+		}
+	}
+
+	// Шеврон 14, нажимается область 24 (наше)
+	.documents-folders__expand {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: 24px;
+		height: 24px;
+		margin: -5px;
+		padding: 0;
+		color: palette("black-txt");
+		cursor: pointer;
+		background: none;
+		border: 0;
+		border-radius: 6px;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("main-blue");
+		}
+	}
+
+	.documents-folders__chevron {
+		width: 14px;
+		height: 14px;
+		transition: transform $transition-default;
+
+		[aria-expanded="true"] > & {
+			transform: rotate(90deg);
+		}
+	}
+
+	.documents-folders__spacer {
+		flex: none;
+		width: 14px;
+	}
+
+	// Вся строка — ссылка (кроме шеврона)
+	.documents-folders__link {
+		display: flex;
+		flex: 1 1 auto;
+		gap: 8px;
+		align-items: center;
+		min-width: 0;
+		color: palette("black-txt");
+		transition: color $transition-default;
+
+		&::after {
+			position: absolute;
+			inset: 0;
+			content: "";
+			border-radius: inherit;
+		}
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-txt");
+		}
+
+		// Текущая — без наведения; фокус с клавиатуры — тонкая рамка внутри строки
+		&[aria-current] {
+			color: palette("blue-hover");
+
+			&:focus-visible::after {
+				outline: 1px solid palette("form-focus");
+				outline-offset: -1px;
+			}
+		}
+	}
+
+	.documents-folders__icon {
+		flex: none;
+		width: 18px;
+		height: 18px;
+		padding: 1.9px 0.4px;
+		color: palette("folder-icon");
+	}
+
+	.documents-folders__name {
+		@include text("m-400");
+
+		flex: 1 1 auto;
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.documents-folders__count {
+		@include text("s-12-17");
+
+		flex: none;
+		padding: 1px 7px;
+		color: palette("dark-grey-txt");
+		background: palette("bg-info");
+		border-radius: 8px;
+
+		.is-current & {
+			background: palette("white");
+
+			@include down(desktop) {
+				background: palette("bg-info");
+			}
+		}
+
+		// На мобильном плашка BG.Info — число на белом
+		@include down(desktop) {
+			background: palette("white");
+		}
+	}
+}

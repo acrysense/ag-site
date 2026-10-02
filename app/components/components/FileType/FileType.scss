@@ -1,0 +1,30 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Doc/File type (4526:29709) — 40×40, скругление 10, Bold 11/16 с разрядкой; цвета по типу.
+// Другой тип (в макете нет, наше) — фон BG.Neutral, подпись Dark-grey.TXT
+@layer components {
+	.file-type {
+		@include text("file-type");
+
+		display: flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		overflow: hidden;
+		color: palette("dark-grey-txt");
+		text-transform: uppercase;
+		white-space: nowrap;
+		background: palette("bg-neutral");
+		border-radius: $radius-inner-block;
+
+		@each $type in pdf, doc, xls, ppt, zip {
+			&--#{$type} {
+				color: palette("file-#{$type}");
+				background: palette("file-#{$type}-bg");
+			}
+		}
+	}
+}

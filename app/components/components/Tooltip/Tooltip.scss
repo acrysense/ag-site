@@ -1,0 +1,69 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Doc/Tooltip (4526:29712) — Black.TXT, скругление 10, поля 8/12, строки через 2: имя
+// Medium 13/19 белым, вторая строка 12/17. Над элементом на 6 (наше: в макете висит над строкой).
+// Только наведение и клавиатура: на телефоне подсказок нет — та же надпись есть в aria-label
+@layer components {
+	.has-tooltip {
+		position: relative;
+	}
+
+	.tooltip {
+		position: absolute;
+		bottom: calc(100% + 6px);
+		left: 50%;
+		z-index: 5;
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		width: max-content;
+		max-width: 280px;
+		padding: 8px 12px;
+		text-align: left;
+		pointer-events: none;
+		visibility: hidden;
+		background: palette("black-txt");
+		border-radius: $radius-inner-block;
+		opacity: 0;
+		transform: translate(-50%, 4px);
+		transition:
+			opacity $duration-popup,
+			transform $duration-popup $ease-out,
+			visibility 0s $duration-popup;
+
+		// Справа у края блока — подсказка не выходит за него (кнопки в конце строки)
+		&--end {
+			right: 0;
+			left: auto;
+			transform: translateY(4px);
+		}
+	}
+
+	.tooltip__title {
+		@include text("s-13-19-medium");
+
+		color: palette("white");
+	}
+
+	.tooltip__meta {
+		@include text("s-12-17");
+
+		color: palette("tooltip-meta");
+	}
+
+	.has-tooltip:hover > .tooltip,
+	.has-tooltip:focus-visible > .tooltip {
+		visibility: visible;
+		opacity: 1;
+		transform: translate(-50%, 0);
+		transition:
+			opacity $duration-popup,
+			transform $duration-popup $ease-out;
+	}
+
+	.has-tooltip:hover > .tooltip--end,
+	.has-tooltip:focus-visible > .tooltip--end {
+		transform: none;
+	}
+}

@@ -1080,6 +1080,31 @@
 				"name": "arrow-down-small",
 				"sizes": [10],
 				"where": "пункт меню шапки"
+			},
+			{
+				"name": "folder",
+				"sizes": [18],
+				"where": "папки документов"
+			},
+			{
+				"name": "link",
+				"sizes": [18],
+				"where": "«Скопировать ссылку» в строке документа"
+			},
+			{
+				"name": "download",
+				"sizes": [18],
+				"where": "«Скачать» в строке документа"
+			},
+			{
+				"name": "tick",
+				"sizes": [18, 20],
+				"where": "тост (18), «Ссылка скопирована» у кнопки (20)"
+			},
+			{
+				"name": "document",
+				"sizes": [32],
+				"where": "«Документы не найдены»"
 			}
 		],
 		"iconRows": [
@@ -8593,6 +8618,1139 @@
 					"current": true
 				}
 			]
-		}
+		},
+		"documentsList": {
+			"class": "page-columns__main",
+			"title": "Оплата труда",
+			"count": 128,
+			"sort": {
+				"id": "documents-sort",
+				"label": "Сортировка",
+				"options": [
+					{
+						"text": "Новые в начале",
+						"url": "#",
+						"current": true
+					},
+					{
+						"text": "Старые в начале",
+						"url": "./documents.html?sort=old"
+					},
+					{
+						"text": "По названию",
+						"url": "./documents.html?sort=name"
+					}
+				]
+			},
+			"search": {
+				"action": "./documents.html",
+				"name": "q",
+				"label": "Поиск по документам",
+				"placeholder": "Найти документ"
+			},
+			"filtersId": "doc-filters-story",
+			"filtersText": "Фильтры",
+			"items": [
+				{
+					"type": "pdf",
+					"title": "Положение об оплате труда и стимулировании работников Дирекции розничного бизнеса (ЛибертФарм)",
+					"url": "#",
+					"company": "ЛибертФарм",
+					"size": "1,2 МБ",
+					"date": "2026-09-12",
+					"dateText": "12.09.2026",
+					"uploader": {
+						"name": "Ирина Пашкевич",
+						"meta": "Загрузила 12.09.2026",
+						"url": "#"
+					},
+					"shareUrl": "/library/documents/1001/",
+					"downloadUrl": "#",
+					"newTab": true
+				},
+				{
+					"type": "ppt",
+					"title": "Презентация — Коллективный договор Аптека групп (01.07.2025)",
+					"url": "#",
+					"company": "УКХ «Аптека групп»",
+					"size": "8,4 МБ",
+					"date": "2026-09-10",
+					"dateText": "10.09.2026",
+					"uploader": {
+						"name": "Ольга Власова",
+						"meta": "Загрузила 10.09.2026",
+						"url": "#"
+					},
+					"shareUrl": "/library/documents/1002/",
+					"downloadUrl": "#"
+				},
+				{
+					"type": "xls",
+					"title": "Тарифная сетка работников аптек на IV квартал 2026 года",
+					"url": "#",
+					"company": "УКХ «Аптека групп»",
+					"size": "214 КБ",
+					"date": "2026-09-05",
+					"dateText": "05.09.2026",
+					"uploader": {
+						"name": "Наталья Дрозд",
+						"meta": "Загрузила 05.09.2026",
+						"url": "#"
+					},
+					"shareUrl": "/library/documents/1003/",
+					"downloadUrl": "#"
+				},
+				{
+					"type": "pdf",
+					"title": "Положение об оплате труда и стимулировании работников Дирекции розничного бизнеса (Аптека групп Юг)",
+					"url": "#",
+					"company": "Аптека групп Юг",
+					"size": "1,1 МБ",
+					"date": "2026-08-28",
+					"dateText": "28.08.2026",
+					"uploader": {
+						"name": "Ирина Пашкевич",
+						"meta": "Загрузила 28.08.2026",
+						"url": "#"
+					},
+					"shareUrl": "/library/documents/1004/",
+					"downloadUrl": "#"
+				},
+				{
+					"type": "doc",
+					"title": "Положение об оплате труда и материальном стимулировании работников ИТ-Дирекции (СофтФарм)",
+					"url": "#",
+					"company": "СофтФарм",
+					"size": "96 КБ",
+					"date": "2026-08-21",
+					"dateText": "21.08.2026",
+					"uploader": {
+						"name": "Андрей Мельник",
+						"meta": "Загрузил 21.08.2026",
+						"url": "#"
+					},
+					"shareUrl": "/library/documents/1005/",
+					"downloadUrl": "#"
+				}
+			],
+			"empty": {
+				"title": "Документы не найдены",
+				"text": "Попробуйте изменить запрос или сбросить фильтры",
+				"resetText": "Сбросить фильтры",
+				"resetUrl": "./documents.html"
+			},
+			"pagination": {
+				"label": "Страницы документов",
+				"prev": {
+					"url": "#"
+				},
+				"next": {
+					"url": "#"
+				},
+				"pages": [
+					{
+						"number": 1,
+						"url": "#"
+					},
+					{
+						"number": 2,
+						"current": true
+					},
+					{
+						"number": 3,
+						"url": "#"
+					},
+					{
+						"number": 4,
+						"url": "#",
+						"far": true
+					},
+					{
+						"gap": true
+					},
+					{
+						"number": 25,
+						"url": "#"
+					}
+				],
+				"total": 128,
+				"totalText": "Всего:"
+			},
+			"id": "doc-list-1"
+		},
+		"documentsListOne": {
+			"class": "page-columns__main",
+			"title": "Охрана труда",
+			"count": 1,
+			"sort": {
+				"id": "documents-sort",
+				"label": "Сортировка",
+				"options": [
+					{
+						"text": "Новые в начале",
+						"url": "#",
+						"current": true
+					},
+					{
+						"text": "Старые в начале",
+						"url": "./documents.html?sort=old"
+					},
+					{
+						"text": "По названию",
+						"url": "./documents.html?sort=name"
+					}
+				]
+			},
+			"search": {
+				"action": "./documents.html",
+				"name": "q",
+				"label": "Поиск по документам",
+				"placeholder": "Найти документ"
+			},
+			"filtersId": "doc-filters-story",
+			"filtersText": "Фильтры",
+			"items": [
+				{
+					"type": "xls",
+					"title": "Тарифная сетка работников аптек на IV квартал 2026 года",
+					"url": "#",
+					"company": "УКХ «Аптека групп»",
+					"size": "214 КБ",
+					"date": "2026-09-05",
+					"dateText": "05.09.2026",
+					"uploader": {
+						"name": "Наталья Дрозд",
+						"meta": "Загрузила 05.09.2026",
+						"url": "#"
+					},
+					"shareUrl": "/library/documents/1003/",
+					"downloadUrl": "#"
+				}
+			],
+			"empty": {
+				"title": "Документы не найдены",
+				"text": "Попробуйте изменить запрос или сбросить фильтры",
+				"resetText": "Сбросить фильтры",
+				"resetUrl": "./documents.html"
+			},
+			"pagination": {
+				"total": 1,
+				"totalText": "Всего:"
+			},
+			"id": "doc-list-2"
+		},
+		"documentsListFiltered": {
+			"class": "page-columns__main",
+			"title": "Оплата труда",
+			"count": 4,
+			"sort": {
+				"id": "documents-sort",
+				"label": "Сортировка",
+				"options": [
+					{
+						"text": "Новые в начале",
+						"url": "#",
+						"current": true
+					},
+					{
+						"text": "Старые в начале",
+						"url": "./documents.html?sort=old"
+					},
+					{
+						"text": "По названию",
+						"url": "./documents.html?sort=name"
+					}
+				]
+			},
+			"search": {
+				"action": "./documents.html",
+				"name": "q",
+				"label": "Поиск по документам",
+				"placeholder": "Найти документ"
+			},
+			"filtersId": "doc-filters-story",
+			"filtersText": "Фильтры",
+			"items": [
+				{
+					"type": "pdf",
+					"title": "Положение об оплате труда и стимулировании работников Дирекции розничного бизнеса (ЛибертФарм)",
+					"url": "#",
+					"company": "ЛибертФарм",
+					"size": "1,2 МБ",
+					"date": "2026-09-12",
+					"dateText": "12.09.2026",
+					"uploader": {
+						"name": "Ирина Пашкевич",
+						"meta": "Загрузила 12.09.2026",
+						"url": "#"
+					},
+					"shareUrl": "/library/documents/1001/",
+					"downloadUrl": "#",
+					"newTab": true
+				},
+				{
+					"type": "doc",
+					"title": "Положение об оплате труда и материальном стимулировании работников ИТ-Дирекции (СофтФарм)",
+					"url": "#",
+					"company": "СофтФарм",
+					"size": "96 КБ",
+					"date": "2026-08-21",
+					"dateText": "21.08.2026",
+					"uploader": {
+						"name": "Андрей Мельник",
+						"meta": "Загрузил 21.08.2026",
+						"url": "#"
+					},
+					"shareUrl": "/library/documents/1005/",
+					"downloadUrl": "#"
+				},
+				{
+					"type": "zip",
+					"title": "Шаблоны приказов о премировании — архив, 14 файлов",
+					"url": "#",
+					"company": "ЛибертФарм",
+					"size": "24,6 МБ",
+					"date": "2026-08-14",
+					"dateText": "14.08.2026",
+					"uploader": {
+						"name": "Ольга Власова",
+						"meta": "Загрузила 14.08.2026",
+						"url": "#"
+					},
+					"shareUrl": "/library/documents/1006/",
+					"downloadUrl": "#"
+				},
+				{
+					"type": "doc",
+					"title": "Форма заявления на оказание материальной помощи",
+					"url": "#",
+					"company": "ЛибертФарм",
+					"size": "42 КБ",
+					"date": "2026-07-02",
+					"dateText": "02.07.2026",
+					"uploader": {
+						"name": "Наталья Дрозд",
+						"meta": "Загрузила 02.07.2026",
+						"url": "#"
+					},
+					"shareUrl": "/library/documents/1009/",
+					"downloadUrl": "#"
+				}
+			],
+			"empty": {
+				"title": "Документы не найдены",
+				"text": "Попробуйте изменить запрос или сбросить фильтры",
+				"resetText": "Сбросить фильтры",
+				"resetUrl": "./documents.html"
+			},
+			"pagination": {
+				"total": 4,
+				"totalText": "Всего:"
+			},
+			"id": "doc-list-3",
+			"activeFilters": 3,
+			"chips": [
+				{
+					"text": "ЛибертФарм",
+					"url": "#"
+				},
+				{
+					"text": "СофтФарм",
+					"url": "#"
+				},
+				{
+					"text": "2026",
+					"url": "#"
+				}
+			],
+			"chipsResetUrl": "#"
+		},
+		"documentsListSearch": {
+			"class": "page-columns__main",
+			"title": "Поиск по документам",
+			"count": null,
+			"sort": {
+				"id": "documents-sort",
+				"label": "Сортировка",
+				"options": [
+					{
+						"text": "Новые в начале",
+						"url": "#",
+						"current": true
+					},
+					{
+						"text": "Старые в начале",
+						"url": "./documents.html?sort=old"
+					},
+					{
+						"text": "По названию",
+						"url": "./documents.html?sort=name"
+					}
+				]
+			},
+			"search": {
+				"action": "./documents.html",
+				"name": "q",
+				"label": "Поиск по документам",
+				"placeholder": "Найти документ",
+				"value": "тарифн"
+			},
+			"filtersId": "doc-filters-story",
+			"filtersText": "Фильтры",
+			"items": [
+				{
+					"type": "xls",
+					"title": "Тарифная сетка работников аптек на IV квартал 2026 года",
+					"url": "#",
+					"company": "УКХ «Аптека групп»",
+					"size": "214 КБ",
+					"date": "2026-09-05",
+					"dateText": "05.09.2026",
+					"uploader": {
+						"name": "Наталья Дрозд",
+						"meta": "Загрузила 05.09.2026",
+						"url": "#"
+					},
+					"shareUrl": "/library/documents/1003/",
+					"downloadUrl": "#",
+					"titleHtml": "<mark>Тарифн</mark>ая сетка работников аптек на IV квартал 2026 года",
+					"path": "Положения / Оплата труда"
+				},
+				{
+					"type": "pdf",
+					"title": "Инструкция по применению тарифных коэффициентов при расчёте премии",
+					"url": "#",
+					"company": "ЛибертФарм",
+					"size": "620 КБ",
+					"date": "2026-03-11",
+					"dateText": "11.03.2026",
+					"uploader": {
+						"name": "Дмитрий Ковалёв",
+						"meta": "Загрузил 11.03.2026",
+						"url": "#"
+					},
+					"shareUrl": "/library/documents/1021/",
+					"downloadUrl": "#",
+					"titleHtml": "Инструкция по применению <mark>тарифн</mark>ых коэффициентов при расчёте премии",
+					"path": "Инструкции"
+				}
+			],
+			"empty": {
+				"title": "Документы не найдены",
+				"text": "Попробуйте изменить запрос или сбросить фильтры",
+				"resetText": "Сбросить фильтры",
+				"resetUrl": "./documents.html"
+			},
+			"pagination": {
+				"total": 2,
+				"totalText": "Всего:"
+			},
+			"id": "doc-list-4",
+			"foundText": "Найдено: 2"
+		},
+		"documentsListEmpty": {
+			"class": "page-columns__main",
+			"title": "Оплата труда",
+			"count": 0,
+			"sort": {
+				"id": "documents-sort",
+				"label": "Сортировка",
+				"options": [
+					{
+						"text": "Новые в начале",
+						"url": "#",
+						"current": true
+					},
+					{
+						"text": "Старые в начале",
+						"url": "./documents.html?sort=old"
+					},
+					{
+						"text": "По названию",
+						"url": "./documents.html?sort=name"
+					}
+				]
+			},
+			"search": {
+				"action": "./documents.html",
+				"name": "q",
+				"label": "Поиск по документам",
+				"placeholder": "Найти документ"
+			},
+			"filtersId": "doc-filters-story",
+			"filtersText": "Фильтры",
+			"items": [],
+			"empty": {
+				"title": "Документы не найдены",
+				"text": "Попробуйте изменить запрос или сбросить фильтры",
+				"resetText": "Сбросить фильтры",
+				"resetUrl": "./documents.html"
+			},
+			"pagination": null,
+			"id": "doc-list-5",
+			"activeFilters": 2,
+			"chips": [
+				{
+					"text": "Энергофарм",
+					"url": "#"
+				},
+				{
+					"text": "2021",
+					"url": "#"
+				}
+			],
+			"chipsResetUrl": "#"
+		},
+		"documentsListFolderEmpty": {
+			"class": "page-columns__main",
+			"title": "Презентации",
+			"count": 0,
+			"sort": {
+				"id": "documents-sort",
+				"label": "Сортировка",
+				"options": [
+					{
+						"text": "Новые в начале",
+						"url": "#",
+						"current": true
+					},
+					{
+						"text": "Старые в начале",
+						"url": "./documents.html?sort=old"
+					},
+					{
+						"text": "По названию",
+						"url": "./documents.html?sort=name"
+					}
+				]
+			},
+			"search": {
+				"action": "./documents.html",
+				"name": "q",
+				"label": "Поиск по документам",
+				"placeholder": "Найти документ"
+			},
+			"filtersId": "doc-filters-story",
+			"filtersText": "Фильтры",
+			"items": [],
+			"empty": {
+				"title": "В этой папке пока нет документов"
+			},
+			"pagination": null,
+			"id": "doc-list-6"
+		},
+		"documentsListLong": {
+			"class": "page-columns__main",
+			"title": "Положения об оплате труда и материальном стимулировании работников холдинга",
+			"count": 1284,
+			"sort": {
+				"id": "documents-sort",
+				"label": "Сортировка",
+				"options": [
+					{
+						"text": "Новые в начале",
+						"url": "#",
+						"current": true
+					},
+					{
+						"text": "Старые в начале",
+						"url": "./documents.html?sort=old"
+					},
+					{
+						"text": "По названию",
+						"url": "./documents.html?sort=name"
+					}
+				]
+			},
+			"search": {
+				"action": "./documents.html",
+				"name": "q",
+				"label": "Поиск по документам",
+				"placeholder": "Найти документ"
+			},
+			"filtersId": "doc-filters-story",
+			"filtersText": "Фильтры",
+			"items": [
+				{
+					"type": "doc",
+					"title": "Очень длинное название без пробелов_Положение_об_оплате_труда_и_материальном_стимулировании_работников_2026_final_v12",
+					"url": "#",
+					"company": "Белфармация Плюс — Дирекция оптового бизнеса и логистики Северо-Западного региона",
+					"size": "128,4 МБ",
+					"date": "2026-09-30",
+					"dateText": "30.09.2026",
+					"uploader": {
+						"name": "Андрей Мельник",
+						"meta": "Загрузил 30.09.2026",
+						"url": "#"
+					},
+					"shareUrl": "/library/documents/1031/",
+					"downloadUrl": "#",
+					"typeText": "DOCX"
+				},
+				{
+					"type": "pdf",
+					"title": "Положение об оплате труда, материальном стимулировании и социальной поддержке работников Дирекции розничного бизнеса, включая аптеки областных центров и районных городов Республики Беларусь (редакция с изменениями от 01.09.2026)",
+					"url": "#",
+					"company": "Аптека групп Центр",
+					"size": "1,1 МБ",
+					"date": "2026-09-29",
+					"dateText": "29.09.2026",
+					"uploader": {
+						"name": "Дмитрий Ковалёв",
+						"meta": "Загрузил 29.09.2026",
+						"url": "#"
+					},
+					"shareUrl": "/library/documents/1032/",
+					"downloadUrl": "#"
+				},
+				{
+					"type": "zip",
+					"title": " Архив отчётов за 2025 год",
+					"url": "#",
+					"company": "ЛибертФарм",
+					"size": "312 МБ",
+					"date": "2026-09-28",
+					"dateText": "28.09.2026",
+					"uploader": {
+						"name": "Наталья Дрозд",
+						"meta": "Загрузила 28.09.2026",
+						"url": "#"
+					},
+					"shareUrl": "/library/documents/1033/",
+					"downloadUrl": "#",
+					"typeText": "RAR"
+				},
+				{
+					"type": "txt",
+					"title": "Файл неизвестного типа без автора",
+					"url": "#",
+					"company": "ЛибертФарм",
+					"size": "",
+					"date": "2026-09-27",
+					"dateText": "27.09.2026",
+					"uploader": {},
+					"shareUrl": "/library/documents/1034/",
+					"downloadUrl": "#",
+					"typeText": "TXT"
+				}
+			],
+			"empty": {
+				"title": "Документы не найдены",
+				"text": "Попробуйте изменить запрос или сбросить фильтры",
+				"resetText": "Сбросить фильтры",
+				"resetUrl": "./documents.html"
+			},
+			"pagination": {
+				"total": 4,
+				"totalText": "Всего:"
+			},
+			"id": "doc-list-7"
+		},
+		"documentsFolders": {
+			"id": "doc-folders-1",
+			"title": "Папки",
+			"current": "Оплата труда",
+			"items": [
+				{
+					"title": "Все документы",
+					"url": "#",
+					"count": 128
+				},
+				{
+					"title": "Положения",
+					"url": "#",
+					"count": 34,
+					"expanded": true,
+					"children": [
+						{
+							"title": "Оплата труда",
+							"url": "./documents.html",
+							"count": 12,
+							"current": true
+						},
+						{
+							"title": "Персонал",
+							"url": "#",
+							"count": 9
+						},
+						{
+							"title": "Охрана труда",
+							"url": "#",
+							"count": 13
+						}
+					]
+				},
+				{
+					"title": "Инструкции",
+					"url": "#",
+					"count": 41,
+					"children": [
+						{
+							"title": "Должностные инструкции",
+							"url": "#",
+							"count": 23
+						},
+						{
+							"title": "Инструкции по охране труда",
+							"url": "#",
+							"count": 18
+						}
+					]
+				},
+				{
+					"title": "Распоряжения",
+					"url": "#",
+					"count": 27,
+					"children": [
+						{
+							"title": "2026",
+							"url": "#",
+							"count": 15
+						},
+						{
+							"title": "2025",
+							"url": "#",
+							"count": 12
+						}
+					]
+				},
+				{
+					"title": "Алгоритмы работы в аптеке",
+					"url": "#",
+					"count": 18
+				},
+				{
+					"title": "Презентации",
+					"url": "#",
+					"count": 8
+				}
+			]
+		},
+		"documentsFoldersOne": {
+			"id": "doc-folders-2",
+			"title": "Папки",
+			"current": "Все документы",
+			"items": [
+				{
+					"title": "Все документы",
+					"url": "#",
+					"count": 0,
+					"current": true
+				}
+			]
+		},
+		"documentsFoldersLong": {
+			"id": "doc-folders-3",
+			"title": "Папки",
+			"current": "Очень длинное название папки",
+			"items": [
+				{
+					"title": "Все документы",
+					"url": "#",
+					"count": 12840
+				},
+				{
+					"title": "Положения, регламенты и стандарты работы аптечной сети холдинга",
+					"url": "#",
+					"count": 3412,
+					"expanded": true,
+					"children": [
+						{
+							"title": "Оплата труда и материальное стимулирование работников",
+							"url": "#",
+							"count": 1205,
+							"expanded": true,
+							"children": [
+								{
+									"title": "Очень длинное название папки третьего уровня вложенности",
+									"url": "#",
+									"count": 12,
+									"current": true
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		"documentsFilters": {
+			"id": "doc-filters-1",
+			"action": "./documents.html",
+			"resetUrl": "./documents.html",
+			"countUrl": "/__mock/search-count",
+			"countText": "Показать 12 документов",
+			"hidden": [
+				{
+					"name": "folder",
+					"value": "12"
+				}
+			],
+			"groups": [
+				{
+					"title": "Компания",
+					"name": "company[]",
+					"moreText": "Показать ещё 3",
+					"options": [
+						{
+							"value": "1",
+							"text": "УКХ «Аптека групп»",
+							"count": 2
+						},
+						{
+							"value": "2",
+							"text": "ЛибертФарм",
+							"count": 3
+						},
+						{
+							"value": "3",
+							"text": "Аптека групп Юг",
+							"count": 1
+						},
+						{
+							"value": "4",
+							"text": "Энергофарм",
+							"count": 1
+						},
+						{
+							"value": "5",
+							"text": "СофтФарм",
+							"count": 1
+						},
+						{
+							"value": "6",
+							"text": "ВитФармМаркет",
+							"count": 1
+						},
+						{
+							"value": "7",
+							"text": "Аптека групп Север",
+							"count": 1,
+							"extra": true
+						},
+						{
+							"value": "8",
+							"text": "Аптека групп Центр",
+							"count": 1,
+							"extra": true
+						},
+						{
+							"value": "9",
+							"text": "Аптека групп Запад",
+							"count": 1,
+							"extra": true
+						}
+					]
+				},
+				{
+					"title": "Год публикации",
+					"name": "year[]",
+					"variant": "chips",
+					"options": [
+						{
+							"value": "2026",
+							"text": "2026",
+							"count": 12
+						},
+						{
+							"value": "2025",
+							"text": "2025",
+							"count": 9
+						},
+						{
+							"value": "2024",
+							"text": "2024",
+							"count": 7
+						},
+						{
+							"value": "2023",
+							"text": "2023",
+							"count": 4
+						},
+						{
+							"value": "2022",
+							"text": "2022",
+							"count": 3
+						},
+						{
+							"value": "2021",
+							"text": "2021",
+							"count": 2
+						}
+					]
+				}
+			],
+			"static": true
+		},
+		"documentsFiltersChecked": {
+			"id": "doc-filters-2",
+			"action": "./documents.html",
+			"resetUrl": "./documents.html",
+			"countUrl": "/__mock/search-count",
+			"countText": "Показать 3 документа",
+			"hidden": [
+				{
+					"name": "folder",
+					"value": "12"
+				}
+			],
+			"groups": [
+				{
+					"title": "Компания",
+					"name": "company[]",
+					"moreText": "Показать ещё 3",
+					"options": [
+						{
+							"value": "1",
+							"text": "УКХ «Аптека групп»",
+							"count": 2
+						},
+						{
+							"value": "2",
+							"text": "ЛибертФарм",
+							"count": 3,
+							"checked": true
+						},
+						{
+							"value": "3",
+							"text": "Аптека групп Юг",
+							"count": 1
+						},
+						{
+							"value": "4",
+							"text": "Энергофарм",
+							"count": 1
+						},
+						{
+							"value": "5",
+							"text": "СофтФарм",
+							"count": 1,
+							"checked": true
+						},
+						{
+							"value": "6",
+							"text": "ВитФармМаркет",
+							"count": 1
+						},
+						{
+							"value": "7",
+							"text": "Аптека групп Север",
+							"count": 1,
+							"extra": true
+						},
+						{
+							"value": "8",
+							"text": "Аптека групп Центр",
+							"count": 1,
+							"extra": true
+						},
+						{
+							"value": "9",
+							"text": "Аптека групп Запад",
+							"count": 1,
+							"checked": true
+						}
+					]
+				},
+				{
+					"title": "Год публикации",
+					"name": "year[]",
+					"variant": "chips",
+					"options": [
+						{
+							"value": "2026",
+							"text": "2026",
+							"count": 12,
+							"checked": true
+						},
+						{
+							"value": "2025",
+							"text": "2025",
+							"count": 9
+						},
+						{
+							"value": "2024",
+							"text": "2024",
+							"count": 7
+						},
+						{
+							"value": "2023",
+							"text": "2023",
+							"count": 4
+						},
+						{
+							"value": "2022",
+							"text": "2022",
+							"count": 3
+						},
+						{
+							"value": "2021",
+							"text": "2021",
+							"count": 2
+						}
+					]
+				}
+			],
+			"static": true
+		},
+		"documentsFiltersZero": {
+			"id": "doc-filters-3",
+			"action": "./documents.html",
+			"resetUrl": "./documents.html",
+			"countUrl": "/__mock/search-count",
+			"countText": "Показать 12 документов",
+			"hidden": [
+				{
+					"name": "folder",
+					"value": "12"
+				}
+			],
+			"groups": [
+				{
+					"title": "Компания",
+					"name": "company[]",
+					"moreText": "Показать ещё 3",
+					"options": [
+						{
+							"value": "1",
+							"text": "УКХ «Аптека групп»",
+							"count": 2
+						},
+						{
+							"value": "2",
+							"text": "ЛибертФарм",
+							"count": 3
+						},
+						{
+							"value": "3",
+							"text": "Аптека групп Юг",
+							"count": 0
+						},
+						{
+							"value": "4",
+							"text": "Энергофарм",
+							"count": 1
+						},
+						{
+							"value": "5",
+							"text": "СофтФарм",
+							"count": 1
+						},
+						{
+							"value": "6",
+							"text": "ВитФармМаркет",
+							"count": 1
+						},
+						{
+							"value": "7",
+							"text": "Аптека групп Север",
+							"count": 1,
+							"extra": true
+						},
+						{
+							"value": "8",
+							"text": "Аптека групп Центр",
+							"count": 1,
+							"extra": true
+						},
+						{
+							"value": "9",
+							"text": "Аптека групп Запад",
+							"count": 1,
+							"extra": true
+						}
+					]
+				},
+				{
+					"title": "Год публикации",
+					"name": "year[]",
+					"variant": "chips",
+					"options": [
+						{
+							"value": "2026",
+							"text": "2026",
+							"count": 12
+						},
+						{
+							"value": "2025",
+							"text": "2025",
+							"count": 9
+						},
+						{
+							"value": "2024",
+							"text": "2024",
+							"count": 7
+						},
+						{
+							"value": "2023",
+							"text": "2023",
+							"count": 0
+						},
+						{
+							"value": "2022",
+							"text": "2022",
+							"count": 0
+						},
+						{
+							"value": "2021",
+							"text": "2021",
+							"count": 0
+						}
+					]
+				}
+			],
+			"static": true
+		},
+		"documentRows": [
+			{
+				"type": "pdf",
+				"title": "Положение об оплате труда и стимулировании работников Дирекции розничного бизнеса (ЛибертФарм)",
+				"url": "#",
+				"company": "ЛибертФарм",
+				"size": "1,2 МБ",
+				"date": "2026-09-12",
+				"dateText": "12.09.2026",
+				"uploader": {
+					"name": "Ирина Пашкевич",
+					"meta": "Загрузила 12.09.2026",
+					"url": "#"
+				},
+				"shareUrl": "/library/documents/1001/",
+				"downloadUrl": "#",
+				"newTab": true
+			},
+			{
+				"type": "ppt",
+				"title": "Презентация — Коллективный договор Аптека групп (01.07.2025)",
+				"url": "#",
+				"company": "УКХ «Аптека групп»",
+				"size": "8,4 МБ",
+				"date": "2026-09-10",
+				"dateText": "10.09.2026",
+				"uploader": {
+					"name": "Ольга Власова",
+					"meta": "Загрузила 10.09.2026",
+					"url": "#"
+				},
+				"shareUrl": "/library/documents/1002/",
+				"downloadUrl": "#"
+			},
+			{
+				"type": "xls",
+				"title": "Тарифная сетка работников аптек на IV квартал 2026 года",
+				"url": "#",
+				"company": "УКХ «Аптека групп»",
+				"size": "214 КБ",
+				"date": "2026-09-05",
+				"dateText": "05.09.2026",
+				"uploader": {
+					"name": "Наталья Дрозд",
+					"meta": "Загрузила 05.09.2026",
+					"url": "#"
+				},
+				"shareUrl": "/library/documents/1003/",
+				"downloadUrl": "#"
+			}
+		]
 	}
 }

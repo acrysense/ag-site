@@ -1,0 +1,237 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Doc/Row (4526:29793) — поля 10/16, части через 16, черта Block.Border снизу; тип 40,
+// название Medium 14/22 Black.TXT до 2 строк, под ним через 2 компания 12 Dark-grey.TXT; колонки
+// 90 (размер), 100 (дата), 80 (загрузил, аватар 30 Grey с инициалами), кнопки 30 через 4 (иконка
+// 18, скругление 10). Наведение: фон BG.Info, скругление 12, без черты. Совпадение в поиске —
+// Semi Bold Main Blue (4532:813). До 1280 (наше): размер и дата строкой под названием, без
+// колонки «Загрузил» (подпись под колонками — в DocumentsList).
+@layer components {
+	.document-row {
+		position: relative;
+		display: grid;
+		grid-template-areas:
+			"type main main actions"
+			"type size date actions";
+		--row-gap: 12px;
+
+		grid-template-columns: 40px auto minmax(0, 1fr) auto;
+		column-gap: var(--row-gap);
+		align-items: center;
+		padding: 10px 0;
+		border-bottom: 1px solid palette("block-border");
+		transition:
+			background-color $transition-default,
+			border-color $transition-default;
+
+		@include up(tablet) {
+			--row-gap: 16px;
+
+			padding: 10px 16px;
+		}
+
+		@include up(wide) {
+			grid-template-areas: "type main size date uploader actions";
+			grid-template-columns: 40px minmax(0, 1fr) 90px 100px 80px 64px;
+		}
+	}
+
+	.document-row__type {
+		grid-area: type;
+		align-self: start;
+
+		@include up(wide) {
+			align-self: center;
+		}
+	}
+
+	.document-row__main {
+		display: flex;
+		flex-direction: column;
+		grid-area: main;
+		gap: 2px;
+		min-width: 0;
+	}
+
+	// Вся строка — ссылка на файл (кнопки и аватар — поверх)
+	.document-row__title {
+		@include text("m-medium");
+
+		display: -webkit-box;
+		overflow: hidden;
+		color: palette("black-txt");
+		overflow-wrap: anywhere;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		transition: color $transition-default;
+
+		&::after {
+			position: absolute;
+			inset: 0;
+			content: "";
+			border-radius: 12px;
+		}
+
+		mark {
+			font-weight: 600;
+			color: palette("main-blue");
+			background: none;
+		}
+	}
+
+	.document-row__meta {
+		@include text("s-400");
+
+		overflow: hidden;
+		color: palette("dark-grey-txt");
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.document-row__size,
+	.document-row__date {
+		@include text("s-400");
+
+		color: palette("dark-grey-txt");
+		white-space: nowrap;
+
+		&:empty {
+			display: none;
+		}
+	}
+
+	.document-row__size {
+		grid-area: size;
+	}
+
+	// Размер и дата одной строкой через «·» — только до 1280
+	.document-row__date {
+		grid-area: date;
+
+		@include down(wide) {
+			.document-row__size:not(:empty) + & {
+				margin-left: calc(4px - var(--row-gap));
+
+				&::before {
+					content: "·\00a0";
+				}
+			}
+		}
+	}
+
+	.document-row__uploader {
+		display: none;
+		grid-area: uploader;
+
+		@include up(wide) {
+			display: flex;
+		}
+	}
+
+	// Аватар — ссылка на профиль; подсказка с ФИО и датой при наведении и с клавиатуры
+	.document-row__person {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		border-radius: 14px;
+	}
+
+	.document-row__avatar {
+		@include avatar(palette("grey"));
+
+		width: 30px;
+		height: 30px;
+		border-radius: 14px;
+		transition: opacity $transition-default;
+
+		.document-row__person:hover > &,
+		.document-row__person:focus-visible > & {
+			opacity: 0.9;
+		}
+	}
+
+	.document-row__initials {
+		@include avatar-initials;
+
+		font-weight: 400;
+	}
+
+	.document-row__actions {
+		display: flex;
+		grid-area: actions;
+		gap: 4px;
+		align-items: center;
+	}
+
+	.document-row__action {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: 30px;
+		height: 30px;
+		padding: 0;
+		color: palette("black-txt");
+		cursor: pointer;
+		background: none;
+		border: 0;
+		border-radius: $radius-inner-block;
+		transition:
+			color $transition-default,
+			background-color $transition-default;
+
+		// Doc/Icon button · Hover: фон BG.Info, иконка Main Blue (на строке под курсором — белый фон)
+		&:hover,
+		&:focus-visible {
+			color: palette("main-blue");
+			background: palette("bg-info");
+
+			.document-row:hover & {
+				background: palette("white");
+			}
+		}
+
+		// Doc/Icon button · Copied: зелёная галочка на светло-зелёном, 2 с
+		&.is-copied,
+		.document-row:hover &.is-copied {
+			color: palette("copied");
+			background: palette("copied-bg");
+		}
+	}
+
+	.document-row__icon {
+		width: 18px;
+		height: 18px;
+
+		&--copied {
+			display: none;
+			width: 20px;
+			height: 20px;
+			padding: 5.75px 4.17px;
+		}
+
+		.is-copied > &--link {
+			display: none;
+		}
+
+		.is-copied > &--copied {
+			display: block;
+		}
+	}
+
+	// Наведение на строку и фокус на названии с клавиатуры: фон BG.Info, черта прячется
+	.document-row:hover,
+	.document-row:has(.document-row__title:focus-visible) {
+		background: palette("bg-info");
+		border-bottom-color: transparent;
+		border-radius: 12px;
+	}
+
+	.document-row:has(.document-row__title:hover) .document-row__title,
+	.document-row__title:focus-visible {
+		color: palette("blue-txt");
+	}
+}

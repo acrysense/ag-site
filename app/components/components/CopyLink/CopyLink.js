@@ -1,9 +1,14 @@
 import { announce } from '@/utils/announce'
+import { showToast } from '@/utils/toast'
 
 // Кнопка «Скопировать ссылку»: data-copy-link — адрес (пусто — текущая страница). После
 // копирования на 1,6 секунды класс is-copied и сообщение для скринридера.
+// data-copy-toast — вместо сообщения тост внизу экрана с этим текстом (библиотека документов),
+// галочка на кнопке — 2 секунды.
 export default function init(button) {
 	const controller = new AbortController()
+	const toastText = button.dataset.copyToast
+	const time = toastText ? 2000 : 1600
 	let timer = 0
 
 	button.addEventListener(
@@ -17,8 +22,9 @@ export default function init(button) {
 				await navigator.clipboard.writeText(url)
 				button.classList.add('is-copied')
 				clearTimeout(timer)
-				timer = setTimeout(() => button.classList.remove('is-copied'), 1600)
-				announce('Ссылка скопирована')
+				timer = setTimeout(() => button.classList.remove('is-copied'), time)
+				if (toastText) showToast(toastText)
+				else announce('Ссылка скопирована')
 			} catch {
 				announce('Не удалось скопировать ссылку')
 			}

@@ -1,0 +1,10 @@
+{{!--
+	Подсказка (Figma: Doc/Tooltip 4526:29712): тёмная плашка над элементом, по центру. Появляется,
+	когда на родителя с классом has-tooltip навели или перешли с клавиатуры. Дублирует подпись
+	родителя (aria-label) — скринридеру не читается.
+	props: title, meta (вторая строка, серая), class.
+--}}
+<span class="tooltip{{#if props.class}} {{props.class}}{{/if}}" aria-hidden="true">
+    <span class="tooltip__title">{{props.title}}</span>
+    {{#if props.meta}}<span class="tooltip__meta">{{props.meta}}</span>{{/if}}
+</span>
