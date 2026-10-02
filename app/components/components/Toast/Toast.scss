@@ -1,12 +1,13 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: Doc/Toast (4526:29740) — Black.TXT, скругление 10, поля 12 20 12 16, галочка 18 через
-// 10, Medium 14/20 белым, тень. Внизу по центру (на мобильном — над нижней навигацией, как
-// баннер cookie). Создаёт utils/toast.js
+// Figma, кит: Quick info (2543:906) — Black.TXT, скругление 10, поля 12/15, ширина 360, значок 20
+// через 10, текст M/400 белым. Значок: ok — галочка Green, error — крестик 10 Red, info — облачко
+// Icon.Grey. Место — внизу по центру на всех ширинах (на мобильном — над нижней навигацией, как
+// баннер cookie; уже 360 + поля — во всю ширину с полями 16). Создаёт utils/toast.js
 @layer components {
 	.toast {
-		@include text("m-medium-20");
+		@include text("m-400");
 
 		position: fixed;
 		bottom: calc(env(safe-area-inset-bottom) + 20px);
@@ -15,14 +16,14 @@
 		display: flex;
 		gap: 10px;
 		align-items: center;
+		width: 360px;
 		max-width: calc(100% - 32px);
-		padding: 12px 20px 12px 16px;
+		padding: 12px 15px;
 		color: palette("white");
 		pointer-events: none;
 		visibility: hidden;
 		background: palette("black-txt");
 		border-radius: $radius-inner-block;
-		box-shadow: $shadow-toast;
 		opacity: 0;
 		transform: translate(-50%, 8px);
 		transition:
@@ -46,16 +47,41 @@
 		}
 	}
 
-	// Галочка 18: в макете рисунок с полями 28.75% / 20.83% рамки
 	.toast__icon {
 		flex: none;
-		width: 18px;
-		height: 18px;
-		padding: 5px 4px;
-		color: palette("toast-icon");
+		width: 20px;
+		height: 20px;
+
+		.toast--ok & {
+			padding: 5.75px 4.17px;
+			color: palette("green");
+		}
+
+		// Крестик 10 с полями 4 — как в ките
+		.toast--error & {
+			width: 18px;
+			height: 18px;
+			padding: 4px;
+			color: palette("red");
+		}
+
+		.toast--info & {
+			color: palette("icon-grey");
+		}
 	}
 
 	.toast__text {
 		min-width: 0;
+		overflow-wrap: anywhere;
+	}
+
+	// Витрина: на месте, без появления
+	.toast--static {
+		position: static;
+		transform: none;
+
+		&.is-visible {
+			transform: none;
+		}
 	}
 }

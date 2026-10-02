@@ -369,10 +369,6 @@
 					{
 						"text": "Старые в начале",
 						"url": "./documents.html?sort=old"
-					},
-					{
-						"text": "По названию",
-						"url": "./documents.html?sort=name"
 					}
 				]
 			},

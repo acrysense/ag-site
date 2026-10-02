@@ -37,7 +37,7 @@
     </div>
     <div class="document-row__actions">
         {{#if props.shareUrl}}
-            <button class="document-row__action has-tooltip" type="button" aria-label="Скопировать ссылку на документ" data-copy-link="{{props.shareUrl}}" data-copy-toast="Ссылка скопирована" data-module="CopyLink" data-path="components">
+            <button class="document-row__action has-tooltip" type="button" aria-label="Скопировать ссылку на документ" data-copy-link="{{props.shareUrl}}" data-module="CopyLink" data-path="components">
                 {{> components/Icon/Icon name="link" class="document-row__icon document-row__icon--link"}}
                 {{> components/Icon/Icon name="tick" class="document-row__icon document-row__icon--copied"}}
                 {{> components/Tooltip/Tooltip props=(obj title="Скопировать ссылку" class="tooltip--end")}}

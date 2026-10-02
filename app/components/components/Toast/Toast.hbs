@@ -1,0 +1,15 @@
+{{!--
+	Тост (Figma, кит: Quick info 2543:906). На сайте его создаёт JS (utils/toast.js, showToast) —
+	бэку выводить не нужно; разметка здесь для витрины и как образец.
+	props: type — ok («Ссылка скопирована»), error, info; text; static — на месте, не у низа экрана.
+--}}
+<div class="toast toast--{{default props.type 'info'}}{{#if props.static}} toast--static is-visible{{/if}}" aria-hidden="true">
+    {{#if (eq props.type "ok")}}
+        {{> components/Icon/Icon name="tick" class="toast__icon"}}
+    {{else if (eq props.type "error")}}
+        {{> components/Icon/Icon name="cross" class="toast__icon"}}
+    {{else}}
+        {{> components/Icon/Icon name="comment" class="toast__icon"}}
+    {{/if}}
+    <span class="toast__text">{{props.text}}</span>
+</div>

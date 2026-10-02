@@ -60,54 +60,29 @@
 		}
 
 		&__actions {
-			position: relative;
 			display: flex;
 			gap: 10px;
 			align-items: center;
 		}
 
-		// Кнопка остаётся 40 на своём месте; «✓ Ссылка скопирована» — плашка во всю группу кнопок (от
-		// неё отсчитывается положение), после копирования раскрывается вправо поверх соседних
-		// (clip-path) и через 1,6 с сворачивается. Строка не сдвигается, кнопки закрыты целиком
+		// После копирования (CopyLink) — галочка на светло-зелёном, как Doc/Icon button · Copied;
+		// сообщение — тост внизу экрана (кит: Quick info)
 		&__share {
 			width: 40px;
 			padding: 0;
-		}
 
-		&__copied {
-			@include text("m-400");
-
-			position: absolute;
-			top: 0;
-			left: 0;
-			z-index: 1;
-			display: flex;
-			gap: 6px;
-			min-width: 100%;
-			align-items: center;
-			height: 100%;
-			padding: 0 14px 0 12px;
-			color: palette("black-txt");
-			white-space: nowrap;
-			pointer-events: none;
-			background: palette("bg-info");
-			border-radius: $radius-button;
-			opacity: 0;
-			clip-path: inset(0 calc(100% - 40px) 0 0 round $radius-button);
-			// Раскрытие быстрее обычного перехода — плашка короткая и живёт 1,6 с
-			transition:
-				clip-path $duration-popup $ease-out,
-				opacity $duration-popup;
-
-			.news-article__share.is-copied & {
-				opacity: 1;
-				clip-path: inset(0 0 0 0 round $radius-button);
+			&.is-copied {
+				color: palette("copied");
+				background: palette("copied-bg");
 			}
 		}
 
-		&__copied-icon {
-			flex: none;
-			color: palette("main-blue");
+		// Галочка 20 с полями, как Tick в Doc/Icon button · Copied (28.75% / 20.83%)
+		&__share-icon--copied {
+			display: none;
+			width: 20px;
+			height: 20px;
+			padding: 5.75px 4.17px;
 		}
 
 		&__date {
@@ -115,6 +90,14 @@
 
 			color: palette("dark-grey-txt");
 		}
+	}
+
+	.news-article__share.is-copied > .news-article__share-icon {
+		display: none;
+	}
+
+	.news-article__share.is-copied > .news-article__share-icon--copied {
+		display: block;
 	}
 
 	// Заготовка под картинкой (миксин image-placeholder): пока грузится, если её нет или она не

@@ -548,6 +548,14 @@
 				{{#> state label="Ошибка" note="в живом окне: пустой телефон, неверный номер, файл не того типа или больше 5 МБ, без согласия; телефон с «111» или «сбой» в сообщении"}}{{/state}}
 			{{/story}}
 
+			{{#> story id="toast" group="Компоненты" title="Тост" description='Figma, кит: Quick info (2543:906). Внизу экрана по центру (на мобильном — над нижней навигацией), 2,5 с, новый заменяет текущий. Создаёт JS (utils/toast.js), бэку выводить не нужно. «Скопировать ссылку» — Ok или Error.'}}
+				{{#> state label="Ok"}}<div class="story-row">{{> components/Toast/Toast props=(obj type="ok" text="Ссылка скопирована" static=true)}}</div>{{/state}}
+				{{#> state label="Ошибка"}}<div class="story-row">{{> components/Toast/Toast props=(obj type="error" text="Не удалось скопировать ссылку" static=true)}}</div>{{/state}}
+				{{#> state label="Нейтральный"}}<div class="story-row">{{> components/Toast/Toast props=(obj type="info" text="Это нейтральное событие." static=true)}}</div>{{/state}}
+				{{#> state label="Длинный текст"}}<div class="story-row">{{> components/Toast/Toast props=(obj type="error" text="Не удалось скопировать ссылку: браузер запретил доступ к буферу обмена. Скопируйте адрес из строки браузера." static=true)}}</div>{{/state}}
+				{{#> state label="Пусто" note="не применимо: тост без текста не показывается"}}{{/state}}
+			{{/story}}
+
 			{{#> story id="documents-list" group="Библиотека" title="Документы — список" description='Figma: PC.Library (4526:83), состояния 4531:543. Белая карточка: папка и число, «Новые в начале», выбранные фильтры чипами, шапка колонок (с 1280) и строки, страницы и «Всего». До 1280 размер и дата — под названием, колонки «Загрузил» нет; до 1024 — без карточки, кнопка «Фильтры · N».'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsList}}</div>
@@ -574,7 +582,7 @@
 				{{#> state label="Ошибка" note="не применимо: ошибку загрузки страницы показывает сервер. Не скопировалась ссылка — сообщение для скринридера, галочки и тоста нет"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="document-row" group="Библиотека" title="Строка документа" description='Figma: Doc/Row (4526:29793), Doc/File type, Doc/Avatar, Doc/Icon button, Doc/Tooltip, Doc/Toast. Наведение на строку — фон BG.Info. Аватар и кнопки — подсказки при наведении и с клавиатуры. «Скопировать ссылку» — галочка на 2 с и тост внизу экрана.'}}
+			{{#> story id="document-row" group="Библиотека" title="Строка документа" description='Figma: Doc/Row (4526:29793), Doc/File type, Doc/Avatar, Doc/Icon button, Doc/Tooltip, тост (кит: Quick info). Наведение на строку — фон BG.Info. Аватар и кнопки — подсказки при наведении и с клавиатуры. «Скопировать ссылку» — галочка на 2 с и тост внизу экрана.'}}
 				{{#> state label="Строки (наведите на аватар и кнопки, нажмите «Скопировать ссылку»)"}}
 					<div class="container"><ul class="documents-list__rows" role="list">{{#each data.documentRows}}{{> sections/documents/DocumentRow/DocumentRow props=this}}{{/each}}</ul></div>
 				{{/state}}

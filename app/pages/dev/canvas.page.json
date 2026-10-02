@@ -1038,8 +1038,8 @@
 			},
 			{
 				"name": "comment",
-				"sizes": [16],
-				"where": "карточка новости"
+				"sizes": [16, 20],
+				"where": "карточка новости, тост (20)"
 			},
 			{
 				"name": "like",
@@ -1098,13 +1098,18 @@
 			},
 			{
 				"name": "tick",
-				"sizes": [18, 20],
-				"where": "тост (18), «Ссылка скопирована» у кнопки (20)"
+				"sizes": [16, 20],
+				"where": "тост (20), «Ссылка скопирована» у кнопки (20), в новости (16)"
 			},
 			{
 				"name": "document",
 				"sizes": [32],
 				"where": "«Документы не найдены»"
+			},
+			{
+				"name": "cross",
+				"sizes": [10],
+				"where": "тост с ошибкой"
 			}
 		],
 		"iconRows": [
@@ -8635,10 +8640,6 @@
 					{
 						"text": "Старые в начале",
 						"url": "./documents.html?sort=old"
-					},
-					{
-						"text": "По названию",
-						"url": "./documents.html?sort=name"
 					}
 				]
 			},
@@ -8788,10 +8789,6 @@
 					{
 						"text": "Старые в начале",
 						"url": "./documents.html?sort=old"
-					},
-					{
-						"text": "По названию",
-						"url": "./documents.html?sort=name"
 					}
 				]
 			},
@@ -8843,10 +8840,6 @@
 					{
 						"text": "Старые в начале",
 						"url": "./documents.html?sort=old"
-					},
-					{
-						"text": "По названию",
-						"url": "./documents.html?sort=name"
 					}
 				]
 			},
@@ -8963,10 +8956,6 @@
 					{
 						"text": "Старые в начале",
 						"url": "./documents.html?sort=old"
-					},
-					{
-						"text": "По названию",
-						"url": "./documents.html?sort=name"
 					}
 				]
 			},
@@ -9046,10 +9035,6 @@
 					{
 						"text": "Старые в начале",
 						"url": "./documents.html?sort=old"
-					},
-					{
-						"text": "По названию",
-						"url": "./documents.html?sort=name"
 					}
 				]
 			},
@@ -9093,10 +9078,6 @@
 					{
 						"text": "Старые в начале",
 						"url": "./documents.html?sort=old"
-					},
-					{
-						"text": "По названию",
-						"url": "./documents.html?sort=name"
 					}
 				]
 			},
@@ -9125,10 +9106,6 @@
 					{
 						"text": "Старые в начале",
 						"url": "./documents.html?sort=old"
-					},
-					{
-						"text": "По названию",
-						"url": "./documents.html?sort=name"
 					}
 				]
 			},

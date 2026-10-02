@@ -1,30 +1,30 @@
 import { announce } from '@/utils/announce'
 import { createIcon } from '@/utils/icon'
 
-// Тост внизу экрана (Figma: Doc/Toast 4526:29740): «✓ Ссылка скопирована» на 2,5 с. Один на
-// страницу: новый заменяет текущий. Скринридеру — через общую live-область (announce).
-// Элемент создаётся при первом показе и остаётся в body (как live-область), таймер — один.
+// Тост внизу экрана (Figma, кит: Quick info 2543:906): type — ok (галочка), error (крестик),
+// info (облачко). Показывается 2,5 с, один на страницу: новый заменяет текущий. Скринридеру —
+// через общую live-область (announce). Элемент создаётся при первом показе и остаётся в body
+// (как live-область), таймер — один. Разметка — как components/Toast/Toast.hbs.
 const TIME = 2500
+const ICONS = { ok: 'tick', error: 'cross', info: 'comment' }
 let toast = null
-let text = null
 let timer = 0
 
-export function showToast(message) {
-	if (!toast) {
-		toast = document.createElement('div')
-		toast.className = 'toast'
-		toast.setAttribute('aria-hidden', 'true')
-		text = document.createElement('span')
-		text.className = 'toast__text'
-		toast.append(createIcon('tick', 'toast__icon'), text)
-		document.body.append(toast)
-	}
+export function showToast(message, type = 'ok') {
+	toast?.remove()
+	toast = document.createElement('div')
+	toast.className = `toast toast--${type}`
+	toast.setAttribute('aria-hidden', 'true')
+	const text = document.createElement('span')
+	text.className = 'toast__text'
 	text.textContent = message
-	// Перезапуск появления, если тост ещё виден
-	toast.classList.remove('is-visible')
+	toast.append(createIcon(ICONS[type] || ICONS.info, 'toast__icon'), text)
+	document.body.append(toast)
+	// Появление — со следующего кадра, после вставки
 	void toast.offsetWidth
 	toast.classList.add('is-visible')
 	announce(message)
 	clearTimeout(timer)
-	timer = setTimeout(() => toast.classList.remove('is-visible'), TIME)
+	const current = toast
+	timer = setTimeout(() => current.classList.remove('is-visible'), TIME)
 }

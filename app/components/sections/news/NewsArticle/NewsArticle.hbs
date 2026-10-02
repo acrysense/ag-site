@@ -18,9 +18,9 @@
     <footer class="news-article__footer">
         <div class="news-article__actions">
             <button class="btn btn--light btn--s news-article__share" type="button" aria-label="Скопировать ссылку на новость" data-copy-link="{{props.url}}" data-module="CopyLink" data-path="components">
-                {{> components/Icon/Icon name="link" class="btn__icon"}}
-                {{!-- После копирования раскрывается вправо поверх соседних кнопок (скринридеру — объявление) --}}
-                <span class="news-article__copied" aria-hidden="true">{{> components/Icon/Icon name="check" class="btn__icon news-article__copied-icon"}}{{default props.copiedText "Ссылка скопирована"}}</span>
+                {{!-- После копирования на 2 с — галочка, внизу экрана тост «Ссылка скопирована» --}}
+                {{> components/Icon/Icon name="link" class="btn__icon news-article__share-icon"}}
+                {{> components/Icon/Icon name="tick" class="btn__icon news-article__share-icon news-article__share-icon--copied"}}
             </button>
             {{#if props.comments}}
                 {{> components/Button/Button props=(obj href=(default props.comments.anchor '#comments') icon="comment" hiddenText="Комментарии: " text=props.comments.count variant="light" size="s")}}
