@@ -116,10 +116,13 @@
 		// Раскрывающийся блок: закрыт — M/400, открыт — жирнее (в макете L/500 — 16 Bold: заголовок
 		// менял размер и ширину и сдвигал текст). Размер и начертание те же, «жирность» — обводкой
 		// букв: строка не меняет ни высоту, ни ширину, утолщение плавное; стрелка вниз / вверх
+		// Отступ под заголовком — у первого блока содержимого, а не у заголовка: он сворачивается
+		// вместе с текстом, без скачка в начале анимации
 		details {
 			padding: 5px 0 5px 20px;
 			border-left: 1px solid palette("blue-txt");
 
+			> summary + *,
 			> :not(summary) + * {
 				margin-top: 10px;
 			}
@@ -141,7 +144,6 @@
 
 		details[open] > summary {
 			-webkit-text-stroke-width: $faux-bold-stroke;
-			margin-bottom: 10px;
 		}
 
 		.content__summary-icon {
@@ -209,12 +211,15 @@
 		interpolate-size: allow-keywords;
 	}
 
+	// flow-root — отступ первого блока остаётся внутри и анимируется по высоте; ease-in-out —
+	// без долгого «доползания» в конце сворачивания
 	.content details::details-content {
+		display: flow-root;
 		height: 0;
 		overflow: clip;
 		transition:
-			height $duration-overlay $ease-out,
-			content-visibility $duration-overlay allow-discrete;
+			height $transition-default,
+			content-visibility $transition-default allow-discrete;
 	}
 
 	.content details[open]::details-content {
@@ -222,6 +227,6 @@
 	}
 
 	.content__summary-icon {
-		transition: transform $duration-overlay $ease-out;
+		transition: transform $transition-default;
 	}
 }
