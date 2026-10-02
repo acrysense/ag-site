@@ -60,32 +60,53 @@
 		}
 
 		&__actions {
+			position: relative;
 			display: flex;
 			gap: 10px;
 			align-items: center;
 		}
 
+		// Кнопка остаётся 40 на своём месте; «✓ Скопировано» — плашка во всю группу кнопок (от неё
+		// отсчитывается положение), после копирования раскрывается вправо поверх соседних
+		// (clip-path) и через 2 с сворачивается. Строка не сдвигается, кнопки закрыты целиком
 		&__share {
 			width: 40px;
 			padding: 0;
+		}
 
-			.icon:not(.news-article__copied) {
-				display: block;
+		&__copied {
+			@include text("m-400");
+
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
+			display: flex;
+			gap: 6px;
+			min-width: 100%;
+			align-items: center;
+			height: 100%;
+			padding: 0 14px 0 12px;
+			color: palette("black-txt");
+			white-space: nowrap;
+			pointer-events: none;
+			background: palette("bg-info");
+			border-radius: $radius-button;
+			opacity: 0;
+			clip-path: inset(0 calc(100% - 40px) 0 0 round $radius-button);
+			transition:
+				clip-path $transition-default,
+				opacity $duration-popup;
+
+			.news-article__share.is-copied & {
+				opacity: 1;
+				clip-path: inset(0 0 0 0 round $radius-button);
 			}
 		}
 
-		// После копирования — галочка вместо скрепки
-		&__copied {
-			display: none;
+		&__copied-icon {
+			flex: none;
 			color: palette("main-blue");
-		}
-
-		&__share.is-copied .news-article__copied {
-			display: block;
-		}
-
-		&__share.is-copied .icon:not(.news-article__copied) {
-			display: none;
 		}
 
 		&__date {
