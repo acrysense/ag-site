@@ -1,10 +1,12 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Кнопка — как было в макете раздела: текст M/400 Main Blue и стрелка 10×6 через 4 (Figma: PC.News
-// 4467:758 «Новые в начале»). Меню — как под аватаром (кит Dropdown menu 2725:18877): белое,
-// поля 20, пункты через 20, скругление 10, тень списков; по правому краю кнопки. Текущий пункт —
-// Blue.TXT (наше, в ките отметки нет); открыто — стрелка вверх.
+// Кнопка — как в макете раздела: текст M/400 Main Blue и стрелка 10×6 через 4 (Figma: PC.News
+// 4467:758 «Новые в начале»). Список — как у поля-выбора «По алфавиту» в поиске (Dropdown list
+// 4706:1207, components/Select): белый, рамка Block.Border, скругление 14, поля и промежуток 6,
+// тень выпадающих; пункты M/400 Black.TXT с полями 8/10 и скруглением 8, наведение — фон BG.Main,
+// текущий — Blue.TXT на BG.Violet с галочкой Main Blue. Под кнопкой по правому краю.
+// До 768 (наше) — нижний лист с заголовком «Сортировка», × и затемнением, как фильтры и даты.
 @layer components {
 	.sort-menu {
 		position: relative;
@@ -46,21 +48,20 @@
 		}
 	}
 
-	.sort-menu__list {
+	.sort-menu__popup {
 		position: absolute;
-		top: calc(100% + 10px);
+		top: calc(100% + 6px);
 		right: 0;
 		z-index: 20;
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		gap: 6px;
 		min-width: 200px;
-		margin: 0;
-		padding: 20px;
-		list-style: none;
+		padding: 6px;
 		background: palette("white");
-		border-radius: $radius-inner-block;
-		box-shadow: $shadow-list;
+		border: 1px solid palette("block-border");
+		border-radius: $radius-button;
+		box-shadow: $shadow-dropdown;
 
 		@include appear;
 
@@ -68,20 +69,114 @@
 			right: auto;
 			left: 0;
 		}
+
+		// Мобильный: нижний лист
+		@include down(tablet) {
+			@include sheet;
+
+			top: auto;
+			gap: 12px;
+			min-width: 0;
+		}
 	}
 
-	.sort-menu__link {
+	.sort-menu__list {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.sort-menu__option {
 		@include text("m-400");
 
-		display: block;
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		justify-content: space-between;
+		padding: 8px 10px;
 		color: palette("black-txt");
 		white-space: nowrap;
+		border-radius: $radius-dropdown;
+		transition: background-color $transition-default;
+
+		&:not([aria-current]):hover,
+		&:not([aria-current]):focus-visible {
+			background: palette("bg-main");
+		}
+
+		&[aria-current] {
+			color: palette("blue-txt");
+			background: palette("bg-violet");
+		}
+
+		@include down(tablet) {
+			padding: 12px 10px;
+		}
+	}
+
+	.sort-menu__check {
+		flex: none;
+		width: 13.8px;
+		height: 9.8px;
+		color: palette("main-blue");
+	}
+
+	// Шапка листа и затемнение — только на мобильном
+	.sort-menu__head,
+	.sort-menu__backdrop {
+		display: none;
+	}
+
+	@include down(tablet) {
+		.sort-menu__head {
+			display: flex;
+			gap: 8px;
+			align-items: center;
+			padding-left: 10px;
+		}
+
+		.sort-menu__backdrop {
+			@include sheet-backdrop;
+			@include appear(none, $duration-overlay);
+
+			display: block;
+		}
+	}
+
+	.sort-menu__title {
+		@include text("h4-360");
+
+		flex: 1 1 auto;
+		min-width: 0;
+		color: palette("black-txt");
+	}
+
+	.sort-menu__close {
+		display: flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		padding: 0;
+		color: palette("black-txt");
+		cursor: pointer;
+		background: palette("bg-main");
+		border: 0;
+		border-radius: 50%;
 		transition: color $transition-default;
 
 		&:hover,
-		&:focus-visible,
-		&[aria-current] {
-			color: palette("blue-txt");
+		&:focus-visible {
+			color: palette("main-blue");
 		}
+	}
+
+	.sort-menu__close-icon {
+		width: 10px;
+		height: 10px;
 	}
 }

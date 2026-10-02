@@ -548,7 +548,7 @@
 				{{#> state label="Ошибка" note="в живом окне: пустой телефон, неверный номер, файл не того типа или больше 5 МБ, без согласия; телефон с «111» или «сбой» в сообщении"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="sort-menu" group="Новости" title="Сортировка списка" description='Новости, журнал, вакансии. Текущий порядок текстом со стрелкой (Figma PC.News 4467:758), по клику — меню по киту (Dropdown menu 2725:18877): пункты — ссылки, текущий отмечен Blue.TXT. Esc, клик мимо и уход фокуса закрывают. Не влезает слева — меню по левому краю кнопки.'}}
+			{{#> story id="sort-menu" group="Новости" title="Сортировка списка" description='Новости, журнал, вакансии. Текущий порядок текстом со стрелкой (Figma PC.News 4467:758), по клику — список как у «По алфавиту» в поиске (Dropdown list 4706:1207): пункты — ссылки, наведение — серый фон, текущий — синий на светлом с галочкой. До 768 — нижний лист с заголовком и затемнением. Esc, ×, затемнение, клик мимо закрывают.'}}
 				{{#> state label="Два варианта" bg="page"}}<div class="container"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenu}}</div></div>{{/state}}
 				{{#> state label="Три варианта" bg="page"}}<div class="container"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenuThree}}</div></div>{{/state}}
 				{{#> state label="Один вариант — без меню" bg="page"}}<div class="container"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenuOne}}</div></div>{{/state}}
