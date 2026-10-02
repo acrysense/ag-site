@@ -3,12 +3,12 @@
     "file": "assets/js/announce-CzTc7via.js",
     "name": "announce"
   },
-  "_app-BfsJujPf.css": {
-    "file": "assets/css/app-BfsJujPf.css",
-    "src": "_app-BfsJujPf.css"
+  "_app-BNfkjE28.css": {
+    "file": "assets/css/app-BNfkjE28.css",
+    "src": "_app-BNfkjE28.css"
   },
-  "_app-DGX6wE8o.js": {
-    "file": "assets/js/app-DGX6wE8o.js",
+  "_app-CPYd8RQO.js": {
+    "file": "assets/js/app-CPYd8RQO.js",
     "name": "app",
     "dynamicImports": [
       "components/components/Calendar/Calendar.js",
@@ -40,7 +40,7 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-BfsJujPf.css"
+      "assets/css/app-BNfkjE28.css"
     ],
     "assets": [
       "assets/images/auth-ag-m2GDsMwR.svg"
@@ -134,7 +134,7 @@
     ]
   },
   "components/components/CopyLink/CopyLink.js": {
-    "file": "assets/js/CopyLink-DKIQcfvg.js",
+    "file": "assets/js/CopyLink-D-UuWWy7.js",
     "name": "CopyLink",
     "src": "components/components/CopyLink/CopyLink.js",
     "isDynamicEntry": true,
@@ -338,13 +338,13 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-dS1u6z2k.js",
+    "file": "assets/js/dev-canvas-WEGSe0s7.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
       "_pages-nav-CGkOGvNx.js",
-      "_app-DGX6wE8o.js"
+      "_app-CPYd8RQO.js"
     ],
     "css": [
       "assets/css/dev-canvas-B9lA4Ypm.css"
