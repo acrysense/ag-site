@@ -9,8 +9,10 @@
 # .deploy/natix (git worktree, игнорируется). Скрипт собирает проект под Bitrix
 # (BASE=/bitrix/templates/ag-site/, --mode cms), раскладывает в worktree отслеживаемые
 # файлы ag-site + dist + сгенерированные шрифты, удаляет устаревшее (старую gulp-сборку) и
-# коммитит в natix поверх его истории — без force-push. В natix не уезжают служебные файлы
-# (.github, .claude, настройки редактора, деплой-скрипты); .gitignore у natix свой, dist в нём
+# коммитит в natix поверх его истории — без force-push. Страницы — как на демо: только из
+# tools/published-pages.txt (остальные убирает tools/hide-unpublished.mjs из сборки и
+# исходников). В natix не уезжают служебные файлы (.github, .claude, настройки редактора,
+# деплой-скрипты и список страниц); .gitignore у natix свой, dist в нём
 # игнорируется — добавляется принудительно. ag-site/dist после сборки возвращается как был.
 set -euo pipefail
 
@@ -65,13 +67,15 @@ echo "ok: $(find dist -type f | wc -l | tr -d ' ') файлов"
 say "раскладка в natix"
 rm -rf "$STAGE"; mkdir -p "$STAGE"
 git ls-files \
-  | grep -vE '^(\.claude/|\.editorconfig$|\.github/|\.nvmrc$|\.prettierignore$|\.prettierrc$|\.gitignore$|dist/|tools/deploy-natix\.sh$|tools/deploy-pages\.sh$)' \
+  | grep -vE '^(\.claude/|\.editorconfig$|\.github/|\.nvmrc$|\.prettierignore$|\.prettierrc$|\.gitignore$|dist/|tools/deploy-natix\.sh$|tools/deploy-pages\.sh$|tools/published-pages\.(sh|txt)$|tools/hide-unpublished\.mjs$)' \
   | rsync -a --files-from=- "$AG/" "$STAGE/"
 rsync -a dist/ "$STAGE/dist/"
 mkdir -p "$STAGE/public/fonts" "$STAGE/app/assets/styles/base"
 rsync -a public/fonts/ "$STAGE/public/fonts/"
 cp app/assets/styles/base/_fonts.generated.scss "$STAGE/app/assets/styles/base/"
 cp "$WT/.gitignore" "$STAGE/.gitignore"
+# Страницы, которых нет в tools/published-pages.txt, не уезжают (как на демо)
+node tools/hide-unpublished.mjs "$STAGE/dist" "$STAGE"
 find "$STAGE" -name .DS_Store -delete
 rsync -a --delete --exclude .git "$STAGE/" "$WT/"
 git -C "$WT" add -A
