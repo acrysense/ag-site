@@ -62,14 +62,21 @@
     "file": "assets/js/index-DeDpOBIY.js",
     "name": "index"
   },
-  "_mock-server-CNqGOPyr.js": {
-    "file": "assets/js/mock-server-CNqGOPyr.js",
-    "name": "mock-server",
+  "_pages-nav-Cd3Hcg6X.js": {
+    "file": "assets/js/pages-nav-Cd3Hcg6X.js",
+    "name": "pages-nav",
+    "css": [
+      "assets/css/pages-nav-DpqSWRvG.css"
+    ],
     "assets": [
       "assets/images/person-2-BSdhiEQf.webp",
       "assets/images/news-1-C8UetQQG.webp",
       "assets/images/news-3-Cg1MkcK5.webp"
     ]
+  },
+  "_pages-nav-DpqSWRvG.css": {
+    "file": "assets/css/pages-nav-DpqSWRvG.css",
+    "src": "_pages-nav-DpqSWRvG.css"
   },
   "_reveal-in-row-RAMtI7uy.js": {
     "file": "assets/js/reveal-in-row-RAMtI7uy.js",
@@ -335,12 +342,12 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-0DEq23x-.js",
+    "file": "assets/js/dev-canvas-bQwsNVBS.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
-      "_mock-server-CNqGOPyr.js",
+      "_pages-nav-Cd3Hcg6X.js",
       "_app-DwYqxLM0.js"
     ],
     "css": [
@@ -467,13 +474,25 @@
     "file": "assets/images/wide-mobile-DgSEEW7E.webp",
     "src": "pages/dev/img/wide-mobile.webp"
   },
+  "pages/dev/pages.html": {
+    "file": "assets/js/dev-pages-52JFv1v3.js",
+    "name": "dev-pages",
+    "src": "pages/dev/pages.html",
+    "isEntry": true,
+    "imports": [
+      "_pages-nav-Cd3Hcg6X.js"
+    ],
+    "css": [
+      "assets/css/dev-pages-DR6gXycN.css"
+    ]
+  },
   "pages/dev/ui.html": {
-    "file": "assets/js/dev-ui-CITkreOK.js",
+    "file": "assets/js/dev-ui-CBcsceo3.js",
     "name": "dev-ui",
     "src": "pages/dev/ui.html",
     "isEntry": true,
     "imports": [
-      "_mock-server-CNqGOPyr.js"
+      "_pages-nav-Cd3Hcg6X.js"
     ],
     "css": [
       "assets/css/dev-ui-DG2Ikop1.css"
