@@ -181,10 +181,7 @@
 								<div class="site-search__content">
 									<div class="site-search__filters">
 										<div class="site-search__filters-head">
-											<p class="site-search__filters-title">
-												Фильтры ·
-												<span data-site-search-section-label>Справочник</span>
-											</p>
+											<p class="site-search__filters-title">Фильтры · <span data-site-search-section-label>Справочник</span></p>
 											<button class="site-search__reset" type="button" data-site-search-reset>Сбросить все</button>
 										</div>
 										<button class="site-search__summary" type="button" aria-expanded="false" data-site-search-summary>
@@ -203,9 +200,9 @@
 													data-select-search-placeholder="Найти юр. лицо"
 												>
 													<label class="select__field">
-														<span class="select__value" aria-hidden="true" data-select-value data-placeholder="Юр. лицо">
-															Юр. лицо
-														</span>
+														<span class="select__value" aria-hidden="true" data-select-value data-placeholder="Юр. лицо"
+															>Юр. лицо</span
+														>
 														<select class="select__control" name="company[]" multiple>
 															<option value="1">ООО «Адель Фарм»</option>
 															<option value="2">ООО «Аптека групп»</option>
@@ -251,9 +248,9 @@
 													data-select-search-placeholder="Найти должность"
 												>
 													<label class="select__field">
-														<span class="select__value" aria-hidden="true" data-select-value data-placeholder="Должность">
-															Должность
-														</span>
+														<span class="select__value" aria-hidden="true" data-select-value data-placeholder="Должность"
+															>Должность</span
+														>
 														<select class="select__control" name="position[]" multiple>
 															<option value="1">Провизор</option>
 															<option value="2">Фармацевт</option>
@@ -304,18 +301,16 @@
 											data-site-search-list
 										></ul>
 										<div class="site-search__empty" hidden data-site-search-empty>
-											<span class="site-search__empty-icon">
-												<svg class="icon site-search__empty-glyph" aria-hidden="true" focusable="false">
+											<span class="site-search__empty-icon"
+												><svg class="icon site-search__empty-glyph" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-search"></use>
 												</svg>
 											</span>
 											<p class="site-search__empty-title" data-site-search-empty-title></p>
 											<p class="site-search__empty-text">
 												Проверьте раскладку клавиатуры и опечатки, попробуйте сократить запрос, сбросить фильтры или выбрать другой
-												раздел
-												<span class="site-search__where site-search__where--side">слева</span>
-												<span class="site-search__where site-search__where--top">выше</span>
-												.
+												раздел <span class="site-search__where site-search__where--side">слева</span
+												><span class="site-search__where site-search__where--top">выше</span>.
 											</p>
 											<button class="btn btn--general btn--m site-search__empty-reset" type="button" data-site-search-reset>
 												Сбросить фильтры
@@ -333,8 +328,8 @@
 								</div>
 							</div>
 						</form>
-						<template data-site-search-demo="directory">
-							<div class="search-filter">
+						<template data-site-search-demo="directory"
+							><div class="search-filter">
 								<div
 									class="select"
 									data-module="Select"
@@ -429,8 +424,8 @@
 								</div>
 							</div>
 						</template>
-						<template data-site-search-demo="news">
-							<div class="search-filter">
+						<template data-site-search-demo="news"
+							><div class="search-filter">
 								<div class="date-range" data-module="DateRange" data-path="components" data-placeholder="Дата публикации">
 									<span class="date-range__native">
 										<input
@@ -478,8 +473,8 @@
 								</div>
 							</div>
 						</template>
-						<template data-site-search-demo="documents">
-							<div class="search-filter">
+						<template data-site-search-demo="documents"
+							><div class="search-filter">
 								<div class="date-range" data-module="DateRange" data-path="components" data-placeholder="Дата">
 									<span class="date-range__native">
 										<input
@@ -548,8 +543,8 @@
 								</div>
 							</div>
 						</template>
-						<template data-site-search-demo="vacancies">
-							<div class="search-filter search-filter--wide">
+						<template data-site-search-demo="vacancies"
+							><div class="search-filter search-filter--wide">
 								<div
 									class="number-range"
 									role="group"
@@ -877,106 +872,85 @@
 										<li>
 											<label class="filter-checkbox" for="vacancy-filters-0-0">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-0-0" name="region[]" value="1" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Минск</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													12
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>12</span>
 											</label>
 										</li>
 										<li>
 											<label class="filter-checkbox" for="vacancy-filters-0-1">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-0-1" name="region[]" value="2" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Минская</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													3
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>3</span>
 											</label>
 										</li>
 										<li>
 											<label class="filter-checkbox" for="vacancy-filters-0-2">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-0-2" name="region[]" value="3" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Брестская</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													2
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>2</span>
 											</label>
 										</li>
 										<li>
 											<label class="filter-checkbox" for="vacancy-filters-0-3">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-0-3" name="region[]" value="4" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Витебская</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													1
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>1</span>
 											</label>
 										</li>
 										<li>
 											<label class="filter-checkbox" for="vacancy-filters-0-4">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-0-4" name="region[]" value="5" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Гомельская</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													3
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>3</span>
 											</label>
 										</li>
 										<li>
 											<label class="filter-checkbox" for="vacancy-filters-0-5">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-0-5" name="region[]" value="6" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Гродненская</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													1
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>1</span>
 											</label>
 										</li>
 										<li>
 											<label class="filter-checkbox" for="vacancy-filters-0-6">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-0-6" name="region[]" value="7" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Могилевская</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													2
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>2</span>
 											</label>
 										</li>
 									</ul>
@@ -987,106 +961,85 @@
 										<li>
 											<label class="filter-checkbox" for="vacancy-filters-1-0">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-1-0" name="city[]" value="1" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Минск</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													12
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>12</span>
 											</label>
 										</li>
 										<li>
 											<label class="filter-checkbox" for="vacancy-filters-1-1">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-1-1" name="city[]" value="2" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Гомель</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													3
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>3</span>
 											</label>
 										</li>
 										<li>
 											<label class="filter-checkbox" for="vacancy-filters-1-2">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-1-2" name="city[]" value="3" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Брест</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													2
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>2</span>
 											</label>
 										</li>
 										<li>
 											<label class="filter-checkbox" for="vacancy-filters-1-3">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-1-3" name="city[]" value="4" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Борисов</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													2
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>2</span>
 											</label>
 										</li>
 										<li>
 											<label class="filter-checkbox" for="vacancy-filters-1-4">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-1-4" name="city[]" value="5" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Могилёв</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													2
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>2</span>
 											</label>
 										</li>
 										<li hidden data-filter-extra>
 											<label class="filter-checkbox" for="vacancy-filters-1-5">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-1-5" name="city[]" value="6" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Витебск</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													1
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>1</span>
 											</label>
 										</li>
 										<li hidden data-filter-extra>
 											<label class="filter-checkbox" for="vacancy-filters-1-6">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-1-6" name="city[]" value="7" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Гродно</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													1
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>1</span>
 											</label>
 										</li>
 										<li hidden data-filter-extra>
@@ -1099,16 +1052,13 @@
 													value="8"
 													disabled
 												/>
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Пинск</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													0
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>0</span>
 											</label>
 										</li>
 									</ul>
@@ -1120,136 +1070,109 @@
 										<li>
 											<label class="filter-checkbox" for="vacancy-filters-2-0">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-2-0" name="company[]" value="1" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">УКХ «Аптека групп»</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													4
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>4</span>
 											</label>
 										</li>
 										<li>
 											<label class="filter-checkbox" for="vacancy-filters-2-1">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-2-1" name="company[]" value="2" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">ЛибертФарм</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													8
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>8</span>
 											</label>
 										</li>
 										<li>
 											<label class="filter-checkbox" for="vacancy-filters-2-2">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-2-2" name="company[]" value="3" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Аптека групп Юг</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													3
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>3</span>
 											</label>
 										</li>
 										<li>
 											<label class="filter-checkbox" for="vacancy-filters-2-3">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-2-3" name="company[]" value="4" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Энергофарм</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													3
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>3</span>
 											</label>
 										</li>
 										<li>
 											<label class="filter-checkbox" for="vacancy-filters-2-4">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-2-4" name="company[]" value="5" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">СофтФарм</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													2
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>2</span>
 											</label>
 										</li>
 										<li>
 											<label class="filter-checkbox" for="vacancy-filters-2-5">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-2-5" name="company[]" value="6" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">ВитФармМаркет</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													1
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>1</span>
 											</label>
 										</li>
 										<li hidden data-filter-extra>
 											<label class="filter-checkbox" for="vacancy-filters-2-6">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-2-6" name="company[]" value="7" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Белфармация Плюс</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													1
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>1</span>
 											</label>
 										</li>
 										<li hidden data-filter-extra>
 											<label class="filter-checkbox" for="vacancy-filters-2-7">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-2-7" name="company[]" value="8" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">ФармЛайн</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													1
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>1</span>
 											</label>
 										</li>
 										<li hidden data-filter-extra>
 											<label class="filter-checkbox" for="vacancy-filters-2-8">
 												<input class="filter-checkbox__input" type="checkbox" id="vacancy-filters-2-8" name="company[]" value="9" />
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Медиком</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													1
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>1</span>
 											</label>
 										</li>
 									</ul>
@@ -1267,16 +1190,13 @@
 													name="department[]"
 													value="1"
 												/>
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Администрация</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													3
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>3</span>
 											</label>
 										</li>
 										<li>
@@ -1288,16 +1208,13 @@
 													name="department[]"
 													value="2"
 												/>
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Фарм-персонал</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													14
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>14</span>
 											</label>
 										</li>
 										<li>
@@ -1309,16 +1226,13 @@
 													name="department[]"
 													value="3"
 												/>
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Склад</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													3
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>3</span>
 											</label>
 										</li>
 										<li>
@@ -1330,16 +1244,13 @@
 													name="department[]"
 													value="4"
 												/>
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">ИТ</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													2
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>2</span>
 											</label>
 										</li>
 										<li>
@@ -1351,16 +1262,13 @@
 													name="department[]"
 													value="5"
 												/>
-												<span class="filter-checkbox__box" aria-hidden="true">
-													<svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
+												<span class="filter-checkbox__box" aria-hidden="true"
+													><svg class="icon filter-checkbox__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</span>
 												<span class="filter-checkbox__text">Бухгалтерия</span>
-												<span class="filter-checkbox__count">
-													<span class="visually-hidden">, вакансий:</span>
-													2
-												</span>
+												<span class="filter-checkbox__count"><span class="visually-hidden">, вакансий: </span>2</span>
 											</label>
 										</li>
 									</ul>
@@ -1385,7 +1293,7 @@
 										aria-haspopup="true"
 										aria-controls="career-sort-3"
 									>
-										<span class="visually-hidden">Сортировка:</span>
+										<span class="visually-hidden">Сортировка: </span>
 										Новые в начале
 										<svg class="icon sort-menu__arrow" aria-hidden="true" focusable="false">
 											<use href="/ag-site/assets/icons/sprite.svg#icon-chevron-down"></use>
@@ -1403,9 +1311,8 @@
 										</div>
 										<ul class="sort-menu__list" role="list">
 											<li>
-												<a class="sort-menu__option" href="#" aria-current="true">
-													Новые в начале
-													<svg class="icon sort-menu__check" aria-hidden="true" focusable="false">
+												<a class="sort-menu__option" href="#" aria-current="true"
+													>Новые в начале<svg class="icon sort-menu__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</a>
@@ -1448,9 +1355,8 @@
 												href="#"
 												data-modal-open="vacancy-101"
 												aria-describedby="vacancy-101-card-title"
+												>Подробнее</a
 											>
-												Подробнее
-											</a>
 										</div>
 									</article>
 								</li>
@@ -1472,9 +1378,8 @@
 												href="#"
 												data-modal-open="vacancy-102"
 												aria-describedby="vacancy-102-card-title"
+												>Подробнее</a
 											>
-												Подробнее
-											</a>
 										</div>
 									</article>
 								</li>
@@ -1496,9 +1401,8 @@
 												href="#"
 												data-modal-open="vacancy-103"
 												aria-describedby="vacancy-103-card-title"
+												>Подробнее</a
 											>
-												Подробнее
-											</a>
 										</div>
 									</article>
 								</li>
@@ -1520,9 +1424,8 @@
 												href="#"
 												data-modal-open="vacancy-104"
 												aria-describedby="vacancy-104-card-title"
+												>Подробнее</a
 											>
-												Подробнее
-											</a>
 										</div>
 									</article>
 								</li>
@@ -1544,9 +1447,8 @@
 												href="#"
 												data-modal-open="vacancy-105"
 												aria-describedby="vacancy-105-card-title"
+												>Подробнее</a
 											>
-												Подробнее
-											</a>
 										</div>
 									</article>
 								</li>
@@ -1568,9 +1470,8 @@
 												href="#"
 												data-modal-open="vacancy-106"
 												aria-describedby="vacancy-106-card-title"
+												>Подробнее</a
 											>
-												Подробнее
-											</a>
 										</div>
 									</article>
 								</li>
@@ -1592,9 +1493,8 @@
 												href="#"
 												data-modal-open="vacancy-107"
 												aria-describedby="vacancy-107-card-title"
+												>Подробнее</a
 											>
-												Подробнее
-											</a>
 										</div>
 									</article>
 								</li>
@@ -1616,9 +1516,8 @@
 												href="#"
 												data-modal-open="vacancy-108"
 												aria-describedby="vacancy-108-card-title"
+												>Подробнее</a
 											>
-												Подробнее
-											</a>
 										</div>
 									</article>
 								</li>
@@ -1640,9 +1539,8 @@
 												href="#"
 												data-modal-open="vacancy-109"
 												aria-describedby="vacancy-109-card-title"
+												>Подробнее</a
 											>
-												Подробнее
-											</a>
 										</div>
 									</article>
 								</li>
@@ -1651,30 +1549,20 @@
 								<nav class="pagination__nav" aria-label="Страницы вакансий">
 									<ul class="pagination__list" role="list">
 										<li class="pagination__item">
-											<span class="pagination__page is-current" aria-current="page">
-												<span class="visually-hidden">Страница</span>
-												1
-											</span>
+											<span class="pagination__page is-current" aria-current="page"
+												><span class="visually-hidden">Страница </span>1</span
+											>
 										</li>
 										<li class="pagination__item">
-											<a class="pagination__page" href="#">
-												<span class="visually-hidden">Страница</span>
-												2
-											</a>
+											<a class="pagination__page" href="#"><span class="visually-hidden">Страница </span>2</a>
 										</li>
 										<li class="pagination__item">
-											<a class="pagination__page" href="#">
-												<span class="visually-hidden">Страница</span>
-												3
-											</a>
+											<a class="pagination__page" href="#"><span class="visually-hidden">Страница </span>3</a>
 										</li>
 										<li><a class="pagination__step" href="#" rel="next">Вперёд</a></li>
 									</ul>
 								</nav>
-								<p class="pagination__total">
-									Всего:
-									<span class="pagination__count">24</span>
-								</p>
+								<p class="pagination__total">Всего: <span class="pagination__count">24</span></p>
 							</div>
 							<dialog
 								class="modal modal--xl vacancy-modal"
@@ -2458,18 +2346,18 @@
 									<span class="career-steps__number" aria-hidden="true">2</span>
 									<span class="career-steps__text">
 										<span class="career-steps__name">Отправьте заявку</span>
-										<span class="career-steps__description">
-											ФИО и текущая должность подставятся из профиля — останется указать телефон.
-										</span>
+										<span class="career-steps__description"
+											>ФИО и текущая должность подставятся из профиля — останется указать телефон.</span
+										>
 									</span>
 								</li>
 								<li class="career-steps__item">
 									<span class="career-steps__number" aria-hidden="true">3</span>
 									<span class="career-steps__text">
 										<span class="career-steps__name">Дождитесь ответа HR</span>
-										<span class="career-steps__description">
-											Заявки сотрудников рассматриваются раньше, чем отклики внешних кандидатов.
-										</span>
+										<span class="career-steps__description"
+											>Заявки сотрудников рассматриваются раньше, чем отклики внешних кандидатов.</span
+										>
 									</span>
 								</li>
 							</ol>
@@ -2489,8 +2377,8 @@
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									<span class="footer__social-icon">
-										<svg class="icon footer__social-svg" aria-hidden="true" focusable="false">
+									<span class="footer__social-icon"
+										><svg class="icon footer__social-svg" aria-hidden="true" focusable="false">
 											<use href="/ag-site/assets/icons/sprite.svg#icon-linkedin"></use>
 										</svg>
 									</span>
@@ -2504,13 +2392,13 @@
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									<span class="footer__social-icon">
-										<svg class="icon footer__social-svg" aria-hidden="true" focusable="false">
+									<span class="footer__social-icon"
+										><svg class="icon footer__social-svg" aria-hidden="true" focusable="false">
 											<use href="/ag-site/assets/icons/sprite.svg#icon-telegram"></use>
 										</svg>
 									</span>
 									<span class="footer__social-text">Переговорка</span>
-									<span class="visually-hidden">— Telegram, откроется в новой вкладке</span>
+									<span class="visually-hidden"> — Telegram, откроется в новой вкладке</span>
 								</a>
 							</li>
 						</ul>
@@ -2543,9 +2431,9 @@
 								</a>
 							</li>
 						</ul>
-						<a class="btn btn--general btn--m footer__suggest" href="#" data-modal-open="suggest-topic">
-							<span class="btn__text">Предложить тему</span>
-						</a>
+						<a class="btn btn--general btn--m footer__suggest" href="#" data-modal-open="suggest-topic"
+							><span class="btn__text">Предложить тему</span></a
+						>
 					</div>
 
 					<div class="footer__row footer__row--legal">
@@ -2759,8 +2647,8 @@
 				<ul class="main-menu__tiles" role="list">
 					<li>
 						<a class="main-menu__tile" href="/ag-site/" aria-current="page">
-							<span class="main-menu__tile-icon">
-								<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+							<span class="main-menu__tile-icon"
+								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 									<use href="/ag-site/assets/icons/sprite.svg#icon-home"></use>
 								</svg>
 							</span>
@@ -2769,8 +2657,8 @@
 					</li>
 					<li>
 						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon">
-								<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+							<span class="main-menu__tile-icon"
+								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 									<use href="/ag-site/assets/icons/sprite.svg#icon-news"></use>
 								</svg>
 							</span>
@@ -2779,8 +2667,8 @@
 					</li>
 					<li>
 						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon">
-								<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+							<span class="main-menu__tile-icon"
+								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 									<use href="/ag-site/assets/icons/sprite.svg#icon-directory"></use>
 								</svg>
 							</span>
@@ -2789,8 +2677,8 @@
 					</li>
 					<li>
 						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon">
-								<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+							<span class="main-menu__tile-icon"
+								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 									<use href="/ag-site/assets/icons/sprite.svg#icon-wiki"></use>
 								</svg>
 							</span>
@@ -2799,8 +2687,8 @@
 					</li>
 					<li>
 						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon">
-								<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+							<span class="main-menu__tile-icon"
+								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 									<use href="/ag-site/assets/icons/sprite.svg#icon-case"></use>
 								</svg>
 							</span>
@@ -2809,8 +2697,8 @@
 					</li>
 					<li>
 						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon">
-								<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+							<span class="main-menu__tile-icon"
+								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 									<use href="/ag-site/assets/icons/sprite.svg#icon-gallery"></use>
 								</svg>
 							</span>
@@ -2830,10 +2718,9 @@
 								height="20"
 								alt=""
 							/>
-							<span class="main-menu__row-text">
-								Гипермаркет Аптечка+
-								<span class="visually-hidden">(откроется в новой вкладке)</span>
-							</span>
+							<span class="main-menu__row-text"
+								>Гипермаркет Аптечка+<span class="visually-hidden"> (откроется в новой вкладке)</span></span
+							>
 							<svg class="icon main-menu__row-arrow" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-external-link"></use>
 							</svg>
@@ -2848,10 +2735,9 @@
 								height="20"
 								alt=""
 							/>
-							<span class="main-menu__row-text">
-								Аптеки ADEL
-								<span class="visually-hidden">(откроется в новой вкладке)</span>
-							</span>
+							<span class="main-menu__row-text"
+								>Аптеки ADEL<span class="visually-hidden"> (откроется в новой вкладке)</span></span
+							>
 							<svg class="icon main-menu__row-arrow" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-external-link"></use>
 							</svg>
@@ -2866,10 +2752,9 @@
 								height="20"
 								alt=""
 							/>
-							<span class="main-menu__row-text">
-								Аптеки Добрыя лекi
-								<span class="visually-hidden">(откроется в новой вкладке)</span>
-							</span>
+							<span class="main-menu__row-text"
+								>Аптеки Добрыя лекi<span class="visually-hidden"> (откроется в новой вкладке)</span></span
+							>
 							<svg class="icon main-menu__row-arrow" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-external-link"></use>
 							</svg>
@@ -2884,10 +2769,9 @@
 								height="20"
 								alt=""
 							/>
-							<span class="main-menu__row-text">
-								Клуб FeelinGood
-								<span class="visually-hidden">(откроется в новой вкладке)</span>
-							</span>
+							<span class="main-menu__row-text"
+								>Клуб FeelinGood<span class="visually-hidden"> (откроется в новой вкладке)</span></span
+							>
 							<svg class="icon main-menu__row-arrow" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-external-link"></use>
 							</svg>
@@ -2902,10 +2786,9 @@
 								height="20"
 								alt=""
 							/>
-							<span class="main-menu__row-text">
-								Сервис Apteka.by
-								<span class="visually-hidden">(откроется в новой вкладке)</span>
-							</span>
+							<span class="main-menu__row-text"
+								>Сервис Apteka.by<span class="visually-hidden"> (откроется в новой вкладке)</span></span
+							>
 							<svg class="icon main-menu__row-arrow" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-external-link"></use>
 							</svg>
@@ -3083,9 +2966,8 @@
 												id="vacancy-apply-resume-text"
 												data-file-text
 												data-placeholder="Прикрепите файл PDF или DOC до 5 МБ"
+												>Прикрепите файл PDF или DOC до 5 МБ</span
 											>
-												Прикрепите файл PDF или DOC до 5 МБ
-											</span>
 											<svg class="icon file-field__icon" aria-hidden="true" focusable="false">
 												<use href="/ag-site/assets/icons/sprite.svg#icon-clip"></use>
 											</svg>
@@ -3128,15 +3010,15 @@
 							<div class="checkbox">
 								<label class="checkbox__row" for="vacancy-apply-consent">
 									<input class="checkbox__input" type="checkbox" id="vacancy-apply-consent" name="consent" value="Y" required />
-									<span class="checkbox__box" aria-hidden="true">
-										<svg class="icon checkbox__check" aria-hidden="true" focusable="false">
+									<span class="checkbox__box" aria-hidden="true"
+										><svg class="icon checkbox__check" aria-hidden="true" focusable="false">
 											<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 										</svg>
 									</span>
-									<span class="checkbox__text">
-										Я согласен(-на) на обработку персональных данных в соответствии с
-										<a href="#" target="_blank" rel="noopener noreferrer">Политикой обработки персональных данных.</a>
-									</span>
+									<span class="checkbox__text"
+										>Я согласен(-на) на обработку персональных данных в соответствии с
+										<a href="#" target="_blank" rel="noopener noreferrer">Политикой обработки персональных данных.</a></span
+									>
 								</label>
 								<p class="field__error" id="vacancy-apply-consent-error" hidden>
 									<svg class="icon field__error-icon" aria-hidden="true" focusable="false">
@@ -3172,8 +3054,8 @@
 				</div>
 				<div class="modal__body">
 					<div class="modal__content">
-						<span class="modal__icon modal__icon--success">
-							<svg class="icon modal__icon-glyph" aria-hidden="true" focusable="false">
+						<span class="modal__icon modal__icon--success"
+							><svg class="icon modal__icon-glyph" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 							</svg>
 						</span>
@@ -3313,15 +3195,15 @@
 							<div class="checkbox">
 								<label class="checkbox__row" for="suggest-topic-consent">
 									<input class="checkbox__input" type="checkbox" id="suggest-topic-consent" name="consent" value="Y" required />
-									<span class="checkbox__box" aria-hidden="true">
-										<svg class="icon checkbox__check" aria-hidden="true" focusable="false">
+									<span class="checkbox__box" aria-hidden="true"
+										><svg class="icon checkbox__check" aria-hidden="true" focusable="false">
 											<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 										</svg>
 									</span>
-									<span class="checkbox__text">
-										Я согласен(-на) на обработку персональных данных в соответствии с
-										<a href="#" target="_blank" rel="noopener noreferrer">Политикой обработки персональных данных.</a>
-									</span>
+									<span class="checkbox__text"
+										>Я согласен(-на) на обработку персональных данных в соответствии с
+										<a href="#" target="_blank" rel="noopener noreferrer">Политикой обработки персональных данных.</a></span
+									>
 								</label>
 								<p class="field__error" id="suggest-topic-consent-error" hidden>
 									<svg class="icon field__error-icon" aria-hidden="true" focusable="false">
@@ -3357,8 +3239,8 @@
 				</div>
 				<div class="modal__body">
 					<div class="modal__content">
-						<span class="modal__icon modal__icon--success">
-							<svg class="icon modal__icon-glyph" aria-hidden="true" focusable="false">
+						<span class="modal__icon modal__icon--success"
+							><svg class="icon modal__icon-glyph" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 							</svg>
 						</span>
@@ -3382,8 +3264,7 @@
 			<h2 class="cookie-banner__title" id="cookie-banner-title">Обработка файлов cookie</h2>
 			<p class="cookie-banner__text">
 				Мы используем файлы cookie для корректной работы портала.
-				<br />
-				<a class="cookie-banner__link" href="#">Политика обработки файлов cookie</a>
+				<br /><a class="cookie-banner__link" href="#">Политика обработки файлов cookie</a>
 			</p>
 			<div class="cookie-banner__actions">
 				<button class="btn btn--general btn--m" type="button" data-cookie-choice="accepted">

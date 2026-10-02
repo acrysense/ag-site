@@ -181,10 +181,7 @@
 								<div class="site-search__content">
 									<div class="site-search__filters">
 										<div class="site-search__filters-head">
-											<p class="site-search__filters-title">
-												Фильтры ·
-												<span data-site-search-section-label>Справочник</span>
-											</p>
+											<p class="site-search__filters-title">Фильтры · <span data-site-search-section-label>Справочник</span></p>
 											<button class="site-search__reset" type="button" data-site-search-reset>Сбросить все</button>
 										</div>
 										<button class="site-search__summary" type="button" aria-expanded="false" data-site-search-summary>
@@ -203,9 +200,9 @@
 													data-select-search-placeholder="Найти юр. лицо"
 												>
 													<label class="select__field">
-														<span class="select__value" aria-hidden="true" data-select-value data-placeholder="Юр. лицо">
-															Юр. лицо
-														</span>
+														<span class="select__value" aria-hidden="true" data-select-value data-placeholder="Юр. лицо"
+															>Юр. лицо</span
+														>
 														<select class="select__control" name="company[]" multiple>
 															<option value="1">ООО «Адель Фарм»</option>
 															<option value="2">ООО «Аптека групп»</option>
@@ -251,9 +248,9 @@
 													data-select-search-placeholder="Найти должность"
 												>
 													<label class="select__field">
-														<span class="select__value" aria-hidden="true" data-select-value data-placeholder="Должность">
-															Должность
-														</span>
+														<span class="select__value" aria-hidden="true" data-select-value data-placeholder="Должность"
+															>Должность</span
+														>
 														<select class="select__control" name="position[]" multiple>
 															<option value="1">Провизор</option>
 															<option value="2">Фармацевт</option>
@@ -304,18 +301,16 @@
 											data-site-search-list
 										></ul>
 										<div class="site-search__empty" hidden data-site-search-empty>
-											<span class="site-search__empty-icon">
-												<svg class="icon site-search__empty-glyph" aria-hidden="true" focusable="false">
+											<span class="site-search__empty-icon"
+												><svg class="icon site-search__empty-glyph" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-search"></use>
 												</svg>
 											</span>
 											<p class="site-search__empty-title" data-site-search-empty-title></p>
 											<p class="site-search__empty-text">
 												Проверьте раскладку клавиатуры и опечатки, попробуйте сократить запрос, сбросить фильтры или выбрать другой
-												раздел
-												<span class="site-search__where site-search__where--side">слева</span>
-												<span class="site-search__where site-search__where--top">выше</span>
-												.
+												раздел <span class="site-search__where site-search__where--side">слева</span
+												><span class="site-search__where site-search__where--top">выше</span>.
 											</p>
 											<button class="btn btn--general btn--m site-search__empty-reset" type="button" data-site-search-reset>
 												Сбросить фильтры
@@ -333,8 +328,8 @@
 								</div>
 							</div>
 						</form>
-						<template data-site-search-demo="directory">
-							<div class="search-filter">
+						<template data-site-search-demo="directory"
+							><div class="search-filter">
 								<div
 									class="select"
 									data-module="Select"
@@ -429,8 +424,8 @@
 								</div>
 							</div>
 						</template>
-						<template data-site-search-demo="news">
-							<div class="search-filter">
+						<template data-site-search-demo="news"
+							><div class="search-filter">
 								<div class="date-range" data-module="DateRange" data-path="components" data-placeholder="Дата публикации">
 									<span class="date-range__native">
 										<input
@@ -478,8 +473,8 @@
 								</div>
 							</div>
 						</template>
-						<template data-site-search-demo="documents">
-							<div class="search-filter">
+						<template data-site-search-demo="documents"
+							><div class="search-filter">
 								<div class="date-range" data-module="DateRange" data-path="components" data-placeholder="Дата">
 									<span class="date-range__native">
 										<input
@@ -548,8 +543,8 @@
 								</div>
 							</div>
 						</template>
-						<template data-site-search-demo="vacancies">
-							<div class="search-filter search-filter--wide">
+						<template data-site-search-demo="vacancies"
+							><div class="search-filter search-filter--wide">
 								<div
 									class="number-range"
 									role="group"
@@ -811,8 +806,7 @@
 						>
 							<div class="birthday-calendar__top">
 								<h1 class="birthday-calendar__title" id="birthday-calendar-title">
-									Дни рождения,
-									<span class="birthday-calendar__title-muted">сентябрь</span>
+									Дни рождения, <span class="birthday-calendar__title-muted">сентябрь</span>
 								</h1>
 								<form class="birthday-calendar__filters" method="get" action="">
 									<div class="select birthday-calendar__filter" data-module="Select" data-path="components">
@@ -874,10 +868,9 @@
 								<ol class="birthday-calendar__days" role="list">
 									<li class="birthday-calendar__day is-past is-other-month is-earlier">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-08-31">
-												31
-												<span class="birthday-calendar__month-name">августа</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-08-31"
+												>31<span class="birthday-calendar__month-name"> августа</span></time
+											>
 											<span class="birthday-calendar__month-short" aria-hidden="true">авг</span>
 											<span class="birthday-calendar__weekday">понедельник</span>
 										</p>
@@ -920,10 +913,9 @@
 									</li>
 									<li class="birthday-calendar__day is-past is-earlier">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-01">
-												1
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-01"
+												>1<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">вторник</span>
 										</p>
@@ -966,20 +958,18 @@
 									</li>
 									<li class="birthday-calendar__day is-past is-earlier is-empty">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-02">
-												2
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-02"
+												>2<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">среда</span>
 										</p>
 									</li>
 									<li class="birthday-calendar__day is-past is-earlier">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-03">
-												3
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-03"
+												>3<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">четверг</span>
 										</p>
@@ -1033,10 +1023,9 @@
 									</li>
 									<li class="birthday-calendar__day is-past is-earlier">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-04">
-												4
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-04"
+												>4<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">пятница</span>
 										</p>
@@ -1062,20 +1051,18 @@
 									</li>
 									<li class="birthday-calendar__day is-weekend is-past is-earlier is-empty">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-05">
-												5
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-05"
+												>5<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">суббота</span>
 										</p>
 									</li>
 									<li class="birthday-calendar__day is-weekend is-past is-earlier">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-06">
-												6
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-06"
+												>6<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">воскресенье</span>
 										</p>
@@ -1101,10 +1088,9 @@
 									</li>
 									<li class="birthday-calendar__day is-past is-earlier">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-07">
-												7
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-07"
+												>7<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">понедельник</span>
 										</p>
@@ -1175,10 +1161,9 @@
 									</li>
 									<li class="birthday-calendar__day is-past is-earlier">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-08">
-												8
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-08"
+												>8<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">вторник</span>
 										</p>
@@ -1221,10 +1206,9 @@
 									</li>
 									<li class="birthday-calendar__day is-past is-earlier">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-09">
-												9
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-09"
+												>9<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">среда</span>
 										</p>
@@ -1250,10 +1234,9 @@
 									</li>
 									<li class="birthday-calendar__day is-past is-earlier">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-10">
-												10
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-10"
+												>10<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">четверг</span>
 										</p>
@@ -1341,10 +1324,9 @@
 									</li>
 									<li class="birthday-calendar__day is-past is-earlier">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-11">
-												11
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-11"
+												>11<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">пятница</span>
 										</p>
@@ -1387,10 +1369,9 @@
 									</li>
 									<li class="birthday-calendar__day is-weekend is-past is-earlier">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-12">
-												12
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-12"
+												>12<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">суббота</span>
 										</p>
@@ -1416,20 +1397,18 @@
 									</li>
 									<li class="birthday-calendar__day is-weekend is-past is-earlier is-empty">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-13">
-												13
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-13"
+												>13<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">воскресенье</span>
 										</p>
 									</li>
 									<li class="birthday-calendar__day is-past is-earlier">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-14">
-												14
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-14"
+												>14<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">понедельник</span>
 										</p>
@@ -1483,10 +1462,9 @@
 									</li>
 									<li class="birthday-calendar__day is-past is-earlier">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-15">
-												15
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-15"
+												>15<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">вторник</span>
 										</p>
@@ -1608,10 +1586,9 @@
 									</li>
 									<li class="birthday-calendar__day is-past is-earlier">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-16">
-												16
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-16"
+												>16<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">среда</span>
 										</p>
@@ -1654,10 +1631,9 @@
 									</li>
 									<li class="birthday-calendar__day is-past is-earlier">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-17">
-												17
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-17"
+												>17<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">четверг</span>
 										</p>
@@ -1683,10 +1659,9 @@
 									</li>
 									<li class="birthday-calendar__day is-past is-earlier">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-18">
-												18
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-18"
+												>18<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">пятница</span>
 										</p>
@@ -1740,20 +1715,18 @@
 									</li>
 									<li class="birthday-calendar__day is-weekend is-past is-earlier is-empty">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-19">
-												19
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-19"
+												>19<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">суббота</span>
 										</p>
 									</li>
 									<li class="birthday-calendar__day is-weekend is-past is-earlier">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-20">
-												20
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-20"
+												>20<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">воскресенье</span>
 										</p>
@@ -1796,10 +1769,9 @@
 									</li>
 									<li class="birthday-calendar__day is-past">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-21">
-												21
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-21"
+												>21<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">понедельник</span>
 										</p>
@@ -1825,10 +1797,9 @@
 									</li>
 									<li class="birthday-calendar__day is-past">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-22">
-												22
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-22"
+												>22<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">вторник</span>
 										</p>
@@ -1899,10 +1870,9 @@
 									</li>
 									<li class="birthday-calendar__day is-past">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-23">
-												23
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-23"
+												>23<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">среда</span>
 										</p>
@@ -1939,10 +1909,9 @@
 									</li>
 									<li class="birthday-calendar__day is-past">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-24">
-												24
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-24"
+												>24<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">четверг</span>
 										</p>
@@ -1968,10 +1937,9 @@
 									</li>
 									<li class="birthday-calendar__day is-today">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-25">
-												25
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-25"
+												>25<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">пятница</span>
 											<span class="birthday-calendar__today">Сегодня</span>
@@ -2015,10 +1983,9 @@
 									</li>
 									<li class="birthday-calendar__day is-weekend">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-26">
-												26
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-26"
+												>26<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">суббота</span>
 										</p>
@@ -2044,10 +2011,9 @@
 									</li>
 									<li class="birthday-calendar__day is-weekend">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-27">
-												27
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-27"
+												>27<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">воскресенье</span>
 										</p>
@@ -2067,10 +2033,9 @@
 									</li>
 									<li class="birthday-calendar__day">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-28">
-												28
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-28"
+												>28<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">понедельник</span>
 										</p>
@@ -2107,10 +2072,9 @@
 									</li>
 									<li class="birthday-calendar__day">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-29">
-												29
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-29"
+												>29<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">вторник</span>
 										</p>
@@ -2136,10 +2100,9 @@
 									</li>
 									<li class="birthday-calendar__day">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-09-30">
-												30
-												<span class="birthday-calendar__month-name">сентября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-09-30"
+												>30<span class="birthday-calendar__month-name"> сентября</span></time
+											>
 
 											<span class="birthday-calendar__weekday">среда</span>
 										</p>
@@ -2182,10 +2145,9 @@
 									</li>
 									<li class="birthday-calendar__day is-other-month">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-10-01">
-												1
-												<span class="birthday-calendar__month-name">октября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-10-01"
+												>1<span class="birthday-calendar__month-name"> октября</span></time
+											>
 											<span class="birthday-calendar__month-short" aria-hidden="true">окт</span>
 											<span class="birthday-calendar__weekday">четверг</span>
 										</p>
@@ -2211,10 +2173,9 @@
 									</li>
 									<li class="birthday-calendar__day is-other-month">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-10-02">
-												2
-												<span class="birthday-calendar__month-name">октября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-10-02"
+												>2<span class="birthday-calendar__month-name"> октября</span></time
+											>
 											<span class="birthday-calendar__month-short" aria-hidden="true">окт</span>
 											<span class="birthday-calendar__weekday">пятница</span>
 										</p>
@@ -2234,20 +2195,18 @@
 									</li>
 									<li class="birthday-calendar__day is-weekend is-other-month is-empty">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-10-03">
-												3
-												<span class="birthday-calendar__month-name">октября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-10-03"
+												>3<span class="birthday-calendar__month-name"> октября</span></time
+											>
 											<span class="birthday-calendar__month-short" aria-hidden="true">окт</span>
 											<span class="birthday-calendar__weekday">суббота</span>
 										</p>
 									</li>
 									<li class="birthday-calendar__day is-weekend is-other-month">
 										<p class="birthday-calendar__date">
-											<time class="birthday-calendar__num" datetime="2026-10-04">
-												4
-												<span class="birthday-calendar__month-name">октября</span>
-											</time>
+											<time class="birthday-calendar__num" datetime="2026-10-04"
+												>4<span class="birthday-calendar__month-name"> октября</span></time
+											>
 											<span class="birthday-calendar__month-short" aria-hidden="true">окт</span>
 											<span class="birthday-calendar__weekday">воскресенье</span>
 										</p>
@@ -2504,8 +2463,8 @@
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									<span class="footer__social-icon">
-										<svg class="icon footer__social-svg" aria-hidden="true" focusable="false">
+									<span class="footer__social-icon"
+										><svg class="icon footer__social-svg" aria-hidden="true" focusable="false">
 											<use href="/ag-site/assets/icons/sprite.svg#icon-linkedin"></use>
 										</svg>
 									</span>
@@ -2519,13 +2478,13 @@
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									<span class="footer__social-icon">
-										<svg class="icon footer__social-svg" aria-hidden="true" focusable="false">
+									<span class="footer__social-icon"
+										><svg class="icon footer__social-svg" aria-hidden="true" focusable="false">
 											<use href="/ag-site/assets/icons/sprite.svg#icon-telegram"></use>
 										</svg>
 									</span>
 									<span class="footer__social-text">Переговорка</span>
-									<span class="visually-hidden">— Telegram, откроется в новой вкладке</span>
+									<span class="visually-hidden"> — Telegram, откроется в новой вкладке</span>
 								</a>
 							</li>
 						</ul>
@@ -2558,9 +2517,9 @@
 								</a>
 							</li>
 						</ul>
-						<a class="btn btn--general btn--m footer__suggest" href="#" data-modal-open="suggest-topic">
-							<span class="btn__text">Предложить тему</span>
-						</a>
+						<a class="btn btn--general btn--m footer__suggest" href="#" data-modal-open="suggest-topic"
+							><span class="btn__text">Предложить тему</span></a
+						>
 					</div>
 
 					<div class="footer__row footer__row--legal">
@@ -2774,8 +2733,8 @@
 				<ul class="main-menu__tiles" role="list">
 					<li>
 						<a class="main-menu__tile" href="/ag-site/" aria-current="page">
-							<span class="main-menu__tile-icon">
-								<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+							<span class="main-menu__tile-icon"
+								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 									<use href="/ag-site/assets/icons/sprite.svg#icon-home"></use>
 								</svg>
 							</span>
@@ -2784,8 +2743,8 @@
 					</li>
 					<li>
 						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon">
-								<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+							<span class="main-menu__tile-icon"
+								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 									<use href="/ag-site/assets/icons/sprite.svg#icon-news"></use>
 								</svg>
 							</span>
@@ -2794,8 +2753,8 @@
 					</li>
 					<li>
 						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon">
-								<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+							<span class="main-menu__tile-icon"
+								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 									<use href="/ag-site/assets/icons/sprite.svg#icon-directory"></use>
 								</svg>
 							</span>
@@ -2804,8 +2763,8 @@
 					</li>
 					<li>
 						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon">
-								<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+							<span class="main-menu__tile-icon"
+								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 									<use href="/ag-site/assets/icons/sprite.svg#icon-wiki"></use>
 								</svg>
 							</span>
@@ -2814,8 +2773,8 @@
 					</li>
 					<li>
 						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon">
-								<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+							<span class="main-menu__tile-icon"
+								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 									<use href="/ag-site/assets/icons/sprite.svg#icon-case"></use>
 								</svg>
 							</span>
@@ -2824,8 +2783,8 @@
 					</li>
 					<li>
 						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon">
-								<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+							<span class="main-menu__tile-icon"
+								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 									<use href="/ag-site/assets/icons/sprite.svg#icon-gallery"></use>
 								</svg>
 							</span>
@@ -2845,10 +2804,9 @@
 								height="20"
 								alt=""
 							/>
-							<span class="main-menu__row-text">
-								Гипермаркет Аптечка+
-								<span class="visually-hidden">(откроется в новой вкладке)</span>
-							</span>
+							<span class="main-menu__row-text"
+								>Гипермаркет Аптечка+<span class="visually-hidden"> (откроется в новой вкладке)</span></span
+							>
 							<svg class="icon main-menu__row-arrow" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-external-link"></use>
 							</svg>
@@ -2863,10 +2821,9 @@
 								height="20"
 								alt=""
 							/>
-							<span class="main-menu__row-text">
-								Аптеки ADEL
-								<span class="visually-hidden">(откроется в новой вкладке)</span>
-							</span>
+							<span class="main-menu__row-text"
+								>Аптеки ADEL<span class="visually-hidden"> (откроется в новой вкладке)</span></span
+							>
 							<svg class="icon main-menu__row-arrow" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-external-link"></use>
 							</svg>
@@ -2881,10 +2838,9 @@
 								height="20"
 								alt=""
 							/>
-							<span class="main-menu__row-text">
-								Аптеки Добрыя лекi
-								<span class="visually-hidden">(откроется в новой вкладке)</span>
-							</span>
+							<span class="main-menu__row-text"
+								>Аптеки Добрыя лекi<span class="visually-hidden"> (откроется в новой вкладке)</span></span
+							>
 							<svg class="icon main-menu__row-arrow" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-external-link"></use>
 							</svg>
@@ -2899,10 +2855,9 @@
 								height="20"
 								alt=""
 							/>
-							<span class="main-menu__row-text">
-								Клуб FeelinGood
-								<span class="visually-hidden">(откроется в новой вкладке)</span>
-							</span>
+							<span class="main-menu__row-text"
+								>Клуб FeelinGood<span class="visually-hidden"> (откроется в новой вкладке)</span></span
+							>
 							<svg class="icon main-menu__row-arrow" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-external-link"></use>
 							</svg>
@@ -2917,10 +2872,9 @@
 								height="20"
 								alt=""
 							/>
-							<span class="main-menu__row-text">
-								Сервис Apteka.by
-								<span class="visually-hidden">(откроется в новой вкладке)</span>
-							</span>
+							<span class="main-menu__row-text"
+								>Сервис Apteka.by<span class="visually-hidden"> (откроется в новой вкладке)</span></span
+							>
 							<svg class="icon main-menu__row-arrow" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-external-link"></use>
 							</svg>
@@ -3118,15 +3072,15 @@
 							<div class="checkbox">
 								<label class="checkbox__row" for="suggest-topic-consent">
 									<input class="checkbox__input" type="checkbox" id="suggest-topic-consent" name="consent" value="Y" required />
-									<span class="checkbox__box" aria-hidden="true">
-										<svg class="icon checkbox__check" aria-hidden="true" focusable="false">
+									<span class="checkbox__box" aria-hidden="true"
+										><svg class="icon checkbox__check" aria-hidden="true" focusable="false">
 											<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 										</svg>
 									</span>
-									<span class="checkbox__text">
-										Я согласен(-на) на обработку персональных данных в соответствии с
-										<a href="#" target="_blank" rel="noopener noreferrer">Политикой обработки персональных данных.</a>
-									</span>
+									<span class="checkbox__text"
+										>Я согласен(-на) на обработку персональных данных в соответствии с
+										<a href="#" target="_blank" rel="noopener noreferrer">Политикой обработки персональных данных.</a></span
+									>
 								</label>
 								<p class="field__error" id="suggest-topic-consent-error" hidden>
 									<svg class="icon field__error-icon" aria-hidden="true" focusable="false">
@@ -3162,8 +3116,8 @@
 				</div>
 				<div class="modal__body">
 					<div class="modal__content">
-						<span class="modal__icon modal__icon--success">
-							<svg class="icon modal__icon-glyph" aria-hidden="true" focusable="false">
+						<span class="modal__icon modal__icon--success"
+							><svg class="icon modal__icon-glyph" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 							</svg>
 						</span>
@@ -3187,8 +3141,7 @@
 			<h2 class="cookie-banner__title" id="cookie-banner-title">Обработка файлов cookie</h2>
 			<p class="cookie-banner__text">
 				Мы используем файлы cookie для корректной работы портала.
-				<br />
-				<a class="cookie-banner__link" href="#">Политика обработки файлов cookie</a>
+				<br /><a class="cookie-banner__link" href="#">Политика обработки файлов cookie</a>
 			</p>
 			<div class="cookie-banner__actions">
 				<button class="btn btn--general btn--m" type="button" data-cookie-choice="accepted">

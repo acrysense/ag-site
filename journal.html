@@ -181,10 +181,7 @@
 								<div class="site-search__content">
 									<div class="site-search__filters">
 										<div class="site-search__filters-head">
-											<p class="site-search__filters-title">
-												Фильтры ·
-												<span data-site-search-section-label>Справочник</span>
-											</p>
+											<p class="site-search__filters-title">Фильтры · <span data-site-search-section-label>Справочник</span></p>
 											<button class="site-search__reset" type="button" data-site-search-reset>Сбросить все</button>
 										</div>
 										<button class="site-search__summary" type="button" aria-expanded="false" data-site-search-summary>
@@ -203,9 +200,9 @@
 													data-select-search-placeholder="Найти юр. лицо"
 												>
 													<label class="select__field">
-														<span class="select__value" aria-hidden="true" data-select-value data-placeholder="Юр. лицо">
-															Юр. лицо
-														</span>
+														<span class="select__value" aria-hidden="true" data-select-value data-placeholder="Юр. лицо"
+															>Юр. лицо</span
+														>
 														<select class="select__control" name="company[]" multiple>
 															<option value="1">ООО «Адель Фарм»</option>
 															<option value="2">ООО «Аптека групп»</option>
@@ -251,9 +248,9 @@
 													data-select-search-placeholder="Найти должность"
 												>
 													<label class="select__field">
-														<span class="select__value" aria-hidden="true" data-select-value data-placeholder="Должность">
-															Должность
-														</span>
+														<span class="select__value" aria-hidden="true" data-select-value data-placeholder="Должность"
+															>Должность</span
+														>
 														<select class="select__control" name="position[]" multiple>
 															<option value="1">Провизор</option>
 															<option value="2">Фармацевт</option>
@@ -304,18 +301,16 @@
 											data-site-search-list
 										></ul>
 										<div class="site-search__empty" hidden data-site-search-empty>
-											<span class="site-search__empty-icon">
-												<svg class="icon site-search__empty-glyph" aria-hidden="true" focusable="false">
+											<span class="site-search__empty-icon"
+												><svg class="icon site-search__empty-glyph" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-search"></use>
 												</svg>
 											</span>
 											<p class="site-search__empty-title" data-site-search-empty-title></p>
 											<p class="site-search__empty-text">
 												Проверьте раскладку клавиатуры и опечатки, попробуйте сократить запрос, сбросить фильтры или выбрать другой
-												раздел
-												<span class="site-search__where site-search__where--side">слева</span>
-												<span class="site-search__where site-search__where--top">выше</span>
-												.
+												раздел <span class="site-search__where site-search__where--side">слева</span
+												><span class="site-search__where site-search__where--top">выше</span>.
 											</p>
 											<button class="btn btn--general btn--m site-search__empty-reset" type="button" data-site-search-reset>
 												Сбросить фильтры
@@ -333,8 +328,8 @@
 								</div>
 							</div>
 						</form>
-						<template data-site-search-demo="directory">
-							<div class="search-filter">
+						<template data-site-search-demo="directory"
+							><div class="search-filter">
 								<div
 									class="select"
 									data-module="Select"
@@ -429,8 +424,8 @@
 								</div>
 							</div>
 						</template>
-						<template data-site-search-demo="news">
-							<div class="search-filter">
+						<template data-site-search-demo="news"
+							><div class="search-filter">
 								<div class="date-range" data-module="DateRange" data-path="components" data-placeholder="Дата публикации">
 									<span class="date-range__native">
 										<input
@@ -478,8 +473,8 @@
 								</div>
 							</div>
 						</template>
-						<template data-site-search-demo="documents">
-							<div class="search-filter">
+						<template data-site-search-demo="documents"
+							><div class="search-filter">
 								<div class="date-range" data-module="DateRange" data-path="components" data-placeholder="Дата">
 									<span class="date-range__native">
 										<input
@@ -548,8 +543,8 @@
 								</div>
 							</div>
 						</template>
-						<template data-site-search-demo="vacancies">
-							<div class="search-filter search-filter--wide">
+						<template data-site-search-demo="vacancies"
+							><div class="search-filter search-filter--wide">
 								<div
 									class="number-range"
 									role="group"
@@ -849,7 +844,7 @@
 										aria-haspopup="true"
 										aria-controls="journal-sort-2"
 									>
-										<span class="visually-hidden">Сортировка:</span>
+										<span class="visually-hidden">Сортировка: </span>
 										Новые в начале
 										<svg class="icon sort-menu__arrow" aria-hidden="true" focusable="false">
 											<use href="/ag-site/assets/icons/sprite.svg#icon-chevron-down"></use>
@@ -867,9 +862,8 @@
 										</div>
 										<ul class="sort-menu__list" role="list">
 											<li>
-												<a class="sort-menu__option" href="#" aria-current="true">
-													Новые в начале
-													<svg class="icon sort-menu__check" aria-hidden="true" focusable="false">
+												<a class="sort-menu__option" href="#" aria-current="true"
+													>Новые в начале<svg class="icon sort-menu__check" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 													</svg>
 												</a>
@@ -898,19 +892,19 @@
 											<h3 class="journal-card__title"><a class="journal-card__link" href="#">HR-дайджест. Итоги 2025</a></h3>
 										</div>
 										<div class="journal-card__actions">
-											<a class="btn btn--light btn--s journal-card__read" href="#">
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+											<a class="btn btn--light btn--s journal-card__read" href="#"
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-book"></use>
 												</svg>
-												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span>
-											</a>
-											<a class="btn btn--light btn--s" href="#" download>
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
+											>
+											<a class="btn btn--light btn--s" href="#" download
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
-												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025»,</span>
-												<span class="btn__text">1.2Гб</span>
-											</a>
+												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025», </span
+												><span class="btn__text">1.2Гб</span></a
+											>
 											<button
 												class="btn btn--light btn--s like-button"
 												type="button"
@@ -924,8 +918,7 @@
 												<svg class="icon btn__icon like-button__icon like-button__icon--on" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-like-filled"></use>
 												</svg>
-												<span class="visually-hidden">Нравится,</span>
-												<span class="btn__text" data-like-count>24</span>
+												<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>24</span>
 											</button>
 										</div>
 									</article>
@@ -948,19 +941,19 @@
 											<h3 class="journal-card__title"><a class="journal-card__link" href="#">HR-дайджест. Итоги 2025</a></h3>
 										</div>
 										<div class="journal-card__actions">
-											<a class="btn btn--light btn--s journal-card__read" href="#">
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+											<a class="btn btn--light btn--s journal-card__read" href="#"
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-book"></use>
 												</svg>
-												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span>
-											</a>
-											<a class="btn btn--light btn--s" href="#" download>
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
+											>
+											<a class="btn btn--light btn--s" href="#" download
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
-												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025»,</span>
-												<span class="btn__text">1.2Гб</span>
-											</a>
+												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025», </span
+												><span class="btn__text">1.2Гб</span></a
+											>
 											<button
 												class="btn btn--light btn--s like-button"
 												type="button"
@@ -974,8 +967,7 @@
 												<svg class="icon btn__icon like-button__icon like-button__icon--on" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-like-filled"></use>
 												</svg>
-												<span class="visually-hidden">Нравится,</span>
-												<span class="btn__text" data-like-count>24</span>
+												<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>24</span>
 											</button>
 										</div>
 									</article>
@@ -998,19 +990,19 @@
 											<h3 class="journal-card__title"><a class="journal-card__link" href="#">HR-дайджест. Итоги 2025</a></h3>
 										</div>
 										<div class="journal-card__actions">
-											<a class="btn btn--light btn--s journal-card__read" href="#">
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+											<a class="btn btn--light btn--s journal-card__read" href="#"
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-book"></use>
 												</svg>
-												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span>
-											</a>
-											<a class="btn btn--light btn--s" href="#" download>
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
+											>
+											<a class="btn btn--light btn--s" href="#" download
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
-												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025»,</span>
-												<span class="btn__text">1.2Гб</span>
-											</a>
+												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025», </span
+												><span class="btn__text">1.2Гб</span></a
+											>
 											<button
 												class="btn btn--light btn--s like-button"
 												type="button"
@@ -1024,8 +1016,7 @@
 												<svg class="icon btn__icon like-button__icon like-button__icon--on" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-like-filled"></use>
 												</svg>
-												<span class="visually-hidden">Нравится,</span>
-												<span class="btn__text" data-like-count>24</span>
+												<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>24</span>
 											</button>
 										</div>
 									</article>
@@ -1048,19 +1039,19 @@
 											<h3 class="journal-card__title"><a class="journal-card__link" href="#">HR-дайджест. Итоги 2025</a></h3>
 										</div>
 										<div class="journal-card__actions">
-											<a class="btn btn--light btn--s journal-card__read" href="#">
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+											<a class="btn btn--light btn--s journal-card__read" href="#"
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-book"></use>
 												</svg>
-												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span>
-											</a>
-											<a class="btn btn--light btn--s" href="#" download>
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
+											>
+											<a class="btn btn--light btn--s" href="#" download
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
-												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025»,</span>
-												<span class="btn__text">1.2Гб</span>
-											</a>
+												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025», </span
+												><span class="btn__text">1.2Гб</span></a
+											>
 											<button
 												class="btn btn--light btn--s like-button"
 												type="button"
@@ -1074,8 +1065,7 @@
 												<svg class="icon btn__icon like-button__icon like-button__icon--on" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-like-filled"></use>
 												</svg>
-												<span class="visually-hidden">Нравится,</span>
-												<span class="btn__text" data-like-count>24</span>
+												<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>24</span>
 											</button>
 										</div>
 									</article>
@@ -1098,19 +1088,19 @@
 											<h3 class="journal-card__title"><a class="journal-card__link" href="#">HR-дайджест. Итоги 2025</a></h3>
 										</div>
 										<div class="journal-card__actions">
-											<a class="btn btn--light btn--s journal-card__read" href="#">
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+											<a class="btn btn--light btn--s journal-card__read" href="#"
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-book"></use>
 												</svg>
-												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span>
-											</a>
-											<a class="btn btn--light btn--s" href="#" download>
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
+											>
+											<a class="btn btn--light btn--s" href="#" download
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
-												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025»,</span>
-												<span class="btn__text">1.2Гб</span>
-											</a>
+												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025», </span
+												><span class="btn__text">1.2Гб</span></a
+											>
 											<button
 												class="btn btn--light btn--s like-button"
 												type="button"
@@ -1124,8 +1114,7 @@
 												<svg class="icon btn__icon like-button__icon like-button__icon--on" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-like-filled"></use>
 												</svg>
-												<span class="visually-hidden">Нравится,</span>
-												<span class="btn__text" data-like-count>24</span>
+												<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>24</span>
 											</button>
 										</div>
 									</article>
@@ -1148,19 +1137,19 @@
 											<h3 class="journal-card__title"><a class="journal-card__link" href="#">HR-дайджест. Итоги 2025</a></h3>
 										</div>
 										<div class="journal-card__actions">
-											<a class="btn btn--light btn--s journal-card__read" href="#">
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+											<a class="btn btn--light btn--s journal-card__read" href="#"
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-book"></use>
 												</svg>
-												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span>
-											</a>
-											<a class="btn btn--light btn--s" href="#" download>
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
+											>
+											<a class="btn btn--light btn--s" href="#" download
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
-												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025»,</span>
-												<span class="btn__text">1.2Гб</span>
-											</a>
+												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025», </span
+												><span class="btn__text">1.2Гб</span></a
+											>
 											<button
 												class="btn btn--light btn--s like-button"
 												type="button"
@@ -1174,8 +1163,7 @@
 												<svg class="icon btn__icon like-button__icon like-button__icon--on" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-like-filled"></use>
 												</svg>
-												<span class="visually-hidden">Нравится,</span>
-												<span class="btn__text" data-like-count>24</span>
+												<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>24</span>
 											</button>
 										</div>
 									</article>
@@ -1198,19 +1186,19 @@
 											<h3 class="journal-card__title"><a class="journal-card__link" href="#">HR-дайджест. Итоги 2025</a></h3>
 										</div>
 										<div class="journal-card__actions">
-											<a class="btn btn--light btn--s journal-card__read" href="#">
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+											<a class="btn btn--light btn--s journal-card__read" href="#"
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-book"></use>
 												</svg>
-												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span>
-											</a>
-											<a class="btn btn--light btn--s" href="#" download>
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
+											>
+											<a class="btn btn--light btn--s" href="#" download
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
-												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025»,</span>
-												<span class="btn__text">1.2Гб</span>
-											</a>
+												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025», </span
+												><span class="btn__text">1.2Гб</span></a
+											>
 											<button
 												class="btn btn--light btn--s like-button"
 												type="button"
@@ -1224,8 +1212,7 @@
 												<svg class="icon btn__icon like-button__icon like-button__icon--on" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-like-filled"></use>
 												</svg>
-												<span class="visually-hidden">Нравится,</span>
-												<span class="btn__text" data-like-count>24</span>
+												<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>24</span>
 											</button>
 										</div>
 									</article>
@@ -1248,19 +1235,19 @@
 											<h3 class="journal-card__title"><a class="journal-card__link" href="#">HR-дайджест. Итоги 2025</a></h3>
 										</div>
 										<div class="journal-card__actions">
-											<a class="btn btn--light btn--s journal-card__read" href="#">
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+											<a class="btn btn--light btn--s journal-card__read" href="#"
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-book"></use>
 												</svg>
-												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span>
-											</a>
-											<a class="btn btn--light btn--s" href="#" download>
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
+											>
+											<a class="btn btn--light btn--s" href="#" download
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
-												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025»,</span>
-												<span class="btn__text">1.2Гб</span>
-											</a>
+												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025», </span
+												><span class="btn__text">1.2Гб</span></a
+											>
 											<button
 												class="btn btn--light btn--s like-button"
 												type="button"
@@ -1274,8 +1261,7 @@
 												<svg class="icon btn__icon like-button__icon like-button__icon--on" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-like-filled"></use>
 												</svg>
-												<span class="visually-hidden">Нравится,</span>
-												<span class="btn__text" data-like-count>24</span>
+												<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>24</span>
 											</button>
 										</div>
 									</article>
@@ -1298,19 +1284,19 @@
 											<h3 class="journal-card__title"><a class="journal-card__link" href="#">HR-дайджест. Итоги 2025</a></h3>
 										</div>
 										<div class="journal-card__actions">
-											<a class="btn btn--light btn--s journal-card__read" href="#">
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+											<a class="btn btn--light btn--s journal-card__read" href="#"
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-book"></use>
 												</svg>
-												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span>
-											</a>
-											<a class="btn btn--light btn--s" href="#" download>
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
+											>
+											<a class="btn btn--light btn--s" href="#" download
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
-												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025»,</span>
-												<span class="btn__text">1.2Гб</span>
-											</a>
+												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025», </span
+												><span class="btn__text">1.2Гб</span></a
+											>
 											<button
 												class="btn btn--light btn--s like-button"
 												type="button"
@@ -1324,8 +1310,7 @@
 												<svg class="icon btn__icon like-button__icon like-button__icon--on" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-like-filled"></use>
 												</svg>
-												<span class="visually-hidden">Нравится,</span>
-												<span class="btn__text" data-like-count>24</span>
+												<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>24</span>
 											</button>
 										</div>
 									</article>
@@ -1348,19 +1333,19 @@
 											<h3 class="journal-card__title"><a class="journal-card__link" href="#">HR-дайджест. Итоги 2025</a></h3>
 										</div>
 										<div class="journal-card__actions">
-											<a class="btn btn--light btn--s journal-card__read" href="#">
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+											<a class="btn btn--light btn--s journal-card__read" href="#"
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-book"></use>
 												</svg>
-												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span>
-											</a>
-											<a class="btn btn--light btn--s" href="#" download>
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
+											>
+											<a class="btn btn--light btn--s" href="#" download
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
-												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025»,</span>
-												<span class="btn__text">1.2Гб</span>
-											</a>
+												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025», </span
+												><span class="btn__text">1.2Гб</span></a
+											>
 											<button
 												class="btn btn--light btn--s like-button"
 												type="button"
@@ -1374,8 +1359,7 @@
 												<svg class="icon btn__icon like-button__icon like-button__icon--on" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-like-filled"></use>
 												</svg>
-												<span class="visually-hidden">Нравится,</span>
-												<span class="btn__text" data-like-count>24</span>
+												<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>24</span>
 											</button>
 										</div>
 									</article>
@@ -1398,19 +1382,19 @@
 											<h3 class="journal-card__title"><a class="journal-card__link" href="#">HR-дайджест. Итоги 2025</a></h3>
 										</div>
 										<div class="journal-card__actions">
-											<a class="btn btn--light btn--s journal-card__read" href="#">
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+											<a class="btn btn--light btn--s journal-card__read" href="#"
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-book"></use>
 												</svg>
-												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span>
-											</a>
-											<a class="btn btn--light btn--s" href="#" download>
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
+											>
+											<a class="btn btn--light btn--s" href="#" download
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
-												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025»,</span>
-												<span class="btn__text">1.2Гб</span>
-											</a>
+												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025», </span
+												><span class="btn__text">1.2Гб</span></a
+											>
 											<button
 												class="btn btn--light btn--s like-button"
 												type="button"
@@ -1424,8 +1408,7 @@
 												<svg class="icon btn__icon like-button__icon like-button__icon--on" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-like-filled"></use>
 												</svg>
-												<span class="visually-hidden">Нравится,</span>
-												<span class="btn__text" data-like-count>24</span>
+												<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>24</span>
 											</button>
 										</div>
 									</article>
@@ -1448,19 +1431,19 @@
 											<h3 class="journal-card__title"><a class="journal-card__link" href="#">HR-дайджест. Итоги 2025</a></h3>
 										</div>
 										<div class="journal-card__actions">
-											<a class="btn btn--light btn--s journal-card__read" href="#">
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+											<a class="btn btn--light btn--s journal-card__read" href="#"
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-book"></use>
 												</svg>
-												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span>
-											</a>
-											<a class="btn btn--light btn--s" href="#" download>
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
+											>
+											<a class="btn btn--light btn--s" href="#" download
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
-												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025»,</span>
-												<span class="btn__text">1.2Гб</span>
-											</a>
+												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025», </span
+												><span class="btn__text">1.2Гб</span></a
+											>
 											<button
 												class="btn btn--light btn--s like-button"
 												type="button"
@@ -1474,8 +1457,7 @@
 												<svg class="icon btn__icon like-button__icon like-button__icon--on" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-like-filled"></use>
 												</svg>
-												<span class="visually-hidden">Нравится,</span>
-												<span class="btn__text" data-like-count>24</span>
+												<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>24</span>
 											</button>
 										</div>
 									</article>
@@ -1498,19 +1480,19 @@
 											<h3 class="journal-card__title"><a class="journal-card__link" href="#">HR-дайджест. Итоги 2025</a></h3>
 										</div>
 										<div class="journal-card__actions">
-											<a class="btn btn--light btn--s journal-card__read" href="#">
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+											<a class="btn btn--light btn--s journal-card__read" href="#"
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-book"></use>
 												</svg>
-												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span>
-											</a>
-											<a class="btn btn--light btn--s" href="#" download>
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
+											>
+											<a class="btn btn--light btn--s" href="#" download
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
-												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025»,</span>
-												<span class="btn__text">1.2Гб</span>
-											</a>
+												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025», </span
+												><span class="btn__text">1.2Гб</span></a
+											>
 											<button
 												class="btn btn--light btn--s like-button"
 												type="button"
@@ -1524,8 +1506,7 @@
 												<svg class="icon btn__icon like-button__icon like-button__icon--on" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-like-filled"></use>
 												</svg>
-												<span class="visually-hidden">Нравится,</span>
-												<span class="btn__text" data-like-count>24</span>
+												<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>24</span>
 											</button>
 										</div>
 									</article>
@@ -1548,19 +1529,19 @@
 											<h3 class="journal-card__title"><a class="journal-card__link" href="#">HR-дайджест. Итоги 2025</a></h3>
 										</div>
 										<div class="journal-card__actions">
-											<a class="btn btn--light btn--s journal-card__read" href="#">
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+											<a class="btn btn--light btn--s journal-card__read" href="#"
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-book"></use>
 												</svg>
-												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span>
-											</a>
-											<a class="btn btn--light btn--s" href="#" download>
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
+											>
+											<a class="btn btn--light btn--s" href="#" download
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
-												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025»,</span>
-												<span class="btn__text">1.2Гб</span>
-											</a>
+												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025», </span
+												><span class="btn__text">1.2Гб</span></a
+											>
 											<button
 												class="btn btn--light btn--s like-button"
 												type="button"
@@ -1574,8 +1555,7 @@
 												<svg class="icon btn__icon like-button__icon like-button__icon--on" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-like-filled"></use>
 												</svg>
-												<span class="visually-hidden">Нравится,</span>
-												<span class="btn__text" data-like-count>24</span>
+												<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>24</span>
 											</button>
 										</div>
 									</article>
@@ -1598,19 +1578,19 @@
 											<h3 class="journal-card__title"><a class="journal-card__link" href="#">HR-дайджест. Итоги 2025</a></h3>
 										</div>
 										<div class="journal-card__actions">
-											<a class="btn btn--light btn--s journal-card__read" href="#">
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+											<a class="btn btn--light btn--s journal-card__read" href="#"
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-book"></use>
 												</svg>
-												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span>
-											</a>
-											<a class="btn btn--light btn--s" href="#" download>
-												<svg class="icon btn__icon" aria-hidden="true" focusable="false">
+												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
+											>
+											<a class="btn btn--light btn--s" href="#" download
+												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
-												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025»,</span>
-												<span class="btn__text">1.2Гб</span>
-											</a>
+												<span class="visually-hidden">Скачать «HR-дайджест. Итоги 2025», </span
+												><span class="btn__text">1.2Гб</span></a
+											>
 											<button
 												class="btn btn--light btn--s like-button"
 												type="button"
@@ -1624,8 +1604,7 @@
 												<svg class="icon btn__icon like-button__icon like-button__icon--on" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-like-filled"></use>
 												</svg>
-												<span class="visually-hidden">Нравится,</span>
-												<span class="btn__text" data-like-count>24</span>
+												<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>24</span>
 											</button>
 										</div>
 									</article>
@@ -1636,63 +1615,38 @@
 									<ul class="pagination__list" role="list">
 										<li><a class="pagination__step" href="#" rel="prev">Назад</a></li>
 										<li class="pagination__item">
-											<a class="pagination__page" href="#">
-												<span class="visually-hidden">Страница</span>
-												1
-											</a>
+											<a class="pagination__page" href="#"><span class="visually-hidden">Страница </span>1</a>
 										</li>
 										<li class="pagination__item">
-											<span class="pagination__page is-current" aria-current="page">
-												<span class="visually-hidden">Страница</span>
-												2
-											</span>
+											<span class="pagination__page is-current" aria-current="page"
+												><span class="visually-hidden">Страница </span>2</span
+											>
 										</li>
 										<li class="pagination__item">
-											<a class="pagination__page" href="#">
-												<span class="visually-hidden">Страница</span>
-												3
-											</a>
+											<a class="pagination__page" href="#"><span class="visually-hidden">Страница </span>3</a>
 										</li>
 										<li class="pagination__item pagination__item--far">
-											<a class="pagination__page" href="#">
-												<span class="visually-hidden">Страница</span>
-												4
-											</a>
+											<a class="pagination__page" href="#"><span class="visually-hidden">Страница </span>4</a>
 										</li>
 										<li class="pagination__item">
 											<span class="pagination__gap" aria-hidden="true">…</span>
 										</li>
 										<li class="pagination__item pagination__item--far">
-											<a class="pagination__page" href="#">
-												<span class="visually-hidden">Страница</span>
-												22
-											</a>
+											<a class="pagination__page" href="#"><span class="visually-hidden">Страница </span>22</a>
 										</li>
 										<li class="pagination__item pagination__item--far">
-											<a class="pagination__page" href="#">
-												<span class="visually-hidden">Страница</span>
-												23
-											</a>
+											<a class="pagination__page" href="#"><span class="visually-hidden">Страница </span>23</a>
 										</li>
 										<li class="pagination__item pagination__item--far">
-											<a class="pagination__page" href="#">
-												<span class="visually-hidden">Страница</span>
-												24
-											</a>
+											<a class="pagination__page" href="#"><span class="visually-hidden">Страница </span>24</a>
 										</li>
 										<li class="pagination__item">
-											<a class="pagination__page" href="#">
-												<span class="visually-hidden">Страница</span>
-												25
-											</a>
+											<a class="pagination__page" href="#"><span class="visually-hidden">Страница </span>25</a>
 										</li>
 										<li><a class="pagination__step" href="#" rel="next">Вперёд</a></li>
 									</ul>
 								</nav>
-								<p class="pagination__total">
-									Всего:
-									<span class="pagination__count">835</span>
-								</p>
+								<p class="pagination__total">Всего: <span class="pagination__count">835</span></p>
 							</div>
 						</section>
 					</div>
@@ -1710,8 +1664,8 @@
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									<span class="footer__social-icon">
-										<svg class="icon footer__social-svg" aria-hidden="true" focusable="false">
+									<span class="footer__social-icon"
+										><svg class="icon footer__social-svg" aria-hidden="true" focusable="false">
 											<use href="/ag-site/assets/icons/sprite.svg#icon-linkedin"></use>
 										</svg>
 									</span>
@@ -1725,13 +1679,13 @@
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									<span class="footer__social-icon">
-										<svg class="icon footer__social-svg" aria-hidden="true" focusable="false">
+									<span class="footer__social-icon"
+										><svg class="icon footer__social-svg" aria-hidden="true" focusable="false">
 											<use href="/ag-site/assets/icons/sprite.svg#icon-telegram"></use>
 										</svg>
 									</span>
 									<span class="footer__social-text">Переговорка</span>
-									<span class="visually-hidden">— Telegram, откроется в новой вкладке</span>
+									<span class="visually-hidden"> — Telegram, откроется в новой вкладке</span>
 								</a>
 							</li>
 						</ul>
@@ -1764,9 +1718,9 @@
 								</a>
 							</li>
 						</ul>
-						<a class="btn btn--general btn--m footer__suggest" href="#" data-modal-open="suggest-topic">
-							<span class="btn__text">Предложить тему</span>
-						</a>
+						<a class="btn btn--general btn--m footer__suggest" href="#" data-modal-open="suggest-topic"
+							><span class="btn__text">Предложить тему</span></a
+						>
 					</div>
 
 					<div class="footer__row footer__row--legal">
@@ -1980,8 +1934,8 @@
 				<ul class="main-menu__tiles" role="list">
 					<li>
 						<a class="main-menu__tile" href="/ag-site/" aria-current="page">
-							<span class="main-menu__tile-icon">
-								<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+							<span class="main-menu__tile-icon"
+								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 									<use href="/ag-site/assets/icons/sprite.svg#icon-home"></use>
 								</svg>
 							</span>
@@ -1990,8 +1944,8 @@
 					</li>
 					<li>
 						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon">
-								<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+							<span class="main-menu__tile-icon"
+								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 									<use href="/ag-site/assets/icons/sprite.svg#icon-news"></use>
 								</svg>
 							</span>
@@ -2000,8 +1954,8 @@
 					</li>
 					<li>
 						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon">
-								<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+							<span class="main-menu__tile-icon"
+								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 									<use href="/ag-site/assets/icons/sprite.svg#icon-directory"></use>
 								</svg>
 							</span>
@@ -2010,8 +1964,8 @@
 					</li>
 					<li>
 						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon">
-								<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+							<span class="main-menu__tile-icon"
+								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 									<use href="/ag-site/assets/icons/sprite.svg#icon-wiki"></use>
 								</svg>
 							</span>
@@ -2020,8 +1974,8 @@
 					</li>
 					<li>
 						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon">
-								<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+							<span class="main-menu__tile-icon"
+								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 									<use href="/ag-site/assets/icons/sprite.svg#icon-case"></use>
 								</svg>
 							</span>
@@ -2030,8 +1984,8 @@
 					</li>
 					<li>
 						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon">
-								<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+							<span class="main-menu__tile-icon"
+								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
 									<use href="/ag-site/assets/icons/sprite.svg#icon-gallery"></use>
 								</svg>
 							</span>
@@ -2051,10 +2005,9 @@
 								height="20"
 								alt=""
 							/>
-							<span class="main-menu__row-text">
-								Гипермаркет Аптечка+
-								<span class="visually-hidden">(откроется в новой вкладке)</span>
-							</span>
+							<span class="main-menu__row-text"
+								>Гипермаркет Аптечка+<span class="visually-hidden"> (откроется в новой вкладке)</span></span
+							>
 							<svg class="icon main-menu__row-arrow" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-external-link"></use>
 							</svg>
@@ -2069,10 +2022,9 @@
 								height="20"
 								alt=""
 							/>
-							<span class="main-menu__row-text">
-								Аптеки ADEL
-								<span class="visually-hidden">(откроется в новой вкладке)</span>
-							</span>
+							<span class="main-menu__row-text"
+								>Аптеки ADEL<span class="visually-hidden"> (откроется в новой вкладке)</span></span
+							>
 							<svg class="icon main-menu__row-arrow" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-external-link"></use>
 							</svg>
@@ -2087,10 +2039,9 @@
 								height="20"
 								alt=""
 							/>
-							<span class="main-menu__row-text">
-								Аптеки Добрыя лекi
-								<span class="visually-hidden">(откроется в новой вкладке)</span>
-							</span>
+							<span class="main-menu__row-text"
+								>Аптеки Добрыя лекi<span class="visually-hidden"> (откроется в новой вкладке)</span></span
+							>
 							<svg class="icon main-menu__row-arrow" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-external-link"></use>
 							</svg>
@@ -2105,10 +2056,9 @@
 								height="20"
 								alt=""
 							/>
-							<span class="main-menu__row-text">
-								Клуб FeelinGood
-								<span class="visually-hidden">(откроется в новой вкладке)</span>
-							</span>
+							<span class="main-menu__row-text"
+								>Клуб FeelinGood<span class="visually-hidden"> (откроется в новой вкладке)</span></span
+							>
 							<svg class="icon main-menu__row-arrow" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-external-link"></use>
 							</svg>
@@ -2123,10 +2073,9 @@
 								height="20"
 								alt=""
 							/>
-							<span class="main-menu__row-text">
-								Сервис Apteka.by
-								<span class="visually-hidden">(откроется в новой вкладке)</span>
-							</span>
+							<span class="main-menu__row-text"
+								>Сервис Apteka.by<span class="visually-hidden"> (откроется в новой вкладке)</span></span
+							>
 							<svg class="icon main-menu__row-arrow" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-external-link"></use>
 							</svg>
@@ -2324,15 +2273,15 @@
 							<div class="checkbox">
 								<label class="checkbox__row" for="suggest-topic-consent">
 									<input class="checkbox__input" type="checkbox" id="suggest-topic-consent" name="consent" value="Y" required />
-									<span class="checkbox__box" aria-hidden="true">
-										<svg class="icon checkbox__check" aria-hidden="true" focusable="false">
+									<span class="checkbox__box" aria-hidden="true"
+										><svg class="icon checkbox__check" aria-hidden="true" focusable="false">
 											<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 										</svg>
 									</span>
-									<span class="checkbox__text">
-										Я согласен(-на) на обработку персональных данных в соответствии с
-										<a href="#" target="_blank" rel="noopener noreferrer">Политикой обработки персональных данных.</a>
-									</span>
+									<span class="checkbox__text"
+										>Я согласен(-на) на обработку персональных данных в соответствии с
+										<a href="#" target="_blank" rel="noopener noreferrer">Политикой обработки персональных данных.</a></span
+									>
 								</label>
 								<p class="field__error" id="suggest-topic-consent-error" hidden>
 									<svg class="icon field__error-icon" aria-hidden="true" focusable="false">
@@ -2368,8 +2317,8 @@
 				</div>
 				<div class="modal__body">
 					<div class="modal__content">
-						<span class="modal__icon modal__icon--success">
-							<svg class="icon modal__icon-glyph" aria-hidden="true" focusable="false">
+						<span class="modal__icon modal__icon--success"
+							><svg class="icon modal__icon-glyph" aria-hidden="true" focusable="false">
 								<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
 							</svg>
 						</span>
@@ -2393,8 +2342,7 @@
 			<h2 class="cookie-banner__title" id="cookie-banner-title">Обработка файлов cookie</h2>
 			<p class="cookie-banner__text">
 				Мы используем файлы cookie для корректной работы портала.
-				<br />
-				<a class="cookie-banner__link" href="#">Политика обработки файлов cookie</a>
+				<br /><a class="cookie-banner__link" href="#">Политика обработки файлов cookie</a>
 			</p>
 			<div class="cookie-banner__actions">
 				<button class="btn btn--general btn--m" type="button" data-cookie-choice="accepted">
