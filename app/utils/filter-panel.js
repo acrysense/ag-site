@@ -211,11 +211,28 @@ export function filterPanel(
 		{ signal }
 	)
 
-	// Стали десктопом с открытой панелью — закрыть (выбор сохраняется)
-	media.addEventListener('change', () => media.matches && close({ discard: false }), { signal })
+	// Сменилась ширина через 1024 (окно сузили, планшет повернули): карточка и панель меняются
+	// сразу, без появления и скрытия (класс is-instant на два кадра) — иначе карточка на миг
+	// мелькала панелью на весь экран. Стали десктопом с открытой панелью — закрыть (выбор
+	// сохраняется)
+	let instantFrame = 0
+	media.addEventListener(
+		'change',
+		() => {
+			root.classList.add('is-instant')
+			cancelAnimationFrame(instantFrame)
+			instantFrame = requestAnimationFrame(() => {
+				instantFrame = requestAnimationFrame(() => root.classList.remove('is-instant'))
+			})
+			if (media.matches) close({ discard: false })
+		},
+		{ signal }
+	)
 
 	return () => {
 		controller.abort()
+		cancelAnimationFrame(instantFrame)
+		root.classList.remove('is-instant')
 		clearTimeout(countTimer)
 		countRequest?.abort()
 		release?.()

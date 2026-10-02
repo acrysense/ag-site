@@ -11,14 +11,18 @@
 		display: none;
 		min-width: 0;
 
-		// Панель на весь экран (до 1024)
-		&.is-open {
+		// Панель на весь экран (до 1024). Положение — не только у открытой: пока панель плавно
+		// исчезает, класса is-open уже нет, и без этого она на миг вставала в поток и сдвигала страницу
+		@include down(desktop) {
 			position: fixed;
 			inset: 0;
 			z-index: 95;
-			display: flex;
 			flex-direction: column;
 			background: palette("white");
+		}
+
+		&.is-open {
+			display: flex;
 		}
 
 		@include up(desktop) {
@@ -197,6 +201,11 @@
 	@include down(desktop) {
 		.search-filters {
 			@include appear-when("&.is-open", flex, translateY(16px), $duration-overlay);
+
+			// Ширина сменилась через 1024 — без анимации (utils/filter-panel.js)
+			&.is-instant {
+				transition: none;
+			}
 		}
 	}
 }

@@ -16,10 +16,14 @@
 				"brand actions"
 				"search search";
 			grid-template-columns: minmax(0, 1fr) auto;
+			// Ряд поиска держит высоту (46 + поля 10): открытый поиск уходит на весь экран, и без
+			// этого шапка под ним схлопывалась — страница подпрыгивала, пока экран проявляется
+			grid-template-rows: auto 66px;
 			align-items: center;
 
 			@include up(desktop) {
 				grid-template-areas: "brand search actions";
+				grid-template-rows: auto;
 				// Поиск по центру, пока хватает места; уже — сжимается до 240px
 				grid-template-columns: minmax(max-content, 1fr) minmax(240px, 700px) minmax(
 						max-content,

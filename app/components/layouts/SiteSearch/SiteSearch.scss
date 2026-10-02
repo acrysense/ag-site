@@ -741,9 +741,12 @@
 	}
 
 	// Появление (наше): окно поиска проявляется со сдвигом; на мобильном весь экран поиска
-	// проявляется
-	.site-search__panel {
-		@include appear-when(".site-search.is-open &", flex);
+	// проявляется. Плавное скрытие окна — только на десктопе (там оно поверх страницы): на
+	// мобильном закрытый поиск возвращается в шапку, и исчезающее окно на миг раздвигало её
+	@include up(desktop) {
+		.site-search__panel {
+			@include appear-when(".site-search.is-open &", flex);
+		}
 	}
 
 	@include down(desktop) {
