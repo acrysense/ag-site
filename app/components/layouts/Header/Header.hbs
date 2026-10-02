@@ -1,7 +1,8 @@
 {{!--
 	Шапка сайта (Figma: PC.HEADER.v2 — 4652:8752, 360.HEADER — 4865:1334).
-	props: id, homeUrl, homeLabel (имя ссылки-логотипа, «На главную»), logo { desktop, mobile } (по умолчанию — логотипы из assets), title (полное
-	название), titleShort (мобильное), search { value } — запрос в строке поиска (окно поиска —
+	props: id, homeUrl, homeLabel (имя ссылки-логотипа, «На главную»), logo { desktop, mobile } —
+	картинки логотипа с названием сайта (по умолчанию — из assets, те же, что в ЛК),
+	search { value } — запрос в строке поиска (окно поиска —
 	layouts/SiteSearch, настройки — site.search),
 	menu — пункты [{ text, url, current, children: [{ text, url, current }] }]; пункт с подменю без url
 	(ТЗ: «О холдинге» не кликабелен) — целиком кнопка подменю,
@@ -13,17 +14,18 @@
 --}}
 <header class="header" data-module="Header" data-path="layouts">
     <div class="header__top">
-        {{!-- Ссылка на главную — только логотип; название сайта — текст, без наведения --}}
+        {{!--
+            Логотип с названием сайта — одна картинка, как в ЛК (те же файлы): длинная с 1280,
+            короткая (название в две строки) — уже. Ссылка на главную. Меняется через админку
+            (ТЗ: праздничные логотипы): logo { desktop, mobile }
+        --}}
         <div class="header__brand">
-            {{!-- Логотип меняется через админку (ТЗ: праздничные логотипы): logo { desktop, mobile } --}}
             <a class="header__logo-link" href="{{default props.homeUrl '/'}}" aria-label="{{default props.homeLabel 'На главную'}}">
                 <picture class="header__logo">
-                    <source media="(min-width: 1024px)" srcset="{{default props.logo.desktop '/assets/images/logo.svg'}}" width="57" height="52" />
-                    <img src="{{default props.logo.mobile '/assets/images/logo-mobile.svg'}}" width="40" height="40" alt="" />
+                    <source media="(min-width: 1280px)" srcset="{{default props.logo.desktop '/assets/images/logotype-desktop.svg'}}" width="390" height="40" />
+                    <img src="{{default props.logo.mobile '/assets/images/logotype-mobile.svg'}}" width="141" height="40" alt="" />
                 </picture>
             </a>
-            <span class="header__title header__title--full">{{props.title}}</span>
-            <span class="header__title header__title--short">{{default props.titleShort props.title}}</span>
         </div>
 
         {{!-- Поиск: разделы и фильтры — общие для сайта (site.search), запрос — со страницы --}}

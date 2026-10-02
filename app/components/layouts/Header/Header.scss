@@ -36,71 +36,32 @@
 			}
 		}
 
+		// Логотип с названием — картинка (как в ЛК): на мобильном 141×40 (как в макете 360:
+		// знак 40, название через 10); с 1024 — крупнее, 47 по высоте: название длинной картинки
+		// с 1280 тогда шириной 389, как текст в макете 1920
 		&__brand {
 			display: flex;
 			grid-area: brand;
-			gap: 10px;
 			align-items: center;
 			min-width: 0;
 			height: 60px;
 			padding: 10px;
-			color: palette("black-txt");
 
 			@include up(desktop) {
-				gap: 29px;
 				height: auto;
 				padding: 0;
 			}
 		}
 
 		&__logo {
-			flex: none;
+			display: flex;
 
 			img {
-				width: 40px;
+				width: auto;
 				height: 40px;
 
 				@include up(desktop) {
-					width: 56.55px;
-					height: 52.2px;
-				}
-			}
-		}
-
-		&__title {
-			text-transform: uppercase;
-
-			// Полное название в строку — с 1280; на 1024–1279 (наше, в макете нет) рядом
-			// с поиском и быстрыми ссылками оно не помещается — короткое в две строки
-			&--full {
-				display: none;
-
-				// Обычное название — в строку (389px); длиннее 400 — две строки и многоточие, чтобы
-				// не раздвигать шапку (название правит админ)
-				@include up(wide) {
-					@include text("site-title");
-
-					display: -webkit-box;
-					max-width: 400px;
-					overflow: hidden;
-					-webkit-box-orient: vertical;
-					-webkit-line-clamp: 2;
-				}
-			}
-
-			// В макете 360 название в две строки шириной 91px
-			&--short {
-				@include text("site-title-360");
-
-				display: -webkit-box;
-				max-width: 91px;
-				overflow: hidden;
-				overflow-wrap: anywhere;
-				-webkit-box-orient: vertical;
-				-webkit-line-clamp: 2;
-
-				@include up(wide) {
-					display: none;
+					height: 47px;
 				}
 			}
 		}
