@@ -126,6 +126,9 @@ body:has(.toast.is-visible) .pages-nav {
 		padding: 4px 6px 8px !important;
 	}
 
+	// Прокручивает только SimpleBar: высоту списка в панели задаёт pages-nav.js (max-height),
+	// SimpleBar берёт её через inherit — внешний слой не прокручивается и низ не обрезан.
+	// overflow: hidden здесь нельзя — SimpleBar тогда отключает прокрутку
 	&[data-simplebar] {
 		padding: 0;
 	}

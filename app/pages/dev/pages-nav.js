@@ -85,6 +85,10 @@ async function mount(indexUrl) {
 		panel.hidden = !open
 		toggle.setAttribute('aria-expanded', String(open))
 		if (!open) return
+		// Высота списка — сколько места осталось в панели под шапкой и над подвалом: SimpleBar
+		// берёт её через max-height: inherit (без неё прокручивал не всё, а низ обрезала панель)
+		list.style.maxHeight = ''
+		list.style.maxHeight = `${list.getBoundingClientRect().height}px`
 		// Полоса прокрутки — когда панель видна (SimpleBar меряет содержимое); текущая — в видимой части
 		simplebar ||= new SimpleBar(list, { autoHide: false })
 		simplebar.recalculate()
