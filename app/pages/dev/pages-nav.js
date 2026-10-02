@@ -4,13 +4,10 @@ import './pages-nav.scss'
 // Кнопка «Страницы» на страницах демо и dev (подключает layouts/Head при demo): список страниц
 // вёрстки по разделам, текущая отмечена, «Скопировать ссылку», переход ко всем страницам и витрине.
 // Длинный список прокручивается внутри панели — SimpleBar, как списки сайта (стили — сайта).
-// Страниц больше SEARCH_FROM — сверху поле «Найти страницу»: фильтр по названию и имени файла,
-// Enter открывает первую найденную.
 // Список — dev-pages.json (плагин pagesIndexPlugin в vite.config.ts). Не показывается в iframe
 // витрины, на служебных страницах (dev/*) и с ?nav=0 (для чистых скриншотов).
 const meta = document.querySelector('meta[name="dev-pages"]')
 const params = new URLSearchParams(window.location.search)
-const SEARCH_FROM = 15
 const isDevPage = /(^|\/)dev[-/]/.test(window.location.pathname)
 
 if (meta && window.top === window && params.get('nav') !== '0' && !isDevPage) mount(meta.content)
@@ -52,35 +49,19 @@ async function mount(indexUrl) {
 	head.append(all)
 	panel.append(head)
 
-	const search = index.pages.length > SEARCH_FROM ? make('input', 'pages-nav__search') : null
-	if (search) {
-		search.type = 'search'
-		search.placeholder = 'Найти страницу'
-		search.setAttribute('aria-label', 'Найти страницу')
-		search.autocomplete = 'off'
-		panel.append(search)
-	}
-
 	const list = make('nav', 'pages-nav__list')
 	list.setAttribute('aria-label', 'Страницы')
-	const empty = make('p', 'pages-nav__empty', 'Ничего не найдено')
-	empty.hidden = true
-	const entries = []
 	let group = null
-	let heading = null
 	for (const page of index.pages) {
 		if (page.group !== group) {
 			group = page.group
-			heading = make('p', 'pages-nav__group', group)
-			list.append(heading)
+			list.append(make('p', 'pages-nav__group', group))
 		}
 		const link = make('a', 'pages-nav__link', page.title)
 		link.href = page.url
 		if (isCurrent(page.url)) link.setAttribute('aria-current', 'page')
 		list.append(link)
-		entries.push({ link, heading, text: `${page.title} ${page.name}`.toLowerCase() })
 	}
-	list.append(empty)
 	panel.append(list)
 
 	const foot = make('div', 'pages-nav__foot')
@@ -114,30 +95,7 @@ async function mount(indexUrl) {
 			scroller.scrollTop = Math.max(0, top)
 		}
 	}
-	toggle.addEventListener('click', () => {
-		setOpen(panel.hidden)
-		// Фокус в поле — только с мышью: на телефоне он сразу открыл бы клавиатуру
-		if (!panel.hidden && window.matchMedia('(hover: hover)').matches) search?.focus()
-	})
-
-	const filter = () => {
-		const query = search.value.trim().toLowerCase()
-		const shown = new Set()
-		for (const entry of entries) {
-			entry.link.hidden = Boolean(query) && !entry.text.includes(query)
-			if (!entry.link.hidden) shown.add(entry.heading)
-		}
-		for (const entry of entries) entry.heading.hidden = !shown.has(entry.heading)
-		empty.hidden = shown.size > 0
-		simplebar?.recalculate()
-		simplebar?.getScrollElement()?.scrollTo(0, 0)
-	}
-	search?.addEventListener('input', filter)
-	search?.addEventListener('keydown', (event) => {
-		if (event.key !== 'Enter') return
-		const first = entries.find((entry) => !entry.link.hidden)
-		if (first) window.location.assign(first.link.href)
-	})
+	toggle.addEventListener('click', () => setOpen(panel.hidden))
 	copy.addEventListener('click', async () => {
 		const url = new URL(window.location.href)
 		url.searchParams.delete('nav')
