@@ -1,0 +1,268 @@
+// Страница «Страницы вёрстки» (только dev и демо). Стили сайта не подключаются — значения свои,
+// как у оболочки витрины (dev/ui.scss): те же цвета, шрифт, логотип; тема — системная.
+$pages-font:
+	system-ui,
+	-apple-system,
+	"Segoe UI",
+	Roboto,
+	Arial,
+	sans-serif;
+$pages-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+:root {
+	color-scheme: light dark;
+	--pi-bg: #f3f3f5;
+	--pi-panel: #ffffff;
+	--pi-line: #e4e4e9;
+	--pi-text: #17171c;
+	--pi-muted: #6b6b76;
+	--pi-accent: #4f46e5;
+	--pi-accent-soft: #eeedfd;
+	--pi-accent-text: #3f37c9;
+	--pi-shadow: 0 1px 2px rgb(16 16 24 / 6%), 0 12px 32px -12px rgb(16 16 24 / 18%);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--pi-bg: #111114;
+		--pi-panel: #1c1c21;
+		--pi-line: #2c2c33;
+		--pi-text: #ececf1;
+		--pi-muted: #9d9daa;
+		--pi-accent: #8b85ff;
+		--pi-accent-soft: #26244a;
+		--pi-accent-text: #b4b0ff;
+		--pi-shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 16px 40px -12px rgb(0 0 0 / 60%);
+	}
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+.pages-index {
+	margin: 0;
+	font-family: $pages-font;
+	font-size: 14px;
+	line-height: 1.45;
+	color: var(--pi-text);
+	background: var(--pi-bg);
+	-webkit-font-smoothing: antialiased;
+
+	:focus-visible {
+		outline: 2px solid var(--pi-accent);
+		outline-offset: 2px;
+	}
+
+	&__main {
+		box-sizing: border-box;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 24px 16px 48px;
+
+		@media (min-width: 768px) {
+			padding: 40px 32px 64px;
+		}
+	}
+
+	&__head {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 16px 24px;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 28px;
+	}
+
+	&__brand {
+		display: flex;
+		gap: 12px;
+		align-items: center;
+
+		> span:last-child {
+			display: grid;
+		}
+	}
+
+	&__logo {
+		display: grid;
+		flex: none;
+		grid-template-columns: repeat(2, 12px);
+		gap: 3px;
+
+		span {
+			width: 12px;
+			height: 12px;
+			background: #4f46e5;
+			border-radius: 3px;
+
+			&:nth-child(2) {
+				background: #22b8cf;
+			}
+
+			&:nth-child(3) {
+				background: #f59f00;
+			}
+
+			&:nth-child(4) {
+				background: #e64980;
+				border-radius: 50%;
+			}
+		}
+	}
+
+	&__name {
+		font-size: 16px;
+		font-weight: 650;
+	}
+
+	&__sub {
+		color: var(--pi-muted);
+	}
+
+	&__tools {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		align-items: center;
+	}
+
+	&__search input {
+		box-sizing: border-box;
+		width: 220px;
+		max-width: 100%;
+		height: 36px;
+		padding: 0 12px;
+		font: inherit;
+		font-size: 16px;
+		color: var(--pi-text);
+		background: var(--pi-panel);
+		border: 1px solid var(--pi-line);
+		border-radius: 8px;
+
+		&:focus-visible {
+			border-color: var(--pi-accent);
+			outline: none;
+		}
+	}
+
+	&__button {
+		display: inline-flex;
+		align-items: center;
+		height: 36px;
+		padding: 0 14px;
+		font: inherit;
+		font-weight: 600;
+		color: #fff;
+		text-decoration: none;
+		cursor: pointer;
+		background: var(--pi-accent);
+		border: 0;
+		border-radius: 8px;
+		transition: opacity 0.15s;
+
+		&:hover,
+		&:focus-visible {
+			opacity: 0.88;
+		}
+
+		&--ghost {
+			color: var(--pi-accent-text);
+			background: var(--pi-accent-soft);
+		}
+	}
+
+	&__group + &__group {
+		margin-top: 28px;
+	}
+
+	&__group[hidden],
+	&__card[hidden] {
+		display: none;
+	}
+
+	&__group-title {
+		margin: 0 0 12px;
+		font-size: 12px;
+		font-weight: 600;
+		color: var(--pi-muted);
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+		gap: 12px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	&__card {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		padding: 16px;
+		background: var(--pi-panel);
+		border: 1px solid var(--pi-line);
+		border-radius: 12px;
+		box-shadow: var(--pi-shadow);
+	}
+
+	&__title {
+		font-size: 15px;
+		font-weight: 600;
+		color: var(--pi-text);
+		text-decoration: none;
+		transition: color 0.15s;
+
+		&:hover,
+		&:focus-visible {
+			color: var(--pi-accent);
+		}
+	}
+
+	&__path {
+		font-family: $pages-mono;
+		font-size: 12px;
+		color: var(--pi-muted);
+	}
+
+	&__note {
+		margin: 4px 0 0;
+		color: var(--pi-muted);
+	}
+
+	&__row {
+		display: flex;
+		gap: 16px;
+		margin-top: 10px;
+	}
+
+	&__link {
+		padding: 0;
+		font: inherit;
+		color: var(--pi-accent-text);
+		text-decoration: none;
+		cursor: pointer;
+		background: none;
+		border: 0;
+		transition: opacity 0.15s;
+
+		&:hover,
+		&:focus-visible {
+			opacity: 0.75;
+		}
+	}
+
+	&__empty {
+		color: var(--pi-muted);
+	}
+}

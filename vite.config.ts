@@ -481,6 +481,58 @@ function buildSprite() {
 		.replace(/\s{2,}/g, ' ')
 }
 
+// Список страниц вёрстки для навигации при показе: страница «Страницы» (dev/pages.html) и кнопка
+// «Страницы» на страницах демо (pages/dev/pages-nav.js). Собирается из app/pages/*.html и поля nav
+// в <page>.page.json ({ group, title, order, note }); в dev отдаётся сервером, в демо-сборке лежит
+// файлом. В сборку для CMS не попадает (там нет ни списка, ни кнопки).
+const PAGES_INDEX_FILE = 'dev-pages.json'
+
+function buildPagesIndex(dev: boolean) {
+	const pages = fg
+		.sync('pages/*.html', { cwd: APP_ROOT })
+		.map((rel) => {
+			const name = path.basename(rel, '.html')
+			const cfg = loadJSON(resolve(APP_ROOT, 'pages', `${name}.page.json`)) || {}
+			const nav = cfg.nav || {}
+			return {
+				name,
+				url: withBase(`/${name}.html`),
+				title: nav.title || String(cfg.title || name).split(' — ')[0],
+				group: nav.group || 'Прочее',
+				order: Number.isFinite(nav.order) ? nav.order : 999,
+				note: nav.note || '',
+			}
+		})
+		.sort((a, b) => a.order - b.order || a.title.localeCompare(b.title, 'ru'))
+	return JSON.stringify({
+		pagesUrl: withBase(dev ? '/dev/pages.html' : '/dev-pages.html'),
+		showcaseUrl: withBase(dev ? '/dev/ui.html' : '/dev-ui.html'),
+		pages,
+	})
+}
+
+function pagesIndexPlugin(mode: string) {
+	if (mode === 'cms') return null
+	return {
+		name: 'local-pages-index',
+		configureServer(server) {
+			server.middlewares.use((req, res, next) => {
+				if (req.url?.split('?')[0] !== `/${PAGES_INDEX_FILE}`) return next()
+				res.setHeader('Content-Type', 'application/json; charset=utf-8')
+				res.setHeader('Cache-Control', 'no-cache')
+				res.end(buildPagesIndex(true))
+			})
+		},
+		generateBundle() {
+			this.emitFile({
+				type: 'asset',
+				fileName: PAGES_INDEX_FILE,
+				source: buildPagesIndex(false),
+			})
+		},
+	}
+}
+
 function svgSpritePlugin() {
 	return {
 		name: 'local-svg-sprite',
@@ -819,6 +871,7 @@ export default defineConfig(({ mode }) => {
 				},
 			}),
 			svgSpritePlugin(),
+			pagesIndexPlugin(mode),
 			flattenPagesToRoot(),
 			formatHtml(prefixPageLinks, mode),
 			copyStaticAssets(),

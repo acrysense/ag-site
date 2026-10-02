@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="{{ lang }}">
+	<head>
+		{{> layouts/Head/Head }}
+		<script type="module" src="./pages.js"></script>
+	</head>
+	<body class="pages-index">
+		{{!--
+			Страницы вёрстки для показа: все страницы по разделам (dev-pages.json — плагин
+			pagesIndexPlugin в vite.config.ts, разделы и порядок — поле nav в <page>.page.json).
+			«Скопировать ссылку» у каждой и «Скопировать все ссылки» — списком для сообщения. В демо
+			видны только выложенные страницы (deploy-pages.sh оставляет в списке их).
+		--}}
+		<main class="pages-index__main">
+			<header class="pages-index__head">
+				<div class="pages-index__brand">
+					<span class="pages-index__logo" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+					<span>
+						<span class="pages-index__name">{{or site.siteName 'Проект'}}</span>
+						<span class="pages-index__sub">Страницы вёрстки</span>
+					</span>
+				</div>
+				<div class="pages-index__tools">
+					<label class="pages-index__search">
+						<span class="visually-hidden">Поиск страницы</span>
+						<input type="search" placeholder="Поиск страницы" autocomplete="off" data-pages-search />
+					</label>
+					<button class="pages-index__button" type="button" data-pages-copy-all>Скопировать все ссылки</button>
+					<a class="pages-index__button pages-index__button--ghost" href="#" data-pages-showcase>Витрина компонентов</a>
+				</div>
+			</header>
+			<div class="pages-index__groups" data-pages-list aria-live="polite"></div>
+			<p class="pages-index__empty" data-pages-empty hidden>Ничего не найдено</p>
+		</main>
+	</body>
+</html>
