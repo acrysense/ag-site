@@ -16,9 +16,16 @@ import { lockBody } from '@/utils/scroll-lock'
 
 const DESKTOP = 1024
 const TABLET = 768
+// Низкий экран (телефон горизонтально): без миниатюр, поля минимальные — фото на весь экран.
+// Та же граница — в PhotoViewer.scss
+const LOW = 560
 // Поля вокруг фото — по макету 1920: сверху полоса 92 + 16, снизу миниатюры 64 + 80 + 40, по
 // бокам фото шириной до 1400 (стрелки — в оставшихся полях)
-function padding({ x }) {
+function padding({ x, y }) {
+	if (y < LOW) {
+		const side = x >= DESKTOP ? 96 : 8
+		return { top: x >= DESKTOP ? 100 : 64, bottom: 8, left: side, right: side }
+	}
 	if (x >= DESKTOP) {
 		const side = Math.min(260, Math.max(96, (x - 1400) / 2))
 		return { top: 108, bottom: 184, left: side, right: side }
