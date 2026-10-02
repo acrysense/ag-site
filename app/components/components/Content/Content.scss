@@ -113,9 +113,9 @@
 			}
 		}
 
-		// Раскрывающийся блок: закрыт — M/400, открыт — M/500 (в макете L/500 — 16px: заголовок
-		// менял размер и сдвигал текст ниже; размер оставлен 14, жирность — открытость); стрелка
-		// вниз / вверх
+		// Раскрывающийся блок: закрыт — M/400, открыт — жирнее (в макете L/500 — 16 Bold: заголовок
+		// менял размер и ширину и сдвигал текст). Размер и начертание те же, «жирность» — обводкой
+		// букв: строка не меняет ни высоту, ни ширину, утолщение плавное; стрелка вниз / вверх
 		details {
 			padding: 5px 0 5px 20px;
 			border-left: 1px solid palette("blue-txt");
@@ -126,6 +126,7 @@
 		}
 
 		summary {
+			-webkit-text-stroke: 0 currentColor;
 			display: flex;
 			gap: 10px;
 			align-items: center;
@@ -139,8 +140,7 @@
 		}
 
 		details[open] > summary {
-			@include text("m-500");
-
+			-webkit-text-stroke-width: $faux-bold-stroke;
 			margin-bottom: 10px;
 		}
 
@@ -193,7 +193,9 @@
 
 	// Наведение на заголовок раскрывающегося блока (наше): Blue.TXT
 	.content summary {
-		transition: color $transition-default;
+		transition:
+			color $transition-default,
+			-webkit-text-stroke-width $transition-default;
 
 		&:hover,
 		&:focus-visible {

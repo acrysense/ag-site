@@ -402,6 +402,9 @@ $focus-ring-offset: 0;
 
 // transition
 $transition-default: 0.25s ease-in-out;
+// «Жирность» обводкой букв (-webkit-text-stroke): толще, но ширина строки та же — текст не
+// сдвигается при смене состояния (заголовок раскрывающегося блока)
+$faux-bold-stroke: 0.6px;
 $transition-vs: 0.467s cubic-bezier(0.16, 1, 0.3, 1);
 $transition-fast: 0.467s ease;
 
