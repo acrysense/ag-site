@@ -101,9 +101,19 @@
 
 .pages-nav__list {
 	flex: 1 1 auto;
+	min-height: 0;
 	padding: 4px 6px 8px;
 	overflow-y: auto;
 	overscroll-behavior: contain;
+
+	// SimpleBar: строки списка с полями, полоса — у правого края
+	.simplebar-content {
+		padding: 4px 6px 8px !important;
+	}
+
+	&[data-simplebar] {
+		padding: 0;
+	}
 }
 
 .pages-nav__group {

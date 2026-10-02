@@ -1,7 +1,9 @@
+import SimpleBar from 'simplebar'
 import './pages-nav.scss'
 
 // Кнопка «Страницы» на страницах демо и dev (подключает layouts/Head при demo): список страниц
 // вёрстки по разделам, текущая отмечена, «Скопировать ссылку», переход ко всем страницам и витрине.
+// Длинный список прокручивается внутри панели — SimpleBar, как списки сайта (стили — сайта).
 // Список — dev-pages.json (плагин pagesIndexPlugin в vite.config.ts). Не показывается в iframe
 // витрины, на служебных страницах (dev/*) и с ?nav=0 (для чистых скриншотов).
 const meta = document.querySelector('meta[name="dev-pages"]')
@@ -68,7 +70,7 @@ async function mount(indexUrl) {
 	foot.append(copy)
 	// В демо витрины нет — ссылки на неё тоже
 	if (index.showcaseUrl) {
-		const showcase = make('a', 'pages-nav__action', 'Витрина компонентов')
+		const showcase = make('a', 'pages-nav__action', 'Витрина')
 		showcase.href = index.showcaseUrl
 		foot.append(showcase)
 	}
@@ -78,10 +80,20 @@ async function mount(indexUrl) {
 	document.body.append(root)
 
 	let copyTimer = 0
+	let simplebar = null
 	const setOpen = (open) => {
 		panel.hidden = !open
 		toggle.setAttribute('aria-expanded', String(open))
-		if (open) panel.querySelector('[aria-current]')?.scrollIntoView({ block: 'nearest' })
+		if (!open) return
+		// Полоса прокрутки — когда панель видна (SimpleBar меряет содержимое); текущая — в видимой части
+		simplebar ||= new SimpleBar(list, { autoHide: false })
+		simplebar.recalculate()
+		const current = list.querySelector('[aria-current]')
+		const scroller = simplebar.getScrollElement()
+		if (current && scroller) {
+			const top = current.offsetTop - scroller.clientHeight / 2 + current.offsetHeight / 2
+			scroller.scrollTop = Math.max(0, top)
+		}
 	}
 	toggle.addEventListener('click', () => setOpen(panel.hidden))
 	copy.addEventListener('click', async () => {

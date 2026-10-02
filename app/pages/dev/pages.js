@@ -1,11 +1,9 @@
 import './pages.scss'
 
-// Страница «Страницы вёрстки»: карточки по разделам из dev-pages.json, поиск, копирование ссылок
+// Страница «Страницы вёрстки»: карточки по разделам из dev-pages.json, копирование ссылок
 // (по одной и всем списком «Название — адрес»). Адреса — полные, чтобы их можно было отправить.
 const meta = document.querySelector('meta[name="dev-pages"]')
 const list = document.querySelector('[data-pages-list]')
-const empty = document.querySelector('[data-pages-empty]')
-const search = document.querySelector('[data-pages-search]')
 const copyAll = document.querySelector('[data-pages-copy-all]')
 const showcase = document.querySelector('[data-pages-showcase]')
 
@@ -28,6 +26,29 @@ const copy = async (button, text, done) => {
 	setTimeout(() => (button.textContent = label), 1600)
 }
 
+// Значок «копировать» (служебная страница: свой SVG, спрайт сайта здесь не подключается)
+const COPY_ICON =
+	'<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M10.5 3.5v-.5A1.5 1.5 0 0 0 9 1.5H4A1.5 1.5 0 0 0 2.5 3v5A1.5 1.5 0 0 0 4 9.5h.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>'
+const DONE_ICON =
+	'<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+
+// Мини-кнопка: на мгновение галочка и подпись «Скопировано» для скринридера
+const copyIcon = async (button, text, label) => {
+	try {
+		await navigator.clipboard.writeText(text)
+		button.innerHTML = DONE_ICON
+		button.classList.add('is-done')
+		button.setAttribute('aria-label', 'Скопировано')
+	} catch {
+		button.setAttribute('aria-label', 'Не удалось скопировать')
+	}
+	setTimeout(() => {
+		button.innerHTML = COPY_ICON
+		button.classList.remove('is-done')
+		button.setAttribute('aria-label', label)
+	}, 1400)
+}
+
 async function init() {
 	if (!meta || !list) return
 	const response = await fetch(meta.content, { cache: 'no-cache' })
@@ -42,46 +63,36 @@ async function init() {
 		groups.get(page.group).push(page)
 	}
 
-	const cards = []
 	for (const [name, pages] of groups) {
 		const section = make('section', 'pages-index__group')
 		section.append(make('h2', 'pages-index__group-title', name))
 		const grid = make('ul', 'pages-index__grid')
 		grid.setAttribute('role', 'list')
 		for (const page of pages) {
+			// Вся карточка — ссылка в новой вкладке; копирование — мини-кнопка в углу поверх неё
 			const item = make('li', 'pages-index__card')
 			const link = make('a', 'pages-index__title', page.title)
 			link.href = page.url
+			link.title = page.title
+			link.target = '_blank'
+			link.rel = 'noopener noreferrer'
+			link.append(make('span', 'pages-index__hidden', ' (откроется в новой вкладке)'))
 			const path = make('span', 'pages-index__path', `${page.name}.html`)
-			const row = make('div', 'pages-index__row')
-			const open = make('a', 'pages-index__link', 'Открыть')
-			open.href = page.url
-			const button = make('button', 'pages-index__link', 'Скопировать ссылку')
+			const button = make('button', 'pages-index__copy')
 			button.type = 'button'
-			button.addEventListener('click', () => copy(button, absolute(page.url), 'Скопировано'))
-			row.append(open, button)
+			button.innerHTML = COPY_ICON
+			const label = `Скопировать ссылку: ${page.title}`
+			button.setAttribute('aria-label', label)
+			button.title = 'Скопировать ссылку'
+			button.addEventListener('click', () => copyIcon(button, absolute(page.url), label))
 			item.append(link, path)
 			if (page.note) item.append(make('p', 'pages-index__note', page.note))
-			item.append(row)
+			item.append(button)
 			grid.append(item)
-			cards.push({ item, section, text: `${page.title} ${page.name} ${name}`.toLowerCase() })
 		}
 		section.append(grid)
 		list.append(section)
 	}
-
-	search?.addEventListener('input', () => {
-		const query = search.value.trim().toLowerCase()
-		let shown = 0
-		for (const card of cards) {
-			card.item.hidden = Boolean(query) && !card.text.includes(query)
-			if (!card.item.hidden) shown += 1
-		}
-		for (const section of list.children) {
-			section.hidden = !section.querySelector('.pages-index__card:not([hidden])')
-		}
-		if (empty) empty.hidden = shown > 0
-	})
 
 	copyAll?.addEventListener('click', () => {
 		const text = index.pages.map((page) => `${page.title} — ${absolute(page.url)}`).join('\n')
