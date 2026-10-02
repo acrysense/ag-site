@@ -39,6 +39,12 @@
 	}
 }
 
+// Пока открыто окно, нижний лист или меню (прокрутка заблокирована — html.is-locked), кнопку
+// не показываем — не висит поверх них
+html.is-locked .pages-nav {
+	display: none;
+}
+
 .pages-nav__toggle {
 	padding: 8px 14px;
 	font: inherit;
