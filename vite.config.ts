@@ -228,6 +228,21 @@ function copyStaticAssets() {
 				}
 				console.log(`[copy-static-assets] ${dir}: copied ${files.length} files`)
 			}
+
+			// Демо-картинки страниц (app/pages/dev/img) — как есть в dist/dev/img: на них ссылаются
+			// не только <img> (их Vite переносит сам), но и данные в JSON и ссылки <a href> —
+			// например, большие фото альбома для просмотра. Адреса относительные (./dev/img/…),
+			// поэтому работают при любом BASE. На сайте эти адреса выдаёт бэк.
+			const demoDir = path.resolve(__dirname, 'app/pages/dev/img')
+			if (fs.existsSync(demoDir)) {
+				const files = fg.sync('**/*.{png,jpg,jpeg,gif,svg,webp,avif}', { cwd: demoDir })
+				for (const rel of files) {
+					const to = path.resolve(__dirname, 'dist/dev/img', rel)
+					fs.mkdirSync(path.dirname(to), { recursive: true })
+					fs.copyFileSync(path.join(demoDir, rel), to)
+				}
+				console.log(`[copy-static-assets] dev/img: copied ${files.length} files`)
+			}
 		},
 	}
 }
