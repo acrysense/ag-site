@@ -53,15 +53,24 @@
 			}
 		}
 
+		// Размеры заданы точно (не width: auto): при смене ширины экрана браузер меняет картинку
+		// <picture> не сразу, и на кадр длинный логотип вылезал за экран мобильной шапки
 		&__logo {
 			display: flex;
 
 			img {
-				width: auto;
+				width: 141px;
 				height: 40px;
+				object-fit: contain;
+				object-position: left center;
 
 				@include up(desktop) {
+					width: 166px;
 					height: 47px;
+				}
+
+				@include up(wide) {
+					width: 458px;
 				}
 			}
 		}
