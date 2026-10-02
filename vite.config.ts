@@ -175,7 +175,9 @@ function formatHtml(prefixLinks: boolean, mode: string) {
 					useTabs: true,
 					tabWidth: 1,
 					printWidth: 120,
-					htmlWhitespaceSensitivity: 'ignore',
+					// css, а не ignore: пробелы внутри строчных элементов не трогаются — иначе форматирование
+					// добавляло видимые пробелы в текст («<mark>Иван</mark> ова», «Справочник · \n 5»)
+					htmlWhitespaceSensitivity: 'css',
 				})
 				html = prefixDataAttrs(html, fileName)
 				html = prefixPageLinks(html, fileName, prefixLinks, mode)
