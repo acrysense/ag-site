@@ -15,8 +15,9 @@ export default function init(subtitle) {
 	const success = form?.dataset.formSuccess
 		? document.getElementById(form.dataset.formSuccess)
 		: null
-	// Окно вакансии, из которого открыли заявку, — куда вернуться
+	// Окно вакансии, из которого открыли заявку, — куда вернуться, и его «Откликнуться» (фокус)
 	let source = null
+	let sourceButton = null
 
 	document.addEventListener(
 		'click',
@@ -29,6 +30,7 @@ export default function init(subtitle) {
 			// Новая вакансия — новая исходная точка: подстановка не считается изменением формы
 			form?.dispatchEvent(new CustomEvent('form:reset'))
 			source = trigger.closest('dialog')
+			sourceButton = trigger
 			source?.dispatchEvent(new CustomEvent('modal:close'))
 		},
 		{ signal }
@@ -46,6 +48,23 @@ export default function init(subtitle) {
 				if (signal.aborted || source !== back) return
 				source = null
 				back.dispatchEvent(new CustomEvent('modal:open'))
+				// Фокус — туда, откуда ушли (с клавиатуры удобно продолжить), а не на крестик
+				sourceButton?.focus()
+				// Окна открывались по очереди, и браузер не помнит, откуда пришли: после закрытия
+				// окна вакансии фокус — на её карточку в списке
+				const card = document.querySelector(
+					`[data-modal-open="${CSS.escape(back.id)}"]:not(dialog [data-modal-open])`
+				)
+				back.addEventListener(
+					'modal:closed',
+					() => {
+						const active = document.activeElement
+						// Фокус остался в закрытом окне или потерялся
+						if (!active || active === document.body || back.contains(active))
+							card?.focus()
+					},
+					{ once: true, signal }
+				)
 			})
 		},
 		{ signal }
