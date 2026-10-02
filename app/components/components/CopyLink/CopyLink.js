@@ -1,7 +1,7 @@
 import { announce } from '@/utils/announce'
 
 // Кнопка «Скопировать ссылку»: data-copy-link — адрес (пусто — текущая страница). После
-// копирования на 2 секунды класс is-copied и сообщение для скринридера.
+// копирования на 1,6 секунды класс is-copied и сообщение для скринридера.
 export default function init(button) {
 	const controller = new AbortController()
 	let timer = 0
@@ -17,7 +17,7 @@ export default function init(button) {
 				await navigator.clipboard.writeText(url)
 				button.classList.add('is-copied')
 				clearTimeout(timer)
-				timer = setTimeout(() => button.classList.remove('is-copied'), 2000)
+				timer = setTimeout(() => button.classList.remove('is-copied'), 1600)
 				announce('Ссылка скопирована')
 			} catch {
 				announce('Не удалось скопировать ссылку')
