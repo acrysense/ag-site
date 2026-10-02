@@ -1,0 +1,87 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Кнопка — как было в макете раздела: текст M/400 Main Blue и стрелка 10×6 через 4 (Figma: PC.News
+// 4467:758 «Новые в начале»). Меню — как под аватаром (кит Dropdown menu 2725:18877): белое,
+// поля 20, пункты через 20, скругление 10, тень списков; по правому краю кнопки. Текущий пункт —
+// Blue.TXT (наше, в ките отметки нет); открыто — стрелка вверх.
+@layer components {
+	.sort-menu {
+		position: relative;
+		min-width: 0;
+	}
+
+	.sort-menu__toggle,
+	.sort-menu__current {
+		@include text("m-400");
+
+		display: inline-flex;
+		gap: 4px;
+		align-items: center;
+		min-width: 0;
+		color: palette("main-blue");
+	}
+
+	.sort-menu__toggle {
+		padding: 0;
+		cursor: pointer;
+		background: none;
+		border: 0;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+
+	.sort-menu__arrow {
+		flex: none;
+		width: 10px;
+		height: 6px;
+		transition: transform $transition-default;
+
+		.sort-menu.is-open & {
+			transform: rotate(180deg);
+		}
+	}
+
+	.sort-menu__list {
+		position: absolute;
+		top: calc(100% + 10px);
+		right: 0;
+		z-index: 20;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		min-width: 200px;
+		margin: 0;
+		padding: 20px;
+		list-style: none;
+		background: palette("white");
+		border-radius: $radius-inner-block;
+		box-shadow: $shadow-list;
+
+		@include appear;
+
+		.sort-menu.is-start & {
+			right: auto;
+			left: 0;
+		}
+	}
+
+	.sort-menu__link {
+		@include text("m-400");
+
+		display: block;
+		color: palette("black-txt");
+		white-space: nowrap;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible,
+		&[aria-current] {
+			color: palette("blue-txt");
+		}
+	}
+}

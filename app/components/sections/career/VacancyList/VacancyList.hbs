@@ -3,7 +3,7 @@
 	заголовок H1 и «Новые в начале», вводный текст, карточки (на 1920 — 3 в ряд), страницы и
 	«Всего: 24». До 1024 (наше) — кнопка «Фильтры · N» открывает панель фильтров (VacancyFilters).
 	Окна вакансий (VacancyModal) выводятся здесь же, после списка — по одному на карточку.
-	props: title, sort { text, url } (ссылка на обратный порядок), intro, filtersId, filtersText
+	props: title, sort (SortMenu: id, label, options [{ text, url, current }]), intro, filtersId, filtersText
 	(«Фильтры»), activeFilters (число выбранных), items [вакансия: VacancyCard + VacancyModal],
 	empty { text, resetText, resetUrl }, pagination (Pagination), applyId, applyText, note,
 	loginUrl, loginText (для окон). Контракт — docs/contracts/career.md.
@@ -11,9 +11,7 @@
 <section class="vacancy-list{{#if props.class}} {{props.class}}{{/if}}" aria-labelledby="vacancy-list-title">
     <div class="vacancy-list__head">
         <h1 class="vacancy-list__title" id="vacancy-list-title">{{props.title}}</h1>
-        {{#if props.sort}}
-            <a class="vacancy-list__sort" href="{{props.sort.url}}">{{props.sort.text}}{{> components/Icon/Icon name="chevron-down" class="vacancy-list__sort-icon"}}</a>
-        {{/if}}
+        {{> components/SortMenu/SortMenu props=props.sort}}
     </div>
     {{#if props.intro}}<p class="vacancy-list__intro">{{props.intro}}</p>{{/if}}
     {{#if props.filtersId}}

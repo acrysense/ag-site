@@ -548,6 +548,13 @@
 				{{#> state label="Ошибка" note="в живом окне: пустой телефон, неверный номер, файл не того типа или больше 5 МБ, без согласия; телефон с «111» или «сбой» в сообщении"}}{{/state}}
 			{{/story}}
 
+			{{#> story id="sort-menu" group="Новости" title="Сортировка списка" description='Новости, журнал, вакансии. Текущий порядок текстом со стрелкой (Figma PC.News 4467:758), по клику — меню по киту (Dropdown menu 2725:18877): пункты — ссылки, текущий отмечен Blue.TXT. Esc, клик мимо и уход фокуса закрывают. Не влезает слева — меню по левому краю кнопки.'}}
+				{{#> state label="Два варианта" bg="page"}}<div class="container"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenu}}</div></div>{{/state}}
+				{{#> state label="Три варианта" bg="page"}}<div class="container"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenuThree}}</div></div>{{/state}}
+				{{#> state label="Один вариант — без меню" bg="page"}}<div class="container"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenuOne}}</div></div>{{/state}}
+				{{#> state label="Пусто" note="вариантов нет — блок не выводится"}}{{/state}}
+			{{/story}}
+
 			{{#> story id="news-list" group="Новости" title="Лента раздела" description='Figma: PC.News (4467:758). Карточки — как в «Новостях холдинга» на главной. Мобильного макета нет — наше: 2 колонки, пагинация без дальних страниц.'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container">{{> sections/news/NewsList/NewsList props=data.newsList}}</div>

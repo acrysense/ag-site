@@ -1,0 +1,23 @@
+{{!--
+	Сортировка списка: текущий порядок текстом со стрелкой («Новые в начале ⌄»), по клику — меню
+	вариантов (вид — как меню под аватаром, кит Dropdown menu 2725:18877). Пункты — обычные ссылки
+	(GET с параметром сортировки), текущий отмечен. Новости, журнал, вакансии.
+	props: id, label (подпись для скринридера, «Сортировка»), options [{ text, url, current }].
+	Один вариант — меню не нужно, выводится просто текст. Контракт — docs/contracts/news-list.md.
+--}}
+{{#if props.options.[1]}}
+    <div class="sort-menu{{#if props.class}} {{props.class}}{{/if}}" data-module="SortMenu" data-path="components">
+        <button class="sort-menu__toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="{{default props.id 'sort-menu'}}">
+            <span class="visually-hidden">{{default props.label "Сортировка"}}: </span>
+            {{#each props.options}}{{#if current}}{{text}}{{/if}}{{/each}}
+            {{> components/Icon/Icon name="chevron-down" class="sort-menu__arrow"}}
+        </button>
+        <ul class="sort-menu__list" id="{{default props.id 'sort-menu'}}" role="list" hidden>
+            {{#each props.options}}
+                <li><a class="sort-menu__link" href="{{url}}" {{#if current}}aria-current="true"{{/if}}>{{text}}</a></li>
+            {{/each}}
+        </ul>
+    </div>
+{{else if props.options.[0]}}
+    <span class="sort-menu__current{{#if props.class}} {{props.class}}{{/if}}">{{props.options.[0].text}}</span>
+{{/if}}

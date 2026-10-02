@@ -446,6 +446,11 @@ $token-text-names: ();
 	gap: 10px;
 }
 
+// Содержимое у правого края (меню, которое открывается влево — сортировка)
+.story-row--end {
+	justify-content: flex-end;
+}
+
 // Колонка фильтров новостей на десктопе — 350, как на странице
 .story-column-narrow {
 	@include up(desktop) {

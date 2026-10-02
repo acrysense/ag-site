@@ -203,8 +203,19 @@
 		"list": {
 			"title": "HR-дайджест",
 			"sort": {
-				"text": "Новые в начале",
-				"url": "#"
+				"id": "journal-sort-2",
+				"label": "Сортировка",
+				"options": [
+					{
+						"text": "Новые в начале",
+						"url": "#",
+						"current": true
+					},
+					{
+						"text": "Старые в начале",
+						"url": "#"
+					}
+				]
 			},
 			"items": [
 				{

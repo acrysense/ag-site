@@ -41,28 +41,6 @@
 		}
 	}
 
-	.vacancy-list__sort {
-		@include text("m-400");
-
-		display: inline-flex;
-		gap: 4px;
-		align-items: center;
-		min-width: 0;
-		color: palette("main-blue");
-		transition: color $transition-default;
-
-		&:hover,
-		&:focus-visible {
-			color: palette("blue-hover");
-		}
-	}
-
-	.vacancy-list__sort-icon {
-		flex: none;
-		width: 10px;
-		height: 6px;
-	}
-
 	.vacancy-list__intro {
 		@include text("m-400");
 

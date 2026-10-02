@@ -1,6 +1,6 @@
 {{!--
 	Лента раздела новостей (Figma: PC.News 4467:758 — Frame 291). props: title (раздел,
-	h1), sort { text, url } — «Новые в начале» (ссылка на обратный порядок), items [карточка
+	h1), sort (SortMenu: id, label, options [{ text, url, current }]), items [карточка
 	NewsCard], pagination (Pagination), emptyText; card: journal — выпуски журнала (JournalCard,
 	Figma PC.Journal 4520:23829: сетка по 360, на 1920 — 3 в ряд).
 	Сетка — сколько поместится карточек от 240px (на 1920 — 4 по 280), на мобильном 2.
@@ -9,9 +9,7 @@
 <section class="news-list" aria-labelledby="news-list-title">
     <div class="news-list__head">
         <h1 class="news-list__title" id="news-list-title">{{props.title}}</h1>
-        {{#if props.sort}}
-            <a class="news-list__sort" href="{{props.sort.url}}">{{props.sort.text}}{{> components/Icon/Icon name="chevron-down" class="news-list__sort-icon"}}</a>
-        {{/if}}
+        {{> components/SortMenu/SortMenu props=props.sort}}
     </div>
     {{#if props.items.length}}
         <ul class="news-list__grid{{#if (eq props.card 'journal')}} news-list__grid--journal{{/if}}" role="list">

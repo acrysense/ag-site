@@ -40,29 +40,6 @@
 			}
 		}
 
-		&__sort {
-			@include text("m-400");
-
-			display: inline-flex;
-			flex: 0 1 auto;
-			min-width: 0;
-			gap: 4px;
-			align-items: center;
-			color: palette("main-blue");
-			transition: color $transition-default;
-
-			&:hover,
-			&:focus-visible {
-				color: palette("blue-hover");
-			}
-		}
-
-		&__sort-icon {
-			flex: none;
-			width: 10px;
-			height: 6px;
-		}
-
 		// Мобильный — 2 колонки (и на 320); дальше — сколько поместится: от 200 на планшете,
 		// от 240 на десктопе (на 1920 ровно 4 по 280, промежуток 26.67 из макета)
 		&__grid {
