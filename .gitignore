@@ -49,3 +49,9 @@ coverage/
 
 # deploy to natix: worktree, staging, build log (tools/deploy-natix.sh)
 .deploy/
+
+# debug screenshots from browser checks (keep them in the session scratchpad)
+/*.png
+/*.jpg
+/*.jpeg
+/*.webp
