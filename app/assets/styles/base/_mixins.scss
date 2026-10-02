@@ -449,8 +449,12 @@ $alias-bp: (
 		position: relative;
 	}
 
-	// Фото загрузилось (utils/broken-images.js) — значка нет: при наведении фото прозрачнее (0.9),
-	// и значок просвечивал бы сквозь него
+	// Фото загрузилось (utils/broken-images.js) — ни значка, ни фона заготовки: при наведении фото
+	// прозрачнее (0.9), и они просвечивали бы; фон был бы виден и под подписью рядом с фото
+	&:has(img.is-loaded) {
+		background-color: transparent;
+	}
+
 	&:has(img.is-loaded)::before {
 		content: none;
 	}
