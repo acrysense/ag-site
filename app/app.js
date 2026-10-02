@@ -1,6 +1,7 @@
 import { mount, unmount } from '@/core/mount'
 import { autosize } from '@/utils/autosize'
 import { watchBrokenImages } from '@/utils/broken-images'
+import { showToast } from '@/utils/toast'
 
 function init() {
 	mount(document)
@@ -38,4 +39,11 @@ document.addEventListener('ui:mount', (event) => {
 
 document.addEventListener('ui:unmount', (event) => {
 	unmount(event.detail?.root || document)
+})
+
+// Тост из любого скрипта (в т. ч. бэка после AJAX): document.dispatchEvent(new CustomEvent(
+// 'ui:toast', { detail: { text: 'Сохранено', type: 'ok' } })). type: ok, error, info
+document.addEventListener('ui:toast', (event) => {
+	const { text, type } = event.detail || {}
+	if (text) showToast(String(text), type)
 })

@@ -273,3 +273,21 @@ async function renderIconStrokes() {
 if (document.querySelector('[data-icon-list]')) {
 	window.addEventListener('load', renderIconStrokes, { once: true })
 }
+
+// История «Тост»: оба способа вызова, как у бэка — событие ui:toast и заготовка в разметке
+document.addEventListener('click', (event) => {
+	const button = event.target.closest('[data-demo-toast]')
+	if (!button) return
+	const { demoToast: way, demoToastType: type, demoToastText: text } = button.dataset
+	if (way === 'event') {
+		document.dispatchEvent(new CustomEvent('ui:toast', { detail: { text, type } }))
+		return
+	}
+	const node = document.createElement('div')
+	node.hidden = true
+	node.dataset.module = 'Toast'
+	node.dataset.path = 'components'
+	node.dataset.toast = type
+	node.textContent = text
+	document.body.append(node)
+})
