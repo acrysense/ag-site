@@ -99,6 +99,41 @@
 	font-weight: 600;
 }
 
+// Поле поиска — только при длинном списке; 16px, чтобы iPhone не увеличивал страницу
+.pages-nav__search {
+	flex: none;
+	box-sizing: border-box;
+	width: calc(100% - 24px);
+	height: 34px;
+	margin: 10px 12px 2px;
+	padding: 0 10px;
+	font: inherit;
+	font-size: 16px;
+	color: var(--pn-text);
+	background: #fff;
+	border: 1px solid var(--pn-line);
+	border-radius: 8px;
+
+	&:focus-visible {
+		border-color: var(--pn-accent);
+		outline: none;
+	}
+}
+
+.pages-nav__empty {
+	margin: 8px;
+	color: var(--pn-muted);
+
+	&[hidden] {
+		display: none;
+	}
+}
+
+.pages-nav__group[hidden],
+.pages-nav__link[hidden] {
+	display: none;
+}
+
 .pages-nav__list {
 	flex: 1 1 auto;
 	min-height: 0;
