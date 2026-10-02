@@ -19,7 +19,7 @@
 | Данные | Где | Примечание |
 | --- | --- | --- |
 | Название раздела | `h1.news-list__title` | |
-| Сортировка | `components/SortMenu` | `sort { id, label, options [{ text, url, current }] }`: текущий порядок текстом со стрелкой, по клику меню вариантов (ссылки GET, текущий отмечен); один вариант — просто текст |
+| Сортировка | `components/SortMenu` | `sort { id, label, options [{ text, url, current }] }`: текущий порядок текстом со стрелкой, по клику список вариантов (ссылки GET, текущий — с галочкой), до 768 — нижний лист; один вариант — просто текст |
 | Карточки | `.news-list__item` | поля — как на главной (docs/contracts/news-feed.md) |
 | Категории | `a.news-filters__link` | текущая — `aria-current="page"` |
 | Годы | `a.news-filters__chip` | текущий — `aria-current="true"` |
