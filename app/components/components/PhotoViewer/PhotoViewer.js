@@ -16,6 +16,10 @@ import { lockBody } from '@/utils/scroll-lock'
 
 const DESKTOP = 1024
 const TABLET = 768
+// Лента миниатюр: 96 через 8, не шире 1344 (макет 1920 — 13 миниатюр)
+const THUMB_GAP = 8
+const THUMB_STEP = 96 + THUMB_GAP
+const THUMBS_MAX = 1344
 // Низкий экран (телефон горизонтально): без миниатюр, поля минимальные — фото на весь экран.
 // Та же граница — в PhotoViewer.scss
 const LOW = 560
@@ -193,22 +197,40 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {} })
 				})
 				list.append(...buttons)
 				root.append(list)
-				const render = () => {
+				// Целые миниатюры: столько, сколько помещается (по макету 1920 — 13 в ширине 1344),
+				// лента сдвигается на целые миниатюры, текущая — ближе к середине
+				let visible = 0
+				const fit = () => {
+					const free = Math.min(THUMBS_MAX, root.clientWidth - 32)
+					visible = Math.max(
+						1,
+						Math.min(items.length, Math.floor((free + THUMB_GAP) / THUMB_STEP))
+					)
+					list.style.setProperty('--photo-viewer-thumbs', String(visible))
+				}
+				const render = (smooth = true) => {
 					buttons.forEach((button, index) => {
 						const current = index === pswp.currIndex
 						button.classList.toggle('is-current', current)
 						if (current) button.setAttribute('aria-current', 'true')
 						else button.removeAttribute('aria-current')
 					})
-					const current = buttons[pswp.currIndex]
-					if (current) {
-						const left =
-							current.offsetLeft - (list.clientWidth - current.offsetWidth) / 2
-						list.scrollTo({ left: Math.max(0, left), behavior: 'smooth' })
-					}
+					const first = Math.min(
+						Math.max(0, pswp.currIndex - Math.floor(visible / 2)),
+						Math.max(0, items.length - visible)
+					)
+					list.scrollTo({
+						left: first * THUMB_STEP,
+						behavior: smooth ? 'smooth' : 'auto',
+					})
 				}
-				pswp.on('change', render)
-				render()
+				pswp.on('resize', () => {
+					fit()
+					render(false)
+				})
+				fit()
+				render(false)
+				pswp.on('change', () => render())
 			},
 		})
 	})

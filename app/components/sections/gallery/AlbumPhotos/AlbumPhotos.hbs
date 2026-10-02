@@ -5,14 +5,14 @@
 	Бэк выводит: первые step фото разметкой (AlbumPhoto) и все фото альбома JSON-ом в
 	<script type="application/json" data-album-photos> — по нему «Показать ещё» дорисовывает сетку
 	порциями, а просмотр листает весь альбом.
-	props: title (для просмотра), step (по сколько фото, по умолчанию 16), photos [{ id, src,
+	props: title (для просмотра), step (по сколько фото, по умолчанию 24), photos [{ id, src,
 	srcset, width, height, thumb, thumbSrcset, alt, likes, liked, likeUrl, download }],
 	other { title, items [AlbumCard] }. Контракт — docs/contracts/gallery.md.
 --}}
-<section class="album-photos{{#if props.class}} {{props.class}}{{/if}}" aria-label="{{default props.label 'Фотографии альбома'}}" data-module="AlbumPhotos" data-path="sections/gallery" data-album-title="{{props.title}}" data-step="{{default props.step 16}}">
+<section class="album-photos{{#if props.class}} {{props.class}}{{/if}}" aria-label="{{default props.label 'Фотографии альбома'}}" data-module="AlbumPhotos" data-path="sections/gallery" data-album-title="{{props.title}}" data-step="{{default props.step 24}}">
     {{#if props.photos.length}}
         <ul class="album-photos__grid" role="list" data-album-grid>
-            {{#each (lookup (chunk props.photos (default props.step 16)) 0)}}
+            {{#each (lookup (chunk props.photos (default props.step 24)) 0)}}
                 {{> sections/gallery/AlbumPhotos/AlbumPhoto props=this index=@index total=../props.photos.length}}
             {{/each}}
         </ul>

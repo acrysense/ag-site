@@ -221,12 +221,16 @@
 		}
 	}
 
+	// Ровно целые миниатюры: их число (--photo-viewer-thumbs) считает PhotoViewer.js по ширине
+	// экрана; прокрутка — пальцем и колесом, с привязкой к целым миниатюрам
 	.photo-viewer__thumbs-list {
 		display: flex;
 		gap: 8px;
-		max-width: min(1344px, calc(100% - 32px));
-		padding: 2px;
+		width: calc(var(--photo-viewer-thumbs, 13) * 104px - 8px);
+		max-width: calc(100% - 32px);
 		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory;
 		scrollbar-width: none;
 
 		&::-webkit-scrollbar {
@@ -236,6 +240,7 @@
 
 	.photo-viewer__thumb {
 		flex: none;
+		scroll-snap-align: start;
 		width: 96px;
 		height: 64px;
 		padding: 0;

@@ -19,7 +19,7 @@ export default function init(root) {
 		console.error('[AlbumPhotos] JSON фото не разобран', error)
 		return () => {}
 	}
-	const step = Number(root.dataset.step) || 16
+	const step = Number(root.dataset.step) || 24
 	const template = grid.querySelector('.album-photo')
 
 	// Отметка в сетке → данные просмотра; из просмотра → кнопка в сетке
