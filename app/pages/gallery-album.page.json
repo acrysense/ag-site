@@ -1,0 +1,760 @@
+{
+	"auth": true,
+	"title": "Корпоратив-2026: «Искусство быть вместе» — фотогалерея",
+	"description": "Фотоальбом «Корпоратив-2026: «Искусство быть вместе»» — корпоративная фотогалерея холдинга «Аптека групп».",
+	"nav": {
+		"group": "Галерея",
+		"title": "Альбом (фото и просмотр)",
+		"order": 71
+	},
+	"data": {
+		"header": {
+			"homeUrl": "/",
+			"search": {
+				"action": "#",
+				"name": "q"
+			},
+			"menu": [
+				{
+					"text": "Главная",
+					"url": "/"
+				},
+				{
+					"text": "О холдинге",
+					"children": [
+						{
+							"text": "Структура",
+							"url": "#"
+						},
+						{
+							"text": "Справочник",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"text": "Новости",
+					"url": "#",
+					"children": [
+						{
+							"text": "Новости холдинга",
+							"url": "#"
+						},
+						{
+							"text": "HR-дайджест",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"text": "Карьера",
+					"url": "./career.html",
+					"children": [
+						{
+							"text": "Вакансии",
+							"url": "#"
+						},
+						{
+							"text": "Карьерный шанс",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"text": "База знаний",
+					"url": "#",
+					"children": [
+						{
+							"text": "Учебный портал",
+							"url": "#"
+						},
+						{
+							"text": "Нормативные документы",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"text": "Галерея",
+					"url": "./gallery.html",
+					"current": true
+				}
+			],
+			"loginUrl": "#",
+			"loginText": "Войти в ЛК",
+			"user": {
+				"name": "Волкова Анна",
+				"initials": "ВА",
+				"url": "#",
+				"links": [
+					{
+						"icon": "profile",
+						"label": "Личный кабинет",
+						"url": "#"
+					},
+					{
+						"icon": "edu",
+						"label": "Учебный портал",
+						"url": "#"
+					},
+					{
+						"icon": "crm",
+						"label": "CRM",
+						"url": "#"
+					}
+				],
+				"menu": [
+					{
+						"label": "Моя страница",
+						"url": "#",
+						"icon": "profile"
+					},
+					{
+						"label": "Учебный портал",
+						"url": "#",
+						"icon": "edu"
+					},
+					{
+						"label": "Коэффициент",
+						"url": "#",
+						"icon": "multiplier"
+					},
+					{
+						"label": "Пакеты",
+						"url": "#",
+						"icon": "box"
+					},
+					{
+						"label": "Мотивация",
+						"url": "#",
+						"icon": "motivation"
+					},
+					{
+						"label": "Конкурсы",
+						"url": "#",
+						"icon": "apple"
+					},
+					{
+						"divider": true
+					},
+					{
+						"label": "Настройки",
+						"url": "#",
+						"icon": "settings"
+					},
+					{
+						"label": "Выйти",
+						"url": "#",
+						"icon": "exit",
+						"modal": "main-menu-logout"
+					}
+				]
+			}
+		},
+		"breadcrumbs": [
+			{
+				"title": "Главная",
+				"url": "./index.html"
+			},
+			{
+				"title": "Фотогалерея",
+				"url": "./gallery.html"
+			},
+			{
+				"title": "Корпоратив-2026: «Искусство быть вместе»"
+			}
+		],
+		"years": {
+			"title": "Фотогалерея",
+			"items": [
+				{
+					"text": "Все альбомы",
+					"url": "./gallery.html",
+					"count": 24
+				},
+				{
+					"text": "2026",
+					"url": "#",
+					"count": 4,
+					"current": true
+				},
+				{
+					"text": "2025",
+					"url": "#",
+					"count": 3
+				},
+				{
+					"text": "2024",
+					"url": "#",
+					"count": 5
+				},
+				{
+					"text": "2023",
+					"url": "#",
+					"count": 4
+				},
+				{
+					"text": "2022",
+					"url": "#",
+					"count": 3
+				},
+				{
+					"text": "2021",
+					"url": "#",
+					"count": 5
+				}
+			]
+		},
+		"banner": {
+			"url": "#",
+			"alt": "Тонометры и аксессуары — скидка до −10%. Надёжный контроль здоровья",
+			"image": {
+				"src": "./dev/img/side-banner.webp"
+			}
+		},
+		"hero": {
+			"class": "page-columns__main-item",
+			"title": "Корпоратив-2026: «Искусство быть вместе»",
+			"date": "2026-06-15",
+			"dateText": "15 июня 2026",
+			"countText": "40 фото",
+			"text": "Ежегодный летний корпоратив: команды «Аптека групп», «Добрыя лекі» и «Адэль» на выходных за городом.",
+			"cover": {
+				"src": "./dev/img/gallery/album-1.webp"
+			},
+			"like": {
+				"count": 24,
+				"liked": false
+			},
+			"download": {
+				"url": "#",
+				"size": "1,2 ГБ"
+			},
+			"url": ""
+		},
+		"photos": {
+			"title": "Корпоратив-2026: «Искусство быть вместе»",
+			"step": 16,
+			"photos": [
+				{
+					"id": "1000",
+					"src": "./dev/img/gallery/photo-01.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-01.webp",
+					"alt": "",
+					"likes": 24,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-01.webp"
+				},
+				{
+					"id": "1001",
+					"src": "./dev/img/gallery/photo-02.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-02.webp",
+					"alt": "",
+					"likes": 3,
+					"liked": true,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-02.webp"
+				},
+				{
+					"id": "1002",
+					"src": "./dev/img/gallery/photo-03.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-03.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-03.webp"
+				},
+				{
+					"id": "1003",
+					"src": "./dev/img/gallery/photo-04.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-04.webp",
+					"alt": "",
+					"likes": 12,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-04.webp"
+				},
+				{
+					"id": "1004",
+					"src": "./dev/img/gallery/photo-05.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-05.webp",
+					"alt": "",
+					"likes": 7,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-05.webp"
+				},
+				{
+					"id": "1005",
+					"src": "./dev/img/gallery/photo-06.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-06.webp",
+					"alt": "",
+					"likes": 1,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-06.webp"
+				},
+				{
+					"id": "1006",
+					"src": "./dev/img/gallery/photo-07.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-07.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": true,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-07.webp"
+				},
+				{
+					"id": "1007",
+					"src": "./dev/img/gallery/photo-08.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-08.webp",
+					"alt": "",
+					"likes": 5,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-08.webp"
+				},
+				{
+					"id": "1008",
+					"src": "./dev/img/gallery/photo-09.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-09.webp",
+					"alt": "",
+					"likes": 24,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-09.webp"
+				},
+				{
+					"id": "1009",
+					"src": "./dev/img/gallery/photo-10.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-10.webp",
+					"alt": "",
+					"likes": 3,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-10.webp"
+				},
+				{
+					"id": "1010",
+					"src": "./dev/img/gallery/photo-11.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-11.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-11.webp"
+				},
+				{
+					"id": "1011",
+					"src": "./dev/img/gallery/photo-12.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-12.webp",
+					"alt": "",
+					"likes": 12,
+					"liked": true,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-12.webp"
+				},
+				{
+					"id": "1012",
+					"src": "./dev/img/gallery/photo-13.webp",
+					"width": 1200,
+					"height": 795,
+					"thumb": "./dev/img/gallery/photo-13.webp",
+					"alt": "",
+					"likes": 7,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-13.webp"
+				},
+				{
+					"id": "1013",
+					"src": "./dev/img/gallery/photo-01.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-01.webp",
+					"alt": "",
+					"likes": 1,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-01.webp"
+				},
+				{
+					"id": "1014",
+					"src": "./dev/img/gallery/photo-02.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-02.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-02.webp"
+				},
+				{
+					"id": "1015",
+					"src": "./dev/img/gallery/photo-03.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-03.webp",
+					"alt": "",
+					"likes": 5,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-03.webp"
+				},
+				{
+					"id": "1016",
+					"src": "./dev/img/gallery/photo-04.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-04.webp",
+					"alt": "",
+					"likes": 24,
+					"liked": true,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-04.webp"
+				},
+				{
+					"id": "1017",
+					"src": "./dev/img/gallery/photo-05.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-05.webp",
+					"alt": "",
+					"likes": 3,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-05.webp"
+				},
+				{
+					"id": "1018",
+					"src": "./dev/img/gallery/photo-06.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-06.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-06.webp"
+				},
+				{
+					"id": "1019",
+					"src": "./dev/img/gallery/photo-07.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-07.webp",
+					"alt": "",
+					"likes": 12,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-07.webp"
+				},
+				{
+					"id": "1020",
+					"src": "./dev/img/gallery/photo-08.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-08.webp",
+					"alt": "",
+					"likes": 7,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-08.webp"
+				},
+				{
+					"id": "1021",
+					"src": "./dev/img/gallery/photo-09.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-09.webp",
+					"alt": "",
+					"likes": 1,
+					"liked": true,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-09.webp"
+				},
+				{
+					"id": "1022",
+					"src": "./dev/img/gallery/photo-10.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-10.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-10.webp"
+				},
+				{
+					"id": "1023",
+					"src": "./dev/img/gallery/photo-11.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-11.webp",
+					"alt": "",
+					"likes": 5,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-11.webp"
+				},
+				{
+					"id": "1024",
+					"src": "./dev/img/gallery/photo-12.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-12.webp",
+					"alt": "",
+					"likes": 24,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-12.webp"
+				},
+				{
+					"id": "1025",
+					"src": "./dev/img/gallery/photo-13.webp",
+					"width": 1200,
+					"height": 795,
+					"thumb": "./dev/img/gallery/photo-13.webp",
+					"alt": "",
+					"likes": 3,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-13.webp"
+				},
+				{
+					"id": "1026",
+					"src": "./dev/img/gallery/photo-01.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-01.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": true,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-01.webp"
+				},
+				{
+					"id": "1027",
+					"src": "./dev/img/gallery/photo-02.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-02.webp",
+					"alt": "",
+					"likes": 12,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-02.webp"
+				},
+				{
+					"id": "1028",
+					"src": "./dev/img/gallery/photo-03.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-03.webp",
+					"alt": "",
+					"likes": 7,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-03.webp"
+				},
+				{
+					"id": "1029",
+					"src": "./dev/img/gallery/photo-04.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-04.webp",
+					"alt": "",
+					"likes": 1,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-04.webp"
+				},
+				{
+					"id": "1030",
+					"src": "./dev/img/gallery/photo-05.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-05.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-05.webp"
+				},
+				{
+					"id": "1031",
+					"src": "./dev/img/gallery/photo-06.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-06.webp",
+					"alt": "",
+					"likes": 5,
+					"liked": true,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-06.webp"
+				},
+				{
+					"id": "1032",
+					"src": "./dev/img/gallery/photo-07.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-07.webp",
+					"alt": "",
+					"likes": 24,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-07.webp"
+				},
+				{
+					"id": "1033",
+					"src": "./dev/img/gallery/photo-08.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-08.webp",
+					"alt": "",
+					"likes": 3,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-08.webp"
+				},
+				{
+					"id": "1034",
+					"src": "./dev/img/gallery/photo-09.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-09.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-09.webp"
+				},
+				{
+					"id": "1035",
+					"src": "./dev/img/gallery/photo-10.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-10.webp",
+					"alt": "",
+					"likes": 12,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-10.webp"
+				},
+				{
+					"id": "1036",
+					"src": "./dev/img/gallery/photo-11.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-11.webp",
+					"alt": "",
+					"likes": 7,
+					"liked": true,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-11.webp"
+				},
+				{
+					"id": "1037",
+					"src": "./dev/img/gallery/photo-12.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-12.webp",
+					"alt": "",
+					"likes": 1,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-12.webp"
+				},
+				{
+					"id": "1038",
+					"src": "./dev/img/gallery/photo-13.webp",
+					"width": 1200,
+					"height": 795,
+					"thumb": "./dev/img/gallery/photo-13.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-13.webp"
+				},
+				{
+					"id": "1039",
+					"src": "./dev/img/gallery/photo-01.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-01.webp",
+					"alt": "",
+					"likes": 5,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-01.webp"
+				}
+			],
+			"other": {
+				"title": "Другие альбомы",
+				"items": [
+					{
+						"url": "./gallery-album.html",
+						"title": "Фотоконкурс «Вместе теплее»",
+						"date": "2026-05-20",
+						"dateText": "20 мая 2026",
+						"count": 64,
+						"cover": {
+							"src": "./dev/img/gallery/album-3.webp",
+							"alt": ""
+						}
+					},
+					{
+						"url": "./gallery-album.html",
+						"title": "Ярмарка «Вкусная суббота»",
+						"date": "2026-04-18",
+						"dateText": "18 апреля 2026",
+						"count": 57,
+						"cover": {
+							"src": "./dev/img/gallery/album-1.webp",
+							"alt": ""
+						}
+					},
+					{
+						"url": "./gallery-album.html",
+						"title": "Семейный день «Добрыя лекі»",
+						"date": "2026-03-01",
+						"dateText": "1 марта 2026",
+						"count": 210,
+						"cover": {
+							"src": "./dev/img/gallery/album-6.webp",
+							"alt": ""
+						}
+					}
+				]
+			}
+		}
+	}
+}

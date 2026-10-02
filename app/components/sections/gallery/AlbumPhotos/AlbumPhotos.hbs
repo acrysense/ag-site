@@ -1,0 +1,34 @@
+{{!--
+	Фото альбома (Figma: Content 4682:25799): белая карточка — сетка фото (4 в ряд с 1280, 3 — с 768,
+	2 — уже), «Показать ещё N фото» и «Другие альбомы». Фото открываются в просмотре на весь экран
+	(components/PhotoViewer, PhotoSwipe) — листается весь альбом.
+	Бэк выводит: первые step фото разметкой (AlbumPhoto) и все фото альбома JSON-ом в
+	<script type="application/json" data-album-photos> — по нему «Показать ещё» дорисовывает сетку
+	порциями, а просмотр листает весь альбом.
+	props: title (для просмотра), step (по сколько фото, по умолчанию 16), photos [{ id, src,
+	srcset, width, height, thumb, thumbSrcset, alt, likes, liked, likeUrl, download }],
+	other { title, items [AlbumCard] }. Контракт — docs/contracts/gallery.md.
+--}}
+<section class="album-photos{{#if props.class}} {{props.class}}{{/if}}" aria-label="{{default props.label 'Фотографии альбома'}}" data-module="AlbumPhotos" data-path="sections/gallery" data-album-title="{{props.title}}" data-step="{{default props.step 16}}">
+    {{#if props.photos.length}}
+        <ul class="album-photos__grid" role="list" data-album-grid>
+            {{#each (lookup (chunk props.photos (default props.step 16)) 0)}}
+                {{> sections/gallery/AlbumPhotos/AlbumPhoto props=this index=@index total=../props.photos.length}}
+            {{/each}}
+        </ul>
+        <button class="btn btn--light btn--m album-photos__more" type="button" data-album-more hidden></button>
+        <script type="application/json" data-album-photos>{{{json props.photos}}}</script>
+    {{else}}
+        <p class="album-photos__empty">{{default props.emptyText "В альбоме пока нет фото"}}</p>
+    {{/if}}
+    {{#if props.other.items.length}}
+        <div class="album-photos__other">
+            <h2 class="album-photos__other-title">{{default props.other.title "Другие альбомы"}}</h2>
+            <ul class="album-photos__other-list" role="list">
+                {{#each props.other.items}}
+                    <li>{{> sections/gallery/AlbumCard/AlbumCard props=this}}</li>
+                {{/each}}
+            </ul>
+        </div>
+    {{/if}}
+</section>

@@ -1,0 +1,117 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: «Фильтр альбомов» (4682:25616) — белая карточка 350, скругление 20, поля 20, пункты через
+// 15: «Фотогалерея» H3, ссылки L/400 Black.TXT (текущая Main Blue), справа число M/400
+// Dark-grey.TXT. Мобильный (наше): «таблетки» 36 BG.Info с числом, прокрутка вбок, как годы
+// в новостях; текущая — BG.Main 2.
+@layer components {
+	.gallery-years {
+		min-width: 0;
+
+		@include up(desktop) {
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+			padding: 20px;
+			background: palette("white");
+			border-radius: $radius-content-block;
+		}
+	}
+
+	.gallery-years__title {
+		@include visually-hidden;
+
+		@include up(desktop) {
+			position: static;
+			width: auto;
+			height: auto;
+			margin: 0;
+			overflow: visible;
+			clip-path: none;
+			white-space: normal;
+
+			@include text("h3");
+
+			color: palette("black-txt");
+		}
+	}
+
+	.gallery-years__list {
+		display: flex;
+		gap: 8px;
+		margin: 0 -10px;
+		padding: 0 10px;
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		list-style: none;
+		scrollbar-width: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		> li {
+			flex: none;
+		}
+
+		@include up(desktop) {
+			flex-direction: column;
+			gap: 15px;
+			margin: 0;
+			padding: 0;
+			overflow: visible;
+		}
+	}
+
+	.gallery-years__link {
+		@include text("m-400");
+
+		// Скрытая подпись числа (visually-hidden) держится внутри ссылки, а не страницы: иначе в
+		// ленте с прокруткой вбок она растягивала страницу
+		position: relative;
+		display: flex;
+		gap: 6px;
+		align-items: center;
+		height: 36px;
+		padding: 0 12px;
+		color: palette("black-txt");
+		white-space: nowrap;
+		background: palette("bg-info");
+		border-radius: $radius-button;
+		transition:
+			color $transition-default,
+			background-color $transition-default;
+
+		&[aria-current] {
+			background: palette("bg-main-2");
+		}
+
+		&:hover:not([aria-current]),
+		&:focus-visible:not([aria-current]) {
+			color: palette("blue-txt");
+		}
+
+		@include up(desktop) {
+			justify-content: space-between;
+			height: auto;
+			padding: 0;
+			background: none;
+
+			&[aria-current] {
+				color: palette("main-blue");
+				background: none;
+			}
+		}
+	}
+
+	.gallery-years__text {
+		@include up(desktop) {
+			@include text("l-400");
+		}
+	}
+
+	.gallery-years__count {
+		color: palette("dark-grey-txt");
+	}
+}

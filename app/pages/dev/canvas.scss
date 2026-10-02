@@ -500,3 +500,9 @@ $token-text-names: ();
 .story-skeleton__grow {
 	flex: 1 1 auto;
 }
+
+// Карточки альбомов в ряд — ширина как в сетке 1920
+.story-row > .album-card {
+	width: 390px;
+	max-width: 100%;
+}

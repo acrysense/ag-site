@@ -1,0 +1,181 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Content (4682:25799) — белая карточка, поля 20, части через 30: сетка фото 4 в ряд через
+// 10 (фото 292.5×220, 4:3, скругление 10), «Показать ещё N фото» (Light M по центру), «Другие
+// альбомы» (H2 Black.H, карточки через 15). Фото при наведении (4682:25810): затемнение 12%,
+// справа снизу (поля 12) «Нравится» и «Скачать» — белые 92%, высота 36, скругление 20, тень.
+// До 1024 (наше): без карточки; фото — 3 в ряд с 768, 2 — уже, через 8.
+@layer components {
+	.album-photos {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		min-width: 0;
+
+		@include up(desktop) {
+			gap: 30px;
+			padding: 20px;
+			background: palette("white");
+			border-radius: $radius-content-block;
+		}
+	}
+
+	.album-photos__grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 8px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		@include up(tablet) {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 10px;
+		}
+
+		@include up(wide) {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+	}
+
+	.album-photo {
+		position: relative;
+		min-width: 0;
+	}
+
+	.album-photo__link {
+		@include image-placeholder;
+
+		display: block;
+		aspect-ratio: 292.5 / 220;
+		overflow: hidden;
+		border-radius: $radius-inner-block;
+
+		&::after {
+			position: absolute;
+			inset: 0;
+			content: "";
+			background: rgba(palette("black-h"), 0.12);
+			opacity: 0;
+			transition: opacity $transition-default;
+		}
+	}
+
+	.album-photo__link .album-photo__image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	// Действия — поверх фото справа снизу; видны при наведении на фото и с клавиатуры
+	.album-photo__actions {
+		position: absolute;
+		right: 12px;
+		bottom: 12px;
+		display: flex;
+		gap: 8px;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity $transition-default;
+	}
+
+	.album-photo:hover,
+	.album-photo:focus-within {
+		.album-photo__link::after {
+			opacity: 1;
+		}
+
+		.album-photo__actions {
+			opacity: 1;
+			pointer-events: auto;
+		}
+	}
+
+	// На телефоне наведения нет — действия в просмотре
+	@media (hover: none) {
+		.album-photo__actions {
+			display: none;
+		}
+	}
+
+	.album-photo__like.btn,
+	.album-photo__download {
+		height: 36px;
+		color: palette("black-txt");
+		background: rgba(palette("white"), 0.92);
+		border-radius: 20px;
+		box-shadow: 0 2px 8px rgba(palette("black-h"), 0.15);
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-txt");
+		}
+	}
+
+	.album-photo__like.btn {
+		gap: 6px;
+		padding: 0 12px;
+	}
+
+	.album-photo__download {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+
+		&[hidden] {
+			display: none;
+		}
+	}
+
+	.album-photo__download-icon {
+		width: 16px;
+		height: 16px;
+	}
+
+	.album-photos__more {
+		align-self: center;
+
+		&[hidden] {
+			display: none;
+		}
+	}
+
+	.album-photos__empty {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.album-photos__other {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+
+		@include up(desktop) {
+			padding-top: 10px;
+		}
+	}
+
+	.album-photos__other-title {
+		@include text("h2");
+
+		color: palette("black-h");
+	}
+
+	.album-photos__other-list {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 24px 15px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		@include up(tablet) {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+}

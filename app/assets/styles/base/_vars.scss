@@ -112,7 +112,9 @@ $colors: (
 	"copied-bg": #e5f5eb,
 	"copied": #1c8a57,
 	// Без переменной в Figma: значок папки (Doc/Tree item)
-	"folder-icon": #1f1f1f
+	"folder-icon": #1f1f1f,
+	// Без переменной в Figma: фон просмотра фото (PC.Gallery — A. Просмотр фото, 4682:25854)
+	"viewer-bg": #121417
 );
 
 // layout
@@ -163,6 +165,13 @@ $radius-inner-block: 10px; // Radius-InnerBlock
 // Figma — это Auto, то есть normal: так высота текста в макете и считается.
 // Применяются через @include text("имя"); в витрине («Основа → Типографика») появляются сами.
 $text-styles: (
+	// PC/HEADER/H0 — заголовок альбома на обложке (галерея, 4682:25664)
+	"h0": (
+			family: heading,
+			weight: 700,
+			size: 44,
+			line-height: normal,
+		),
 	// PC/HEADER/H1
 	"h1": (
 			family: heading,

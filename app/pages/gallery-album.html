@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="{{ lang }}" data-icons="{{sprite}}">
+	<head>
+		{{> layouts/Head/Head }}
+		<link rel="stylesheet" href="/assets/styles/main.scss" />
+		<script type="module" src="/app.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			{{> layouts/Header/Header props=(default data.header site.header) }}
+			<main class="wrapper__content">
+				{{!-- Фотогалерея — альбом (1920 — 4682:25741, просмотр фото — 4682:25854; мобильного макета нет) --}}
+				<div class="container page-inner">
+					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.breadcrumbs) }}
+					<div class="page-columns page-columns--start">
+						<aside class="page-columns__aside">
+							{{> sections/gallery/GalleryYears/GalleryYears props=data.years }}
+							{{> sections/shared/SideBanner/SideBanner props=data.banner }}
+						</aside>
+						<div class="page-columns__main album-page">
+							{{> sections/gallery/AlbumHero/AlbumHero props=data.hero }}
+							{{> sections/gallery/AlbumPhotos/AlbumPhotos props=data.photos }}
+						</div>
+					</div>
+				</div>
+			</main>
+			{{> layouts/Footer/Footer props=site.footer }}
+		</div>
+		{{> layouts/MainMenu/MainMenu props=site.mainMenu }}
+		{{> layouts/TabBar/TabBar props=site.tabBar }}
+		{{> layouts/SiteModals/SiteModals props=site.modals }}
+		{{> layouts/CookieBanner/CookieBanner props=site.cookies }}
+	</body>
+</html>

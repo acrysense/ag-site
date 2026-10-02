@@ -9686,6 +9686,981 @@
 				"shareUrl": "/library/documents/1003/",
 				"downloadUrl": "#"
 			}
-		]
+		],
+		"galleryYears": {
+			"title": "Фотогалерея",
+			"items": [
+				{
+					"text": "Все альбомы",
+					"url": "./gallery.html",
+					"count": 24,
+					"current": true
+				},
+				{
+					"text": "2026",
+					"url": "#",
+					"count": 4
+				},
+				{
+					"text": "2025",
+					"url": "#",
+					"count": 3
+				},
+				{
+					"text": "2024",
+					"url": "#",
+					"count": 5
+				},
+				{
+					"text": "2023",
+					"url": "#",
+					"count": 4
+				},
+				{
+					"text": "2022",
+					"url": "#",
+					"count": 3
+				},
+				{
+					"text": "2021",
+					"url": "#",
+					"count": 5
+				}
+			]
+		},
+		"galleryYearsOne": {
+			"title": "Фотогалерея",
+			"items": [
+				{
+					"text": "Все альбомы",
+					"url": "#",
+					"count": 1,
+					"current": true
+				}
+			]
+		},
+		"albumList": {
+			"title": "Корпоративная фотогалерея",
+			"sort": {
+				"id": "gallery-sort",
+				"label": "Сортировка",
+				"options": [
+					{
+						"text": "Новые в начале",
+						"url": "#",
+						"current": true
+					},
+					{
+						"text": "Старые в начале",
+						"url": "#"
+					}
+				]
+			},
+			"featured": {
+				"url": "./gallery-album.html",
+				"badge": "Новый альбом",
+				"title": "Корпоратив-2026: «Искусство быть вместе»",
+				"date": "2026-06-14",
+				"dateText": "14 июня 2026",
+				"countText": "148 фото",
+				"cover": {
+					"src": "./dev/img/gallery/album-1.webp",
+					"alt": ""
+				},
+				"buttonText": "Смотреть альбом"
+			},
+			"items": [
+				{
+					"url": "./gallery-album.html",
+					"title": "Фотоконкурс «Вместе теплее»",
+					"date": "2026-05-20",
+					"dateText": "20 мая 2026",
+					"count": 64,
+					"cover": {
+						"src": "./dev/img/gallery/album-3.webp",
+						"alt": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "Ярмарка «Вкусная суббота»",
+					"date": "2026-04-18",
+					"dateText": "18 апреля 2026",
+					"count": 57,
+					"cover": {
+						"src": "./dev/img/gallery/album-1.webp",
+						"alt": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "Семейный день «Добрыя лекі»",
+					"date": "2026-03-01",
+					"dateText": "1 марта 2026",
+					"count": 210,
+					"cover": {
+						"src": "./dev/img/gallery/album-6.webp",
+						"alt": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "«уДачный weekend» — 30 лет холдингу",
+					"date": "2024-07-06",
+					"dateText": "6 июля 2024",
+					"count": 134,
+					"cover": {
+						"src": "./dev/img/gallery/album-6.webp",
+						"alt": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "30-летие холдинга «Аптека групп»",
+					"date": "2024-06-14",
+					"dateText": "14 июня 2024",
+					"count": 212,
+					"cover": {
+						"src": "./dev/img/gallery/album-2.webp",
+						"alt": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "Корпоратив ЛЕТО-2023 «Морское приключение»",
+					"date": "2023-07-22",
+					"dateText": "22 июля 2023",
+					"count": 186,
+					"cover": {
+						"src": "./dev/img/gallery/album-5.webp",
+						"alt": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "BIG PICNIC: День медицинского работника",
+					"date": "2023-06-18",
+					"dateText": "18 июня 2023",
+					"count": 96,
+					"cover": {
+						"src": "./dev/img/gallery/album-4.webp",
+						"alt": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "Выездной семинар руководителей аптек",
+					"date": "2023-04-14",
+					"dateText": "14 апреля 2023",
+					"count": 42,
+					"cover": {
+						"src": "./dev/img/gallery/album-7.webp",
+						"alt": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "Квест «Добрыя лекі» для новых сотрудников",
+					"date": "2023-03-03",
+					"dateText": "3 марта 2023",
+					"count": 77,
+					"cover": {
+						"src": "./dev/img/gallery/album-6.webp",
+						"alt": ""
+					}
+				}
+			],
+			"pagination": {
+				"label": "Страницы альбомов",
+				"prev": {
+					"url": "#"
+				},
+				"next": {
+					"url": "#"
+				},
+				"pages": [
+					{
+						"number": 1,
+						"url": "#"
+					},
+					{
+						"number": 2,
+						"current": true
+					},
+					{
+						"number": 3,
+						"url": "#"
+					},
+					{
+						"number": 4,
+						"url": "#",
+						"far": true
+					},
+					{
+						"gap": true
+					},
+					{
+						"number": 8,
+						"url": "#"
+					}
+				],
+				"total": "24 альбома",
+				"totalText": "Всего:"
+			}
+		},
+		"albumListNoFeatured": {
+			"title": "Корпоративная фотогалерея",
+			"sort": {
+				"id": "gallery-sort",
+				"label": "Сортировка",
+				"options": [
+					{
+						"text": "Новые в начале",
+						"url": "#",
+						"current": true
+					},
+					{
+						"text": "Старые в начале",
+						"url": "#"
+					}
+				]
+			},
+			"featured": null,
+			"items": [
+				{
+					"url": "./gallery-album.html",
+					"title": "Фотоконкурс «Вместе теплее»",
+					"date": "2026-05-20",
+					"dateText": "20 мая 2026",
+					"count": 64,
+					"cover": {
+						"src": "./dev/img/gallery/album-3.webp",
+						"alt": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "Ярмарка «Вкусная суббота»",
+					"date": "2026-04-18",
+					"dateText": "18 апреля 2026",
+					"count": 57,
+					"cover": {
+						"src": "./dev/img/gallery/album-1.webp",
+						"alt": ""
+					}
+				}
+			],
+			"pagination": {
+				"total": "2 альбома",
+				"totalText": "Всего:"
+			}
+		},
+		"albumListEmpty": {
+			"title": "Корпоративная фотогалерея",
+			"sort": {
+				"id": "gallery-sort",
+				"label": "Сортировка",
+				"options": [
+					{
+						"text": "Новые в начале",
+						"url": "#",
+						"current": true
+					},
+					{
+						"text": "Старые в начале",
+						"url": "#"
+					}
+				]
+			},
+			"featured": null,
+			"items": [],
+			"pagination": null
+		},
+		"albumListLong": {
+			"title": "Корпоративная фотогалерея",
+			"sort": {
+				"id": "gallery-sort",
+				"label": "Сортировка",
+				"options": [
+					{
+						"text": "Новые в начале",
+						"url": "#",
+						"current": true
+					},
+					{
+						"text": "Старые в начале",
+						"url": "#"
+					}
+				]
+			},
+			"featured": {
+				"url": "./gallery-album.html",
+				"badge": "Новый альбом",
+				"title": "Корпоратив-2026: «Искусство быть вместе» — летний выезд команд «Аптека групп», «Добрыя лекі» и «Адэль»",
+				"date": "2026-06-14",
+				"dateText": "14 июня 2026",
+				"countText": "148 фото",
+				"cover": {
+					"src": "./dev/img/gallery/album-1.webp",
+					"alt": ""
+				},
+				"buttonText": "Смотреть альбом"
+			},
+			"items": [
+				{
+					"url": "#",
+					"title": "Очень длинное название альбома: выездной семинар руководителей аптек Минской и Брестской областей, весна",
+					"date": "2026-04-01",
+					"dateText": "1 апреля 2026",
+					"count": 1284,
+					"cover": {
+						"src": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "Фотоконкурс «Вместе теплее»",
+					"date": "2026-05-20",
+					"dateText": "20 мая 2026",
+					"count": 64,
+					"cover": {
+						"src": "./dev/img/gallery/album-3.webp",
+						"alt": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "Ярмарка «Вкусная суббота»",
+					"date": "2026-04-18",
+					"dateText": "18 апреля 2026",
+					"count": 57,
+					"cover": {
+						"src": "./dev/img/gallery/album-1.webp",
+						"alt": ""
+					}
+				}
+			],
+			"pagination": {
+				"total": "3 альбома",
+				"totalText": "Всего:"
+			}
+		},
+		"albumCard": {
+			"url": "./gallery-album.html",
+			"title": "Фотоконкурс «Вместе теплее»",
+			"date": "2026-05-20",
+			"dateText": "20 мая 2026",
+			"count": 64,
+			"cover": {
+				"src": "./dev/img/gallery/album-3.webp",
+				"alt": ""
+			}
+		},
+		"albumCardNoCover": {
+			"url": "#",
+			"title": "Очень длинное название альбома: выездной семинар руководителей аптек Минской и Брестской областей, весна",
+			"date": "2026-04-01",
+			"dateText": "1 апреля 2026",
+			"count": 1284,
+			"cover": {
+				"src": ""
+			}
+		},
+		"albumHero": {
+			"title": "Корпоратив-2026: «Искусство быть вместе»",
+			"date": "2026-06-15",
+			"dateText": "15 июня 2026",
+			"countText": "40 фото",
+			"text": "Ежегодный летний корпоратив: команды «Аптека групп», «Добрыя лекі» и «Адэль» на выходных за городом.",
+			"cover": {
+				"src": "./dev/img/gallery/album-1.webp"
+			},
+			"like": {
+				"count": 24,
+				"liked": false
+			},
+			"download": {
+				"url": "#",
+				"size": "1,2 ГБ"
+			},
+			"url": ""
+		},
+		"albumHeroMin": {
+			"title": "Квест для новых сотрудников",
+			"dateText": "3 марта 2023",
+			"date": "2023-03-03",
+			"countText": "77 фото",
+			"cover": {
+				"src": ""
+			}
+		},
+		"albumHeroLong": {
+			"title": "Корпоратив-2026: «Искусство быть вместе» — летний выезд команд «Аптека групп», «Добрыя лекі» и «Адэль»",
+			"date": "2026-06-15",
+			"dateText": "15 июня 2026",
+			"countText": "40 фото",
+			"text": "Ежегодный летний корпоратив: команды «Аптека групп», «Добрыя лекі» и «Адэль» на выходных за городом. Квесты, ярмарка, концерт, фотозона и вечерний костёр — всё, что запомнилось.",
+			"cover": {
+				"src": "./dev/img/gallery/album-1.webp"
+			},
+			"like": {
+				"count": 1284,
+				"liked": true
+			},
+			"download": {
+				"url": "#",
+				"size": "1,2 ГБ"
+			},
+			"url": ""
+		},
+		"albumPhotos": {
+			"title": "Корпоратив-2026: «Искусство быть вместе»",
+			"step": 16,
+			"photos": [
+				{
+					"id": "1000",
+					"src": "./dev/img/gallery/photo-01.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-01.webp",
+					"alt": "",
+					"likes": 24,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-01.webp"
+				},
+				{
+					"id": "1001",
+					"src": "./dev/img/gallery/photo-02.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-02.webp",
+					"alt": "",
+					"likes": 3,
+					"liked": true,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-02.webp"
+				},
+				{
+					"id": "1002",
+					"src": "./dev/img/gallery/photo-03.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-03.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-03.webp"
+				},
+				{
+					"id": "1003",
+					"src": "./dev/img/gallery/photo-04.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-04.webp",
+					"alt": "",
+					"likes": 12,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-04.webp"
+				},
+				{
+					"id": "1004",
+					"src": "./dev/img/gallery/photo-05.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-05.webp",
+					"alt": "",
+					"likes": 7,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-05.webp"
+				},
+				{
+					"id": "1005",
+					"src": "./dev/img/gallery/photo-06.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-06.webp",
+					"alt": "",
+					"likes": 1,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-06.webp"
+				},
+				{
+					"id": "1006",
+					"src": "./dev/img/gallery/photo-07.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-07.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": true,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-07.webp"
+				},
+				{
+					"id": "1007",
+					"src": "./dev/img/gallery/photo-08.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-08.webp",
+					"alt": "",
+					"likes": 5,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-08.webp"
+				},
+				{
+					"id": "1008",
+					"src": "./dev/img/gallery/photo-09.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-09.webp",
+					"alt": "",
+					"likes": 24,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-09.webp"
+				},
+				{
+					"id": "1009",
+					"src": "./dev/img/gallery/photo-10.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-10.webp",
+					"alt": "",
+					"likes": 3,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-10.webp"
+				},
+				{
+					"id": "1010",
+					"src": "./dev/img/gallery/photo-11.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-11.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-11.webp"
+				},
+				{
+					"id": "1011",
+					"src": "./dev/img/gallery/photo-12.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-12.webp",
+					"alt": "",
+					"likes": 12,
+					"liked": true,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-12.webp"
+				},
+				{
+					"id": "1012",
+					"src": "./dev/img/gallery/photo-13.webp",
+					"width": 1200,
+					"height": 795,
+					"thumb": "./dev/img/gallery/photo-13.webp",
+					"alt": "",
+					"likes": 7,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-13.webp"
+				},
+				{
+					"id": "1013",
+					"src": "./dev/img/gallery/photo-01.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-01.webp",
+					"alt": "",
+					"likes": 1,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-01.webp"
+				},
+				{
+					"id": "1014",
+					"src": "./dev/img/gallery/photo-02.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-02.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-02.webp"
+				},
+				{
+					"id": "1015",
+					"src": "./dev/img/gallery/photo-03.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-03.webp",
+					"alt": "",
+					"likes": 5,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-03.webp"
+				},
+				{
+					"id": "1016",
+					"src": "./dev/img/gallery/photo-04.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-04.webp",
+					"alt": "",
+					"likes": 24,
+					"liked": true,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-04.webp"
+				},
+				{
+					"id": "1017",
+					"src": "./dev/img/gallery/photo-05.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-05.webp",
+					"alt": "",
+					"likes": 3,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-05.webp"
+				},
+				{
+					"id": "1018",
+					"src": "./dev/img/gallery/photo-06.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-06.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-06.webp"
+				},
+				{
+					"id": "1019",
+					"src": "./dev/img/gallery/photo-07.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-07.webp",
+					"alt": "",
+					"likes": 12,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-07.webp"
+				},
+				{
+					"id": "1020",
+					"src": "./dev/img/gallery/photo-08.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-08.webp",
+					"alt": "",
+					"likes": 7,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-08.webp"
+				},
+				{
+					"id": "1021",
+					"src": "./dev/img/gallery/photo-09.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-09.webp",
+					"alt": "",
+					"likes": 1,
+					"liked": true,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-09.webp"
+				},
+				{
+					"id": "1022",
+					"src": "./dev/img/gallery/photo-10.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-10.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-10.webp"
+				},
+				{
+					"id": "1023",
+					"src": "./dev/img/gallery/photo-11.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-11.webp",
+					"alt": "",
+					"likes": 5,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-11.webp"
+				},
+				{
+					"id": "1024",
+					"src": "./dev/img/gallery/photo-12.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-12.webp",
+					"alt": "",
+					"likes": 24,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-12.webp"
+				},
+				{
+					"id": "1025",
+					"src": "./dev/img/gallery/photo-13.webp",
+					"width": 1200,
+					"height": 795,
+					"thumb": "./dev/img/gallery/photo-13.webp",
+					"alt": "",
+					"likes": 3,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-13.webp"
+				},
+				{
+					"id": "1026",
+					"src": "./dev/img/gallery/photo-01.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-01.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": true,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-01.webp"
+				},
+				{
+					"id": "1027",
+					"src": "./dev/img/gallery/photo-02.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-02.webp",
+					"alt": "",
+					"likes": 12,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-02.webp"
+				},
+				{
+					"id": "1028",
+					"src": "./dev/img/gallery/photo-03.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-03.webp",
+					"alt": "",
+					"likes": 7,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-03.webp"
+				},
+				{
+					"id": "1029",
+					"src": "./dev/img/gallery/photo-04.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-04.webp",
+					"alt": "",
+					"likes": 1,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-04.webp"
+				},
+				{
+					"id": "1030",
+					"src": "./dev/img/gallery/photo-05.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-05.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-05.webp"
+				},
+				{
+					"id": "1031",
+					"src": "./dev/img/gallery/photo-06.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-06.webp",
+					"alt": "",
+					"likes": 5,
+					"liked": true,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-06.webp"
+				},
+				{
+					"id": "1032",
+					"src": "./dev/img/gallery/photo-07.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-07.webp",
+					"alt": "",
+					"likes": 24,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-07.webp"
+				},
+				{
+					"id": "1033",
+					"src": "./dev/img/gallery/photo-08.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-08.webp",
+					"alt": "",
+					"likes": 3,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-08.webp"
+				},
+				{
+					"id": "1034",
+					"src": "./dev/img/gallery/photo-09.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-09.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-09.webp"
+				},
+				{
+					"id": "1035",
+					"src": "./dev/img/gallery/photo-10.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-10.webp",
+					"alt": "",
+					"likes": 12,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-10.webp"
+				},
+				{
+					"id": "1036",
+					"src": "./dev/img/gallery/photo-11.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-11.webp",
+					"alt": "",
+					"likes": 7,
+					"liked": true,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-11.webp"
+				},
+				{
+					"id": "1037",
+					"src": "./dev/img/gallery/photo-12.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-12.webp",
+					"alt": "",
+					"likes": 1,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-12.webp"
+				},
+				{
+					"id": "1038",
+					"src": "./dev/img/gallery/photo-13.webp",
+					"width": 1200,
+					"height": 795,
+					"thumb": "./dev/img/gallery/photo-13.webp",
+					"alt": "",
+					"likes": 0,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-13.webp"
+				},
+				{
+					"id": "1039",
+					"src": "./dev/img/gallery/photo-01.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-01.webp",
+					"alt": "",
+					"likes": 5,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-01.webp"
+				}
+			],
+			"other": {
+				"title": "Другие альбомы",
+				"items": [
+					{
+						"url": "./gallery-album.html",
+						"title": "Фотоконкурс «Вместе теплее»",
+						"date": "2026-05-20",
+						"dateText": "20 мая 2026",
+						"count": 64,
+						"cover": {
+							"src": "./dev/img/gallery/album-3.webp",
+							"alt": ""
+						}
+					},
+					{
+						"url": "./gallery-album.html",
+						"title": "Ярмарка «Вкусная суббота»",
+						"date": "2026-04-18",
+						"dateText": "18 апреля 2026",
+						"count": 57,
+						"cover": {
+							"src": "./dev/img/gallery/album-1.webp",
+							"alt": ""
+						}
+					},
+					{
+						"url": "./gallery-album.html",
+						"title": "Семейный день «Добрыя лекі»",
+						"date": "2026-03-01",
+						"dateText": "1 марта 2026",
+						"count": 210,
+						"cover": {
+							"src": "./dev/img/gallery/album-6.webp",
+							"alt": ""
+						}
+					}
+				]
+			}
+		},
+		"albumPhotosOne": {
+			"title": "Корпоратив-2026: «Искусство быть вместе»",
+			"step": 16,
+			"photos": [
+				{
+					"id": "1000",
+					"src": "./dev/img/gallery/photo-01.webp",
+					"width": 1200,
+					"height": 665,
+					"thumb": "./dev/img/gallery/photo-01.webp",
+					"alt": "",
+					"likes": 24,
+					"liked": false,
+					"likeUrl": "",
+					"download": "./dev/img/gallery/photo-01.webp"
+				}
+			],
+			"other": null
+		},
+		"albumPhotosEmpty": {
+			"title": "Корпоратив-2026: «Искусство быть вместе»",
+			"step": 16,
+			"photos": [],
+			"other": null
+		}
 	}
 }

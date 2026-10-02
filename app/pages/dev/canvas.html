@@ -566,6 +566,38 @@
 				{{#> state label="Пусто" note="не применимо: тост без текста не показывается"}}{{/state}}
 			{{/story}}
 
+			{{#> story id="album-list" page="gallery" group="Галерея" title="Список альбомов" description='Figma: PC.Gallery — A. Список альбомов (4682:25610). Белая карточка: заголовок и «Новые в начале», главный альбом, сетка карточек (3 в ряд с 1280, 2 — с 768, 1 — уже), страницы и «Всего». До 1024 — без карточки.'}}
+				{{#> state label="Обычное" bg="page"}}<div class="container">{{> sections/gallery/AlbumList/AlbumList props=data.albumList}}</div>{{/state}}
+				{{#> state label="Без главного альбома, два альбома" bg="page"}}<div class="container">{{> sections/gallery/AlbumList/AlbumList props=data.albumListNoFeatured}}</div>{{/state}}
+				{{#> state label="Длинные названия, большое число фото, альбом без обложки" bg="page"}}<div class="container">{{> sections/gallery/AlbumList/AlbumList props=data.albumListLong}}</div>{{/state}}
+				{{#> state label="Пусто" bg="page"}}<div class="container">{{> sections/gallery/AlbumList/AlbumList props=data.albumListEmpty}}</div>{{/state}}
+				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, год, сортировка и страницы — обычные GET-переходы"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="gallery-years" page="gallery" group="Галерея" title="Альбомы по годам" description='Figma: «Фильтр альбомов» (4682:25616). С 1024 — карточка слева, ссылки с числом альбомов, текущая — Main Blue. Уже — «таблетки» с прокруткой вбок.'}}
+				{{#> state label="Обычное" bg="page"}}<div class="container"><div class="story-column-narrow">{{> sections/gallery/GalleryYears/GalleryYears props=data.galleryYears}}</div></div>{{/state}}
+				{{#> state label="Один пункт" bg="page"}}<div class="container"><div class="story-column-narrow">{{> sections/gallery/GalleryYears/GalleryYears props=data.galleryYearsOne}}</div></div>{{/state}}
+				{{#> state label="Пусто" note="пунктов нет — блок не выводится"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="album-card" page="gallery" group="Галерея" title="Карточка альбома" description='Figma: Album card (4682:25672). Обложка 3:2 со счётчиком фото, название до 2 строк, дата. Наведение — название Blue.TXT, обложка 0.9.'}}
+				{{#> state label="Обычная и без обложки (заготовка), длинное название"}}<div class="story-row">{{> sections/gallery/AlbumCard/AlbumCard props=data.albumCard}}{{> sections/gallery/AlbumCard/AlbumCard props=data.albumCardNoCover}}</div>{{/state}}
+			{{/story}}
+
+			{{#> story id="album-hero" page="gallery" group="Галерея" title="Шапка альбома" description='Figma: Album hero (4682:25790). Обложка с затемнением, название, дата и число фото, описание; «Нравится», «Скачать альбом» (размер архива), «Скопировать ссылку» (тост).'}}
+				{{#> state label="Обычное" bg="page"}}<div class="container">{{> sections/gallery/AlbumHero/AlbumHero props=data.albumHero}}</div>{{/state}}
+				{{#> state label="Минимум: без обложки, описания, лайков и архива" bg="page"}}<div class="container">{{> sections/gallery/AlbumHero/AlbumHero props=data.albumHeroMin}}</div>{{/state}}
+				{{#> state label="Длинное название и описание, отмечено «Нравится»" bg="page"}}<div class="container">{{> sections/gallery/AlbumHero/AlbumHero props=data.albumHeroLong}}</div>{{/state}}
+			{{/story}}
+
+			{{#> story id="album-photos" page="gallery" group="Галерея" title="Фото альбома и просмотр" description='Figma: Content (4682:25799), просмотр — 4682:25854. Сетка (4 в ряд с 1280, 3 — с 768, 2 — уже), при наведении — «Нравится» и «Скачать»; «Показать ещё N фото» — порциями из JSON альбома. Нажатие на фото — просмотр на весь экран (PhotoSwipe): листается весь альбом, миниатюры, «Нравится» синхронно с сеткой.'}}
+				{{#> state label="Обычное (нажмите на фото)" bg="page"}}<div class="container">{{> sections/gallery/AlbumPhotos/AlbumPhotos props=data.albumPhotos}}</div>{{/state}}
+				{{#> state label="Одно фото" bg="page"}}<div class="container">{{> sections/gallery/AlbumPhotos/AlbumPhotos props=data.albumPhotosOne}}</div>{{/state}}
+				{{#> state label="Пусто" bg="page"}}<div class="container">{{> sections/gallery/AlbumPhotos/AlbumPhotos props=data.albumPhotosEmpty}}</div>{{/state}}
+				{{#> state label="Загрузка" note="фото грузятся лениво, под каждым — заготовка; просмотр показывает миниатюру, пока грузится большое фото"}}{{/state}}
+				{{#> state label="Ошибка" note="фото не загрузилось — в сетке заготовка, в просмотре «Не удалось загрузить фото»; «Нравится» не сохранилось — отметка откатывается, сообщение для скринридера"}}{{/state}}
+			{{/story}}
+
 			{{#> story id="documents-list" page="documents" group="Библиотека" title="Документы — список" description='Figma: PC.Library (4526:83), состояния 4531:543. Белая карточка: папка и число, «Новые в начале», выбранные фильтры чипами, шапка колонок (с 1280) и строки, страницы и «Всего». До 1280 размер и дата — под названием, колонки «Загрузил» нет; до 1024 — без карточки, кнопка «Фильтры · N».'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsList}}</div>

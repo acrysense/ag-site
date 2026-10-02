@@ -1,0 +1,65 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Content (4682:25658) — белая карточка, поля 20, части через 30: заголовок H1 Black.H и
+// «Новые в начале», главный альбом, сетка (3 в ряд, через 15 вбок и 30 вниз), страницы и «Всего».
+// До 1024 (наше): без карточки, части через 20; карточки — 2 в ряд с 768, 1 — уже.
+@layer components {
+	.album-list {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		min-width: 0;
+
+		@include up(desktop) {
+			gap: 30px;
+			padding: 20px;
+			background: palette("white");
+			border-radius: $radius-content-block;
+		}
+	}
+
+	.album-list__head {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px 20px;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.album-list__title {
+		@include text("h1-360");
+
+		min-width: 0;
+		color: palette("black-h");
+		overflow-wrap: anywhere;
+
+		@include up(desktop) {
+			@include text("h1");
+		}
+	}
+
+	.album-list__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 24px 15px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		@include up(tablet) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		@include up(wide) {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			row-gap: 30px;
+		}
+	}
+
+	.album-list__empty {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+	}
+}

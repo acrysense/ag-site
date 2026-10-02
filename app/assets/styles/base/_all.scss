@@ -25,6 +25,7 @@
 @forward "@/components/components/FileType/FileType";
 @forward "@/components/components/Tooltip/Tooltip";
 @forward "@/components/components/Toast/Toast";
+@forward "@/components/components/PhotoViewer/PhotoViewer";
 
 @forward "@/components/layouts/Header/Header";
 @forward "@/components/layouts/Footer/Footer";
@@ -64,5 +65,11 @@
 @forward "@/components/sections/documents/DocumentsFilters/DocumentsFilters";
 @forward "@/components/sections/documents/DocumentRow/DocumentRow";
 @forward "@/components/sections/documents/DocumentsList/DocumentsList";
+@forward "@/components/sections/gallery/GalleryYears/GalleryYears";
+@forward "@/components/sections/gallery/AlbumCard/AlbumCard";
+@forward "@/components/sections/gallery/AlbumFeatured/AlbumFeatured";
+@forward "@/components/sections/gallery/AlbumList/AlbumList";
+@forward "@/components/sections/gallery/AlbumHero/AlbumHero";
+@forward "@/components/sections/gallery/AlbumPhotos/AlbumPhotos";
 
 // @forward '@/components/sections/shared/';

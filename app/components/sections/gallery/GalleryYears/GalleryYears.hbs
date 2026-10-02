@@ -1,0 +1,22 @@
+{{!--
+	Фотогалерея: альбомы по годам (Figma: PC.Gallery 4682:25616) — «Все альбомы» и годы со
+	счётчиком альбомов. Обычные ссылки (GET), текущий пункт — aria-current.
+	props: title («Фотогалерея»), label (для скринридера), items [{ text, url, count, current }].
+	С 1024 — карточка слева; уже (наше) — строка «таблеток» с прокруткой вбок.
+	Контракт — docs/contracts/gallery.md.
+--}}
+{{#if props.items.length}}
+    <nav class="gallery-years" aria-label="{{default props.label 'Альбомы по годам'}}">
+        <h2 class="gallery-years__title">{{default props.title "Фотогалерея"}}</h2>
+        <ul class="gallery-years__list" role="list">
+            {{#each props.items}}
+                <li>
+                    <a class="gallery-years__link" href="{{url}}" {{#if current}}aria-current="page"{{/if}}>
+                        <span class="gallery-years__text">{{text}}</span>
+                        {{#if (isSet count)}}<span class="gallery-years__count"><span class="visually-hidden">, альбомов: </span>{{count}}</span>{{/if}}
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+    </nav>
+{{/if}}

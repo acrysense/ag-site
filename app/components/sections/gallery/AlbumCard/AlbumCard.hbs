@@ -1,0 +1,19 @@
+{{!--
+	Карточка альбома (Figma: Album card 4682:25672): обложка 3:2 со счётчиком фото, название
+	(до 2 строк), дата. Вся карточка — ссылка на альбом.
+	props: url, title, date (2026-05-20), dateText («20 мая 2026»), count (фото), cover { src,
+	srcset, alt }. Нет обложки — заготовка. Контракт — docs/contracts/gallery.md.
+--}}
+<a class="album-card{{#if props.class}} {{props.class}}{{/if}}" href="{{props.url}}">
+    <span class="album-card__cover">
+        {{#if props.cover.src}}<img class="album-card__image" src="{{props.cover.src}}" {{#if props.cover.srcset}}srcset="{{props.cover.srcset}}" sizes="(min-width: 1280px) 390px, (min-width: 768px) 50vw, 100vw"{{/if}} width="390" height="260" alt="{{props.cover.alt}}" loading="lazy" decoding="async" />{{/if}}
+        {{#if (isSet props.count)}}
+            <span class="album-card__count">
+                {{> components/Icon/Icon name="gallery" class="album-card__count-icon"}}
+                {{props.count}}<span class="visually-hidden"> фото</span>
+            </span>
+        {{/if}}
+    </span>
+    <span class="album-card__title">{{props.title}}</span>
+    {{#if props.dateText}}<time class="album-card__date" datetime="{{props.date}}">{{props.dateText}}</time>{{/if}}
+</a>

@@ -1,0 +1,17 @@
+{{!--
+	Главный альбом над сеткой (Figma: Featured album 4682:25664): обложка во всю ширину (1200×480),
+	затемнение снизу, метка («Новый альбом»), название, дата и число фото, «Смотреть альбом».
+	Вся карточка — ссылка. props: url, badge, title, date, dateText, count, countText («148 фото»),
+	cover { src, srcset, alt }, buttonText. Нет — блока нет. Контракт — docs/contracts/gallery.md.
+--}}
+{{#if props.url}}
+    <a class="album-featured" href="{{props.url}}">
+        {{#if props.cover.src}}<img class="album-featured__image" src="{{props.cover.src}}" {{#if props.cover.srcset}}srcset="{{props.cover.srcset}}" sizes="(min-width: 1280px) 1200px, 100vw"{{/if}} width="1200" height="480" alt="{{props.cover.alt}}" decoding="async" />{{/if}}
+        <span class="album-featured__body">
+            {{#if props.badge}}<span class="album-featured__badge">{{props.badge}}</span>{{/if}}
+            <span class="album-featured__title">{{props.title}}</span>
+            <span class="album-featured__meta">{{#if props.dateText}}<time datetime="{{props.date}}">{{props.dateText}}</time>{{/if}}{{#if (and props.dateText props.countText)}} · {{/if}}{{props.countText}}</span>
+            <span class="btn btn--general btn--m album-featured__button">{{default props.buttonText "Смотреть альбом"}}</span>
+        </span>
+    </a>
+{{/if}}

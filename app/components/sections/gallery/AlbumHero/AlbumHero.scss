@@ -1,0 +1,131 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Album hero (4682:25790) — 1240×440, скругление 20, поля 40; затемнение: Black 15% до 10%
+// высоты, к низу Black 80%; слева снизу через 14: название H0, дата и число L/400 85%, описание
+// M/400 75% — белым; справа снизу кнопки S.Light через 10. Мобильный (наше): поля 20, название
+// H1-360, кнопки под текстом.
+@layer components {
+	// Страница альбома: шапка и карточка с фото — через 10 (Figma: Frame 1, 4682:25789)
+	.album-page {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		min-width: 0;
+
+		@include up(desktop) {
+			gap: 10px;
+		}
+	}
+
+	.album-hero {
+		@include image-placeholder;
+
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		justify-content: flex-end;
+		min-height: 360px;
+		padding: 20px;
+		overflow: hidden;
+		color: palette("white");
+		border-radius: $radius-content-block;
+
+		&::after {
+			position: absolute;
+			inset: 0;
+			content: "";
+			background: linear-gradient(
+				to bottom,
+				rgba(palette("black-h"), 0.15) 0%,
+				rgba(palette("black-h"), 0.15) 10%,
+				rgba(palette("black-h"), 0.8) 100%
+			);
+		}
+
+		@include up(desktop) {
+			flex-direction: row;
+			gap: 40px;
+			align-items: flex-end;
+			justify-content: space-between;
+			min-height: 440px;
+			padding: 40px;
+		}
+	}
+
+	.album-hero .album-hero__image {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.album-hero__info {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+		min-width: 0;
+	}
+
+	.album-hero__title {
+		@include text("h1-360");
+
+		overflow-wrap: anywhere;
+
+		@include up(desktop) {
+			@include text("h0");
+		}
+	}
+
+	.album-hero__meta {
+		@include text("l-400");
+
+		opacity: 0.85;
+	}
+
+	.album-hero__text {
+		@include text("m-400");
+
+		max-width: 760px;
+		opacity: 0.75;
+	}
+
+	.album-hero__actions {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex: none;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
+	// «Скопировать ссылку»: после копирования (CopyLink) — галочка на светло-зелёном, как в новости
+	.album-hero__share {
+		width: 36px;
+		padding: 0;
+
+		&.is-copied {
+			color: palette("copied");
+			background: palette("copied-bg");
+		}
+	}
+
+	.album-hero__share-icon--copied {
+		display: none;
+		width: 20px;
+		height: 20px;
+		padding: 5.75px 4.17px;
+	}
+
+	.album-hero__share.is-copied > .album-hero__share-icon {
+		display: none;
+	}
+
+	.album-hero__share.is-copied > .album-hero__share-icon--copied {
+		display: block;
+	}
+}

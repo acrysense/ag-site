@@ -1,0 +1,382 @@
+{
+	"auth": true,
+	"title": "Фотогалерея — корпоративный сайт холдинга «Аптека групп»",
+	"description": "Корпоративная фотогалерея холдинга «Аптека групп»: альбомы праздников, корпоративов и встреч.",
+	"nav": {
+		"group": "Галерея",
+		"title": "Фотогалерея — альбомы",
+		"order": 70
+	},
+	"data": {
+		"header": {
+			"homeUrl": "/",
+			"search": {
+				"action": "#",
+				"name": "q"
+			},
+			"menu": [
+				{
+					"text": "Главная",
+					"url": "/"
+				},
+				{
+					"text": "О холдинге",
+					"children": [
+						{
+							"text": "Структура",
+							"url": "#"
+						},
+						{
+							"text": "Справочник",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"text": "Новости",
+					"url": "#",
+					"children": [
+						{
+							"text": "Новости холдинга",
+							"url": "#"
+						},
+						{
+							"text": "HR-дайджест",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"text": "Карьера",
+					"url": "./career.html",
+					"children": [
+						{
+							"text": "Вакансии",
+							"url": "#"
+						},
+						{
+							"text": "Карьерный шанс",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"text": "База знаний",
+					"url": "#",
+					"children": [
+						{
+							"text": "Учебный портал",
+							"url": "#"
+						},
+						{
+							"text": "Нормативные документы",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"text": "Галерея",
+					"url": "./gallery.html",
+					"current": true
+				}
+			],
+			"loginUrl": "#",
+			"loginText": "Войти в ЛК",
+			"user": {
+				"name": "Волкова Анна",
+				"initials": "ВА",
+				"url": "#",
+				"links": [
+					{
+						"icon": "profile",
+						"label": "Личный кабинет",
+						"url": "#"
+					},
+					{
+						"icon": "edu",
+						"label": "Учебный портал",
+						"url": "#"
+					},
+					{
+						"icon": "crm",
+						"label": "CRM",
+						"url": "#"
+					}
+				],
+				"menu": [
+					{
+						"label": "Моя страница",
+						"url": "#",
+						"icon": "profile"
+					},
+					{
+						"label": "Учебный портал",
+						"url": "#",
+						"icon": "edu"
+					},
+					{
+						"label": "Коэффициент",
+						"url": "#",
+						"icon": "multiplier"
+					},
+					{
+						"label": "Пакеты",
+						"url": "#",
+						"icon": "box"
+					},
+					{
+						"label": "Мотивация",
+						"url": "#",
+						"icon": "motivation"
+					},
+					{
+						"label": "Конкурсы",
+						"url": "#",
+						"icon": "apple"
+					},
+					{
+						"divider": true
+					},
+					{
+						"label": "Настройки",
+						"url": "#",
+						"icon": "settings"
+					},
+					{
+						"label": "Выйти",
+						"url": "#",
+						"icon": "exit",
+						"modal": "main-menu-logout"
+					}
+				]
+			}
+		},
+		"breadcrumbs": [
+			{
+				"title": "Главная",
+				"url": "./index.html"
+			},
+			{
+				"title": "Фотогалерея"
+			}
+		],
+		"years": {
+			"title": "Фотогалерея",
+			"items": [
+				{
+					"text": "Все альбомы",
+					"url": "./gallery.html",
+					"count": 24,
+					"current": true
+				},
+				{
+					"text": "2026",
+					"url": "#",
+					"count": 4
+				},
+				{
+					"text": "2025",
+					"url": "#",
+					"count": 3
+				},
+				{
+					"text": "2024",
+					"url": "#",
+					"count": 5
+				},
+				{
+					"text": "2023",
+					"url": "#",
+					"count": 4
+				},
+				{
+					"text": "2022",
+					"url": "#",
+					"count": 3
+				},
+				{
+					"text": "2021",
+					"url": "#",
+					"count": 5
+				}
+			]
+		},
+		"banner": {
+			"url": "#",
+			"alt": "Тонометры и аксессуары — скидка до −10%. Надёжный контроль здоровья",
+			"image": {
+				"src": "./dev/img/side-banner.webp"
+			}
+		},
+		"list": {
+			"class": "page-columns__main",
+			"title": "Корпоративная фотогалерея",
+			"sort": {
+				"id": "gallery-sort",
+				"label": "Сортировка",
+				"options": [
+					{
+						"text": "Новые в начале",
+						"url": "#",
+						"current": true
+					},
+					{
+						"text": "Старые в начале",
+						"url": "#"
+					}
+				]
+			},
+			"featured": {
+				"url": "./gallery-album.html",
+				"badge": "Новый альбом",
+				"title": "Корпоратив-2026: «Искусство быть вместе»",
+				"date": "2026-06-14",
+				"dateText": "14 июня 2026",
+				"countText": "148 фото",
+				"cover": {
+					"src": "./dev/img/gallery/album-1.webp",
+					"alt": ""
+				},
+				"buttonText": "Смотреть альбом"
+			},
+			"items": [
+				{
+					"url": "./gallery-album.html",
+					"title": "Фотоконкурс «Вместе теплее»",
+					"date": "2026-05-20",
+					"dateText": "20 мая 2026",
+					"count": 64,
+					"cover": {
+						"src": "./dev/img/gallery/album-3.webp",
+						"alt": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "Ярмарка «Вкусная суббота»",
+					"date": "2026-04-18",
+					"dateText": "18 апреля 2026",
+					"count": 57,
+					"cover": {
+						"src": "./dev/img/gallery/album-1.webp",
+						"alt": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "Семейный день «Добрыя лекі»",
+					"date": "2026-03-01",
+					"dateText": "1 марта 2026",
+					"count": 210,
+					"cover": {
+						"src": "./dev/img/gallery/album-6.webp",
+						"alt": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "«уДачный weekend» — 30 лет холдингу",
+					"date": "2024-07-06",
+					"dateText": "6 июля 2024",
+					"count": 134,
+					"cover": {
+						"src": "./dev/img/gallery/album-6.webp",
+						"alt": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "30-летие холдинга «Аптека групп»",
+					"date": "2024-06-14",
+					"dateText": "14 июня 2024",
+					"count": 212,
+					"cover": {
+						"src": "./dev/img/gallery/album-2.webp",
+						"alt": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "Корпоратив ЛЕТО-2023 «Морское приключение»",
+					"date": "2023-07-22",
+					"dateText": "22 июля 2023",
+					"count": 186,
+					"cover": {
+						"src": "./dev/img/gallery/album-5.webp",
+						"alt": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "BIG PICNIC: День медицинского работника",
+					"date": "2023-06-18",
+					"dateText": "18 июня 2023",
+					"count": 96,
+					"cover": {
+						"src": "./dev/img/gallery/album-4.webp",
+						"alt": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "Выездной семинар руководителей аптек",
+					"date": "2023-04-14",
+					"dateText": "14 апреля 2023",
+					"count": 42,
+					"cover": {
+						"src": "./dev/img/gallery/album-7.webp",
+						"alt": ""
+					}
+				},
+				{
+					"url": "./gallery-album.html",
+					"title": "Квест «Добрыя лекі» для новых сотрудников",
+					"date": "2023-03-03",
+					"dateText": "3 марта 2023",
+					"count": 77,
+					"cover": {
+						"src": "./dev/img/gallery/album-6.webp",
+						"alt": ""
+					}
+				}
+			],
+			"pagination": {
+				"label": "Страницы альбомов",
+				"prev": {
+					"url": "#"
+				},
+				"next": {
+					"url": "#"
+				},
+				"pages": [
+					{
+						"number": 1,
+						"url": "#"
+					},
+					{
+						"number": 2,
+						"current": true
+					},
+					{
+						"number": 3,
+						"url": "#"
+					},
+					{
+						"number": 4,
+						"url": "#",
+						"far": true
+					},
+					{
+						"gap": true
+					},
+					{
+						"number": 8,
+						"url": "#"
+					}
+				],
+				"total": "24 альбома",
+				"totalText": "Всего:"
+			}
+		}
+	}
+}

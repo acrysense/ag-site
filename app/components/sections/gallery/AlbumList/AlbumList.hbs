@@ -1,0 +1,24 @@
+{{!--
+	Список альбомов (Figma: PC.Gallery — A. Список альбомов 4682:25610, Content 4682:25658): белая
+	карточка, заголовок H1 и «Новые в начале» (SortMenu), главный альбом (AlbumFeatured), сетка
+	карточек (AlbumCard: 3 в ряд с 1280, 2 — с 768, 1 — на мобильном), страницы и «Всего».
+	props: class, title, sort (SortMenu), featured (AlbumFeatured), items [AlbumCard], pagination
+	(Pagination: total — «24 альбома»), empty { text }. Контракт — docs/contracts/gallery.md.
+--}}
+<section class="album-list{{#if props.class}} {{props.class}}{{/if}}" aria-labelledby="album-list-title">
+    <div class="album-list__head">
+        <h1 class="album-list__title" id="album-list-title">{{props.title}}</h1>
+        {{> components/SortMenu/SortMenu props=props.sort}}
+    </div>
+    {{> sections/gallery/AlbumFeatured/AlbumFeatured props=props.featured}}
+    {{#if props.items.length}}
+        <ul class="album-list__grid" role="list">
+            {{#each props.items}}
+                <li>{{> sections/gallery/AlbumCard/AlbumCard props=this}}</li>
+            {{/each}}
+        </ul>
+    {{else}}
+        {{#unless props.featured.url}}<p class="album-list__empty">{{default props.empty.text "Альбомов пока нет"}}</p>{{/unless}}
+    {{/if}}
+    {{> components/Pagination/Pagination props=props.pagination}}
+</section>

@@ -1,0 +1,30 @@
+{{!--
+	Шапка альбома (Figma: Album hero 4682:25790): обложка 1240×440, затемнение, название H0, дата и
+	число фото, описание; справа внизу — «Нравится», «Скачать альбом» (размер архива) и
+	«Скопировать ссылку».
+	props: title, date, dateText, countText («148 фото»), text, cover { src, srcset, alt },
+	like (LikeButton: count, liked, url), download { url, size («1,2 ГБ») }, url (ссылка на альбом
+	для копирования; пусто — адрес страницы). Контракт — docs/contracts/gallery.md.
+--}}
+<section class="album-hero{{#if props.class}} {{props.class}}{{/if}}" aria-labelledby="album-hero-title">
+    {{#if props.cover.src}}<img class="album-hero__image" src="{{props.cover.src}}" {{#if props.cover.srcset}}srcset="{{props.cover.srcset}}" sizes="(min-width: 1280px) 1240px, 100vw"{{/if}} width="1240" height="440" alt="" decoding="async" />{{/if}}
+    <div class="album-hero__info">
+        <h1 class="album-hero__title" id="album-hero-title">{{props.title}}</h1>
+        <p class="album-hero__meta">{{#if props.dateText}}<time datetime="{{props.date}}">{{props.dateText}}</time>{{/if}}{{#if (and props.dateText props.countText)}} · {{/if}}{{props.countText}}</p>
+        {{#if props.text}}<p class="album-hero__text">{{props.text}}</p>{{/if}}
+    </div>
+    <div class="album-hero__actions">
+        {{#if props.like}}{{> components/LikeButton/LikeButton props=props.like}}{{/if}}
+        {{#if props.download.url}}
+            <a class="btn btn--light btn--s album-hero__download" href="{{props.download.url}}" download>
+                {{> components/Icon/Icon name="download" class="btn__icon"}}
+                <span class="visually-hidden">Скачать альбом</span>
+                {{#if props.download.size}}<span class="btn__text"><span class="visually-hidden">, </span>{{props.download.size}}</span>{{/if}}
+            </a>
+        {{/if}}
+        <button class="btn btn--light btn--s album-hero__share" type="button" aria-label="Скопировать ссылку на альбом" data-copy-link="{{props.url}}" data-module="CopyLink" data-path="components">
+            {{> components/Icon/Icon name="link" class="btn__icon album-hero__share-icon"}}
+            {{> components/Icon/Icon name="tick" class="btn__icon album-hero__share-icon album-hero__share-icon--copied"}}
+        </button>
+    </div>
+</section>

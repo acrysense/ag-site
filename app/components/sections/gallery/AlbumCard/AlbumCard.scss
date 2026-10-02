@@ -1,0 +1,84 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Album card (4682:25672) — обложка 390×260 (3:2), скругление 10, внизу слева счётчик:
+// плашка Black 55%, скругление 14, поля 5/10, значок 14 через 6, S/500 белым; под обложкой через 10
+// название H4 Black.TXT и дата M/400 Dark-grey.TXT. Наведение (правило проекта): название
+// Blue.TXT, обложка — прозрачность 0.9.
+@layer components {
+	.album-card {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		min-width: 0;
+		color: palette("black-txt");
+	}
+
+	.album-card__cover {
+		@include image-placeholder;
+
+		position: relative;
+		display: flex;
+		align-items: flex-end;
+		aspect-ratio: 390 / 260;
+		padding: 12px;
+		overflow: hidden;
+		border-radius: $radius-inner-block;
+	}
+
+	// Фото на всю обложку (заготовка image-placeholder ставит img position: relative — перекрываем)
+	.album-card__cover .album-card__image {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: opacity $transition-default;
+	}
+
+	.album-card__count {
+		@include text("s-600");
+
+		position: relative;
+		display: flex;
+		gap: 6px;
+		align-items: center;
+		padding: 5px 10px;
+		color: palette("white");
+		background: rgba(palette("black-h"), 0.55);
+		border-radius: $radius-button;
+	}
+
+	.album-card__count-icon {
+		width: 14px;
+		height: 14px;
+	}
+
+	.album-card__title {
+		@include text("h4");
+
+		display: -webkit-box;
+		overflow: hidden;
+		overflow-wrap: anywhere;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		transition: color $transition-default;
+	}
+
+	.album-card__date {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.album-card:hover,
+	.album-card:focus-visible {
+		.album-card__title {
+			color: palette("blue-txt");
+		}
+
+		.album-card__cover .album-card__image {
+			opacity: 0.9;
+		}
+	}
+}

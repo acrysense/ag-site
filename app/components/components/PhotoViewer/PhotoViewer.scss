@@ -1,0 +1,263 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: PC.Gallery — A. Просмотр фото (4682:25854) — фон #121417; полоса сверху 92 (поля 40/24):
+// название H3 и «Фото N из M» M/400 60% белым; справа кнопки 44 (белый 10%, скругление 22) через 10:
+// «Нравится» (значок 18, число M/500), «Скачать», черта 1×24 (белый 20%), крестик 14 в круге 44.
+// Фото — до 1400 в ширину, скругление 10; стрелки 56 (белый 10%) по бокам; снизу миниатюры 96×64
+// через 8, скругление 6, приглушены до 45%, текущая — рамка 2 Main Blue.
+// До 1024 (наше): полоса 64, кнопки 40, без стрелок (свайп); до 768 — без миниатюр.
+@layer components {
+	.photo-viewer {
+		--pswp-bg: #{palette("viewer-bg")};
+		--pswp-placeholder-bg: #{rgba(palette("white"), 0.06)};
+
+		color: palette("white");
+
+		// Само фото — со скруглением, как в макете; на телефоне фото во всю ширину — без него
+		.pswp__img {
+			@include up(tablet) {
+				border-radius: $radius-inner-block;
+			}
+		}
+	}
+
+	.photo-viewer__bar {
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		z-index: 10;
+		display: flex;
+		gap: 16px;
+		align-items: center;
+		justify-content: space-between;
+		height: 64px;
+		padding: 0 12px 0 16px;
+
+		@include up(desktop) {
+			height: 92px;
+			padding: 24px 40px;
+		}
+	}
+
+	.photo-viewer__head {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		min-width: 0;
+
+		@include up(desktop) {
+			gap: 4px;
+		}
+	}
+
+	.photo-viewer__title {
+		@include text("h4-360");
+
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		@include up(desktop) {
+			@include text("h3");
+		}
+	}
+
+	.photo-viewer__counter {
+		@include text("s-400");
+
+		opacity: 0.6;
+
+		@include up(desktop) {
+			@include text("m-400");
+		}
+	}
+
+	.photo-viewer__actions {
+		display: flex;
+		flex: none;
+		gap: 8px;
+		align-items: center;
+
+		@include up(desktop) {
+			gap: 10px;
+		}
+	}
+
+	.photo-viewer__button {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+		justify-content: center;
+		min-width: 40px;
+		height: 40px;
+		padding: 0 12px;
+		color: palette("white");
+		cursor: pointer;
+		background: rgba(palette("white"), 0.1);
+		border: 0;
+		border-radius: 22px;
+		transition: background-color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			background: rgba(palette("white"), 0.2);
+		}
+
+		&[hidden] {
+			display: none;
+		}
+
+		@include up(desktop) {
+			min-width: 44px;
+			height: 44px;
+			padding: 0 16px;
+		}
+	}
+
+	// «Нравится»: число M/500; отметка — красное сердце (стили like-button)
+	.photo-viewer__like {
+		@include text("m-500");
+
+		.btn__icon {
+			width: 18px;
+			height: 18px;
+		}
+	}
+
+	.photo-viewer__close {
+		width: 40px;
+		padding: 0;
+
+		@include up(desktop) {
+			width: 44px;
+		}
+	}
+
+	.photo-viewer__icon {
+		width: 18px;
+		height: 18px;
+
+		&--close {
+			width: 14px;
+			height: 14px;
+		}
+	}
+
+	.photo-viewer__divider {
+		display: none;
+		width: 1px;
+		height: 24px;
+		background: rgba(palette("white"), 0.2);
+
+		@include up(desktop) {
+			display: block;
+		}
+	}
+
+	// Стрелки: 56, по центру высоты фото; с 1920 — в 100 от фото (как в макете), уже — у края
+	.photo-viewer__arrow {
+		position: absolute;
+		top: calc(108px + (100% - 292px) / 2);
+		z-index: 10;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		width: 56px;
+		height: 56px;
+		padding: 0;
+		color: palette("white");
+		cursor: pointer;
+		background: rgba(palette("white"), 0.1);
+		border: 0;
+		border-radius: 50%;
+		translate: 0 -50%;
+		transition: background-color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			background: rgba(palette("white"), 0.2);
+		}
+
+		&--prev {
+			left: max(20px, calc((100% - 1400px) / 2 - 100px));
+
+			.photo-viewer__icon {
+				rotate: 180deg;
+			}
+		}
+
+		&--next {
+			right: max(20px, calc((100% - 1400px) / 2 - 100px));
+		}
+
+		@include up(desktop) {
+			display: flex;
+		}
+	}
+
+	.photo-viewer__thumbs {
+		position: absolute;
+		right: 0;
+		bottom: 24px;
+		left: 0;
+		z-index: 10;
+		display: none;
+		justify-content: center;
+
+		@include up(tablet) {
+			display: flex;
+		}
+
+		@include up(desktop) {
+			bottom: 40px;
+		}
+	}
+
+	.photo-viewer__thumbs-list {
+		display: flex;
+		gap: 8px;
+		max-width: min(1344px, calc(100% - 32px));
+		padding: 2px;
+		overflow-x: auto;
+		scrollbar-width: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	.photo-viewer__thumb {
+		flex: none;
+		width: 96px;
+		height: 64px;
+		padding: 0;
+		overflow: hidden;
+		cursor: pointer;
+		background: rgba(palette("white"), 0.06);
+		border: 0;
+		border-radius: 6px;
+		opacity: 0.45;
+		transition: opacity $transition-default;
+
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		&:hover,
+		&:focus-visible {
+			opacity: 0.8;
+		}
+
+		// Текущая: рамка 2 Main Blue внутри миниатюры, без приглушения
+		&.is-current {
+			outline: 2px solid palette("main-blue");
+			outline-offset: -2px;
+			opacity: 1;
+		}
+	}
+}

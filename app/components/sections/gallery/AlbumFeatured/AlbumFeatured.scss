@@ -1,0 +1,92 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Featured album (4682:25664) — 1200×480, скругление 10, поля 40, затемнение: прозрачно
+// до 35% высоты, к низу Black 80%; содержимое снизу через 16: метка Main Blue (S/500 белым, поля
+// 5/10, скругление 14), название H0 белым, дата и число L/400 85%, кнопка General M.
+// Мобильный (наше): 3:4, поля 20, название H1-360.
+@layer components {
+	.album-featured {
+		@include image-placeholder;
+
+		position: relative;
+		display: flex;
+		align-items: flex-end;
+		min-height: 360px;
+		padding: 20px;
+		overflow: hidden;
+		color: palette("white");
+		border-radius: $radius-inner-block;
+
+		&::after {
+			position: absolute;
+			inset: 0;
+			content: "";
+			background: linear-gradient(
+				to bottom,
+				rgba(palette("black-h"), 0) 0%,
+				rgba(palette("black-h"), 0) 35%,
+				rgba(palette("black-h"), 0.8) 100%
+			);
+		}
+
+		@include up(tablet) {
+			aspect-ratio: 1200 / 480;
+			min-height: 0;
+			padding: 40px;
+		}
+	}
+
+	.album-featured .album-featured__image {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: opacity $transition-default;
+	}
+
+	.album-featured__body {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		align-items: flex-start;
+		min-width: 0;
+	}
+
+	.album-featured__badge {
+		@include text("s-600");
+
+		padding: 5px 10px;
+		background: palette("main-blue");
+		border-radius: $radius-button;
+	}
+
+	.album-featured__title {
+		@include text("h1-360");
+
+		overflow-wrap: anywhere;
+
+		@include up(desktop) {
+			@include text("h0");
+		}
+	}
+
+	.album-featured__meta {
+		@include text("l-400");
+
+		opacity: 0.85;
+	}
+
+	.album-featured:hover .album-featured__image,
+	.album-featured:focus-visible .album-featured__image {
+		opacity: 0.9;
+	}
+
+	.album-featured:hover .album-featured__button,
+	.album-featured:focus-visible .album-featured__button {
+		background: palette("blue-hover");
+	}
+}
