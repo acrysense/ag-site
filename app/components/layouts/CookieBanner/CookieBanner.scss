@@ -4,12 +4,13 @@
 // Figma: 4711:32225 (карточка 420, поля 32, заголовок H3, текст M/400 Dark-grey.TXT,
 // «Принять» General и «Отклонить» Light в ряд). В макете карточка на затемнении; у нас без
 // него (не мешает работать), поэтому тень сильнее и рамка Block.Border — отделить от страницы.
-// Мобильный в макете не нарисован: во всю ширину над нижней навигацией.
+// Мобильный в макете не нарисован: во всю ширину, в 10 от низа — над нижней навигацией, если
+// она есть на странице (на входе и восстановлении её нет — баннер у самого низа).
 @layer components {
 	.cookie-banner {
 		position: fixed;
 		right: 10px;
-		bottom: calc(60px + env(safe-area-inset-bottom) + 10px);
+		bottom: calc(env(safe-area-inset-bottom) + 10px);
 		left: 10px;
 		z-index: 30;
 		display: flex;
@@ -32,6 +33,12 @@
 
 		&[hidden] {
 			display: none;
+		}
+
+		@include down(tablet) {
+			body:has(.tab-bar:not(.tab-bar--static)) & {
+				bottom: calc(60px + env(safe-area-inset-bottom) + 10px);
+			}
 		}
 
 		&--static {
