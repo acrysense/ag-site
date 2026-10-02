@@ -8642,12 +8642,6 @@
 					}
 				]
 			},
-			"search": {
-				"action": "./documents.html",
-				"name": "q",
-				"label": "Поиск по документам",
-				"placeholder": "Найти документ"
-			},
 			"filtersId": "doc-filters-story",
 			"filtersText": "Фильтры",
 			"items": [
@@ -8801,12 +8795,6 @@
 					}
 				]
 			},
-			"search": {
-				"action": "./documents.html",
-				"name": "q",
-				"label": "Поиск по документам",
-				"placeholder": "Найти документ"
-			},
 			"filtersId": "doc-filters-story",
 			"filtersText": "Фильтры",
 			"items": [
@@ -8861,12 +8849,6 @@
 						"url": "./documents.html?sort=name"
 					}
 				]
-			},
-			"search": {
-				"action": "./documents.html",
-				"name": "q",
-				"label": "Поиск по документам",
-				"placeholder": "Найти документ"
 			},
 			"filtersId": "doc-filters-story",
 			"filtersText": "Фильтры",
@@ -9071,12 +9053,6 @@
 					}
 				]
 			},
-			"search": {
-				"action": "./documents.html",
-				"name": "q",
-				"label": "Поиск по документам",
-				"placeholder": "Найти документ"
-			},
 			"filtersId": "doc-filters-story",
 			"filtersText": "Фильтры",
 			"items": [],
@@ -9124,12 +9100,6 @@
 					}
 				]
 			},
-			"search": {
-				"action": "./documents.html",
-				"name": "q",
-				"label": "Поиск по документам",
-				"placeholder": "Найти документ"
-			},
 			"filtersId": "doc-filters-story",
 			"filtersText": "Фильтры",
 			"items": [],
@@ -9161,12 +9131,6 @@
 						"url": "./documents.html?sort=name"
 					}
 				]
-			},
-			"search": {
-				"action": "./documents.html",
-				"name": "q",
-				"label": "Поиск по документам",
-				"placeholder": "Найти документ"
 			},
 			"filtersId": "doc-filters-story",
 			"filtersText": "Фильтры",

@@ -376,12 +376,6 @@
 					}
 				]
 			},
-			"search": {
-				"action": "./documents.html",
-				"name": "q",
-				"label": "Поиск по документам",
-				"placeholder": "Найти документ"
-			},
 			"filtersId": "documents-filters",
 			"filtersText": "Фильтры",
 			"items": [
@@ -587,13 +581,51 @@
 			},
 			"pagination": {
 				"label": "Страницы документов",
+				"next": {
+					"url": "#"
+				},
 				"pages": [
 					{
 						"number": 1,
 						"current": true
+					},
+					{
+						"number": 2,
+						"url": "#"
+					},
+					{
+						"number": 3,
+						"url": "#"
+					},
+					{
+						"number": 4,
+						"url": "#",
+						"far": true
+					},
+					{
+						"gap": true
+					},
+					{
+						"number": 22,
+						"url": "#",
+						"far": true
+					},
+					{
+						"number": 23,
+						"url": "#",
+						"far": true
+					},
+					{
+						"number": 24,
+						"url": "#",
+						"far": true
+					},
+					{
+						"number": 25,
+						"url": "#"
 					}
 				],
-				"total": 12,
+				"total": 835,
 				"totalText": "Всего:"
 			}
 		}
