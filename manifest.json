@@ -3,8 +3,12 @@
     "file": "assets/js/announce-CzTc7via.js",
     "name": "announce"
   },
-  "_app-BZ9J8y3T.js": {
-    "file": "assets/js/app-BZ9J8y3T.js",
+  "_app-C7OZ_McS.css": {
+    "file": "assets/css/app-C7OZ_McS.css",
+    "src": "_app-C7OZ_McS.css"
+  },
+  "_app-CV-mqIVg.js": {
+    "file": "assets/js/app-CV-mqIVg.js",
     "name": "app",
     "dynamicImports": [
       "components/components/Calendar/Calendar.js",
@@ -36,15 +40,11 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-CRuHGvrh.css"
+      "assets/css/app-C7OZ_McS.css"
     ],
     "assets": [
       "assets/images/auth-ag-m2GDsMwR.svg"
     ]
-  },
-  "_app-CRuHGvrh.css": {
-    "file": "assets/css/app-CRuHGvrh.css",
-    "src": "_app-CRuHGvrh.css"
   },
   "_filter-panel-CxDryH0e.js": {
     "file": "assets/js/filter-panel-CxDryH0e.js",
@@ -338,13 +338,13 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas--Mc0pNJY.js",
+    "file": "assets/js/dev-canvas-5RNfEsQZ.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
       "_pages-nav-CGkOGvNx.js",
-      "_app-BZ9J8y3T.js"
+      "_app-CV-mqIVg.js"
     ],
     "css": [
       "assets/css/dev-canvas-B9lA4Ypm.css"
@@ -377,6 +377,14 @@
       "assets/images/journal-2-3hgfWDPs.webp",
       "assets/images/side-banner-DNv6ADL6.webp"
     ]
+  },
+  "pages/dev/img/article-cover.webp": {
+    "file": "assets/images/article-cover-0273msKl.webp",
+    "src": "pages/dev/img/article-cover.webp"
+  },
+  "pages/dev/img/article-gallery-1.webp": {
+    "file": "assets/images/article-gallery-1-CB7HfhDc.webp",
+    "src": "pages/dev/img/article-gallery-1.webp"
   },
   "pages/dev/img/banner-desktop.webp": {
     "file": "assets/images/banner-desktop-C-3y8UUt.webp",
