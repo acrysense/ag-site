@@ -47,10 +47,10 @@
 		<script type="text/plain" data-cookie-consent>
 			window.__agDemoCounter = (window.__agDemoCounter || 0) + 1; console.info('[demo] счётчик включён после согласия на cookie')
 		</script>
-		<script type="module" crossorigin src="/ag-site/assets/js/pages-nav-CGkOGvNx.js"></script>
-		<script type="module" crossorigin src="/ag-site/assets/js/app-D0F4jgyw.js"></script>
-		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/pages-nav-Bqmlo0Pv.css" />
-		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-Bt8Cixgk.css" />
+		<script type="module" crossorigin src="/ag-site/assets/js/pages-nav-DGqhhCG4.js"></script>
+		<script type="module" crossorigin src="/ag-site/assets/js/app-BzeYlnhZ.js"></script>
+		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/pages-nav-BQzK_u4K.css" />
+		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-DHfLY-6X.css" />
 	</head>
 	<body>
 		<div class="wrapper">
@@ -859,10 +859,28 @@
 											<use href="/ag-site/assets/icons/sprite.svg#icon-chevron-down"></use>
 										</svg>
 									</button>
-									<ul class="sort-menu__list" id="news-sort-1" role="list" hidden>
-										<li><a class="sort-menu__link" href="#" aria-current="true">Новые в начале</a></li>
-										<li><a class="sort-menu__link" href="#">Старые в начале</a></li>
-									</ul>
+									<div class="sort-menu__backdrop" data-sort-menu-close hidden></div>
+									<div class="sort-menu__popup" id="news-sort-1" hidden>
+										<div class="sort-menu__head">
+											<p class="sort-menu__title">Сортировка</p>
+											<button class="sort-menu__close" type="button" aria-label="Закрыть" data-sort-menu-close>
+												<svg class="icon sort-menu__close-icon" aria-hidden="true" focusable="false">
+													<use href="/ag-site/assets/icons/sprite.svg#icon-close"></use>
+												</svg>
+											</button>
+										</div>
+										<ul class="sort-menu__list" role="list">
+											<li>
+												<a class="sort-menu__option" href="#" aria-current="true">
+													Новые в начале
+													<svg class="icon sort-menu__check" aria-hidden="true" focusable="false">
+														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
+													</svg>
+												</a>
+											</li>
+											<li><a class="sort-menu__option" href="#">Старые в начале</a></li>
+										</ul>
+									</div>
 								</div>
 							</div>
 							<ul class="news-list__grid" role="list">
