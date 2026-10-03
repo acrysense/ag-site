@@ -98,12 +98,16 @@
 		color: palette("dark-grey-txt");
 		transition: transform $transition-default;
 
+		// До 768 список — нижний лист, стрелка поля не переворачивается
 		.select.is-open & {
-			transform: rotate(180deg);
+			@include up(tablet) {
+				transform: rotate(180deg);
+			}
 		}
 	}
 
-	// Окно: строка поиска (если есть), список с прокруткой, строка состояния
+	// Окно: строка поиска (если есть), список с прокруткой, строка состояния. До 768 — нижний
+	// лист с заголовком и × (как у сортировки SortMenu)
 	.select__popup {
 		position: absolute;
 		top: calc(100% + 6px);
@@ -127,6 +131,13 @@
 		.select.is-up & {
 			top: auto;
 			bottom: calc(100% + 6px);
+		}
+
+		@include down(tablet) {
+			@include sheet;
+
+			top: auto;
+			gap: 12px;
 		}
 	}
 
@@ -286,6 +297,11 @@
 			color: palette("blue-txt");
 			background: palette("bg-violet");
 		}
+
+		// В нижнем листе — крупнее под палец, как у сортировки
+		@include down(tablet) {
+			padding: 12px 10px;
+		}
 	}
 
 	.select__check {
@@ -314,11 +330,12 @@
 		border-radius: $radius-inner-block;
 		box-shadow: $shadow-list;
 
+		// До 768 — нижний лист, как у всех списков (свои поля и тень multiple — обратно к листу)
 		@include down(tablet) {
-			@include sheet;
-
-			top: auto;
+			right: 0;
+			width: auto;
 			gap: 12px;
+			padding: 16px 10px calc(16px + env(safe-area-inset-bottom));
 			border-radius: $radius-content-block $radius-content-block 0 0;
 			box-shadow: $shadow-sheet;
 		}
@@ -465,7 +482,7 @@
 		height: 10px;
 	}
 
-	// Появление (наше): список проявляется со сдвигом; нижний лист (мультивыбор на мобильном)
+	// Появление (наше): список проявляется со сдвигом; нижний лист (до 768)
 	// выезжает снизу (переменные — в миксине sheet), затемнение проявляется
 	.select__popup {
 		@include appear;

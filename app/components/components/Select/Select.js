@@ -111,29 +111,32 @@ export default function init(root) {
 	popup.hidden = true
 
 	// multiple (фильтры, Figma: Dropdown List — с поиском 4764:2732): пункты с флажками, выбранные —
-	// сверху, под чертой — остальные. На мобильном окно — нижний лист (4786:2839): заголовок, ×,
-	// поиск, список и «Готово»; шапка, «Готово» и затемнение на десктопе скрыты стилями
-	let backdrop = null
+	// сверху, под чертой — остальные. До 768 любой список — нижний лист (4786:2839), как у
+	// сортировки (SortMenu): заголовок, ×, (поиск), список, у multiple — «Готово»; шапка, «Готово»
+	// и затемнение на десктопе скрыты стилями. Заголовок — data-select-sheet-title, иначе подпись
+	// поля без двоеточия или заглушка
+	if (multiple) root.classList.add('select--multi')
 	const closers = []
-	if (multiple) {
-		root.classList.add('select--multi')
-		const head = document.createElement('div')
-		head.className = 'select__sheet-head'
-		const title = document.createElement('p')
-		title.className = 'select__sheet-title'
-		title.textContent = placeholder || label?.textContent || ''
-		const x = document.createElement('button')
-		x.type = 'button'
-		x.className = 'select__sheet-close'
-		x.setAttribute('aria-label', 'Закрыть')
-		x.append(createIcon('close', 'select__sheet-close-icon'))
-		head.append(title, x)
-		popup.append(head)
-		backdrop = document.createElement('div')
-		backdrop.className = 'select__backdrop'
-		backdrop.hidden = true
-		closers.push(x, backdrop)
-	}
+	const head = document.createElement('div')
+	head.className = 'select__sheet-head'
+	const title = document.createElement('p')
+	title.className = 'select__sheet-title'
+	title.textContent =
+		root.dataset.selectSheetTitle ||
+		(multiple ? placeholder : '') ||
+		label?.textContent.trim().replace(/:$/, '') ||
+		placeholder
+	const x = document.createElement('button')
+	x.type = 'button'
+	x.className = 'select__sheet-close'
+	x.setAttribute('aria-label', 'Закрыть')
+	x.append(createIcon('close', 'select__sheet-close-icon'))
+	head.append(title, x)
+	popup.append(head)
+	const backdrop = document.createElement('div')
+	backdrop.className = 'select__backdrop'
+	backdrop.hidden = true
+	closers.push(x, backdrop)
 
 	let input = null
 	let clearSearch = null
@@ -190,9 +193,8 @@ export default function init(root) {
 		done.textContent = 'Готово'
 		popup.append(done)
 		closers.push(done)
-		root.append(backdrop)
 	}
-	root.append(popup)
+	root.append(backdrop, popup)
 	const simplebar = new SimpleBar(scroll, {
 		autoHide: false,
 		ariaLabel: label?.textContent || '',
@@ -393,11 +395,11 @@ export default function init(root) {
 	const open = () => {
 		if (isOpen()) return
 		popup.hidden = false
-		if (backdrop) backdrop.hidden = false
+		backdrop.hidden = false
 		pointer = { x: null, y: null }
 		pinned = new Set([...select.selectedOptions].map((option) => option.value))
 		root.classList.add('is-open')
-		if (multiple) release = lockIfSheet()
+		release = lockIfSheet()
 		simplebar.recalculate()
 		button.setAttribute('aria-expanded', 'true')
 		if (remoteUrl && !loaded && status !== 'loading') refresh()
@@ -410,7 +412,7 @@ export default function init(root) {
 			renderActive()
 		}
 		// Мало места снизу — окно открывается вверх (нижний лист — всегда снизу)
-		if (!(multiple && isSheet())) {
+		if (!isSheet()) {
 			const rect = field.getBoundingClientRect()
 			const below = window.innerHeight - rect.bottom
 			root.classList.toggle('is-up', below < popup.offsetHeight + 12 && rect.top > below)
@@ -422,7 +424,7 @@ export default function init(root) {
 		if (!isOpen()) return
 		popup.hidden = true
 		popup.classList.remove('is-keys')
-		if (backdrop) backdrop.hidden = true
+		backdrop.hidden = true
 		release?.()
 		release = null
 		root.classList.remove('is-open', 'is-up')
@@ -645,7 +647,7 @@ export default function init(root) {
 		simplebar.unMount()
 		button.remove()
 		popup.remove()
-		backdrop?.remove()
+		backdrop.remove()
 		select.removeAttribute('tabindex')
 		select.removeAttribute('aria-hidden')
 		root.classList.remove(

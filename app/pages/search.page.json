@@ -329,6 +329,7 @@
 				"activeFilters": 2,
 				"sort": {
 					"name": "sort",
+					"sheetTitle": "Сортировка",
 					"submit": true,
 					"options": [
 						{

@@ -6,7 +6,7 @@
 	props: label, name, id, options [{ value, text, selected }], submit — отправлять форму при
 	выборе, search — поиск по пунктам, url — пункты с сервера (порциями, с поиском; в options
 	тогда только выбранный), minChars — с какой длины искать на сервере (по умолчанию 2),
-	searchPlaceholder, class.
+	searchPlaceholder, sheetTitle — заголовок нижнего листа до 768 (иначе подпись поля), class.
 	Фильтры (Figma: поиск, 4733:1650): placeholder — серый текст, пока ничего не выбрано
 	(«Должность»); multiple — выбор нескольких: список не закрывается, в поле «Отдел: 2»,
 	с submit форма отправляется один раз — при закрытии списка; valueText — текст поля до JS.
@@ -19,6 +19,7 @@
     {{#if (or props.search props.url)}}data-select-search{{/if}}
     {{#if props.minChars}}data-select-min-chars="{{props.minChars}}"{{/if}}
     {{#if props.searchPlaceholder}}data-select-search-placeholder="{{props.searchPlaceholder}}"{{/if}}
+    {{#if props.sheetTitle}}data-select-sheet-title="{{props.sheetTitle}}"{{/if}}
 >
     <label class="select__field">
         {{#if props.label}}<span class="select__label">{{props.label}}</span>{{/if}}
