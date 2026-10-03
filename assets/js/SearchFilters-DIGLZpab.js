@@ -1,1 +1,0 @@
-import{a as e,p as r}from"./filter-panel-ak9vcLyp.js";import"./app-Cmf5W6tL.js";import"./scroll-lock-CkQIV5rM.js";function l(t){return e(t,{open:"data-search-filters-open",close:"[data-search-filters-close]",count:"[data-search-count]",countUrl:t.dataset.searchCountUrl,countText:a=>`Показать ${a} ${r(a,"результат","результата","результатов")}`})}export{l as default};
