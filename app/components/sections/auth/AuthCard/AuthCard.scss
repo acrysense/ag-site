@@ -15,7 +15,8 @@
 		min-height: 100vh;
 		min-height: 100dvh;
 		overflow: hidden;
-		background: palette("bg-auth");
+		// Фон как у всех страниц — BG.Main (решили 2026-10-03: фон везде единый)
+		background: palette("bg-main");
 
 		// Крупное «AG» справа внизу, над полосой слогана
 		@include up(tablet) {
@@ -102,9 +103,11 @@
 		width: 100%;
 		padding: 10px;
 
+		// Белый блок, как все: рамка Block.Border и общая тень; поля 40 вместе с рамкой
 		@include up(tablet) {
-			padding: 40px;
+			padding: 39px;
 			background: palette("white");
+			border: 1px solid palette("block-border");
 			border-radius: $radius-content-block;
 			box-shadow: $shadow-content-block;
 		}
