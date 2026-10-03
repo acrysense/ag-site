@@ -48,9 +48,9 @@
 			window.__agDemoCounter = (window.__agDemoCounter || 0) + 1; console.info('[demo] счётчик включён после согласия на cookie')
 		</script>
 		<script type="module" crossorigin src="/ag-site/assets/js/pages-nav-Dy6i7EPH.js"></script>
-		<script type="module" crossorigin src="/ag-site/assets/js/app-BEbixYg8.js"></script>
+		<script type="module" crossorigin src="/ag-site/assets/js/app-Cmf5W6tL.js"></script>
 		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/pages-nav-6QoGBXzI.css" />
-		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-B0fn0FOo.css" />
+		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-CHD5fTO8.css" />
 	</head>
 	<body>
 		<div class="wrapper">
@@ -794,7 +794,7 @@
 			</header>
 			<main class="wrapper__content">
 				<div class="container page-inner">
-					<nav class="breadcrumbs" aria-label="Хлебные крошки">
+					<nav class="breadcrumbs breadcrumbs--short" aria-label="Хлебные крошки">
 						<ol class="breadcrumbs__list">
 							<li class="breadcrumbs__item"><a class="breadcrumbs__link" href="./index.html">Главная</a></li>
 							<li class="breadcrumbs__item"><a class="breadcrumbs__link" href="./news.html">Новости холдинга</a></li>
@@ -802,7 +802,7 @@
 						</ol>
 					</nav>
 					<div class="page-columns page-columns--start">
-						<aside class="page-columns__aside">
+						<aside class="page-columns__aside page-columns__aside--desktop">
 							<nav class="news-filters" aria-label="Фильтры новостей" data-module="NewsFilters" data-path="sections/news">
 								<h2 class="news-filters__title">Категории</h2>
 								<ul class="news-filters__list news-filters__list--categories" role="list">
@@ -839,7 +839,7 @@
 						<section class="news-list" aria-labelledby="news-list-title">
 							<div class="news-list__head">
 								<h1 class="news-list__title" id="news-list-title">HR-дайджест</h1>
-								<div class="sort-menu" data-module="SortMenu" data-path="components">
+								<div class="sort-menu sort-menu--field news-list__sort" data-module="SortMenu" data-path="components">
 									<button
 										class="sort-menu__toggle"
 										type="button"
@@ -872,6 +872,64 @@
 												</a>
 											</li>
 											<li><a class="sort-menu__option" href="#">Старые в начале</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="news-list__toolbar">
+								<nav
+									class="news-filters news-list__categories"
+									aria-label="Категории"
+									data-module="NewsFilters"
+									data-path="sections/news"
+								>
+									<h2 class="news-filters__title">Категории</h2>
+									<ul class="news-filters__list news-filters__list--categories" role="list">
+										<li><a class="news-filters__link" href="#">Журнал холдинга</a></li>
+										<li><a class="news-filters__link" href="#">Журнал PR</a></li>
+										<li><a class="news-filters__link" href="#">Сотрудник месяца</a></li>
+										<li><a class="news-filters__link" href="#" aria-current="page">Ударник</a></li>
+										<li><a class="news-filters__link" href="#">Вечерний холдинг</a></li>
+										<li><a class="news-filters__link" href="#">The AG News</a></li>
+									</ul>
+								</nav>
+								<div class="sort-menu sort-menu--field news-list__year" data-module="SortMenu" data-path="components">
+									<button
+										class="sort-menu__toggle"
+										type="button"
+										aria-expanded="false"
+										aria-haspopup="true"
+										aria-controls="news-year"
+									>
+										<span class="visually-hidden">Год: </span>
+										2025
+										<svg class="icon sort-menu__arrow" aria-hidden="true" focusable="false">
+											<use href="/ag-site/assets/icons/sprite.svg#icon-chevron-down"></use>
+										</svg>
+									</button>
+									<div class="sort-menu__backdrop" data-sort-menu-close hidden></div>
+									<div class="sort-menu__popup" id="news-year" hidden>
+										<div class="sort-menu__head">
+											<p class="sort-menu__title">Год</p>
+											<button class="sort-menu__close" type="button" aria-label="Закрыть" data-sort-menu-close>
+												<svg class="icon sort-menu__close-icon" aria-hidden="true" focusable="false">
+													<use href="/ag-site/assets/icons/sprite.svg#icon-close"></use>
+												</svg>
+											</button>
+										</div>
+										<ul class="sort-menu__list" role="list">
+											<li><a class="sort-menu__option" href="#">2026</a></li>
+											<li>
+												<a class="sort-menu__option" href="#" aria-current="true"
+													>2025<svg class="icon sort-menu__check" aria-hidden="true" focusable="false">
+														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
+													</svg>
+												</a>
+											</li>
+											<li><a class="sort-menu__option" href="#">2024</a></li>
+											<li><a class="sort-menu__option" href="#">2023</a></li>
+											<li><a class="sort-menu__option" href="#">2022</a></li>
+											<li><a class="sort-menu__option" href="#">2021</a></li>
 										</ul>
 									</div>
 								</div>
@@ -1649,6 +1707,7 @@
 										<li><a class="pagination__step" href="#" rel="next">Вперёд</a></li>
 									</ul>
 								</nav>
+								<p class="pagination__current" aria-hidden="true">Страница: <span class="pagination__count">2</span></p>
 								<p class="pagination__total">Всего: <span class="pagination__count">835</span></p>
 							</div>
 						</section>

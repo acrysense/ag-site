@@ -1,10 +1,16 @@
 {
-  "_app-B0fn0FOo.css": {
-    "file": "assets/css/app-B0fn0FOo.css",
-    "src": "_app-B0fn0FOo.css"
+  "../node_modules/photoswipe/dist/photoswipe.esm.js": {
+    "file": "assets/js/photoswipe.esm-BXDdABy_.js",
+    "name": "photoswipe.esm",
+    "src": "../node_modules/photoswipe/dist/photoswipe.esm.js",
+    "isDynamicEntry": true
   },
-  "_app-BEbixYg8.js": {
-    "file": "assets/js/app-BEbixYg8.js",
+  "_app-CHD5fTO8.css": {
+    "file": "assets/css/app-CHD5fTO8.css",
+    "src": "_app-CHD5fTO8.css"
+  },
+  "_app-Cmf5W6tL.js": {
+    "file": "assets/js/app-Cmf5W6tL.js",
     "name": "app",
     "dynamicImports": [
       "components/components/Calendar/Calendar.js",
@@ -18,6 +24,7 @@
       "components/components/LikeButton/LikeButton.js",
       "components/components/Modal/Modal.js",
       "components/components/NumberRange/NumberRange.js",
+      "components/components/PhotoViewer/PhotoViewer.js",
       "components/components/Reveal/Reveal.js",
       "components/components/Select/Select.js",
       "components/components/SortMenu/SortMenu.js",
@@ -32,6 +39,7 @@
       "components/sections/career/VacancyFilters/VacancyFilters.js",
       "components/sections/documents/DocumentsFilters/DocumentsFilters.js",
       "components/sections/documents/DocumentsFolders/DocumentsFolders.js",
+      "components/sections/gallery/AlbumPhotos/AlbumPhotos.js",
       "components/sections/home/Stats/Stats.js",
       "components/sections/news/NewsFilters/NewsFilters.js",
       "components/sections/search/SearchFilters/SearchFilters.js",
@@ -40,17 +48,17 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-B0fn0FOo.css"
+      "assets/css/app-CHD5fTO8.css"
     ],
     "assets": [
       "assets/images/auth-ag-m2GDsMwR.svg"
     ]
   },
-  "_filter-panel-B8gVETzJ.js": {
-    "file": "assets/js/filter-panel-B8gVETzJ.js",
+  "_filter-panel-ak9vcLyp.js": {
+    "file": "assets/js/filter-panel-ak9vcLyp.js",
     "name": "filter-panel",
     "imports": [
-      "_app-BEbixYg8.js",
+      "_app-Cmf5W6tL.js",
       "_scroll-lock-CkQIV5rM.js"
     ]
   },
@@ -106,12 +114,12 @@
     "src": "assets/images/logotype.svg"
   },
   "components/components/Calendar/Calendar.js": {
-    "file": "assets/js/Calendar-zNnUhYnx.js",
+    "file": "assets/js/Calendar-C8DUkUyn.js",
     "name": "Calendar",
     "src": "components/components/Calendar/Calendar.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-BEbixYg8.js"
+      "_app-Cmf5W6tL.js"
     ]
   },
   "components/components/Carousel/Carousel.js": {
@@ -121,32 +129,32 @@
     "isDynamicEntry": true
   },
   "components/components/Content/Content.js": {
-    "file": "assets/js/Content-D19l-a-0.js",
+    "file": "assets/js/Content-DQiviKbX.js",
     "name": "Content",
     "src": "components/components/Content/Content.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-BEbixYg8.js"
+      "_app-Cmf5W6tL.js"
     ]
   },
   "components/components/CopyLink/CopyLink.js": {
-    "file": "assets/js/CopyLink-1X79Gneh.js",
+    "file": "assets/js/CopyLink-BXS758ii.js",
     "name": "CopyLink",
     "src": "components/components/CopyLink/CopyLink.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-BEbixYg8.js"
+      "_app-Cmf5W6tL.js"
     ]
   },
   "components/components/DateRange/DateRange.js": {
-    "file": "assets/js/DateRange-jMsETrJt.js",
+    "file": "assets/js/DateRange-1OIdl8bU.js",
     "name": "DateRange",
     "src": "components/components/DateRange/DateRange.js",
     "isDynamicEntry": true,
     "imports": [
       "components/components/Calendar/Calendar.js",
       "_sheet-BupPjGD7.js",
-      "_app-BEbixYg8.js",
+      "_app-Cmf5W6tL.js",
       "_scroll-lock-CkQIV5rM.js"
     ]
   },
@@ -163,21 +171,21 @@
     "isDynamicEntry": true
   },
   "components/components/Form/Form.js": {
-    "file": "assets/js/Form-DTImfjF1.js",
+    "file": "assets/js/Form-CjxF-2LF.js",
     "name": "Form",
     "src": "components/components/Form/Form.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-BEbixYg8.js"
+      "_app-Cmf5W6tL.js"
     ]
   },
   "components/components/LikeButton/LikeButton.js": {
-    "file": "assets/js/LikeButton-DESQO29i.js",
+    "file": "assets/js/LikeButton-PgFeCGgv.js",
     "name": "LikeButton",
     "src": "components/components/LikeButton/LikeButton.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-BEbixYg8.js"
+      "_app-Cmf5W6tL.js"
     ]
   },
   "components/components/Modal/Modal.js": {
@@ -196,6 +204,19 @@
     "src": "components/components/NumberRange/NumberRange.js",
     "isDynamicEntry": true
   },
+  "components/components/PhotoViewer/PhotoViewer.js": {
+    "file": "assets/js/PhotoViewer-Bb4aJf2C.js",
+    "name": "PhotoViewer",
+    "src": "components/components/PhotoViewer/PhotoViewer.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_app-Cmf5W6tL.js",
+      "_scroll-lock-CkQIV5rM.js"
+    ],
+    "dynamicImports": [
+      "../node_modules/photoswipe/dist/photoswipe.esm.js"
+    ]
+  },
   "components/components/Reveal/Reveal.js": {
     "file": "assets/js/Reveal-D7ZQJefs.js",
     "name": "Reveal",
@@ -203,13 +224,13 @@
     "isDynamicEntry": true
   },
   "components/components/Select/Select.js": {
-    "file": "assets/js/Select-Ft9x7sO6.js",
+    "file": "assets/js/Select-6Oqe7FyD.js",
     "name": "Select",
     "src": "components/components/Select/Select.js",
     "isDynamicEntry": true,
     "imports": [
       "_pages-nav-Dy6i7EPH.js",
-      "_app-BEbixYg8.js",
+      "_app-Cmf5W6tL.js",
       "_sheet-BupPjGD7.js",
       "_scroll-lock-CkQIV5rM.js"
     ]
@@ -230,12 +251,12 @@
     "isDynamicEntry": true
   },
   "components/components/Toast/Toast.js": {
-    "file": "assets/js/Toast-DF3A01Tn.js",
+    "file": "assets/js/Toast-mfxuyGzY.js",
     "name": "Toast",
     "src": "components/components/Toast/Toast.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-BEbixYg8.js"
+      "_app-Cmf5W6tL.js"
     ]
   },
   "components/layouts/CookieBanner/CookieBanner.js": {
@@ -260,12 +281,12 @@
     ]
   },
   "components/layouts/SiteSearch/SiteSearch.js": {
-    "file": "assets/js/SiteSearch-CT8KVGkK.js",
+    "file": "assets/js/SiteSearch-BU1gziEM.js",
     "name": "SiteSearch",
     "src": "components/layouts/SiteSearch/SiteSearch.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-BEbixYg8.js",
+      "_app-Cmf5W6tL.js",
       "_scroll-lock-CkQIV5rM.js",
       "_reveal-in-row-RAMtI7uy.js",
       "_skeleton-Bj9dw7Ib.js"
@@ -284,32 +305,48 @@
     "isDynamicEntry": true
   },
   "components/sections/career/VacancyFilters/VacancyFilters.js": {
-    "file": "assets/js/VacancyFilters-udv6kckn.js",
+    "file": "assets/js/VacancyFilters-VUTuZQXz.js",
     "name": "VacancyFilters",
     "src": "components/sections/career/VacancyFilters/VacancyFilters.js",
     "isDynamicEntry": true,
     "imports": [
-      "_filter-panel-B8gVETzJ.js",
-      "_app-BEbixYg8.js",
+      "_filter-panel-ak9vcLyp.js",
+      "_app-Cmf5W6tL.js",
       "_scroll-lock-CkQIV5rM.js"
     ]
   },
   "components/sections/documents/DocumentsFilters/DocumentsFilters.js": {
-    "file": "assets/js/DocumentsFilters-4osPH7Iv.js",
+    "file": "assets/js/DocumentsFilters-DXgI1T6E.js",
     "name": "DocumentsFilters",
     "src": "components/sections/documents/DocumentsFilters/DocumentsFilters.js",
     "isDynamicEntry": true,
     "imports": [
-      "_filter-panel-B8gVETzJ.js",
-      "_app-BEbixYg8.js",
+      "_filter-panel-ak9vcLyp.js",
+      "_app-Cmf5W6tL.js",
       "_scroll-lock-CkQIV5rM.js"
     ]
   },
   "components/sections/documents/DocumentsFolders/DocumentsFolders.js": {
-    "file": "assets/js/DocumentsFolders-BuJgUVpx.js",
+    "file": "assets/js/DocumentsFolders-YJSGkk7S.js",
     "name": "DocumentsFolders",
     "src": "components/sections/documents/DocumentsFolders/DocumentsFolders.js",
-    "isDynamicEntry": true
+    "isDynamicEntry": true,
+    "imports": [
+      "_filter-panel-ak9vcLyp.js",
+      "_app-Cmf5W6tL.js",
+      "_scroll-lock-CkQIV5rM.js"
+    ]
+  },
+  "components/sections/gallery/AlbumPhotos/AlbumPhotos.js": {
+    "file": "assets/js/AlbumPhotos-ffilSild.js",
+    "name": "AlbumPhotos",
+    "src": "components/sections/gallery/AlbumPhotos/AlbumPhotos.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "components/components/PhotoViewer/PhotoViewer.js",
+      "_app-Cmf5W6tL.js",
+      "_scroll-lock-CkQIV5rM.js"
+    ]
   },
   "components/sections/home/Stats/Stats.js": {
     "file": "assets/js/Stats-CG9lLhOp.js",
@@ -327,23 +364,23 @@
     ]
   },
   "components/sections/search/SearchFilters/SearchFilters.js": {
-    "file": "assets/js/SearchFilters-C4v_e1Ap.js",
+    "file": "assets/js/SearchFilters-DIGLZpab.js",
     "name": "SearchFilters",
     "src": "components/sections/search/SearchFilters/SearchFilters.js",
     "isDynamicEntry": true,
     "imports": [
-      "_filter-panel-B8gVETzJ.js",
-      "_app-BEbixYg8.js",
+      "_filter-panel-ak9vcLyp.js",
+      "_app-Cmf5W6tL.js",
       "_scroll-lock-CkQIV5rM.js"
     ]
   },
   "components/sections/search/SearchResults/SearchResults.js": {
-    "file": "assets/js/SearchResults-ykqNHtbC.js",
+    "file": "assets/js/SearchResults-DVuzGRo2.js",
     "name": "SearchResults",
     "src": "components/sections/search/SearchResults/SearchResults.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-BEbixYg8.js",
+      "_app-Cmf5W6tL.js",
       "_skeleton-Bj9dw7Ib.js"
     ]
   },
@@ -357,25 +394,25 @@
     ]
   },
   "components/sections/shared/Comments/Comments.js": {
-    "file": "assets/js/Comments-CA32WZz2.js",
+    "file": "assets/js/Comments-Bm3xiRen.js",
     "name": "Comments",
     "src": "components/sections/shared/Comments/Comments.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-BEbixYg8.js"
+      "_app-Cmf5W6tL.js"
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-Evs7M7OD.js",
+    "file": "assets/js/dev-canvas-F_V17--a.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
       "_pages-nav-Dy6i7EPH.js",
-      "_app-BEbixYg8.js"
+      "_app-Cmf5W6tL.js"
     ],
     "css": [
-      "assets/css/dev-canvas-CK8THLcl.css"
+      "assets/css/dev-canvas-5M0LETSe.css"
     ],
     "assets": [
       "assets/images/logotype-desktop-BIC32Kew.svg",
@@ -421,6 +458,86 @@
   "pages/dev/img/banner-mobile.webp": {
     "file": "assets/images/banner-mobile-CmRGagw6.webp",
     "src": "pages/dev/img/banner-mobile.webp"
+  },
+  "pages/dev/img/gallery/album-1.webp": {
+    "file": "assets/images/album-1-0XnDivtt.webp",
+    "src": "pages/dev/img/gallery/album-1.webp"
+  },
+  "pages/dev/img/gallery/album-2.webp": {
+    "file": "assets/images/album-2-BEsEqyaW.webp",
+    "src": "pages/dev/img/gallery/album-2.webp"
+  },
+  "pages/dev/img/gallery/album-3.webp": {
+    "file": "assets/images/album-3-zKTPDFV_.webp",
+    "src": "pages/dev/img/gallery/album-3.webp"
+  },
+  "pages/dev/img/gallery/album-4.webp": {
+    "file": "assets/images/album-4-BwujsmFy.webp",
+    "src": "pages/dev/img/gallery/album-4.webp"
+  },
+  "pages/dev/img/gallery/album-5.webp": {
+    "file": "assets/images/album-5-gZS6HRtD.webp",
+    "src": "pages/dev/img/gallery/album-5.webp"
+  },
+  "pages/dev/img/gallery/album-6.webp": {
+    "file": "assets/images/album-6-B75EzCmY.webp",
+    "src": "pages/dev/img/gallery/album-6.webp"
+  },
+  "pages/dev/img/gallery/album-7.webp": {
+    "file": "assets/images/album-7-2hk1otsX.webp",
+    "src": "pages/dev/img/gallery/album-7.webp"
+  },
+  "pages/dev/img/gallery/photo-01.webp": {
+    "file": "assets/images/photo-01-CgzeR0SI.webp",
+    "src": "pages/dev/img/gallery/photo-01.webp"
+  },
+  "pages/dev/img/gallery/photo-02.webp": {
+    "file": "assets/images/photo-02-BlgVf38S.webp",
+    "src": "pages/dev/img/gallery/photo-02.webp"
+  },
+  "pages/dev/img/gallery/photo-03.webp": {
+    "file": "assets/images/photo-03-DH_14zeI.webp",
+    "src": "pages/dev/img/gallery/photo-03.webp"
+  },
+  "pages/dev/img/gallery/photo-04.webp": {
+    "file": "assets/images/photo-04-BXcUX_sQ.webp",
+    "src": "pages/dev/img/gallery/photo-04.webp"
+  },
+  "pages/dev/img/gallery/photo-05.webp": {
+    "file": "assets/images/photo-05-txjUIjcV.webp",
+    "src": "pages/dev/img/gallery/photo-05.webp"
+  },
+  "pages/dev/img/gallery/photo-06.webp": {
+    "file": "assets/images/photo-06-ipHMOgq1.webp",
+    "src": "pages/dev/img/gallery/photo-06.webp"
+  },
+  "pages/dev/img/gallery/photo-07.webp": {
+    "file": "assets/images/photo-07-CXo7kJIJ.webp",
+    "src": "pages/dev/img/gallery/photo-07.webp"
+  },
+  "pages/dev/img/gallery/photo-08.webp": {
+    "file": "assets/images/photo-08-BrnHq_FO.webp",
+    "src": "pages/dev/img/gallery/photo-08.webp"
+  },
+  "pages/dev/img/gallery/photo-09.webp": {
+    "file": "assets/images/photo-09-m1Hug_nl.webp",
+    "src": "pages/dev/img/gallery/photo-09.webp"
+  },
+  "pages/dev/img/gallery/photo-10.webp": {
+    "file": "assets/images/photo-10-BlGGUmGJ.webp",
+    "src": "pages/dev/img/gallery/photo-10.webp"
+  },
+  "pages/dev/img/gallery/photo-11.webp": {
+    "file": "assets/images/photo-11-psOfMZZT.webp",
+    "src": "pages/dev/img/gallery/photo-11.webp"
+  },
+  "pages/dev/img/gallery/photo-12.webp": {
+    "file": "assets/images/photo-12-BP3POgm-.webp",
+    "src": "pages/dev/img/gallery/photo-12.webp"
+  },
+  "pages/dev/img/gallery/photo-13.webp": {
+    "file": "assets/images/photo-13-BAmDrzwt.webp",
+    "src": "pages/dev/img/gallery/photo-13.webp"
   },
   "pages/dev/img/journal-1.webp": {
     "file": "assets/images/journal-1-CvFQH_nj.webp",
