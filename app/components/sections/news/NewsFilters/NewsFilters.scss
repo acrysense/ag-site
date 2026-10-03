@@ -3,7 +3,8 @@
 
 // Figma: PC.News (4467:758), Frame 369 — карточка 350, поля 20: «Категории» (H3), ссылки
 // L/400 через 15 (текущая Blue.TXT), линия Form.Border, годы — кнопки S.Light (текущий BG.Main 2).
-// Мобильный — наше: категории и годы строками «таблеток», прокрутка вбок внутри блока.
+// До 1024 (Figma 360: 4963:43446) — категории строкой «таблеток» через 8 с прокруткой вбок,
+// текущая — Main Blue, белый M/500.
 @layer components {
 	.news-filters {
 		display: flex;
@@ -124,9 +125,26 @@
 		}
 	}
 
-	// Наведение на год (наше): Blue.TXT
+	// Текущая категория на мобильном — Main Blue, белый жирный
+	.news-filters__link[aria-current] {
+		@include down(desktop) {
+			@include text("m-500");
+
+			color: palette("white");
+			background: palette("main-blue");
+		}
+	}
+
+	// Наведение на год и на категорию-«таблетку» (наше): Blue.TXT
 	.news-filters__chip:hover:not([aria-current]),
 	.news-filters__chip:focus-visible:not([aria-current]) {
 		color: palette("blue-txt");
+	}
+
+	.news-filters__link:hover:not([aria-current]),
+	.news-filters__link:focus-visible:not([aria-current]) {
+		@include down(desktop) {
+			color: palette("blue-txt");
+		}
 	}
 }

@@ -43,8 +43,11 @@
 		height: 6px;
 		transition: transform $transition-default;
 
+		// До 768 список — нижний лист, стрелка не переворачивается
 		.sort-menu.is-open & {
-			transform: rotate(180deg);
+			@include up(tablet) {
+				transform: rotate(180deg);
+			}
 		}
 	}
 
@@ -178,5 +181,58 @@
 	.sort-menu__close-icon {
 		width: 10px;
 		height: 10px;
+	}
+
+	// --field: до 1024 — кнопка в виде поля выбора (Figma 360: «Select — год» и «Select —
+	// сортировка», 4963:43493): 46, белая, рамка Form.Border, скругление 14, поля 15, текст M/400
+	// Black.TXT, стрелка справа; наведение — рамка Icon.Grey, открыто и фокус — Form.Focus.
+	// 768–1023 список — по ширине поля; до 768 — нижний лист, как у остальных
+	.sort-menu--field {
+		@include down(desktop) {
+			.sort-menu__toggle,
+			.sort-menu__current {
+				gap: 6px;
+				justify-content: space-between;
+				width: 100%;
+				height: 46px;
+				padding: 0 15px;
+				color: palette("black-txt");
+				background: palette("white");
+				border: 1px solid palette("form-border");
+				border-radius: $radius-button;
+			}
+
+			.sort-menu__toggle {
+				transition: border-color $transition-default;
+
+				&:hover {
+					color: palette("black-txt");
+					border-color: palette("icon-grey");
+				}
+
+				&:focus-visible {
+					@include field-focus;
+
+					color: palette("black-txt");
+				}
+			}
+
+			&.is-open .sort-menu__toggle {
+				border-color: palette("form-focus");
+			}
+
+			.sort-menu__arrow {
+				width: 11.5px;
+				height: 6.5px;
+			}
+		}
+
+		@include only(tablet) {
+			.sort-menu__popup {
+				right: 0;
+				left: 0;
+				min-width: 0;
+			}
+		}
 	}
 }

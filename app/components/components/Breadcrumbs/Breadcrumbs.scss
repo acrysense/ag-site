@@ -44,4 +44,12 @@
 			color: palette("black-txt");
 		}
 	}
+
+	// --short: на мобильном без текущей страницы — её название сразу ниже заголовком
+	// (Figma: раздел новостей 360, 4963:43444)
+	.breadcrumbs--short .breadcrumbs__item:last-child {
+		@include down(desktop) {
+			display: none;
+		}
+	}
 }

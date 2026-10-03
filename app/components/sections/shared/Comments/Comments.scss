@@ -3,8 +3,8 @@
 
 // Figma: «Комментарии — дерево (v2)» 4494:780 — компоненты (Comment/Item, Reaction, Reply box,
 // Reaction picker, Admin menu, Disabled notice) и «Состояния и поведение» 1–10; на странице
-// новости — 4652:12134. Мобильного макета нет: те же элементы, поля карточки убраны
-// (блок внутри белого .page-inner), действия переносятся.
+// новости — 4652:12134, 360 — 4963:43725: те же элементы без карточки (блок внутри белого
+// .page-inner), действия переносятся.
 @layer components {
 	.comments {
 		display: flex;
@@ -21,8 +21,9 @@
 			box-shadow: $shadow-content-block;
 		}
 
+		// Заголовок — H2 26/28, как на странице новости (4652:12135, 360 — 4963:43726)
 		&__title {
-			@include text("h3");
+			@include text("h2");
 
 			display: flex;
 			gap: 10px;

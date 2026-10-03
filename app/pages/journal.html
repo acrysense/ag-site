@@ -9,15 +9,15 @@
 		<div class="wrapper">
 			{{> layouts/Header/Header props=(default data.header site.header) }}
 			<main class="wrapper__content">
-				{{!-- Журнал: выпуски (1920 — 4520:23829; мобильного макета нет) --}}
+				{{!-- Журнал: выпуски (1920 — 4520:23829; мобильный — как раздел новостей 360, 4963:43392) --}}
 				<div class="container page-inner">
-					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.breadcrumbs) }}
+					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.breadcrumbs class="breadcrumbs--short") }}
 					<div class="page-columns page-columns--start">
-						<aside class="page-columns__aside">
+						<aside class="page-columns__aside page-columns__aside--desktop">
 							{{> sections/news/NewsFilters/NewsFilters props=data.filters }}
 							{{> sections/shared/SideBanner/SideBanner props=data.banner }}
 						</aside>
-						{{> sections/news/NewsList/NewsList props=data.list }}
+						{{> sections/news/NewsList/NewsList props=data.list filters=data.filters }}
 					</div>
 				</div>
 			</main>

@@ -1,8 +1,9 @@
 {{!--
 	Постраничная навигация (Figma: Pagination 3172:13909, страница новостей 4478:18838).
 	props: label, prev { url }, next { url }, pages [{ number, url, current, far, gap }],
-	total, totalText. «Назад» и «Вперёд» — только если есть куда. far — страница, которую
-	на мобильном не показываем (остаются первая, последняя и соседние с текущей); gap — «…».
+	total, totalText, pageText. «Назад» и «Вперёд» — только если есть куда. far — страница,
+	которую на мобильном не показываем (остаются первая, последняя и соседние с текущей); gap — «…».
+	До 768 (Figma: раздел новостей 360, 4962:6966) над кнопками строка «Страница: N … Всего: N».
 	Одна страница — навигации нет, только «Всего».
 --}}
 {{#if (or props.pages.[1] props.total)}}
@@ -26,6 +27,7 @@
                 </ul>
             </nav>
         {{/if}}
+        {{#if props.pages.[1]}}{{#each props.pages}}{{#if current}}<p class="pagination__current" aria-hidden="true">{{default ../props.pageText "Страница:"}} <span class="pagination__count">{{number}}</span></p>{{/if}}{{/each}}{{/if}}
         {{#if props.total}}<p class="pagination__total">{{default props.totalText "Всего:"}} <span class="pagination__count">{{props.total}}</span></p>{{/if}}
     </div>
 {{/if}}

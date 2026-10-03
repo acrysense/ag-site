@@ -3,6 +3,9 @@
 
 // Figma: PC.News (4467:758), Frame 291: карточка, поля 20, заголовок H1 и «Новые в начале»,
 // ряды карточек 280 через 26.67 и 40, пагинация через 40.
+// До 1024 (360 — 4963:43392): всё через 20 — заголовок, категории, в ряд поля «Год» и сортировки
+// по 165 через 10, карточки, пагинация. Обёртки шапки и панели на мобильном «растворяются»
+// (display: contents — это div без роли), порядок задаёт order.
 @layer components {
 	.news-list {
 		display: flex;
@@ -20,12 +23,35 @@
 			box-shadow: $shadow-content-block;
 		}
 
+		@include down(desktop) {
+			flex-flow: row wrap;
+			gap: 20px 10px;
+
+			> * {
+				flex: 1 1 100%;
+				min-width: 0;
+			}
+		}
+
 		&__head {
 			display: flex;
 			flex-wrap: wrap;
 			gap: 8px 20px;
 			align-items: flex-end;
 			justify-content: space-between;
+		}
+
+		&__head,
+		&__toolbar {
+			@include down(desktop) {
+				display: contents;
+			}
+		}
+
+		&__toolbar {
+			@include up(desktop) {
+				display: none;
+			}
 		}
 
 		&__title {
@@ -37,6 +63,30 @@
 
 			@include up(desktop) {
 				@include text("h1");
+			}
+
+			@include down(desktop) {
+				order: -3;
+			}
+		}
+
+		&__categories {
+			@include down(desktop) {
+				order: -2;
+			}
+		}
+
+		// Поля в ряд по половине; сортировка — после года (в разметке она в шапке, раньше)
+		&__year,
+		&__sort {
+			@include down(desktop) {
+				flex: 0 1 calc(50% - 5px);
+			}
+		}
+
+		&__year {
+			@include down(desktop) {
+				order: -1;
 			}
 		}
 

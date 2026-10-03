@@ -3,6 +3,7 @@
 
 // Figma: PC.News article v2 (4652:12003) — карточка 1080, поля 20, всё через 20: заголовок H1,
 // обложка 1040×341 с подписью S/400, текст (.content), галерея, строка действий и дата.
+// 360 (4963:43573): без карточки, обложка 340×200, текст того же размера.
 @layer components {
 	.news-article {
 		display: flex;
@@ -37,10 +38,15 @@
 			margin: 0;
 		}
 
+		// Обложка: 1040×341, на телефоне выше — 340×200 (Figma 360: 4963:43629)
 		&__image {
 			width: 100%;
 			height: auto;
-			aspect-ratio: 1040 / 341;
+			aspect-ratio: 340 / 200;
+
+			@include up(tablet) {
+				aspect-ratio: 1040 / 341;
+			}
 			object-fit: cover;
 			border-radius: $radius-inner-block;
 		}
@@ -49,6 +55,17 @@
 			@include text("s-400");
 
 			color: palette("dark-grey-txt");
+		}
+
+		// Текст новости — L/400 (16/24) на всех ширинах, списки с отступом 24 (Figma 4652:12009,
+		// 360 — 4963:43631); таблицы и подписи — своими размерами из .content
+		&__content {
+			@include text("l-400");
+
+			ul,
+			ol {
+				padding-left: 24px;
+			}
 		}
 
 		&__footer {

@@ -2,7 +2,7 @@
 @use "@/assets/styles/base/vars" as *;
 
 // Figma: 4652:12790 — 1040×500, скругление 20, рамка Block.Border, стрелки 40 в 24 от края по
-// центру, точки внизу на фото. Мобильный — наше: стрелки 30 в 5 от края.
+// центру, точки внизу на фото в 20 от низа. 360 (4963:43706): 340×220, стрелки 40 в 10 от края.
 @layer components {
 	.gallery {
 		position: relative;
@@ -17,7 +17,11 @@
 	.gallery__slide {
 		position: relative;
 		margin: 0;
-		aspect-ratio: 1040 / 500;
+		aspect-ratio: 340 / 220;
+
+		@include up(tablet) {
+			aspect-ratio: 1040 / 500;
+		}
 	}
 
 	.gallery__image {
@@ -36,8 +40,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 30px;
-		height: 30px;
+		width: 40px;
+		height: 40px;
 		padding: 0;
 		color: palette("black-txt");
 		background: palette("bg-info");
@@ -45,13 +49,8 @@
 		border-radius: 50%;
 		transform: translateY(-50%);
 
-		@include up(desktop) {
-			width: 40px;
-			height: 40px;
-		}
-
 		&--prev {
-			left: 5px;
+			left: 10px;
 
 			@include up(desktop) {
 				left: 24px;
@@ -59,7 +58,7 @@
 		}
 
 		&--next {
-			right: 5px;
+			right: 10px;
 
 			@include up(desktop) {
 				right: 24px;
@@ -79,12 +78,8 @@
 	.gallery__dots {
 		position: absolute;
 		right: 0;
-		bottom: 12px;
+		bottom: 20px;
 		left: 0;
-
-		@include up(desktop) {
-			bottom: 20px;
-		}
 	}
 
 	// Наведение на стрелку (наше): Main Blue

@@ -4,13 +4,25 @@
 	NewsCard], pagination (Pagination), emptyText; card: journal — выпуски журнала (JournalCard,
 	Figma PC.Journal 4520:23829: сетка по 360, на 1920 — 3 в ряд).
 	Сетка — сколько поместится карточек от 240px (на 1920 — 4 по 280), на мобильном 2.
-	Мобильного макета нет — наше. Контракт — docs/contracts/news-list.md.
+	filters (те же данные, что у NewsFilters в боковой колонке) — до 1024 (Figma 360: 4963:43392)
+	под заголовком: категории строкой «таблеток», ниже в ряд поля «Год» и сортировки; боковая
+	колонка с фильтрами до 1024 скрыта. Контракт — docs/contracts/news-list.md.
 --}}
 <section class="news-list" aria-labelledby="news-list-title">
     <div class="news-list__head">
         <h1 class="news-list__title" id="news-list-title">{{props.title}}</h1>
-        {{> components/SortMenu/SortMenu props=props.sort}}
+        {{> components/SortMenu/SortMenu props=(obj id=props.sort.id label=props.sort.label options=props.sort.options class="sort-menu--field news-list__sort")}}
     </div>
+    {{#if (or filters.categories.length filters.years.[1])}}
+        <div class="news-list__toolbar">
+            {{#if filters.categories.length}}
+                {{> sections/news/NewsFilters/NewsFilters props=(obj label=(default filters.label "Категории") title=filters.title categories=filters.categories class="news-list__categories")}}
+            {{/if}}
+            {{#if filters.years.[1]}}
+                {{> components/SortMenu/SortMenu props=(obj id=(default filters.yearsId "news-year") label=(default filters.yearsLabel "Год") options=filters.years class="sort-menu--field news-list__year")}}
+            {{/if}}
+        </div>
+    {{/if}}
     {{#if props.items.length}}
         <ul class="news-list__grid{{#if (eq props.card 'journal')}} news-list__grid--journal{{/if}}" role="list">
             {{#each props.items}}
