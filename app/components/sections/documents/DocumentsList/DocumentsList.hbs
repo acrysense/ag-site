@@ -5,8 +5,11 @@
 	(DocumentRow), страницы и «Всего». Нет документов — сообщение и «Сбросить фильтры».
 	Поле поиска (Figma: состояния 4532:794) на странице в макете не размещено — выводится, только
 	если передан search; тогда в строках путь к папке и совпадение.
-	До 1024 (наше) — кнопка «Фильтры · N» открывает панель фильтров (DocumentsFilters).
-	props: title, count, sort (SortMenu), search { action, name («q»), value, label, placeholder,
+	До 1024 (360 — 4967:809): заголовок, поле «Папка: …» (foldersId — открывает папки на весь
+	экран, DocumentsFolders), в ряд кнопка «Фильтры · N» (панель DocumentsFilters) и сортировка
+	полем, ниже строки.
+	props: title, count, sort (SortMenu), foldersId, folderLabel («Папка:»), folderPath
+	(«Положения / Оплата труда»), search { action, name («q»), value, label, placeholder,
 	hidden [{ name, value }] }, foundText («Найдено: 2»), filtersId, filtersText, activeFilters
 	(число выбранных), chips [{ text, url (адрес без этого фильтра) }], chipsResetUrl,
 	chipsResetText, items [DocumentRow], empty { title, text, resetText, resetUrl }, pagination
@@ -17,10 +20,16 @@
         <h1 class="documents-list__title" id="{{default props.id 'documents-list'}}-title">
             {{props.title}}{{#if (isSet props.count)}} <span class="documents-list__count"><span class="visually-hidden">, документов: </span>{{props.count}}</span>{{/if}}
         </h1>
-        {{> components/SortMenu/SortMenu props=props.sort}}
+        {{> components/SortMenu/SortMenu props=(obj id=props.sort.id label=props.sort.label options=props.sort.options class="sort-menu--field documents-list__sort")}}
     </div>
-    {{#if (or props.search props.filtersId)}}
+    {{#if (or props.search props.filtersId props.foldersId)}}
         <div class="documents-list__tools">
+            {{#if props.foldersId}}
+                <button class="documents-list__folder" type="button" data-documents-folders-open="{{props.foldersId}}" aria-controls="{{props.foldersId}}" aria-expanded="false" aria-haspopup="dialog">
+                    <span class="documents-list__folder-text">{{default props.folderLabel "Папка:"}} {{props.folderPath}}</span>
+                    {{> components/Icon/Icon name="chevron-down" class="documents-list__folder-arrow"}}
+                </button>
+            {{/if}}
             {{#if props.search}}
                 <form class="documents-list__search" action="{{props.search.action}}" method="get" role="search">
                     {{#each props.search.hidden}}<input type="hidden" name="{{name}}" value="{{value}}" />{{/each}}
@@ -50,9 +59,7 @@
             <div class="documents-list__columns" aria-hidden="true">
                 <span></span>
                 <span>Название</span>
-                <span>Размер</span>
                 <span>Обновлён</span>
-                <span>Загрузил</span>
             </div>
             <ul class="documents-list__rows" role="list">
                 {{#each props.items}}

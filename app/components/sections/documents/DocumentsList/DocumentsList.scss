@@ -8,15 +8,27 @@
 // под ним «Найдено: N» 13/19. Пусто (4532:866): значок 32, «Документы не найдены» Semi Bold
 // 16/23, текст 14/20 Dark-grey.TXT через 8, через 16 — кнопка 36 «Сбросить фильтры».
 // Чипы выбранных фильтров в макете описаны, но не нарисованы — наши (как «таблетки» годов).
-// До 1024 (наше): без карточки, части через 16, кнопка «Фильтры · N» рядом с поиском.
+// До 1024 (360 — 4967:809): без карточки, всё через 10 — заголовок, поле «Папка: …» 46, в ряд
+// «Фильтры» (Light, поля 24) и сортировка полем, строки с чертой Form.Border сверху. Обёртки
+// шапки и инструментов на мобильном «растворяются» (display: contents — div без роли), порядок
+// задаёт order.
 @layer components {
 	.documents-list {
 		display: flex;
-		flex-direction: column;
-		gap: 16px;
+		flex-flow: row wrap;
+		gap: 10px;
 		min-width: 0;
 
+		> * {
+			min-width: 0;
+
+			@include down(desktop) {
+				flex: 1 1 100%;
+			}
+		}
+
 		@include up(desktop) {
+			flex-flow: column nowrap;
 			gap: 24px;
 			padding: 20px;
 			background: palette("white");
@@ -33,6 +45,12 @@
 		justify-content: space-between;
 	}
 
+	.documents-list__head {
+		@include down(desktop) {
+			display: contents;
+		}
+	}
+
 	.documents-list__title {
 		@include text("h1-360");
 
@@ -43,6 +61,67 @@
 		@include up(desktop) {
 			@include text("h1");
 		}
+
+		@include down(desktop) {
+			flex: 1 1 100%;
+			order: -3;
+		}
+	}
+
+	// Сортировка — полем справа от «Фильтров» (в разметке она в шапке — порядок 0, сразу после
+	// «Фильтров» с -1 и перед строками)
+	.documents-list__sort {
+		@include down(desktop) {
+			flex: 1 1 0;
+		}
+	}
+
+	// «Папка: Положения / Оплата труда» — как поле выбора (Figma 360: «Select — папка»),
+	// открывает папки на весь экран; с 1024 папки в сайдбаре
+	.documents-list__folder {
+		@include text("m-400");
+
+		display: flex;
+		flex: 1 1 100%;
+		gap: 6px;
+		align-items: center;
+		order: -2;
+		min-width: 0;
+		height: 46px;
+		padding: 0 15px;
+		color: palette("black-txt");
+		text-align: left;
+		cursor: pointer;
+		background: palette("white");
+		border: 1px solid palette("form-border");
+		border-radius: $radius-button;
+		transition: border-color $transition-default;
+
+		&:hover {
+			border-color: palette("icon-grey");
+		}
+
+		&:focus-visible {
+			@include field-focus;
+		}
+
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.documents-list__folder-text {
+		flex: 1 1 auto;
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.documents-list__folder-arrow {
+		flex: none;
+		width: 11.5px;
+		height: 6.5px;
 	}
 
 	.documents-list__count {
@@ -56,6 +135,10 @@
 		flex-wrap: wrap;
 		gap: 10px;
 		align-items: center;
+
+		@include down(desktop) {
+			display: contents;
+		}
 	}
 
 	.documents-list__search {
@@ -141,6 +224,14 @@
 	.documents-list__filters {
 		flex: none;
 
+		@include down(desktop) {
+			@include text("m-400");
+
+			order: -1;
+			padding-inline: 24px;
+			color: palette("black-txt");
+		}
+
 		@include up(desktop) {
 			display: none;
 		}
@@ -208,7 +299,7 @@
 
 		@include up(wide) {
 			display: grid;
-			grid-template-columns: 40px minmax(0, 1fr) 90px 100px 80px 64px;
+			grid-template-columns: 40px minmax(0, 1fr) 100px 64px;
 			column-gap: 16px;
 			padding: 10px 16px;
 			border-bottom: 1px solid palette("block-border");
@@ -219,6 +310,11 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
+
+		// 360: черта Form.Border и над первой строкой
+		@include down(tablet) {
+			border-top: 1px solid palette("form-border");
+		}
 	}
 
 	.documents-list__empty {

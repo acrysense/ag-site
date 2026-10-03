@@ -2,23 +2,20 @@
 	Папки библиотеки документов (Figma: PC.Library 4526:83 — «Документы — папки» 4528:218, пункт
 	Doc/Tree item 4528:200): дерево ссылок, у папки — число документов (с подпапками и активными
 	фильтрами). Шеврон раскрывает подпапки (только если они есть). Текущая папка — подсвечена.
-	С 1024 — карточка слева над фильтрами. До 1024 (в макете нет, наше) — плашка «Папки · текущая
-	папка», по нажатию дерево раскрывается под ней.
-	props: id, title («Папки»), current (название текущей папки — для мобильной плашки), items
-	[{ title, url, count, current, expanded (подпапки раскрыты: бэк раскрывает ветку текущей
-	папки), children [те же поля] }]. Контракт — docs/contracts/documents.md.
+	С 1024 — карточка слева над фильтрами. До 1024 (360 — 4967:44140) — панель на весь экран:
+	шапка «Папки» с ×, дерево; открывает её поле «Папка: …» в списке (DocumentsList, foldersId).
+	props: id, title («Папки»), static (витрина: на мобильном на месте, не панелью), items [{ title, url, count, current, expanded (подпапки раскрыты:
+	бэк раскрывает ветку текущей папки), children [те же поля] }]. Контракт — docs/contracts/documents.md.
 --}}
 {{#if props.items.length}}
-    <nav class="documents-folders{{#if props.class}} {{props.class}}{{/if}}" aria-labelledby="{{default props.id 'documents-folders'}}-title" data-module="DocumentsFolders" data-path="sections/documents">
-        <h2 class="documents-folders__title" id="{{default props.id 'documents-folders'}}-title">
-            <span class="documents-folders__title-text">{{default props.title "Папки"}}</span>
-            <button class="documents-folders__toggle" type="button" aria-expanded="false" aria-controls="{{default props.id 'documents-folders'}}-tree" data-folders-toggle>
-                {{> components/Icon/Icon name="folder" class="documents-folders__toggle-icon"}}
-                <span class="documents-folders__toggle-text">{{default props.title "Папки"}}{{#if props.current}}<span class="documents-folders__toggle-current">{{props.current}}</span>{{/if}}</span>
-                {{> components/Icon/Icon name="chevron-down" class="documents-folders__toggle-arrow"}}
+    <nav class="documents-folders{{#if props.static}} documents-folders--static{{/if}}{{#if props.class}} {{props.class}}{{/if}}" id="{{default props.id 'documents-folders'}}" aria-labelledby="{{default props.id 'documents-folders'}}-title" data-module="DocumentsFolders" data-path="sections/documents">
+        <div class="documents-folders__head">
+            <h2 class="documents-folders__title" id="{{default props.id 'documents-folders'}}-title">{{default props.title "Папки"}}</h2>
+            <button class="documents-folders__close" type="button" aria-label="Закрыть папки" data-documents-folders-close>
+                {{> components/Icon/Icon name="close" class="documents-folders__close-icon"}}
             </button>
-        </h2>
-        <div class="documents-folders__tree" id="{{default props.id 'documents-folders'}}-tree">
+        </div>
+        <div class="documents-folders__tree">
             {{> sections/documents/DocumentsFolders/DocumentsFolderTree items=props.items id=(concat (default props.id 'documents-folders') '-sub')}}
         </div>
     </nav>

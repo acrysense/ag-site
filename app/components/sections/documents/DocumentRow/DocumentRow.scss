@@ -2,38 +2,36 @@
 @use "@/assets/styles/base/vars" as *;
 
 // Figma: Doc/Row (4526:29793) — поля 10/16, части через 16, черта Block.Border снизу; тип 40,
-// название Medium 14/22 Black.TXT до 2 строк, под ним через 2 компания 12 Dark-grey.TXT; колонки
-// 90 (размер), 100 (дата), 80 (загрузил, аватар 30 Grey с инициалами), кнопки 30 через 4 (иконка
-// 18, скругление 10). Наведение: фон BG.Info, скругление 12, без черты. Совпадение в поиске —
-// Semi Bold Main Blue (4532:813). До 1280 (наше): размер и дата строкой под названием, без
-// колонки «Загрузил» (подпись под колонками — в DocumentsList).
+// название Medium 14/22 Black.TXT до 2 строк, под ним через 2 компания 12 Dark-grey.TXT; колонка
+// даты 100, кнопки 30 через 4 (иконка 18, скругление 10). Наведение: фон BG.Info, скругление 12,
+// без черты. Совпадение в поиске — Semi Bold Main Blue (4532:813).
+// До 1280 — дата в строке компании через «·» (колонки только с 1280).
+// До 768 (360 — 4967:831): поля 14/0, части через 12, черта Form.Border; название Regular 14/20
+// целиком, под ним через 4 «Компания · дата» 12; кнопки 36 столбиком через 4.
 @layer components {
 	.document-row {
 		position: relative;
 		display: grid;
-		grid-template-areas:
-			"type main main actions"
-			"type size date actions";
-		--row-gap: 12px;
-
-		grid-template-columns: 40px auto minmax(0, 1fr) auto;
-		column-gap: var(--row-gap);
-		align-items: center;
-		padding: 10px 0;
-		border-bottom: 1px solid palette("block-border");
+		grid-template-areas: "type main actions";
+		grid-template-columns: 40px minmax(0, 1fr) auto;
+		gap: 12px;
+		align-items: start;
+		padding: 14px 0;
+		border-bottom: 1px solid palette("form-border");
 		transition:
 			background-color $transition-default,
 			border-color $transition-default;
 
 		@include up(tablet) {
-			--row-gap: 16px;
-
+			column-gap: 16px;
+			align-items: center;
 			padding: 10px 16px;
+			border-bottom-color: palette("block-border");
 		}
 
 		@include up(wide) {
-			grid-template-areas: "type main size date uploader actions";
-			grid-template-columns: 40px minmax(0, 1fr) 90px 100px 80px 64px;
+			grid-template-areas: "type main date actions";
+			grid-template-columns: 40px minmax(0, 1fr) 100px 64px;
 		}
 	}
 
@@ -50,21 +48,30 @@
 		display: flex;
 		flex-direction: column;
 		grid-area: main;
-		gap: 2px;
+		gap: 4px;
 		min-width: 0;
+
+		@include up(tablet) {
+			gap: 2px;
+		}
 	}
 
-	// Вся строка — ссылка на файл (кнопки и аватар — поверх)
+	// Вся строка — ссылка на файл (кнопки — поверх)
 	.document-row__title {
-		@include text("m-medium");
+		@include text("m-400-360");
 
-		display: -webkit-box;
-		overflow: hidden;
 		color: palette("black-txt");
 		overflow-wrap: anywhere;
-		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 2;
 		transition: color $transition-default;
+
+		@include up(tablet) {
+			@include text("m-medium");
+
+			display: -webkit-box;
+			overflow: hidden;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+		}
 
 		&::after {
 			position: absolute;
@@ -83,85 +90,47 @@
 	.document-row__meta {
 		@include text("s-400");
 
-		overflow: hidden;
 		color: palette("dark-grey-txt");
-		text-overflow: ellipsis;
-		white-space: nowrap;
+
+		@include up(tablet) {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
 	}
 
-	.document-row__size,
-	.document-row__date {
-		@include text("s-400");
-
-		color: palette("dark-grey-txt");
+	// Дата в строке компании — до 1280; с 1280 — колонкой
+	.document-row__meta-date {
 		white-space: nowrap;
 
-		&:empty {
+		@include up(wide) {
 			display: none;
 		}
 	}
 
-	.document-row__size {
-		grid-area: size;
-	}
-
-	// Размер и дата одной строкой через «·» — только до 1280
 	.document-row__date {
-		grid-area: date;
+		@include text("s-400");
 
-		@include down(wide) {
-			.document-row__size:not(:empty) + & {
-				margin-left: calc(4px - var(--row-gap));
-
-				&::before {
-					content: "·\00a0";
-				}
-			}
-		}
-	}
-
-	.document-row__uploader {
 		display: none;
-		grid-area: uploader;
+		grid-area: date;
+		color: palette("dark-grey-txt");
+		white-space: nowrap;
 
 		@include up(wide) {
-			display: flex;
+			display: block;
 		}
-	}
-
-	// Аватар — ссылка на профиль; подсказка с ФИО и датой при наведении и с клавиатуры
-	.document-row__person {
-		position: relative;
-		z-index: 1;
-		display: flex;
-		border-radius: 14px;
-	}
-
-	.document-row__avatar {
-		@include avatar(palette("grey"));
-
-		width: 30px;
-		height: 30px;
-		border-radius: 14px;
-		transition: opacity $transition-default;
-
-		.document-row__person:hover > &,
-		.document-row__person:focus-visible > & {
-			opacity: 0.9;
-		}
-	}
-
-	.document-row__initials {
-		@include avatar-initials;
-
-		font-weight: 400;
 	}
 
 	.document-row__actions {
 		display: flex;
+		flex-direction: column;
 		grid-area: actions;
 		gap: 4px;
 		align-items: center;
+
+		@include up(tablet) {
+			flex-direction: row;
+		}
 	}
 
 	.document-row__action {
@@ -171,8 +140,8 @@
 		flex: none;
 		align-items: center;
 		justify-content: center;
-		width: 30px;
-		height: 30px;
+		width: 36px;
+		height: 36px;
 		padding: 0;
 		color: palette("black-txt");
 		cursor: pointer;
@@ -182,6 +151,11 @@
 		transition:
 			color $transition-default,
 			background-color $transition-default;
+
+		@include up(tablet) {
+			width: 30px;
+			height: 30px;
+		}
 
 		// Doc/Icon button · Hover: фон BG.Info, иконка Main Blue (на строке под курсором — белый фон)
 		&:hover,

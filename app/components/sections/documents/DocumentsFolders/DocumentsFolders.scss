@@ -6,12 +6,25 @@
 // 7 8 7 6, части через 8, скругление 10; шеврон 14 (нет подпапок — место пустое), папка 18,
 // название 14/22 в строку с многоточием, число — плашка BG.Info 1/7, скругление 8, 12/17
 // Dark-grey.TXT. Текущая: фон BG.Info, название Blue.Hover, плашка числа белая. Уровень — +20.
-// До 1024 (наше): плашка BG.Info «Папки · текущая» на всю ширину, дерево раскрывается под ней.
+// До 1024 (360 — 4967:44140): панель на весь экран, как фильтры — шапка 56 («Папки» H3 360 и ×
+// 36 BG.Main), дерево с полями 8/10.
 @layer components {
 	.documents-folders {
+		display: none;
 		min-width: 0;
-		background: palette("bg-info");
-		border-radius: $radius-button;
+
+		// Панель на весь экран (до 1024); положение — и у закрывающейся, как у фильтров
+		@include down(desktop) {
+			position: fixed;
+			inset: 0;
+			z-index: 95;
+			flex-direction: column;
+			background: palette("white");
+		}
+
+		&.is-open {
+			display: flex;
+		}
 
 		@include up(desktop) {
 			display: flex;
@@ -24,37 +37,50 @@
 		}
 	}
 
-	.documents-folders__title {
-		@include text("h3");
+	.documents-folders__head {
+		display: flex;
+		flex: none;
+		gap: 10px;
+		align-items: center;
+		height: 56px;
+		padding: 0 8px 0 14px;
 
-		color: palette("black-txt");
-	}
-
-	.documents-folders__title-text {
-		@include down(desktop) {
-			display: none;
+		@include up(desktop) {
+			height: auto;
+			padding: 0;
 		}
 	}
 
-	.documents-folders__toggle {
-		@include text("m-400");
+	.documents-folders__title {
+		@include text("h3-360");
 
-		display: flex;
-		gap: 8px;
-		align-items: center;
-		width: 100%;
-		min-height: 46px;
-		padding: 0 14px;
+		flex: 1 1 auto;
+		min-width: 0;
 		color: palette("black-txt");
-		text-align: left;
+
+		@include up(desktop) {
+			@include text("h3");
+		}
+	}
+
+	.documents-folders__close {
+		display: flex;
+		flex: none;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		padding: 0;
+		color: palette("black-txt");
 		cursor: pointer;
-		background: none;
+		background: palette("bg-main");
 		border: 0;
+		border-radius: 50%;
 		transition: color $transition-default;
 
 		&:hover,
 		&:focus-visible {
-			color: palette("blue-txt");
+			color: palette("main-blue");
 		}
 
 		@include up(desktop) {
@@ -62,55 +88,33 @@
 		}
 	}
 
-	.documents-folders__toggle-icon {
-		flex: none;
-		width: 18px;
-		height: 18px;
-		color: palette("folder-icon");
-	}
-
-	.documents-folders__toggle-text {
-		display: flex;
-		flex: 1 1 auto;
-		gap: 6px;
-		min-width: 0;
-		white-space: nowrap;
-	}
-
-	// Текущая папка рядом с «Папки»: серым, длинная — с многоточием
-	.documents-folders__toggle-current {
-		min-width: 0;
-		overflow: hidden;
-		color: palette("dark-grey-txt");
-		text-overflow: ellipsis;
-
-		&::before {
-			content: "· ";
-		}
-	}
-
-	.documents-folders__toggle-arrow {
-		flex: none;
-		width: 12px;
-		height: 7px;
-		transition: transform $transition-default;
-
-		.documents-folders.is-open & {
-			transform: rotate(180deg);
-		}
+	.documents-folders__close-icon {
+		width: 10px;
+		height: 10px;
 	}
 
 	.documents-folders__tree {
-		display: none;
-		padding: 0 6px 6px;
-
-		.documents-folders.is-open & {
-			display: block;
-		}
+		flex: 1 1 auto;
+		min-height: 0;
+		padding: 8px 10px calc(16px + env(safe-area-inset-bottom));
+		overflow-y: auto;
+		overscroll-behavior: contain;
 
 		@include up(desktop) {
-			display: block;
 			padding: 0;
+			overflow: visible;
+		}
+	}
+
+	// Появление (наше): панель проявляется и чуть поднимается, как фильтры
+	@include down(desktop) {
+		.documents-folders {
+			@include appear-when("&.is-open", flex, translateY(16px), $duration-overlay);
+
+			// Ширина сменилась через 1024 — без анимации (utils/filter-panel.js)
+			&.is-instant {
+				transition: none;
+			}
 		}
 	}
 
@@ -144,11 +148,6 @@
 
 		&.is-current {
 			background: palette("bg-info");
-
-			// На мобильном плашка уже BG.Info — текущая белая
-			@include down(desktop) {
-				background: palette("white");
-			}
 		}
 	}
 
@@ -254,15 +253,16 @@
 
 		.is-current & {
 			background: palette("white");
-
-			@include down(desktop) {
-				background: palette("bg-info");
-			}
 		}
+	}
 
-		// На мобильном плашка BG.Info — число на белом
+	// Витрина: панель на месте (не на весь экран), чтобы её было видно на 360
+	.documents-folders--static {
 		@include down(desktop) {
-			background: palette("white");
+			position: static;
+			display: flex;
+			opacity: 1;
+			transform: none;
 		}
 	}
 }

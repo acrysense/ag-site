@@ -598,7 +598,7 @@
 				{{#> state label="Ошибка" note="фото не загрузилось — в сетке заготовка, в просмотре «Не удалось загрузить фото»; «Нравится» не сохранилось — отметка откатывается, сообщение для скринридера"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="documents-list" page="documents" group="Библиотека" title="Документы — список" description='Figma: PC.Library (4526:83), состояния 4531:543. Белая карточка: папка и число, «Новые в начале», выбранные фильтры чипами, шапка колонок (с 1280) и строки, страницы и «Всего». До 1280 размер и дата — под названием, колонки «Загрузил» нет; до 1024 — без карточки, кнопка «Фильтры · N».'}}
+			{{#> story id="documents-list" page="documents" group="Библиотека" title="Документы — список" description='Figma: PC.Library (4526:83), состояния 4531:543. Белая карточка: папка и число, «Новые в начале», выбранные фильтры чипами, шапка колонок (с 1280) и строки, страницы и «Всего». Колонки — «Название» и «Обновлён» (с 1280), уже дата — под названием. До 1024 (360 — 4967:809) — без карточки: поле «Папка: …» (открывает папки), «Фильтры · N» и сортировка полем.'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsList}}</div>
 				{{/state}}
@@ -617,15 +617,15 @@
 				{{#> state label="Пусто: в папке нет документов" bg="page"}}
 					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListFolderEmpty}}</div>
 				{{/state}}
-				{{#> state label="Длинное: название, компания, размер; другой тип файла; без автора и размера" bg="page"}}
+				{{#> state label="Длинное: название, компания; другой тип файла" bg="page"}}
 					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListLong}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, фильтры, поиск, сортировка и страницы — обычные GET-переходы"}}{{/state}}
 				{{#> state label="Ошибка" note="не применимо: ошибку загрузки страницы показывает сервер. Не скопировалась ссылка — сообщение для скринридера, галочки и тоста нет"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="document-row" page="documents" group="Библиотека" title="Строка документа" description='Figma: Doc/Row (4526:29793), Doc/File type, Doc/Avatar, Doc/Icon button, Doc/Tooltip, тост (кит: Quick info). Наведение на строку — фон BG.Info. Аватар и кнопки — подсказки при наведении и с клавиатуры. «Скопировать ссылку» — галочка на 2 с и тост внизу экрана.'}}
-				{{#> state label="Строки (наведите на аватар и кнопки, нажмите «Скопировать ссылку»)"}}
+			{{#> story id="document-row" page="documents" group="Библиотека" title="Строка документа" description='Figma: Doc/Row (4526:29793), 360 — 4967:831; Doc/File type, Doc/Icon button, Doc/Tooltip, тост (кит: Quick info). Наведение на строку — фон BG.Info. Кнопки — подсказки при наведении и с клавиатуры. «Скопировать ссылку» — галочка на 2 с и тост внизу экрана. До 768 — название целиком, «Компания · дата», кнопки столбиком.'}}
+				{{#> state label="Строки (наведите на кнопки, нажмите «Скопировать ссылку»)"}}
 					<div class="container"><ul class="documents-list__rows" role="list">{{#each data.documentRows}}{{> sections/documents/DocumentRow/DocumentRow props=this}}{{/each}}</ul></div>
 				{{/state}}
 				{{#> state label="Типы файлов"}}
@@ -640,7 +640,7 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="documents-folders" page="documents" group="Библиотека" title="Папки документов" description='Figma: «Документы — папки» (4528:218), пункт Doc/Tree item (4528:200). Шеврон раскрывает подпапки, текущая папка подсвечена. До 1024 — плашка «Папки · текущая», дерево раскрывается по нажатию.'}}
+			{{#> story id="documents-folders" page="documents" group="Библиотека" title="Папки документов" description='Figma: «Документы — папки» (4528:218), пункт Doc/Tree item (4528:200). Шеврон раскрывает подпапки, текущая папка подсвечена. До 1024 (360 — 4967:44140) — панель на весь экран по полю «Папка: …» в списке; в витрине — на месте.'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFolders/DocumentsFolders props=data.documentsFolders}}</div></div>
 				{{/state}}
@@ -653,11 +653,11 @@
 				{{#> state label="Пусто" note="папок нет — блок не выводится"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="documents-filters" page="documents" group="Библиотека" title="Фильтры документов" description='Figma: «Документы — фильтры» (4528:304), выбранные — 4531:548. Компания — флажки Doc/Checkbox с «Показать ещё N», год — «таблетки». С 1024 выбор применяется сразу; до 1024 — панель на весь экран по «Фильтры · N» с «Показать N документов».'}}
+			{{#> story id="documents-filters" page="documents" group="Библиотека" title="Фильтры документов" description='Figma: «Документы — фильтры» (4528:304), выбранные — 4531:548. Компания — флажки Doc/Checkbox с «Показать ещё N» («Год публикации» из макета убран). С 1024 выбор применяется сразу; до 1024 (360 — 4967:44254) — панель на весь экран по «Фильтры · N» с «Показать N документов».'}}
 				{{#> state label="Обычное (на мобильном — панель на месте)" bg="page"}}
 					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFilters/DocumentsFilters props=data.documentsFilters}}</div></div>
 				{{/state}}
-				{{#> state label="Выбраны (в т. ч. за «Показать ещё») и год" bg="page"}}
+				{{#> state label="Выбраны (в т. ч. за «Показать ещё»)" bg="page"}}
 					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFilters/DocumentsFilters props=data.documentsFiltersChecked}}</div></div>
 				{{/state}}
 				{{#> state label="Варианты без документов — неактивные" bg="page"}}
@@ -670,11 +670,15 @@
 				{{#> state label="Два варианта" bg="page"}}<div class="container"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenu}}</div></div>{{/state}}
 				{{#> state label="Три варианта" bg="page"}}<div class="container"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenuThree}}</div></div>{{/state}}
 				{{#> state label="Один вариант — без меню" bg="page"}}<div class="container"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenuOne}}</div></div>{{/state}}
+				{{#> state label="Поле (sort-menu--field), до 1024 — как в макете 360" bg="page"}}<div class="container"><div class="story-column-narrow">{{> components/SortMenu/SortMenu props=(obj id="sort-menu-field" label=data.sortMenu.label options=data.sortMenu.options class="sort-menu--field")}}</div></div>{{/state}}
 				{{#> state label="Пусто" note="вариантов нет — блок не выводится"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="news-list" group="Новости" title="Лента раздела" description='Figma: PC.News (4467:758). Карточки — как в «Новостях холдинга» на главной. Мобильного макета нет — наше: 2 колонки, пагинация без дальних страниц.'}}
-				{{#> state label="Обычное" bg="page"}}
+			{{#> story id="news-list" group="Новости" title="Лента раздела" description='Figma: PC.News (4467:758), 360 — 4963:43392. Карточки — как в «Новостях холдинга» на главной. До 1024 под заголовком категории «таблетками» и поля «Год» и сортировки (filters — те же данные, что у фильтров слева), 2 колонки, над пагинацией «Страница: N».'}}
+				{{#> state label="Обычное (с фильтрами — видны до 1024)" bg="page"}}
+					<div class="container">{{> sections/news/NewsList/NewsList props=data.newsList filters=data.newsFilters}}</div>
+				{{/state}}
+				{{#> state label="Без фильтров" bg="page"}}
 					<div class="container">{{> sections/news/NewsList/NewsList props=data.newsList}}</div>
 				{{/state}}
 				{{#> state label="Одна страница" bg="page"}}
@@ -705,7 +709,7 @@
 				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, страницы и фильтры — обычные ссылки"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="news-filters" group="Новости" title="Фильтры раздела" description='Figma: PC.News (4467:758), Frame 369. Десктоп — карточка слева; мобильный (наше) — строки «таблеток» с прокруткой вбок внутри блока.'}}
+			{{#> story id="news-filters" group="Новости" title="Фильтры раздела" description='Figma: PC.News (4467:758), Frame 369. Десктоп — карточка слева; до 1024 на странице скрыта — фильтры выводит лента (NewsList, filters). Сам блок до 1024 — строки «таблеток» с прокруткой вбок, текущая категория — Main Blue (Figma 360: 4963:43446).'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container"><div class="story-column-narrow">{{> sections/news/NewsFilters/NewsFilters props=data.newsFilters}}</div></div>
 				{{/state}}
@@ -718,7 +722,7 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="pagination" group="Компоненты" title="Постраничная навигация" description="Figma: Pagination (3172:13909). На мобильном дальние страницы скрыты, ряд переносится."}}
+			{{#> story id="pagination" group="Компоненты" title="Постраничная навигация" description="Figma: Pagination (3172:13909), 360 — 4962:6966: до 768 сверху «Страница: N … Всего: N», ниже кнопки; дальние страницы скрыты."}}
 				{{#> state label="Середина списка"}}
 					{{> components/Pagination/Pagination props=data.newsList.pagination}}
 				{{/state}}

@@ -5758,6 +5758,7 @@
 				"activeFilters": 2,
 				"sort": {
 					"name": "sort",
+					"sheetTitle": "Сортировка",
 					"submit": true,
 					"options": [
 						{
@@ -5950,6 +5951,7 @@
 				"activeFilters": 1,
 				"sort": {
 					"name": "sort",
+					"sheetTitle": "Сортировка",
 					"submit": true,
 					"options": [
 						{
@@ -6123,6 +6125,7 @@
 				"filtersId": "search-filters-docs",
 				"sort": {
 					"name": "sort",
+					"sheetTitle": "Сортировка",
 					"submit": true,
 					"options": [
 						{
@@ -6299,6 +6302,7 @@
 				"activeFilters": 1,
 				"sort": {
 					"name": "sort",
+					"sheetTitle": "Сортировка",
 					"submit": true,
 					"options": [
 						{
@@ -6537,6 +6541,7 @@
 				"activeFilters": 2,
 				"sort": {
 					"name": "sort",
+					"sheetTitle": "Сортировка",
 					"submit": true,
 					"options": [
 						{
@@ -8619,6 +8624,8 @@
 			]
 		},
 		"documentsList": {
+			"foldersId": "documents-folders-story",
+			"folderPath": "Положения / Оплата труда",
 			"class": "page-columns__main",
 			"title": "Оплата труда",
 			"count": 128,
@@ -8648,11 +8655,6 @@
 					"size": "1,2 МБ",
 					"date": "2026-09-12",
 					"dateText": "12.09.2026",
-					"uploader": {
-						"name": "Ирина Пашкевич",
-						"meta": "Загрузила 12.09.2026",
-						"url": "#"
-					},
 					"shareUrl": "/library/documents/1001/",
 					"downloadUrl": "#",
 					"newTab": true
@@ -8665,11 +8667,6 @@
 					"size": "8,4 МБ",
 					"date": "2026-09-10",
 					"dateText": "10.09.2026",
-					"uploader": {
-						"name": "Ольга Власова",
-						"meta": "Загрузила 10.09.2026",
-						"url": "#"
-					},
 					"shareUrl": "/library/documents/1002/",
 					"downloadUrl": "#"
 				},
@@ -8681,11 +8678,6 @@
 					"size": "214 КБ",
 					"date": "2026-09-05",
 					"dateText": "05.09.2026",
-					"uploader": {
-						"name": "Наталья Дрозд",
-						"meta": "Загрузила 05.09.2026",
-						"url": "#"
-					},
 					"shareUrl": "/library/documents/1003/",
 					"downloadUrl": "#"
 				},
@@ -8697,11 +8689,6 @@
 					"size": "1,1 МБ",
 					"date": "2026-08-28",
 					"dateText": "28.08.2026",
-					"uploader": {
-						"name": "Ирина Пашкевич",
-						"meta": "Загрузила 28.08.2026",
-						"url": "#"
-					},
 					"shareUrl": "/library/documents/1004/",
 					"downloadUrl": "#"
 				},
@@ -8713,11 +8700,6 @@
 					"size": "96 КБ",
 					"date": "2026-08-21",
 					"dateText": "21.08.2026",
-					"uploader": {
-						"name": "Андрей Мельник",
-						"meta": "Загрузил 21.08.2026",
-						"url": "#"
-					},
 					"shareUrl": "/library/documents/1005/",
 					"downloadUrl": "#"
 				}
@@ -8768,6 +8750,8 @@
 			"id": "doc-list-1"
 		},
 		"documentsListOne": {
+			"foldersId": "documents-folders-story",
+			"folderPath": "Положения / Оплата труда",
 			"class": "page-columns__main",
 			"title": "Охрана труда",
 			"count": 1,
@@ -8797,11 +8781,6 @@
 					"size": "214 КБ",
 					"date": "2026-09-05",
 					"dateText": "05.09.2026",
-					"uploader": {
-						"name": "Наталья Дрозд",
-						"meta": "Загрузила 05.09.2026",
-						"url": "#"
-					},
 					"shareUrl": "/library/documents/1003/",
 					"downloadUrl": "#"
 				}
@@ -8819,6 +8798,8 @@
 			"id": "doc-list-2"
 		},
 		"documentsListFiltered": {
+			"foldersId": "documents-folders-story",
+			"folderPath": "Положения / Оплата труда",
 			"class": "page-columns__main",
 			"title": "Оплата труда",
 			"count": 4,
@@ -8848,11 +8829,6 @@
 					"size": "1,2 МБ",
 					"date": "2026-09-12",
 					"dateText": "12.09.2026",
-					"uploader": {
-						"name": "Ирина Пашкевич",
-						"meta": "Загрузила 12.09.2026",
-						"url": "#"
-					},
 					"shareUrl": "/library/documents/1001/",
 					"downloadUrl": "#",
 					"newTab": true
@@ -8865,11 +8841,6 @@
 					"size": "96 КБ",
 					"date": "2026-08-21",
 					"dateText": "21.08.2026",
-					"uploader": {
-						"name": "Андрей Мельник",
-						"meta": "Загрузил 21.08.2026",
-						"url": "#"
-					},
 					"shareUrl": "/library/documents/1005/",
 					"downloadUrl": "#"
 				},
@@ -8881,11 +8852,6 @@
 					"size": "24,6 МБ",
 					"date": "2026-08-14",
 					"dateText": "14.08.2026",
-					"uploader": {
-						"name": "Ольга Власова",
-						"meta": "Загрузила 14.08.2026",
-						"url": "#"
-					},
 					"shareUrl": "/library/documents/1006/",
 					"downloadUrl": "#"
 				},
@@ -8897,11 +8863,6 @@
 					"size": "42 КБ",
 					"date": "2026-07-02",
 					"dateText": "02.07.2026",
-					"uploader": {
-						"name": "Наталья Дрозд",
-						"meta": "Загрузила 02.07.2026",
-						"url": "#"
-					},
 					"shareUrl": "/library/documents/1009/",
 					"downloadUrl": "#"
 				}
@@ -8935,6 +8896,8 @@
 			"chipsResetUrl": "#"
 		},
 		"documentsListSearch": {
+			"foldersId": "documents-folders-story",
+			"folderPath": "Положения / Оплата труда",
 			"class": "page-columns__main",
 			"title": "Поиск по документам",
 			"count": null,
@@ -8971,11 +8934,6 @@
 					"size": "214 КБ",
 					"date": "2026-09-05",
 					"dateText": "05.09.2026",
-					"uploader": {
-						"name": "Наталья Дрозд",
-						"meta": "Загрузила 05.09.2026",
-						"url": "#"
-					},
 					"shareUrl": "/library/documents/1003/",
 					"downloadUrl": "#",
 					"titleHtml": "<mark>Тарифн</mark>ая сетка работников аптек на IV квартал 2026 года",
@@ -8989,11 +8947,6 @@
 					"size": "620 КБ",
 					"date": "2026-03-11",
 					"dateText": "11.03.2026",
-					"uploader": {
-						"name": "Дмитрий Ковалёв",
-						"meta": "Загрузил 11.03.2026",
-						"url": "#"
-					},
 					"shareUrl": "/library/documents/1021/",
 					"downloadUrl": "#",
 					"titleHtml": "Инструкция по применению <mark>тарифн</mark>ых коэффициентов при расчёте премии",
@@ -9014,6 +8967,8 @@
 			"foundText": "Найдено: 2"
 		},
 		"documentsListEmpty": {
+			"foldersId": "documents-folders-story",
+			"folderPath": "Положения / Оплата труда",
 			"class": "page-columns__main",
 			"title": "Оплата труда",
 			"count": 0,
@@ -9057,6 +9012,8 @@
 			"chipsResetUrl": "#"
 		},
 		"documentsListFolderEmpty": {
+			"foldersId": "documents-folders-story",
+			"folderPath": "Положения / Оплата труда",
 			"class": "page-columns__main",
 			"title": "Презентации",
 			"count": 0,
@@ -9085,6 +9042,8 @@
 			"id": "doc-list-6"
 		},
 		"documentsListLong": {
+			"foldersId": "documents-folders-story",
+			"folderPath": "Положения / Оплата труда",
 			"class": "page-columns__main",
 			"title": "Положения об оплате труда и материальном стимулировании работников холдинга",
 			"count": 1284,
@@ -9114,11 +9073,6 @@
 					"size": "128,4 МБ",
 					"date": "2026-09-30",
 					"dateText": "30.09.2026",
-					"uploader": {
-						"name": "Андрей Мельник",
-						"meta": "Загрузил 30.09.2026",
-						"url": "#"
-					},
 					"shareUrl": "/library/documents/1031/",
 					"downloadUrl": "#",
 					"typeText": "DOCX"
@@ -9131,11 +9085,6 @@
 					"size": "1,1 МБ",
 					"date": "2026-09-29",
 					"dateText": "29.09.2026",
-					"uploader": {
-						"name": "Дмитрий Ковалёв",
-						"meta": "Загрузил 29.09.2026",
-						"url": "#"
-					},
 					"shareUrl": "/library/documents/1032/",
 					"downloadUrl": "#"
 				},
@@ -9147,11 +9096,6 @@
 					"size": "312 МБ",
 					"date": "2026-09-28",
 					"dateText": "28.09.2026",
-					"uploader": {
-						"name": "Наталья Дрозд",
-						"meta": "Загрузила 28.09.2026",
-						"url": "#"
-					},
 					"shareUrl": "/library/documents/1033/",
 					"downloadUrl": "#",
 					"typeText": "RAR"
@@ -9164,7 +9108,6 @@
 					"size": "",
 					"date": "2026-09-27",
 					"dateText": "27.09.2026",
-					"uploader": {},
 					"shareUrl": "/library/documents/1034/",
 					"downloadUrl": "#",
 					"typeText": "TXT"
@@ -9183,6 +9126,7 @@
 			"id": "doc-list-7"
 		},
 		"documentsFolders": {
+			"static": true,
 			"id": "doc-folders-1",
 			"title": "Папки",
 			"current": "Оплата труда",
@@ -9263,6 +9207,7 @@
 			]
 		},
 		"documentsFoldersOne": {
+			"static": true,
 			"id": "doc-folders-2",
 			"title": "Папки",
 			"current": "Все документы",
@@ -9276,6 +9221,7 @@
 			]
 		},
 		"documentsFoldersLong": {
+			"static": true,
 			"id": "doc-folders-3",
 			"title": "Папки",
 			"current": "Очень длинное название папки",
@@ -9376,43 +9322,6 @@
 							"extra": true
 						}
 					]
-				},
-				{
-					"title": "Год публикации",
-					"name": "year[]",
-					"variant": "chips",
-					"options": [
-						{
-							"value": "2026",
-							"text": "2026",
-							"count": 12
-						},
-						{
-							"value": "2025",
-							"text": "2025",
-							"count": 9
-						},
-						{
-							"value": "2024",
-							"text": "2024",
-							"count": 7
-						},
-						{
-							"value": "2023",
-							"text": "2023",
-							"count": 4
-						},
-						{
-							"value": "2022",
-							"text": "2022",
-							"count": 3
-						},
-						{
-							"value": "2021",
-							"text": "2021",
-							"count": 2
-						}
-					]
 				}
 			],
 			"static": true
@@ -9486,44 +9395,6 @@
 							"checked": true
 						}
 					]
-				},
-				{
-					"title": "Год публикации",
-					"name": "year[]",
-					"variant": "chips",
-					"options": [
-						{
-							"value": "2026",
-							"text": "2026",
-							"count": 12,
-							"checked": true
-						},
-						{
-							"value": "2025",
-							"text": "2025",
-							"count": 9
-						},
-						{
-							"value": "2024",
-							"text": "2024",
-							"count": 7
-						},
-						{
-							"value": "2023",
-							"text": "2023",
-							"count": 4
-						},
-						{
-							"value": "2022",
-							"text": "2022",
-							"count": 3
-						},
-						{
-							"value": "2021",
-							"text": "2021",
-							"count": 2
-						}
-					]
 				}
 			],
 			"static": true
@@ -9595,43 +9466,6 @@
 							"extra": true
 						}
 					]
-				},
-				{
-					"title": "Год публикации",
-					"name": "year[]",
-					"variant": "chips",
-					"options": [
-						{
-							"value": "2026",
-							"text": "2026",
-							"count": 12
-						},
-						{
-							"value": "2025",
-							"text": "2025",
-							"count": 9
-						},
-						{
-							"value": "2024",
-							"text": "2024",
-							"count": 7
-						},
-						{
-							"value": "2023",
-							"text": "2023",
-							"count": 0
-						},
-						{
-							"value": "2022",
-							"text": "2022",
-							"count": 0
-						},
-						{
-							"value": "2021",
-							"text": "2021",
-							"count": 0
-						}
-					]
 				}
 			],
 			"static": true
@@ -9645,11 +9479,6 @@
 				"size": "1,2 МБ",
 				"date": "2026-09-12",
 				"dateText": "12.09.2026",
-				"uploader": {
-					"name": "Ирина Пашкевич",
-					"meta": "Загрузила 12.09.2026",
-					"url": "#"
-				},
 				"shareUrl": "/library/documents/1001/",
 				"downloadUrl": "#",
 				"newTab": true
@@ -9662,11 +9491,6 @@
 				"size": "8,4 МБ",
 				"date": "2026-09-10",
 				"dateText": "10.09.2026",
-				"uploader": {
-					"name": "Ольга Власова",
-					"meta": "Загрузила 10.09.2026",
-					"url": "#"
-				},
 				"shareUrl": "/library/documents/1002/",
 				"downloadUrl": "#"
 			},
@@ -9678,11 +9502,6 @@
 				"size": "214 КБ",
 				"date": "2026-09-05",
 				"dateText": "05.09.2026",
-				"uploader": {
-					"name": "Наталья Дрозд",
-					"meta": "Загрузила 05.09.2026",
-					"url": "#"
-				},
 				"shareUrl": "/library/documents/1003/",
 				"downloadUrl": "#"
 			}

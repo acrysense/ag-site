@@ -9,7 +9,8 @@ import { lockBody } from '@/utils/scroll-lock'
 //   [count] «Показать N …» (запрос на countUrl, без перезагрузки).
 // - Отправка: пустые параметры в адрес не попадают (?q=иван&section=news, без «&date_from=»).
 // options: open — имя атрибута кнопки открытия, close и count — селекторы, countUrl,
-// countText(n) — надпись на кнопке.
+// countText(n) — надпись на кнопке. Без формы (папки документов) — только панель: открыть,
+// закрыть, Esc, фокус внутри.
 const DESKTOP = '(min-width: 1024px)'
 const COUNT_DELAY = 300
 
@@ -56,7 +57,7 @@ export function filterPanel(
 	const controller = new AbortController()
 	const { signal } = controller
 	const form = root.closest('form')
-	const countButton = root.querySelector(countSelector)
+	const countButton = countSelector ? root.querySelector(countSelector) : null
 	const media = window.matchMedia(DESKTOP)
 	let release = null
 	let opener = null

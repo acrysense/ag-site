@@ -5,8 +5,9 @@
 // скругление 20, поля 20, части через 20: шапка «Фильтры» H3 и «Сбросить» 14/20 Main Blue, черта
 // Form.Border; группа — название 15/22 Medium, пункты Doc/Checkbox через 6, «Показать ещё N»;
 // годы — «таблетки» 36 BG.Info через 10, выбранная — BG.Main 2 (4531:567).
-// До 1024 (в макете нет, наше) — панель на весь экран, как фильтры вакансий: шапка 56, внизу
-// «Сбросить» и «Показать N документов».
+// До 1024 (360 — 4967:44254) — панель на весь экран: шапка 56 («Фильтры» H3 360 и × 36), поля 8/10,
+// название группы — 12 Bold заглавными Dark-grey.TXT через 10, пункты через 6; внизу закреплены
+// «Сбросить» (Light, поля 24) и «Показать N документов».
 @layer components {
 	.documents-filters {
 		display: none;
@@ -118,7 +119,7 @@
 		flex: 1 1 auto;
 		flex-direction: column;
 		min-height: 0;
-		padding: 0 14px 20px;
+		padding: 8px 10px 20px;
 		overflow-y: auto;
 		overscroll-behavior: contain;
 
@@ -151,6 +152,15 @@
 		width: 100%;
 		padding: 0;
 		color: palette("black-txt");
+
+		@include down(desktop) {
+			@include text("s-700-caps");
+
+			margin-bottom: 4px;
+			padding-left: 4px;
+			color: palette("dark-grey-txt");
+			text-transform: uppercase;
+		}
 
 		// float снимает у legend особое место в рамке fieldset — дальше обычный поток
 		+ * {
@@ -249,6 +259,7 @@
 		.btn--light {
 			@include text("m-400");
 
+			padding-inline: 24px;
 			color: palette("black-txt");
 		}
 	}

@@ -1,40 +1,24 @@
 {{!--
-	Строка документа (Figma: Doc/Row 4526:29793): тип файла, название (до 2 строк, полное — в
-	подсказке браузера), под ним компания (в поиске — путь к папке и компания), размер, дата
-	обновления, кто загрузил (аватар с подсказкой: ФИО и дата), «Скопировать ссылку» и «Скачать».
-	Клик по строке или названию открывает файл (url). С 1280 — колонки таблицы; уже (наше) —
-	размер и дата под названием, колонки «Загрузил» нет.
+	Строка документа (Figma: Doc/Row 4526:29793, 360 — 4967:831): тип файла, название, под ним
+	компания (в поиске — путь к папке и компания), дата обновления, «Скопировать ссылку» и «Скачать».
+	Клик по строке или названию открывает файл (url). С 1280 — колонки таблицы (название до 2 строк,
+	полное — в подсказке браузера, дата — колонкой); уже — дата в строке под названием через «·»; до
+	768 (360) название целиком, кнопки 36 столбиком. Колонок «Размер» и «Загрузил» в макете больше нет.
 	props: type (pdf, doc, xls, ppt, zip), typeText, title, titleHtml (название с совпадением в
 	<mark> — экранирует бэк!), url, newTab (открыть в новой вкладке), company, path («Положения /
-	Оплата труда» — в поиске), size («1,2 МБ»), date (2026-09-12), dateText («12.09.2026»),
-	uploader { name, meta («Загружено 12.09.2026»), photo, url (профиль) }, shareUrl (постоянная
-	ссылка на документ), downloadUrl. Контракт — docs/contracts/documents.md.
+	Оплата труда» — в поиске), size («1,2 МБ» — только для скринридера в «Скачать»), date
+	(2026-09-12), dateText («12.09.2026»), shareUrl (постоянная ссылка на документ), downloadUrl.
+	Контракт — docs/contracts/documents.md.
 --}}
 <li class="document-row">
     {{> components/FileType/FileType props=(obj type=props.type text=props.typeText class="document-row__type")}}
     <div class="document-row__main">
         <a class="document-row__title" href="{{props.url}}" title="{{props.title}}" {{#if props.newTab}}target="_blank" rel="noopener noreferrer"{{/if}}>{{#if props.titleHtml}}{{{props.titleHtml}}}{{else}}{{props.title}}{{/if}}</a>
-        {{#if (or props.path props.company)}}
-            <p class="document-row__meta">{{#if props.path}}{{props.path}}{{#if props.company}} · {{/if}}{{/if}}{{props.company}}</p>
+        {{#if (or props.path props.company props.dateText)}}
+            <p class="document-row__meta">{{#if props.path}}{{props.path}}{{#if props.company}} · {{/if}}{{/if}}{{props.company}}{{#if props.dateText}}<span class="document-row__meta-date">{{#if (or props.path props.company)}} · {{/if}}<span class="visually-hidden">обновлён </span><time datetime="{{props.date}}">{{props.dateText}}</time></span>{{/if}}</p>
         {{/if}}
     </div>
-    <p class="document-row__size">{{#if props.size}}<span class="visually-hidden">Размер: </span>{{props.size}}{{/if}}</p>
     <p class="document-row__date">{{#if props.dateText}}<span class="visually-hidden">Обновлён: </span><time datetime="{{props.date}}">{{props.dateText}}</time>{{/if}}</p>
-    <div class="document-row__uploader">
-        {{#if props.uploader.name}}
-            {{#if props.uploader.url}}
-                <a class="document-row__person has-tooltip" href="{{props.uploader.url}}" aria-label="Загрузил: {{props.uploader.name}}{{#if props.uploader.meta}}. {{props.uploader.meta}}{{/if}}">
-            {{else}}
-                <span class="document-row__person has-tooltip" role="img" aria-label="Загрузил: {{props.uploader.name}}{{#if props.uploader.meta}}. {{props.uploader.meta}}{{/if}}">
-            {{/if}}
-                <span class="document-row__avatar" aria-hidden="true">
-                    <span class="document-row__initials">{{initials props.uploader.name}}</span>
-                    {{#if props.uploader.photo}}<img src="{{props.uploader.photo}}" alt="" width="30" height="30" loading="lazy" />{{/if}}
-                </span>
-                {{> components/Tooltip/Tooltip props=(obj title=props.uploader.name meta=props.uploader.meta)}}
-            {{#if props.uploader.url}}</a>{{else}}</span>{{/if}}
-        {{/if}}
-    </div>
     <div class="document-row__actions">
         {{#if props.shareUrl}}
             <button class="document-row__action has-tooltip" type="button" aria-label="Скопировать ссылку на документ" data-copy-link="{{props.shareUrl}}" data-module="CopyLink" data-path="components">
