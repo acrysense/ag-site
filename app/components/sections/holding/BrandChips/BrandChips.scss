@@ -1,0 +1,65 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Brands (4814:1475) — подпись M/400 Dark-grey.TXT, через 10 плашки через 8: фон Brand
+// chip, поля 6 12 6 6, скругление 10, логотип 28 (скругление 6) и название через 8. Пусто —
+// пунктир Brand chip dashed, поля 10/12, текст Dark-grey.TXT (4814:1611).
+@layer components {
+	.brand-chips {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		min-width: 0;
+	}
+
+	.brand-chips__label {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.brand-chips__list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.brand-chips__chip {
+		@include text("m-400");
+
+		display: flex;
+		gap: 8px;
+		align-items: center;
+		min-width: 0;
+		padding: 6px 12px 6px 6px;
+		color: palette("black-txt");
+		background: palette("brand-chip");
+		border-radius: $radius-inner-block;
+	}
+
+	.brand-chips__logo {
+		flex: none;
+		width: 28px;
+		height: 28px;
+		object-fit: contain;
+		border-radius: 6px;
+	}
+
+	.brand-chips__name {
+		min-width: 0;
+		overflow-wrap: anywhere;
+	}
+
+	.brand-chips__empty {
+		@include text("m-400");
+
+		align-self: flex-start;
+		padding: 10px 12px;
+		color: palette("dark-grey-txt");
+		border: 1px dashed palette("brand-chip-dashed");
+		border-radius: $radius-inner-block;
+	}
+}

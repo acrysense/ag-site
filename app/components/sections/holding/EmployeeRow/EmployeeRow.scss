@@ -1,0 +1,140 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Employee (4821:1284) — поля 12, части через 16: фото 48, ФИО M/500 Black.TXT (метка
+// «Руководитель» — BG.Violet, Main Blue, S/600, поля 2/8, скругление 6) и должность M/400
+// Dark-grey.TXT через 4, телефон и e-mail M/400 Main Blue, стрелка 20; между строками черта
+// Block.Border. Колонки 420 / 260 / остаток (на 1920) — с 1280 по той же пропорции.
+// До 1280 (наше): телефон и e-mail под должностью. Наведение на строку — ФИО Blue.TXT.
+@layer components {
+	.employee-row {
+		position: relative;
+		display: grid;
+		grid-template-areas:
+			"avatar main arrow"
+			"avatar phone arrow"
+			"avatar email arrow";
+		grid-template-columns: 48px minmax(0, 1fr) 20px;
+		gap: 4px 16px;
+		align-items: center;
+		padding: 12px;
+
+		& + & {
+			border-top: 1px solid palette("block-border");
+		}
+
+		@include up(wide) {
+			grid-template-areas: "avatar main phone email arrow";
+			grid-template-columns: 48px minmax(0, 420fr) minmax(0, 260fr) minmax(0, 364fr) 20px;
+		}
+	}
+
+	.employee-row__avatar {
+		@include avatar(palette("icon-grey"));
+
+		grid-area: avatar;
+		align-self: center;
+		width: 48px;
+		height: 48px;
+	}
+
+	.employee-row__initials {
+		@include avatar-initials;
+	}
+
+	.employee-row__main {
+		display: flex;
+		flex-direction: column;
+		grid-area: main;
+		gap: 4px;
+		min-width: 0;
+	}
+
+	.employee-row__name-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px 8px;
+		align-items: center;
+	}
+
+	// Вся строка — ссылка (телефон и e-mail — поверх)
+	.employee-row__name {
+		@include text("m-500");
+
+		min-width: 0;
+		color: palette("black-txt");
+		overflow-wrap: anywhere;
+		transition: color $transition-default;
+
+		&::after {
+			position: absolute;
+			inset: 0;
+			content: "";
+		}
+
+		&:focus-visible::after {
+			outline: 1px solid palette("form-focus");
+			outline-offset: -1px;
+		}
+
+		.employee-row:hover & {
+			color: palette("blue-txt");
+		}
+	}
+
+	.employee-row__badge {
+		@include text("s-600");
+
+		padding: 2px 8px;
+		color: palette("main-blue");
+		background: palette("bg-violet");
+		border-radius: 6px;
+	}
+
+	.employee-row__position {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+		overflow-wrap: anywhere;
+	}
+
+	.employee-row__phone,
+	.employee-row__email {
+		@include text("m-400");
+
+		min-width: 0;
+		overflow-wrap: anywhere;
+
+		&:empty {
+			display: none;
+		}
+	}
+
+	.employee-row__phone {
+		grid-area: phone;
+	}
+
+	.employee-row__email {
+		grid-area: email;
+	}
+
+	// Телефон и e-mail — поверх ссылки строки
+	.employee-row__link {
+		position: relative;
+		z-index: 1;
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+
+	.employee-row__arrow {
+		grid-area: arrow;
+		width: 20px;
+		height: 20px;
+		color: palette("black-txt");
+	}
+}

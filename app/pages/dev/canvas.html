@@ -830,6 +830,125 @@
 				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера; фильтры применяются переходом, «Показать ещё» — кнопка в состоянии загрузки"}}{{/state}}
 				{{#> state label="Ошибка" note="страница поиска отдаётся бэком целиком; ошибка подсчёта в панели — на кнопке остаётся прошлое число"}}{{/state}}
 			{{/story}}
+			{{#> story id="photo-strip" page="holding-entity" group="Компоненты" title="Лента фото" description='Figma: фото юрлица (4821:864). Фото своей ширины высотой 400 через 15 (на 360 — 240, между — плавно), листается вбок пальцем, колесом и стрелками (с 768; у края стрелка прячется). Фото — ссылка на большое, с JS — просмотр на весь экран без «Нравится».'}}
+				{{#> state label="Несколько фото"}}
+					{{> components/PhotoStrip/PhotoStrip props=data.photoStrip}}
+				{{/state}}
+				{{#> state label="Одно фото"}}
+					{{> components/PhotoStrip/PhotoStrip props=data.photoStripOne}}
+				{{/state}}
+				{{#> state label="Пусто" note="блок не выводится"}}{{/state}}
+				{{#> state label="Загрузка" note="фото грузятся лениво: до загрузки — серая заготовка своей ширины (по width/height), лента не прыгает"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="holding-hero" page="holding" group="Холдинг" title="Шапка «Структуры холдинга»" description='Figma: 4814:1121 (мобильного макета нет — наше). С 1024 — заголовок и цифры слева, карточка председателя справа; до 1024 — друг под другом. Заголовок, цифры, ФИО и высота фото растут от 360 к 1024 плавно.'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container">{{> sections/holding/HoldingHero/HoldingHero props=data.holdingHero}}</div>
+				{{/state}}
+				{{#> state label="Без карточки председателя" bg="page"}}
+					<div class="container">{{> sections/holding/HoldingHero/HoldingHero props=data.holdingHeroSolo}}</div>
+				{{/state}}
+				{{#> state label="Длинный контент" bg="page"}}
+					<div class="container">{{> sections/holding/HoldingHero/HoldingHero props=data.holdingHeroLong}}</div>
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: шапка приходит с сервера вместе со страницей"}}{{/state}}
+				{{#> state label="Пусто" note="не применимо: заголовок обязателен; без цифр и карточки — только заголовок"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="holding-entities" page="holding" group="Холдинг" title="Юрлица холдинга" description='Figma: 4814:1146, карточка — Card 4814:1466. С 1280 по 3 в ряд, с 768 по 2, на телефоне по одной; карточки ряда одной высоты, «Подробнее» внизу. Брендов нет — «Бренды уточняются».'}}
+				{{#> state label="Несколько" bg="page"}}
+					<div class="container">{{> sections/holding/HoldingEntities/HoldingEntities props=data.holdingEntities}}</div>
+				{{/state}}
+				{{#> state label="Одно" bg="page"}}
+					<div class="container">{{> sections/holding/HoldingEntities/HoldingEntities props=data.holdingEntitiesOne}}</div>
+				{{/state}}
+				{{#> state label="Длинный контент" bg="page"}}
+					<div class="container">{{> sections/holding/HoldingEntities/HoldingEntities props=data.holdingEntitiesLong}}</div>
+				{{/state}}
+				{{#> state label="Пусто" note="блок не выводится"}}{{/state}}
+				{{#> state label="Загрузка" note="не применимо: список приходит с сервера вместе со страницей (11 юрлиц — без догрузки)"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="entity-info" page="holding-entity" group="Холдинг" title="Юрлицо — карточка" description='Figma: 4821:790. Название, «Адрес / Телефон / Бренды», описание из редактора (.content) и лента фото; «Скрыть описание» сворачивает описание и фото (без JS — всегда открыто).'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container">{{> sections/holding/EntityInfo/EntityInfo props=data.entityInfo}}</div>
+				{{/state}}
+				{{#> state label="Одно фото, короткое описание" bg="page"}}
+					<div class="container">{{> sections/holding/EntityInfo/EntityInfo props=data.entityInfoOnePhoto}}</div>
+				{{/state}}
+				{{#> state label="Без описания и фото" bg="page"}}
+					<div class="container">{{> sections/holding/EntityInfo/EntityInfo props=data.entityInfoBare}}</div>
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: карточка приходит с сервера вместе со страницей"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="brand-card" page="holding-entity" group="Холдинг" title="Бренд юрлица" description='Figma: Brand 4821:1327. Боковая колонка 350 с 1024; на планшете — по две в ряд одной высоты, на телефоне — друг под другом. Пустые части — без черт и промежутков.'}}
+				{{#> state label="Бренды" bg="page"}}
+					<div class="container"><div class="page-aside-cards">{{#each data.entityBrands}}{{> sections/holding/BrandCard/BrandCard props=this}}{{/each}}</div></div>
+				{{/state}}
+				{{#> state label="Только название" bg="page"}}
+					<div class="container"><div class="page-aside-cards">{{> sections/holding/BrandCard/BrandCard props=data.entityBrandMin}}</div></div>
+				{{/state}}
+				{{#> state label="Длинный контент, без логотипа" bg="page"}}
+					<div class="container"><div class="page-aside-cards">{{> sections/holding/BrandCard/BrandCard props=data.entityBrandLong}}</div></div>
+				{{/state}}
+				{{#> state label="Пусто" note="брендов нет — боковой колонки нет, сотрудники встают под карточку юрлица"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="entity-staff" page="holding-entity" group="Холдинг" title="Сотрудники по отделам" description='Figma: 4821:875. Отделы — details/summary (работают без JS, раскрытие анимировано): название, до 5 фото, руководитель и число; внутри — сотрудники. Открытый отдел задаёт бэк.'}}
+				{{#> state label="Несколько отделов" bg="page"}}
+					<div class="container">{{> sections/holding/EntityStaff/EntityStaff props=data.entityStaff}}</div>
+				{{/state}}
+				{{#> state label="Один отдел" bg="page"}}
+					<div class="container">{{> sections/holding/EntityStaff/EntityStaff props=data.entityStaffOne}}</div>
+				{{/state}}
+				{{#> state label="Длинный контент, без фото" bg="page"}}
+					<div class="container">{{> sections/holding/EntityStaff/EntityStaff props=data.entityStaffLong}}</div>
+				{{/state}}
+				{{#> state label="Пусто" note="блок не выводится"}}{{/state}}
+				{{#> state label="Загрузка" note="не применимо: отделы приходят со страницей; если сотрудников тысячи — догрузка отдела при раскрытии (вопрос бэку, docs/contracts/holding.md)"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="employee-row" page="holding-entity" group="Холдинг" title="Сотрудник в списке" description='Figma: Employee 4821:1284. Вся строка — ссылка на карточку, телефон и e-mail — свои ссылки поверх. С 1280 — в одну строку колонками, ниже — столбиком. Нет фото — инициалы.'}}
+				{{#> state label="Руководитель и сотрудник"}}
+					<ul class="employee-colleagues__list" role="list">{{#each data.employeeRows}}{{> sections/holding/EmployeeRow/EmployeeRow props=this}}{{/each}}</ul>
+				{{/state}}
+				{{#> state label="Длинный контент, без фото"}}
+					<ul class="employee-colleagues__list" role="list">{{#each data.employeeRowsLong}}{{> sections/holding/EmployeeRow/EmployeeRow props=this}}{{/each}}</ul>
+				{{/state}}
+			{{/story}}
+
+			{{#> story id="employee-profile" page="holding-employee" group="Холдинг" title="Карточка сотрудника" description='Figma: Employee card 4833:1187 (единый стиль справочника, ЛК и CRM). Фото 160 (на 360 — 96, между — плавно), разделы «Контакты / Работа / Личное»; с 768 — от колонки ФИО, подпись слева. Нет фото — инициалы.'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container">{{> sections/holding/EmployeeProfile/EmployeeProfile props=data.employeeProfile}}</div>
+				{{/state}}
+				{{#> state label="Без фото, один раздел" bg="page"}}
+					<div class="container">{{> sections/holding/EmployeeProfile/EmployeeProfile props=data.employeeProfileNoPhoto}}</div>
+				{{/state}}
+				{{#> state label="Длинный контент" bg="page"}}
+					<div class="container">{{> sections/holding/EmployeeProfile/EmployeeProfile props=data.employeeProfileLong}}</div>
+				{{/state}}
+				{{#> state label="Загрузка" note="не применимо: карточка приходит с сервера вместе со страницей"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="entity-brief" page="holding-employee" group="Холдинг" title="Юрлицо сотрудника" description='Figma: Legal entity card 4833:1172. Боковая колонка карточки сотрудника: название, телефон и адрес, бренд, «Все сотрудники юр. лица →».'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container"><div class="page-aside-cards">{{> sections/holding/EntityBrief/EntityBrief props=data.entityBrief}}</div></div>
+				{{/state}}
+				{{#> state label="Без брендов" bg="page"}}
+					<div class="container"><div class="page-aside-cards">{{> sections/holding/EntityBrief/EntityBrief props=data.entityBriefNoBrands}}</div></div>
+				{{/state}}
+			{{/story}}
+
+			{{#> story id="employee-colleagues" page="holding-employee" group="Холдинг" title="Коллеги по подразделению" description='Figma: Colleagues 4833:1253. Заголовок и «Все N сотрудников →», ниже — сотрудники (как в отделах юрлица).'}}
+				{{#> state label="Несколько" bg="page"}}
+					<div class="container">{{> sections/holding/EmployeeColleagues/EmployeeColleagues props=data.employeeColleagues}}</div>
+				{{/state}}
+				{{#> state label="Один, без ссылки «Все»" bg="page"}}
+					<div class="container">{{> sections/holding/EmployeeColleagues/EmployeeColleagues props=data.employeeColleaguesOne}}</div>
+				{{/state}}
+				{{#> state label="Пусто" note="блок не выводится"}}{{/state}}
+			{{/story}}
 		</main>
 		{{> sections/career/VacancyApply/VacancyApply props=data.vacancyApply}}
 		{{> layouts/SiteModals/SiteModals props=data.siteModals}}

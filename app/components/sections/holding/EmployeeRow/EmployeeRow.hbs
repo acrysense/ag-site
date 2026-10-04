@@ -1,0 +1,23 @@
+{{!--
+	Сотрудник в списке (Figma: Employee 4821:1284; «Коллеги по подразделению» 4833:1257): фото 48,
+	ФИО M/500 (у руководителя — метка «Руководитель»), должность, рабочий телефон, e-mail, стрелка.
+	Вся строка — ссылка на карточку сотрудника; телефон и e-mail — свои ссылки поверх.
+	props: name, url, position, head (руководитель), headText, photo, phone { text, url },
+	email { text, url }.
+--}}
+<li class="employee-row">
+    <span class="employee-row__avatar" aria-hidden="true">
+        <span class="employee-row__initials">{{initials props.name}}</span>
+        {{#if props.photo}}<img src="{{props.photo}}" width="48" height="48" alt="" loading="lazy" decoding="async" />{{/if}}
+    </span>
+    <div class="employee-row__main">
+        <p class="employee-row__name-row">
+            <a class="employee-row__name" href="{{props.url}}">{{props.name}}</a>
+            {{#if props.head}}<span class="employee-row__badge">{{default props.headText "Руководитель"}}</span>{{/if}}
+        </p>
+        {{#if props.position}}<p class="employee-row__position">{{props.position}}</p>{{/if}}
+    </div>
+    <p class="employee-row__phone">{{#if props.phone.text}}<a class="employee-row__link" href="{{props.phone.url}}"><span class="visually-hidden">Телефон: </span>{{props.phone.text}}</a>{{/if}}</p>
+    <p class="employee-row__email">{{#if props.email.text}}<a class="employee-row__link" href="{{props.email.url}}"><span class="visually-hidden">E-mail: </span>{{props.email.text}}</a>{{/if}}</p>
+    {{> components/Icon/Icon name="angle-right" class="employee-row__arrow"}}
+</li>

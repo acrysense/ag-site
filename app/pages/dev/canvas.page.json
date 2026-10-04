@@ -10480,6 +10480,1417 @@
 			"step": 24,
 			"photos": [],
 			"other": null
+		},
+		"holdingHero": {
+			"titleLines": [
+				"Холдинг",
+				"Аптека групп"
+			],
+			"subtitle": "Надежный партнер с 30-летней историей",
+			"stats": [
+				{
+					"value": "11",
+					"label": "Юридических лиц"
+				},
+				{
+					"value": "2000+",
+					"label": "работников в команде холдинга"
+				}
+			],
+			"person": {
+				"name": "Томчин Леонид Альбертович",
+				"role": "Председатель совета директоров",
+				"photo": {
+					"src": "./img/holding/chairman.webp",
+					"alt": "Томчин Леонид Альбертович"
+				}
+			}
+		},
+		"holdingHeroSolo": {
+			"titleLines": [
+				"Холдинг",
+				"Аптека групп"
+			],
+			"subtitle": "Надежный партнер с 30-летней историей",
+			"stats": [
+				{
+					"value": "11",
+					"label": "Юридических лиц"
+				},
+				{
+					"value": "2000+",
+					"label": "работников в команде холдинга"
+				}
+			]
+		},
+		"holdingHeroLong": {
+			"titleLines": [
+				"Холдинг",
+				"Аптека групп",
+				"и партнёры"
+			],
+			"subtitle": "Надежный партнер с 30-летней историей: аптеки, клиники, дистрибуция и производство по всей Беларуси",
+			"stats": [
+				{
+					"value": "11",
+					"label": "Юридических лиц"
+				},
+				{
+					"value": "2000+",
+					"label": "работников в команде холдинга во всех регионах страны"
+				}
+			],
+			"person": {
+				"name": "Константинопольский Александр Владимирович",
+				"role": "Председатель совета директоров и генеральный директор управляющей компании",
+				"photo": {
+					"src": "./img/holding/chairman.webp",
+					"alt": "Томчин Леонид Альбертович"
+				}
+			}
+		},
+		"holdingEntities": {
+			"title": "Юридические лица холдинга",
+			"subtitle": "В холдинг входят 11 юридических лиц. У каждого — свои бренды, отделы и сотрудники.",
+			"items": [
+				{
+					"name": "ООО «УКХ Аптека групп»",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 17 394 70 34",
+							"url": "tel:+375173947034"
+						}
+					],
+					"address": "220020, г. Минск, пр-т Победителей, 84-2, офис 27",
+					"brands": [
+						{
+							"name": "ADEL",
+							"logo": "./img/holding/logo-adel.webp"
+						},
+						{
+							"name": "Добрыя лекі",
+							"logo": "./img/holding/logo-dleki.webp"
+						},
+						{
+							"name": "Аптечка+",
+							"logo": "./img/holding/logo-apte4ka.webp"
+						}
+					]
+				},
+				{
+					"name": "ООО «АптекаБайМаркет»",
+					"url": "./holding-entity.html",
+					"phones": [],
+					"address": "г. Минск, пр-т Дзержинского, 3Б, пом. 81",
+					"brands": [
+						{
+							"name": "Apteka.by",
+							"logo": "./img/holding/logo-aptekaby.webp"
+						}
+					]
+				},
+				{
+					"name": "ООО «ВитФармМаркет»",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 212 37 21 80",
+							"url": "tel:+375212372180"
+						},
+						{
+							"text": "+375 212 37 54 12",
+							"url": "tel:+375212375412"
+						}
+					],
+					"address": "г. Витебск, ул. 5-я Кооперативная, 8",
+					"brands": [
+						{
+							"name": "VFM",
+							"logo": "./img/holding/logo-vfm.webp"
+						}
+					]
+				},
+				{
+					"name": "ООО «Клиника Здоровья» (Мед. центр CityClinic)",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 33 615 02 42",
+							"url": "tel:+375336150242"
+						}
+					],
+					"address": "г. Витебск, ул. Новооршанская, 4",
+					"brands": [
+						{
+							"name": "CityClinic",
+							"logo": "./img/holding/logo-cityclinic.webp"
+						}
+					]
+				}
+			]
+		},
+		"holdingEntitiesOne": {
+			"title": "Юридические лица холдинга",
+			"subtitle": "В холдинг входит одно юридическое лицо.",
+			"items": [
+				{
+					"name": "ООО «УКХ Аптека групп»",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 17 394 70 34",
+							"url": "tel:+375173947034"
+						}
+					],
+					"address": "220020, г. Минск, пр-т Победителей, 84-2, офис 27",
+					"brands": [
+						{
+							"name": "ADEL",
+							"logo": "./img/holding/logo-adel.webp"
+						},
+						{
+							"name": "Добрыя лекі",
+							"logo": "./img/holding/logo-dleki.webp"
+						},
+						{
+							"name": "Аптечка+",
+							"logo": "./img/holding/logo-apte4ka.webp"
+						}
+					]
+				}
+			]
+		},
+		"holdingEntitiesLong": {
+			"title": "Юридические лица холдинга",
+			"subtitle": "В холдинг входят 11 юридических лиц. У каждого — свои бренды, отделы и сотрудники.",
+			"items": [
+				{
+					"name": "Общество с ограниченной ответственностью «Управляющая компания холдинга Аптека групп»",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 17 394 70 34",
+							"url": "tel:+375173947034"
+						},
+						{
+							"text": "+375 29 394 70 35",
+							"url": "tel:+375293947035"
+						},
+						{
+							"text": "+375 44 394 70 36",
+							"url": "tel:+375443947036"
+						}
+					],
+					"address": "220020, Минская обл., Минский р-н, Ждановичский с/с, д. Ждановичи, ул. Высокая, 12, административно-бытовой корпус, офис 27",
+					"brands": [
+						{
+							"name": "ADEL",
+							"logo": "./img/holding/logo-adel.webp"
+						},
+						{
+							"name": "Добрыя лекі",
+							"logo": "./img/holding/logo-dleki.webp"
+						},
+						{
+							"name": "Аптечка+",
+							"logo": "./img/holding/logo-apte4ka.webp"
+						},
+						{
+							"name": "Apteka.by",
+							"logo": "./img/holding/logo-aptekaby.webp"
+						},
+						{
+							"name": "VFM",
+							"logo": "./img/holding/logo-vfm.webp"
+						},
+						{
+							"name": "CityClinic",
+							"logo": "./img/holding/logo-cityclinic.webp"
+						},
+						{
+							"name": "CityClinic",
+							"logo": "./img/holding/logo-cityclinic.webp"
+						},
+						{
+							"name": "СофтФарм",
+							"logo": "./img/holding/logo-softfarm.webp"
+						}
+					]
+				},
+				{
+					"name": "ООО «АптекаБайМаркет»",
+					"url": "./holding-entity.html",
+					"phones": [],
+					"address": "г. Минск, пр-т Дзержинского, 3Б, пом. 81",
+					"brands": [
+						{
+							"name": "Apteka.by",
+							"logo": "./img/holding/logo-aptekaby.webp"
+						}
+					]
+				},
+				{
+					"name": "ООО «Либерти-Фарм»",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 222 65 03 66",
+							"url": "tel:+375222650366"
+						}
+					],
+					"address": "г. Могилев, ул. Якубовского, 37А-88",
+					"brands": []
+				}
+			]
+		},
+		"entityInfo": {
+			"name": "ООО «УКХ Аптека групп»",
+			"rows": [
+				{
+					"label": "Адрес:",
+					"value": "220020, г. Минск, пр-т Победителей, 84-2, офис 27"
+				},
+				{
+					"label": "Телефон:",
+					"links": [
+						{
+							"text": "+375 17 394 70 34",
+							"url": "tel:+375173947034"
+						}
+					]
+				},
+				{
+					"label": "Бренды:",
+					"value": "ADEL, Добрыя лекі, Аптечка+"
+				}
+			],
+			"html": "<p>«ВитФармМаркет» (ВФМ) – это надежный дистрибьютор лекарственных средств, изделий медицинского назначения и других товаров аптечного ассортимента, а также часть крупнейшего фармацевтического холдинга «АптекаГрупп» в стране, занимающего лидирующие позиции на фармацевтическом рынке Республики Беларусь.</p><p>Компания заработала отличную репутацию, предоставляя своим клиентам и партнерам ряд преимуществ.</p>",
+			"photos": [
+				{
+					"src": "./img/holding/photo-1.webp",
+					"thumb": "./img/holding/photo-1.webp",
+					"width": 534,
+					"height": 800,
+					"alt": "Стенд аптеки на празднике"
+				},
+				{
+					"src": "./img/holding/photo-2.webp",
+					"thumb": "./img/holding/photo-2.webp",
+					"width": 534,
+					"height": 800,
+					"alt": "Сотрудница фотографирует праздник"
+				},
+				{
+					"src": "./img/holding/photo-3.webp",
+					"thumb": "./img/holding/photo-3.webp",
+					"width": 1199,
+					"height": 800,
+					"alt": "Шатры на летнем празднике холдинга"
+				},
+				{
+					"src": "./img/holding/photo-4.webp",
+					"thumb": "./img/holding/photo-4.webp",
+					"width": 1199,
+					"height": 800,
+					"alt": "Праздник холдинга на природе"
+				},
+				{
+					"src": "./img/holding/photo-1.webp",
+					"thumb": "./img/holding/photo-1.webp",
+					"width": 534,
+					"height": 800,
+					"alt": "Стенд аптеки на празднике"
+				},
+				{
+					"src": "./img/holding/photo-2.webp",
+					"thumb": "./img/holding/photo-2.webp",
+					"width": 534,
+					"height": 800,
+					"alt": "Сотрудница фотографирует праздник"
+				}
+			]
+		},
+		"entityInfoBare": {
+			"name": "ООО «УКХ Аптека групп»",
+			"rows": [
+				{
+					"label": "Адрес:",
+					"value": "220020, г. Минск, пр-т Победителей, 84-2, офис 27"
+				},
+				{
+					"label": "Телефон:",
+					"links": [
+						{
+							"text": "+375 17 394 70 34",
+							"url": "tel:+375173947034"
+						}
+					]
+				},
+				{
+					"label": "Бренды:",
+					"value": "ADEL, Добрыя лекі, Аптечка+"
+				}
+			]
+		},
+		"entityInfoOnePhoto": {
+			"name": "ООО «УКХ Аптека групп»",
+			"rows": [
+				{
+					"label": "Адрес:",
+					"value": "220020, г. Минск, пр-т Победителей, 84-2, офис 27"
+				},
+				{
+					"label": "Телефон:",
+					"links": [
+						{
+							"text": "+375 17 394 70 34",
+							"url": "tel:+375173947034"
+						}
+					]
+				},
+				{
+					"label": "Бренды:",
+					"value": "ADEL, Добрыя лекі, Аптечка+"
+				}
+			],
+			"html": "<p>Компания заработала отличную репутацию, предоставляя своим клиентам и партнерам ряд преимуществ.</p>",
+			"photos": [
+				{
+					"src": "./img/holding/photo-1.webp",
+					"thumb": "./img/holding/photo-1.webp",
+					"width": 534,
+					"height": 800,
+					"alt": "Стенд аптеки на празднике"
+				}
+			]
+		},
+		"entityBrands": [
+			{
+				"name": "ADEL",
+				"logo": "./img/holding/logo-adel.webp",
+				"rows": [
+					{
+						"label": "Телефон:",
+						"links": [
+							{
+								"text": "+375 (44) 503-42-64",
+								"url": "tel:+375445034264"
+							}
+						]
+					},
+					{
+						"label": "Сайт:",
+						"links": [
+							{
+								"text": "apteka-adel.by",
+								"url": "https://apteka-adel.by"
+							}
+						]
+					},
+					{
+						"label": "Email:",
+						"links": [
+							{
+								"text": "info@apteka-adel.by",
+								"url": "mailto:info@apteka-adel.by"
+							}
+						]
+					}
+				],
+				"social": [
+					{
+						"icon": "instagram",
+						"label": "ADEL в Instagram",
+						"url": "#"
+					}
+				],
+				"text": "Сеть аптек, где вас ждут профессиональная помощь, индивидуальный подход, а также большой выбор средств для здоровья и ухода за собой.",
+				"siteUrl": "https://apteka-adel.by"
+			},
+			{
+				"name": "Добрыя лекі",
+				"logo": "./img/holding/logo-dleki.webp",
+				"rows": [
+					{
+						"label": "Телефон:",
+						"links": [
+							{
+								"text": "535-57-57",
+								"url": "tel:+5355757"
+							}
+						]
+					},
+					{
+						"label": "Сайт:",
+						"links": [
+							{
+								"text": "d-leki.by",
+								"url": "https://d-leki.by"
+							}
+						]
+					},
+					{
+						"label": "Email:",
+						"links": [
+							{
+								"text": "info@d-leki.by",
+								"url": "mailto:info@d-leki.by"
+							}
+						]
+					}
+				],
+				"social": [
+					{
+						"icon": "instagram",
+						"label": "Добрыя лекі в Instagram",
+						"url": "#"
+					}
+				],
+				"text": "Аптечная сеть нового формата, где профессиональный подход сочетается с теплой человеческой поддержкой и вдохновляющей атмосферой для заботы о здоровье.",
+				"siteUrl": "https://d-leki.by"
+			},
+			{
+				"name": "Аптечка+",
+				"logo": "./img/holding/logo-apte4ka.webp",
+				"rows": [
+					{
+						"label": "Телефон:",
+						"links": [
+							{
+								"text": "683-87-87",
+								"url": "tel:+6838787"
+							}
+						]
+					},
+					{
+						"label": "Сайт:",
+						"links": [
+							{
+								"text": "apte4ka.by",
+								"url": "https://apte4ka.by"
+							}
+						]
+					},
+					{
+						"label": "Email:",
+						"links": [
+							{
+								"text": "info@apte4ka.by",
+								"url": "mailto:info@apte4ka.by"
+							}
+						]
+					}
+				],
+				"social": [
+					{
+						"icon": "instagram",
+						"label": "Аптечка+ в Instagram",
+						"url": "#"
+					}
+				],
+				"text": "Современный гипермаркет здоровья для быстрого поиска и заказа лекарств в ближайшей аптеке. Онлайн-сервис для тех, кто ценит свое время.",
+				"siteUrl": "https://apte4ka.by"
+			}
+		],
+		"entityBrandMin": {
+			"name": "Аптека №50"
+		},
+		"entityBrandLong": {
+			"name": "Сеть аптек «Добрые лекі» — аптеки нового формата для всей семьи",
+			"rows": [
+				{
+					"label": "Телефон:",
+					"links": [
+						{
+							"text": "+375 (44) 503-42-64",
+							"url": "tel:+375445034264"
+						}
+					]
+				},
+				{
+					"label": "Сайт:",
+					"links": [
+						{
+							"text": "apteka-adel.by",
+							"url": "https://apteka-adel.by"
+						}
+					]
+				},
+				{
+					"label": "Email:",
+					"links": [
+						{
+							"text": "info@apteka-adel.by",
+							"url": "mailto:info@apteka-adel.by"
+						}
+					]
+				},
+				{
+					"label": "Адрес:",
+					"value": "г. Минск, ул. Максима Богдановича, 155Б, помещение 12, 3-й этаж, офис управляющей компании"
+				}
+			],
+			"social": [
+				{
+					"icon": "instagram",
+					"label": "instagram",
+					"url": "#"
+				},
+				{
+					"icon": "vk",
+					"label": "vk",
+					"url": "#"
+				},
+				{
+					"icon": "facebook",
+					"label": "facebook",
+					"url": "#"
+				},
+				{
+					"icon": "youtube",
+					"label": "youtube",
+					"url": "#"
+				},
+				{
+					"icon": "telegram",
+					"label": "telegram",
+					"url": "#"
+				},
+				{
+					"icon": "tiktok",
+					"label": "tiktok",
+					"url": "#"
+				}
+			],
+			"text": "Сеть аптек, где вас ждут профессиональная помощь, индивидуальный подход, а также большой выбор средств для здоровья и ухода за собой.Сеть аптек, где вас ждут профессиональная помощь, индивидуальный подход, а также большой выбор средств для здоровья и ухода за собой.Сеть аптек, где вас ждут профессиональная помощь, индивидуальный подход, а также большой выбор средств для здоровья и ухода за собой.",
+			"siteUrl": "https://apteka-adel.by"
+		},
+		"entityStaff": {
+			"title": "Сотрудники",
+			"summary": "3 отдела · 15 сотрудников",
+			"departments": [
+				{
+					"id": "dept-1",
+					"name": "Юридический отдел",
+					"head": "Козлова Н.В.",
+					"count": 4,
+					"avatars": [
+						"./img/person-1.webp",
+						"./img/person-2.webp",
+						"./img/person-3.webp",
+						"./img/person-4.webp"
+					],
+					"employees": [
+						{
+							"name": "Козлова Наталья Викторовна",
+							"url": "./holding-employee.html",
+							"position": "Начальник юридического отдела",
+							"photo": "./img/person-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 201",
+								"url": "tel:+375173947034,201"
+							},
+							"email": {
+								"text": "n.kozlova@apteka-group.by",
+								"url": "mailto:n.kozlova@apteka-group.by"
+							},
+							"head": true
+						},
+						{
+							"name": "Смирнов Алексей Игоревич",
+							"url": "./holding-employee.html",
+							"position": "Ведущий юрисконсульт",
+							"photo": "./img/leader-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 202",
+								"url": "tel:+375173947034,202"
+							},
+							"email": {
+								"text": "a.smirnov@apteka-group.by",
+								"url": "mailto:a.smirnov@apteka-group.by"
+							}
+						},
+						{
+							"name": "Павлюк Ольга Сергеевна",
+							"url": "./holding-employee.html",
+							"position": "Юрисконсульт",
+							"photo": "./img/person-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 203",
+								"url": "tel:+375173947034,203"
+							},
+							"email": {
+								"text": "o.pavlyuk@apteka-group.by",
+								"url": "mailto:o.pavlyuk@apteka-group.by"
+							}
+						},
+						{
+							"name": "Громов Денис Андреевич",
+							"url": "./holding-employee.html",
+							"position": "Специалист по договорной работе",
+							"photo": "./img/leader-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 204",
+								"url": "tel:+375173947034,204"
+							},
+							"email": {
+								"text": "d.gromov@apteka-group.by",
+								"url": "mailto:d.gromov@apteka-group.by"
+							}
+						}
+					],
+					"open": true
+				},
+				{
+					"id": "dept-2",
+					"name": "Бухгалтерия",
+					"head": "Иванов Д.А.",
+					"count": 7,
+					"avatars": [
+						"./img/person-4.webp",
+						"./img/person-5.webp",
+						"./img/leader-1.webp",
+						"./img/leader-2.webp",
+						"./img/leader-3.webp"
+					],
+					"employees": [
+						{
+							"name": "Козлова Наталья Викторовна",
+							"url": "./holding-employee.html",
+							"position": "Начальник юридического отдела",
+							"photo": "./img/person-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 201",
+								"url": "tel:+375173947034,201"
+							},
+							"email": {
+								"text": "n.kozlova@apteka-group.by",
+								"url": "mailto:n.kozlova@apteka-group.by"
+							},
+							"head": true
+						},
+						{
+							"name": "Смирнов Алексей Игоревич",
+							"url": "./holding-employee.html",
+							"position": "Ведущий юрисконсульт",
+							"photo": "./img/leader-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 202",
+								"url": "tel:+375173947034,202"
+							},
+							"email": {
+								"text": "a.smirnov@apteka-group.by",
+								"url": "mailto:a.smirnov@apteka-group.by"
+							}
+						},
+						{
+							"name": "Павлюк Ольга Сергеевна",
+							"url": "./holding-employee.html",
+							"position": "Юрисконсульт",
+							"photo": "./img/person-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 203",
+								"url": "tel:+375173947034,203"
+							},
+							"email": {
+								"text": "o.pavlyuk@apteka-group.by",
+								"url": "mailto:o.pavlyuk@apteka-group.by"
+							}
+						},
+						{
+							"name": "Громов Денис Андреевич",
+							"url": "./holding-employee.html",
+							"position": "Специалист по договорной работе",
+							"photo": "./img/leader-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 204",
+								"url": "tel:+375173947034,204"
+							},
+							"email": {
+								"text": "d.gromov@apteka-group.by",
+								"url": "mailto:d.gromov@apteka-group.by"
+							}
+						}
+					]
+				},
+				{
+					"id": "dept-3",
+					"name": "Отдел маркетинга",
+					"head": "Лебедева И.В.",
+					"count": 6,
+					"avatars": [
+						"./img/leader-2.webp",
+						"./img/leader-3.webp",
+						"./img/leader-4.webp",
+						"./img/leader-5.webp",
+						"./img/person-1.webp"
+					],
+					"employees": [
+						{
+							"name": "Козлова Наталья Викторовна",
+							"url": "./holding-employee.html",
+							"position": "Начальник юридического отдела",
+							"photo": "./img/person-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 201",
+								"url": "tel:+375173947034,201"
+							},
+							"email": {
+								"text": "n.kozlova@apteka-group.by",
+								"url": "mailto:n.kozlova@apteka-group.by"
+							},
+							"head": true
+						},
+						{
+							"name": "Смирнов Алексей Игоревич",
+							"url": "./holding-employee.html",
+							"position": "Ведущий юрисконсульт",
+							"photo": "./img/leader-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 202",
+								"url": "tel:+375173947034,202"
+							},
+							"email": {
+								"text": "a.smirnov@apteka-group.by",
+								"url": "mailto:a.smirnov@apteka-group.by"
+							}
+						},
+						{
+							"name": "Павлюк Ольга Сергеевна",
+							"url": "./holding-employee.html",
+							"position": "Юрисконсульт",
+							"photo": "./img/person-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 203",
+								"url": "tel:+375173947034,203"
+							},
+							"email": {
+								"text": "o.pavlyuk@apteka-group.by",
+								"url": "mailto:o.pavlyuk@apteka-group.by"
+							}
+						},
+						{
+							"name": "Громов Денис Андреевич",
+							"url": "./holding-employee.html",
+							"position": "Специалист по договорной работе",
+							"photo": "./img/leader-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 204",
+								"url": "tel:+375173947034,204"
+							},
+							"email": {
+								"text": "d.gromov@apteka-group.by",
+								"url": "mailto:d.gromov@apteka-group.by"
+							}
+						}
+					]
+				}
+			]
+		},
+		"entityStaffOne": {
+			"title": "Сотрудники",
+			"summary": "1 отдел · 4 сотрудника",
+			"departments": [
+				{
+					"id": "dept-1",
+					"name": "Юридический отдел",
+					"head": "Козлова Н.В.",
+					"count": 4,
+					"avatars": [
+						"./img/person-1.webp",
+						"./img/person-2.webp",
+						"./img/person-3.webp",
+						"./img/person-4.webp"
+					],
+					"employees": [
+						{
+							"name": "Козлова Наталья Викторовна",
+							"url": "./holding-employee.html",
+							"position": "Начальник юридического отдела",
+							"photo": "./img/person-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 201",
+								"url": "tel:+375173947034,201"
+							},
+							"email": {
+								"text": "n.kozlova@apteka-group.by",
+								"url": "mailto:n.kozlova@apteka-group.by"
+							},
+							"head": true
+						},
+						{
+							"name": "Смирнов Алексей Игоревич",
+							"url": "./holding-employee.html",
+							"position": "Ведущий юрисконсульт",
+							"photo": "./img/leader-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 202",
+								"url": "tel:+375173947034,202"
+							},
+							"email": {
+								"text": "a.smirnov@apteka-group.by",
+								"url": "mailto:a.smirnov@apteka-group.by"
+							}
+						},
+						{
+							"name": "Павлюк Ольга Сергеевна",
+							"url": "./holding-employee.html",
+							"position": "Юрисконсульт",
+							"photo": "./img/person-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 203",
+								"url": "tel:+375173947034,203"
+							},
+							"email": {
+								"text": "o.pavlyuk@apteka-group.by",
+								"url": "mailto:o.pavlyuk@apteka-group.by"
+							}
+						},
+						{
+							"name": "Громов Денис Андреевич",
+							"url": "./holding-employee.html",
+							"position": "Специалист по договорной работе",
+							"photo": "./img/leader-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 204",
+								"url": "tel:+375173947034,204"
+							},
+							"email": {
+								"text": "d.gromov@apteka-group.by",
+								"url": "mailto:d.gromov@apteka-group.by"
+							}
+						}
+					],
+					"open": true
+				}
+			]
+		},
+		"entityStaffLong": {
+			"title": "Сотрудники",
+			"summary": "1 отдел · 4 сотрудника",
+			"departments": [
+				{
+					"id": "dept-1",
+					"name": "Отдел правового обеспечения, договорной работы и претензионно-исковой деятельности",
+					"head": "Константинопольская А.В.",
+					"count": 4,
+					"avatars": [
+						"./img/person-1.webp",
+						"./img/person-2.webp",
+						"./img/person-3.webp",
+						"./img/person-4.webp"
+					],
+					"employees": [
+						{
+							"name": "Константинопольская Александра Владиславовна",
+							"url": "./holding-employee.html",
+							"position": "Начальник отдела правового обеспечения, договорной работы и претензионно-исковой деятельности",
+							"photo": "./img/person-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 201",
+								"url": "tel:+375173947034,201"
+							},
+							"email": {
+								"text": "aleksandra.konstantinopolskaya@apteka-group.by",
+								"url": "mailto:aleksandra.konstantinopolskaya@apteka-group.by"
+							},
+							"head": true
+						},
+						{
+							"name": "Смирнов Алексей Игоревич",
+							"url": "./holding-employee.html",
+							"position": "Ведущий юрисконсульт",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 202",
+								"url": "tel:+375173947034,202"
+							},
+							"email": {
+								"text": "a.smirnov@apteka-group.by",
+								"url": "mailto:a.smirnov@apteka-group.by"
+							}
+						},
+						{
+							"name": "Павлюк Ольга Сергеевна",
+							"url": "./holding-employee.html",
+							"position": "Юрисконсульт",
+							"photo": "./img/person-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 203",
+								"url": "tel:+375173947034,203"
+							},
+							"email": {
+								"text": "o.pavlyuk@apteka-group.by",
+								"url": "mailto:o.pavlyuk@apteka-group.by"
+							}
+						},
+						{
+							"name": "Громов Денис Андреевич",
+							"url": "./holding-employee.html",
+							"position": "Специалист по договорной работе",
+							"photo": "./img/leader-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 204",
+								"url": "tel:+375173947034,204"
+							},
+							"email": {
+								"text": "d.gromov@apteka-group.by",
+								"url": "mailto:d.gromov@apteka-group.by"
+							}
+						}
+					],
+					"open": true
+				}
+			]
+		},
+		"employeeRows": [
+			{
+				"name": "Козлова Наталья Викторовна",
+				"url": "./holding-employee.html",
+				"position": "Начальник юридического отдела",
+				"photo": "./img/person-1.webp",
+				"phone": {
+					"text": "+375 17 394 70 34, доб. 201",
+					"url": "tel:+375173947034,201"
+				},
+				"email": {
+					"text": "n.kozlova@apteka-group.by",
+					"url": "mailto:n.kozlova@apteka-group.by"
+				},
+				"head": true
+			},
+			{
+				"name": "Смирнов Алексей Игоревич",
+				"url": "./holding-employee.html",
+				"position": "Ведущий юрисконсульт",
+				"photo": "./img/leader-1.webp",
+				"phone": {
+					"text": "+375 17 394 70 34, доб. 202",
+					"url": "tel:+375173947034,202"
+				},
+				"email": {
+					"text": "a.smirnov@apteka-group.by",
+					"url": "mailto:a.smirnov@apteka-group.by"
+				}
+			}
+		],
+		"employeeRowsLong": [
+			{
+				"name": "Константинопольская Александра Владиславовна",
+				"url": "./holding-employee.html",
+				"position": "Начальник отдела правового обеспечения, договорной работы и претензионно-исковой деятельности",
+				"photo": "./img/person-1.webp",
+				"phone": {
+					"text": "+375 17 394 70 34, доб. 201",
+					"url": "tel:+375173947034,201"
+				},
+				"email": {
+					"text": "aleksandra.konstantinopolskaya@apteka-group.by",
+					"url": "mailto:aleksandra.konstantinopolskaya@apteka-group.by"
+				},
+				"head": true
+			},
+			{
+				"name": "Смирнов Алексей Игоревич",
+				"url": "./holding-employee.html",
+				"position": "Ведущий юрисконсульт",
+				"phone": {
+					"text": "+375 17 394 70 34, доб. 202",
+					"url": "tel:+375173947034,202"
+				},
+				"email": {
+					"text": "a.smirnov@apteka-group.by",
+					"url": "mailto:a.smirnov@apteka-group.by"
+				}
+			}
+		],
+		"employeeProfile": {
+			"name": "Новая Владислава Митрофановна",
+			"photo": {
+				"src": "./img/holding/employee.webp"
+			},
+			"meta": [
+				{
+					"icon": "profile",
+					"text": "Заведующая аптекой"
+				},
+				{
+					"icon": "case",
+					"text": "Аптека №50 пятой категории"
+				},
+				{
+					"icon": "phone",
+					"text": "+375 29 800-00-01"
+				}
+			],
+			"sections": [
+				{
+					"title": "Контакты",
+					"rows": [
+						{
+							"label": "Рабочий телефон:",
+							"value": "+375 17 900-01-01",
+							"url": "tel:+375179000101"
+						},
+						{
+							"label": "Мобильный телефон:",
+							"value": "+375 29 800-00-01",
+							"url": "tel:+375298000001"
+						},
+						{
+							"label": "E-mail:",
+							"value": "vlada.jein@apteka-group.by",
+							"url": "mailto:vlada.jein@apteka-group.by"
+						}
+					]
+				},
+				{
+					"title": "Работа",
+					"rows": [
+						{
+							"label": "Юр. лицо:",
+							"value": "ООО «Аптека групп Центр»",
+							"url": "./holding-entity.html"
+						},
+						{
+							"label": "Подразделение:",
+							"value": "Аптека №50 пятой категории",
+							"url": "./holding-entity.html#dept-1"
+						},
+						{
+							"label": "Должность:",
+							"value": "Заведующая аптекой"
+						},
+						{
+							"label": "Руководитель:",
+							"value": "Петров А.И.",
+							"url": "./holding-employee.html"
+						},
+						{
+							"label": "Аптека:",
+							"value": "Аптека ADEL №50",
+							"url": "#"
+						},
+						{
+							"label": "Адрес аптеки:",
+							"value": "г. Борисов, ул. Днепропетровская, 21М"
+						},
+						{
+							"label": "Бренд:",
+							"value": "ADEL",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"title": "Личное",
+					"rows": [
+						{
+							"label": "День рождения:",
+							"value": "2 августа"
+						}
+					]
+				}
+			]
+		},
+		"employeeProfileNoPhoto": {
+			"name": "Новая Владислава Митрофановна",
+			"meta": [
+				{
+					"icon": "profile",
+					"text": "Заведующая аптекой"
+				},
+				{
+					"icon": "case",
+					"text": "Аптека №50 пятой категории"
+				},
+				{
+					"icon": "phone",
+					"text": "+375 29 800-00-01"
+				}
+			],
+			"sections": [
+				{
+					"title": "Контакты",
+					"rows": [
+						{
+							"label": "Рабочий телефон:",
+							"value": "+375 17 900-01-01",
+							"url": "tel:+375179000101"
+						},
+						{
+							"label": "Мобильный телефон:",
+							"value": "+375 29 800-00-01",
+							"url": "tel:+375298000001"
+						},
+						{
+							"label": "E-mail:",
+							"value": "vlada.jein@apteka-group.by",
+							"url": "mailto:vlada.jein@apteka-group.by"
+						}
+					]
+				}
+			]
+		},
+		"employeeProfileLong": {
+			"name": "Константинопольская Александра-Мария Владиславовна",
+			"photo": {
+				"src": "./img/holding/employee.webp"
+			},
+			"meta": [
+				{
+					"icon": "profile",
+					"text": "Заместитель заведующей аптекой по работе с персоналом и обучению"
+				},
+				{
+					"icon": "case",
+					"text": "Аптека №50 пятой категории"
+				},
+				{
+					"icon": "phone",
+					"text": "+375 29 800-00-01"
+				}
+			],
+			"sections": [
+				{
+					"title": "Контакты",
+					"rows": [
+						{
+							"label": "Рабочий телефон:",
+							"value": "+375 17 900-01-01",
+							"url": "tel:+375179000101"
+						},
+						{
+							"label": "Мобильный телефон:",
+							"value": "+375 29 800-00-01",
+							"url": "tel:+375298000001"
+						},
+						{
+							"label": "E-mail:",
+							"value": "aleksandra-maria.konstantinopolskaya@apteka-group.by",
+							"url": "mailto:aleksandra-maria.konstantinopolskaya@apteka-group.by"
+						}
+					]
+				},
+				{
+					"title": "Работа",
+					"rows": [
+						{
+							"label": "Юр. лицо:",
+							"value": "ООО «Аптека групп Центр»",
+							"url": "./holding-entity.html"
+						},
+						{
+							"label": "Подразделение:",
+							"value": "Аптека №50 пятой категории",
+							"url": "./holding-entity.html#dept-1"
+						},
+						{
+							"label": "Должность:",
+							"value": "Заведующая аптекой"
+						},
+						{
+							"label": "Руководитель:",
+							"value": "Петров А.И.",
+							"url": "./holding-employee.html"
+						},
+						{
+							"label": "Аптека:",
+							"value": "Аптека ADEL №50",
+							"url": "#"
+						},
+						{
+							"label": "Адрес аптеки:",
+							"value": "г. Борисов, ул. Днепропетровская, 21М"
+						},
+						{
+							"label": "Бренд:",
+							"value": "ADEL",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"title": "Личное",
+					"rows": [
+						{
+							"label": "День рождения:",
+							"value": "2 августа"
+						}
+					]
+				}
+			]
+		},
+		"entityBrief": {
+			"name": "ООО «Аптека групп Центр»",
+			"rows": [
+				{
+					"label": "Телефон:",
+					"links": [
+						{
+							"text": "+375 17 249 00 05",
+							"url": "tel:+375172490005"
+						}
+					]
+				},
+				{
+					"label": "Адрес:",
+					"value": "г. Минск, пр-т Победителей, 84-2, офис 16"
+				}
+			],
+			"brands": [
+				{
+					"name": "ADEL",
+					"logo": "./img/holding/logo-adel.webp"
+				}
+			],
+			"staffUrl": "./holding-entity.html"
+		},
+		"entityBriefNoBrands": {
+			"name": "ООО «Аптека групп Центр»",
+			"rows": [
+				{
+					"label": "Телефон:",
+					"links": [
+						{
+							"text": "+375 17 249 00 05",
+							"url": "tel:+375172490005"
+						}
+					]
+				},
+				{
+					"label": "Адрес:",
+					"value": "г. Минск, пр-т Победителей, 84-2, офис 16"
+				}
+			],
+			"staffUrl": "./holding-entity.html"
+		},
+		"employeeColleagues": {
+			"title": "Коллеги по подразделению",
+			"moreText": "Все 8 сотрудников",
+			"moreUrl": "./holding-entity.html#dept-1",
+			"items": [
+				{
+					"name": "Сидорова Анна Павловна",
+					"url": "./holding-employee.html",
+					"position": "Провизор",
+					"photo": "./img/person-2.webp",
+					"phone": {
+						"text": "+375 17 900-01-02",
+						"url": "tel:+375179000102"
+					},
+					"email": {
+						"text": "a.sidorova@apteka-group.by",
+						"url": "mailto:a.sidorova@apteka-group.by"
+					}
+				},
+				{
+					"name": "Кравченко Игорь Олегович",
+					"url": "./holding-employee.html",
+					"position": "Фармацевт",
+					"photo": "./img/leader-3.webp",
+					"phone": {
+						"text": "+375 17 900-01-03",
+						"url": "tel:+375179000103"
+					},
+					"email": {
+						"text": "i.kravchenko@apteka-group.by",
+						"url": "mailto:i.kravchenko@apteka-group.by"
+					}
+				},
+				{
+					"name": "Лис Мария Андреевна",
+					"url": "./holding-employee.html",
+					"position": "Фармацевт",
+					"photo": "./img/person-3.webp",
+					"phone": {
+						"text": "+375 17 900-01-04",
+						"url": "tel:+375179000104"
+					},
+					"email": {
+						"text": "m.lis@apteka-group.by",
+						"url": "mailto:m.lis@apteka-group.by"
+					}
+				}
+			]
+		},
+		"employeeColleaguesOne": {
+			"title": "Коллеги по подразделению",
+			"items": [
+				{
+					"name": "Сидорова Анна Павловна",
+					"url": "./holding-employee.html",
+					"position": "Провизор",
+					"photo": "./img/person-2.webp",
+					"phone": {
+						"text": "+375 17 900-01-02",
+						"url": "tel:+375179000102"
+					},
+					"email": {
+						"text": "a.sidorova@apteka-group.by",
+						"url": "mailto:a.sidorova@apteka-group.by"
+					}
+				}
+			]
+		},
+		"photoStrip": {
+			"title": "ООО «УКХ Аптека групп»",
+			"items": [
+				{
+					"src": "./img/holding/photo-1.webp",
+					"thumb": "./img/holding/photo-1.webp",
+					"width": 534,
+					"height": 800,
+					"alt": "Стенд аптеки на празднике"
+				},
+				{
+					"src": "./img/holding/photo-2.webp",
+					"thumb": "./img/holding/photo-2.webp",
+					"width": 534,
+					"height": 800,
+					"alt": "Сотрудница фотографирует праздник"
+				},
+				{
+					"src": "./img/holding/photo-3.webp",
+					"thumb": "./img/holding/photo-3.webp",
+					"width": 1199,
+					"height": 800,
+					"alt": "Шатры на летнем празднике холдинга"
+				},
+				{
+					"src": "./img/holding/photo-4.webp",
+					"thumb": "./img/holding/photo-4.webp",
+					"width": 1199,
+					"height": 800,
+					"alt": "Праздник холдинга на природе"
+				},
+				{
+					"src": "./img/holding/photo-1.webp",
+					"thumb": "./img/holding/photo-1.webp",
+					"width": 534,
+					"height": 800,
+					"alt": "Стенд аптеки на празднике"
+				},
+				{
+					"src": "./img/holding/photo-2.webp",
+					"thumb": "./img/holding/photo-2.webp",
+					"width": 534,
+					"height": 800,
+					"alt": "Сотрудница фотографирует праздник"
+				}
+			]
+		},
+		"photoStripOne": {
+			"title": "ООО «УКХ Аптека групп»",
+			"items": [
+				{
+					"src": "./img/holding/photo-1.webp",
+					"thumb": "./img/holding/photo-1.webp",
+					"width": 534,
+					"height": 800,
+					"alt": "Стенд аптеки на празднике"
+				}
+			]
 		}
 	}
 }

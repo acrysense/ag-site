@@ -1,0 +1,41 @@
+{{!--
+	Карточка сотрудника — единый стиль для справочника, ЛК и CRM (Figma: Employee card 4833:1187,
+	компоненты 4829:862): фото 160 и ФИО H2, под ним строки с иконками (должность, подразделение,
+	телефон); ниже разделы «Контакты / Работа / Личное» — строки «подпись: значение» (подпись 200,
+	значение — текст или ссылка). Нет фото — инициалы.
+	props: name, photo { src, srcset }, meta [{ icon (profile, case, phone), text }], sections [{
+	title, rows [{ label, value, url }] }]. Пустой раздел (без строк) не выводится.
+--}}
+<article class="employee-profile" aria-labelledby="employee-profile-name">
+    <div class="employee-profile__header">
+        <span class="employee-profile__photo">
+            <span class="employee-profile__initials" aria-hidden="true">{{initials props.name}}</span>
+            {{#if props.photo.src}}<img src="{{props.photo.src}}" {{#if props.photo.srcset}}srcset="{{props.photo.srcset}}" sizes="160px"{{/if}} width="160" height="160" alt="" decoding="async" />{{/if}}
+        </span>
+        <div class="employee-profile__info">
+            <h1 class="employee-profile__name" id="employee-profile-name">{{props.name}}</h1>
+            {{#if props.meta.length}}
+                <ul class="employee-profile__meta" role="list">
+                    {{#each props.meta}}
+                        <li class="employee-profile__meta-row">{{> components/Icon/Icon name=icon class="employee-profile__meta-icon"}}<span>{{text}}</span></li>
+                    {{/each}}
+                </ul>
+            {{/if}}
+        </div>
+    </div>
+    {{#each props.sections}}
+        {{#if rows.length}}
+            <section class="employee-profile__section">
+                <h2 class="employee-profile__section-title">{{title}}</h2>
+                <dl class="employee-profile__rows">
+                    {{#each rows}}
+                        <div class="employee-profile__row">
+                            <dt class="employee-profile__label">{{label}}</dt>
+                            <dd class="employee-profile__value">{{#if url}}<a class="employee-profile__link" href="{{url}}">{{value}}</a>{{else}}{{value}}{{/if}}</dd>
+                        </div>
+                    {{/each}}
+                </dl>
+            </section>
+        {{/if}}
+    {{/each}}
+</article>

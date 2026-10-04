@@ -1,0 +1,54 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: L.Menu item («Структура холдинга») — M/400 14/22, подпись и значение через 10, строки
+// через 6 (в карточке юрлица и бренда — через 5). Значение переносится, подпись — нет.
+@layer components {
+	.info-list {
+		@include text("m-400");
+
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		margin: 0;
+
+		&--tight {
+			gap: 5px;
+		}
+	}
+
+	.info-list__row {
+		display: flex;
+		gap: var(--info-list-gap, 10px);
+		align-items: flex-start;
+		min-width: 0;
+	}
+
+	.info-list__label {
+		flex: none;
+		color: palette("dark-grey-txt");
+	}
+
+	.info-list__value {
+		flex: 1 1 auto;
+		min-width: 0;
+		margin: 0;
+		color: palette("black-txt");
+		overflow-wrap: anywhere;
+	}
+
+	.info-list__link {
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+
+	// Номер телефона не рвётся посередине: несколько номеров переносятся целиком
+	.info-list__link[href^="tel:"] {
+		white-space: nowrap;
+	}
+}

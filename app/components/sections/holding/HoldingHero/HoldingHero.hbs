@@ -1,0 +1,34 @@
+{{!--
+	Шапка «Структуры холдинга» (Figma: 4814:1121): слева заголовок (строками — titleLines, как в
+	макете «Холдинг / Аптека групп») и подзаголовок, внизу цифры; справа карточка председателя —
+	фото, ФИО, должность. До 1024 (наше) — всё друг под другом.
+	props: titleLines [строки], subtitle, stats [{ value, label }], person { name, role, photo {
+	src, srcset, alt } }. Нет цифр или карточки — блок без них, место не остаётся.
+--}}
+<section class="holding-hero{{#unless props.person}} holding-hero--solo{{/unless}}" aria-labelledby="holding-hero-title">
+    <div class="holding-hero__intro">
+        <h1 class="holding-hero__title" id="holding-hero-title">{{#each props.titleLines}}<span class="holding-hero__title-line">{{this}}</span>{{#unless @last}} {{/unless}}{{/each}}</h1>
+        {{#if props.subtitle}}<p class="holding-hero__subtitle">{{props.subtitle}}</p>{{/if}}
+    </div>
+    {{#if props.stats.length}}
+        <ul class="holding-hero__stats" role="list">
+            {{#each props.stats}}
+                <li class="holding-hero__stat">
+                    <span class="holding-hero__number">{{value}}</span>
+                    <span class="holding-hero__stat-label">{{label}}</span>
+                </li>
+            {{/each}}
+        </ul>
+    {{/if}}
+    {{#if props.person}}
+        <figure class="holding-hero__person">
+            <div class="holding-hero__photo">
+                {{#if props.person.photo.src}}<img class="holding-hero__image" src="{{props.person.photo.src}}" {{#if props.person.photo.srcset}}srcset="{{props.person.photo.srcset}}" sizes="(min-width: 1024px) 50vw, 100vw"{{/if}} width="790" height="335" alt="{{default props.person.photo.alt props.person.name}}" decoding="async" />{{/if}}
+            </div>
+            <figcaption class="holding-hero__caption">
+                <span class="holding-hero__name">{{props.person.name}}</span>
+                {{#if props.person.role}}<span class="holding-hero__role">{{props.person.role}}</span>{{/if}}
+            </figcaption>
+        </figure>
+    {{/if}}
+</section>

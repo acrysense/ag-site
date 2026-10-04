@@ -1,0 +1,19 @@
+{{!--
+	Строки «подпись: значение» в карточках «Структуры холдинга» (Figma: L.Menu item в 4814:1466,
+	4821:829, 4821:1368, 4833:1175): подпись Dark-grey.TXT, значение Black.TXT, ссылки (телефон,
+	сайт, e-mail) Main Blue. Несколько ссылок в строке — через «; ».
+	props: items [{ label, value, links [{ text, url }] }], tight (строки через 5, а не 6), class.
+	Пустая строка (ни value, ни links) не выводится.
+--}}
+{{#if props.items.length}}
+    <dl class="info-list{{#if props.tight}} info-list--tight{{/if}}{{#if props.class}} {{props.class}}{{/if}}">
+        {{#each props.items}}
+            {{#if (or value links.length)}}
+                <div class="info-list__row">
+                    <dt class="info-list__label">{{label}}</dt>
+                    <dd class="info-list__value">{{#if links.length}}{{#each links}}{{#if @index}}; {{/if}}<a class="info-list__link" href="{{url}}">{{text}}</a>{{/each}}{{else}}{{value}}{{/if}}</dd>
+                </div>
+            {{/if}}
+        {{/each}}
+    </dl>
+{{/if}}

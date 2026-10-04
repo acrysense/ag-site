@@ -1,0 +1,16 @@
+{{!--
+	Коллеги по подразделению (Figma: Colleagues 4833:1253): заголовок H3 и «Все N сотрудников →»
+	справа, ниже сотрудники (EmployeeRow). props: title, moreText, moreUrl, items [EmployeeRow].
+	Пусто — блока нет.
+--}}
+{{#if props.items.length}}
+    <section class="employee-colleagues" aria-labelledby="employee-colleagues-title">
+        <div class="employee-colleagues__head">
+            <h2 class="employee-colleagues__title" id="employee-colleagues-title">{{default props.title "Коллеги по подразделению"}}</h2>
+            {{#if props.moreUrl}}<a class="employee-colleagues__more" href="{{props.moreUrl}}">{{props.moreText}} →</a>{{/if}}
+        </div>
+        <ul class="employee-colleagues__list" role="list">
+            {{#each props.items}}{{> sections/holding/EmployeeRow/EmployeeRow props=this}}{{/each}}
+        </ul>
+    </section>
+{{/if}}

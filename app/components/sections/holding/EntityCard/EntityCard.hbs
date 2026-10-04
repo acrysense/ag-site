@@ -1,0 +1,12 @@
+{{!--
+	Карточка юрлица в «Структуре холдинга» (Figma: Card 4814:1466): название H3, телефон и адрес,
+	бренды (плашки, нет — «Бренды уточняются»), внизу «Подробнее» — страница юрлица.
+	props: name, url, phones [{ text, url }], address, brands [{ name, logo }], brandsLabel,
+	moreText. Карточки ряда одной высоты — «Подробнее» прижата к низу.
+--}}
+<article class="entity-card">
+    <h3 class="entity-card__title">{{props.name}}</h3>
+    {{> sections/holding/InfoList/InfoList props=(obj items=(arr (obj label="Телефон:" links=props.phones) (obj label="Адрес:" value=props.address)))}}
+    {{> sections/holding/BrandChips/BrandChips props=(obj label=props.brandsLabel items=props.brands class="entity-card__brands")}}
+    <a class="btn btn--general btn--m entity-card__more" href="{{props.url}}">{{default props.moreText "Подробнее"}}<span class="visually-hidden">: {{props.name}}</span></a>
+</article>

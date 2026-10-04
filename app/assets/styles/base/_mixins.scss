@@ -116,6 +116,19 @@ $alias-bp: (
 	@return vw-clamp($n, _rv($range, base), _rv($range, from), _rv($range, to));
 }
 
+// Плавное значение для размеров, которые иначе прыгают на брейкпоинте (мобильный — наш, десктоп —
+// макет): $min на ширине окна $from, $max на $to (px), между — по прямой, за пределами — края.
+// $rem — края в rem (шрифты: растут вместе с размером шрифта в браузере).
+@function fluid($min, $max, $from: 360, $to: 1024, $rem: false) {
+	$slope: math.div($max - $min, $to - $from);
+	$base: math.div(math.round(($min - $slope * $from) * 100), 100);
+	$vw: math.div(math.round($slope * 1000000), 10000) * 1vw;
+	@if $rem {
+		@return clamp(#{_px-to-rem($min)}, #{_px-to-rem($base)} + #{$vw}, #{_px-to-rem($max)});
+	}
+	@return clamp(#{$min}px, #{$base}px + #{$vw}, #{$max}px);
+}
+
 @mixin prop-vw($prop, $valueAt, $range) {
 	$base: _rv($range, base);
 	$from: _rv($range, from);

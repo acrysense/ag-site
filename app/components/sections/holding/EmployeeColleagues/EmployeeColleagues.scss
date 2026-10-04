@@ -1,0 +1,54 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Colleagues (4833:1253) — белая карточка, поля 20: заголовок H3 Black.TXT и «Все N
+// сотрудников →» M/400 Main Blue справа (через 12), через 10 сотрудники (EmployeeRow). Рамка и
+// тень — как у всех белых блоков. Телефон (наше): без карточки, ссылка под заголовком.
+@layer components {
+	.employee-colleagues {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		min-width: 0;
+
+		@include up(desktop) {
+			padding: 19px;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+	}
+
+	.employee-colleagues__head {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px 12px;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.employee-colleagues__title {
+		@include text("h3");
+
+		color: palette("black-txt");
+	}
+
+	.employee-colleagues__more {
+		@include text("m-400");
+
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+
+	.employee-colleagues__list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+}

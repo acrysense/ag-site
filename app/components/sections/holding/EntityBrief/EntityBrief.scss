@@ -1,0 +1,49 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Legal entity card (4833:1172) — белая карточка, поля 20, части через 10: «Юридическое
+// лицо» M/400 Dark-grey.TXT, название H3 Black.TXT, строки (подпись и значение через 8), бренд,
+// «Все сотрудники юр. лица →» M/400 Main Blue. Рамка и тень — как у всех белых блоков.
+@layer components {
+	.entity-brief {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		min-width: 0;
+		padding: 19px;
+		background: palette("white");
+		border: 1px solid palette("block-border");
+		border-radius: $radius-content-block;
+		box-shadow: $shadow-content-block;
+	}
+
+	.entity-brief__label {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.entity-brief__name {
+		@include text("h3");
+
+		color: palette("black-txt");
+		overflow-wrap: anywhere;
+	}
+
+	.entity-brief__rows {
+		--info-list-gap: 8px;
+	}
+
+	.entity-brief__link {
+		@include text("m-400");
+
+		align-self: flex-start;
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+}

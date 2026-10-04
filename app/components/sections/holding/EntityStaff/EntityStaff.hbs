@@ -1,0 +1,39 @@
+{{!--
+	Сотрудники юрлица по отделам (Figma: 4821:875): заголовок H2, «8 отделов · 48 сотрудников»,
+	отделы — раскрывающиеся (details/summary, без JS): название, до 5 фото, «Руководитель» и
+	«Сотрудников»; внутри — сотрудники (EmployeeRow). Открытый отдел задаёт бэк (open).
+	props: title, summary, departments [{ id, name, open, head, count, avatars [фото, до 5],
+	employees [EmployeeRow] }]. Пусто — блока нет.
+--}}
+{{#if props.departments.length}}
+    <section class="entity-staff" aria-labelledby="entity-staff-title">
+        <div class="entity-staff__head">
+            <h2 class="entity-staff__title" id="entity-staff-title">{{default props.title "Сотрудники"}}</h2>
+            {{#if props.summary}}<p class="entity-staff__summary">{{props.summary}}</p>{{/if}}
+        </div>
+        <div class="entity-staff__list">
+            {{#each props.departments}}
+                <details class="entity-dept" {{#if id}}id="{{id}}"{{/if}} {{#if open}}open{{/if}}>
+                    <summary class="entity-dept__summary">
+                        <span class="entity-dept__title">{{name}}</span>
+                        {{> components/Icon/Icon name="chevron-down" class="entity-dept__arrow"}}
+                        {{#if avatars.length}}
+                            <span class="entity-dept__avatars" aria-hidden="true">
+                                {{#each avatars}}<span class="entity-dept__avatar"><img src="{{this}}" width="40" height="40" alt="" loading="lazy" decoding="async" /></span>{{/each}}
+                            </span>
+                        {{/if}}
+                        <span class="entity-dept__meta">
+                            {{#if head}}<span class="entity-dept__fact"><span class="entity-dept__fact-label">Руководитель:</span> {{head}}</span>{{/if}}
+                            {{#if (isSet count)}}<span class="entity-dept__fact"><span class="entity-dept__fact-label">Сотрудников:</span> {{count}}</span>{{/if}}
+                        </span>
+                    </summary>
+                    {{#if employees.length}}
+                        <ul class="entity-dept__staff" role="list">
+                            {{#each employees}}{{> sections/holding/EmployeeRow/EmployeeRow props=this}}{{/each}}
+                        </ul>
+                    {{/if}}
+                </details>
+            {{/each}}
+        </div>
+    </section>
+{{/if}}

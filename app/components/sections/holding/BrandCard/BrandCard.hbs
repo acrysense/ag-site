@@ -1,0 +1,31 @@
+{{!--
+	Бренд юрлица в боковой колонке (Figma: Brand 4821:1327): логотип и название по центру,
+	телефон / сайт / e-mail, соцсети (кнопки 40), описание и «Перейти на сайт →».
+	props: name, logo, rows [InfoList: { label, value, links }], social [{ icon (instagram, vk,
+	facebook, youtube, telegram, tiktok), label, url }], text, siteUrl, siteText. Пустые части —
+	без черт и промежутков.
+--}}
+<article class="brand-card">
+    <div class="brand-card__head">
+        {{#if props.logo}}<img class="brand-card__logo" src="{{props.logo}}" width="120" height="120" alt="" loading="lazy" decoding="async" />{{/if}}
+        <h3 class="brand-card__name">{{props.name}}</h3>
+    </div>
+    {{#if (or props.rows.length props.social.length)}}
+        <div class="brand-card__contacts">
+            {{> sections/holding/InfoList/InfoList props=(obj items=props.rows tight=true)}}
+            {{#if props.social.length}}
+                <ul class="brand-card__social" role="list">
+                    {{#each props.social}}
+                        <li><a class="brand-card__social-link" href="{{url}}" target="_blank" rel="noopener noreferrer" aria-label="{{label}}">{{> components/Icon/Icon name=icon class="brand-card__social-icon"}}</a></li>
+                    {{/each}}
+                </ul>
+            {{/if}}
+        </div>
+    {{/if}}
+    {{#if (or props.text props.siteUrl)}}
+        <div class="brand-card__about">
+            {{#if props.text}}<p class="brand-card__text">{{props.text}}</p>{{/if}}
+            {{#if props.siteUrl}}<a class="brand-card__site" href="{{props.siteUrl}}" target="_blank" rel="noopener noreferrer">{{default props.siteText "Перейти на сайт"}} →</a>{{/if}}
+        </div>
+    {{/if}}
+</article>

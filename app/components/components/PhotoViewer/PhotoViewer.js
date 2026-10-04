@@ -9,10 +9,10 @@ import { lockBody } from '@/utils/scroll-lock'
 // миниатюр. До 1024 (наше) — без стрелок (свайп), до 768 — и без миниатюр.
 // Модуль не монтируется сам — его создаёт блок с фото (sections/gallery/AlbumPhotos).
 //
-// createPhotoViewer({ title, items, onLike }) → { open(index), update(index, item), destroy() }
+// createPhotoViewer({ title, items, onLike, withLikes }) → { open(index), update(index, item), destroy() }
 // items: [{ src, srcset, width, height, thumb, alt, likes, liked, likeUrl, download }].
 // «Нравится» — модуль LikeButton (кнопку монтирует app.js); onLike(index, liked, likes) —
-// чтобы блок обновил ту же отметку в сетке.
+// чтобы блок обновил ту же отметку в сетке. withLikes: false — без «Нравится» (фото юрлица и т. п.).
 
 const DESKTOP = 1024
 const TABLET = 768
@@ -64,7 +64,7 @@ function likeButton(item) {
 	return button
 }
 
-export function createPhotoViewer({ title = '', items = [], onLike = () => {} }) {
+export function createPhotoViewer({ title = '', items = [], onLike = () => {}, withLikes = true }) {
 	let release = null
 	let likeObserver = null
 
@@ -121,7 +121,8 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {} })
 				close.setAttribute('aria-label', 'Закрыть просмотр')
 				close.append(createIcon('cross', 'photo-viewer__icon photo-viewer__icon--close'))
 				close.addEventListener('click', () => pswp.close())
-				actions.append(likeSlot, download, divider, close)
+				if (withLikes) actions.append(likeSlot)
+				actions.append(download, divider, close)
 				root.append(head, actions)
 
 				const render = () => {
@@ -130,6 +131,9 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {} })
 					counter.textContent = `Фото ${index + 1} из ${pswp.getNumItems()}`
 					download.hidden = !item.download
 					if (item.download) download.href = item.download
+					// Черта отделяет «Нравится» и «Скачать» от крестика — без них не нужна
+					divider.hidden = !withLikes && !item.download
+					if (!withLikes) return
 					// Своя кнопка на каждое фото: LikeButton берёт адрес при монтировании
 					likeObserver?.disconnect()
 					const button = likeButton(item)

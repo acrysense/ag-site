@@ -1,0 +1,22 @@
+{{!--
+	Бренды юрлица — «плашки» с логотипом (Figma: Brand chips 4814:1477): плашка Brand chip, поля
+	6 12 6 6, логотип 28 со скруглением 6, название M/400. Брендов нет — пунктирная плашка «Бренды
+	уточняются» (4814:1611).
+	props: label (по умолчанию «Бренд» / «Бренды» по числу), items [{ name, logo }], emptyText,
+	class.
+--}}
+<div class="brand-chips{{#if props.class}} {{props.class}}{{/if}}">
+    <p class="brand-chips__label">{{#if props.label}}{{props.label}}{{else if props.items.[1]}}Бренды{{else}}Бренд{{/if}}</p>
+    {{#if props.items.length}}
+        <ul class="brand-chips__list" role="list">
+            {{#each props.items}}
+                <li class="brand-chips__chip">
+                    {{#if logo}}<img class="brand-chips__logo" src="{{logo}}" width="28" height="28" alt="" loading="lazy" decoding="async" />{{/if}}
+                    <span class="brand-chips__name">{{name}}</span>
+                </li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p class="brand-chips__empty">{{default props.emptyText "Бренды уточняются"}}</p>
+    {{/if}}
+</div>

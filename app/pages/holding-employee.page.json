@@ -1,0 +1,192 @@
+{
+	"title": "Новая Владислава Митрофановна — сотрудник холдинга «Аптека групп»",
+	"auth": true,
+	"description": "Карточка сотрудника холдинга «Аптека групп»: контакты, место работы, коллеги.",
+	"nav": {
+		"group": "Холдинг",
+		"title": "Сотрудник — карточка",
+		"order": 92
+	},
+	"data": {
+		"breadcrumbs": [
+			{
+				"title": "Главная",
+				"url": "./index.html"
+			},
+			{
+				"title": "Структура холдинга",
+				"url": "./holding.html"
+			},
+			{
+				"title": "ООО «Аптека групп Центр»",
+				"url": "./holding-entity.html"
+			},
+			{
+				"title": "Новая Владислава Митрофановна"
+			}
+		],
+		"profile": {
+			"name": "Новая Владислава Митрофановна",
+			"photo": {
+				"src": "./dev/img/holding/employee.webp"
+			},
+			"meta": [
+				{
+					"icon": "profile",
+					"text": "Заведующая аптекой"
+				},
+				{
+					"icon": "case",
+					"text": "Аптека №50 пятой категории"
+				},
+				{
+					"icon": "phone",
+					"text": "+375 29 800-00-01"
+				}
+			],
+			"sections": [
+				{
+					"title": "Контакты",
+					"rows": [
+						{
+							"label": "Рабочий телефон:",
+							"value": "+375 17 900-01-01",
+							"url": "tel:+375179000101"
+						},
+						{
+							"label": "Мобильный телефон:",
+							"value": "+375 29 800-00-01",
+							"url": "tel:+375298000001"
+						},
+						{
+							"label": "E-mail:",
+							"value": "vlada.jein@apteka-group.by",
+							"url": "mailto:vlada.jein@apteka-group.by"
+						}
+					]
+				},
+				{
+					"title": "Работа",
+					"rows": [
+						{
+							"label": "Юр. лицо:",
+							"value": "ООО «Аптека групп Центр»",
+							"url": "./holding-entity.html"
+						},
+						{
+							"label": "Подразделение:",
+							"value": "Аптека №50 пятой категории",
+							"url": "./holding-entity.html#dept-1"
+						},
+						{
+							"label": "Должность:",
+							"value": "Заведующая аптекой"
+						},
+						{
+							"label": "Руководитель:",
+							"value": "Петров А.И.",
+							"url": "./holding-employee.html"
+						},
+						{
+							"label": "Аптека:",
+							"value": "Аптека ADEL №50",
+							"url": "#"
+						},
+						{
+							"label": "Адрес аптеки:",
+							"value": "г. Борисов, ул. Днепропетровская, 21М"
+						},
+						{
+							"label": "Бренд:",
+							"value": "ADEL",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"title": "Личное",
+					"rows": [
+						{
+							"label": "День рождения:",
+							"value": "2 августа"
+						}
+					]
+				}
+			]
+		},
+		"entity": {
+			"name": "ООО «Аптека групп Центр»",
+			"rows": [
+				{
+					"label": "Телефон:",
+					"links": [
+						{
+							"text": "+375 17 249 00 05",
+							"url": "tel:+375172490005"
+						}
+					]
+				},
+				{
+					"label": "Адрес:",
+					"value": "г. Минск, пр-т Победителей, 84-2, офис 16"
+				}
+			],
+			"brands": [
+				{
+					"name": "ADEL",
+					"logo": "./dev/img/holding/logo-adel.webp"
+				}
+			],
+			"staffUrl": "./holding-entity.html"
+		},
+		"colleagues": {
+			"title": "Коллеги по подразделению",
+			"moreText": "Все 8 сотрудников",
+			"moreUrl": "./holding-entity.html#dept-1",
+			"items": [
+				{
+					"name": "Сидорова Анна Павловна",
+					"url": "./holding-employee.html",
+					"position": "Провизор",
+					"photo": "./dev/img/person-2.webp",
+					"phone": {
+						"text": "+375 17 900-01-02",
+						"url": "tel:+375179000102"
+					},
+					"email": {
+						"text": "a.sidorova@apteka-group.by",
+						"url": "mailto:a.sidorova@apteka-group.by"
+					}
+				},
+				{
+					"name": "Кравченко Игорь Олегович",
+					"url": "./holding-employee.html",
+					"position": "Фармацевт",
+					"photo": "./dev/img/leader-3.webp",
+					"phone": {
+						"text": "+375 17 900-01-03",
+						"url": "tel:+375179000103"
+					},
+					"email": {
+						"text": "i.kravchenko@apteka-group.by",
+						"url": "mailto:i.kravchenko@apteka-group.by"
+					}
+				},
+				{
+					"name": "Лис Мария Андреевна",
+					"url": "./holding-employee.html",
+					"position": "Фармацевт",
+					"photo": "./dev/img/person-3.webp",
+					"phone": {
+						"text": "+375 17 900-01-04",
+						"url": "tel:+375179000104"
+					},
+					"email": {
+						"text": "m.lis@apteka-group.by",
+						"url": "mailto:m.lis@apteka-group.by"
+					}
+				}
+			]
+		}
+	}
+}

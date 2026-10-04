@@ -1,0 +1,26 @@
+{{!--
+	Лента фото (Figma: фото юрлица 4821:864): фото высотой 400 (телефон — 240) своей ширины через 15,
+	листается вбок пальцем, колесом и стрелками по бокам (с 768; у края — стрелка прячется). Фото —
+	ссылка на большое (без JS откроется файл), с JS — просмотр на весь экран (PhotoViewer, без
+	«Нравится»). props: title (подпись в просмотре), label, items [{ src (большое), width, height,
+	thumb, thumbSrcset, alt }]. Ширина миниатюры — по пропорции width/height. Пусто — блока нет.
+--}}
+{{#if props.items.length}}
+    <div class="photo-strip{{#if props.class}} {{props.class}}{{/if}}" data-module="PhotoStrip" data-path="components" {{#if props.title}}data-title="{{props.title}}"{{/if}}>
+        <ul class="photo-strip__list" role="list" aria-label="{{default props.label 'Фото'}}" data-photo-strip-list>
+            {{#each props.items}}
+                <li class="photo-strip__item">
+                    <a class="photo-strip__link" href="{{src}}" data-width="{{width}}" data-height="{{height}}" aria-label="Открыть фото {{add @index 1}} из {{../props.items.length}}">
+                        <img class="photo-strip__image" src="{{default thumb src}}" {{#if thumbSrcset}}srcset="{{thumbSrcset}}" sizes="600px"{{/if}} width="{{width}}" height="{{height}}" alt="{{alt}}" loading="lazy" decoding="async" />
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+        <button class="photo-strip__arrow photo-strip__arrow--prev" type="button" aria-label="Предыдущие фото" data-photo-strip-prev hidden>
+            {{> components/Icon/Icon name="angle-right" class="photo-strip__arrow-icon"}}
+        </button>
+        <button class="photo-strip__arrow photo-strip__arrow--next" type="button" aria-label="Следующие фото" data-photo-strip-next hidden>
+            {{> components/Icon/Icon name="angle-right" class="photo-strip__arrow-icon"}}
+        </button>
+    </div>
+{{/if}}

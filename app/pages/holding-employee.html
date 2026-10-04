@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="{{ lang }}" data-icons="{{sprite}}">
+	<head>
+		{{> layouts/Head/Head }}
+		<link rel="stylesheet" href="/assets/styles/main.scss" />
+		<script type="module" src="/app.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			{{> layouts/Header/Header props=(default data.header site.header) }}
+			<main class="wrapper__content">
+				{{!-- Сотрудник холдинга (1920 — 4833:919, карточка — единый стиль 4829:862; мобильного макета нет — наше) --}}
+				<div class="container page-inner">
+					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.breadcrumbs) }}
+					<div class="page-columns page-columns--aside-start">
+						{{> sections/holding/EmployeeProfile/EmployeeProfile props=data.profile }}
+						<div class="page-columns__aside">
+							{{> sections/holding/EntityBrief/EntityBrief props=data.entity }}
+						</div>
+						{{> sections/holding/EmployeeColleagues/EmployeeColleagues props=data.colleagues }}
+					</div>
+				</div>
+			</main>
+			{{> layouts/Footer/Footer props=site.footer }}
+		</div>
+		{{> layouts/MainMenu/MainMenu props=site.mainMenu }}
+		{{> layouts/TabBar/TabBar props=site.tabBar }}
+		{{> layouts/SiteModals/SiteModals props=site.modals }}
+		{{> layouts/CookieBanner/CookieBanner props=site.cookies }}
+	</body>
+</html>

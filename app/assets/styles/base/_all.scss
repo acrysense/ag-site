@@ -26,6 +26,7 @@
 @forward "@/components/components/Tooltip/Tooltip";
 @forward "@/components/components/Toast/Toast";
 @forward "@/components/components/PhotoViewer/PhotoViewer";
+@forward "@/components/components/PhotoStrip/PhotoStrip";
 
 @forward "@/components/layouts/Header/Header";
 @forward "@/components/layouts/Footer/Footer";
@@ -71,5 +72,17 @@
 @forward "@/components/sections/gallery/AlbumList/AlbumList";
 @forward "@/components/sections/gallery/AlbumHero/AlbumHero";
 @forward "@/components/sections/gallery/AlbumPhotos/AlbumPhotos";
+@forward "@/components/sections/holding/InfoList/InfoList";
+@forward "@/components/sections/holding/BrandChips/BrandChips";
+@forward "@/components/sections/holding/HoldingHero/HoldingHero";
+@forward "@/components/sections/holding/EntityCard/EntityCard";
+@forward "@/components/sections/holding/HoldingEntities/HoldingEntities";
+@forward "@/components/sections/holding/EntityInfo/EntityInfo";
+@forward "@/components/sections/holding/EmployeeRow/EmployeeRow";
+@forward "@/components/sections/holding/EntityStaff/EntityStaff";
+@forward "@/components/sections/holding/BrandCard/BrandCard";
+@forward "@/components/sections/holding/EntityBrief/EntityBrief";
+@forward "@/components/sections/holding/EmployeeProfile/EmployeeProfile";
+@forward "@/components/sections/holding/EmployeeColleagues/EmployeeColleagues";
 
 // @forward '@/components/sections/shared/';

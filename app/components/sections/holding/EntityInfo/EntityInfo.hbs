@@ -1,0 +1,21 @@
+{{!--
+	Юрлицо — карточка (Figma: 4821:790): название H1, строки «Адрес / Телефон / Бренды», описание
+	(HTML из редактора) и лента фото (PhotoStrip), под ними «Скрыть описание» — сворачивает описание
+	и фото (по умолчанию открыто; без JS — всегда открыто).
+	props: name, rows [InfoList: { label, value, links }], html, photos [PhotoStrip], hideText,
+	showText. Нет ни описания, ни фото — нет и кнопки.
+--}}
+<section class="entity-info" aria-labelledby="entity-info-title" data-module="EntityInfo" data-path="sections/holding">
+    <h1 class="entity-info__title" id="entity-info-title">{{props.name}}</h1>
+    {{> sections/holding/InfoList/InfoList props=(obj items=props.rows tight=true)}}
+    {{#if (or props.html props.photos.length)}}
+        <div class="entity-info__about" id="entity-info-about" data-entity-about>
+            {{#if props.html}}<div class="content entity-info__content">{{{props.html}}}</div>{{/if}}
+            {{> components/PhotoStrip/PhotoStrip props=(obj title=props.name label=(concat "Фото — " props.name) items=props.photos)}}
+        </div>
+        <button class="entity-info__toggle" type="button" aria-expanded="true" aria-controls="entity-info-about" data-entity-toggle data-text-hide="{{default props.hideText 'Скрыть описание'}}" data-text-show="{{default props.showText 'Показать описание'}}" hidden>
+            <span data-entity-toggle-text>{{default props.hideText "Скрыть описание"}}</span>
+            {{> components/Icon/Icon name="chevron-down" class="entity-info__toggle-icon"}}
+        </button>
+    {{/if}}
+</section>

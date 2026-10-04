@@ -1,0 +1,112 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: фото юрлица (4821:864) — высота 400, своя ширина, через 15; стрелки 40 по бокам по
+// центру высоты (в 5 от края). Телефон (наше): высота 240 (к 768 плавно растёт до 400), без
+// стрелок — листается пальцем.
+// Наведение на фото — прозрачность 0.9, как у всех картинок-ссылок.
+@layer components {
+	.photo-strip {
+		position: relative;
+		min-width: 0;
+	}
+
+	.photo-strip__list {
+		display: flex;
+		gap: 15px;
+		margin: 0;
+		padding: 0;
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		list-style: none;
+		scroll-snap-type: x proximity;
+		scrollbar-width: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	.photo-strip__item {
+		flex: none;
+		scroll-snap-align: start;
+	}
+
+	.photo-strip__link {
+		position: relative;
+		display: block;
+
+		&:focus-visible::after {
+			position: absolute;
+			inset: 0;
+			content: "";
+			outline: 2px solid palette("form-focus");
+			outline-offset: -2px;
+		}
+	}
+
+	.photo-strip__image {
+		display: block;
+		width: auto;
+		// 240 на 360 → 400 с 768, плавно (без скачка на переключении ширин)
+		height: fluid(240, 400, 360, 768);
+		object-fit: cover;
+		background: palette("skeleton");
+		transition: opacity $transition-default;
+
+		.photo-strip__link:hover &,
+		.photo-strip__link:focus-visible & {
+			opacity: 0.9;
+		}
+	}
+
+	// Стрелки — как у галереи новости: 40, BG.Info, иконка Black.TXT, наведение Main Blue
+	.photo-strip__arrow {
+		position: absolute;
+		top: 50%;
+		z-index: 1;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		padding: 0;
+		color: palette("black-txt");
+		cursor: pointer;
+		background: palette("bg-info");
+		border: 0;
+		border-radius: 50%;
+		transform: translateY(-50%);
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("main-blue");
+		}
+
+		&--prev {
+			left: 5px;
+		}
+
+		&--next {
+			right: 5px;
+		}
+
+		@include up(tablet) {
+			display: flex;
+		}
+
+		&[hidden] {
+			display: none;
+		}
+	}
+
+	.photo-strip__arrow-icon {
+		width: 16px;
+		height: 16px;
+	}
+
+	.photo-strip__arrow--prev .photo-strip__arrow-icon {
+		transform: rotate(180deg);
+	}
+}

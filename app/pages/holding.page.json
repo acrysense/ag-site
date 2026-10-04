@@ -1,0 +1,218 @@
+{
+	"title": "Структура холдинга — корпоративный сайт холдинга «Аптека групп»",
+	"auth": true,
+	"description": "Структура холдинга «Аптека групп»: юридические лица, бренды, отделы и сотрудники.",
+	"nav": {
+		"group": "Холдинг",
+		"title": "Структура холдинга — юрлица",
+		"order": 90
+	},
+	"data": {
+		"breadcrumbs": [
+			{
+				"title": "Главная",
+				"url": "./index.html"
+			},
+			{
+				"title": "Структура холдинга"
+			}
+		],
+		"hero": {
+			"titleLines": ["Холдинг", "Аптека групп"],
+			"subtitle": "Надежный партнер с 30-летней историей",
+			"stats": [
+				{
+					"value": "11",
+					"label": "Юридических лиц"
+				},
+				{
+					"value": "2000+",
+					"label": "работников в команде холдинга"
+				}
+			],
+			"person": {
+				"name": "Томчин Леонид Альбертович",
+				"role": "Председатель совета директоров",
+				"photo": {
+					"src": "./dev/img/holding/chairman.webp",
+					"alt": "Томчин Леонид Альбертович"
+				}
+			}
+		},
+		"entities": {
+			"title": "Юридические лица холдинга",
+			"subtitle": "В холдинг входят 11 юридических лиц. У каждого — свои бренды, отделы и сотрудники.",
+			"items": [
+				{
+					"name": "ООО «УКХ Аптека групп»",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 17 394 70 34",
+							"url": "tel:+375173947034"
+						}
+					],
+					"address": "220020, г. Минск, пр-т Победителей, 84-2, офис 27",
+					"brands": [
+						{
+							"name": "ADEL",
+							"logo": "./dev/img/holding/logo-adel.webp"
+						},
+						{
+							"name": "Добрыя лекі",
+							"logo": "./dev/img/holding/logo-dleki.webp"
+						},
+						{
+							"name": "Аптечка+",
+							"logo": "./dev/img/holding/logo-apte4ka.webp"
+						}
+					]
+				},
+				{
+					"name": "ООО «АптекаБайМаркет»",
+					"url": "./holding-entity.html",
+					"phones": [],
+					"address": "г. Минск, пр-т Дзержинского, 3Б, пом. 81",
+					"brands": [
+						{
+							"name": "Apteka.by",
+							"logo": "./dev/img/holding/logo-aptekaby.webp"
+						}
+					]
+				},
+				{
+					"name": "ООО «ВитФармМаркет»",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 212 37 21 80",
+							"url": "tel:+375212372180"
+						},
+						{
+							"text": "+375 212 37 54 12",
+							"url": "tel:+375212375412"
+						}
+					],
+					"address": "г. Витебск, ул. 5-я Кооперативная, 8",
+					"brands": [
+						{
+							"name": "VFM",
+							"logo": "./dev/img/holding/logo-vfm.webp"
+						}
+					]
+				},
+				{
+					"name": "ООО «Клиника Здоровья» (Мед. центр CityClinic)",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 33 615 02 42",
+							"url": "tel:+375336150242"
+						}
+					],
+					"address": "г. Витебск, ул. Новооршанская, 4",
+					"brands": [
+						{
+							"name": "CityClinic",
+							"logo": "./dev/img/holding/logo-cityclinic.webp"
+						}
+					]
+				},
+				{
+					"name": "ООО «Клиника Здоровья» (Стоматология)",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 33 615 02 42",
+							"url": "tel:+375336150242"
+						}
+					],
+					"address": "г. Витебск, пр. Фрунзе, д. 71А",
+					"brands": [
+						{
+							"name": "CityClinic",
+							"logo": "./dev/img/holding/logo-cityclinic.webp"
+						}
+					]
+				},
+				{
+					"name": "ООО «СофтФарм»",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 44 503 30 73",
+							"url": "tel:+375445033073"
+						}
+					],
+					"address": "г. Минск, пр-т Победителей, 84, этаж 4, офис 27",
+					"brands": [
+						{
+							"name": "СофтФарм",
+							"logo": "./dev/img/holding/logo-softfarm.webp"
+						}
+					]
+				},
+				{
+					"name": "ООО «Аптека групп Центр»",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 17 249 00 05",
+							"url": "tel:+375172490005"
+						}
+					],
+					"address": "г. Минск, пр-т Победителей, 84-2, офис 16",
+					"brands": []
+				},
+				{
+					"name": "ЗАО «Аптека групп Север»",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 212 35 21 80",
+							"url": "tel:+375212352180"
+						}
+					],
+					"address": "г. Витебск, ул. 5-я Кооперативная, 8",
+					"brands": []
+				},
+				{
+					"name": "ЗАО «Аптека групп Юг»",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 232 55 87 08",
+							"url": "tel:+375232558708"
+						}
+					],
+					"address": "Гомельская обл., г. Гомель, ул. Кирова, 59А",
+					"brands": []
+				},
+				{
+					"name": "ООО «Аптека групп Запад»",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 152 31 51 26",
+							"url": "tel:+375152315126"
+						}
+					],
+					"address": "Гродненская обл., г. Гродно, пр-т Янки Купалы, 87, офис 609",
+					"brands": []
+				},
+				{
+					"name": "ООО «Либерти-Фарм»",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 222 65 03 66",
+							"url": "tel:+375222650366"
+						}
+					],
+					"address": "г. Могилев, ул. Якубовского, 37А-88",
+					"brands": []
+				}
+			]
+		}
+	}
+}

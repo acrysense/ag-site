@@ -182,6 +182,73 @@
 		}
 	}
 
+	// Колонка + боковая на всю высоту (Figma: «Структура холдинга» — юрлицо 4821:776, бренды
+	// справа; сотрудник 4833:919, юрлицо слева). Разметка: первый блок основной колонки, боковая,
+	// остальные блоки основной. До 1024 — по порядку разметки (боковая между блоками), с 1024
+	// боковая 350 сбоку на всю высоту, основные — друг под другом через 10
+	// На мобильном блоки в одном белом блоке страницы — через 32, как .page-stack
+	.page-columns--aside-end,
+	.page-columns--aside-start {
+		gap: 32px;
+
+		@include up(desktop) {
+			grid-template-rows: auto minmax(0, 1fr);
+			gap: 10px;
+		}
+	}
+
+	.page-columns--aside-end {
+		@include up(desktop) {
+			grid-template-columns: minmax(0, 1fr) 350px;
+
+			> * {
+				grid-column: 1;
+			}
+
+			> .page-columns__aside {
+				grid-row: 1 / span 2;
+				grid-column: 2;
+			}
+		}
+	}
+
+	.page-columns--aside-start {
+		@include up(desktop) {
+			grid-template-columns: 350px minmax(0, 1fr);
+
+			> * {
+				grid-column: 2;
+			}
+
+			> .page-columns__aside {
+				grid-row: 1 / span 2;
+				grid-column: 1;
+			}
+		}
+	}
+
+	// Боковая из карточек (бренды юрлица, Figma 4821:1120): через 16; на планшете — по две в ряд
+	// одной высоты
+	.page-aside-cards {
+		display: grid;
+		gap: 16px;
+
+		@include only(tablet) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	// Разделы страницы друг под другом (шапка холдинга и юрлица): через 32, с 1024 — через 40
+	.page-sections {
+		display: grid;
+		gap: 32px;
+		min-width: 0;
+
+		@include up(desktop) {
+			gap: 40px;
+		}
+	}
+
 	// Блоки основной колонки друг под другом: на мобильном — в одном белом блоке через 32,
 	// на десктопе — карточки через 10. --article: колонка новости не шире 1080 (Figma 4652:11884)
 	.page-stack {

@@ -1,0 +1,18 @@
+{{!--
+	Юрлица холдинга (Figma: 4814:1146): заголовок H1 и подзаголовок, сетка карточек EntityCard —
+	с 1280 по 3 в ряд (на 1920 — по 520), с 768 по 2, на телефоне по одной.
+	props: title, subtitle, items [EntityCard]. Пусто — блока нет.
+--}}
+{{#if props.items.length}}
+    <section class="holding-entities" aria-labelledby="holding-entities-title">
+        <div class="holding-entities__head">
+            <h2 class="holding-entities__title" id="holding-entities-title">{{default props.title "Юридические лица холдинга"}}</h2>
+            {{#if props.subtitle}}<p class="holding-entities__subtitle">{{props.subtitle}}</p>{{/if}}
+        </div>
+        <ul class="holding-entities__grid" role="list">
+            {{#each props.items}}
+                <li class="holding-entities__item">{{> sections/holding/EntityCard/EntityCard props=this}}</li>
+            {{/each}}
+        </ul>
+    </section>
+{{/if}}

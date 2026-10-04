@@ -1,0 +1,111 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Brand (4821:1327) — белая карточка, поля 20, части через 20 и черты Form.Border между
+// ними: логотип в поле 120 и название L/500 Black.H через 10 по центру; строки (через 5) и
+// соцсети — кнопки 40 (BG.Main 2, скругление 10, иконка 16); описание M/400 Dark-grey.TXT и
+// «Перейти на сайт →» Main Blue. Рамка и тень — как у всех белых блоков.
+@layer components {
+	.brand-card {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		min-width: 0;
+		padding: 19px;
+		background: palette("white");
+		border: 1px solid palette("block-border");
+		border-radius: $radius-content-block;
+		box-shadow: $shadow-content-block;
+
+		// Черта между частями (не перед первой)
+		> * + * {
+			padding-top: 20px;
+			border-top: 1px solid palette("form-border");
+		}
+	}
+
+	.brand-card__head {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		align-items: center;
+		text-align: center;
+	}
+
+	.brand-card__logo {
+		width: 120px;
+		height: 120px;
+		object-fit: contain;
+	}
+
+	.brand-card__name {
+		@include text("l-500");
+
+		color: palette("black-h");
+		overflow-wrap: anywhere;
+	}
+
+	.brand-card__contacts,
+	.brand-card__about {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		min-width: 0;
+	}
+
+	// Карточки в ряд одной высоты (планшет): «Перейти на сайт» — у нижнего края
+	.brand-card__about {
+		flex: 1 1 auto;
+	}
+
+	.brand-card__social {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.brand-card__social-link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		color: palette("black-txt");
+		background: palette("bg-main-2");
+		border-radius: $radius-inner-block;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("main-blue");
+		}
+	}
+
+	.brand-card__social-icon {
+		width: 16px;
+		height: 16px;
+	}
+
+	.brand-card__text {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.brand-card__site {
+		@include text("m-400");
+
+		align-self: flex-start;
+		margin-top: auto;
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+}

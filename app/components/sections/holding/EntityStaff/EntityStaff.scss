@@ -1,0 +1,156 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: 4821:875 — белая карточка, поля 20: заголовок H2 Black.TXT, через 16 «8 отделов · 48
+// сотрудников» M/400 Dark-grey.TXT, через 16 отделы. Отдел (4821:879) — поля 20/0, черта Divider
+// soft снизу: название L/500 Black.H и стрелка 20 справа, через 10 фото 40 внахлёст на 10, через
+// 10 «Руководитель: … Сотрудников: …» S/400 (подпись Dark-grey.TXT, значение Black.TXT, через
+// 20); раскрыт — через 12 сотрудники. Свёрнут — через 10 между частями, раскрыт — так же (в
+// макете 12 — без сдвига строк при раскрытии). Телефон (наше): без карточки.
+@layer components {
+	.entity-staff {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		min-width: 0;
+
+		@include up(desktop) {
+			padding: 19px;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+	}
+
+	.entity-staff__head {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.entity-staff__title {
+		@include text("h2");
+
+		color: palette("black-txt");
+	}
+
+	.entity-staff__summary {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.entity-staff__list {
+		min-width: 0;
+
+		@include up(desktop) {
+			padding-right: 16px;
+		}
+	}
+
+	.entity-dept {
+		border-bottom: 1px solid palette("divider-soft");
+		// Раскрытие по высоте — где браузер умеет (::details-content), иначе сразу
+		interpolate-size: allow-keywords;
+	}
+
+	.entity-dept::details-content {
+		display: flow-root;
+		height: 0;
+		overflow: clip;
+		transition:
+			height $transition-default,
+			content-visibility $transition-default allow-discrete;
+	}
+
+	.entity-dept[open]::details-content {
+		height: auto;
+	}
+
+	.entity-dept__summary {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 20px;
+		gap: 10px 16px;
+		align-items: center;
+		padding: 20px 0;
+		cursor: pointer;
+		list-style: none;
+
+		&::-webkit-details-marker {
+			display: none;
+		}
+
+		> :not(.entity-dept__title, .entity-dept__arrow) {
+			grid-column: 1 / -1;
+		}
+
+		&:focus-visible {
+			outline: 1px solid palette("form-focus");
+			outline-offset: -1px;
+		}
+	}
+
+	.entity-dept__title {
+		@include text("l-500");
+
+		min-width: 0;
+		color: palette("black-h");
+		overflow-wrap: anywhere;
+		transition: color $transition-default;
+
+		.entity-dept__summary:hover &,
+		.entity-dept__summary:focus-visible & {
+			color: palette("blue-txt");
+		}
+	}
+
+	.entity-dept__arrow {
+		width: 20px;
+		height: 20px;
+		padding: 7px 5px;
+		color: palette("black-txt");
+		transition: transform $transition-default;
+
+		.entity-dept[open] & {
+			transform: rotate(180deg);
+		}
+	}
+
+	.entity-dept__avatars {
+		display: flex;
+	}
+
+	// Фото внахлёст на 10, обводка белым — как в макете
+	.entity-dept__avatar {
+		@include avatar(palette("icon-grey"));
+
+		width: 40px;
+		height: 40px;
+		box-shadow: 0 0 0 2px palette("white");
+
+		& + & {
+			margin-left: -10px;
+		}
+	}
+
+	.entity-dept__meta {
+		@include text("s-400");
+
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px 20px;
+		color: palette("black-txt");
+	}
+
+	.entity-dept__fact-label {
+		color: palette("dark-grey-txt");
+	}
+
+	// Сотрудники: строка без отступа слева на телефоне (поля 12 внутри строки)
+	.entity-dept__staff {
+		margin: -8px 0 0;
+		padding: 0 0 20px;
+		list-style: none;
+	}
+}

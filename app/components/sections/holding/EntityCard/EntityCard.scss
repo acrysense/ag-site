@@ -1,0 +1,37 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Card (4814:1466) — белая, поля 24, скругление 20, части через 16: название H3 Black.TXT,
+// строки «Телефон / Адрес», бренды, кнопка «Подробнее» (General M) прижата к низу. Рамка и тень —
+// как у всех белых блоков сайта (в макете их нет).
+@layer components {
+	.entity-card {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		height: 100%;
+		min-width: 0;
+		padding: 23px;
+		background: palette("white");
+		border: 1px solid palette("block-border");
+		border-radius: $radius-content-block;
+		box-shadow: $shadow-content-block;
+	}
+
+	.entity-card__title {
+		@include text("h3");
+
+		color: palette("black-txt");
+		overflow-wrap: anywhere;
+	}
+
+	.entity-card__more {
+		align-self: flex-start;
+		margin-top: auto;
+	}
+
+	// Бренды — от кнопки не ближе 32 (16 + 16), как в макете
+	.entity-card__brands {
+		margin-bottom: 16px;
+	}
+}

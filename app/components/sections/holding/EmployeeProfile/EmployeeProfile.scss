@@ -1,0 +1,171 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Figma: Employee card (4833:1187) — белая карточка, поля 20. Шапка (Employee.Header 4829:994):
+// фото 160 со скруглением 10, через 20 ФИО H2 Black.TXT, через 16 строки (через 6): иконка 16 и
+// текст M/400 Dark-grey.TXT через 10. Ниже, от колонки ФИО (отступ 188), разделы через 24 с чертой
+// Block.Border: заголовок H4, строки через 10 (Employee.InfoRow 4829:871): подпись 200 Dark-grey.
+// TXT и значение Black.TXT (ссылка — Main Blue) через 16. Рамка и тень — как у всех белых блоков.
+// Телефон (наше): без карточки, фото 96 (плавно до 160 к 768), разделы на всю ширину, подпись
+// над значением.
+@layer components {
+	.employee-profile {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		min-width: 0;
+
+		@include up(desktop) {
+			gap: 20px;
+			padding: 19px;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+	}
+
+	.employee-profile__header {
+		display: flex;
+		gap: 16px;
+		align-items: flex-start;
+
+		@include up(tablet) {
+			gap: 20px;
+		}
+	}
+
+	.employee-profile__photo {
+		@include avatar(palette("icon-grey"));
+
+		// 96 на 360 → 160 с 768, плавно; с 768 разделы — от колонки ФИО (160 + 20 + 8)
+		width: fluid(96, 160, 360, 768);
+		height: fluid(96, 160, 360, 768);
+		border-radius: $radius-inner-block;
+	}
+
+	.employee-profile__initials {
+		@include avatar-initials;
+	}
+
+	.employee-profile__info {
+		display: flex;
+		flex: 1 1 auto;
+		flex-direction: column;
+		gap: 16px;
+		min-width: 0;
+	}
+
+	.employee-profile__name {
+		@include text("h2");
+
+		color: palette("black-txt");
+		overflow-wrap: anywhere;
+	}
+
+	.employee-profile__meta {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.employee-profile__meta-row {
+		@include text("m-400");
+
+		display: flex;
+		gap: 10px;
+		align-items: flex-start;
+		color: palette("dark-grey-txt");
+		overflow-wrap: anywhere;
+	}
+
+	// Иконка по центру первой строки текста (22)
+	.employee-profile__meta-icon {
+		flex: none;
+		width: 16px;
+		height: 16px;
+		margin-top: 3px;
+	}
+
+	// Разделы — от колонки ФИО, черта сверху у каждого (у первого — под шапкой)
+	.employee-profile__section {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		padding-top: 24px;
+		border-top: 1px solid palette("block-border");
+
+		@include up(tablet) {
+			margin-left: 188px;
+		}
+	}
+
+	// Под шапкой черта через 20 и текст через 20 (как в макете); между разделами — по 24
+	.employee-profile__header + .employee-profile__section {
+		padding-top: 20px;
+	}
+
+	.employee-profile__section + .employee-profile__section {
+		@include up(desktop) {
+			margin-top: 4px;
+		}
+	}
+
+	.employee-profile__section-title {
+		@include text("h4");
+
+		color: palette("black-txt");
+	}
+
+	.employee-profile__rows {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		margin: 0;
+	}
+
+	.employee-profile__row {
+		@include text("m-400");
+
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+
+		@include up(tablet) {
+			flex-direction: row;
+			gap: 16px;
+		}
+	}
+
+	// Подпись 200 (макет 1920); в узкой колонке (1024–1279: рядом боковая) — плавно уже, до 120,
+	// чтобы значению хватало места. Процент от строки — без скачка на переключении ширин
+	.employee-profile__label {
+		flex: none;
+		color: palette("dark-grey-txt");
+
+		@include up(tablet) {
+			width: clamp(120px, 36%, 200px);
+		}
+	}
+
+	.employee-profile__value {
+		flex: 1 1 auto;
+		min-width: 0;
+		margin: 0;
+		color: palette("black-txt");
+		overflow-wrap: anywhere;
+	}
+
+	.employee-profile__link {
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+}
