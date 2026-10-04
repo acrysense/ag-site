@@ -13,8 +13,8 @@ career
 login
 recovery
 documents
-# gallery — фотогалерея, список альбомов, пока не показываем
-# gallery-album — фотогалерея, альбом и просмотр фото, пока не показываем
-# holding — структура холдинга (юрлица), пока не показываем
-# holding-entity — юрлицо холдинга, пока не показываем
-# holding-employee — сотрудник холдинга, пока не показываем
+gallery
+gallery-album
+holding
+holding-entity
+holding-employee
