@@ -5,9 +5,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 		<meta name="format-detection" content="telephone=no" />
 
-		<title>Достигаем новых вершин вместе — новости холдинга «Аптека групп»</title>
+		<title>Фотогалерея — корпоративный сайт холдинга «Аптека групп»</title>
 
-		<meta name="description" content="Корпоратив холдинга «Аптека групп»: куда отправиться и почему стоит пойти." />
+		<meta
+			name="description"
+			content="Корпоративная фотогалерея холдинга «Аптека групп»: альбомы праздников, корпоративов и встреч."
+		/>
 
 		<meta name="robots" content="noindex" />
 
@@ -16,27 +19,27 @@
 
 		<link rel="icon" href="/ag-site/favicon.svg" type="image/svg+xml" />
 
-		<link rel="canonical" href="https://acrysense.github.io/ag-site/news-article.html" />
+		<link rel="canonical" href="https://acrysense.github.io/ag-site/gallery.html" />
 
-		<meta property="og:type" content="article" />
-		<meta property="og:url" content="https://acrysense.github.io/ag-site/news-article.html" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://acrysense.github.io/ag-site/gallery.html" />
 		<meta property="og:locale" content="ru_RU" />
 		<meta property="og:site_name" content="Корпоративный сайт холдинга «Аптека групп»" />
-		<meta property="og:title" content="Достигаем новых вершин вместе — новости холдинга «Аптека групп»" />
+		<meta property="og:title" content="Фотогалерея — корпоративный сайт холдинга «Аптека групп»" />
 		<meta
 			property="og:description"
-			content="Корпоратив холдинга «Аптека групп»: куда отправиться и почему стоит пойти."
+			content="Корпоративная фотогалерея холдинга «Аптека групп»: альбомы праздников, корпоративов и встреч."
 		/>
 		<meta property="og:image" content="https://acrysense.github.io/ag-site/og-default.jpg" />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content="Достигаем новых вершин вместе — новости холдинга «Аптека групп»" />
+		<meta property="og:image:alt" content="Фотогалерея — корпоративный сайт холдинга «Аптека групп»" />
 
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="Достигаем новых вершин вместе — новости холдинга «Аптека групп»" />
+		<meta name="twitter:title" content="Фотогалерея — корпоративный сайт холдинга «Аптека групп»" />
 		<meta
 			name="twitter:description"
-			content="Корпоратив холдинга «Аптека групп»: куда отправиться и почему стоит пойти."
+			content="Корпоративная фотогалерея холдинга «Аптека групп»: альбомы праздников, корпоративов и встреч."
 		/>
 		<meta name="twitter:image" content="https://acrysense.github.io/ag-site/og-default.jpg" />
 
@@ -755,8 +758,23 @@
 						<li class="menu__item">
 							<a class="menu__link" href="/ag-site/">Главная</a>
 						</li>
-						<li class="menu__item">
-							<a class="menu__link" href="#">О холдинге</a>
+						<li class="menu__item" data-submenu>
+							<button
+								class="menu__toggle menu__toggle--label"
+								type="button"
+								aria-expanded="false"
+								aria-controls="header-submenu-1"
+								data-submenu-toggle
+							>
+								<span class="menu__link">О холдинге</span>
+								<svg class="icon menu__arrow" aria-hidden="true" focusable="false">
+									<use href="/ag-site/assets/icons/sprite.svg#icon-arrow-down-small"></use>
+								</svg>
+							</button>
+							<ul class="menu__submenu" id="header-submenu-1" role="list" hidden>
+								<li><a class="menu__sublink" href="#">Структура</a></li>
+								<li><a class="menu__sublink" href="#">Справочник</a></li>
+							</ul>
 						</li>
 						<li class="menu__item" data-submenu>
 							<a class="menu__link" href="#">Новости</a>
@@ -777,14 +795,46 @@
 								<li><a class="menu__sublink" href="#">HR-дайджест</a></li>
 							</ul>
 						</li>
-						<li class="menu__item">
-							<a class="menu__link" href="#">Карьера</a>
+						<li class="menu__item" data-submenu>
+							<a class="menu__link" href="./career.html">Карьера</a>
+							<button
+								class="menu__toggle"
+								type="button"
+								aria-expanded="false"
+								aria-controls="header-submenu-3"
+								data-submenu-toggle
+							>
+								<span class="visually-hidden">Подменю «Карьера»</span>
+								<svg class="icon menu__arrow" aria-hidden="true" focusable="false">
+									<use href="/ag-site/assets/icons/sprite.svg#icon-arrow-down-small"></use>
+								</svg>
+							</button>
+							<ul class="menu__submenu" id="header-submenu-3" role="list" hidden>
+								<li><a class="menu__sublink" href="#">Вакансии</a></li>
+								<li><a class="menu__sublink" href="#">Карьерный шанс</a></li>
+							</ul>
 						</li>
-						<li class="menu__item">
+						<li class="menu__item" data-submenu>
 							<a class="menu__link" href="#">База знаний</a>
+							<button
+								class="menu__toggle"
+								type="button"
+								aria-expanded="false"
+								aria-controls="header-submenu-4"
+								data-submenu-toggle
+							>
+								<span class="visually-hidden">Подменю «База знаний»</span>
+								<svg class="icon menu__arrow" aria-hidden="true" focusable="false">
+									<use href="/ag-site/assets/icons/sprite.svg#icon-arrow-down-small"></use>
+								</svg>
+							</button>
+							<ul class="menu__submenu" id="header-submenu-4" role="list" hidden>
+								<li><a class="menu__sublink" href="#">Учебный портал</a></li>
+								<li><a class="menu__sublink" href="#">Нормативные документы</a></li>
+							</ul>
 						</li>
 						<li class="menu__item">
-							<a class="menu__link" href="#">Галерея</a>
+							<a class="menu__link" href="./gallery.html" aria-current="page">Галерея</a>
 						</li>
 					</ul>
 				</nav>
@@ -794,24 +844,56 @@
 					<nav class="breadcrumbs" aria-label="Хлебные крошки">
 						<ol class="breadcrumbs__list">
 							<li class="breadcrumbs__item"><a class="breadcrumbs__link" href="./index.html">Главная</a></li>
-							<li class="breadcrumbs__item"><a class="breadcrumbs__link" href="./news.html">Новости холдинга</a></li>
-							<li class="breadcrumbs__item"><a class="breadcrumbs__link" href="./news.html">Мотивационные проекты</a></li>
+							<li class="breadcrumbs__item"><span class="breadcrumbs__current" aria-current="page">Фотогалерея</span></li>
 						</ol>
 					</nav>
 					<div class="page-columns page-columns--start">
-						<aside class="page-columns__aside page-columns__aside--desktop">
-							<nav class="news-filters" aria-label="Фильтры новостей" data-module="NewsFilters" data-path="sections/news">
-								<h2 class="news-filters__title">Категории</h2>
-								<ul class="news-filters__list news-filters__list--categories" role="list">
-									<li><a class="news-filters__link" href="./news.html">Все новости</a></li>
-									<li><a class="news-filters__link" href="#">Новости холдинга</a></li>
-									<li><a class="news-filters__link" href="#">СТМ</a></li>
-									<li><a class="news-filters__link" href="#">Товары</a></li>
-									<li><a class="news-filters__link" href="#" aria-current="page">Мотивационные проекты</a></li>
-									<li><a class="news-filters__link" href="#">Акции</a></li>
-									<li><a class="news-filters__link" href="#">Учебный центр</a></li>
-									<li><a class="news-filters__link" href="#">Интервью</a></li>
-									<li><a class="news-filters__link" href="#">Разное</a></li>
+						<aside class="page-columns__aside">
+							<nav class="gallery-years" aria-label="Альбомы по годам">
+								<h2 class="gallery-years__title">Фотогалерея</h2>
+								<ul class="gallery-years__list" role="list">
+									<li>
+										<a class="gallery-years__link" href="./gallery.html" aria-current="page">
+											<span class="gallery-years__text">Все альбомы</span>
+											<span class="gallery-years__count"><span class="visually-hidden">, альбомов: </span>24</span>
+										</a>
+									</li>
+									<li>
+										<a class="gallery-years__link" href="#">
+											<span class="gallery-years__text">2026</span>
+											<span class="gallery-years__count"><span class="visually-hidden">, альбомов: </span>4</span>
+										</a>
+									</li>
+									<li>
+										<a class="gallery-years__link" href="#">
+											<span class="gallery-years__text">2025</span>
+											<span class="gallery-years__count"><span class="visually-hidden">, альбомов: </span>3</span>
+										</a>
+									</li>
+									<li>
+										<a class="gallery-years__link" href="#">
+											<span class="gallery-years__text">2024</span>
+											<span class="gallery-years__count"><span class="visually-hidden">, альбомов: </span>5</span>
+										</a>
+									</li>
+									<li>
+										<a class="gallery-years__link" href="#">
+											<span class="gallery-years__text">2023</span>
+											<span class="gallery-years__count"><span class="visually-hidden">, альбомов: </span>4</span>
+										</a>
+									</li>
+									<li>
+										<a class="gallery-years__link" href="#">
+											<span class="gallery-years__text">2022</span>
+											<span class="gallery-years__count"><span class="visually-hidden">, альбомов: </span>3</span>
+										</a>
+									</li>
+									<li>
+										<a class="gallery-years__link" href="#">
+											<span class="gallery-years__text">2021</span>
+											<span class="gallery-years__count"><span class="visually-hidden">, альбомов: </span>5</span>
+										</a>
+									</li>
 								</ul>
 							</nav>
 							<div class="side-banner">
@@ -828,303 +910,302 @@
 								</a>
 							</div>
 						</aside>
-						<div class="page-stack page-stack--article">
-							<article class="news-article" aria-labelledby="news-article-title">
-								<h1 class="news-article__title" id="news-article-title">Достигаем новых вершин вместе</h1>
-								<figure class="news-article__cover">
-									<img
-										class="news-article__image"
-										src="/ag-site/assets/images/article-cover-0273msKl.webp"
-										width="1040"
-										height="341"
-										alt="Сотрудники на вершине горы"
-										decoding="async"
-									/>
-									<figcaption class="news-article__caption">Шатер со всеми сотрудниками и главная сцена.</figcaption>
-								</figure>
-								<div class="content news-article__content" data-module="Content" data-path="components">
-									<p>
-										Вас позвали на новогодний корпоратив, <a href="#">корпаратив или карпаратив</a>? Куда отправиться, чтобы не
-										выглядеть невеждой? Верный ответ подскажут правило и советы опытных преподавателей. Вас позвали на новогодний
-										корпоратив, корпаратив или карпаратив? Куда отправиться, чтобы не выглядеть невеждой? Верный ответ подскажут
-										правило и советы опытных преподавателей.
-									</p>
-									<blockquote>
-										<p>
-											Вас позвали на новогодний корпоратив, <a href="#">корпаратив или карпаратив</a>? Куда отправиться, чтобы не
-											выглядеть невеждой? Верный ответ подскажут правило и советы опытных преподавателей. Вас позвали на новогодний
-											корпоратив, корпаратив или карпаратив? Куда отправиться, чтобы не выглядеть невеждой? Верный ответ подскажут
-											правило и советы опытных преподавателей.
-										</p>
-									</blockquote>
-									<h2>Куда отправиться?</h2>
-									<ul>
-										<li>Вас позвали на новогодний корпоратив</li>
-										<li>Позвали на новогодний корпоратив</li>
-										<li>Корпоратив новогодний</li>
-										<li>Позвали на корпоратив</li>
-									</ul>
-									<details open>
-										<summary>Раскрывающийся список</summary>
-										<p>
-											Куда отправиться, чтобы не выглядеть невеждой? Верный ответ подскажут правило и советы опытных
-											преподавателей. Вас позвали на новогодний корпоратив, корпаратив или карпаратив? Куда отправиться, чтобы не
-											выглядеть невеждой? Верный ответ подскажут правило и советы опытных преподавателей. Вас позвали на новогодний
-											корпоратив, корпаратив или карпаратив?
-										</p>
-										<p>
-											Куда отправиться, чтобы не выглядеть невеждой? Верный ответ подскажут правило и советы опытных
-											преподавателей.
-										</p>
-										<ul>
-											<li>Вас позвали на новогодний корпоратив</li>
-											<li>Позвали на новогодний корпоратив</li>
-											<li>Корпоратив новогодний</li>
-											<li>Позвали на корпоратив</li>
+						<section class="album-list page-columns__main" aria-labelledby="album-list-title">
+							<div class="album-list__head">
+								<h1 class="album-list__title" id="album-list-title">Корпоративная фотогалерея</h1>
+								<div class="sort-menu" data-module="SortMenu" data-path="components">
+									<button
+										class="sort-menu__toggle"
+										type="button"
+										aria-expanded="false"
+										aria-haspopup="true"
+										aria-controls="gallery-sort"
+									>
+										<span class="visually-hidden">Сортировка: </span>
+										Новые в начале
+										<svg class="icon sort-menu__arrow" aria-hidden="true" focusable="false">
+											<use href="/ag-site/assets/icons/sprite.svg#icon-chevron-down"></use>
+										</svg>
+									</button>
+									<div class="sort-menu__backdrop" data-sort-menu-close hidden></div>
+									<div class="sort-menu__popup" id="gallery-sort" hidden>
+										<div class="sort-menu__head">
+											<p class="sort-menu__title">Сортировка</p>
+											<button class="sort-menu__close" type="button" aria-label="Закрыть" data-sort-menu-close>
+												<svg class="icon sort-menu__close-icon" aria-hidden="true" focusable="false">
+													<use href="/ag-site/assets/icons/sprite.svg#icon-close"></use>
+												</svg>
+											</button>
+										</div>
+										<ul class="sort-menu__list" role="list">
+											<li>
+												<a class="sort-menu__option" href="#" aria-current="true"
+													>Новые в начале<svg class="icon sort-menu__check" aria-hidden="true" focusable="false">
+														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
+													</svg>
+												</a>
+											</li>
+											<li><a class="sort-menu__option" href="#">Старые в начале</a></li>
 										</ul>
-									</details>
-									<details>
-										<summary>Раскрывающийся список</summary>
-										<p>
-											Куда отправиться, чтобы не выглядеть невеждой? Верный ответ подскажут правило и советы опытных
-											преподавателей.
-										</p>
-									</details>
-									<details>
-										<summary>Второй раскрывающийся список. Закрытое положение</summary>
-										<p>
-											Куда отправиться, чтобы не выглядеть невеждой? Верный ответ подскажут правило и советы опытных
-											преподавателей.
-										</p>
-									</details>
-									<h3>Таблица с шапкой</h3>
-									<table>
-										<thead>
-											<tr>
-												<th>Дата</th>
-												<th>ФИО</th>
-												<th>Должность</th>
-												<th>Департамент</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>01.12</td>
-												<td>Порохня Сергей Иванович</td>
-												<td>Главный инженер</td>
-												<td>Администрация</td>
-											</tr>
-											<tr>
-												<td>01.12</td>
-												<td>Порохня Сергей Иванович</td>
-												<td>Руководитель проектного офиса</td>
-												<td>Аналитический центр</td>
-											</tr>
-											<tr>
-												<td>01.12</td>
-												<td>Порохня Сергей Иванович</td>
-												<td>Заместитель главного бухгалтера</td>
-												<td>Отдел учёта</td>
-											</tr>
-											<tr>
-												<td>01.12</td>
-												<td>Порохня Сергей Иванович</td>
-												<td>Главный инженер</td>
-												<td>Аналитический центр</td>
-											</tr>
-										</tbody>
-									</table>
-									<h3>Таблица без шапки</h3>
-									<table>
-										<tbody>
-											<tr>
-												<td>Дата</td>
-												<td>ФИО</td>
-												<td>Должность</td>
-												<td>Департамент</td>
-											</tr>
-											<tr>
-												<td>01.12</td>
-												<td>Порохня Сергей Иванович</td>
-												<td>Главный инженер</td>
-												<td>Администрация</td>
-											</tr>
-											<tr>
-												<td>01.12</td>
-												<td>Порохня Сергей Иванович</td>
-												<td>Руководитель проектного офиса</td>
-												<td>Аналитический центр</td>
-											</tr>
-											<tr>
-												<td>01.12</td>
-												<td>Порохня Сергей Иванович</td>
-												<td>Заместитель главного бухгалтера</td>
-												<td>Отдел учёта</td>
-											</tr>
-											<tr>
-												<td>01.12</td>
-												<td>Порохня Сергей Иванович</td>
-												<td>Главный инженер</td>
-												<td>Аналитический центр</td>
-											</tr>
-										</tbody>
-									</table>
-									<h3>Почему стоит пойти на корпоратив</h3>
-									<ol>
-										<li>Вас позвали на новогодний корпоратив</li>
-										<li>Позвали на новогодний корпоратив</li>
-										<li>Корпоратив новогодний</li>
-										<li>Позвали на корпоратив</li>
-									</ol>
-								</div>
-								<section
-									class="gallery carousel"
-									aria-roledescription="карусель"
-									aria-label="Фотографии с корпоратива"
-									data-module="Carousel"
-									data-path="components"
-									data-carousel-loop
-								>
-									<div class="carousel__track gallery__track" data-carousel-track>
-										<figure class="carousel__slide gallery__slide" role="group" aria-roledescription="слайд" aria-label="1 из 3">
-											<img
-												class="gallery__image"
-												src="/ag-site/assets/images/article-gallery-1-CB7HfhDc.webp"
-												width="1040"
-												height="500"
-												alt="Лагерь у подножия горы"
-												loading="lazy"
-												decoding="async"
-											/>
-										</figure>
-										<figure class="carousel__slide gallery__slide" role="group" aria-roledescription="слайд" aria-label="2 из 3">
-											<img
-												class="gallery__image"
-												src="/ag-site/assets/images/news-4-BnJHpCi9.webp"
-												width="1040"
-												height="500"
-												alt="Победители на сцене"
-												loading="lazy"
-												decoding="async"
-											/>
-										</figure>
-										<figure class="carousel__slide gallery__slide" role="group" aria-roledescription="слайд" aria-label="3 из 3">
-											<img
-												class="gallery__image"
-												src="/ag-site/assets/images/post-1-BNJpsCCI.webp"
-												width="1040"
-												height="500"
-												alt="Общее фото участников"
-												loading="lazy"
-												decoding="async"
-											/>
-										</figure>
 									</div>
-									<button
-										class="gallery__arrow gallery__arrow--prev"
-										type="button"
-										aria-label="Предыдущее фото"
-										data-carousel-prev
-									>
-										<svg class="icon gallery__arrow-icon" aria-hidden="true" focusable="false">
-											<use href="/ag-site/assets/icons/sprite.svg#icon-angle-right"></use>
-										</svg>
-									</button>
-									<button
-										class="gallery__arrow gallery__arrow--next"
-										type="button"
-										aria-label="Следующее фото"
-										data-carousel-next
-									>
-										<svg class="icon gallery__arrow-icon" aria-hidden="true" focusable="false">
-											<use href="/ag-site/assets/icons/sprite.svg#icon-angle-right"></use>
-										</svg>
-									</button>
-									<div class="carousel__dots gallery__dots" data-carousel-dots></div>
-								</section>
-								<footer class="news-article__footer">
-									<div class="news-article__actions">
-										<button
-											class="btn btn--light btn--s news-article__share"
-											type="button"
-											aria-label="Скопировать ссылку на новость"
-											data-copy-link="https://my.apteka-group.by/news/dostigaem-novyh-vershin-vmeste/"
-											data-module="CopyLink"
-											data-path="components"
-										>
-											<svg class="icon btn__icon news-article__share-icon" aria-hidden="true" focusable="false">
-												<use href="/ag-site/assets/icons/sprite.svg#icon-link"></use>
-											</svg>
-											<svg
-												class="icon btn__icon news-article__share-icon news-article__share-icon--copied"
-												aria-hidden="true"
-												focusable="false"
+								</div>
+							</div>
+							<a class="album-featured" href="./gallery-album.html">
+								<img
+									class="album-featured__image"
+									src="/ag-site/assets/images/album-1-0XnDivtt.webp"
+									width="1200"
+									height="480"
+									alt=""
+									decoding="async"
+								/>
+								<span class="album-featured__body">
+									<span class="album-featured__badge">Новый альбом</span>
+									<span class="album-featured__title">Корпоратив-2026: «Искусство быть вместе»</span>
+									<span class="album-featured__meta"><time datetime="2026-06-14">14 июня 2026</time> · 148 фото</span>
+									<span class="btn btn--general btn--m album-featured__button">Смотреть альбом</span>
+								</span>
+							</a>
+							<ul class="album-list__grid" role="list">
+								<li>
+									<a class="album-card" href="./gallery-album.html">
+										<span class="album-card__cover">
+											<img
+												class="album-card__image"
+												src="/ag-site/assets/images/album-3-zKTPDFV_.webp"
+												width="390"
+												height="260"
+												alt=""
+												loading="lazy"
+												decoding="async"
+											/>
+											<span class="album-card__count">
+												<svg class="icon album-card__count-icon" aria-hidden="true" focusable="false">
+													<use href="/ag-site/assets/icons/sprite.svg#icon-gallery"></use>
+												</svg>
+												64<span class="visually-hidden"> фото</span>
+											</span>
+										</span>
+										<span class="album-card__title">Фотоконкурс «Вместе теплее»</span>
+										<time class="album-card__date" datetime="2026-05-20">20 мая 2026</time>
+									</a>
+								</li>
+								<li>
+									<a class="album-card" href="./gallery-album.html">
+										<span class="album-card__cover">
+											<img
+												class="album-card__image"
+												src="/ag-site/assets/images/album-1-0XnDivtt.webp"
+												width="390"
+												height="260"
+												alt=""
+												loading="lazy"
+												decoding="async"
+											/>
+											<span class="album-card__count">
+												<svg class="icon album-card__count-icon" aria-hidden="true" focusable="false">
+													<use href="/ag-site/assets/icons/sprite.svg#icon-gallery"></use>
+												</svg>
+												57<span class="visually-hidden"> фото</span>
+											</span>
+										</span>
+										<span class="album-card__title">Ярмарка «Вкусная суббота»</span>
+										<time class="album-card__date" datetime="2026-04-18">18 апреля 2026</time>
+									</a>
+								</li>
+								<li>
+									<a class="album-card" href="./gallery-album.html">
+										<span class="album-card__cover">
+											<img
+												class="album-card__image"
+												src="/ag-site/assets/images/album-6-B75EzCmY.webp"
+												width="390"
+												height="260"
+												alt=""
+												loading="lazy"
+												decoding="async"
+											/>
+											<span class="album-card__count">
+												<svg class="icon album-card__count-icon" aria-hidden="true" focusable="false">
+													<use href="/ag-site/assets/icons/sprite.svg#icon-gallery"></use>
+												</svg>
+												210<span class="visually-hidden"> фото</span>
+											</span>
+										</span>
+										<span class="album-card__title">Семейный день «Добрыя лекі»</span>
+										<time class="album-card__date" datetime="2026-03-01">1 марта 2026</time>
+									</a>
+								</li>
+								<li>
+									<a class="album-card" href="./gallery-album.html">
+										<span class="album-card__cover">
+											<img
+												class="album-card__image"
+												src="/ag-site/assets/images/album-6-B75EzCmY.webp"
+												width="390"
+												height="260"
+												alt=""
+												loading="lazy"
+												decoding="async"
+											/>
+											<span class="album-card__count">
+												<svg class="icon album-card__count-icon" aria-hidden="true" focusable="false">
+													<use href="/ag-site/assets/icons/sprite.svg#icon-gallery"></use>
+												</svg>
+												134<span class="visually-hidden"> фото</span>
+											</span>
+										</span>
+										<span class="album-card__title">«уДачный weekend» — 30 лет холдингу</span>
+										<time class="album-card__date" datetime="2024-07-06">6 июля 2024</time>
+									</a>
+								</li>
+								<li>
+									<a class="album-card" href="./gallery-album.html">
+										<span class="album-card__cover">
+											<img
+												class="album-card__image"
+												src="/ag-site/assets/images/album-2-BEsEqyaW.webp"
+												width="390"
+												height="260"
+												alt=""
+												loading="lazy"
+												decoding="async"
+											/>
+											<span class="album-card__count">
+												<svg class="icon album-card__count-icon" aria-hidden="true" focusable="false">
+													<use href="/ag-site/assets/icons/sprite.svg#icon-gallery"></use>
+												</svg>
+												212<span class="visually-hidden"> фото</span>
+											</span>
+										</span>
+										<span class="album-card__title">30-летие холдинга «Аптека групп»</span>
+										<time class="album-card__date" datetime="2024-06-14">14 июня 2024</time>
+									</a>
+								</li>
+								<li>
+									<a class="album-card" href="./gallery-album.html">
+										<span class="album-card__cover">
+											<img
+												class="album-card__image"
+												src="/ag-site/assets/images/album-5-gZS6HRtD.webp"
+												width="390"
+												height="260"
+												alt=""
+												loading="lazy"
+												decoding="async"
+											/>
+											<span class="album-card__count">
+												<svg class="icon album-card__count-icon" aria-hidden="true" focusable="false">
+													<use href="/ag-site/assets/icons/sprite.svg#icon-gallery"></use>
+												</svg>
+												186<span class="visually-hidden"> фото</span>
+											</span>
+										</span>
+										<span class="album-card__title">Корпоратив ЛЕТО-2023 «Морское приключение»</span>
+										<time class="album-card__date" datetime="2023-07-22">22 июля 2023</time>
+									</a>
+								</li>
+								<li>
+									<a class="album-card" href="./gallery-album.html">
+										<span class="album-card__cover">
+											<img
+												class="album-card__image"
+												src="/ag-site/assets/images/album-4-BwujsmFy.webp"
+												width="390"
+												height="260"
+												alt=""
+												loading="lazy"
+												decoding="async"
+											/>
+											<span class="album-card__count">
+												<svg class="icon album-card__count-icon" aria-hidden="true" focusable="false">
+													<use href="/ag-site/assets/icons/sprite.svg#icon-gallery"></use>
+												</svg>
+												96<span class="visually-hidden"> фото</span>
+											</span>
+										</span>
+										<span class="album-card__title">BIG PICNIC: День медицинского работника</span>
+										<time class="album-card__date" datetime="2023-06-18">18 июня 2023</time>
+									</a>
+								</li>
+								<li>
+									<a class="album-card" href="./gallery-album.html">
+										<span class="album-card__cover">
+											<img
+												class="album-card__image"
+												src="/ag-site/assets/images/album-7-2hk1otsX.webp"
+												width="390"
+												height="260"
+												alt=""
+												loading="lazy"
+												decoding="async"
+											/>
+											<span class="album-card__count">
+												<svg class="icon album-card__count-icon" aria-hidden="true" focusable="false">
+													<use href="/ag-site/assets/icons/sprite.svg#icon-gallery"></use>
+												</svg>
+												42<span class="visually-hidden"> фото</span>
+											</span>
+										</span>
+										<span class="album-card__title">Выездной семинар руководителей аптек</span>
+										<time class="album-card__date" datetime="2023-04-14">14 апреля 2023</time>
+									</a>
+								</li>
+								<li>
+									<a class="album-card" href="./gallery-album.html">
+										<span class="album-card__cover">
+											<img
+												class="album-card__image"
+												src="/ag-site/assets/images/album-6-B75EzCmY.webp"
+												width="390"
+												height="260"
+												alt=""
+												loading="lazy"
+												decoding="async"
+											/>
+											<span class="album-card__count">
+												<svg class="icon album-card__count-icon" aria-hidden="true" focusable="false">
+													<use href="/ag-site/assets/icons/sprite.svg#icon-gallery"></use>
+												</svg>
+												77<span class="visually-hidden"> фото</span>
+											</span>
+										</span>
+										<span class="album-card__title">Квест «Добрыя лекі» для новых сотрудников</span>
+										<time class="album-card__date" datetime="2023-03-03">3 марта 2023</time>
+									</a>
+								</li>
+							</ul>
+							<div class="pagination">
+								<nav class="pagination__nav" aria-label="Страницы альбомов">
+									<ul class="pagination__list" role="list">
+										<li><a class="pagination__step" href="#" rel="prev">Назад</a></li>
+										<li class="pagination__item">
+											<a class="pagination__page" href="#"><span class="visually-hidden">Страница </span>1</a>
+										</li>
+										<li class="pagination__item">
+											<span class="pagination__page is-current" aria-current="page"
+												><span class="visually-hidden">Страница </span>2</span
 											>
-												<use href="/ag-site/assets/icons/sprite.svg#icon-tick"></use>
-											</svg>
-										</button>
-										<a class="btn btn--light btn--s" href="#comments"
-											><svg class="icon btn__icon" aria-hidden="true" focusable="false">
-												<use href="/ag-site/assets/icons/sprite.svg#icon-comment"></use>
-											</svg>
-											<span class="visually-hidden">Комментарии: </span><span class="btn__text">28</span></a
-										>
-										<button
-											class="btn btn--light btn--s like-button"
-											type="button"
-											aria-pressed="false"
-											data-module="LikeButton"
-											data-path="components"
-										>
-											<svg class="icon btn__icon like-button__icon like-button__icon--off" aria-hidden="true" focusable="false">
-												<use href="/ag-site/assets/icons/sprite.svg#icon-like"></use>
-											</svg>
-											<svg class="icon btn__icon like-button__icon like-button__icon--on" aria-hidden="true" focusable="false">
-												<use href="/ag-site/assets/icons/sprite.svg#icon-like-filled"></use>
-											</svg>
-											<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>24</span>
-										</button>
-									</div>
-									<time class="news-article__date" datetime="2025-03-12">12.03.2025</time>
-								</footer>
-							</article>
-							<section
-								class="comments"
-								id="comments"
-								aria-labelledby="comments-title"
-								data-module="Comments"
-								data-path="sections/shared"
-								data-comments-url="/__mock/comments"
-								data-entity="news"
-								data-entity-id="demo"
-								data-limit="8"
-							>
-								<h2 class="comments__title" id="comments-title">
-									Комментарии
-									<span class="comments__count" data-comments-count>28</span>
-								</h2>
-								<div class="comments__composer" data-comments-composer></div>
-								<div class="comments__list" data-comments-list>
-									<div class="comments__skeleton" aria-hidden="true">
-										<span class="skeleton-lines comments__skeleton-item" aria-hidden="true">
-											<span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span
-											><span class="skeleton skeleton--text"></span>
-										</span>
-										<span class="skeleton-lines comments__skeleton-item" aria-hidden="true">
-											<span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span
-											><span class="skeleton skeleton--text"></span>
-										</span>
-										<span class="skeleton-lines comments__skeleton-item" aria-hidden="true">
-											<span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span
-											><span class="skeleton skeleton--text"></span>
-										</span>
-									</div>
-								</div>
-								<p class="comments__status" data-comments-status hidden></p>
-								<button class="btn comments__more" type="button" data-comments-more hidden>Показать ещё комментарии</button>
-								<noscript><p class="comments__status">Чтобы читать и писать комментарии, включите JavaScript.</p></noscript>
-							</section>
-						</div>
+										</li>
+										<li class="pagination__item">
+											<a class="pagination__page" href="#"><span class="visually-hidden">Страница </span>3</a>
+										</li>
+										<li class="pagination__item pagination__item--far">
+											<a class="pagination__page" href="#"><span class="visually-hidden">Страница </span>4</a>
+										</li>
+										<li class="pagination__item">
+											<span class="pagination__gap" aria-hidden="true">…</span>
+										</li>
+										<li class="pagination__item">
+											<a class="pagination__page" href="#"><span class="visually-hidden">Страница </span>8</a>
+										</li>
+										<li><a class="pagination__step" href="#" rel="next">Вперёд</a></li>
+									</ul>
+								</nav>
+								<p class="pagination__current" aria-hidden="true">Страница: <span class="pagination__count">2</span></p>
+								<p class="pagination__total">Всего: <span class="pagination__count">24 альбома</span></p>
+							</div>
+						</section>
 					</div>
 				</div>
 			</main>

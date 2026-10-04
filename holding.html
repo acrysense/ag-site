@@ -5,9 +5,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 		<meta name="format-detection" content="telephone=no" />
 
-		<title>Достигаем новых вершин вместе — новости холдинга «Аптека групп»</title>
+		<title>Структура холдинга — корпоративный сайт холдинга «Аптека групп»</title>
 
-		<meta name="description" content="Корпоратив холдинга «Аптека групп»: куда отправиться и почему стоит пойти." />
+		<meta
+			name="description"
+			content="Структура холдинга «Аптека групп»: юридические лица, бренды, отделы и сотрудники."
+		/>
 
 		<meta name="robots" content="noindex" />
 
@@ -16,27 +19,27 @@
 
 		<link rel="icon" href="/ag-site/favicon.svg" type="image/svg+xml" />
 
-		<link rel="canonical" href="https://acrysense.github.io/ag-site/news-article.html" />
+		<link rel="canonical" href="https://acrysense.github.io/ag-site/holding.html" />
 
-		<meta property="og:type" content="article" />
-		<meta property="og:url" content="https://acrysense.github.io/ag-site/news-article.html" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://acrysense.github.io/ag-site/holding.html" />
 		<meta property="og:locale" content="ru_RU" />
 		<meta property="og:site_name" content="Корпоративный сайт холдинга «Аптека групп»" />
-		<meta property="og:title" content="Достигаем новых вершин вместе — новости холдинга «Аптека групп»" />
+		<meta property="og:title" content="Структура холдинга — корпоративный сайт холдинга «Аптека групп»" />
 		<meta
 			property="og:description"
-			content="Корпоратив холдинга «Аптека групп»: куда отправиться и почему стоит пойти."
+			content="Структура холдинга «Аптека групп»: юридические лица, бренды, отделы и сотрудники."
 		/>
 		<meta property="og:image" content="https://acrysense.github.io/ag-site/og-default.jpg" />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content="Достигаем новых вершин вместе — новости холдинга «Аптека групп»" />
+		<meta property="og:image:alt" content="Структура холдинга — корпоративный сайт холдинга «Аптека групп»" />
 
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="Достигаем новых вершин вместе — новости холдинга «Аптека групп»" />
+		<meta name="twitter:title" content="Структура холдинга — корпоративный сайт холдинга «Аптека групп»" />
 		<meta
 			name="twitter:description"
-			content="Корпоратив холдинга «Аптека групп»: куда отправиться и почему стоит пойти."
+			content="Структура холдинга «Аптека групп»: юридические лица, бренды, отделы и сотрудники."
 		/>
 		<meta name="twitter:image" content="https://acrysense.github.io/ag-site/og-default.jpg" />
 
@@ -753,10 +756,25 @@
 				<nav class="header__nav" aria-label="Основное меню">
 					<ul class="menu" role="list">
 						<li class="menu__item">
-							<a class="menu__link" href="/ag-site/">Главная</a>
+							<a class="menu__link" href="/ag-site/" aria-current="page">Главная</a>
 						</li>
-						<li class="menu__item">
-							<a class="menu__link" href="#">О холдинге</a>
+						<li class="menu__item" data-submenu>
+							<button
+								class="menu__toggle menu__toggle--label"
+								type="button"
+								aria-expanded="false"
+								aria-controls="header-submenu-1"
+								data-submenu-toggle
+							>
+								<span class="menu__link">О холдинге</span>
+								<svg class="icon menu__arrow" aria-hidden="true" focusable="false">
+									<use href="/ag-site/assets/icons/sprite.svg#icon-arrow-down-small"></use>
+								</svg>
+							</button>
+							<ul class="menu__submenu" id="header-submenu-1" role="list" hidden>
+								<li><a class="menu__sublink" href="#">Структура</a></li>
+								<li><a class="menu__sublink" href="#">Справочник</a></li>
+							</ul>
 						</li>
 						<li class="menu__item" data-submenu>
 							<a class="menu__link" href="#">Новости</a>
@@ -777,11 +795,43 @@
 								<li><a class="menu__sublink" href="#">HR-дайджест</a></li>
 							</ul>
 						</li>
-						<li class="menu__item">
+						<li class="menu__item" data-submenu>
 							<a class="menu__link" href="#">Карьера</a>
+							<button
+								class="menu__toggle"
+								type="button"
+								aria-expanded="false"
+								aria-controls="header-submenu-3"
+								data-submenu-toggle
+							>
+								<span class="visually-hidden">Подменю «Карьера»</span>
+								<svg class="icon menu__arrow" aria-hidden="true" focusable="false">
+									<use href="/ag-site/assets/icons/sprite.svg#icon-arrow-down-small"></use>
+								</svg>
+							</button>
+							<ul class="menu__submenu" id="header-submenu-3" role="list" hidden>
+								<li><a class="menu__sublink" href="#">Вакансии</a></li>
+								<li><a class="menu__sublink" href="#">Карьерный шанс</a></li>
+							</ul>
 						</li>
-						<li class="menu__item">
+						<li class="menu__item" data-submenu>
 							<a class="menu__link" href="#">База знаний</a>
+							<button
+								class="menu__toggle"
+								type="button"
+								aria-expanded="false"
+								aria-controls="header-submenu-4"
+								data-submenu-toggle
+							>
+								<span class="visually-hidden">Подменю «База знаний»</span>
+								<svg class="icon menu__arrow" aria-hidden="true" focusable="false">
+									<use href="/ag-site/assets/icons/sprite.svg#icon-arrow-down-small"></use>
+								</svg>
+							</button>
+							<ul class="menu__submenu" id="header-submenu-4" role="list" hidden>
+								<li><a class="menu__sublink" href="#">Учебный портал</a></li>
+								<li><a class="menu__sublink" href="#">Нормативные документы</a></li>
+							</ul>
 						</li>
 						<li class="menu__item">
 							<a class="menu__link" href="#">Галерея</a>
@@ -794,337 +844,400 @@
 					<nav class="breadcrumbs" aria-label="Хлебные крошки">
 						<ol class="breadcrumbs__list">
 							<li class="breadcrumbs__item"><a class="breadcrumbs__link" href="./index.html">Главная</a></li>
-							<li class="breadcrumbs__item"><a class="breadcrumbs__link" href="./news.html">Новости холдинга</a></li>
-							<li class="breadcrumbs__item"><a class="breadcrumbs__link" href="./news.html">Мотивационные проекты</a></li>
+							<li class="breadcrumbs__item">
+								<span class="breadcrumbs__current" aria-current="page">Структура холдинга</span>
+							</li>
 						</ol>
 					</nav>
-					<div class="page-columns page-columns--start">
-						<aside class="page-columns__aside page-columns__aside--desktop">
-							<nav class="news-filters" aria-label="Фильтры новостей" data-module="NewsFilters" data-path="sections/news">
-								<h2 class="news-filters__title">Категории</h2>
-								<ul class="news-filters__list news-filters__list--categories" role="list">
-									<li><a class="news-filters__link" href="./news.html">Все новости</a></li>
-									<li><a class="news-filters__link" href="#">Новости холдинга</a></li>
-									<li><a class="news-filters__link" href="#">СТМ</a></li>
-									<li><a class="news-filters__link" href="#">Товары</a></li>
-									<li><a class="news-filters__link" href="#" aria-current="page">Мотивационные проекты</a></li>
-									<li><a class="news-filters__link" href="#">Акции</a></li>
-									<li><a class="news-filters__link" href="#">Учебный центр</a></li>
-									<li><a class="news-filters__link" href="#">Интервью</a></li>
-									<li><a class="news-filters__link" href="#">Разное</a></li>
-								</ul>
-							</nav>
-							<div class="side-banner">
-								<a class="side-banner__link" href="#">
-									<img
-										class="side-banner__image"
-										src="/ag-site/assets/images/side-banner-DNv6ADL6.webp"
-										width="350"
-										height="800"
-										alt="Тонометры и аксессуары — скидка до −10%. Надёжный контроль здоровья"
-										loading="lazy"
-										decoding="async"
-									/>
-								</a>
+					<div class="page-sections">
+						<section class="holding-hero" aria-labelledby="holding-hero-title">
+							<div class="holding-hero__intro">
+								<h1 class="holding-hero__title" id="holding-hero-title">
+									<span class="holding-hero__title-line">Холдинг</span>
+									<span class="holding-hero__title-line">Аптека групп</span>
+								</h1>
+								<p class="holding-hero__subtitle">Надежный партнер с 30-летней историей</p>
 							</div>
-						</aside>
-						<div class="page-stack page-stack--article">
-							<article class="news-article" aria-labelledby="news-article-title">
-								<h1 class="news-article__title" id="news-article-title">Достигаем новых вершин вместе</h1>
-								<figure class="news-article__cover">
+							<ul class="holding-hero__stats" role="list">
+								<li class="holding-hero__stat">
+									<span class="holding-hero__number">11</span>
+									<span class="holding-hero__stat-label">Юридических лиц</span>
+								</li>
+								<li class="holding-hero__stat">
+									<span class="holding-hero__number">2000+</span>
+									<span class="holding-hero__stat-label">работников в команде холдинга</span>
+								</li>
+							</ul>
+							<figure class="holding-hero__person">
+								<div class="holding-hero__photo">
 									<img
-										class="news-article__image"
-										src="/ag-site/assets/images/article-cover-0273msKl.webp"
-										width="1040"
-										height="341"
-										alt="Сотрудники на вершине горы"
+										class="holding-hero__image"
+										src="/ag-site/assets/images/chairman-CCBruJC3.webp"
+										width="790"
+										height="335"
+										alt="Томчин Леонид Альбертович"
 										decoding="async"
 									/>
-									<figcaption class="news-article__caption">Шатер со всеми сотрудниками и главная сцена.</figcaption>
-								</figure>
-								<div class="content news-article__content" data-module="Content" data-path="components">
-									<p>
-										Вас позвали на новогодний корпоратив, <a href="#">корпаратив или карпаратив</a>? Куда отправиться, чтобы не
-										выглядеть невеждой? Верный ответ подскажут правило и советы опытных преподавателей. Вас позвали на новогодний
-										корпоратив, корпаратив или карпаратив? Куда отправиться, чтобы не выглядеть невеждой? Верный ответ подскажут
-										правило и советы опытных преподавателей.
-									</p>
-									<blockquote>
-										<p>
-											Вас позвали на новогодний корпоратив, <a href="#">корпаратив или карпаратив</a>? Куда отправиться, чтобы не
-											выглядеть невеждой? Верный ответ подскажут правило и советы опытных преподавателей. Вас позвали на новогодний
-											корпоратив, корпаратив или карпаратив? Куда отправиться, чтобы не выглядеть невеждой? Верный ответ подскажут
-											правило и советы опытных преподавателей.
-										</p>
-									</blockquote>
-									<h2>Куда отправиться?</h2>
-									<ul>
-										<li>Вас позвали на новогодний корпоратив</li>
-										<li>Позвали на новогодний корпоратив</li>
-										<li>Корпоратив новогодний</li>
-										<li>Позвали на корпоратив</li>
-									</ul>
-									<details open>
-										<summary>Раскрывающийся список</summary>
-										<p>
-											Куда отправиться, чтобы не выглядеть невеждой? Верный ответ подскажут правило и советы опытных
-											преподавателей. Вас позвали на новогодний корпоратив, корпаратив или карпаратив? Куда отправиться, чтобы не
-											выглядеть невеждой? Верный ответ подскажут правило и советы опытных преподавателей. Вас позвали на новогодний
-											корпоратив, корпаратив или карпаратив?
-										</p>
-										<p>
-											Куда отправиться, чтобы не выглядеть невеждой? Верный ответ подскажут правило и советы опытных
-											преподавателей.
-										</p>
-										<ul>
-											<li>Вас позвали на новогодний корпоратив</li>
-											<li>Позвали на новогодний корпоратив</li>
-											<li>Корпоратив новогодний</li>
-											<li>Позвали на корпоратив</li>
-										</ul>
-									</details>
-									<details>
-										<summary>Раскрывающийся список</summary>
-										<p>
-											Куда отправиться, чтобы не выглядеть невеждой? Верный ответ подскажут правило и советы опытных
-											преподавателей.
-										</p>
-									</details>
-									<details>
-										<summary>Второй раскрывающийся список. Закрытое положение</summary>
-										<p>
-											Куда отправиться, чтобы не выглядеть невеждой? Верный ответ подскажут правило и советы опытных
-											преподавателей.
-										</p>
-									</details>
-									<h3>Таблица с шапкой</h3>
-									<table>
-										<thead>
-											<tr>
-												<th>Дата</th>
-												<th>ФИО</th>
-												<th>Должность</th>
-												<th>Департамент</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>01.12</td>
-												<td>Порохня Сергей Иванович</td>
-												<td>Главный инженер</td>
-												<td>Администрация</td>
-											</tr>
-											<tr>
-												<td>01.12</td>
-												<td>Порохня Сергей Иванович</td>
-												<td>Руководитель проектного офиса</td>
-												<td>Аналитический центр</td>
-											</tr>
-											<tr>
-												<td>01.12</td>
-												<td>Порохня Сергей Иванович</td>
-												<td>Заместитель главного бухгалтера</td>
-												<td>Отдел учёта</td>
-											</tr>
-											<tr>
-												<td>01.12</td>
-												<td>Порохня Сергей Иванович</td>
-												<td>Главный инженер</td>
-												<td>Аналитический центр</td>
-											</tr>
-										</tbody>
-									</table>
-									<h3>Таблица без шапки</h3>
-									<table>
-										<tbody>
-											<tr>
-												<td>Дата</td>
-												<td>ФИО</td>
-												<td>Должность</td>
-												<td>Департамент</td>
-											</tr>
-											<tr>
-												<td>01.12</td>
-												<td>Порохня Сергей Иванович</td>
-												<td>Главный инженер</td>
-												<td>Администрация</td>
-											</tr>
-											<tr>
-												<td>01.12</td>
-												<td>Порохня Сергей Иванович</td>
-												<td>Руководитель проектного офиса</td>
-												<td>Аналитический центр</td>
-											</tr>
-											<tr>
-												<td>01.12</td>
-												<td>Порохня Сергей Иванович</td>
-												<td>Заместитель главного бухгалтера</td>
-												<td>Отдел учёта</td>
-											</tr>
-											<tr>
-												<td>01.12</td>
-												<td>Порохня Сергей Иванович</td>
-												<td>Главный инженер</td>
-												<td>Аналитический центр</td>
-											</tr>
-										</tbody>
-									</table>
-									<h3>Почему стоит пойти на корпоратив</h3>
-									<ol>
-										<li>Вас позвали на новогодний корпоратив</li>
-										<li>Позвали на новогодний корпоратив</li>
-										<li>Корпоратив новогодний</li>
-										<li>Позвали на корпоратив</li>
-									</ol>
 								</div>
-								<section
-									class="gallery carousel"
-									aria-roledescription="карусель"
-									aria-label="Фотографии с корпоратива"
-									data-module="Carousel"
-									data-path="components"
-									data-carousel-loop
-								>
-									<div class="carousel__track gallery__track" data-carousel-track>
-										<figure class="carousel__slide gallery__slide" role="group" aria-roledescription="слайд" aria-label="1 из 3">
-											<img
-												class="gallery__image"
-												src="/ag-site/assets/images/article-gallery-1-CB7HfhDc.webp"
-												width="1040"
-												height="500"
-												alt="Лагерь у подножия горы"
-												loading="lazy"
-												decoding="async"
-											/>
-										</figure>
-										<figure class="carousel__slide gallery__slide" role="group" aria-roledescription="слайд" aria-label="2 из 3">
-											<img
-												class="gallery__image"
-												src="/ag-site/assets/images/news-4-BnJHpCi9.webp"
-												width="1040"
-												height="500"
-												alt="Победители на сцене"
-												loading="lazy"
-												decoding="async"
-											/>
-										</figure>
-										<figure class="carousel__slide gallery__slide" role="group" aria-roledescription="слайд" aria-label="3 из 3">
-											<img
-												class="gallery__image"
-												src="/ag-site/assets/images/post-1-BNJpsCCI.webp"
-												width="1040"
-												height="500"
-												alt="Общее фото участников"
-												loading="lazy"
-												decoding="async"
-											/>
-										</figure>
-									</div>
-									<button
-										class="gallery__arrow gallery__arrow--prev"
-										type="button"
-										aria-label="Предыдущее фото"
-										data-carousel-prev
-									>
-										<svg class="icon gallery__arrow-icon" aria-hidden="true" focusable="false">
-											<use href="/ag-site/assets/icons/sprite.svg#icon-angle-right"></use>
-										</svg>
-									</button>
-									<button
-										class="gallery__arrow gallery__arrow--next"
-										type="button"
-										aria-label="Следующее фото"
-										data-carousel-next
-									>
-										<svg class="icon gallery__arrow-icon" aria-hidden="true" focusable="false">
-											<use href="/ag-site/assets/icons/sprite.svg#icon-angle-right"></use>
-										</svg>
-									</button>
-									<div class="carousel__dots gallery__dots" data-carousel-dots></div>
-								</section>
-								<footer class="news-article__footer">
-									<div class="news-article__actions">
-										<button
-											class="btn btn--light btn--s news-article__share"
-											type="button"
-											aria-label="Скопировать ссылку на новость"
-											data-copy-link="https://my.apteka-group.by/news/dostigaem-novyh-vershin-vmeste/"
-											data-module="CopyLink"
-											data-path="components"
+								<figcaption class="holding-hero__caption">
+									<span class="holding-hero__name">Томчин Леонид Альбертович</span>
+									<span class="holding-hero__role">Председатель совета директоров</span>
+								</figcaption>
+							</figure>
+						</section>
+						<section class="holding-entities" aria-labelledby="holding-entities-title">
+							<div class="holding-entities__head">
+								<h2 class="holding-entities__title" id="holding-entities-title">Юридические лица холдинга</h2>
+								<p class="holding-entities__subtitle">
+									В холдинг входят 11 юридических лиц. У каждого — свои бренды, отделы и сотрудники.
+								</p>
+							</div>
+							<ul class="holding-entities__grid" role="list">
+								<li class="holding-entities__item">
+									<article class="entity-card">
+										<h3 class="entity-card__title">ООО «УКХ Аптека групп»</h3>
+										<dl class="info-list">
+											<div class="info-list__row">
+												<dt class="info-list__label">Телефон:</dt>
+												<dd class="info-list__value"><a class="info-list__link" href="tel:+375173947034">+375 17 394 70 34</a></dd>
+											</div>
+											<div class="info-list__row">
+												<dt class="info-list__label">Адрес:</dt>
+												<dd class="info-list__value">220020, г. Минск, пр-т Победителей, 84-2, офис 27</dd>
+											</div>
+										</dl>
+										<div class="brand-chips entity-card__brands">
+											<p class="brand-chips__label">Бренды</p>
+											<ul class="brand-chips__list" role="list">
+												<li class="brand-chips__chip">
+													<img
+														class="brand-chips__logo"
+														src="/ag-site/assets/images/logo-adel-CO68LDit.webp"
+														width="28"
+														height="28"
+														alt=""
+														loading="lazy"
+														decoding="async"
+													/>
+													<span class="brand-chips__name">ADEL</span>
+												</li>
+												<li class="brand-chips__chip">
+													<img
+														class="brand-chips__logo"
+														src="/ag-site/assets/images/logo-dleki-CcHVXMt6.webp"
+														width="28"
+														height="28"
+														alt=""
+														loading="lazy"
+														decoding="async"
+													/>
+													<span class="brand-chips__name">Добрыя лекі</span>
+												</li>
+												<li class="brand-chips__chip">
+													<img
+														class="brand-chips__logo"
+														src="/ag-site/assets/images/logo-apte4ka-B1-aHe6O.webp"
+														width="28"
+														height="28"
+														alt=""
+														loading="lazy"
+														decoding="async"
+													/>
+													<span class="brand-chips__name">Аптечка+</span>
+												</li>
+											</ul>
+										</div>
+										<a class="btn btn--general btn--m entity-card__more" href="./holding-entity.html"
+											>Подробнее<span class="visually-hidden">: ООО «УКХ Аптека групп»</span></a
 										>
-											<svg class="icon btn__icon news-article__share-icon" aria-hidden="true" focusable="false">
-												<use href="/ag-site/assets/icons/sprite.svg#icon-link"></use>
-											</svg>
-											<svg
-												class="icon btn__icon news-article__share-icon news-article__share-icon--copied"
-												aria-hidden="true"
-												focusable="false"
-											>
-												<use href="/ag-site/assets/icons/sprite.svg#icon-tick"></use>
-											</svg>
-										</button>
-										<a class="btn btn--light btn--s" href="#comments"
-											><svg class="icon btn__icon" aria-hidden="true" focusable="false">
-												<use href="/ag-site/assets/icons/sprite.svg#icon-comment"></use>
-											</svg>
-											<span class="visually-hidden">Комментарии: </span><span class="btn__text">28</span></a
+									</article>
+								</li>
+								<li class="holding-entities__item">
+									<article class="entity-card">
+										<h3 class="entity-card__title">ООО «АптекаБайМаркет»</h3>
+										<dl class="info-list">
+											<div class="info-list__row">
+												<dt class="info-list__label">Адрес:</dt>
+												<dd class="info-list__value">г. Минск, пр-т Дзержинского, 3Б, пом. 81</dd>
+											</div>
+										</dl>
+										<div class="brand-chips entity-card__brands">
+											<p class="brand-chips__label">Бренд</p>
+											<ul class="brand-chips__list" role="list">
+												<li class="brand-chips__chip">
+													<img
+														class="brand-chips__logo"
+														src="/ag-site/assets/images/logo-aptekaby-BMzma5hp.webp"
+														width="28"
+														height="28"
+														alt=""
+														loading="lazy"
+														decoding="async"
+													/>
+													<span class="brand-chips__name">Apteka.by</span>
+												</li>
+											</ul>
+										</div>
+										<a class="btn btn--general btn--m entity-card__more" href="./holding-entity.html"
+											>Подробнее<span class="visually-hidden">: ООО «АптекаБайМаркет»</span></a
 										>
-										<button
-											class="btn btn--light btn--s like-button"
-											type="button"
-											aria-pressed="false"
-											data-module="LikeButton"
-											data-path="components"
+									</article>
+								</li>
+								<li class="holding-entities__item">
+									<article class="entity-card">
+										<h3 class="entity-card__title">ООО «ВитФармМаркет»</h3>
+										<dl class="info-list">
+											<div class="info-list__row">
+												<dt class="info-list__label">Телефон:</dt>
+												<dd class="info-list__value">
+													<a class="info-list__link" href="tel:+375212372180">+375 212 37 21 80</a>;
+													<a class="info-list__link" href="tel:+375212375412">+375 212 37 54 12</a>
+												</dd>
+											</div>
+											<div class="info-list__row">
+												<dt class="info-list__label">Адрес:</dt>
+												<dd class="info-list__value">г. Витебск, ул. 5-я Кооперативная, 8</dd>
+											</div>
+										</dl>
+										<div class="brand-chips entity-card__brands">
+											<p class="brand-chips__label">Бренд</p>
+											<ul class="brand-chips__list" role="list">
+												<li class="brand-chips__chip">
+													<img
+														class="brand-chips__logo"
+														src="/ag-site/assets/images/logo-vfm-CDJFea7W.webp"
+														width="28"
+														height="28"
+														alt=""
+														loading="lazy"
+														decoding="async"
+													/>
+													<span class="brand-chips__name">VFM</span>
+												</li>
+											</ul>
+										</div>
+										<a class="btn btn--general btn--m entity-card__more" href="./holding-entity.html"
+											>Подробнее<span class="visually-hidden">: ООО «ВитФармМаркет»</span></a
 										>
-											<svg class="icon btn__icon like-button__icon like-button__icon--off" aria-hidden="true" focusable="false">
-												<use href="/ag-site/assets/icons/sprite.svg#icon-like"></use>
-											</svg>
-											<svg class="icon btn__icon like-button__icon like-button__icon--on" aria-hidden="true" focusable="false">
-												<use href="/ag-site/assets/icons/sprite.svg#icon-like-filled"></use>
-											</svg>
-											<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>24</span>
-										</button>
-									</div>
-									<time class="news-article__date" datetime="2025-03-12">12.03.2025</time>
-								</footer>
-							</article>
-							<section
-								class="comments"
-								id="comments"
-								aria-labelledby="comments-title"
-								data-module="Comments"
-								data-path="sections/shared"
-								data-comments-url="/__mock/comments"
-								data-entity="news"
-								data-entity-id="demo"
-								data-limit="8"
-							>
-								<h2 class="comments__title" id="comments-title">
-									Комментарии
-									<span class="comments__count" data-comments-count>28</span>
-								</h2>
-								<div class="comments__composer" data-comments-composer></div>
-								<div class="comments__list" data-comments-list>
-									<div class="comments__skeleton" aria-hidden="true">
-										<span class="skeleton-lines comments__skeleton-item" aria-hidden="true">
-											<span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span
-											><span class="skeleton skeleton--text"></span>
-										</span>
-										<span class="skeleton-lines comments__skeleton-item" aria-hidden="true">
-											<span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span
-											><span class="skeleton skeleton--text"></span>
-										</span>
-										<span class="skeleton-lines comments__skeleton-item" aria-hidden="true">
-											<span class="skeleton skeleton--text"></span><span class="skeleton skeleton--text"></span
-											><span class="skeleton skeleton--text"></span>
-										</span>
-									</div>
-								</div>
-								<p class="comments__status" data-comments-status hidden></p>
-								<button class="btn comments__more" type="button" data-comments-more hidden>Показать ещё комментарии</button>
-								<noscript><p class="comments__status">Чтобы читать и писать комментарии, включите JavaScript.</p></noscript>
-							</section>
-						</div>
+									</article>
+								</li>
+								<li class="holding-entities__item">
+									<article class="entity-card">
+										<h3 class="entity-card__title">ООО «Клиника Здоровья» (Мед. центр CityClinic)</h3>
+										<dl class="info-list">
+											<div class="info-list__row">
+												<dt class="info-list__label">Телефон:</dt>
+												<dd class="info-list__value"><a class="info-list__link" href="tel:+375336150242">+375 33 615 02 42</a></dd>
+											</div>
+											<div class="info-list__row">
+												<dt class="info-list__label">Адрес:</dt>
+												<dd class="info-list__value">г. Витебск, ул. Новооршанская, 4</dd>
+											</div>
+										</dl>
+										<div class="brand-chips entity-card__brands">
+											<p class="brand-chips__label">Бренд</p>
+											<ul class="brand-chips__list" role="list">
+												<li class="brand-chips__chip">
+													<img
+														class="brand-chips__logo"
+														src="/ag-site/assets/images/logo-cityclinic-DhQB131X.webp"
+														width="28"
+														height="28"
+														alt=""
+														loading="lazy"
+														decoding="async"
+													/>
+													<span class="brand-chips__name">CityClinic</span>
+												</li>
+											</ul>
+										</div>
+										<a class="btn btn--general btn--m entity-card__more" href="./holding-entity.html"
+											>Подробнее<span class="visually-hidden">: ООО «Клиника Здоровья» (Мед. центр CityClinic)</span></a
+										>
+									</article>
+								</li>
+								<li class="holding-entities__item">
+									<article class="entity-card">
+										<h3 class="entity-card__title">ООО «Клиника Здоровья» (Стоматология)</h3>
+										<dl class="info-list">
+											<div class="info-list__row">
+												<dt class="info-list__label">Телефон:</dt>
+												<dd class="info-list__value"><a class="info-list__link" href="tel:+375336150242">+375 33 615 02 42</a></dd>
+											</div>
+											<div class="info-list__row">
+												<dt class="info-list__label">Адрес:</dt>
+												<dd class="info-list__value">г. Витебск, пр. Фрунзе, д. 71А</dd>
+											</div>
+										</dl>
+										<div class="brand-chips entity-card__brands">
+											<p class="brand-chips__label">Бренд</p>
+											<ul class="brand-chips__list" role="list">
+												<li class="brand-chips__chip">
+													<img
+														class="brand-chips__logo"
+														src="/ag-site/assets/images/logo-cityclinic-DhQB131X.webp"
+														width="28"
+														height="28"
+														alt=""
+														loading="lazy"
+														decoding="async"
+													/>
+													<span class="brand-chips__name">CityClinic</span>
+												</li>
+											</ul>
+										</div>
+										<a class="btn btn--general btn--m entity-card__more" href="./holding-entity.html"
+											>Подробнее<span class="visually-hidden">: ООО «Клиника Здоровья» (Стоматология)</span></a
+										>
+									</article>
+								</li>
+								<li class="holding-entities__item">
+									<article class="entity-card">
+										<h3 class="entity-card__title">ООО «СофтФарм»</h3>
+										<dl class="info-list">
+											<div class="info-list__row">
+												<dt class="info-list__label">Телефон:</dt>
+												<dd class="info-list__value"><a class="info-list__link" href="tel:+375445033073">+375 44 503 30 73</a></dd>
+											</div>
+											<div class="info-list__row">
+												<dt class="info-list__label">Адрес:</dt>
+												<dd class="info-list__value">г. Минск, пр-т Победителей, 84, этаж 4, офис 27</dd>
+											</div>
+										</dl>
+										<div class="brand-chips entity-card__brands">
+											<p class="brand-chips__label">Бренд</p>
+											<ul class="brand-chips__list" role="list">
+												<li class="brand-chips__chip">
+													<img
+														class="brand-chips__logo"
+														src="/ag-site/assets/images/logo-softfarm-MZDGJlK1.webp"
+														width="28"
+														height="28"
+														alt=""
+														loading="lazy"
+														decoding="async"
+													/>
+													<span class="brand-chips__name">СофтФарм</span>
+												</li>
+											</ul>
+										</div>
+										<a class="btn btn--general btn--m entity-card__more" href="./holding-entity.html"
+											>Подробнее<span class="visually-hidden">: ООО «СофтФарм»</span></a
+										>
+									</article>
+								</li>
+								<li class="holding-entities__item">
+									<article class="entity-card">
+										<h3 class="entity-card__title">ООО «Аптека групп Центр»</h3>
+										<dl class="info-list">
+											<div class="info-list__row">
+												<dt class="info-list__label">Телефон:</dt>
+												<dd class="info-list__value"><a class="info-list__link" href="tel:+375172490005">+375 17 249 00 05</a></dd>
+											</div>
+											<div class="info-list__row">
+												<dt class="info-list__label">Адрес:</dt>
+												<dd class="info-list__value">г. Минск, пр-т Победителей, 84-2, офис 16</dd>
+											</div>
+										</dl>
+										<div class="brand-chips entity-card__brands">
+											<p class="brand-chips__label">Бренд</p>
+											<p class="brand-chips__empty">Бренды уточняются</p>
+										</div>
+										<a class="btn btn--general btn--m entity-card__more" href="./holding-entity.html"
+											>Подробнее<span class="visually-hidden">: ООО «Аптека групп Центр»</span></a
+										>
+									</article>
+								</li>
+								<li class="holding-entities__item">
+									<article class="entity-card">
+										<h3 class="entity-card__title">ЗАО «Аптека групп Север»</h3>
+										<dl class="info-list">
+											<div class="info-list__row">
+												<dt class="info-list__label">Телефон:</dt>
+												<dd class="info-list__value"><a class="info-list__link" href="tel:+375212352180">+375 212 35 21 80</a></dd>
+											</div>
+											<div class="info-list__row">
+												<dt class="info-list__label">Адрес:</dt>
+												<dd class="info-list__value">г. Витебск, ул. 5-я Кооперативная, 8</dd>
+											</div>
+										</dl>
+										<div class="brand-chips entity-card__brands">
+											<p class="brand-chips__label">Бренд</p>
+											<p class="brand-chips__empty">Бренды уточняются</p>
+										</div>
+										<a class="btn btn--general btn--m entity-card__more" href="./holding-entity.html"
+											>Подробнее<span class="visually-hidden">: ЗАО «Аптека групп Север»</span></a
+										>
+									</article>
+								</li>
+								<li class="holding-entities__item">
+									<article class="entity-card">
+										<h3 class="entity-card__title">ЗАО «Аптека групп Юг»</h3>
+										<dl class="info-list">
+											<div class="info-list__row">
+												<dt class="info-list__label">Телефон:</dt>
+												<dd class="info-list__value"><a class="info-list__link" href="tel:+375232558708">+375 232 55 87 08</a></dd>
+											</div>
+											<div class="info-list__row">
+												<dt class="info-list__label">Адрес:</dt>
+												<dd class="info-list__value">Гомельская обл., г. Гомель, ул. Кирова, 59А</dd>
+											</div>
+										</dl>
+										<div class="brand-chips entity-card__brands">
+											<p class="brand-chips__label">Бренд</p>
+											<p class="brand-chips__empty">Бренды уточняются</p>
+										</div>
+										<a class="btn btn--general btn--m entity-card__more" href="./holding-entity.html"
+											>Подробнее<span class="visually-hidden">: ЗАО «Аптека групп Юг»</span></a
+										>
+									</article>
+								</li>
+								<li class="holding-entities__item">
+									<article class="entity-card">
+										<h3 class="entity-card__title">ООО «Аптека групп Запад»</h3>
+										<dl class="info-list">
+											<div class="info-list__row">
+												<dt class="info-list__label">Телефон:</dt>
+												<dd class="info-list__value"><a class="info-list__link" href="tel:+375152315126">+375 152 31 51 26</a></dd>
+											</div>
+											<div class="info-list__row">
+												<dt class="info-list__label">Адрес:</dt>
+												<dd class="info-list__value">Гродненская обл., г. Гродно, пр-т Янки Купалы, 87, офис 609</dd>
+											</div>
+										</dl>
+										<div class="brand-chips entity-card__brands">
+											<p class="brand-chips__label">Бренд</p>
+											<p class="brand-chips__empty">Бренды уточняются</p>
+										</div>
+										<a class="btn btn--general btn--m entity-card__more" href="./holding-entity.html"
+											>Подробнее<span class="visually-hidden">: ООО «Аптека групп Запад»</span></a
+										>
+									</article>
+								</li>
+								<li class="holding-entities__item">
+									<article class="entity-card">
+										<h3 class="entity-card__title">ООО «Либерти-Фарм»</h3>
+										<dl class="info-list">
+											<div class="info-list__row">
+												<dt class="info-list__label">Телефон:</dt>
+												<dd class="info-list__value"><a class="info-list__link" href="tel:+375222650366">+375 222 65 03 66</a></dd>
+											</div>
+											<div class="info-list__row">
+												<dt class="info-list__label">Адрес:</dt>
+												<dd class="info-list__value">г. Могилев, ул. Якубовского, 37А-88</dd>
+											</div>
+										</dl>
+										<div class="brand-chips entity-card__brands">
+											<p class="brand-chips__label">Бренд</p>
+											<p class="brand-chips__empty">Бренды уточняются</p>
+										</div>
+										<a class="btn btn--general btn--m entity-card__more" href="./holding-entity.html"
+											>Подробнее<span class="visually-hidden">: ООО «Либерти-Фарм»</span></a
+										>
+									</article>
+								</li>
+							</ul>
+						</section>
 					</div>
 				</div>
 			</main>
