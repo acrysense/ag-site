@@ -25,6 +25,7 @@
 	"license": "ISC",
 	"devDependencies": {
 		"autoprefixer": "^10.6.1",
+		"esbuild": "^0.28.2",
 		"fast-glob": "^3.3.3",
 		"handlebars": "^4.7.9",
 		"postcss": "^8.5.28",

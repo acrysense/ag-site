@@ -625,6 +625,10 @@ export default defineConfig(({ mode }) => {
 			cssCodeSplit: true,
 			manifest: 'manifest.json',
 			target: BUILD_TARGET,
+			// CSS сжимает esbuild, как в Vite 7 и как в ЛК: Lightning CSS (по умолчанию в Vite 8)
+			// сокращает числа до 6 знаков — размеры через vw (fluid, vw-range) сбиваются на доли
+			// пикселя и набегают на длинных списках. Для этого esbuild — в devDependencies
+			cssMinify: 'esbuild',
 			rolldownOptions: {
 				input: getHtmlInputs(mode),
 				// Без отчёта о долгих плагинах: дольше всех — format-html (Prettier по HTML), так задумано
