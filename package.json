@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "A lean Vite starter for multi-page HTML/Handlebars projects.",
 	"private": true,
+	"type": "module",
 	"engines": {
 		"node": ">=22.16.0"
 	},
@@ -30,7 +31,7 @@
 		"prettier": "^3.9.9",
 		"sass": "^1.105.1",
 		"typescript": "^5.9.2",
-		"vite": "^7.3.6"
+		"vite": "^8.3.2"
 	},
 	"browserslist": {
 		"production": [

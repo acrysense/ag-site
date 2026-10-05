@@ -7,7 +7,13 @@ import Handlebars from 'handlebars'
 import autoprefixer from 'autoprefixer'
 import { format as formatCode } from 'prettier'
 
-const APP_ROOT = resolve(__dirname, 'app')
+const APP_ROOT = resolve(import.meta.dirname, 'app')
+
+// Браузеры — как было в Vite 7 (Vite 8 поднял минимум до Safari 16.4 / Chrome 111): не отрезаем
+// iPhone на iOS 16.0–16.3. iOS — отдельной строкой: по ней и JS, и CSS (Lightning CSS) — без неё
+// «safari16» считается только настольным и из CSS выпадают префиксы для iPhone
+// (-webkit-text-size-adjust)
+const BUILD_TARGET = ['chrome107', 'edge107', 'firefox104', 'safari16', 'ios16']
 const ICONS_ROOT = resolve(APP_ROOT, 'assets/icons')
 let BASE: string = '/'
 
@@ -212,8 +218,8 @@ function copyStaticAssets() {
 		apply: 'build',
 		closeBundle() {
 			for (const { dir, pattern } of groups) {
-				const srcDir = path.resolve(__dirname, `app/assets/${dir}`)
-				const outDir = path.resolve(__dirname, `dist/assets/${dir}`)
+				const srcDir = path.resolve(import.meta.dirname, `app/assets/${dir}`)
+				const outDir = path.resolve(import.meta.dirname, `dist/assets/${dir}`)
 				if (!fs.existsSync(srcDir)) continue
 
 				const files = fg.sync(pattern, { cwd: srcDir })
@@ -233,11 +239,11 @@ function copyStaticAssets() {
 			// не только <img> (их Vite переносит сам), но и данные в JSON и ссылки <a href> —
 			// например, большие фото альбома для просмотра. Адреса относительные (./dev/img/…),
 			// поэтому работают при любом BASE. На сайте эти адреса выдаёт бэк.
-			const demoDir = path.resolve(__dirname, 'app/pages/dev/img')
+			const demoDir = path.resolve(import.meta.dirname, 'app/pages/dev/img')
 			if (fs.existsSync(demoDir)) {
 				const files = fg.sync('**/*.{png,jpg,jpeg,gif,svg,webp,avif}', { cwd: demoDir })
 				for (const rel of files) {
-					const to = path.resolve(__dirname, 'dist/dev/img', rel)
+					const to = path.resolve(import.meta.dirname, 'dist/dev/img', rel)
 					fs.mkdirSync(path.dirname(to), { recursive: true })
 					fs.copyFileSync(path.join(demoDir, rel), to)
 				}
@@ -329,7 +335,7 @@ function loadJSON(p: string) {
 }
 
 function outNameFromHtmlPath(absHtmlPath: string) {
-	const appRoot = resolve(__dirname, 'app') + sep
+	const appRoot = resolve(import.meta.dirname, 'app') + sep
 	const rel = absHtmlPath.startsWith(appRoot) ? absHtmlPath.slice(appRoot.length) : absHtmlPath
 
 	const clean = rel.replace(/^[/\\]+/, '')
@@ -610,16 +616,19 @@ export default defineConfig(({ mode }) => {
 	return {
 		root: APP_ROOT,
 		base: process.env.BASE || '/',
-		publicDir: resolve(__dirname, 'public'),
-		resolve: { alias: { '@': resolve(__dirname, 'app') } },
+		publicDir: resolve(import.meta.dirname, 'public'),
+		resolve: { alias: { '@': resolve(import.meta.dirname, 'app') } },
 
 		build: {
-			outDir: resolve(__dirname, 'dist'),
+			outDir: resolve(import.meta.dirname, 'dist'),
 			emptyOutDir: true,
 			cssCodeSplit: true,
 			manifest: 'manifest.json',
-			rollupOptions: {
+			target: BUILD_TARGET,
+			rolldownOptions: {
 				input: getHtmlInputs(mode),
+				// Без отчёта о долгих плагинах: дольше всех — format-html (Prettier по HTML), так задумано
+				checks: { bundlerTimings: false },
 				output: {
 					entryFileNames: 'assets/js/[name]-[hash].js',
 					chunkFileNames: 'assets/js/[name]-[hash].js',
@@ -643,7 +652,7 @@ export default defineConfig(({ mode }) => {
 			captureBase(mode, prefixPageLinks),
 			devPagesRouter(),
 			handlebarsPlugin({
-				partialDirectory: resolve(__dirname, 'app/components'),
+				partialDirectory: resolve(import.meta.dirname, 'app/components'),
 				helpers: {
 					asset(v: any) {
 						return typeof v === 'string' ? withBase(v) : v
@@ -785,7 +794,7 @@ export default defineConfig(({ mode }) => {
 				},
 
 				context: (htmlPath) => {
-					const site = loadJSON(resolve(__dirname, 'site.config.json')) || {}
+					const site = loadJSON(resolve(import.meta.dirname, 'site.config.json')) || {}
 					const absoluteHtmlPath = htmlPath.startsWith(APP_ROOT)
 						? htmlPath
 						: resolve(APP_ROOT, htmlPath.replace(/^[/\\]+/, ''))
