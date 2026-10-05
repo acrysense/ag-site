@@ -63,6 +63,10 @@ function contrast(a, b) {
 
 const parseRgb = (value) => (value.match(/[\d.]+/g) || []).slice(0, 3).map(Number)
 
+// Значение — из итогового цвета, всегда #rrggbb, как в Figma: сжатие CSS переписывает запись
+// переменной (#000000 → #000, #ffd700 → gold)
+const toHex = (rgb) => `#${rgb.map((v) => v.toString(16).padStart(2, '0')).join('')}`
+
 function contrastBadge(label, ratio) {
 	const verdict = ratio >= 4.5 ? 'AA' : ratio >= 3 ? 'AA крупный' : 'мало'
 	const badge = el('span', `token-badge ${ratio >= 3 ? 'is-pass' : 'is-fail'}`)
@@ -84,8 +88,8 @@ function renderColors(list) {
 			// Значение и контраст считаются по реальному цвету, поэтому узел нужен в DOM
 			list.append(item)
 
-			const value = getComputedStyle(item).getPropertyValue('--swatch').trim()
 			const rgb = parseRgb(getComputedStyle(chip).backgroundColor)
+			const value = toHex(rgb)
 			const badges = el('div', 'token-swatch__contrast')
 			badges.append(
 				contrastBadge('бел', contrast(rgb, [255, 255, 255])),
