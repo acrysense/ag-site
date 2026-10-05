@@ -36,12 +36,15 @@
 	},
 	"browserslist": {
 		"production": [
-			"cover 99%",
-			"last 2 ios_saf versions",
-			"Firefox ESR",
-			"not dead",
-			"not op_mini all",
-			"not ie <= 11"
+			"chrome >= 107",
+			"edge >= 107",
+			"firefox >= 104",
+			"safari >= 16",
+			"ios_saf >= 16",
+			"and_chr >= 107",
+			"and_ff >= 104",
+			"samsung >= 21",
+			"opera >= 93"
 		],
 		"development": [
 			"last 1 chrome version",
@@ -52,5 +55,6 @@
 	"dependencies": {
 		"photoswipe": "^5.4.4",
 		"simplebar": "^6.3.3"
-	}
+	},
+	"packageManager": "pnpm@11.21.0+sha512.521705bce689924eac72f5a3587122f362689ef6571e55ba80076fd637c11132ecffada26fad4ea79c485bfddbfd3d5a2a5b05805a77e893de71ec8a6cca3bb1"
 }
