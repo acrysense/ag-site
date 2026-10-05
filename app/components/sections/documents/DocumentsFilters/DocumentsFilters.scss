@@ -224,7 +224,9 @@
 			color $transition-default,
 			background-color $transition-default;
 
-		&:has(:checked) {
+		// .is-checked — то же для браузеров без :has (utils/has-fallback.js)
+		&:has(:checked),
+		&.is-checked {
 			background: palette("bg-main-2");
 		}
 

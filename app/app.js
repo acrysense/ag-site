@@ -1,12 +1,14 @@
 import { mount, unmount } from '@/core/mount'
 import { autosize } from '@/utils/autosize'
 import { watchBrokenImages } from '@/utils/broken-images'
+import { watchCheckedLabels } from '@/utils/has-fallback'
 import { showToast } from '@/utils/toast'
 
 function init() {
 	mount(document)
 	autosize(document)
 	watchBrokenImages()
+	watchCheckedLabels()
 
 	// Блоки, появившиеся после загрузки (AJAX, композитный кеш CMS), монтируются и
 	// размонтируются сами, без ручного requestMount/requestUnmount.

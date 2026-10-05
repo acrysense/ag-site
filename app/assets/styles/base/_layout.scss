@@ -85,6 +85,17 @@
 					grid-template-columns: 587.5fr 587.5fr 385fr;
 				}
 			}
+
+			// Браузеры без :has (Firefox до 121): один блок — во всю ширину, третий — под двумя
+			// во всю ширину, как на 1024–1279
+			@supports not selector(:has(*)) {
+				@include up(desktop) {
+					> :only-child,
+					> :nth-child(3) {
+						grid-column: 1 / -1;
+					}
+				}
+			}
 		}
 	}
 

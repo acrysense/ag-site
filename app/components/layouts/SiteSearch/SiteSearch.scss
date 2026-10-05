@@ -234,13 +234,16 @@
 		border-radius: $radius-inner-block;
 		transition: color $transition-default;
 
+		// .is-checked — то же для браузеров без :has (utils/has-fallback.js)
 		&:hover,
 		&:has(:checked),
+		&.is-checked,
 		&:focus-visible {
 			color: palette("blue-txt");
 		}
 
-		&:has(:checked) {
+		&:has(:checked),
+		&.is-checked {
 			background: palette("bg-violet");
 		}
 
@@ -688,7 +691,8 @@
 			background: palette("white");
 			border: 1px solid palette("block-border");
 
-			&:has(:checked) {
+			&:has(:checked),
+			&.is-checked {
 				background: palette("white");
 				border-color: palette("main-blue");
 			}

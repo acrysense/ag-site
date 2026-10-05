@@ -44,6 +44,11 @@
 			body:has(.tab-bar:not(.tab-bar--static)) & {
 				bottom: calc(60px + env(safe-area-inset-bottom) + 10px);
 			}
+
+			// Браузеры без :has (Firefox до 121) — как отступ под таб-баром (TabBar): всегда
+			@supports not selector(:has(*)) {
+				bottom: calc(60px + env(safe-area-inset-bottom) + 10px);
+			}
 		}
 	}
 

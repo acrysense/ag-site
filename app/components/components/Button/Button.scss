@@ -124,6 +124,8 @@
 
 		&:hover,
 		&:focus-visible {
+			// тот же цвет готовым значением — для браузеров без color-mix (Chrome до 111, Safari до 16.2)
+			background: #a73c3e;
 			background: color-mix(in srgb, palette("red") 88%, palette("black-txt"));
 		}
 	}
