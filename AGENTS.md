@@ -14,7 +14,7 @@ The main requirement of the spec: everything the admin edits must not be hard-co
 - Do not bring back `vite-plugin-imagemin`, `vite-plugin-svg-icons`, `vite-plugin-handlebars` or
   `vite-plugin-static-copy` without a specific reason.
 - Do not run `npm audit fix --force`.
-- Do not make major migrations without separate approval (Vite stays on 7.x).
+- Do not make major migrations without separate approval (Vite stays on 8.x).
 - Do not remove dependencies before checking real imports and usage.
 - Do not add libraries "just in case".
 - Do not change visual behavior for internal "cleanliness".

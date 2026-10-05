@@ -17,6 +17,9 @@ node --version
 npm --version
 ```
 
+Сборщик — Vite 8 (Rolldown; JS сжимает Oxc, CSS — Lightning CSS). Браузеры — Chrome и Edge 107+,
+Firefox 104+, Safari и iOS 16+ (`BUILD_TARGET` в `vite.config.ts`).
+
 ## Установка и запуск
 
 Чистая установка зависимостей:
