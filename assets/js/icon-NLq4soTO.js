@@ -1,0 +1,1 @@
+var e=`http://www.w3.org/2000/svg`,t=e=>`${document.documentElement.dataset.icons||``}#icon-${e}`;function n(n,r=``){let i=document.createElementNS(e,`svg`);i.setAttribute(`class`,`icon${r?` ${r}`:``}`),i.setAttribute(`aria-hidden`,`true`),i.setAttribute(`focusable`,`false`);let a=document.createElementNS(e,`use`);return a.setAttribute(`href`,t(n)),i.append(a),i}export{n as t};

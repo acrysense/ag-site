@@ -1,0 +1,1 @@
+import{t as e}from"./scroll-lock-D4dlW757.js";var t=`(max-width: 767.98px)`,n=()=>window.matchMedia(t).matches,r=()=>n()?e():null;export{r as n,n as t};

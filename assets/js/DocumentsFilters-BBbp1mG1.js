@@ -1,0 +1,1 @@
+import{n as e,r as t,t as n}from"./filter-panel-CZYuA1j-.js";function r(r){let i=n(r,`.documents-filters__group`),a=e(r,{open:`data-documents-filters-open`,close:`[data-documents-filters-close]`,count:`[data-documents-filters-count]`,countUrl:r.dataset.countUrl,countText:e=>`Показать ${e} ${t(e,`документ`,`документа`,`документов`)}`});return()=>{i(),a()}}export{r as default};

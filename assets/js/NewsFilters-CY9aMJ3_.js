@@ -1,0 +1,1 @@
+import{t as e}from"./reveal-in-row-D3c9cUZv.js";function t(t){for(let n of t.querySelectorAll(`.news-filters__list`))e(n,n.querySelector(`[aria-current]`)?.closest(`li`));return()=>{}}export{t as default};

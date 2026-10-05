@@ -1,0 +1,1 @@
+import{n as e,r as t,t as n}from"./filter-panel-CZYuA1j-.js";function r(r){let i=n(r,`.vacancy-filters__group`),a=e(r,{open:`data-vacancy-filters-open`,close:`[data-vacancy-filters-close]`,count:`[data-vacancy-filters-count]`,countUrl:r.dataset.countUrl,countText:e=>`Показать ${e} ${t(e,`вакансию`,`вакансии`,`вакансий`)}`});return()=>{i(),a()}}export{r as default};

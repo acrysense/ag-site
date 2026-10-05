@@ -1,0 +1,1 @@
+function e(e=`text`,t=``){let n=document.createElement(`span`);return n.className=`skeleton skeleton--${e}${t?` ${t}`:``}`,n.setAttribute(`aria-hidden`,`true`),n}function t(t=3,n=``){let r=document.createElement(`span`);r.className=`skeleton-lines${n?` ${n}`:``}`,r.setAttribute(`aria-hidden`,`true`);for(let n=0;n<t;n++)r.append(e(`text`));return r}export{t as n,e as t};

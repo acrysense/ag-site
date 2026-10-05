@@ -1,0 +1,1 @@
+import{t as e}from"./reveal-in-row-D3c9cUZv.js";function t(t){let n=t.querySelector(`.search-sections__list`);return e(n,n?.querySelector(`[aria-current]`)?.closest(`li`)),()=>{}}export{t as default};

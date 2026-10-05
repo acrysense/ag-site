@@ -1,0 +1,1 @@
+import{n as e,r as t}from"./filter-panel-CZYuA1j-.js";function n(n){return e(n,{open:`data-search-filters-open`,close:`[data-search-filters-close]`,count:`[data-search-count]`,countUrl:n.dataset.searchCountUrl,countText:e=>`Показать ${e} ${t(e,`результат`,`результата`,`результатов`)}`})}export{n as default};
