@@ -17,8 +17,9 @@ node --version
 npm --version
 ```
 
-Сборщик — Vite 8 (Rolldown; JS сжимает Oxc, CSS — Lightning CSS). Браузеры — Chrome и Edge 107+,
-Firefox 104+, Safari и iOS 16+ (`BUILD_TARGET` в `vite.config.ts`).
+Сборщик — Vite 8 (Rolldown; JS сжимает Oxc, CSS — esbuild, как в Vite 7 и в ЛК: Lightning CSS
+сокращает числа до 6 знаков и сбивает размеры через vw). Браузеры — Chrome и Edge 107+, Firefox
+104+, Safari и iOS 16+ (`BUILD_TARGET` в `vite.config.ts`).
 
 ## Установка и запуск
 
