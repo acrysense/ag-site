@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import path from 'node:path'
 import fs from 'node:fs'
 import { resolve, sep } from 'node:path'
-import fg from 'fast-glob'
+import { globSync } from 'tinyglobby'
 import Handlebars from 'handlebars'
 import autoprefixer from 'autoprefixer'
 import { format as formatCode } from 'prettier'
@@ -222,7 +222,7 @@ function copyStaticAssets() {
 				const outDir = path.resolve(import.meta.dirname, `dist/assets/${dir}`)
 				if (!fs.existsSync(srcDir)) continue
 
-				const files = fg.sync(pattern, { cwd: srcDir })
+				const files = globSync(pattern, { cwd: srcDir })
 				if (!files.length) continue
 
 				fs.mkdirSync(outDir, { recursive: true })
@@ -241,7 +241,7 @@ function copyStaticAssets() {
 			// поэтому работают при любом BASE. На сайте эти адреса выдаёт бэк.
 			const demoDir = path.resolve(import.meta.dirname, 'app/pages/dev/img')
 			if (fs.existsSync(demoDir)) {
-				const files = fg.sync('**/*.{png,jpg,jpeg,gif,svg,webp,avif}', { cwd: demoDir })
+				const files = globSync('**/*.{png,jpg,jpeg,gif,svg,webp,avif}', { cwd: demoDir })
 				for (const rel of files) {
 					const to = path.resolve(import.meta.dirname, 'dist/dev/img', rel)
 					fs.mkdirSync(path.dirname(to), { recursive: true })
@@ -262,7 +262,7 @@ function devPagesRouter() {
 			.replace(/[\\/]/g, '-')
 
 	const buildMap = () => {
-		const files = fg.sync('pages/**/*.html', { cwd: APP_ROOT, absolute: true, dot: false })
+		const files = globSync('pages/**/*.html', { cwd: APP_ROOT, absolute: true, dot: false })
 		const map = new Map<string, string>()
 		for (const abs of files) {
 			const relFromApp = path.relative(APP_ROOT, abs).replace(/\\/g, '/')
@@ -352,7 +352,7 @@ function outNameFromHtmlPath(absHtmlPath: string) {
 const DEV_PAGES_GLOB = 'pages/dev/**'
 
 function getHtmlInputs(mode: string) {
-	const files = fg.sync('pages/**/*.html', {
+	const files = globSync('pages/**/*.html', {
 		cwd: APP_ROOT,
 		dot: false,
 		ignore: mode === 'cms' ? [DEV_PAGES_GLOB] : [],
@@ -392,7 +392,7 @@ function handlebarsPlugin({ partialDirectory, helpers, context }) {
 		for (const name of partialNames) hbs.unregisterPartial(name)
 		partialNames.clear()
 
-		const files = fg.sync('**/*.{hbs,html}', { cwd: partialRoot, absolute: true }).sort()
+		const files = globSync('**/*.{hbs,html}', { cwd: partialRoot, absolute: true }).sort()
 		for (const file of files) {
 			const name = path
 				.relative(partialRoot, file)
@@ -496,7 +496,7 @@ function createSvgSymbol(file: string) {
 const SPRITE_FILE = 'assets/icons/sprite.svg'
 
 function buildSprite() {
-	const files = fg.sync('**/*.svg', { cwd: ICONS_ROOT, absolute: true }).sort()
+	const files = globSync('**/*.svg', { cwd: ICONS_ROOT, absolute: true }).sort()
 	// Без комментариев и лишних пробелов между тегами: файл грузится на каждой странице
 	return `<svg xmlns="http://www.w3.org/2000/svg">${files.map(createSvgSymbol).join('')}</svg>`
 		.replace(/<!--[\s\S]*?-->/g, '')
@@ -511,8 +511,7 @@ function buildSprite() {
 const PAGES_INDEX_FILE = 'dev-pages.json'
 
 function buildPagesIndex(dev: boolean) {
-	const pages = fg
-		.sync('pages/*.html', { cwd: APP_ROOT })
+	const pages = globSync('pages/*.html', { cwd: APP_ROOT })
 		.map((rel) => {
 			const name = path.basename(rel, '.html')
 			const cfg = loadJSON(resolve(APP_ROOT, 'pages', `${name}.page.json`)) || {}

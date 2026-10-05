@@ -1,7 +1,7 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import fg from 'fast-glob'
+import { glob } from 'tinyglobby'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const SRC = path.join(ROOT, 'app/assets/fonts')
@@ -101,7 +101,7 @@ async function writeStyles(content) {
 }
 
 const config = await readConfig()
-const files = await fg('**/*.woff2', { cwd: SRC, absolute: true, caseSensitiveMatch: false })
+const files = await glob('**/*.woff2', { cwd: SRC, absolute: true, caseSensitiveMatch: false })
 
 await fs.rm(OUT, { recursive: true, force: true })
 
