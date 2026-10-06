@@ -12,7 +12,26 @@ const openLink = document.querySelector('[data-ui-open]')
 const stage = document.querySelector('[data-ui-stage]')
 const screen = document.querySelector('[data-ui-screen]')
 const scaleNote = document.querySelector('[data-ui-scale]')
-const frame = document.querySelector('[data-ui-frame]')
+const firstFrame = document.querySelector('[data-ui-frame]')
+
+// Два iframe: новое состояние грузится в скрытый и показывается, когда собралось (стили, шрифты,
+// скрипты блоков), — без мигания недособранной страницы. Пока ждём дольше LOADING_DELAY —
+// полоска загрузки над превью.
+const LOADING_DELAY = 200
+const SETTLE_QUIET = 120
+const SETTLE_MAX = 1500
+const frames = [firstFrame, firstFrame.cloneNode()]
+let front = frames[0]
+let wanted = ''
+let loadingTimer = 0
+
+const hideFrame = (frame) => {
+	frame.classList.add('is-back')
+	frame.setAttribute('aria-hidden', 'true')
+	frame.tabIndex = -1
+}
+hideFrame(frames[1])
+frames[1].removeAttribute('data-ui-frame')
 
 // dev: /dev/ui.html → /dev/canvas.html; сборка: /BASE/dev-ui.html → /BASE/dev-canvas.html
 const canvasUrl = window.location.pathname.replace(/ui\.html$/, 'canvas.html')
@@ -157,9 +176,11 @@ function fitFrame() {
 	const scale = Math.min(1, room / width)
 
 	screen.style.width = `${Math.floor(width * scale)}px`
-	frame.style.width = `${width}px`
-	frame.style.height = `${height / scale}px`
-	frame.style.transform = scale < 1 ? `scale(${scale})` : ''
+	for (const frame of frames) {
+		frame.style.width = `${width}px`
+		frame.style.height = `${height / scale}px`
+		frame.style.transform = scale < 1 ? `scale(${scale})` : ''
+	}
 	scaleNote.hidden = scale >= 1
 	scaleNote.textContent = `масштаб ${Math.round(scale * 100)} %`
 }
@@ -174,10 +195,7 @@ function apply() {
 	if (id && stateIndex !== undefined && stateIndex !== null) query.set('state', stateIndex)
 	const src = `${canvasUrl}${query.size ? `?${query}` : ''}`
 
-	if (frame.dataset.src !== src) {
-		frame.dataset.src = src
-		frame.src = src
-	}
+	if (wanted !== src) load(src)
 
 	openLink.href = src
 	for (const link of nav.querySelectorAll('[data-story-link]')) {
@@ -191,13 +209,71 @@ function apply() {
 	fitFrame()
 }
 
+function load(src) {
+	wanted = src
+	// Первая загрузка — показывать пока нечего, грузим сразу на виду
+	const frame = front.dataset.src ? frames.find((item) => item !== front) : front
+	frame.dataset.src = src
+	frame.src = src
+	clearTimeout(loadingTimer)
+	if (frame !== front)
+		loadingTimer = setTimeout(() => screen.classList.add('is-loading'), LOADING_DELAY)
+}
+
+// Таймер, а не requestAnimationFrame: в фоновой вкладке кадры не идут и показ бы завис
+const tick = () => new Promise((resolve) => setTimeout(resolve, 30))
+
+// Собралось: шрифты загружены и разметка перестала меняться (скрипты блоков подгружаются
+// после load и дорисовывают своё)
+async function settle(doc) {
+	const start = performance.now()
+	await Promise.race([doc.fonts?.ready, new Promise((resolve) => setTimeout(resolve, SETTLE_MAX))])
+	const nodes = doc.getElementsByTagName('*')
+	let last = ''
+	let quietSince = performance.now()
+	while (performance.now() - start < SETTLE_MAX) {
+		await tick()
+		const now = performance.now()
+		const signature = `${nodes.length}:${doc.documentElement.scrollHeight}`
+		if (signature !== last) {
+			last = signature
+			quietSince = now
+		} else if (now - quietSince >= SETTLE_QUIET) return
+	}
+}
+
+function show(frame) {
+	clearTimeout(loadingTimer)
+	screen.classList.remove('is-loading')
+	if (frame === front) return
+	const old = front
+	frame.classList.remove('is-back')
+	frame.removeAttribute('aria-hidden')
+	frame.removeAttribute('tabindex')
+	front = frame
+	// Прошлое состояние не нужно — выгружаем, чтобы его скрипты не работали впустую
+	hideFrame(old)
+	old.dataset.src = ''
+	old.src = 'about:blank'
+}
+
 // Меню пересобирается на каждой загрузке canvas: новые истории видны после HMR
-frame.addEventListener('load', () => {
-	if (!frame.contentDocument) return
-	stories = readStories(frame.contentDocument)
-	buildNav()
-	apply()
-})
+for (const frame of frames) {
+	frame.addEventListener('load', async () => {
+		const doc = frame.contentDocument
+		if (!doc || !frame.dataset.src || frame.dataset.src !== wanted) return
+		if (frame !== front) {
+			await settle(doc)
+			// Пока ждали, во фрейм уже загрузили другое состояние — покажет его своя загрузка
+			if (frame.dataset.src !== wanted || frame.contentDocument !== doc) return
+		}
+		show(frame)
+		stories = readStories(doc)
+		buildNav()
+		apply()
+	})
+}
+screen.append(frames[1])
 
 // Ссылки на историю (меню) и на состояние (вкладки)
 const onStoryClick = (event) => {

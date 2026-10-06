@@ -360,6 +360,7 @@ $ui-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 	}
 
 	&__screen {
+		position: relative;
 		flex: none;
 		max-width: 100%;
 		overflow: hidden;
@@ -372,6 +373,27 @@ $ui-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 		display: block;
 		border: 0;
 		transform-origin: 0 0;
+
+		// Следующее состояние грузится под видимым, на том же месте и той же ширины
+		&.is-back {
+			position: absolute;
+			top: 0;
+			left: 0;
+			visibility: hidden;
+		}
+	}
+
+	// Полоска загрузки, пока следующее состояние собирается
+	&__screen.is-loading::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 30%;
+		height: 2px;
+		content: "";
+		background: var(--ui-accent);
+		animation: ui-loading 1s ease-in-out infinite;
 	}
 
 	&__scale {
@@ -425,5 +447,23 @@ $ui-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 		&__screen {
 			border-radius: 0;
 		}
+	}
+}
+
+@keyframes ui-loading {
+	from {
+		transform: translateX(-100%);
+	}
+
+	to {
+		transform: translateX(340%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ui__screen.is-loading::before {
+		width: 100%;
+		animation: none;
+		opacity: 0.6;
 	}
 }
