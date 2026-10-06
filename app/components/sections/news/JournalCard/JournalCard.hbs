@@ -20,7 +20,7 @@
             {{> components/Button/Button props=(obj href=props.readUrl icon="book" hiddenText=(concat "Читать: " props.title) variant="light" size="s" class="journal-card__read")}}
         {{/if}}
         {{#if props.file.url}}
-            {{> components/Button/Button props=(obj href=props.file.url download=true icon="download" hiddenText=(concat "Скачать «" props.title "», ") text=props.file.sizeText variant="light" size="s")}}
+            {{> components/Button/Button props=(obj href=props.file.url download=true icon="download" hiddenText=(concat "Скачать «" props.title "», ") text=props.file.sizeText variant="light" size="s" class="journal-card__download")}}
         {{/if}}
         {{> components/LikeButton/LikeButton props=(obj count=props.likes liked=props.liked url=props.likeUrl)}}
     </div>

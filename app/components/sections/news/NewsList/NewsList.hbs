@@ -5,10 +5,11 @@
 	сетка по 360, на 1920 — 3 в ряд).
 	Сетка — сколько поместится карточек от 240px (на 1920 — 4 по 280), на мобильном 2.
 	filters (те же данные, что у NewsFilters в боковой колонке) — до 1024
-	под заголовком: категории строкой «таблеток», ниже в ряд поля «Год» и сортировки; боковая
-	колонка с фильтрами до 1024 скрыта. Контракт — docs/contracts/news-list.md.
+	под заголовком: категории строкой «таблеток», ниже в ряд поля «Год» и сортировки; без
+	категорий (журнал) — годы «таблетками» и сортировка во всю ширину. Боковая колонка с
+	фильтрами до 1024 скрыта. Контракт — docs/contracts/news-list.md.
 --}}
-<section class="news-list" aria-labelledby="news-list-title">
+<section class="news-list{{#if (and filters.categories.length filters.years.[1])}} news-list--year-field{{/if}}" aria-labelledby="news-list-title">
     <div class="news-list__head">
         <h1 class="news-list__title" id="news-list-title">{{props.title}}</h1>
         {{> components/SortMenu/SortMenu props=(obj id=props.sort.id label=props.sort.label options=props.sort.options class="sort-menu--field news-list__sort")}}
@@ -17,9 +18,11 @@
         <div class="news-list__toolbar">
             {{#if filters.categories.length}}
                 {{> sections/news/NewsFilters/NewsFilters props=(obj label=(default filters.label "Категории") title=filters.title categories=filters.categories class="news-list__categories")}}
-            {{/if}}
-            {{#if filters.years.[1]}}
-                {{> components/SortMenu/SortMenu props=(obj id=(default filters.yearsId "news-year") label=(default filters.yearsLabel "Год") options=filters.years class="sort-menu--field news-list__year")}}
+                {{#if filters.years.[1]}}
+                    {{> components/SortMenu/SortMenu props=(obj id=(default filters.yearsId "news-year") label=(default filters.yearsLabel "Год") options=filters.years class="sort-menu--field news-list__year")}}
+                {{/if}}
+            {{else}}
+                {{> sections/news/NewsFilters/NewsFilters props=(obj label=(default filters.yearsLabel "Год") yearsLabel=filters.yearsLabel years=filters.years class="news-list__categories")}}
             {{/if}}
         </div>
     {{/if}}
