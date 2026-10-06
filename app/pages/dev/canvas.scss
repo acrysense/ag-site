@@ -185,6 +185,13 @@ body:has(.stories) {
 		}
 	}
 
+	// Меню открыто: нижняя панель поверх меню у низа экрана, как на телефоне
+	> .main-menu--static + .tab-bar--static {
+		position: sticky;
+		bottom: 0;
+		z-index: 1;
+	}
+
 	> .cookie-banner--static {
 		margin: 0 10px 10px;
 

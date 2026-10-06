@@ -146,6 +146,7 @@
 					{{> layouts/TabBar/TabBar props=data.tabBarCurrent}}
 				{{/state}}
 				{{#> state label="Меню открыто" bg="page"}}
+					{{> layouts/MainMenu/MainMenu props=data.mainMenuWithTabBar}}
 					{{> layouts/TabBar/TabBar props=data.tabBarMenuOpen}}
 				{{/state}}
 			{{/story}}
