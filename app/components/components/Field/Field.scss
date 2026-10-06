@@ -130,22 +130,10 @@
 		color: palette("dark-grey-txt");
 	}
 
+	// Ошибка под полем — S/400 Red, как в ките
 	.field__error {
 		@include text("s-400");
 
-		display: flex;
-		gap: 4px;
-		align-items: center;
 		color: palette("red");
-
-		&[hidden] {
-			display: none;
-		}
-	}
-
-	.field__error-icon {
-		flex: none;
-		width: 14px;
-		height: 14px;
 	}
 }
