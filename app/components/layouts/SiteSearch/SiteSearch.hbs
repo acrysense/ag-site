@@ -6,8 +6,10 @@
 	На мобильном окно — на весь экран. Без фокуса в поле — запрос и сводка «Справочник · 2 фильтра»
 	(× сбрасывает фильтры). Без JS — обычная GET-форма.
 	props: action (страница результатов), suggestUrl (подсказки, JSON), filtersUrl (фильтры
-	раздела, HTML), sections [{ value, text, where («в Справочнике» — для кнопки на мобильном), icon, checked }], filters (фильтры выбранного
-	раздела — см. SearchFilter), placeholder. query — текущий запрос, id, class.
+	раздела, HTML), sections [{ value, text, where («в Справочнике» — для кнопки на мобильном), icon, checked,
+	action — своя страница результатов раздела (иначе общая action) }], filters (фильтры выбранного
+	раздела — см. SearchFilter), placeholder. query — текущий запрос, section — раздел, выбранный при
+	открытии (страница списка ЛК — её раздел; иначе раздел с checked), id, class.
 	Контракт — docs/contracts/site-search.md.
 --}}
 <div class="site-search{{#if class}} {{class}}{{/if}}" data-module="SiteSearch" data-path="layouts" {{#if props.suggestUrl}}data-suggest-url="{{props.suggestUrl}}"{{/if}} {{#if props.filtersUrl}}data-filters-url="{{props.filtersUrl}}"{{/if}}>
@@ -38,7 +40,7 @@
                     <div class="site-search__section-list">
                         {{#each props.sections}}
                             <label class="site-search__section">
-                                <input class="site-search__radio" type="radio" name="section" value="{{value}}" {{#if checked}}checked{{/if}} data-label="{{text}}" {{#if where}}data-where="{{where}}"{{/if}} />
+                                <input class="site-search__radio" type="radio" name="section" value="{{value}}" {{#if (or (eq value ../section) (and (not ../section) checked))}}checked{{/if}} data-label="{{text}}" {{#if where}}data-where="{{where}}"{{/if}} {{#if action}}data-action="{{action}}"{{/if}} />
                                 {{#if icon}}{{> components/Icon/Icon name=icon class="site-search__section-icon"}}{{/if}}
                                 <span>{{text}}</span>
                             </label>
@@ -49,7 +51,7 @@
             <div class="site-search__content">
                 <div class="site-search__filters">
                     <div class="site-search__filters-head">
-                        <p class="site-search__filters-title">Фильтры · <span data-site-search-section-label>{{#each props.sections}}{{#if checked}}{{text}}{{/if}}{{/each}}</span></p>
+                        <p class="site-search__filters-title">Фильтры · <span data-site-search-section-label>{{#each props.sections}}{{#if (or (eq value ../section) (and (not ../section) checked))}}{{text}}{{/if}}{{/each}}</span></p>
                         <button class="site-search__reset" type="button" data-site-search-reset>Сбросить все</button>
                     </div>
                     <button class="site-search__summary" type="button" aria-expanded="false" data-site-search-summary>
@@ -57,7 +59,9 @@
                         {{> components/Icon/Icon name="chevron-down" class="site-search__summary-icon"}}
                     </button>
                     <div class="site-search__filter-list" data-site-search-filter-list>
-                        {{#each props.filters}}
+                        {{!-- Фильтры выбранного раздела: раздел задан (section) — его набор из props.demoFilters
+                        (на бэке — фильтры этого раздела), иначе props.filters --}}
+                        {{#each (or (lookup props.demoFilters section) props.filters)}}
                             {{> sections/search/SearchFilter/SearchFilter props=this}}
                         {{/each}}
                     </div>

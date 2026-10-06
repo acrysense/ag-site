@@ -37,7 +37,8 @@ export default function init(root) {
 				const [from, to] = inputs.map(
 					(field) => Number(field.value.replace(/\D/g, '')) || 0
 				)
-				if (inputs[1].value && inputs[0].value && to < from)
+				// одно поле (single) — менять местами нечего
+				if (inputs.length > 1 && inputs[1].value && inputs[0].value && to < from)
 					[inputs[0].value, inputs[1].value] = [inputs[1].value, inputs[0].value]
 				if (root.hasAttribute('data-number-range-submit')) form?.requestSubmit()
 			},

@@ -29,7 +29,7 @@
         </div>
 
         {{!-- Поиск: разделы и фильтры — общие для сайта (site.search), запрос — со страницы --}}
-        {{> layouts/SiteSearch/SiteSearch props=@root.site.search query=props.search.value id=(default props.id 'header') class="header__search"}}
+        {{> layouts/SiteSearch/SiteSearch props=@root.site.search query=props.search.value section=@root.searchSection id=(default props.id 'header') class="header__search"}}
 
         <div class="header__actions">
             {{#if props.user}}

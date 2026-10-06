@@ -646,6 +646,46 @@
 				"text": "Вакансии",
 				"icon": "case",
 				"where": "в Вакансиях"
+			},
+			{
+				"value": "crm-pharmacies",
+				"text": "Аптеки",
+				"icon": "pharmacy",
+				"where": "в Аптеках",
+				"action": "https://acrysense.github.io/ag/pharmacies.html",
+				"crm": true
+			},
+			{
+				"value": "crm-managers",
+				"text": "Менеджеры",
+				"icon": "manager",
+				"where": "в Менеджерах",
+				"action": "https://acrysense.github.io/ag/managers.html",
+				"crm": true
+			},
+			{
+				"value": "crm-employees",
+				"text": "Сотрудники аптек",
+				"icon": "profile",
+				"where": "в Сотрудниках аптек",
+				"action": "https://acrysense.github.io/ag/employees.html",
+				"crm": true
+			},
+			{
+				"value": "crm-visits",
+				"text": "Визиты",
+				"icon": "calendar",
+				"where": "в Визитах",
+				"action": "https://acrysense.github.io/ag/visits.html",
+				"crm": true
+			},
+			{
+				"value": "crm-tasks",
+				"text": "Задачи",
+				"icon": "tasks",
+				"where": "в Задачах",
+				"action": "https://acrysense.github.io/ag/tasks.html",
+				"crm": true
 			}
 		],
 		"filters": [
@@ -1045,6 +1085,1002 @@
 							"text": "ООО «Добрыя лекі»"
 						}
 					]
+				}
+			],
+			"crm-pharmacies": [
+				{
+					"type": "select",
+					"name": "employee[]",
+					"placeholder": "Сотрудник",
+					"searchPlaceholder": "Найти сотрудника",
+					"options": [
+						{
+							"value": "Василевская М.В.",
+							"text": "Василевская М.В."
+						},
+						{
+							"value": "Волкова Ю.Г.",
+							"text": "Волкова Ю.Г."
+						},
+						{
+							"value": "Зайцева Д.М.",
+							"text": "Зайцева Д.М."
+						},
+						{
+							"value": "Ковш Т.А.",
+							"text": "Ковш Т.А."
+						},
+						{
+							"value": "Северная Т.В.",
+							"text": "Северная Т.В."
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "region",
+					"placeholder": "Область",
+					"searchPlaceholder": "Найти область",
+					"options": [
+						{
+							"value": "",
+							"text": "Все"
+						},
+						{
+							"value": "Минск",
+							"text": "Минск"
+						},
+						{
+							"value": "Витебск",
+							"text": "Витебск"
+						},
+						{
+							"value": "Брест",
+							"text": "Брест"
+						},
+						{
+							"value": "Гродно",
+							"text": "Гродно"
+						},
+						{
+							"value": "Могилев",
+							"text": "Могилев"
+						}
+					],
+					"single": true
+				},
+				{
+					"type": "select",
+					"name": "region[]",
+					"placeholder": "Регион",
+					"searchPlaceholder": "Найти регион",
+					"options": [
+						{
+							"value": "Минск",
+							"text": "Минск"
+						},
+						{
+							"value": "Витебск",
+							"text": "Витебск"
+						},
+						{
+							"value": "Брест",
+							"text": "Брест"
+						},
+						{
+							"value": "Гродно",
+							"text": "Гродно"
+						},
+						{
+							"value": "Могилев",
+							"text": "Могилев"
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "brand[]",
+					"placeholder": "Бренд",
+					"searchPlaceholder": "Найти бренд",
+					"options": [
+						{
+							"value": "ADEL",
+							"text": "ADEL"
+						},
+						{
+							"value": "Добрыя лекі",
+							"text": "Добрыя лекі"
+						},
+						{
+							"value": "Эконом",
+							"text": "Эконом"
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "category[]",
+					"placeholder": "Категория",
+					"searchPlaceholder": "Найти категорию",
+					"options": [
+						{
+							"value": "A",
+							"text": "A"
+						},
+						{
+							"value": "B",
+							"text": "B"
+						},
+						{
+							"value": "C",
+							"text": "C"
+						},
+						{
+							"value": "D",
+							"text": "D"
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "company",
+					"placeholder": "Розничная компания",
+					"searchPlaceholder": "Найти компанию",
+					"options": [
+						{
+							"value": "",
+							"text": "Все"
+						},
+						{
+							"value": "Аптека групп",
+							"text": "Аптека групп"
+						},
+						{
+							"value": "Фарм",
+							"text": "Фарм"
+						}
+					],
+					"single": true
+				},
+				{
+					"type": "select",
+					"name": "pharmacy[]",
+					"placeholder": "Аптека",
+					"searchPlaceholder": "Найти аптеку",
+					"options": [
+						{
+							"value": "ADEL №112",
+							"text": "ADEL №112"
+						},
+						{
+							"value": "ADEL №42",
+							"text": "Аптека ADEL №42, Минск"
+						},
+						{
+							"value": "ADEL №4",
+							"text": "ADEL №4"
+						},
+						{
+							"value": "ADEL №2",
+							"text": "ADEL №2"
+						},
+						{
+							"value": "ADEL №24",
+							"text": "Аптека ADEL №24"
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "manager",
+					"placeholder": "Менеджер",
+					"searchPlaceholder": "Найти менеджера",
+					"options": [
+						{
+							"value": "",
+							"text": "Все"
+						},
+						{
+							"value": "Петров А.И.",
+							"text": "Петров А.И."
+						},
+						{
+							"value": "Полководец Т.С.",
+							"text": "Полководец Т.С."
+						}
+					],
+					"single": true
+				},
+				{
+					"type": "number",
+					"single": true,
+					"name": "checks",
+					"placeholder": "Кол-во чеков",
+					"label": "Кол-во чеков"
+				},
+				{
+					"type": "number",
+					"label": "Индекс",
+					"nameFrom": "index_from",
+					"nameTo": "index_to",
+					"placeholderFrom": "Индекс от",
+					"placeholderTo": "до"
+				},
+				{
+					"type": "date",
+					"nameFrom": "period_from",
+					"nameTo": "period_to",
+					"placeholder": "Период"
+				},
+				{
+					"type": "date",
+					"nameFrom": "date_from",
+					"nameTo": "date_to",
+					"placeholder": "Дата"
+				}
+			],
+			"crm-managers": [
+				{
+					"type": "select",
+					"name": "employee[]",
+					"placeholder": "Сотрудник",
+					"searchPlaceholder": "Найти сотрудника",
+					"options": [
+						{
+							"value": "Василевская М.В.",
+							"text": "Василевская М.В."
+						},
+						{
+							"value": "Волкова Ю.Г.",
+							"text": "Волкова Ю.Г."
+						},
+						{
+							"value": "Зайцева Д.М.",
+							"text": "Зайцева Д.М."
+						},
+						{
+							"value": "Ковш Т.А.",
+							"text": "Ковш Т.А."
+						},
+						{
+							"value": "Северная Т.В.",
+							"text": "Северная Т.В."
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "region",
+					"placeholder": "Область",
+					"searchPlaceholder": "Найти область",
+					"options": [
+						{
+							"value": "",
+							"text": "Все"
+						},
+						{
+							"value": "Минск",
+							"text": "Минск"
+						},
+						{
+							"value": "Витебск",
+							"text": "Витебск"
+						},
+						{
+							"value": "Брест",
+							"text": "Брест"
+						},
+						{
+							"value": "Гродно",
+							"text": "Гродно"
+						},
+						{
+							"value": "Могилев",
+							"text": "Могилев"
+						}
+					],
+					"single": true
+				},
+				{
+					"type": "select",
+					"name": "region[]",
+					"placeholder": "Регион",
+					"searchPlaceholder": "Найти регион",
+					"options": [
+						{
+							"value": "Минск",
+							"text": "Минск"
+						},
+						{
+							"value": "Витебск",
+							"text": "Витебск"
+						},
+						{
+							"value": "Брест",
+							"text": "Брест"
+						},
+						{
+							"value": "Гродно",
+							"text": "Гродно"
+						},
+						{
+							"value": "Могилев",
+							"text": "Могилев"
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "brand[]",
+					"placeholder": "Бренд",
+					"searchPlaceholder": "Найти бренд",
+					"options": [
+						{
+							"value": "ADEL",
+							"text": "ADEL"
+						},
+						{
+							"value": "Добрыя лекі",
+							"text": "Добрыя лекі"
+						},
+						{
+							"value": "Эконом",
+							"text": "Эконом"
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "category[]",
+					"placeholder": "Категория",
+					"searchPlaceholder": "Найти категорию",
+					"options": [
+						{
+							"value": "A",
+							"text": "A"
+						},
+						{
+							"value": "B",
+							"text": "B"
+						},
+						{
+							"value": "C",
+							"text": "C"
+						},
+						{
+							"value": "D",
+							"text": "D"
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "company",
+					"placeholder": "Розничная компания",
+					"searchPlaceholder": "Найти компанию",
+					"options": [
+						{
+							"value": "",
+							"text": "Все"
+						},
+						{
+							"value": "Аптека групп",
+							"text": "Аптека групп"
+						},
+						{
+							"value": "Фарм",
+							"text": "Фарм"
+						}
+					],
+					"single": true
+				},
+				{
+					"type": "select",
+					"name": "pharmacy[]",
+					"placeholder": "Аптека",
+					"searchPlaceholder": "Найти аптеку",
+					"options": [
+						{
+							"value": "ADEL №112",
+							"text": "ADEL №112"
+						},
+						{
+							"value": "ADEL №42",
+							"text": "Аптека ADEL №42, Минск"
+						},
+						{
+							"value": "ADEL №4",
+							"text": "ADEL №4"
+						},
+						{
+							"value": "ADEL №2",
+							"text": "ADEL №2"
+						},
+						{
+							"value": "ADEL №24",
+							"text": "Аптека ADEL №24"
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "manager",
+					"placeholder": "Менеджер",
+					"searchPlaceholder": "Найти менеджера",
+					"options": [
+						{
+							"value": "",
+							"text": "Все"
+						},
+						{
+							"value": "Петров А.И.",
+							"text": "Петров А.И."
+						},
+						{
+							"value": "Полководец Т.С.",
+							"text": "Полководец Т.С."
+						}
+					],
+					"single": true
+				},
+				{
+					"type": "number",
+					"single": true,
+					"name": "checks",
+					"placeholder": "Кол-во чеков",
+					"label": "Кол-во чеков"
+				},
+				{
+					"type": "number",
+					"label": "Индекс",
+					"nameFrom": "index_from",
+					"nameTo": "index_to",
+					"placeholderFrom": "Индекс от",
+					"placeholderTo": "до"
+				},
+				{
+					"type": "date",
+					"nameFrom": "period_from",
+					"nameTo": "period_to",
+					"placeholder": "Период"
+				},
+				{
+					"type": "date",
+					"nameFrom": "date_from",
+					"nameTo": "date_to",
+					"placeholder": "Дата"
+				}
+			],
+			"crm-employees": [
+				{
+					"type": "select",
+					"name": "employee[]",
+					"placeholder": "Сотрудник",
+					"searchPlaceholder": "Найти сотрудника",
+					"options": [
+						{
+							"value": "Василевская М.В.",
+							"text": "Василевская М.В."
+						},
+						{
+							"value": "Волкова Ю.Г.",
+							"text": "Волкова Ю.Г."
+						},
+						{
+							"value": "Зайцева Д.М.",
+							"text": "Зайцева Д.М."
+						},
+						{
+							"value": "Ковш Т.А.",
+							"text": "Ковш Т.А."
+						},
+						{
+							"value": "Северная Т.В.",
+							"text": "Северная Т.В."
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "region",
+					"placeholder": "Область",
+					"searchPlaceholder": "Найти область",
+					"options": [
+						{
+							"value": "",
+							"text": "Все"
+						},
+						{
+							"value": "Минск",
+							"text": "Минск"
+						},
+						{
+							"value": "Витебск",
+							"text": "Витебск"
+						},
+						{
+							"value": "Брест",
+							"text": "Брест"
+						},
+						{
+							"value": "Гродно",
+							"text": "Гродно"
+						},
+						{
+							"value": "Могилев",
+							"text": "Могилев"
+						}
+					],
+					"single": true
+				},
+				{
+					"type": "select",
+					"name": "region[]",
+					"placeholder": "Регион",
+					"searchPlaceholder": "Найти регион",
+					"options": [
+						{
+							"value": "Минск",
+							"text": "Минск"
+						},
+						{
+							"value": "Витебск",
+							"text": "Витебск"
+						},
+						{
+							"value": "Брест",
+							"text": "Брест"
+						},
+						{
+							"value": "Гродно",
+							"text": "Гродно"
+						},
+						{
+							"value": "Могилев",
+							"text": "Могилев"
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "brand[]",
+					"placeholder": "Бренд",
+					"searchPlaceholder": "Найти бренд",
+					"options": [
+						{
+							"value": "ADEL",
+							"text": "ADEL"
+						},
+						{
+							"value": "Добрыя лекі",
+							"text": "Добрыя лекі"
+						},
+						{
+							"value": "Эконом",
+							"text": "Эконом"
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "category[]",
+					"placeholder": "Категория",
+					"searchPlaceholder": "Найти категорию",
+					"options": [
+						{
+							"value": "A",
+							"text": "A"
+						},
+						{
+							"value": "B",
+							"text": "B"
+						},
+						{
+							"value": "C",
+							"text": "C"
+						},
+						{
+							"value": "D",
+							"text": "D"
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "company",
+					"placeholder": "Розничная компания",
+					"searchPlaceholder": "Найти компанию",
+					"options": [
+						{
+							"value": "",
+							"text": "Все"
+						},
+						{
+							"value": "Аптека групп",
+							"text": "Аптека групп"
+						},
+						{
+							"value": "Фарм",
+							"text": "Фарм"
+						}
+					],
+					"single": true
+				},
+				{
+					"type": "select",
+					"name": "pharmacy[]",
+					"placeholder": "Аптека",
+					"searchPlaceholder": "Найти аптеку",
+					"options": [
+						{
+							"value": "ADEL №112",
+							"text": "ADEL №112"
+						},
+						{
+							"value": "ADEL №42",
+							"text": "Аптека ADEL №42, Минск"
+						},
+						{
+							"value": "ADEL №4",
+							"text": "ADEL №4"
+						},
+						{
+							"value": "ADEL №2",
+							"text": "ADEL №2"
+						},
+						{
+							"value": "ADEL №24",
+							"text": "Аптека ADEL №24"
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "manager",
+					"placeholder": "Менеджер",
+					"searchPlaceholder": "Найти менеджера",
+					"options": [
+						{
+							"value": "",
+							"text": "Все"
+						},
+						{
+							"value": "Петров А.И.",
+							"text": "Петров А.И."
+						},
+						{
+							"value": "Полководец Т.С.",
+							"text": "Полководец Т.С."
+						}
+					],
+					"single": true
+				},
+				{
+					"type": "number",
+					"single": true,
+					"name": "checks",
+					"placeholder": "Кол-во чеков",
+					"label": "Кол-во чеков"
+				},
+				{
+					"type": "number",
+					"label": "Индекс",
+					"nameFrom": "index_from",
+					"nameTo": "index_to",
+					"placeholderFrom": "Индекс от",
+					"placeholderTo": "до"
+				},
+				{
+					"type": "date",
+					"nameFrom": "period_from",
+					"nameTo": "period_to",
+					"placeholder": "Период"
+				},
+				{
+					"type": "date",
+					"nameFrom": "date_from",
+					"nameTo": "date_to",
+					"placeholder": "Дата"
+				}
+			],
+			"crm-visits": [
+				{
+					"type": "select",
+					"name": "employee[]",
+					"placeholder": "Сотрудник",
+					"searchPlaceholder": "Найти сотрудника",
+					"options": [
+						{
+							"value": "Василевская М.В.",
+							"text": "Василевская М.В."
+						},
+						{
+							"value": "Волкова Ю.Г.",
+							"text": "Волкова Ю.Г."
+						},
+						{
+							"value": "Зайцева Д.М.",
+							"text": "Зайцева Д.М."
+						},
+						{
+							"value": "Ковш Т.А.",
+							"text": "Ковш Т.А."
+						},
+						{
+							"value": "Северная Т.В.",
+							"text": "Северная Т.В."
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "region",
+					"placeholder": "Область",
+					"searchPlaceholder": "Найти область",
+					"options": [
+						{
+							"value": "",
+							"text": "Все"
+						},
+						{
+							"value": "Минск",
+							"text": "Минск"
+						},
+						{
+							"value": "Витебск",
+							"text": "Витебск"
+						},
+						{
+							"value": "Брест",
+							"text": "Брест"
+						},
+						{
+							"value": "Гродно",
+							"text": "Гродно"
+						},
+						{
+							"value": "Могилев",
+							"text": "Могилев"
+						}
+					],
+					"single": true
+				},
+				{
+					"type": "select",
+					"name": "region[]",
+					"placeholder": "Регион",
+					"searchPlaceholder": "Найти регион",
+					"options": [
+						{
+							"value": "Минск",
+							"text": "Минск"
+						},
+						{
+							"value": "Витебск",
+							"text": "Витебск"
+						},
+						{
+							"value": "Брест",
+							"text": "Брест"
+						},
+						{
+							"value": "Гродно",
+							"text": "Гродно"
+						},
+						{
+							"value": "Могилев",
+							"text": "Могилев"
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "brand[]",
+					"placeholder": "Бренд",
+					"searchPlaceholder": "Найти бренд",
+					"options": [
+						{
+							"value": "ADEL",
+							"text": "ADEL"
+						},
+						{
+							"value": "Добрыя лекі",
+							"text": "Добрыя лекі"
+						},
+						{
+							"value": "Эконом",
+							"text": "Эконом"
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "category[]",
+					"placeholder": "Категория",
+					"searchPlaceholder": "Найти категорию",
+					"options": [
+						{
+							"value": "A",
+							"text": "A"
+						},
+						{
+							"value": "B",
+							"text": "B"
+						},
+						{
+							"value": "C",
+							"text": "C"
+						},
+						{
+							"value": "D",
+							"text": "D"
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "company",
+					"placeholder": "Розничная компания",
+					"searchPlaceholder": "Найти компанию",
+					"options": [
+						{
+							"value": "",
+							"text": "Все"
+						},
+						{
+							"value": "Аптека групп",
+							"text": "Аптека групп"
+						},
+						{
+							"value": "Фарм",
+							"text": "Фарм"
+						}
+					],
+					"single": true
+				},
+				{
+					"type": "select",
+					"name": "pharmacy[]",
+					"placeholder": "Аптека",
+					"searchPlaceholder": "Найти аптеку",
+					"options": [
+						{
+							"value": "ADEL №112",
+							"text": "ADEL №112"
+						},
+						{
+							"value": "ADEL №42",
+							"text": "Аптека ADEL №42, Минск"
+						},
+						{
+							"value": "ADEL №4",
+							"text": "ADEL №4"
+						},
+						{
+							"value": "ADEL №2",
+							"text": "ADEL №2"
+						},
+						{
+							"value": "ADEL №24",
+							"text": "Аптека ADEL №24"
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "manager",
+					"placeholder": "Менеджер",
+					"searchPlaceholder": "Найти менеджера",
+					"options": [
+						{
+							"value": "",
+							"text": "Все"
+						},
+						{
+							"value": "Петров А.И.",
+							"text": "Петров А.И."
+						},
+						{
+							"value": "Полководец Т.С.",
+							"text": "Полководец Т.С."
+						}
+					],
+					"single": true
+				},
+				{
+					"type": "number",
+					"single": true,
+					"name": "checks",
+					"placeholder": "Кол-во чеков",
+					"label": "Кол-во чеков"
+				},
+				{
+					"type": "number",
+					"label": "Индекс",
+					"nameFrom": "index_from",
+					"nameTo": "index_to",
+					"placeholderFrom": "Индекс от",
+					"placeholderTo": "до"
+				},
+				{
+					"type": "date",
+					"nameFrom": "period_from",
+					"nameTo": "period_to",
+					"placeholder": "Период"
+				},
+				{
+					"type": "date",
+					"nameFrom": "date_from",
+					"nameTo": "date_to",
+					"placeholder": "Дата"
+				}
+			],
+			"crm-tasks": [
+				{
+					"type": "select",
+					"name": "assignee[]",
+					"placeholder": "Сотрудник",
+					"searchPlaceholder": "Найти сотрудника",
+					"options": [
+						{
+							"value": "Иванов М.С.",
+							"text": "Иванов М.С."
+						},
+						{
+							"value": "Петров А.И.",
+							"text": "Петров А.И."
+						},
+						{
+							"value": "Панковец В.В.",
+							"text": "Панковец В.В."
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "manager[]",
+					"placeholder": "Менеджер",
+					"searchPlaceholder": "Найти менеджера",
+					"options": [
+						{
+							"value": "Петров А.И.",
+							"text": "Петров А.И."
+						},
+						{
+							"value": "Сидоров И.И.",
+							"text": "Сидоров И.И."
+						},
+						{
+							"value": "Кузнецова Л.П.",
+							"text": "Кузнецова Л.П."
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "pharmacy[]",
+					"placeholder": "Аптека",
+					"searchPlaceholder": "Найти аптеку",
+					"options": [
+						{
+							"value": "Эконом №8",
+							"text": "Эконом №8"
+						},
+						{
+							"value": "Эконом №9",
+							"text": "Эконом №9"
+						},
+						{
+							"value": "ADEL №14",
+							"text": "ADEL №14"
+						}
+					]
+				},
+				{
+					"type": "date",
+					"nameFrom": "date_from",
+					"nameTo": "date_to",
+					"placeholder": "Дата"
 				}
 			]
 		}

@@ -3,9 +3,16 @@
 	вакансий): два поля 46 через «—». Разряды — через пробел, в форму уходят только цифры.
 	props: label (для скринридера: «Зарплата»), nameFrom, nameTo, from, to, placeholderFrom
 	(«от»), placeholderTo («до»), submit — отправить форму, когда значение изменили, class.
+	single — одно число вместо диапазона: name, value, placeholder (видимая подпись поля).
 --}}
+{{#if props.single}}
+<div class="number-range number-range--single{{#if props.class}} {{props.class}}{{/if}}" data-module="NumberRange" data-path="components" {{#if props.submit}}data-number-range-submit{{/if}}>
+    <input class="number-range__input" type="text" inputmode="numeric" autocomplete="off" name="{{props.name}}" value="{{props.value}}" placeholder="{{props.placeholder}}" aria-label="{{default props.label props.placeholder}}" />
+</div>
+{{else}}
 <div class="number-range{{#if props.class}} {{props.class}}{{/if}}" role="group" aria-label="{{default props.label 'Диапазон'}}" data-module="NumberRange" data-path="components" {{#if props.submit}}data-number-range-submit{{/if}}>
     <input class="number-range__input" type="text" inputmode="numeric" autocomplete="off" name="{{props.nameFrom}}" value="{{props.from}}" placeholder="{{default props.placeholderFrom 'от'}}" aria-label="{{default props.label 'Диапазон'}}: от" />
     <span class="number-range__dash" aria-hidden="true">—</span>
     <input class="number-range__input" type="text" inputmode="numeric" autocomplete="off" name="{{props.nameTo}}" value="{{props.to}}" placeholder="{{default props.placeholderTo 'до'}}" aria-label="{{default props.label 'Диапазон'}}: до" />
 </div>
+{{/if}}

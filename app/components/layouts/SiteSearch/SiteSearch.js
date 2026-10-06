@@ -522,16 +522,34 @@ export default function init(root) {
 		{ signal }
 	)
 
-	// Отправка: пустые параметры в адрес не попадают
+	// Отправка: пустые параметры в адрес не попадают. У раздела может быть своя страница
+	// результатов (data-action — разделы ЛК ведут в свои списки), иначе — общая action формы.
+	// Раздел ведёт на эту же страницу — поиск сначала предлагает фильтры ей (событие
+	// site-search:apply с адресом и параметрами): страница, которая применяет их сама (список
+	// ЛК), отменяет событие — окно закрывается без перехода. Никто не отменил — переход
 	form.addEventListener(
 		'submit',
 		(event) => {
 			event.preventDefault()
 			const url = new URL(
-				form.getAttribute('action') || window.location.pathname,
+				currentSection()?.dataset.action || form.getAttribute('action') || window.location.pathname,
 				window.location.href
 			)
 			url.search = params().toString()
+			if (url.origin === window.location.origin && url.pathname === window.location.pathname) {
+				const handled = !root.dispatchEvent(
+					new CustomEvent('site-search:apply', {
+						bubbles: true,
+						cancelable: true,
+						detail: { url, params: new URLSearchParams(url.search) },
+					})
+				)
+				if (handled) {
+					close()
+					input.blur()
+					return
+				}
+			}
 			release?.()
 			release = null
 			window.location.assign(url)

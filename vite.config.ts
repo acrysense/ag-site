@@ -836,6 +836,14 @@ export default defineConfig(({ mode }) => {
 						...site,
 						header: (auth && site.headerUser) || site.header,
 						mainMenu: auth ? site.mainMenu : site.mainMenuGuest || site.mainMenu,
+						// Разделы CRM в поиске (crm: true — списки ЛК) — только тем, у кого есть доступ;
+						// в демо — вошедшему сотруднику, гостю их нет
+						search: auth
+							? site.search
+							: site.search && {
+									...site.search,
+									sections: (site.search.sections || []).filter((section: any) => !section.crm),
+								},
 					}
 
 					const title = pageCfg.title || site.seoDefaults?.title || site.siteName || ''

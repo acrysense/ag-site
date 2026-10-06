@@ -2,13 +2,14 @@
 	Один фильтр поиска по типу — общий для страницы результатов (SearchFilters) и окна поиска
 	в шапке (SiteSearch). props: type — select | date | number и поля компонента:
 	select → Select с multiple и поиском (name «department[]», placeholder, options,
-	searchPlaceholder, valueText, url); date → DateRange (nameFrom, nameTo, from, to,
-	placeholder); number → NumberRange (label, nameFrom, nameTo, from, to, placeholderFrom,
-	placeholderTo) — во всю ширину сетки.
+	searchPlaceholder, valueText, url; single — один вариант, name без []); date → DateRange
+	(nameFrom, nameTo, from, to, placeholder); number → NumberRange (label, nameFrom, nameTo, from,
+	to, placeholderFrom, placeholderTo) — во всю ширину сетки; single — одно число (name, value,
+	placeholder), в ячейке, как список.
 --}}
-<div class="search-filter{{#if (eq props.type 'number')}} search-filter--wide{{/if}}">
+<div class="search-filter{{#if (and (eq props.type 'number') (not props.single))}} search-filter--wide{{/if}}">
     {{#if (eq props.type 'select')}}
-        {{> components/Select/Select props=(obj name=props.name placeholder=props.placeholder options=props.options multiple=true search=true searchPlaceholder=props.searchPlaceholder valueText=props.valueText url=props.url)}}
+        {{> components/Select/Select props=(obj name=props.name placeholder=props.placeholder options=props.options multiple=(not props.single) search=true searchPlaceholder=props.searchPlaceholder valueText=props.valueText url=props.url)}}
     {{else if (eq props.type 'date')}}
         {{> components/DateRange/DateRange props=props}}
     {{else if (eq props.type 'number')}}
