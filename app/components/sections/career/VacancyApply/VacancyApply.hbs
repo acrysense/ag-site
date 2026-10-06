@@ -1,5 +1,6 @@
 {{!--
-	Заявка на вакансию (окно шириной 560) и «Заявка принята».
+	Заявка на вакансию (окно шириной 560) и «Заявка принята». До 768 оба на весь экран, кнопки
+	закреплены внизу.
 	Одно окно на страницу: кнопка «Откликнуться» в окне вакансии подставляет вакансию (скрытое
 	поле vacancy и подпись под заголовком — data-vacancy-apply, data-vacancy-apply-title).
 	Данные из профиля (ФИО, должность) приходят с бэка; телефон обязателен, почта — из профиля,
@@ -10,7 +11,7 @@
 	success { title, text, close }, open и successOpen (витрина: показать сразу). Контракт — docs/contracts/career.md.
 --}}
 {{#with props}}
-    {{#> components/Modal/Modal props=(obj id=id title=title size="l" class="vacancy-apply" open=open)}}
+    {{#> components/Modal/Modal props=(obj id=id title=title size="l" full=true class="vacancy-apply" open=open)}}
         <form class="modal__form vacancy-apply__form" action="{{action}}" method="post" enctype="multipart/form-data" data-module="Form" data-path="components" data-form-success="{{id}}-success">
             <input type="hidden" name="vacancy" value="" data-vacancy-apply-id />
             <p class="vacancy-apply__vacancy" data-vacancy-apply-subtitle data-module="VacancyApply" data-path="sections/career" hidden></p>
@@ -29,10 +30,14 @@
             </div>
             {{> components/Checkbox/Checkbox props=(obj id=(concat id "-consent") name="consent" text=consent.text link=consent.link required=true)}}
             <p class="form-error" role="alert" data-form-error hidden></p>
-            {{> components/Button/Button props=(obj text=(default submit "Отправить заявку") variant="general" size="m" type="submit" class="modal__submit")}}
+            <div class="modal__bar">
+                {{> components/Button/Button props=(obj text=(default submit "Отправить заявку") variant="general" size="m" type="submit" class="modal__submit")}}
+            </div>
         </form>
     {{/components/Modal/Modal}}
-    {{#> components/Modal/Modal props=(obj id=(concat id "-success") title=success.title text=success.text variant="center" icon="success" open=successOpen)}}
-        {{> components/Button/Button props=(obj text=(default success.close "Вернуться к вакансиям") variant="general" size="m" attrs=(obj data-modal-close=""))}}
+    {{#> components/Modal/Modal props=(obj id=(concat id "-success") title=success.title text=success.text variant="center" icon="success" full=true open=successOpen)}}
+        <div class="modal__bar">
+            {{> components/Button/Button props=(obj text=(default success.close "Вернуться к вакансиям") variant="general" size="m" attrs=(obj data-modal-close=""))}}
+        </div>
     {{/components/Modal/Modal}}
 {{/with}}

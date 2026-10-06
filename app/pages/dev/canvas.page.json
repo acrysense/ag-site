@@ -7383,6 +7383,7 @@
 			]
 		},
 		"careerList": {
+			"modalTitle": "Вакансия",
 			"title": "Карьерный шанс",
 			"count": 24,
 			"found": "Найдено 24 вакансии",
@@ -8090,10 +8091,12 @@
 			"open": true
 		},
 		"vacancyModalList": {
+			"modalTitle": "Вакансия",
 			"applyId": "vacancy-apply",
 			"applyText": "Откликнуться"
 		},
 		"vacancyModalListGuest": {
+			"modalTitle": "Вакансия",
 			"loginUrl": "#",
 			"loginText": "Войти, чтобы откликнуться"
 		},

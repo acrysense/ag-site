@@ -561,6 +561,7 @@
 				"total": 24,
 				"totalText": "Всего:"
 			},
+			"modalTitle": "Вакансия",
 			"applyId": "vacancy-apply",
 			"applyText": "Откликнуться"
 		},
