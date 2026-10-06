@@ -133,8 +133,8 @@ function current() {
 }
 
 // Пути к файлам — ссылки на репозиторий: папка компонента (шаблон, стили, скрипт) и контракт.
-// Репозиторий публичный, ссылка работает и в демо, и локально
-const REPO = 'https://github.com/acrysense/ag-site'
+// Репозиторий публичный (адрес — data-repo у body), ссылка работает и в демо, и локально
+const REPO = document.body.dataset.repo
 const PATH = /((?:app|docs)\/[\w./-]+)/
 const withPaths = (text) =>
 	text
