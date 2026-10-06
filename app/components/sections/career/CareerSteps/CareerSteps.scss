@@ -3,20 +3,24 @@
 
 // «Как это работает» — белая карточка, поля 20, через 20: заголовок H3, шаги:
 // кружок 28 BG.Info с номером S/600 Blue.TXT, через 12 текст — название M/700 и описание M/400
-// Dark-grey.TXT через 4.
+// Dark-grey.TXT через 4. До 1024 — отдельный белый блок после серой полосы 10, поля 30/10:
+// выходит за поля белого блока страницы до её краёв.
 @layer components {
 	.career-steps {
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
 		min-width: 0;
-		padding: 20px;
-		background: palette("bg-info");
-		border-radius: $radius-content-block;
+		margin: 0 -10px -24px;
+		padding: 30px 10px;
+		background: palette("white");
+		border-top: 10px solid palette("bg-main");
 
-		// На мобильном страница — белый блок, поэтому карточка BG.Info; на десктопе — белая
 		@include up(desktop) {
-			background: palette("white");
+			margin: 0;
+			padding: 20px;
+			border-top: 0;
+			border-radius: $radius-content-block;
 		}
 	}
 
