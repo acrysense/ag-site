@@ -59,12 +59,8 @@
 		width: 28px;
 		height: 28px;
 		color: palette("blue-txt");
-		background: palette("white");
+		background: palette("bg-info");
 		border-radius: 50%;
-
-		@include up(desktop) {
-			background: palette("bg-info");
-		}
 	}
 
 	.career-steps__text {
