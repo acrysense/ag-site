@@ -153,6 +153,16 @@
 			@include up(tablet) {
 				margin-inline: -16px;
 			}
+
+			// Полоса кончается на уровне низа содержимого, а не у края окна: нижний отступ
+			// (modal__content) внутри прокрутки
+			.simplebar-track.simplebar-vertical {
+				bottom: calc(16px + env(safe-area-inset-bottom));
+
+				@include up(tablet) {
+					bottom: 32px;
+				}
+			}
 		}
 
 		&__content {
