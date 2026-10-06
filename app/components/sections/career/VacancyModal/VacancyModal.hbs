@@ -1,19 +1,20 @@
 {{!--
 	Окно вакансии (шириной 1040): слева должность (H2), метки, параметры, плашка «Вы сотрудник
 	холдинга…» и «Откликнуться»; справа через черту — описание (HTML из визуального редактора: заголовки и списки). До 768 —
-	шторка снизу, всё в одну колонку: описание перед кнопкой.
+	на весь экран, всё в одну колонку: в шапке «Вакансия», описание перед кнопкой, «Откликнуться»
+	закреплена внизу.
 	props: вакансия — id, title, tags, params [{ label, value }], description (HTML), applyTitle
 	(«Провизор / фармацевт · ЛибертФарм, Минск» — подпись в окне заявки), open (витрина:
-	показать сразу); list — общее для всех вакансий: applyId (окно заявки), applyText, note (плашка, только вошедшему), loginUrl и
+	показать сразу); list — общее для всех вакансий: modalTitle (шапка окна до 768, «Вакансия»), applyId (окно заявки), applyText, note (плашка, только вошедшему), loginUrl и
 	loginText (гость: вместо отклика — вход). Контракт — docs/contracts/career.md.
 --}}
 {{!-- Внутри блока окна props — параметры самого окна, поэтому вакансия и общее — через with --}}
 {{#with props as |vacancy|}}
 {{#with (default ../list (obj)) as |shared|}}
-{{#> components/Modal/Modal props=(obj id=(concat "vacancy-" vacancy.id) labelledby=(concat "vacancy-" vacancy.id "-title") size="xl" class="vacancy-modal" open=vacancy.open)}}
+{{#> components/Modal/Modal props=(obj id=(concat "vacancy-" vacancy.id) labelledby=(concat "vacancy-" vacancy.id "-name") title=(default shared.modalTitle "Вакансия") size="xl" full=true class="vacancy-modal" open=vacancy.open)}}
     <div class="vacancy-modal__layout">
         <div class="vacancy-modal__head">
-            <h2 class="vacancy-modal__title" id="vacancy-{{vacancy.id}}-title">{{vacancy.title}}</h2>
+            <h2 class="vacancy-modal__title" id="vacancy-{{vacancy.id}}-name">{{vacancy.title}}</h2>
             {{#if vacancy.tags.length}}
                 <ul class="vacancy-modal__tags" role="list">
                     {{#each vacancy.tags}}<li class="vacancy-modal__tag">{{text}}</li>{{/each}}
@@ -31,7 +32,7 @@
             </dl>
         {{/if}}
         {{#if vacancy.description}}<div class="content vacancy-modal__content">{{{vacancy.description}}}</div>{{/if}}
-        <div class="vacancy-modal__actions">
+        <div class="vacancy-modal__actions modal__bar">
             {{#if shared.loginUrl}}
                 {{> components/Button/Button props=(obj href=shared.loginUrl text=(default shared.loginText "Войти, чтобы откликнуться") variant="general" size="m" class="vacancy-modal__button")}}
             {{else}}

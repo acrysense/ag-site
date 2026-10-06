@@ -151,7 +151,7 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="modal" group="Компоненты" title="Модальное окно" how='С 768 — карточка по центру, до 768 — шторка снизу. Фон размыт; закрывается крестиком, Escape и нажатием по фону. Не помещается — прокручивается тело.' figma='1920 — 4132:1034, 4134:27265; 360 — 4879:1361, 4880:1513, 4568:1079' backend='app/components/components/Modal/ · docs/contracts/modal.md — открывает кнопка с data-modal-open="id"'}}
+			{{#> story id="modal" group="Компоненты" title="Модальное окно" how='С 768 — карточка по центру, до 768 — шторка снизу (с классом modal--full — на весь экран, как окна карьеры). Фон размыт; закрывается крестиком, Escape и нажатием по фону. Не помещается — прокручивается тело.' figma='1920 — 4132:1034, 4134:27265; 360 — 4879:1361, 4880:1513, 4568:1079' backend='app/components/components/Modal/ · docs/contracts/modal.md — открывает кнопка с data-modal-open="id"'}}
 				{{#> state label="Выход" bg="page"}}
 					{{#> components/Modal/Modal props=(obj id="story-modal-confirm" title=data.logout.title text=data.logout.text size="s" variant="confirm" close=false open=true)}}
 						<div class="modal__actions">
@@ -531,7 +531,7 @@
 				{{#> state label="Пусто" note="шагов нет — блок не выводится"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="vacancy-modal" group="Карьера" title="Окно вакансии" how='Слева должность, метки, параметры и «Откликнуться» (открывает заявку), справа описание из редактора. До 768 — шторка в одну колонку.' figma='4590:510' backend='app/components/sections/career/VacancyModal/ · docs/contracts/career.md — описание из редактора'}}
+			{{#> story id="vacancy-modal" group="Карьера" title="Окно вакансии" how='Слева должность, метки, параметры и «Откликнуться» (открывает заявку), справа описание из редактора. До 768 — на весь экран в одну колонку, «Откликнуться» закреплена внизу.' figma='4590:510' backend='app/components/sections/career/VacancyModal/ · docs/contracts/career.md — описание из редактора'}}
 				{{#> state label="Сотрудник" bg="page"}}
 					{{> sections/career/VacancyModal/VacancyModal props=data.vacancyModal list=data.vacancyModalList}}
 				{{/state}}
@@ -543,7 +543,7 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="vacancy-apply" group="Карьера" title="Заявка на вакансию" how='Телефон обязателен; резюме — PDF или DOC до 5 МБ, проверка при отправке.' figma='4593:587, «Заявка принята» 4593:647' backend='app/components/sections/career/VacancyApply/ · docs/contracts/career.md — данные из профиля, резюме до 5 МБ'}}
+			{{#> story id="vacancy-apply" group="Карьера" title="Заявка на вакансию" how='Телефон обязателен; резюме — PDF или DOC до 5 МБ, проверка при отправке. До 768 — на весь экран, кнопка закреплена внизу.' figma='4593:587, «Заявка принята» 4593:647' backend='app/components/sections/career/VacancyApply/ · docs/contracts/career.md — данные из профиля, резюме до 5 МБ'}}
 				{{#> state label="Форма" bg="page"}}
 					{{> sections/career/VacancyApply/VacancyApply props=data.vacancyApplyStatic}}
 				{{/state}}

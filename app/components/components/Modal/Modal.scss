@@ -4,6 +4,8 @@
 // 1920: «Предложить тему» (560, поля 32), успех (480, поля 40), cookie (420, поля 32).
 // 360: шторки (поля 16/10, крестик 36 на BG.Main), «Выйти из аккаунта?». «Выйти» на десктопе —
 // по образцу остальных окон: карточка 420, кнопки в ряд.
+// 360, окно на весь экран (full): шапка 56 (поля 14/8, заголовок H3 360, крестик 36), тело с
+// полями 8/10, внизу закреплённая полоса кнопок — черта Form.Border, поля 10/10/14.
 @layer components {
 	.modal {
 		--modal-gap: 20px;
@@ -296,6 +298,140 @@
 			@include down(tablet) {
 				padding-inline: 10px;
 			}
+		}
+	}
+
+	// Полоса кнопок окна. В окне на весь экран (до 768) закреплена у нижнего края: прокрутка
+	// идёт под ней, в конце прокрутки она на своём месте. Должна быть прямым потомком блока на
+	// всю высоту содержимого (.modal__content, форма или раскладка окна) — иначе липкости не
+	// хватит его высоты
+	.modal__bar {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.modal--center .modal__content > .modal__bar {
+		align-self: stretch;
+	}
+
+	.modal--full {
+		@include down(tablet) {
+			max-height: none;
+		}
+
+		// Само окно (не витрина) — во весь экран; анимация та же, что у шторки: выезжает снизу
+		&:not(.modal--static) {
+			@include down(tablet) {
+				// vh — для браузеров без dvh (Chrome до 108)
+				height: 100vh;
+				height: 100dvh;
+				margin: 0;
+			}
+		}
+	}
+
+	.modal--full .modal__panel {
+		@include down(tablet) {
+			gap: 0;
+			height: 100%;
+			padding: env(safe-area-inset-top) 0 0;
+			border-radius: 0;
+			box-shadow: none;
+		}
+	}
+
+	.modal--full .modal__header {
+		@include down(tablet) {
+			height: 56px;
+			padding: 0 8px 0 14px;
+		}
+	}
+
+	.modal--full .modal__title {
+		@include down(tablet) {
+			@include text("h3-360");
+		}
+	}
+
+	.modal--full .modal__body {
+		@include down(tablet) {
+			margin-inline: 0;
+
+			// Полоса прокрутки кончается над полосой кнопок
+			.simplebar-track.simplebar-vertical {
+				bottom: calc(71px + env(safe-area-inset-bottom));
+			}
+		}
+	}
+
+	// Тело: поля 8/10; снизу отступа нет — внизу полоса кнопок. Короткое содержимое тянется на
+	// всю высоту, полоса — у нижнего края
+	.modal--full .modal__content {
+		@include down(tablet) {
+			padding: 8px 10px 0;
+		}
+	}
+
+	.modal--full:not(.modal--static) .modal__content {
+		@include down(tablet) {
+			min-height: calc(100vh - 56px - env(safe-area-inset-top));
+			min-height: calc(100dvh - 56px - env(safe-area-inset-top));
+		}
+	}
+
+	.modal--full .modal__form {
+		@include down(tablet) {
+			flex: 1 1 auto;
+		}
+	}
+
+	.modal--full .modal__bar {
+		@include down(tablet) {
+			position: sticky;
+			bottom: 0;
+			z-index: 1;
+			margin: auto -10px 0;
+			padding: 10px 10px calc(14px + env(safe-area-inset-bottom));
+			background: palette("white");
+			border-top: 1px solid palette("form-border");
+
+			> .btn {
+				width: 100%;
+			}
+		}
+	}
+
+	// Успех на весь экран: иконка, заголовок H3 и текст через 16 посередине между шапкой и
+	// полосой кнопок, поля 24
+	.modal--full.modal--center {
+		@include down(tablet) {
+			--modal-gap: 16px;
+		}
+	}
+
+	.modal--full.modal--center .modal__content {
+		@include down(tablet) {
+			padding-inline: 24px;
+
+			> :first-child {
+				margin-top: auto;
+			}
+		}
+	}
+
+	// Заголовок в теле, а не в шапке: не тянется по высоте (flex у заголовка — для шапки)
+	.modal--full.modal--center .modal__title {
+		@include down(tablet) {
+			@include text("h3");
+
+			flex: none;
+		}
+	}
+
+	.modal--full.modal--center .modal__bar {
+		@include down(tablet) {
+			margin-inline: -24px;
 		}
 	}
 
