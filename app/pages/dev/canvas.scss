@@ -52,12 +52,18 @@ body:has(.stories) {
 		line-height: 1.25;
 	}
 
-	&__description {
+
+	&__meta {
 		max-width: 72ch;
-		margin-top: 6px;
-		font-size: 14px;
+		margin-top: 4px;
+		font-size: 13px;
 		line-height: 1.5;
 		color: $canvas-muted;
+
+		b {
+			font-weight: 600;
+			color: $canvas-text;
+		}
 	}
 
 	&__states {

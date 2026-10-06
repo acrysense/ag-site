@@ -297,24 +297,26 @@ $ui-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 	}
 
 	&__description {
+		display: grid;
 		grid-column: 1 / -1;
+		gap: 4px;
 		max-width: 90ch;
 		margin-top: -6px;
 		padding-bottom: 14px;
-		font-size: 13px;
-		color: var(--ui-muted);
 
 		p {
 			margin: 0;
 		}
-
-		p + p {
-			margin-top: 4px;
-		}
 	}
 
-	&__note strong {
-		font-weight: 600;
+	&__meta {
+		font-size: 13px;
+		color: var(--ui-muted);
+
+		b {
+			font-weight: 600;
+			color: var(--ui-text);
+		}
 	}
 
 	// Вкладки состояний

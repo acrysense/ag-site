@@ -43,7 +43,8 @@ function readStories(doc) {
 		id: node.dataset.story,
 		group: node.dataset.group || 'Прочее',
 		title: node.dataset.title || node.dataset.story,
-		description: node.dataset.description || '',
+		how: node.dataset.how || '',
+		backend: node.dataset.backend || '',
 		states: [...node.querySelectorAll('[data-state-label]')].map((state, index) => ({
 			index: String(index),
 			label: state.dataset.stateLabel,
@@ -114,15 +115,19 @@ function renderInfo(story, active) {
 	crumb.textContent = story?.group || ''
 	title.textContent = story?.title || 'Историй пока нет'
 
-	// Описание и неприменимые состояния — мелким текстом под заголовком
+	// Строки с подписью: поведение, бэку, неприменимые состояния
+	const meta = (label, text) => {
+		const line = el('p', 'ui__meta')
+		line.append(el('b', '', label), ` ${text}`)
+		return line
+	}
 	const skipped = story?.states.filter((state) => state.note) || []
 	description.replaceChildren(
-		...(story?.description ? [el('p', '', story.description)] : []),
-		...skipped.map((state) => {
-			const note = el('p', 'ui__note')
-			note.append(el('strong', '', `${state.label}:`), ` ${state.note}`)
-			return note
-		})
+		...(story?.how ? [meta('Как работает.', story.how)] : []),
+		...(story?.backend ? [meta('Бэку.', story.backend)] : []),
+		...(skipped.length
+			? [meta('Не показано.', skipped.map((state) => `${state.label} — ${state.note.replace(/^не применимо:\s*/, '')}`).join('; '))]
+			: [])
 	)
 	description.hidden = !description.childElementCount
 
