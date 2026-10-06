@@ -167,6 +167,50 @@ body:has(.stories) {
 	}
 }
 
+// Блоки поверх страницы в одиночном состоянии стоят там же, где на экране: окно — шторкой
+// снизу, с 768 по центру, на затемнённом фоне (как ::backdrop); нижняя панель, cookie и
+// тост — у нижнего края. Полноэкранные панели (меню, фильтры до 1024) и так от верха.
+.is-single-state .story-state__frame {
+	&:has(> .modal--static),
+	&:has(> .tab-bar--static),
+	&:has(> .cookie-banner--static),
+	&:has(.toast--static) {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+	}
+
+	&:has(> .modal--static) {
+		background: linear-gradient($overlay-background, $overlay-background), palette("bg-main");
+	}
+
+	> .modal--static {
+		margin: auto 0 0;
+
+		@include up(tablet) {
+			margin: auto;
+		}
+	}
+
+	> .cookie-banner--static {
+		margin: 0 10px 10px;
+
+		@include up(tablet) {
+			width: 420px;
+			margin: 0 0 20px 20px;
+		}
+	}
+
+	// Тост: 20px от низа, по центру экрана
+	&:has(.toast--static) {
+		padding: 0 0 20px;
+
+		.story-row {
+			justify-content: center;
+		}
+	}
+}
+
 // «Границы блоков» в оболочке: пунктир по краю каждого блока внутри карточки
 .show-bounds .story-state__frame > * {
 	outline: 1px dashed $canvas-bounds;
