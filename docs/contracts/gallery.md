@@ -5,9 +5,6 @@
 просмотр фото — `components/PhotoViewer` (библиотека PhotoSwipe 5, MIT). Витрина:
 `/dev/ui.html#story=album-list` (и `gallery-years`, `album-card`, `album-hero`, `album-photos`).
 
-Макет: Figma, список — `4682:25610`, альбом — `4682:25741`, просмотр фото — `4682:25854`.
-Мобильного макета нет — наше.
-
 ## Список альбомов
 
 Сетка `page-columns page-columns--start`: слева `GalleryYears` (годы) и `SideBanner`, справа

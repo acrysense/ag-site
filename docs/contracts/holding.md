@@ -1,16 +1,10 @@
 # Контракт: «Структура холдинга»
 
-Черновик для согласования с бэкендом (Битрикс). Раздел ещё не утверждён дизайнером, мобильного
-макета нет — мобильная версия наша. Страницы: `app/pages/holding.html` (юрлица),
-`holding-entity.html` (юрлицо), `holding-employee.html` (сотрудник). Блоки —
-`app/components/sections/holding/*`, общий — `components/PhotoStrip` (лента фото, просмотр —
-`PhotoViewer` без «Нравится»). Витрина: `/dev/ui.html#story=holding-hero` (и `holding-entities`,
-`entity-info`, `brand-card`, `entity-staff`, `employee-row`, `employee-profile`, `entity-brief`,
-`employee-colleagues`, `photo-strip`).
-
-Макет: Figma (файл `pX0tKBQBW0W61DHf7bI8lG`), страница `4317:460`: юрлица 1920 — `4814:1112`,
-юрлицо — `4821:776`, сотрудник — `4833:919` (карточка — единый стиль `4829:862`). Старые кадры
-«Companies» и «Departments» на той же странице притушены — не используем.
+Черновик для согласования с бэкендом (Битрикс). Страницы: `app/pages/holding.html` (юрлица),
+`holding-entity.html` (юрлицо), `holding-employee.html` (сотрудник). Блоки — `app/components/sections/holding/*`, общий — `components/PhotoStrip` (лента
+фото, просмотр — `PhotoViewer` без «Нравится»). Витрина: `/dev/ui.html#story=holding-hero` (и
+`holding-entities`, `entity-info`, `brand-card`, `entity-staff`, `employee-row`, `employee-profile`,
+`entity-brief`, `employee-colleagues`, `photo-strip`).
 
 На демо (GitHub Pages, natix) раздел пока скрыт: строки в `tools/published-pages.txt`
 закомментированы.
@@ -96,6 +90,8 @@ youtube, telegram, tiktok; `label` — для скринридера: «ADEL в 
 - Отдел — `details/summary`: раскрывается без JS. Какой открыт — решает бэк (`open`), по
   умолчанию первый. Раскрытие не запоминается.
 - Руководитель — первым в списке отдела, с `head: true`.
+- «Все N сотрудников» у коллег ведёт на юрлицо к отделу: `?dept=<id>#dept-<id>` — по параметру
+  бэк выводит этот отдел открытым (`open`), якорь прокручивает к нему.
 
 ## Сотрудник
 
@@ -115,15 +111,3 @@ youtube, telegram, tiktok; `label` — для скринридера: «ADEL в 
 
 **`EmployeeColleagues`** — `title`, `moreText` («Все 8 сотрудников»), `moreUrl`, `items[]`
 (`EmployeeRow`). Пусто — блока нет; без `moreUrl` — без ссылки.
-
-## Открытые вопросы
-
-- Откуда данные: юрлица, бренды, отделы и сотрудники — инфоблоки или выгрузка (1С, AD)? Кто
-  правит описание и фото юрлица, бренды?
-- Сколько сотрудников в отделе бывает максимум? Если сотни — отдел догружать при раскрытии
-  (разметка та же, нужен адрес выдачи `EmployeeRow`), иначе страница юрлица получится тяжёлой.
-- «Все N сотрудников» у коллег ведёт на юрлицо к отделу: предлагаем `?dept=<id>#dept-<id>` —
-  бэк по параметру выводит этот отдел открытым (`open`), якорь прокручивает к нему.
-- Что видят сотрудники: все поля карточки (мобильный телефон, день рождения) или часть —
-  настройки приватности?
-- Страница сотрудника из поиска по справочнику — та же (`holding-employee`)?
