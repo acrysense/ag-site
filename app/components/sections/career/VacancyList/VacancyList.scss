@@ -2,17 +2,25 @@
 @use "@/assets/styles/base/vars" as *;
 
 // Белая карточка, поля 20, части через 40: заголовок H1
-// и «Новые в начале» (M/400 Main Blue), вводный текст M/400 до 800, карточки 386 через 21 и 20
-// (3 в ряд), страницы и «Всего: 24». До 1024 — в белом блоке страницы через 16, кнопка
-// «Фильтры · N», карточки в 1 колонку, с 768 — в 2; 1024–1279 — 2 (рядом сайдбар), с 1280 — 3.
+// и «Новые в начале» (M/400 Main Blue), вводный текст L/400 до 793 и справа картинка 386×250
+// (скругление 20), карточки 386 через 21 и 20 (3 в ряд), страницы и «Всего: 24». До 1024 — в
+// белом блоке страницы через 16: заголовок, картинка во всю ширину (скругление 14) над текстом,
+// в ряд «Фильтры · N» и сортировка полем; карточки в 1 колонку, с 768 — в 2; 1024–1279 — 2
+// (рядом сайдбар), с 1280 — 3. Обёртка шапки до 1024 «растворяется», порядок задаёт order.
 @layer components {
 	.vacancy-list {
 		display: flex;
-		flex-direction: column;
-		gap: 16px;
+		flex-flow: row wrap;
+		gap: 16px 10px;
 		min-width: 0;
 
+		> * {
+			flex: 1 1 100%;
+			min-width: 0;
+		}
+
 		@include up(desktop) {
+			flex-flow: column nowrap;
 			gap: 40px;
 			padding: 20px;
 			background: palette("white");
@@ -27,6 +35,10 @@
 		gap: 8px 20px;
 		align-items: flex-end;
 		justify-content: space-between;
+
+		@include down(desktop) {
+			display: contents;
+		}
 	}
 
 	.vacancy-list__title {
@@ -39,22 +51,70 @@
 		@include up(desktop) {
 			@include text("h1");
 		}
+
+		@include down(desktop) {
+			order: -4;
+		}
+	}
+
+	// Вводный текст и картинка: до 1024 картинка сверху во всю ширину, с 1024 — справа
+	.vacancy-list__about {
+		display: flex;
+		flex-direction: column-reverse;
+		gap: 16px;
+
+		@include up(desktop) {
+			flex-direction: row;
+			gap: 20px;
+			align-items: flex-start;
+			justify-content: space-between;
+		}
+
+		@include down(desktop) {
+			order: -3;
+		}
 	}
 
 	.vacancy-list__intro {
-		@include text("m-400");
+		@include text("l-400");
 
-		max-width: 800px;
+		max-width: 793px;
 		color: palette("black-txt");
 		overflow-wrap: anywhere;
 	}
 
-	// Кнопка панели фильтров — только до 1024 (на десктопе фильтры в сайдбаре)
+	.vacancy-list__intro-image {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 340 / 190;
+		object-fit: cover;
+		border-radius: $radius-button;
+
+		@include up(desktop) {
+			flex: none;
+			width: 386px;
+			aspect-ratio: 386 / 250;
+			border-radius: $radius-content-block;
+		}
+	}
+
+	// Кнопка панели фильтров — только до 1024 (на десктопе фильтры в сайдбаре); рядом —
+	// сортировка полем на остаток ряда
 	.vacancy-list__filters {
-		align-self: flex-start;
+		@include down(desktop) {
+			flex: none;
+			order: -2;
+		}
 
 		@include up(desktop) {
 			display: none;
+		}
+	}
+
+	.vacancy-list__sort {
+		@include down(desktop) {
+			flex: 1 1 0;
+			order: -1;
 		}
 	}
 
