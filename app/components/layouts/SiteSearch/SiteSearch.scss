@@ -35,19 +35,10 @@
 		padding: 0 16px;
 		color: palette("black-txt");
 		background: palette("white");
-		border: 1px solid palette("form-border");
+		// Рамка синяя всегда (и в покое): поле поиска должно быть заметно в шапке
+		border: 1px solid palette("form-focus");
 		border-radius: $radius-button;
 		transition: border-color $transition-default;
-
-		&:focus-within,
-		.site-search.is-open & {
-			border-color: palette("form-focus");
-		}
-
-		// До 1024 рамка синяя и в покое
-		@include down(desktop) {
-			border-color: palette("form-focus");
-		}
 	}
 
 	.site-search__icon {
@@ -724,12 +715,10 @@
 		}
 	}
 
-	// Наведение: рамка поля — Icon.Grey (в фокусе и на мобильном — синяя), крестики — Main Blue
+	// Наведение: рамка поля темнее синего (рамка синяя всегда), крестики — Main Blue
 	.site-search__field:hover:not(:focus-within),
 	.site-search__field:focus-visible:not(:focus-within) {
-		@include up(desktop) {
-			border-color: palette("icon-grey");
-		}
+		border-color: palette("blue-hover");
 	}
 
 	.site-search__clear,

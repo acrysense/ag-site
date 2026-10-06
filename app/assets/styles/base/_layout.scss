@@ -100,19 +100,16 @@
 	}
 
 	// Внутренняя страница: крошки и содержимое.
-	// Мобильный: один белый блок с полями 24/10 после шапки через 12. Десктоп: крошки на фоне
+	// Мобильный: один белый блок с полями 24/10 сразу под шапкой. Десктоп: крошки на фоне
 	// страницы, поля 30 сверху и 60 снизу.
 	.page-inner {
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
-		margin-top: 12px;
+		gap: 20px;
 		padding: 24px 10px;
 		background: palette("white");
 
 		@include up(desktop) {
-			gap: 20px;
-			margin-top: 0;
 			padding-block: 30px 60px;
 			padding-inline: $container-gutter-desktop;
 			background: none;

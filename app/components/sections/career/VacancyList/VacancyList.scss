@@ -4,14 +4,15 @@
 // Белая карточка, поля 20, части через 40: заголовок H1
 // и «Новые в начале» (M/400 Main Blue), вводный текст L/400 до 793 и справа картинка 386×250
 // (скругление 20), карточки 386 через 21 и 20 (3 в ряд), страницы и «Всего: 24». До 1024 — в
-// белом блоке страницы через 16: заголовок, картинка во всю ширину (скругление 14) над текстом,
-// в ряд «Фильтры · N» и сортировка полем; карточки в 1 колонку, с 768 — в 2; 1024–1279 — 2
+// белом блоке страницы через 10: заголовок с числом вакансий (Dark-grey.TXT), картинка во всю
+// ширину (скругление 14) над текстом, в ряд «Фильтры · N» и сортировка полем, «Найдено N
+// вакансий» M/400 Dark-grey.TXT; карточки в 1 колонку через 10, с 768 — в 2; 1024–1279 — 2
 // (рядом сайдбар), с 1280 — 3. Обёртка шапки до 1024 «растворяется», порядок задаёт order.
 @layer components {
 	.vacancy-list {
 		display: flex;
 		flex-flow: row wrap;
-		gap: 16px 10px;
+		gap: 10px;
 		min-width: 0;
 
 		> * {
@@ -54,6 +55,27 @@
 
 		@include down(desktop) {
 			order: -4;
+		}
+	}
+
+	// Число вакансий у заголовка и «Найдено N вакансий» — только до 1024
+	.vacancy-list__count {
+		margin-left: 8px;
+		white-space: nowrap;
+		color: palette("dark-grey-txt");
+
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.vacancy-list__found {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+
+		@include up(desktop) {
+			display: none;
 		}
 	}
 
@@ -121,13 +143,14 @@
 	.vacancy-list__grid {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
-		gap: 20px 21px;
+		gap: 10px;
 		margin: 0;
 		padding: 0;
 		list-style: none;
 
 		@include up(tablet) {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 20px 21px;
 		}
 
 		@include up(wide) {

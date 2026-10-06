@@ -309,6 +309,8 @@
 		"list": {
 			"class": "page-columns__main",
 			"title": "Карьерный шанс",
+			"count": 24,
+			"found": "Найдено 24 вакансии",
 			"sort": {
 				"id": "career-sort-3",
 				"label": "Сортировка",
