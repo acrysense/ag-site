@@ -20,20 +20,10 @@ INDEX=$(mktemp -u)
 trap 'rm -rf "$OUT" "$INDEX"' EXIT
 cp -R dist/. "$OUT"/
 
-# Страницы не из списка — tools/hide-unpublished.mjs; витрина (dev-*) на демо не выкладывается;
-# «Страницы вёрстки» (dev-pages) — всегда, в её списке остаются только выложенные
+# Страницы не из списка — tools/hide-unpublished.mjs (и их истории в витрине). «Страницы вёрстки»
+# (dev-pages) и витрина компонентов (dev-ui, dev-canvas) выкладываются всегда — только на демо:
+# в сборку для Битрикса (--mode cms, natix) служебные страницы не попадают
 node tools/hide-unpublished.mjs "$OUT"
-for file in "$OUT"/dev-*.html; do
-	[ "$(basename "$file")" = "dev-pages.html" ] || rm "$file"
-done
-if [ -f "$OUT/dev-pages.json" ]; then
-	node -e '
-		const fs = require("fs"), file = process.argv[1]
-		const index = JSON.parse(fs.readFileSync(file, "utf8"))
-		index.showcaseUrl = null
-		fs.writeFileSync(file, JSON.stringify(index))
-	' "$OUT/dev-pages.json"
-fi
 touch "$OUT/.nojekyll"
 
 # Коммит в gh-pages через отдельный индекс, поверх прошлой выкладки
