@@ -189,8 +189,10 @@ function pickWidth(allowed) {
 function fitFrame() {
 	const width = Number(shownWidth)
 	const styles = getComputedStyle(stage)
-	const room = stage.clientWidth - parseFloat(styles.paddingLeft) - parseFloat(styles.paddingRight)
-	const height = stage.clientHeight - parseFloat(styles.paddingTop) - parseFloat(styles.paddingBottom)
+	const room =
+		stage.clientWidth - parseFloat(styles.paddingLeft) - parseFloat(styles.paddingRight)
+	const height =
+		stage.clientHeight - parseFloat(styles.paddingTop) - parseFloat(styles.paddingBottom)
 	const scale = Math.min(1, room / width)
 
 	screen.style.width = `${Math.floor(width * scale)}px`
@@ -207,9 +209,10 @@ function apply() {
 	const { story, state } = current()
 	const hash = readHash()
 	// До первой загрузки canvas меню ещё пустое — берём историю прямо из адреса
-	const id = story?.id ?? hash.story
+	// Пустая история — холст сам покажет первую, а не все разом
+	const id = story?.id ?? hash.story ?? ''
 	const stateIndex = story ? state?.index : hash.state
-	const query = new URLSearchParams(id ? { story: id } : {})
+	const query = new URLSearchParams({ story: id })
 	if (id && stateIndex !== undefined && stateIndex !== null) query.set('state', stateIndex)
 	const src = `${canvasUrl}${query.size ? `?${query}` : ''}`
 
@@ -234,13 +237,12 @@ function apply() {
 
 function load(src) {
 	wanted = src
-	// Первая загрузка — показывать пока нечего, грузим сразу на виду
-	const frame = front.dataset.src ? frames.find((item) => item !== front) : front
+	// Всегда в скрытый кадр, и в первый раз тоже: недособранная страница на экран не попадает
+	const frame = frames.find((item) => item !== front)
 	frame.dataset.src = src
 	frame.src = src
 	clearTimeout(loadingTimer)
-	if (frame !== front)
-		loadingTimer = setTimeout(() => screen.classList.add('is-loading'), LOADING_DELAY)
+	loadingTimer = setTimeout(() => screen.classList.add('is-loading'), LOADING_DELAY)
 }
 
 // Таймер, а не requestAnimationFrame: в фоновой вкладке кадры не идут и показ бы завис
@@ -250,7 +252,10 @@ const tick = () => new Promise((resolve) => setTimeout(resolve, 30))
 // после load и дорисовывают своё)
 async function settle(doc) {
 	const start = performance.now()
-	await Promise.race([doc.fonts?.ready, new Promise((resolve) => setTimeout(resolve, SETTLE_MAX))])
+	await Promise.race([
+		doc.fonts?.ready,
+		new Promise((resolve) => setTimeout(resolve, SETTLE_MAX)),
+	])
 	const nodes = doc.getElementsByTagName('*')
 	let last = ''
 	let quietSince = performance.now()
