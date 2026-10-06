@@ -8,7 +8,6 @@ const title = document.querySelector('[data-ui-title]')
 const description = document.querySelector('[data-ui-description]')
 const states = document.querySelector('[data-ui-states]')
 const widths = document.querySelector('[data-ui-widths]')
-const boundsToggle = document.querySelector('[data-ui-bounds]')
 const openLink = document.querySelector('[data-ui-open]')
 const stage = document.querySelector('[data-ui-stage]')
 const screen = document.querySelector('[data-ui-screen]')
@@ -165,12 +164,6 @@ function fitFrame() {
 	scaleNote.textContent = `масштаб ${Math.round(scale * 100)} %`
 }
 
-function applyBounds() {
-	const on = readHash().bounds === '1'
-	boundsToggle.setAttribute('aria-pressed', String(on))
-	frame.contentDocument?.documentElement.classList.toggle('show-bounds', on)
-}
-
 function apply() {
 	const { story, state } = current()
 	const hash = readHash()
@@ -196,7 +189,6 @@ function apply() {
 	}
 	renderInfo(story, state)
 	fitFrame()
-	applyBounds()
 }
 
 // Меню пересобирается на каждой загрузке canvas: новые истории видны после HMR
@@ -233,10 +225,6 @@ document.addEventListener('keydown', (event) => {
 widths.addEventListener('click', (event) => {
 	const button = event.target.closest('[data-ui-width]')
 	if (button) writeHash({ width: button.dataset.uiWidth })
-})
-
-boundsToggle.addEventListener('click', () => {
-	writeHash({ bounds: boundsToggle.getAttribute('aria-pressed') === 'true' ? '0' : '1' })
 })
 
 new ResizeObserver(fitFrame).observe(stage)

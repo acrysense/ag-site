@@ -12,7 +12,6 @@ $canvas-line: #e4e4e9;
 $canvas-text: #17171c;
 $canvas-muted: #6b6b76;
 $canvas-accent: #4f46e5;
-$canvas-bounds: rgb(79 70 229 / 45%);
 $canvas-pass: #2b8a3e;
 $canvas-fail: #c92a2a;
 $canvas-font:
@@ -215,12 +214,6 @@ body:has(.stories) {
 			justify-content: center;
 		}
 	}
-}
-
-// «Границы блоков» в оболочке: пунктир по краю каждого блока внутри карточки
-.show-bounds .story-state__frame > * {
-	outline: 1px dashed $canvas-bounds;
-	outline-offset: 0;
 }
 
 // Токены: образцы и списки имён строятся из карт в _vars.scss.

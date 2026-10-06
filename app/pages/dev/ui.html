@@ -9,8 +9,8 @@
 		{{!--
 			Витрина компонентов: оболочка. Сами компоненты живут в canvas.html и открываются
 			здесь в iframe нужной ширины, поэтому медиазапросы работают по-настоящему.
-			Меню строится из [data-story] в canvas.html. Выбор, ширина и рамки блоков хранятся
-			в адресе (#story=…&state=…&width=…&bounds=…), ссылку можно отправить.
+			Меню строится из [data-story] в canvas.html. Выбор и ширина хранятся в адресе
+			(#story=…&state=…&width=…), ссылку можно отправить.
 		--}}
 		<aside class="ui__side">
 			<p class="ui__brand">
@@ -41,7 +41,6 @@
 						<button class="ui__width" type="button" aria-pressed="false" data-ui-width="768">768</button>
 						<button class="ui__width" type="button" aria-pressed="false" data-ui-width="1440">1440</button>
 					</div>
-					<button class="ui__button" type="button" aria-pressed="false" data-ui-bounds>Рамки</button>
 					<a class="ui__button" href="#" target="_blank" rel="noopener noreferrer" data-ui-open>
 						Отдельно <span aria-hidden="true">↗</span>
 					</a>

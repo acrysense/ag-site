@@ -288,12 +288,6 @@ $ui-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 		&:focus-visible {
 			background: var(--ui-hover);
 		}
-
-		&[aria-pressed="true"] {
-			color: var(--ui-accent-text);
-			background: var(--ui-accent-soft);
-			border-color: transparent;
-		}
 	}
 
 	&__description {
