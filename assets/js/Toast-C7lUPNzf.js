@@ -1,0 +1,1 @@
+import{t as e}from"./app-BZAokSV4.js";function t(t){let n=t.textContent.trim(),r=t.dataset.toast||`info`;return t.remove(),n&&e(n,r),()=>{}}export{t as default};
