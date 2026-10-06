@@ -40,6 +40,8 @@ const canvasUrl = window.location.pathname.replace(/ui\.html$/, 'canvas.html')
 const WIDTHS = ['360', '768', '1440']
 
 let stories = []
+// Холст ещё не загрузился — заголовок «Загрузка…», а не «историй нет»
+let loaded = false
 
 const readHash = () => Object.fromEntries(new URLSearchParams(window.location.hash.slice(1)))
 
@@ -149,7 +151,7 @@ const withPaths = (text) =>
 
 function renderInfo(story, active) {
 	crumb.textContent = story?.group || ''
-	title.textContent = story?.title || 'Историй пока нет'
+	title.textContent = story?.title || (loaded ? 'Историй пока нет' : 'Загрузка…')
 
 	// Одна строка для бэка: папка шаблона · контракт — главное правило. Не влезла — многоточие,
 	// целиком во всплывающей подсказке. Место под строку есть всегда — панель не меняет высоту
@@ -296,6 +298,7 @@ for (const frame of frames) {
 			if (frame.dataset.src !== wanted || frame.contentDocument !== doc) return
 		}
 		show(frame)
+		loaded = true
 		stories = readStories(doc)
 		buildNav()
 		apply()
