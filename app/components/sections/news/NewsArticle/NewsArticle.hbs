@@ -1,9 +1,9 @@
 {{!--
-	Новость (Figma: PC.News article v2 — 4652:12003). props: title, image { src, srcset, alt,
+	Новость. props: title, image { src, srcset, alt,
 	caption } — обложка, html — текст из визуального редактора (как есть), gallery (Gallery),
 	date (YYYY-MM-DD), dateText, url (адрес новости — для «Скопировать ссылку»), comments
 	{ count, anchor }, like (LikeButton: count, liked, url).
-	Мобильного макета нет — наше. Контракт — docs/contracts/news-article.md.
+	Контракт — docs/contracts/news-article.md.
 --}}
 <article class="news-article" aria-labelledby="news-article-title">
     <h1 class="news-article__title" id="news-article-title">{{props.title}}</h1>

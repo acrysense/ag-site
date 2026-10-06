@@ -1,7 +1,7 @@
 {{!--
-	Хлебные крошки (Figma: 1920 — 4704:1060, 360 — 4706:1408). props: items [{ title, url }] —
-	последний пункт без url, это текущая страница; class (breadcrumbs--short — на мобильном без
-	текущей страницы). Нет пунктов — ничего не выводится.
+	Хлебные крошки. props: items [{ title, url }] — последний пункт без url, это текущая
+	страница; class (breadcrumbs--short — на мобильном без текущей страницы). Нет пунктов — ничего
+	не выводится.
 --}}
 {{#if props.items.length}}
     <nav class="breadcrumbs{{#if props.class}} {{props.class}}{{/if}}" aria-label="Хлебные крошки">

@@ -1,5 +1,5 @@
 {{!--
-	Мобильное меню по бургеру и пункту «Меню» в TabBar (Figma: 360.MainMenu v2 — 4558:842).
+	Мобильное меню по бургеру и пункту «Меню» в TabBar.
 	props: title, user { name, role, url, urlText, avatar }, logout { url, title, text },
 	login { title, text, button, url } — гостю вместо профиля (user нет),
 	groups — раскрывающиеся разделы [{ label, title, icon, meta, expanded, items: [{ icon, text, url, current }] }],
@@ -33,7 +33,7 @@
                 {{/if}}
             </div>
         {{else if props.login}}
-            {{!-- Гость: вместо профиля — вход (в макете меню только вошедшего — наше) --}}
+            {{!-- Гость: вместо профиля — вход --}}
             <div class="main-menu__login">
                 <p class="main-menu__login-title">{{props.login.title}}</p>
                 {{#if props.login.text}}<p class="main-menu__login-text">{{props.login.text}}</p>{{/if}}
