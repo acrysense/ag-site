@@ -5,14 +5,15 @@
 	(открывает панель фильтров VacancyFilters) и сортировка полем.
 	Окна вакансий (VacancyModal) выводятся здесь же, после списка — по одному на карточку.
 	props: title, sort (SortMenu: id, label, options [{ text, url, current }]), intro, introImage
-	{ src, srcset, alt } (необязательно), filtersId, filtersText
+	{ src, srcset, alt } (необязательно), count (число вакансий у заголовка), found («Найдено 24
+	вакансии» над списком; count и found — только до 1024), filtersId, filtersText
 	(«Фильтры»), activeFilters (число выбранных), items [вакансия: VacancyCard + VacancyModal],
 	empty { text, resetText, resetUrl }, pagination (Pagination), applyId, applyText, note,
 	loginUrl, loginText (для окон). Контракт — docs/contracts/career.md.
 --}}
 <section class="vacancy-list{{#if props.class}} {{props.class}}{{/if}}" aria-labelledby="vacancy-list-title">
     <div class="vacancy-list__head">
-        <h1 class="vacancy-list__title" id="vacancy-list-title">{{props.title}}</h1>
+        <h1 class="vacancy-list__title" id="vacancy-list-title">{{props.title}}{{#if (isSet props.count)}}<span class="vacancy-list__count"><span class="visually-hidden">, вакансий: </span>{{props.count}}</span>{{/if}}</h1>
         {{> components/SortMenu/SortMenu props=(obj id=props.sort.id label=props.sort.label options=props.sort.options class="sort-menu--field vacancy-list__sort")}}
     </div>
     {{#if (or props.intro props.introImage.src)}}
@@ -25,6 +26,7 @@
         <button class="btn btn--light btn--m vacancy-list__filters" type="button" data-vacancy-filters-open="{{props.filtersId}}" aria-controls="{{props.filtersId}}" aria-expanded="false">{{default props.filtersText "Фильтры"}}{{#if props.activeFilters}} · {{props.activeFilters}}{{/if}}</button>
     {{/if}}
     {{#if props.items.length}}
+        {{#if props.found}}<p class="vacancy-list__found">{{props.found}}</p>{{/if}}
         <ul class="vacancy-list__grid" role="list">
             {{#each props.items}}
                 <li class="vacancy-list__item">{{> sections/career/VacancyCard/VacancyCard props=this}}</li>

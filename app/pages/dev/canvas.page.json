@@ -7384,6 +7384,8 @@
 		},
 		"careerList": {
 			"title": "Карьерный шанс",
+			"count": 24,
+			"found": "Найдено 24 вакансии",
 			"sort": {
 				"id": "story-sort-12",
 				"label": "Сортировка",
@@ -7507,6 +7509,8 @@
 		},
 		"careerListOne": {
 			"title": "Карьерный шанс",
+			"count": 1,
+			"found": "Найдена 1 вакансия",
 			"sort": {
 				"id": "story-sort-13",
 				"label": "Сортировка",
@@ -7563,6 +7567,7 @@
 		},
 		"careerListEmpty": {
 			"title": "Карьерный шанс",
+			"count": 0,
 			"sort": {
 				"id": "story-sort-14",
 				"label": "Сортировка",
@@ -7595,6 +7600,8 @@
 		},
 		"careerListLong": {
 			"title": "Карьерный шанс",
+			"count": 1248,
+			"found": "Найдено 1248 вакансий",
 			"sort": {
 				"id": "story-sort-15",
 				"label": "Сортировка",

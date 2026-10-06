@@ -4,7 +4,7 @@
 // Фильтр альбомов — белая карточка 350, скругление 20, поля 20, пункты через
 // 15: «Фотогалерея» H3, ссылки L/400 Black.TXT (текущая Main Blue), справа число M/400
 // Dark-grey.TXT. Мобильный: «таблетки» 36 BG.Info без числа (оно для скринридера), прокрутка
-// вбок, как годы в новостях; текущая — BG.Main 2.
+// вбок, как годы в новостях; текущая — Main Blue, белый M/500.
 @layer components {
 	.gallery-years {
 		min-width: 0;
@@ -84,7 +84,12 @@
 			background-color $transition-default;
 
 		&[aria-current] {
-			background: palette("bg-main-2");
+			@include down(desktop) {
+				@include text("m-500");
+
+				color: palette("white");
+				background: palette("main-blue");
+			}
 		}
 
 		&:hover:not([aria-current]),
