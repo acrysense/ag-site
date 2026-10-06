@@ -7,7 +7,7 @@
     <section class="gallery carousel" aria-roledescription="карусель" aria-label="{{default props.label 'Фотографии'}}" data-module="Carousel" data-path="components" data-carousel-loop>
         <div class="carousel__track gallery__track" data-carousel-track>
             {{#each props.slides}}
-                <figure class="carousel__slide gallery__slide" role="group" aria-roledescription="слайд" aria-label="{{add @index 1}} из {{../props.slides.length}}">
+                <figure class="carousel__slide gallery__slide"{{#unless (eq ../props.slides.length 1)}} role="group" aria-roledescription="слайд" aria-label="{{add @index 1}} из {{../props.slides.length}}"{{/unless}}>
                     <img class="gallery__image" src="{{src}}" {{#if srcset}}srcset="{{srcset}}" sizes="(min-width: 1024px) 1040px, 100vw"{{/if}} width="1040" height="500" alt="{{alt}}" loading="lazy" decoding="async" />
                     {{#if caption}}<figcaption class="gallery__caption">{{caption}}</figcaption>{{/if}}
                 </figure>

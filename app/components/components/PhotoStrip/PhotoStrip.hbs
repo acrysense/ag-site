@@ -10,7 +10,7 @@
         <ul class="photo-strip__list" role="list" aria-label="{{default props.label 'Фото'}}" data-photo-strip-list>
             {{#each props.items}}
                 <li class="photo-strip__item">
-                    <a class="photo-strip__link" href="{{src}}" data-width="{{width}}" data-height="{{height}}" aria-label="Открыть фото {{add @index 1}} из {{../props.items.length}}">
+                    <a class="photo-strip__link" href="{{src}}" data-width="{{width}}" data-height="{{height}}" aria-label="Открыть фото{{#unless (eq ../props.items.length 1)}} {{add @index 1}} из {{../props.items.length}}{{/unless}}">
                         <img class="photo-strip__image" src="{{default thumb src}}" {{#if thumbSrcset}}srcset="{{thumbSrcset}}" sizes="600px"{{/if}} width="{{width}}" height="{{height}}" alt="{{alt}}" loading="lazy" decoding="async" />
                     </a>
                 </li>

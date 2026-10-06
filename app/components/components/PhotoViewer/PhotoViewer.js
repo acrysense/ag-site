@@ -106,6 +106,8 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {}, w
 				const heading = el('p', 'photo-viewer__title', title)
 				const counter = el('p', 'photo-viewer__counter')
 				counter.setAttribute('aria-live', 'polite')
+				// Одно фото: «Фото 1 из 1» ничего не сообщает
+				counter.hidden = items.length < 2
 				head.append(heading, counter)
 
 				const actions = el('div', 'photo-viewer__actions')
@@ -155,6 +157,9 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {}, w
 				render()
 			},
 		})
+
+		// Одно фото: листать нечего — без стрелок и ленты миниатюр
+		if (items.length < 2) return
 
 		// Стрелки по бокам (с 1024)
 		for (const [name, dir] of [

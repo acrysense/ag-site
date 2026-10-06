@@ -68,7 +68,10 @@ export default function init(root) {
 		const link = item.querySelector('.album-photo__link')
 		link.href = photo.src
 		link.dataset.photoIndex = String(index)
-		link.setAttribute('aria-label', `Открыть фото ${index + 1} из ${photos.length}`)
+		link.setAttribute(
+			'aria-label',
+			photos.length > 1 ? `Открыть фото ${index + 1} из ${photos.length}` : 'Открыть фото'
+		)
 		const img = item.querySelector('.album-photo__image')
 		img.src = photo.thumb || photo.src
 		if (photo.thumbSrcset) img.srcset = photo.thumbSrcset
