@@ -195,8 +195,8 @@ export default function init(root) {
 		if (focus) anchor.focus()
 	}
 
-	// Панель — у своей кнопки: реакции над ней, меню и удаление под ней, от левого края кнопки
-	// (Figma 4502:1218, 4518:1781, 4518:1964); у края экрана сдвигается внутрь.
+	// Панель — у своей кнопки: реакции над ней, меню и удаление под ней, от левого края кнопки;
+	// у края экрана сдвигается внутрь.
 	// Фокус внутрь — только если открыли с клавиатуры (мышью — без рамки фокуса на пункте)
 	const openPopover = (anchor, el, host, { above = false, keyboard = false } = {}) => {
 		const same = popover?.anchor === anchor
@@ -971,7 +971,7 @@ export default function init(root) {
 	}
 
 	// Пусто: подсказка вместо списка (пропадает с первым комментарием); у отключённых
-	// комментариев — только плашка (Figma 4519:1890)
+	// комментариев — только плашка
 	const renderEmpty = () => {
 		const empty = !list.querySelector('.comment')
 		list.classList.toggle('is-empty', empty)

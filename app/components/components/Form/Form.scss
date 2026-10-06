@@ -1,7 +1,7 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Общая ошибка формы (не относится к полю) — над кнопкой. В макете нет — наше, как у полей.
+// Общая ошибка формы (не относится к полю) — над кнопкой; вид — как у ошибок полей.
 @layer components {
 	.form-error {
 		@include text("m-400-auto");

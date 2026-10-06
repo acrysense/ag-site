@@ -1,7 +1,6 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: News preview — 360 (4865:1474) и 1920 (2762:3068)
 @layer components {
 	.news-card {
 		position: relative;
@@ -66,7 +65,7 @@
 			}
 		}
 
-		// В макете под анонс всегда 3 строки (60 и 65px), даже если текст короче:
+		// Под анонс всегда 3 строки (60 и 65px), даже если текст короче:
 		// так ряды карточек одной высоты
 		&__excerpt {
 			@include text("m-400-360");
@@ -119,7 +118,7 @@
 		}
 	}
 
-	// Наведение (наше): вся карточка — ссылка, заголовок Blue.Hover
+	// Наведение: вся карточка — ссылка, заголовок Blue.Hover
 	.news-card__link:hover,
 	.news-card__link:focus-visible {
 		color: palette("blue-hover");

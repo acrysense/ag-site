@@ -1,7 +1,7 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: 4814:1146 — заголовок H1 Black.TXT и подзаголовок L/400 Dark-grey.TXT через 8; через 24
+// Заголовок H1 Black.TXT и подзаголовок L/400 Dark-grey.TXT через 8; через 24
 // сетка карточек: колонки через 20, ряды через 24. Карточки ряда — одной высоты.
 @layer components {
 	.holding-entities {

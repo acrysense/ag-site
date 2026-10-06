@@ -12,7 +12,6 @@ $canvas-line: #e4e4e9;
 $canvas-text: #17171c;
 $canvas-muted: #6b6b76;
 $canvas-accent: #4f46e5;
-$canvas-bounds: rgb(79 70 229 / 45%);
 $canvas-pass: #2b8a3e;
 $canvas-fail: #c92a2a;
 $canvas-font:
@@ -50,14 +49,6 @@ body:has(.stories) {
 		font-size: 22px;
 		font-weight: 650;
 		line-height: 1.25;
-	}
-
-	&__description {
-		max-width: 72ch;
-		margin-top: 6px;
-		font-size: 14px;
-		line-height: 1.5;
-		color: $canvas-muted;
 	}
 
 	&__states {
@@ -167,10 +158,55 @@ body:has(.stories) {
 	}
 }
 
-// «Границы блоков» в оболочке: пунктир по краю каждого блока внутри карточки
-.show-bounds .story-state__frame > * {
-	outline: 1px dashed $canvas-bounds;
-	outline-offset: 0;
+// Блоки поверх страницы в одиночном состоянии стоят там же, где на экране: окно — шторкой
+// снизу, с 768 по центру, на затемнённом фоне (как ::backdrop); нижняя панель, cookie и
+// тост — у нижнего края. Полноэкранные панели (меню, фильтры до 1024) и так от верха.
+.is-single-state .story-state__frame {
+	&:has(> .modal--static),
+	&:has(> .tab-bar--static),
+	&:has(> .cookie-banner--static),
+	&:has(.toast--static) {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+	}
+
+	&:has(> .modal--static) {
+		background: linear-gradient($overlay-background, $overlay-background), palette("bg-main");
+	}
+
+	> .modal--static {
+		margin: auto 0 0;
+
+		@include up(tablet) {
+			margin: auto;
+		}
+	}
+
+	// Меню открыто: нижняя панель поверх меню у низа экрана, как на телефоне
+	> .main-menu--static + .tab-bar--static {
+		position: sticky;
+		bottom: 0;
+		z-index: 1;
+	}
+
+	> .cookie-banner--static {
+		margin: 0 10px 10px;
+
+		@include up(tablet) {
+			width: 420px;
+			margin: 0 0 20px 20px;
+		}
+	}
+
+	// Тост: 20px от низа, по центру экрана
+	&:has(.toast--static) {
+		padding: 0 0 20px;
+
+		.story-row {
+			justify-content: center;
+		}
+	}
 }
 
 // Токены: образцы и списки имён строятся из карт в _vars.scss.

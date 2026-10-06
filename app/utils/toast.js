@@ -1,7 +1,7 @@
 import { announce } from '@/utils/announce'
 import { createIcon } from '@/utils/icon'
 
-// Тост внизу экрана (Figma, кит: Quick info 2543:906): type — ok (галочка), error (крестик),
+// Тост внизу экрана: type — ok (галочка), error (крестик),
 // info (облачко). Показывается 2,5 с, один на страницу: новый заменяет текущий. Скринридеру —
 // через общую live-область (announce). Элемент создаётся при первом показе и остаётся в body
 // (как live-область), таймер — один. Разметка — как components/Toast/Toast.hbs. Бэку — событие

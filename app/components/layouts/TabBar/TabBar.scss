@@ -1,7 +1,7 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: 360.TabBar (4870:1538). До 767px, position: fixed, высота 60 + safe-area.
+// До 767px, position: fixed, высота 60 + safe-area.
 // Default — Dark-grey.TXT, Active — Main Blue и полоска 32×3 сверху.
 @layer components {
 	.tab-bar {
@@ -106,7 +106,7 @@
 		}
 	}
 
-	// Наведение (наше): Blue.TXT
+	// Наведение: Blue.TXT
 	.tab-bar__item:hover:not([aria-current="page"], .is-active),
 	.tab-bar__item:focus-visible:not([aria-current="page"], .is-active) {
 		color: palette("blue-txt");

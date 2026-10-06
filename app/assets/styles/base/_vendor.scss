@@ -11,7 +11,7 @@
 	// Просмотр фото галереи (PhotoSwipe 5): базовые стили, вид — components/PhotoViewer
 	@include meta.load-css("photoswipe/dist/photoswipe.css");
 
-	// Общий вид полосы. В макете её нет — наше: ползунок 4px Main Blue на подложке BG.Info,
+	// Общий вид полосы: ползунок 4px Main Blue на подложке BG.Info,
 	// видна всегда (подсказывает, что содержимое длиннее окна)
 	.simplebar-track.simplebar-vertical {
 		width: 8px;

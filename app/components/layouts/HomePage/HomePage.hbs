@@ -5,9 +5,9 @@
 <div class="wrapper">
     {{> layouts/Header/Header props=site.header }}
     <main class="wrapper__content">
-        {{!-- Заголовок страницы для скринридеров и поиска: на главной он не виден (в макете нет) --}}
+        {{!-- Заголовок страницы для скринридеров и поиска: на главной он не виден --}}
         <h1 class="visually-hidden">{{site.siteName}}</h1>
-        {{!-- Блоки главной в порядке макета (PC.Main v2 — 4615:42781, 360.Main v2 — 4865:1332).
+        {{!-- Блоки главной по порядку на странице.
         Готовые подключены, остальные добавляются по мере вёрстки. --}}
         <div class="container page-blocks" data-module="Reveal" data-path="components">
             {{> sections/home/HeroBanners/HeroBanners props=data.hero }}

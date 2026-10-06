@@ -5,14 +5,39 @@ const empty = document.querySelector('[data-ui-empty]')
 const search = document.querySelector('[data-ui-search]')
 const crumb = document.querySelector('[data-ui-group]')
 const title = document.querySelector('[data-ui-title]')
-const description = document.querySelector('[data-ui-description]')
+const backend = document.querySelector('[data-ui-backend]')
 const states = document.querySelector('[data-ui-states]')
-const boundsToggle = document.querySelector('[data-ui-bounds]')
+const widths = document.querySelector('[data-ui-widths]')
 const openLink = document.querySelector('[data-ui-open]')
-const frame = document.querySelector('[data-ui-frame]')
+const stage = document.querySelector('[data-ui-stage]')
+const screen = document.querySelector('[data-ui-screen]')
+const scaleNote = document.querySelector('[data-ui-scale]')
+const firstFrame = document.querySelector('[data-ui-frame]')
+
+// Два iframe: новое состояние грузится в скрытый и показывается, когда собралось (стили, шрифты,
+// скрипты блоков), — без мигания недособранной страницы. Пока ждём дольше LOADING_DELAY —
+// полоска загрузки над превью.
+const LOADING_DELAY = 200
+const SETTLE_QUIET = 120
+const SETTLE_MAX = 1500
+const frames = [firstFrame, firstFrame.cloneNode()]
+let front = frames[0]
+let wanted = ''
+let loadingTimer = 0
+
+const hideFrame = (frame) => {
+	frame.classList.add('is-back')
+	frame.setAttribute('aria-hidden', 'true')
+	frame.tabIndex = -1
+}
+hideFrame(frames[1])
+frames[1].removeAttribute('data-ui-frame')
 
 // dev: /dev/ui.html → /dev/canvas.html; сборка: /BASE/dev-ui.html → /BASE/dev-canvas.html
 const canvasUrl = window.location.pathname.replace(/ui\.html$/, 'canvas.html')
+
+// Ширины макета: мобильный, планшет, десктоп
+const WIDTHS = ['360', '768', '1440']
 
 let stories = []
 
@@ -36,11 +61,13 @@ function readStories(doc) {
 		id: node.dataset.story,
 		group: node.dataset.group || 'Прочее',
 		title: node.dataset.title || node.dataset.story,
-		description: node.dataset.description || '',
+		backend: node.dataset.backend || '',
+		widths: node.dataset.widths?.split(/\s+/) || null,
 		states: [...node.querySelectorAll('[data-state-label]')].map((state, index) => ({
 			index: String(index),
 			label: state.dataset.stateLabel,
 			note: state.dataset.stateNote || '',
+			widths: state.dataset.widths?.split(/\s+/) || null,
 		})),
 	}))
 }
@@ -61,41 +88,17 @@ function buildNav() {
 	nav.replaceChildren(
 		...[...groups].map(([group, items]) => {
 			const section = el('section', 'ui__group')
-			const heading = el('h2', 'ui__group-title', group)
-			heading.append(el('span', 'ui__group-count', String(items.length)))
-
 			const list = el('ul', 'ui__list')
 			for (const story of items) {
-				const states = shown(story)
 				const link = el('a', 'ui__link', story.title)
-				link.href = storyHash(story, states[0])
+				link.href = storyHash(story)
 				link.dataset.storyLink = story.id
-				if (states[0]) link.dataset.stateLink = states[0].index
-				if (states.length > 1)
-					link.append(el('span', 'ui__link-count', String(states.length)))
-
 				const item = el('li')
 				item.dataset.storyItem = story.id
 				item.append(link)
-
-				// Состояния компонента — вложенным списком, раскрыт у выбранного
-				if (states.length > 1) {
-					const sub = el('ul', 'ui__sublist')
-					for (const state of states) {
-						const subLink = el('a', 'ui__sublink', state.label)
-						subLink.href = storyHash(story, state)
-						subLink.dataset.storyLink = story.id
-						subLink.dataset.stateLink = state.index
-						const subItem = el('li')
-						subItem.append(subLink)
-						sub.append(subItem)
-					}
-					item.append(sub)
-				}
 				list.append(item)
 			}
-
-			section.append(heading, list)
+			section.append(el('h2', 'ui__group-title', group), list)
 			return section
 		})
 	)
@@ -127,87 +130,187 @@ function current() {
 	return { story, state }
 }
 
-function renderInfo(story, active) {
-	crumb.textContent = story ? [story.group, active?.label].filter(Boolean).join(' · ') : ''
-	title.textContent = story?.title || 'Историй пока нет'
-	description.textContent = story?.description || ''
-	description.hidden = !story?.description
+// Пути к файлам — ссылки на репозиторий: папка компонента (шаблон, стили, скрипт) и контракт.
+// Репозиторий публичный, ссылка работает и в демо, и локально
+const REPO = 'https://github.com/acrysense/ag-site'
+const PATH = /((?:app|docs)\/[\w./-]+)/
+const withPaths = (text) =>
+	text
+		.split(PATH)
+		.filter(Boolean)
+		.map((part) => {
+			if (!PATH.test(part)) return part
+			const link = el('a', 'ui__path', part)
+			link.href = `${REPO}/${part.endsWith('/') ? 'tree' : 'blob'}/main/${part}`
+			link.target = '_blank'
+			link.rel = 'noopener noreferrer'
+			return link
+		})
 
-	const items = story?.states || []
-	states.previousElementSibling.hidden = items.length === 0
+function renderInfo(story, active) {
+	crumb.textContent = story?.group || ''
+	title.textContent = story?.title || 'Историй пока нет'
+
+	// Одна строка для бэка: папка шаблона · контракт — главное правило. Не влезла — многоточие,
+	// целиком во всплывающей подсказке. Место под строку есть всегда — панель не меняет высоту
+	backend.replaceChildren(
+		...(story?.backend ? [el('b', '', 'Бэку:'), ' ', ...withPaths(story.backend)] : [])
+	)
+	backend.title = story?.backend || ''
+
+	// Вкладки состояний — только когда есть из чего выбирать; место под них остаётся
+	const items = story ? shown(story) : []
 	states.replaceChildren(
-		...items.map((state) => {
-			const item = el('li')
-			if (state.note) {
-				const muted = el('span', 'ui__state is-muted', state.label)
-				muted.append(el('span', 'ui__state-note', state.note))
-				item.append(muted)
-				return item
-			}
+		...(items.length < 2 ? [] : items).map((state) => {
 			const link = el('a', 'ui__state', state.label)
 			link.href = storyHash(story, state)
 			link.dataset.storyLink = story.id
 			link.dataset.stateLink = state.index
-			if (state.index === active?.index) link.setAttribute('aria-current', 'true')
-			item.append(link)
-			return item
+			if (state.index === active?.index) link.setAttribute('aria-current', 'page')
+			return link
 		})
 	)
+	states.querySelector('[aria-current]')?.scrollIntoView({ block: 'nearest', inline: 'nearest' })
 }
 
-function applyBounds() {
-	const on = readHash().bounds !== '0'
-	boundsToggle.setAttribute('aria-pressed', String(on))
-	frame.contentDocument?.documentElement.classList.toggle('show-bounds', on)
+const currentWidth = () => (WIDTHS.includes(readHash().width) ? readHash().width : WIDTHS[0])
+
+// Ширины, на которых блок есть (нижняя панель — только на телефоне). Выбранной нет — ближайшая
+// из доступных; сам выбор в адресе остаётся для других историй
+let shownWidth = currentWidth()
+const allowedWidths = (story, state) => state?.widths || story?.widths || WIDTHS
+function pickWidth(allowed) {
+	const wanted = currentWidth()
+	if (allowed.includes(wanted)) return wanted
+	return [...allowed].sort((a, b) => Math.abs(a - wanted) - Math.abs(b - wanted))[0]
+}
+
+// Широкий макет не влезает в окно — уменьшаем iframe целиком, медиазапросы остаются от ширины
+function fitFrame() {
+	const width = Number(shownWidth)
+	const styles = getComputedStyle(stage)
+	const room =
+		stage.clientWidth - parseFloat(styles.paddingLeft) - parseFloat(styles.paddingRight)
+	const height =
+		stage.clientHeight - parseFloat(styles.paddingTop) - parseFloat(styles.paddingBottom)
+	const scale = Math.min(1, room / width)
+
+	screen.style.width = `${Math.floor(width * scale)}px`
+	for (const frame of frames) {
+		frame.style.width = `${width}px`
+		frame.style.height = `${height / scale}px`
+		frame.style.transform = scale < 1 ? `scale(${scale})` : ''
+	}
+	scaleNote.hidden = scale >= 1
+	scaleNote.textContent = `масштаб ${Math.round(scale * 100)} %`
 }
 
 function apply() {
 	const { story, state } = current()
 	const hash = readHash()
 	// До первой загрузки canvas меню ещё пустое — берём историю прямо из адреса
-	const id = story?.id ?? hash.story
+	// Пустая история — холст сам покажет первую, а не все разом
+	const id = story?.id ?? hash.story ?? ''
 	const stateIndex = story ? state?.index : hash.state
-	const query = new URLSearchParams(id ? { story: id } : {})
+	const query = new URLSearchParams({ story: id })
 	if (id && stateIndex !== undefined && stateIndex !== null) query.set('state', stateIndex)
 	const src = `${canvasUrl}${query.size ? `?${query}` : ''}`
 
-	if (frame.dataset.src !== src) {
-		frame.dataset.src = src
-		frame.src = src
-	}
+	if (wanted !== src) load(src)
 
 	openLink.href = src
-	for (const item of nav.querySelectorAll('[data-story-item]')) {
-		item.classList.toggle('is-open', item.dataset.storyItem === story?.id)
-	}
 	for (const link of nav.querySelectorAll('[data-story-link]')) {
-		const isStory = link.dataset.storyLink === story?.id
-		const isState = link.classList.contains('ui__sublink')
-		const active = isStory && (!isState || link.dataset.stateLink === state?.index)
-		if (active) link.setAttribute('aria-current', 'page')
+		if (link.dataset.storyLink === story?.id) link.setAttribute('aria-current', 'page')
 		else link.removeAttribute('aria-current')
 	}
+	const allowed = allowedWidths(story, state)
+	shownWidth = pickWidth(allowed)
+	for (const button of widths.querySelectorAll('[data-ui-width]')) {
+		const width = button.dataset.uiWidth
+		button.setAttribute('aria-pressed', String(width === shownWidth))
+		button.disabled = !allowed.includes(width)
+		button.title = button.disabled ? 'На этой ширине блока нет' : ''
+	}
 	renderInfo(story, state)
-	applyBounds()
+	fitFrame()
+}
+
+function load(src) {
+	wanted = src
+	// Всегда в скрытый кадр, и в первый раз тоже: недособранная страница на экран не попадает
+	const frame = frames.find((item) => item !== front)
+	frame.dataset.src = src
+	frame.src = src
+	clearTimeout(loadingTimer)
+	loadingTimer = setTimeout(() => screen.classList.add('is-loading'), LOADING_DELAY)
+}
+
+// Таймер, а не requestAnimationFrame: в фоновой вкладке кадры не идут и показ бы завис
+const tick = () => new Promise((resolve) => setTimeout(resolve, 30))
+
+// Собралось: шрифты загружены и разметка перестала меняться (скрипты блоков подгружаются
+// после load и дорисовывают своё)
+async function settle(doc) {
+	const start = performance.now()
+	await Promise.race([
+		doc.fonts?.ready,
+		new Promise((resolve) => setTimeout(resolve, SETTLE_MAX)),
+	])
+	const nodes = doc.getElementsByTagName('*')
+	let last = ''
+	let quietSince = performance.now()
+	while (performance.now() - start < SETTLE_MAX) {
+		await tick()
+		const now = performance.now()
+		const signature = `${nodes.length}:${doc.documentElement.scrollHeight}`
+		if (signature !== last) {
+			last = signature
+			quietSince = now
+		} else if (now - quietSince >= SETTLE_QUIET) return
+	}
+}
+
+function show(frame) {
+	clearTimeout(loadingTimer)
+	screen.classList.remove('is-loading')
+	if (frame === front) return
+	const old = front
+	frame.classList.remove('is-back')
+	frame.removeAttribute('aria-hidden')
+	frame.removeAttribute('tabindex')
+	front = frame
+	// Прошлое состояние не нужно — выгружаем, чтобы его скрипты не работали впустую
+	hideFrame(old)
+	old.dataset.src = ''
+	old.src = 'about:blank'
 }
 
 // Меню пересобирается на каждой загрузке canvas: новые истории видны после HMR
-frame.addEventListener('load', () => {
-	if (!frame.contentDocument) return
-	stories = readStories(frame.contentDocument)
-	buildNav()
-	apply()
-})
+for (const frame of frames) {
+	frame.addEventListener('load', async () => {
+		const doc = frame.contentDocument
+		if (!doc || !frame.dataset.src || frame.dataset.src !== wanted) return
+		if (frame !== front) {
+			await settle(doc)
+			// Пока ждали, во фрейм уже загрузили другое состояние — покажет его своя загрузка
+			if (frame.dataset.src !== wanted || frame.contentDocument !== doc) return
+		}
+		show(frame)
+		stories = readStories(doc)
+		buildNav()
+		apply()
+	})
+}
+screen.append(frames[1])
 
-// Ссылки на историю и состояние — в меню и в списке состояний справа
+// Ссылки на историю (меню) и на состояние (вкладки)
 const onStoryClick = (event) => {
 	const link = event.target.closest('[data-story-link]')
 	if (!link || event.metaKey || event.ctrlKey || event.shiftKey) return
 	event.preventDefault()
-	const patch = { story: link.dataset.storyLink }
-	if (link.dataset.stateLink) patch.state = link.dataset.stateLink
-	const next = new URLSearchParams({ ...readHash(), ...patch })
-	if (!link.dataset.stateLink) next.delete('state')
+	const next = new URLSearchParams({ ...readHash(), story: link.dataset.storyLink })
+	if (link.dataset.stateLink) next.set('state', link.dataset.stateLink)
+	else next.delete('state')
 	history.replaceState(null, '', `#${next}`)
 	apply()
 }
@@ -223,10 +326,12 @@ document.addEventListener('keydown', (event) => {
 	search.focus()
 })
 
-boundsToggle.addEventListener('click', () => {
-	writeHash({ bounds: boundsToggle.getAttribute('aria-pressed') === 'true' ? '0' : '1' })
+widths.addEventListener('click', (event) => {
+	const button = event.target.closest('[data-ui-width]')
+	if (button) writeHash({ width: button.dataset.uiWidth })
 })
 
+new ResizeObserver(fitFrame).observe(stage)
 window.addEventListener('hashchange', apply)
 
 apply()

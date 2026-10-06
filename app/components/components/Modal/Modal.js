@@ -136,6 +136,9 @@ export default function init(dialog) {
 	)
 	dialog.addEventListener('close', () => !dialog.open && cleanup(), { signal })
 
+	// Окно на месте (витрина) открыто сразу — прокрутка тела нужна с начала, как у открытого
+	if (isStatic && body) simplebar = new SimpleBar(body, { autoHide: false })
+
 	return () => {
 		controller.abort()
 		forceClose()

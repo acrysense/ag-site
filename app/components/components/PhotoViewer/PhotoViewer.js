@@ -2,11 +2,11 @@ import PhotoSwipeLightbox from 'photoswipe/lightbox'
 import { createIcon } from '@/utils/icon'
 import { lockBody } from '@/utils/scroll-lock'
 
-// Просмотр фото на весь экран (Figma: PC.Gallery — A. Просмотр фото 4682:25854) на PhotoSwipe 5:
+// Просмотр фото на весь экран на PhotoSwipe 5:
 // увеличение (два касания, щипок, колесо с Ctrl), свайпы, клавиатура (стрелки, Esc), фокус
-// внутри окна и возврат на фото, с которого открыли. Свой вид по макету: сверху название
+// внутри окна и возврат на фото, с которого открыли. Свой вид: сверху название
 // альбома, «Фото N из M», «Нравится», «Скачать», крестик; по бокам стрелки; снизу лента
-// миниатюр. До 1024 (наше) — без стрелок (свайп), до 768 — и без миниатюр.
+// миниатюр. До 1024 — без стрелок (свайп), до 768 — и без миниатюр.
 // Модуль не монтируется сам — его создаёт блок с фото (sections/gallery/AlbumPhotos).
 //
 // createPhotoViewer({ title, items, onLike, withLikes }) → { open(index), update(index, item), destroy() }
@@ -16,14 +16,14 @@ import { lockBody } from '@/utils/scroll-lock'
 
 const DESKTOP = 1024
 const TABLET = 768
-// Лента миниатюр: 96 через 8, не шире 1344 (макет 1920 — 13 миниатюр)
+// Лента миниатюр: 96 через 8, не шире 1344 (на 1920 — 13 миниатюр)
 const THUMB_GAP = 8
 const THUMB_STEP = 96 + THUMB_GAP
 const THUMBS_MAX = 1344
 // Низкий экран (телефон горизонтально): без миниатюр, поля минимальные — фото на весь экран.
 // Та же граница — в PhotoViewer.scss
 const LOW = 560
-// Поля вокруг фото — по макету 1920: сверху полоса 92 + 16, снизу миниатюры 64 + 80 + 40, по
+// Поля вокруг фото на 1920: сверху полоса 92 + 16, снизу миниатюры 64 + 80 + 40, по
 // бокам фото шириной до 1400 (стрелки — в оставшихся полях)
 function padding({ x, y }) {
 	if (y < LOW) {
@@ -106,6 +106,8 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {}, w
 				const heading = el('p', 'photo-viewer__title', title)
 				const counter = el('p', 'photo-viewer__counter')
 				counter.setAttribute('aria-live', 'polite')
+				// Одно фото: «Фото 1 из 1» ничего не сообщает
+				counter.hidden = items.length < 2
 				head.append(heading, counter)
 
 				const actions = el('div', 'photo-viewer__actions')
@@ -156,6 +158,9 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {}, w
 			},
 		})
 
+		// Одно фото: листать нечего — без стрелок и ленты миниатюр
+		if (items.length < 2) return
+
 		// Стрелки по бокам (с 1024)
 		for (const [name, dir] of [
 			['photo-viewer-prev', 'prev'],
@@ -201,7 +206,7 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {}, w
 				})
 				list.append(...buttons)
 				root.append(list)
-				// Целые миниатюры: столько, сколько помещается (по макету 1920 — 13 в ширине 1344),
+				// Целые миниатюры: столько, сколько помещается (на 1920 — 13 в ширине 1344),
 				// лента сдвигается на целые миниатюры, текущая — ближе к середине
 				let visible = 0
 				const fit = () => {

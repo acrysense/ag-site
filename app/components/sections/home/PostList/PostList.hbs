@@ -1,9 +1,9 @@
 {{!--
-	Список публикаций с превью: «Акции», «Корпоративные новости» (Figma: 1920 — 4615:42853,
-	360 — 4865:1354). props: title, url (ссылка на раздел), items [{ url, title, image }].
+	Список публикаций с превью: «Акции», «Корпоративные новости».
+	props: title, url (ссылка на раздел), items [{ url, title, image }].
 	На десктопе по 4 пункта на странице, стрелки листают страницы (если пунктов больше 4);
-	на мобильном — первые 4, без стрелок. Нет картинки — только текст. Пусто — блок не
-	выводится. Контракт — docs/contracts/post-list.md.
+	на мобильном — первые 4, без стрелок. Нет картинки — на её месте заготовка, строки
+	выровнены. Пусто — блок не выводится. Контракт — docs/contracts/post-list.md.
 --}}
 {{#if props.items.length}}
     {{#with (chunk props.items 4) as |pages|}}
@@ -27,7 +27,7 @@
                         {{#each this}}
                             <li class="post-list__item">
                                 <a class="post-list__link" href="{{url}}">
-                                    {{#if image}}<span class="post-list__thumb"><img class="post-list__image" src="{{image}}" width="80" height="80" alt="" loading="lazy" decoding="async" /></span>{{/if}}
+                                    <span class="post-list__thumb">{{#if image}}<img class="post-list__image" src="{{image}}" width="80" height="80" alt="" loading="lazy" decoding="async" />{{/if}}</span>
                                     <span class="post-list__text">{{title}}</span>
                                 </a>
                             </li>

@@ -1,11 +1,11 @@
 {{!--
-	Фото в сетке альбома (Figma: Photo 4682:25802, при наведении — 4682:25810). Ссылка на большое
+	Фото в сетке альбома. Ссылка на большое
 	фото (без JS — откроется файл), с JS — просмотр на весь экран. При наведении и с клавиатуры —
 	«Нравится» и «Скачать». props: src, thumb, thumbSrcset, alt, likes, liked, likeUrl, download;
 	index — номер в альбоме (с 0), total — сколько фото в альбоме.
 --}}
 <li class="album-photo">
-    <a class="album-photo__link" href="{{props.src}}" data-photo-index="{{index}}" aria-label="Открыть фото {{add index 1}} из {{total}}">
+    <a class="album-photo__link" href="{{props.src}}" data-photo-index="{{index}}" aria-label="Открыть фото{{#unless (eq total 1)}} {{add index 1}} из {{total}}{{/unless}}">
         <img class="album-photo__image" src="{{props.thumb}}" {{#if props.thumbSrcset}}srcset="{{props.thumbSrcset}}" sizes="(min-width: 1280px) 293px, (min-width: 768px) 33vw, 50vw"{{/if}} width="293" height="220" alt="{{props.alt}}" loading="lazy" decoding="async" />
     </a>
     <div class="album-photo__actions">

@@ -1,9 +1,9 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: Colleagues (4833:1253) — белая карточка, поля 20: заголовок H3 Black.TXT и «Все N
+// Коллеги — белая карточка, поля 20: заголовок H3 Black.TXT и «Все N
 // сотрудников →» M/400 Main Blue справа (через 12), через 10 сотрудники (EmployeeRow). Рамка и
-// тень — как у всех белых блоков. Телефон (наше): без карточки, ссылка под заголовком.
+// тень — как у всех белых блоков. Телефон: без карточки, ссылка под заголовком.
 @layer components {
 	.employee-colleagues {
 		display: flex;

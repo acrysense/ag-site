@@ -1,16 +1,27 @@
 import './canvas.scss'
 import './mock-server.js'
 
-// ?story=<id> — одна история; &state=<n> — одно её состояние (так их открывает
-// оболочка ui.html). Номер состояния — порядок в разметке истории, с нуля.
+// ?story=<id> — одна история (пустое значение — первая); &state=<n> — одно её состояние (так их
+// открывает оболочка ui.html). Номер состояния — порядок в разметке истории, с нуля.
 const params = new URLSearchParams(window.location.search)
-const story = params.get('story')
-const state = params.get('state')
+const story =
+	params.get('story') === ''
+		? document.querySelector('[data-story]')?.dataset.story
+		: params.get('story')
+let state = params.get('state')
 
 for (const el of document.querySelectorAll('[data-story]')) {
 	el.querySelectorAll('[data-state-label]').forEach((node, index) => {
 		node.dataset.stateIndex = String(index)
 	})
+}
+
+// Без номера состояния — первое показываемое (у неприменимых только пояснение), а не все разом
+if (story && state === null) {
+	const first = document.querySelector(
+		`[data-story="${CSS.escape(story)}"] [data-state-label]:not([data-state-note])`
+	)
+	if (first) state = first.dataset.stateIndex
 }
 
 if (story) {

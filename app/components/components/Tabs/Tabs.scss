@@ -1,9 +1,7 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: Tabs (4615:43130). В макете поля неравные (2 слева, 10 справа, у выбранной 15, у
-// остальных 10) — сведены к одинаковым, чтобы не прыгало при переключении; ширина та же ±2px.
-// Шрифт в макете Poppins — в проекте его нет, Inter того же размера.
+// Поля у всех вкладок одинаковые, чтобы не прыгало при переключении. Шрифт — Inter.
 @layer components {
 	.tabs {
 		display: inline-flex;
@@ -34,7 +32,7 @@
 		}
 	}
 
-	// Наведение на невыбранную вкладку (наше): Blue.TXT
+	// Наведение на невыбранную вкладку: Blue.TXT
 	.tabs__tab:hover:not([aria-selected="true"]),
 	.tabs__tab:focus-visible:not([aria-selected="true"]) {
 		color: palette("blue-txt");

@@ -1,5 +1,5 @@
 {{!--
-	Шапка сайта (Figma: PC.HEADER.v2 — 4652:8752, 360.HEADER — 4865:1334).
+	Шапка сайта.
 	props: id, homeUrl, homeLabel (имя ссылки-логотипа, «На главную»), logo { desktop, mobile } —
 	картинки логотипа с названием сайта (по умолчанию — из assets, те же, что в ЛК),
 	search { value } — запрос в строке поиска (окно поиска —
@@ -55,7 +55,7 @@
                     {{> components/Icon/Icon name="angle-right" class="header__user-arrow"}}
                 {{/inline}}
                 {{#if props.user.menu.length}}
-                    {{!-- Меню под аватаром (кит: Dropdown menu 2725:18877). Пункт: { label, url, icon }
+                    {{!-- Меню под аватаром. Пункт: { label, url, icon }
                     или { divider: true }; modal — id окна, которое пункт открывает (выход) --}}
                     <div class="header__user-menu" data-user-menu>
                         <button class="header__user" type="button" aria-expanded="false" aria-controls="{{default props.id 'header'}}-user-menu" data-user-menu-toggle>

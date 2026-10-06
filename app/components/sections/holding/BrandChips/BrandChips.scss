@@ -1,9 +1,9 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: Brands (4814:1475) — подпись M/400 Dark-grey.TXT, через 10 плашки через 8: фон Brand
+// Бренды — подпись M/400 Dark-grey.TXT, через 10 плашки через 8: фон Brand
 // chip, поля 6 12 6 6, скругление 10, логотип 28 (скругление 6) и название через 8. Пусто —
-// пунктир Brand chip dashed, поля 10/12, текст Dark-grey.TXT (4814:1611).
+// пунктир Brand chip dashed, поля 10/12, текст Dark-grey.TXT.
 @layer components {
 	.brand-chips {
 		display: flex;

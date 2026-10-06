@@ -1,5 +1,5 @@
 {{!--
-	Баннеры главной (Figma: 1920 — 4615:42835, 360 — 4865:1335): слайдер и промо справа.
+	Баннеры главной: слайдер и промо справа.
 	props: slides [{ url, alt, image: { desktop, mobile }, video: { src, poster } }], promos [{ url, alt, image: { desktop, mobile } }],
 	autoplay — автолистание слайдера, секунды (по умолчанию 5; 0 — выключено).
 	Слайды и промо на десктопе — 2.2:1, картинки взаимозаменяемы; мобильная картинка промо
@@ -16,7 +16,7 @@
             <div class="hero__slider carousel carousel--parallax" role="region" aria-roledescription="карусель" aria-label="Баннеры" data-module="Carousel" data-path="components" data-carousel-loop data-carousel-autoplay="{{default props.autoplay 5}}">
                 <div class="carousel__track hero__track" data-carousel-track>
                     {{#each props.slides}}
-                        <div class="carousel__slide hero__slide" role="group" aria-roledescription="слайд" aria-label="{{add @index 1}} из {{../props.slides.length}}">
+                        <div class="carousel__slide hero__slide"{{#unless (eq ../props.slides.length 1)}} role="group" aria-roledescription="слайд" aria-label="{{add @index 1}} из {{../props.slides.length}}"{{/unless}}>
                             {{#if url}}<a class="hero__slide-link" href="{{url}}">{{/if}}
                             {{#if video}}
                                 <video class="hero__image" src="{{video.src}}" {{#if video.poster}}poster="{{video.poster}}"{{/if}} muted loop playsinline preload="metadata" aria-label="{{alt}}" data-hero-video></video>

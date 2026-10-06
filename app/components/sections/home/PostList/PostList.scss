@@ -1,7 +1,6 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: 360 — 4865:1354, 1920 — 4615:42853
 @layer components {
 	.post-list {
 		display: flex;
@@ -161,7 +160,7 @@
 		}
 	}
 
-	// Наведение (наше): стрелка — Main Blue, заголовок-ссылка раздела — Blue.TXT
+	// Наведение: стрелка — Main Blue, заголовок-ссылка раздела — Blue.TXT
 	.post-list__arrow {
 		transition: color $transition-default;
 

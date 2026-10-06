@@ -33,7 +33,7 @@ export default function init(root) {
 		input.addEventListener(
 			'change',
 			() => {
-				// «до» меньше «от» — меняем местами (Figma: Filter.NumberRange, 4730:239)
+				// «до» меньше «от» — меняем местами
 				const [from, to] = inputs.map(
 					(field) => Number(field.value.replace(/\D/g, '')) || 0
 				)

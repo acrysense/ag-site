@@ -1,8 +1,8 @@
 {{!--
-	Растянутый баннер (Figma: 1920 — 4617:43487, 360 — 4865:40484): карусель во всю ширину.
+	Растянутый баннер: карусель во всю ширину.
 	props: label, slides [{ url, alt, image: { desktop, mobile } }], autoplay — автолистание,
 	секунды (по умолчанию 5; 0 — выключено).
-	На десктопе стрелки, на мобильном точки под картинкой (так в макетах). Один слайд — ни
+	На десктопе стрелки, на мобильном точки под картинкой. Один слайд — ни
 	стрелок, ни точек; нет слайдов — блок не выводится. Текст — в картинке, alt обязателен.
 	Контракт — docs/contracts/wide-banner.md.
 --}}
@@ -10,7 +10,7 @@
     <section class="wide-banner carousel carousel--parallax" aria-roledescription="карусель" aria-label="{{default props.label 'Баннеры'}}" data-module="Carousel" data-path="components" data-carousel-loop data-carousel-autoplay="{{default props.autoplay 5}}">
         <div class="carousel__track wide-banner__track" data-carousel-track>
             {{#each props.slides}}
-                <div class="carousel__slide wide-banner__slide" role="group" aria-roledescription="слайд" aria-label="{{add @index 1}} из {{../props.slides.length}}">
+                <div class="carousel__slide wide-banner__slide"{{#unless (eq ../props.slides.length 1)}} role="group" aria-roledescription="слайд" aria-label="{{add @index 1}} из {{../props.slides.length}}"{{/unless}}>
                     {{#if url}}<a class="wide-banner__link" href="{{url}}">{{/if}}
                     <picture class="wide-banner__picture">
                         {{#if image.desktop}}<source media="(min-width: 768px)" srcset="{{image.desktop}}" />{{/if}}

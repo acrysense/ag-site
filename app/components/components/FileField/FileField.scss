@@ -1,9 +1,9 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: Поле · Резюме (4593:618) — вид Input (46, рамка Form.Border, скругление 14, поля 15),
+// Поле «Резюме» — вид Input (46, рамка Form.Border, скругление 14, поля 15),
 // подсказка Dark-grey.TXT, справа скрепка 16 Black.TXT. Выбранный файл — имя Black.TXT в строку
-// с многоточием и × вместо скрепки (наше, в макете нет).
+// с многоточием и × вместо скрепки.
 @layer components {
 	.file-field__box {
 		position: relative;

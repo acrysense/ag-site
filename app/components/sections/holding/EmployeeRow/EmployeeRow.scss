@@ -1,11 +1,11 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: Employee (4821:1284) — поля 12, части через 16: фото 48, ФИО M/500 Black.TXT (метка
+// Строка сотрудника — поля 12, части через 16: фото 48, ФИО M/500 Black.TXT (метка
 // «Руководитель» — BG.Violet, Main Blue, S/600, поля 2/8, скругление 6) и должность M/400
 // Dark-grey.TXT через 4, телефон и e-mail M/400 Main Blue, стрелка 20; между строками черта
 // Block.Border. Колонки 420 / 260 / остаток (на 1920) — с 1280 по той же пропорции.
-// До 1280 (наше): телефон и e-mail под должностью. Наведение на строку — ФИО Blue.TXT.
+// До 1280: телефон и e-mail под должностью. Наведение на строку — ФИО Blue.TXT.
 @layer components {
 	.employee-row {
 		position: relative;
