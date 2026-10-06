@@ -214,101 +214,101 @@
 
 			{{#> story id="hero" group="Главная" title="Баннеры" how='У слайда две картинки: для десктопа и мобильного.' figma='1920 — 4615:42835, 360 — 4865:1335' backend='app/components/sections/home/HeroBanners/ · docs/contracts/hero-banners.md — две картинки на слайд, alt обязателен'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container">{{> sections/home/HeroBanners/HeroBanners props=data.hero}}</div>
+					<div class="container page-blocks">{{> sections/home/HeroBanners/HeroBanners props=data.hero}}</div>
 				{{/state}}
 				{{#> state label="Без промо" bg="page"}}
-					<div class="container">{{> sections/home/HeroBanners/HeroBanners props=data.heroNoPromos}}</div>
+					<div class="container page-blocks">{{> sections/home/HeroBanners/HeroBanners props=data.heroNoPromos}}</div>
 				{{/state}}
 				{{#> state label="Одно промо" bg="page"}}
-					<div class="container">{{> sections/home/HeroBanners/HeroBanners props=data.heroOnePromo}}</div>
+					<div class="container page-blocks">{{> sections/home/HeroBanners/HeroBanners props=data.heroOnePromo}}</div>
 				{{/state}}
 				{{#> state label="Один слайд" bg="page"}}
-					<div class="container">{{> sections/home/HeroBanners/HeroBanners props=data.heroOneSlide}}</div>
+					<div class="container page-blocks">{{> sections/home/HeroBanners/HeroBanners props=data.heroOneSlide}}</div>
 				{{/state}}
 				{{#> state label="Без мобильных картинок" bg="page"}}
-					<div class="container">{{> sections/home/HeroBanners/HeroBanners props=data.heroPromosNoMobile}}</div>
+					<div class="container page-blocks">{{> sections/home/HeroBanners/HeroBanners props=data.heroPromosNoMobile}}</div>
 				{{/state}}
 				{{#> state label="Только промо" bg="page"}}
-					<div class="container">{{> sections/home/HeroBanners/HeroBanners props=data.heroOnlyPromos}}</div>
+					<div class="container page-blocks">{{> sections/home/HeroBanners/HeroBanners props=data.heroOnlyPromos}}</div>
 				{{/state}}
 				{{#> state label="Пусто" bg="page"}}
-					<div class="container">{{> sections/home/HeroBanners/HeroBanners props=data.heroEmpty}}</div>
+					<div class="container page-blocks">{{> sections/home/HeroBanners/HeroBanners props=data.heroEmpty}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: баннеры приходят с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
 			{{#> story id="post-list" group="Главная" title="Акции и новости" how='Один компонент для «Акций» и «Корпоративных новостей». На десктопе по 4, стрелки листают; на мобильном первые 4.' figma='1920 — 4615:42853, 360 — 4865:1354' backend='app/components/sections/home/PostList/ · docs/contracts/post-list.md — один шаблон для «Акций» и «Новостей»'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container">{{> sections/home/PostList/PostList props=data.posts}}</div>
+					<div class="container page-blocks">{{> sections/home/PostList/PostList props=data.posts}}</div>
 				{{/state}}
 				{{#> state label="Мало пунктов" bg="page"}}
-					<div class="container">{{> sections/home/PostList/PostList props=data.postsFew}}</div>
+					<div class="container page-blocks">{{> sections/home/PostList/PostList props=data.postsFew}}</div>
 				{{/state}}
 				{{#> state label="Без картинок" bg="page"}}
-					<div class="container">{{> sections/home/PostList/PostList props=data.postsNoImages}}</div>
+					<div class="container page-blocks">{{> sections/home/PostList/PostList props=data.postsNoImages}}</div>
 				{{/state}}
 				{{#> state label="Длинный текст" bg="page"}}
-					<div class="container">{{> sections/home/PostList/PostList props=data.postsLong}}</div>
+					<div class="container page-blocks">{{> sections/home/PostList/PostList props=data.postsLong}}</div>
 				{{/state}}
 				{{#> state label="Пусто" bg="page"}}
-					<div class="container">{{> sections/home/PostList/PostList props=data.postsEmpty}}</div>
+					<div class="container page-blocks">{{> sections/home/PostList/PostList props=data.postsEmpty}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: список приходит с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
 			{{#> story id="birthdays" group="Главная" title="День рождения" how='Всего 6 строк: сначала сегодня, потом ближайшие. Сегодня больше 6 — 5 и «+N Все именинники сегодня». Нет фото — значок подарка. На десктопе — третья колонка ряда с «Акциями».' figma='1920 — 4615:42940, 360 — 4865:1402' backend='app/components/sections/shared/Birthdays/ · docs/contracts/birthdays.md — 6 строк, сначала сегодня'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdays}}</div></div>
+					<div class="container page-blocks"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdays}}</div></div>
 				{{/state}}
 				{{#> state label="Сегодня никого" bg="page"}}
-					<div class="container"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysNoToday}}</div></div>
+					<div class="container page-blocks"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysNoToday}}</div></div>
 				{{/state}}
 				{{#> state label="Сегодня несколько" bg="page"}}
-					<div class="container"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysManyToday}}</div></div>
+					<div class="container page-blocks"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysManyToday}}</div></div>
 				{{/state}}
 				{{#> state label="Сегодня больше шести" bg="page"}}
-					<div class="container"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysOverflowToday}}</div></div>
+					<div class="container page-blocks"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysOverflowToday}}</div></div>
 				{{/state}}
 				{{#> state label="Только сегодня" bg="page"}}
-					<div class="container"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysOnlyToday}}</div></div>
+					<div class="container page-blocks"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysOnlyToday}}</div></div>
 				{{/state}}
 				{{#> state label="Без фото" bg="page"}}
-					<div class="container"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysNoPhotos}}</div></div>
+					<div class="container page-blocks"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysNoPhotos}}</div></div>
 				{{/state}}
 				{{#> state label="Пусто" bg="page"}}
-					<div class="container"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysEmpty}}</div></div>
+					<div class="container page-blocks"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdaysEmpty}}</div></div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: список приходит с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
 			{{#> story id="stats" group="Главная" title="В цифрах" how='С 1280 крупный заголовок слева; на планшете и узком десктопе пункты в ряд под заголовком.' figma='1920 — 4857:2701, 360 — 4865:1438' backend='app/components/sections/home/Stats/ · docs/contracts/stats.md — числа и подписи правит админ, пункт можно скрыть'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container">{{> sections/home/Stats/Stats props=data.stats}}</div>
+					<div class="container page-blocks">{{> sections/home/Stats/Stats props=data.stats}}</div>
 				{{/state}}
 				{{#> state label="Два пункта" bg="page"}}
-					<div class="container">{{> sections/home/Stats/Stats props=data.statsTwo}}</div>
+					<div class="container page-blocks">{{> sections/home/Stats/Stats props=data.statsTwo}}</div>
 				{{/state}}
 				{{#> state label="Длинный текст" bg="page"}}
-					<div class="container">{{> sections/home/Stats/Stats props=data.statsLong}}</div>
+					<div class="container page-blocks">{{> sections/home/Stats/Stats props=data.statsLong}}</div>
 				{{/state}}
 				{{#> state label="Пусто" bg="page"}}
-					<div class="container">{{> sections/home/Stats/Stats props=data.statsEmpty}}</div>
+					<div class="container page-blocks">{{> sections/home/Stats/Stats props=data.statsEmpty}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: данные приходят с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
 			{{#> story id="news-feed" group="Главная" title="Новости холдинга" how='На мобильном 6 карточек в 2 колонки, на десктопе 5 в ряд. Карточка кликабельна целиком.' figma='1920 — 4615:43032, 360 — 4865:1470' backend='app/components/sections/home/NewsFeed/ · docs/contracts/news-feed.md'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container">{{> sections/home/NewsFeed/NewsFeed props=data.news}}</div>
+					<div class="container page-blocks">{{> sections/home/NewsFeed/NewsFeed props=data.news}}</div>
 				{{/state}}
 				{{#> state label="Одна новость" bg="page"}}
-					<div class="container">{{> sections/home/NewsFeed/NewsFeed props=data.newsOne}}</div>
+					<div class="container page-blocks">{{> sections/home/NewsFeed/NewsFeed props=data.newsOne}}</div>
 				{{/state}}
 				{{#> state label="Пусто" bg="page"}}
-					<div class="container">{{> sections/home/NewsFeed/NewsFeed props=data.newsEmpty}}</div>
+					<div class="container page-blocks">{{> sections/home/NewsFeed/NewsFeed props=data.newsEmpty}}</div>
 				{{/state}}
 				{{#> state label="Длинный текст" bg="page"}}
-					<div class="container">{{> sections/home/NewsFeed/NewsFeed props=data.newsLong}}</div>
+					<div class="container page-blocks">{{> sections/home/NewsFeed/NewsFeed props=data.newsLong}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: новости приходят с сервера вместе со страницей"}}{{/state}}
 				{{#> state label="Ошибка" note="не применимо: при ошибке бэк не выводит блок, как при пустом списке"}}{{/state}}
@@ -316,16 +316,16 @@
 
 			{{#> story id="wide-banner" group="Главная" title="Растянутый баннер" how='На десктопе стрелки, на мобильном точки. У слайда две картинки: для десктопа (с 768) и мобильного.' figma='1920 — 4617:43487, 360 — 4865:40484' backend='app/components/sections/home/WideBanner/ · docs/contracts/wide-banner.md — две картинки на слайд'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container">{{> sections/home/WideBanner/WideBanner props=data.wideBanner}}</div>
+					<div class="container page-blocks">{{> sections/home/WideBanner/WideBanner props=data.wideBanner}}</div>
 				{{/state}}
 				{{#> state label="Один слайд" bg="page"}}
-					<div class="container">{{> sections/home/WideBanner/WideBanner props=data.wideBannerOne}}</div>
+					<div class="container page-blocks">{{> sections/home/WideBanner/WideBanner props=data.wideBannerOne}}</div>
 				{{/state}}
 				{{#> state label="Без мобильной картинки" bg="page"}}
-					<div class="container">{{> sections/home/WideBanner/WideBanner props=data.wideBannerNoMobile}}</div>
+					<div class="container page-blocks">{{> sections/home/WideBanner/WideBanner props=data.wideBannerNoMobile}}</div>
 				{{/state}}
 				{{#> state label="Пусто" bg="page"}}
-					<div class="container">{{> sections/home/WideBanner/WideBanner props=data.wideBannerEmpty}}</div>
+					<div class="container page-blocks">{{> sections/home/WideBanner/WideBanner props=data.wideBannerEmpty}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: баннеры приходят с сервера вместе со страницей"}}{{/state}}
 				{{#> state label="Длинный текст" note="не применимо: текст в картинке"}}{{/state}}
@@ -333,19 +333,19 @@
 
 			{{#> story id="leaders" group="Главная" title="Галерея живой заботы" how='Десктоп — карусель по 5 (по 4 до 1280), мобильный — первые 6 и «Показать все».' figma='1920 — 4615:43127, 360 — 4865:1668' backend='app/components/sections/home/Leaders/ · docs/contracts/leaders.md — скрытую вкладку не выводить'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container">{{> sections/home/Leaders/Leaders props=data.leaders}}</div>
+					<div class="container page-blocks">{{> sections/home/Leaders/Leaders props=data.leaders}}</div>
 				{{/state}}
 				{{#> state label="Одна вкладка" bg="page"}}
-					<div class="container">{{> sections/home/Leaders/Leaders props=data.leadersOneList}}</div>
+					<div class="container page-blocks">{{> sections/home/Leaders/Leaders props=data.leadersOneList}}</div>
 				{{/state}}
 				{{#> state label="Мало лидеров" bg="page"}}
-					<div class="container">{{> sections/home/Leaders/Leaders props=data.leadersFew}}</div>
+					<div class="container page-blocks">{{> sections/home/Leaders/Leaders props=data.leadersFew}}</div>
 				{{/state}}
 				{{#> state label="Длинный текст, без фото" bg="page"}}
-					<div class="container">{{> sections/home/Leaders/Leaders props=data.leadersLong}}</div>
+					<div class="container page-blocks">{{> sections/home/Leaders/Leaders props=data.leadersLong}}</div>
 				{{/state}}
 				{{#> state label="Пусто" bg="page"}}
-					<div class="container">{{> sections/home/Leaders/Leaders props=data.leadersEmpty}}</div>
+					<div class="container page-blocks">{{> sections/home/Leaders/Leaders props=data.leadersEmpty}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: списки приходят с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
@@ -507,23 +507,23 @@
 
 			{{#> story id="vacancy-filters" group="Карьера" title="Фильтры вакансий" how='С 1024 — карточка, выбор применяется сразу; до 1024 — панель на весь экран с «Показать N вакансий». «Показать ещё N» раскрывает группу; пункт с 0 вакансий неактивен.' figma='4607:523, пункт — Doc/Checkbox (4528:212)' backend='app/components/sections/career/VacancyFilters/ · docs/contracts/career.md — число вакансий считает сервер'}}
 				{{#> state label="Обычное" widths="1440" bg="page"}}
-					<div class="container"><div class="story-column-narrow">{{> sections/career/VacancyFilters/VacancyFilters props=data.vacancyFilters}}</div></div>
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/career/VacancyFilters/VacancyFilters props=data.vacancyFilters}}</div></div>
 				{{/state}}
 				{{#> state label="Выбраны" widths="1440" bg="page"}}
-					<div class="container"><div class="story-column-narrow">{{> sections/career/VacancyFilters/VacancyFilters props=data.vacancyFiltersChecked}}</div></div>
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/career/VacancyFilters/VacancyFilters props=data.vacancyFiltersChecked}}</div></div>
 				{{/state}}
 				{{#> state label="Пусто" note="групп нет — блок не выводится, кнопки «Фильтры» в списке тоже нет (бэк не передаёт filtersId)"}}{{/state}}
 				{{#> state label="Панель на мобильном" widths="360 768" bg="page"}}
-					<div class="container"><div class="story-column-narrow">{{> sections/career/VacancyFilters/VacancyFilters props=data.vacancyFiltersStatic}}</div></div>
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/career/VacancyFilters/VacancyFilters props=data.vacancyFiltersStatic}}</div></div>
 				{{/state}}
 			{{/story}}
 
 			{{#> story id="career-steps" group="Карьера" title="Как это работает" how='На мобильном — плашка BG.Info под списком.' figma='4588:456' backend='app/components/sections/career/CareerSteps/ · docs/contracts/career.md — шаги правит админ'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container"><div class="story-column-narrow">{{> sections/career/CareerSteps/CareerSteps props=data.careerSteps}}</div></div>
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/career/CareerSteps/CareerSteps props=data.careerSteps}}</div></div>
 				{{/state}}
 				{{#> state label="Один шаг" bg="page"}}
-					<div class="container"><div class="story-column-narrow">{{> sections/career/CareerSteps/CareerSteps props=data.careerStepsOne}}</div></div>
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/career/CareerSteps/CareerSteps props=data.careerStepsOne}}</div></div>
 				{{/state}}
 				{{#> state label="Пусто" note="шагов нет — блок не выводится"}}{{/state}}
 			{{/story}}
@@ -590,9 +590,9 @@
 			{{/story}}
 
 			{{#> story id="album-hero" page="gallery" group="Галерея" title="Шапка альбома" how='Обложка с затемнением, название, дата, число фото, описание; «Нравится», «Скачать альбом», «Скопировать ссылку».' figma='Album hero (4682:25790)' backend='app/components/sections/gallery/AlbumHero/ · docs/contracts/gallery.md — размер архива для «Скачать»'}}
-				{{#> state label="Обычное" bg="page"}}<div class="container">{{> sections/gallery/AlbumHero/AlbumHero props=data.albumHero}}</div>{{/state}}
-				{{#> state label="Минимум" bg="page"}}<div class="container">{{> sections/gallery/AlbumHero/AlbumHero props=data.albumHeroMin}}</div>{{/state}}
-				{{#> state label="Длинный текст" bg="page"}}<div class="container">{{> sections/gallery/AlbumHero/AlbumHero props=data.albumHeroLong}}</div>{{/state}}
+				{{#> state label="Обычное" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumHero/AlbumHero props=data.albumHero}}</div>{{/state}}
+				{{#> state label="Минимум" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumHero/AlbumHero props=data.albumHeroMin}}</div>{{/state}}
+				{{#> state label="Длинный текст" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumHero/AlbumHero props=data.albumHeroLong}}</div>{{/state}}
 			{{/story}}
 
 			{{#> story id="album-photos" page="gallery" group="Галерея" title="Фото альбома" how='Сетка: 4 в ряд с 1280, 3 — с 768, 2 — уже. Нажатие на фото — просмотр: листается весь альбом, «Нравится» синхронно с сеткой. В «Обычном» нажмите на фото — откроется просмотр.' figma='Content (4682:25799), просмотр — 4682:25854' backend='app/components/sections/gallery/AlbumPhotos/ · docs/contracts/gallery.md — остальные фото порциями из JSON'}}
@@ -647,35 +647,35 @@
 
 			{{#> story id="documents-folders" page="documents" group="Библиотека" title="Папки документов" how='Шеврон раскрывает подпапки, текущая подсвечена. До 1024 — панель на весь экран по полю «Папка»; в витрине — на месте.' figma='4528:218, пункт Doc/Tree item (4528:200), 360 — 4967:44140' backend='app/components/sections/documents/DocumentsFolders/ · docs/contracts/documents.md — текущую папку отмечает бэк'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFolders/DocumentsFolders props=data.documentsFolders}}</div></div>
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/documents/DocumentsFolders/DocumentsFolders props=data.documentsFolders}}</div></div>
 				{{/state}}
 				{{#> state label="Одна папка" bg="page"}}
-					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFolders/DocumentsFolders props=data.documentsFoldersOne}}</div></div>
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/documents/DocumentsFolders/DocumentsFolders props=data.documentsFoldersOne}}</div></div>
 				{{/state}}
 				{{#> state label="Длинный текст" bg="page"}}
-					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFolders/DocumentsFolders props=data.documentsFoldersLong}}</div></div>
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/documents/DocumentsFolders/DocumentsFolders props=data.documentsFoldersLong}}</div></div>
 				{{/state}}
 				{{#> state label="Пусто" note="папок нет — блок не выводится"}}{{/state}}
 			{{/story}}
 
 			{{#> story id="documents-filters" page="documents" group="Библиотека" title="Фильтры документов" how='С 1024 выбор применяется сразу; до 1024 — панель на весь экран с «Показать N документов». «Год публикации» из макета убран.' figma='4528:304, выбранные — 4531:548, 360 — 4967:44254' backend='app/components/sections/documents/DocumentsFilters/ · docs/contracts/documents.md'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFilters/DocumentsFilters props=data.documentsFilters}}</div></div>
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/documents/DocumentsFilters/DocumentsFilters props=data.documentsFilters}}</div></div>
 				{{/state}}
 				{{#> state label="Выбраны" bg="page"}}
-					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFilters/DocumentsFilters props=data.documentsFiltersChecked}}</div></div>
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/documents/DocumentsFilters/DocumentsFilters props=data.documentsFiltersChecked}}</div></div>
 				{{/state}}
 				{{#> state label="Неактивные" bg="page"}}
-					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFilters/DocumentsFilters props=data.documentsFiltersZero}}</div></div>
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/documents/DocumentsFilters/DocumentsFilters props=data.documentsFiltersZero}}</div></div>
 				{{/state}}
 				{{#> state label="Пусто" note="групп нет — блок не выводится, кнопки «Фильтры» в списке тоже нет"}}{{/state}}
 			{{/story}}
 
 			{{#> story id="sort-menu" group="Новости" title="Сортировка списка" how='Где: новости, журнал, вакансии. Текущий порядок текстом со стрелкой, по клику — список. До 768 — нижний лист с затемнением. Закрывают Esc, ×, клик мимо. «Полем» — sort-menu--field, до 1024, как в макете 360.' figma='PC.News 4467:758, список — 4706:1207' backend='app/components/components/SortMenu/ — пункты обычные ссылки'}}
-				{{#> state label="Два варианта" bg="page"}}<div class="container"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenu}}</div></div>{{/state}}
-				{{#> state label="Три варианта" bg="page"}}<div class="container"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenuThree}}</div></div>{{/state}}
-				{{#> state label="Один вариант" bg="page"}}<div class="container"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenuOne}}</div></div>{{/state}}
-				{{#> state label="Полем" bg="page"}}<div class="container"><div class="story-column-narrow">{{> components/SortMenu/SortMenu props=(obj id="sort-menu-field" label=data.sortMenu.label options=data.sortMenu.options class="sort-menu--field")}}</div></div>{{/state}}
+				{{#> state label="Два варианта" bg="page"}}<div class="container page-inner"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenu}}</div></div>{{/state}}
+				{{#> state label="Три варианта" bg="page"}}<div class="container page-inner"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenuThree}}</div></div>{{/state}}
+				{{#> state label="Один вариант" bg="page"}}<div class="container page-inner"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenuOne}}</div></div>{{/state}}
+				{{#> state label="Полем" bg="page"}}<div class="container page-inner"><div class="story-column-narrow">{{> components/SortMenu/SortMenu props=(obj id="sort-menu-field" label=data.sortMenu.label options=data.sortMenu.options class="sort-menu--field")}}</div></div>{{/state}}
 				{{#> state label="Пусто" note="вариантов нет — блок не выводится"}}{{/state}}
 			{{/story}}
 
@@ -889,13 +889,13 @@
 
 			{{#> story id="brand-card" page="holding-entity" group="Холдинг" title="Бренд юрлица" how='Боковая колонка 350 с 1024; на планшете по две в ряд, на телефоне друг под другом.' figma='Brand 4821:1327' backend='app/components/sections/holding/BrandCard/ · docs/contracts/holding.md'}}
 				{{#> state label="Бренды" bg="page"}}
-					<div class="container"><div class="page-aside-cards">{{#each data.entityBrands}}{{> sections/holding/BrandCard/BrandCard props=this}}{{/each}}</div></div>
+					<div class="container page-inner"><div class="page-aside-cards">{{#each data.entityBrands}}{{> sections/holding/BrandCard/BrandCard props=this}}{{/each}}</div></div>
 				{{/state}}
 				{{#> state label="Только название" bg="page"}}
-					<div class="container"><div class="page-aside-cards">{{> sections/holding/BrandCard/BrandCard props=data.entityBrandMin}}</div></div>
+					<div class="container page-inner"><div class="page-aside-cards">{{> sections/holding/BrandCard/BrandCard props=data.entityBrandMin}}</div></div>
 				{{/state}}
 				{{#> state label="Длинный текст" bg="page"}}
-					<div class="container"><div class="page-aside-cards">{{> sections/holding/BrandCard/BrandCard props=data.entityBrandLong}}</div></div>
+					<div class="container page-inner"><div class="page-aside-cards">{{> sections/holding/BrandCard/BrandCard props=data.entityBrandLong}}</div></div>
 				{{/state}}
 				{{#> state label="Пусто" note="брендов нет — боковой колонки нет, сотрудники встают под карточку юрлица"}}{{/state}}
 			{{/story}}
@@ -938,10 +938,10 @@
 
 			{{#> story id="entity-brief" page="holding-employee" group="Холдинг" title="Юрлицо сотрудника" how='Боковая колонка карточки сотрудника: название, телефон, адрес, бренд, «Все сотрудники юр. лица →».' figma='Legal entity card 4833:1172' backend='app/components/sections/holding/EntityBrief/ · docs/contracts/holding.md'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container"><div class="page-aside-cards">{{> sections/holding/EntityBrief/EntityBrief props=data.entityBrief}}</div></div>
+					<div class="container page-inner"><div class="page-aside-cards">{{> sections/holding/EntityBrief/EntityBrief props=data.entityBrief}}</div></div>
 				{{/state}}
 				{{#> state label="Без брендов" bg="page"}}
-					<div class="container"><div class="page-aside-cards">{{> sections/holding/EntityBrief/EntityBrief props=data.entityBriefNoBrands}}</div></div>
+					<div class="container page-inner"><div class="page-aside-cards">{{> sections/holding/EntityBrief/EntityBrief props=data.entityBriefNoBrands}}</div></div>
 				{{/state}}
 			{{/story}}
 
