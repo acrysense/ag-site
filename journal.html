@@ -50,9 +50,9 @@
 		<script type="module" crossorigin src="/ag-site/assets/js/pages-nav-Df9646uR.js"></script>
 		<script type="module" crossorigin src="/ag-site/assets/js/announce-D3OkgBby.js"></script>
 		<script type="module" crossorigin src="/ag-site/assets/js/icon-NLq4soTO.js"></script>
-		<script type="module" crossorigin src="/ag-site/assets/js/app-BadqNyrL.js"></script>
+		<script type="module" crossorigin src="/ag-site/assets/js/app-LLpv1uM8.js"></script>
 		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/pages-nav--aTdp9SH.css" />
-		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-7t3g6ZCh.css" />
+		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-cxzd2shh.css" />
 	</head>
 	<body>
 		<div class="wrapper">
@@ -806,15 +806,6 @@
 					<div class="page-columns page-columns--start">
 						<aside class="page-columns__aside page-columns__aside--desktop">
 							<nav class="news-filters" aria-label="Фильтры новостей" data-module="NewsFilters" data-path="sections/news">
-								<h2 class="news-filters__title">Категории</h2>
-								<ul class="news-filters__list news-filters__list--categories" role="list">
-									<li><a class="news-filters__link" href="#">Журнал холдинга</a></li>
-									<li><a class="news-filters__link" href="#">Журнал PR</a></li>
-									<li><a class="news-filters__link" href="#">Сотрудник месяца</a></li>
-									<li><a class="news-filters__link" href="#" aria-current="page">Ударник</a></li>
-									<li><a class="news-filters__link" href="#">Вечерний холдинг</a></li>
-									<li><a class="news-filters__link" href="#">The AG News</a></li>
-								</ul>
 								<ul class="news-filters__list news-filters__list--years" role="list" aria-label="Год">
 									<li><a class="news-filters__chip" href="#">2026</a></li>
 									<li><a class="news-filters__chip" href="#" aria-current="true">2025</a></li>
@@ -881,60 +872,19 @@
 							<div class="news-list__toolbar">
 								<nav
 									class="news-filters news-list__categories"
-									aria-label="Категории"
+									aria-label="Год"
 									data-module="NewsFilters"
 									data-path="sections/news"
 								>
-									<h2 class="news-filters__title">Категории</h2>
-									<ul class="news-filters__list news-filters__list--categories" role="list">
-										<li><a class="news-filters__link" href="#">Журнал холдинга</a></li>
-										<li><a class="news-filters__link" href="#">Журнал PR</a></li>
-										<li><a class="news-filters__link" href="#">Сотрудник месяца</a></li>
-										<li><a class="news-filters__link" href="#" aria-current="page">Ударник</a></li>
-										<li><a class="news-filters__link" href="#">Вечерний холдинг</a></li>
-										<li><a class="news-filters__link" href="#">The AG News</a></li>
+									<ul class="news-filters__list news-filters__list--years" role="list" aria-label="Год">
+										<li><a class="news-filters__chip" href="#">2026</a></li>
+										<li><a class="news-filters__chip" href="#" aria-current="true">2025</a></li>
+										<li><a class="news-filters__chip" href="#">2024</a></li>
+										<li><a class="news-filters__chip" href="#">2023</a></li>
+										<li><a class="news-filters__chip" href="#">2022</a></li>
+										<li><a class="news-filters__chip" href="#">2021</a></li>
 									</ul>
 								</nav>
-								<div class="sort-menu sort-menu--field news-list__year" data-module="SortMenu" data-path="components">
-									<button
-										class="sort-menu__toggle"
-										type="button"
-										aria-expanded="false"
-										aria-haspopup="true"
-										aria-controls="news-year"
-									>
-										<span class="visually-hidden">Год: </span>
-										2025
-										<svg class="icon sort-menu__arrow" aria-hidden="true" focusable="false">
-											<use href="/ag-site/assets/icons/sprite.svg#icon-chevron-down"></use>
-										</svg>
-									</button>
-									<div class="sort-menu__backdrop" data-sort-menu-close hidden></div>
-									<div class="sort-menu__popup" id="news-year" hidden>
-										<div class="sort-menu__head">
-											<p class="sort-menu__title">Год</p>
-											<button class="sort-menu__close" type="button" aria-label="Закрыть" data-sort-menu-close>
-												<svg class="icon sort-menu__close-icon" aria-hidden="true" focusable="false">
-													<use href="/ag-site/assets/icons/sprite.svg#icon-close"></use>
-												</svg>
-											</button>
-										</div>
-										<ul class="sort-menu__list" role="list">
-											<li><a class="sort-menu__option" href="#">2026</a></li>
-											<li>
-												<a class="sort-menu__option" href="#" aria-current="true"
-													>2025<svg class="icon sort-menu__check" aria-hidden="true" focusable="false">
-														<use href="/ag-site/assets/icons/sprite.svg#icon-check"></use>
-													</svg>
-												</a>
-											</li>
-											<li><a class="sort-menu__option" href="#">2024</a></li>
-											<li><a class="sort-menu__option" href="#">2023</a></li>
-											<li><a class="sort-menu__option" href="#">2022</a></li>
-											<li><a class="sort-menu__option" href="#">2021</a></li>
-										</ul>
-									</div>
-								</div>
 							</div>
 							<ul class="news-list__grid news-list__grid--journal" role="list">
 								<li class="news-list__item">
@@ -961,7 +911,7 @@
 												</svg>
 												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
 											>
-											<a class="btn btn--light btn--s" href="#" download
+											<a class="btn btn--light btn--s journal-card__download" href="#" download
 												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
@@ -1010,7 +960,7 @@
 												</svg>
 												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
 											>
-											<a class="btn btn--light btn--s" href="#" download
+											<a class="btn btn--light btn--s journal-card__download" href="#" download
 												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
@@ -1059,7 +1009,7 @@
 												</svg>
 												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
 											>
-											<a class="btn btn--light btn--s" href="#" download
+											<a class="btn btn--light btn--s journal-card__download" href="#" download
 												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
@@ -1108,7 +1058,7 @@
 												</svg>
 												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
 											>
-											<a class="btn btn--light btn--s" href="#" download
+											<a class="btn btn--light btn--s journal-card__download" href="#" download
 												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
@@ -1157,7 +1107,7 @@
 												</svg>
 												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
 											>
-											<a class="btn btn--light btn--s" href="#" download
+											<a class="btn btn--light btn--s journal-card__download" href="#" download
 												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
@@ -1206,7 +1156,7 @@
 												</svg>
 												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
 											>
-											<a class="btn btn--light btn--s" href="#" download
+											<a class="btn btn--light btn--s journal-card__download" href="#" download
 												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
@@ -1255,7 +1205,7 @@
 												</svg>
 												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
 											>
-											<a class="btn btn--light btn--s" href="#" download
+											<a class="btn btn--light btn--s journal-card__download" href="#" download
 												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
@@ -1304,7 +1254,7 @@
 												</svg>
 												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
 											>
-											<a class="btn btn--light btn--s" href="#" download
+											<a class="btn btn--light btn--s journal-card__download" href="#" download
 												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
@@ -1353,7 +1303,7 @@
 												</svg>
 												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
 											>
-											<a class="btn btn--light btn--s" href="#" download
+											<a class="btn btn--light btn--s journal-card__download" href="#" download
 												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
@@ -1402,7 +1352,7 @@
 												</svg>
 												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
 											>
-											<a class="btn btn--light btn--s" href="#" download
+											<a class="btn btn--light btn--s journal-card__download" href="#" download
 												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
@@ -1451,7 +1401,7 @@
 												</svg>
 												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
 											>
-											<a class="btn btn--light btn--s" href="#" download
+											<a class="btn btn--light btn--s journal-card__download" href="#" download
 												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
@@ -1500,7 +1450,7 @@
 												</svg>
 												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
 											>
-											<a class="btn btn--light btn--s" href="#" download
+											<a class="btn btn--light btn--s journal-card__download" href="#" download
 												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
@@ -1549,7 +1499,7 @@
 												</svg>
 												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
 											>
-											<a class="btn btn--light btn--s" href="#" download
+											<a class="btn btn--light btn--s journal-card__download" href="#" download
 												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
@@ -1598,7 +1548,7 @@
 												</svg>
 												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
 											>
-											<a class="btn btn--light btn--s" href="#" download
+											<a class="btn btn--light btn--s journal-card__download" href="#" download
 												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
@@ -1647,7 +1597,7 @@
 												</svg>
 												<span class="visually-hidden">Читать: HR-дайджест. Итоги 2025</span></a
 											>
-											<a class="btn btn--light btn--s" href="#" download
+											<a class="btn btn--light btn--s journal-card__download" href="#" download
 												><svg class="icon btn__icon" aria-hidden="true" focusable="false">
 													<use href="/ag-site/assets/icons/sprite.svg#icon-download"></use>
 												</svg>
