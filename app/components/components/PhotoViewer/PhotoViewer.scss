@@ -6,8 +6,10 @@
 // «Нравится» (значок 18, число M/500), «Скачать», черта 1×24 (белый 20%), крестик 14 в круге 44.
 // Фото — до 1400 в ширину, скругление 10; стрелки 56 (белый 10%) по бокам; снизу миниатюры 96×64
 // через 8, скругление 6, приглушены до 45%, текущая — рамка 2 Main Blue.
-// До 1024: полоса 64, кнопки 40, без стрелок (свайп); до 768 и на низком экране
-// (телефон горизонтально) — без миниатюр.
+// До 1024: полоса 64, кнопки 40, без стрелок (свайп). До 768: полоса 72 (поля 12/10) —
+// название, счётчик и крестик 36; внизу (поля 12/10/24) миниатюры 64×44 через 6, под ними
+// через 16 «Нравится» и «Скачать» высотой 36. Низкий экран (телефон горизонтально) — без
+// миниатюр, кнопки в полосе.
 @layer components {
 	.photo-viewer {
 		--pswp-bg: #{palette("viewer-bg")};
@@ -33,8 +35,13 @@
 		gap: 16px;
 		align-items: center;
 		justify-content: space-between;
-		height: 64px;
-		padding: 0 12px 0 16px;
+		height: 72px;
+		padding: 12px 10px;
+
+		@include up(tablet) {
+			height: 64px;
+			padding: 0 12px 0 16px;
+		}
 
 		@include up(desktop) {
 			height: 92px;
@@ -66,7 +73,11 @@
 	}
 
 	.photo-viewer__counter {
-		@include text("s-400");
+		@include text("m-400");
+
+		@include up(tablet) {
+			@include text("s-400");
+		}
 
 		opacity: 0.6;
 
@@ -75,7 +86,8 @@
 		}
 	}
 
-	.photo-viewer__actions {
+	.photo-viewer__actions,
+	.photo-viewer__tools {
 		display: flex;
 		flex: none;
 		gap: 8px;
@@ -83,6 +95,23 @@
 
 		@include up(desktop) {
 			gap: 10px;
+		}
+	}
+
+	// Телефон: «Нравится» и «Скачать» — внизу экрана под миниатюрами, высотой 36
+	@media (max-width: 767.98px) and (min-height: 560px) {
+		.photo-viewer__tools {
+			position: fixed;
+			bottom: calc(24px + env(safe-area-inset-bottom));
+			left: 10px;
+			gap: 10px;
+
+			.photo-viewer__button {
+				min-width: 36px;
+				height: 36px;
+				padding: 0 16px;
+				border-radius: 18px;
+			}
 		}
 	}
 
@@ -128,8 +157,18 @@
 	}
 
 	.photo-viewer__close {
-		width: 40px;
+		width: 36px;
+		min-width: 36px;
+		height: 36px;
 		padding: 0;
+		border-radius: 18px;
+
+		@include up(tablet) {
+			width: 40px;
+			min-width: 40px;
+			height: 40px;
+			border-radius: 22px;
+		}
 
 		@include up(desktop) {
 			width: 44px;
@@ -205,14 +244,14 @@
 	.photo-viewer__thumbs {
 		position: absolute;
 		right: 0;
-		bottom: 24px;
+		bottom: calc(76px + env(safe-area-inset-bottom));
 		left: 0;
 		z-index: 10;
-		display: none;
+		display: flex;
 		justify-content: center;
 
 		@include up(tablet) {
-			display: flex;
+			bottom: 24px;
 		}
 
 		@include up(desktop) {
@@ -229,9 +268,9 @@
 	// экрана; прокрутка — пальцем и колесом, с привязкой к целым миниатюрам
 	.photo-viewer__thumbs-list {
 		display: flex;
-		gap: 8px;
-		width: calc(var(--photo-viewer-thumbs, 13) * 104px - 8px);
-		max-width: calc(100% - 32px);
+		gap: 6px;
+		width: calc(var(--photo-viewer-thumbs, 13) * 70px - 6px);
+		max-width: calc(100% - 20px);
 		overflow-x: auto;
 		overscroll-behavior-x: contain;
 		scroll-snap-type: x mandatory;
@@ -240,13 +279,19 @@
 		&::-webkit-scrollbar {
 			display: none;
 		}
+
+		@include up(tablet) {
+			gap: 8px;
+			width: calc(var(--photo-viewer-thumbs, 13) * 104px - 8px);
+			max-width: calc(100% - 32px);
+		}
 	}
 
 	.photo-viewer__thumb {
 		flex: none;
 		scroll-snap-align: start;
-		width: 96px;
-		height: 64px;
+		width: 64px;
+		height: 44px;
 		padding: 0;
 		overflow: hidden;
 		cursor: pointer;
@@ -273,6 +318,11 @@
 			outline: 2px solid palette("main-blue");
 			outline-offset: -2px;
 			opacity: 1;
+		}
+
+		@include up(tablet) {
+			width: 96px;
+			height: 64px;
 		}
 	}
 }
