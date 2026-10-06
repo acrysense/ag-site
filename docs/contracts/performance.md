@@ -40,7 +40,8 @@
 
 ## Прочее
 
-- Фавикон: `<link rel="icon" href="/favicon.svg" type="image/svg+xml">` (пока — знак из логотипа).
+- Фавикон — набор в `favicon/`, как в ЛК: SVG, ICO, PNG 96, `apple-touch-icon.png` (180) и
+  `site.webmanifest` с иконками 192 и 512.
 - `robots.txt` и описание страниц (`<meta name="description">`) — из SEO-модуля Битрикса; портал
   открыт без входа, страницы индексируются (закрыты только ЛК и ERP).
 
