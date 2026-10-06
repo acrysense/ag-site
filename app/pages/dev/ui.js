@@ -62,10 +62,12 @@ function readStories(doc) {
 		group: node.dataset.group || 'Прочее',
 		title: node.dataset.title || node.dataset.story,
 		backend: node.dataset.backend || '',
+		widths: node.dataset.widths?.split(/\s+/) || null,
 		states: [...node.querySelectorAll('[data-state-label]')].map((state, index) => ({
 			index: String(index),
 			label: state.dataset.stateLabel,
 			note: state.dataset.stateNote || '',
+			widths: state.dataset.widths?.split(/\s+/) || null,
 		})),
 	}))
 }
@@ -128,7 +130,9 @@ function current() {
 	return { story, state }
 }
 
-// Пути к файлам (шаблон, контракт) — кнопки: нажатие копирует путь
+// Пути к файлам — ссылки на репозиторий: папка компонента (шаблон, стили, скрипт) и контракт.
+// Репозиторий публичный, ссылка работает и в демо, и локально
+const REPO = 'https://github.com/acrysense/ag-site'
 const PATH = /((?:app|docs)\/[\w./-]+)/
 const withPaths = (text) =>
 	text
@@ -136,34 +140,19 @@ const withPaths = (text) =>
 		.filter(Boolean)
 		.map((part) => {
 			if (!PATH.test(part)) return part
-			const button = el('button', 'ui__path', part)
-			button.type = 'button'
-			button.title = 'Скопировать путь'
-			button.dataset.copy = part
-			return button
+			const link = el('a', 'ui__path', part)
+			link.href = `${REPO}/${part.endsWith('/') ? 'tree' : 'blob'}/main/${part}`
+			link.target = '_blank'
+			link.rel = 'noopener noreferrer'
+			return link
 		})
-
-let copiedTimer = 0
-backend.addEventListener('click', async (event) => {
-	const button = event.target.closest('[data-copy]')
-	if (!button) return
-	try {
-		await navigator.clipboard.writeText(button.dataset.copy)
-	} catch {
-		return
-	}
-	clearTimeout(copiedTimer)
-	backend.querySelector('.is-copied')?.classList.remove('is-copied')
-	button.classList.add('is-copied')
-	copiedTimer = setTimeout(() => button.classList.remove('is-copied'), 1500)
-})
 
 function renderInfo(story, active) {
 	crumb.textContent = story?.group || ''
 	title.textContent = story?.title || 'Историй пока нет'
 
-	// Одна строка для бэка: шаблон · контракт — главное правило. Не влезла — многоточие,
-	// целиком во всплывающей подсказке. Строка есть всегда, чтобы панель не меняла высоту
+	// Одна строка для бэка: папка шаблона · контракт — главное правило. Не влезла — многоточие,
+	// целиком во всплывающей подсказке. Место под строку есть всегда — панель не меняет высоту
 	backend.replaceChildren(
 		...(story?.backend ? [el('b', '', 'Бэку:'), ' ', ...withPaths(story.backend)] : [])
 	)
@@ -186,9 +175,19 @@ function renderInfo(story, active) {
 
 const currentWidth = () => (WIDTHS.includes(readHash().width) ? readHash().width : WIDTHS[0])
 
+// Ширины, на которых блок есть (нижняя панель — только на телефоне). Выбранной нет — ближайшая
+// из доступных; сам выбор в адресе остаётся для других историй
+let shownWidth = currentWidth()
+const allowedWidths = (story, state) => state?.widths || story?.widths || WIDTHS
+function pickWidth(allowed) {
+	const wanted = currentWidth()
+	if (allowed.includes(wanted)) return wanted
+	return [...allowed].sort((a, b) => Math.abs(a - wanted) - Math.abs(b - wanted))[0]
+}
+
 // Широкий макет не влезает в окно — уменьшаем iframe целиком, медиазапросы остаются от ширины
 function fitFrame() {
-	const width = Number(currentWidth())
+	const width = Number(shownWidth)
 	const styles = getComputedStyle(stage)
 	const room = stage.clientWidth - parseFloat(styles.paddingLeft) - parseFloat(styles.paddingRight)
 	const height = stage.clientHeight - parseFloat(styles.paddingTop) - parseFloat(styles.paddingBottom)
@@ -221,8 +220,13 @@ function apply() {
 		if (link.dataset.storyLink === story?.id) link.setAttribute('aria-current', 'page')
 		else link.removeAttribute('aria-current')
 	}
+	const allowed = allowedWidths(story, state)
+	shownWidth = pickWidth(allowed)
 	for (const button of widths.querySelectorAll('[data-ui-width]')) {
-		button.setAttribute('aria-pressed', String(button.dataset.uiWidth === currentWidth()))
+		const width = button.dataset.uiWidth
+		button.setAttribute('aria-pressed', String(width === shownWidth))
+		button.disabled = !allowed.includes(width)
+		button.title = button.disabled ? 'На этой ширине блока нет' : ''
 	}
 	renderInfo(story, state)
 	fitFrame()
