@@ -7,20 +7,16 @@
 	</head>
 	<body class="ui">
 		{{!--
-			Витрина компонентов: оболочка. Сами компоненты живут в canvas.html. Здесь они
-			открываются в iframe шириной 360px (мобильный макет), поэтому медиазапросы
-			работают по-настоящему. Остальные ширины — «Открыть отдельно» и ширина окна.
-			Меню строится из [data-story] в canvas.html. Выбор и рамки блоков хранятся в
-			адресе (#story=…&bounds=…), ссылку можно отправить.
+			Витрина компонентов: оболочка. Сами компоненты живут в canvas.html и открываются
+			здесь в iframe нужной ширины, поэтому медиазапросы работают по-настоящему.
+			Меню строится из [data-story] в canvas.html. Выбор, ширина и рамки блоков хранятся
+			в адресе (#story=…&state=…&width=…&bounds=…), ссылку можно отправить.
 		--}}
 		<aside class="ui__side">
-			<div class="ui__brand">
-				<span class="ui__logo" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
-				<span class="ui__brand-text">
-					<span class="ui__brand-name">{{or site.siteName 'Проект'}}</span>
-					<span class="ui__brand-sub">Витрина компонентов</span>
-				</span>
-			</div>
+			<p class="ui__brand">
+				Витрина
+				<span class="ui__brand-sub">{{or site.siteName 'Проект'}}</span>
+			</p>
 
 			<div class="ui__search">
 				<label class="ui__search-label" for="ui-search">Поиск компонента</label>
@@ -30,8 +26,6 @@
 
 			<nav class="ui__nav" aria-label="Компоненты" data-ui-nav></nav>
 			<p class="ui__empty" data-ui-empty hidden>Ничего не найдено</p>
-
-			<p class="ui__side-foot">Истории — <code>app/pages/dev/canvas.html</code></p>
 		</aside>
 
 		<main class="ui__main">
@@ -42,34 +36,26 @@
 				</div>
 
 				<div class="ui__actions">
-					<button class="ui__toggle" type="button" aria-pressed="true" data-ui-bounds>Границы блоков</button>
-					<a class="ui__button" href="#" target="_blank" rel="noopener noreferrer" data-ui-open>Открыть отдельно ↗</a>
+					<div class="ui__widths" role="group" aria-label="Ширина" data-ui-widths>
+						<button class="ui__width" type="button" aria-pressed="true" data-ui-width="360">360</button>
+						<button class="ui__width" type="button" aria-pressed="false" data-ui-width="768">768</button>
+						<button class="ui__width" type="button" aria-pressed="false" data-ui-width="1440">1440</button>
+					</div>
+					<button class="ui__button" type="button" aria-pressed="false" data-ui-bounds>Рамки</button>
+					<a class="ui__button" href="#" target="_blank" rel="noopener noreferrer" data-ui-open>
+						Отдельно <span aria-hidden="true">↗</span>
+					</a>
 				</div>
+
+				<div class="ui__description" data-ui-description></div>
+				<nav class="ui__states" aria-label="Состояния" data-ui-states></nav>
 			</header>
 
-			<div class="ui__stage">
-				<div class="ui__phone">
-					<p class="ui__phone-label">Мобильный · 360 px</p>
-					<div class="ui__screen">
-						<iframe class="ui__frame" title="Выбранный компонент, ширина 360 пикселей" data-ui-frame></iframe>
-					</div>
+			<div class="ui__stage" data-ui-stage>
+				<div class="ui__screen" data-ui-screen>
+					<iframe class="ui__frame" title="Выбранный компонент" data-ui-frame></iframe>
 				</div>
-
-				<section class="ui__info" aria-labelledby="ui-info-title">
-					<h2 class="ui__info-title" id="ui-info-title">О компоненте</h2>
-					<p class="ui__description" data-ui-description></p>
-
-					<h3 class="ui__info-subtitle">Состояния</h3>
-					<ol class="ui__states" data-ui-states></ol>
-
-					<div class="ui__hint">
-						<p class="ui__hint-title">Планшет и десктоп</p>
-						<p>
-							«Открыть отдельно» показывает компонент на всю вкладку. Меняйте ширину окна или включите режим
-							устройства в инструментах разработчика.
-						</p>
-					</div>
-				</section>
+				<p class="ui__scale" data-ui-scale hidden></p>
 			</div>
 		</main>
 	</body>

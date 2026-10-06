@@ -131,7 +131,7 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="tab-bar" group="Каркас" title="TabBar" description='Figma: 360.TabBar (4870:1538). До 767px, фиксирована внизу, высота 60 + safe-area. Набор пунктов зависит от доступа. В витрине показана без фиксации.'}}
+			{{#> story id="tab-bar" group="Каркас" title="Нижняя панель" description='Figma: 360.TabBar (4870:1538). До 767px, фиксирована внизу, высота 60 + safe-area. Набор пунктов зависит от доступа. В витрине показана без фиксации.'}}
 				{{#> state label="Новости и обучение" bg="page"}}
 					{{> layouts/TabBar/TabBar props=data.tabBar}}
 				{{/state}}
@@ -356,13 +356,13 @@
 
 			{{#> story id="birthday-calendar" group="Дни рождения" title="Календарь" description='Figma: 1920 — 4704:1065, 360 — 4706:1407. Сетка месяца с 1024, ниже — список дней с именинниками. Прошедшие дни бледнее, выходные — фон BG.Info, сегодня — BG.Violet.'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container">{{> sections/birthdays/BirthdayCalendar/BirthdayCalendar props=data.calendar}}</div>
+					<div class="container page-inner">{{> sections/birthdays/BirthdayCalendar/BirthdayCalendar props=data.calendar}}</div>
 				{{/state}}
 				{{#> state label="Без фильтров" bg="page"}}
-					<div class="container">{{> sections/birthdays/BirthdayCalendar/BirthdayCalendar props=data.calendarNoFilters}}</div>
+					<div class="container page-inner">{{> sections/birthdays/BirthdayCalendar/BirthdayCalendar props=data.calendarNoFilters}}</div>
 				{{/state}}
 				{{#> state label="Пусто" bg="page"}}
-					<div class="container">{{> sections/birthdays/BirthdayCalendar/BirthdayCalendar props=data.calendarEmpty}}</div>
+					<div class="container page-inner">{{> sections/birthdays/BirthdayCalendar/BirthdayCalendar props=data.calendarEmpty}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: месяц приходит с сервера, смена фильтра перезагружает страницу"}}{{/state}}
 				{{#> state label="Длинный контент" note="в «Обычном»: 7 человек в один день и ФИО на две строки — строка обрезается «…»"}}{{/state}}
@@ -486,16 +486,16 @@
 
 			{{#> story id="career-list" group="Карьера" title="Карьерный шанс — список" description='Figma: PC.Career (4588:83). Белая карточка: заголовок, «Новые в начале», вводный текст, карточки (3 в ряд с 1280, 2 — с 768, 1 — на мобильном), страницы и «Всего». До 1024 — кнопка «Фильтры · N». «Подробнее» (и вся карточка) открывает окно вакансии.'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container">{{> sections/career/VacancyList/VacancyList props=data.careerList}}</div>
+					<div class="container page-inner">{{> sections/career/VacancyList/VacancyList props=data.careerList}}</div>
 				{{/state}}
 				{{#> state label="Одна вакансия" bg="page"}}
-					<div class="container">{{> sections/career/VacancyList/VacancyList props=data.careerListOne}}</div>
+					<div class="container page-inner">{{> sections/career/VacancyList/VacancyList props=data.careerListOne}}</div>
 				{{/state}}
 				{{#> state label="Пусто (выбраны фильтры)" bg="page"}}
-					<div class="container">{{> sections/career/VacancyList/VacancyList props=data.careerListEmpty}}</div>
+					<div class="container page-inner">{{> sections/career/VacancyList/VacancyList props=data.careerListEmpty}}</div>
 				{{/state}}
 				{{#> state label="Длинный контент" bg="page"}}
-					<div class="container">{{> sections/career/VacancyList/VacancyList props=data.careerListLong}}</div>
+					<div class="container page-inner">{{> sections/career/VacancyList/VacancyList props=data.careerListLong}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, фильтры, сортировка и страницы — обычные GET-переходы"}}{{/state}}
 			{{/story}}
@@ -567,16 +567,16 @@
 			{{/story}}
 
 			{{#> story id="album-list" page="gallery" group="Галерея" title="Список альбомов" description='Figma: PC.Gallery — A. Список альбомов (4682:25610). Белая карточка: заголовок и «Новые в начале», главный альбом, сетка карточек (3 в ряд с 1280, 2 — с 768, 1 — уже), страницы и «Всего». До 1024 — без карточки.'}}
-				{{#> state label="Обычное" bg="page"}}<div class="container">{{> sections/gallery/AlbumList/AlbumList props=data.albumList}}</div>{{/state}}
-				{{#> state label="Без главного альбома, два альбома" bg="page"}}<div class="container">{{> sections/gallery/AlbumList/AlbumList props=data.albumListNoFeatured}}</div>{{/state}}
-				{{#> state label="Длинные названия, большое число фото, альбом без обложки" bg="page"}}<div class="container">{{> sections/gallery/AlbumList/AlbumList props=data.albumListLong}}</div>{{/state}}
-				{{#> state label="Пусто" bg="page"}}<div class="container">{{> sections/gallery/AlbumList/AlbumList props=data.albumListEmpty}}</div>{{/state}}
+				{{#> state label="Обычное" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumList/AlbumList props=data.albumList}}</div>{{/state}}
+				{{#> state label="Без главного альбома, два альбома" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumList/AlbumList props=data.albumListNoFeatured}}</div>{{/state}}
+				{{#> state label="Длинные названия, большое число фото, альбом без обложки" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumList/AlbumList props=data.albumListLong}}</div>{{/state}}
+				{{#> state label="Пусто" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumList/AlbumList props=data.albumListEmpty}}</div>{{/state}}
 				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, год, сортировка и страницы — обычные GET-переходы"}}{{/state}}
 			{{/story}}
 
 			{{#> story id="gallery-years" page="gallery" group="Галерея" title="Альбомы по годам" description='Figma: «Фильтр альбомов» (4682:25616). С 1024 — карточка слева, ссылки с числом альбомов, текущая — Main Blue. Уже — «таблетки» с прокруткой вбок.'}}
-				{{#> state label="Обычное" bg="page"}}<div class="container"><div class="story-column-narrow">{{> sections/gallery/GalleryYears/GalleryYears props=data.galleryYears}}</div></div>{{/state}}
-				{{#> state label="Один пункт" bg="page"}}<div class="container"><div class="story-column-narrow">{{> sections/gallery/GalleryYears/GalleryYears props=data.galleryYearsOne}}</div></div>{{/state}}
+				{{#> state label="Обычное" bg="page"}}<div class="container page-inner"><div class="story-column-narrow">{{> sections/gallery/GalleryYears/GalleryYears props=data.galleryYears}}</div></div>{{/state}}
+				{{#> state label="Один пункт" bg="page"}}<div class="container page-inner"><div class="story-column-narrow">{{> sections/gallery/GalleryYears/GalleryYears props=data.galleryYearsOne}}</div></div>{{/state}}
 				{{#> state label="Пусто" note="пунктов нет — блок не выводится"}}{{/state}}
 			{{/story}}
 
@@ -591,34 +591,34 @@
 			{{/story}}
 
 			{{#> story id="album-photos" page="gallery" group="Галерея" title="Фото альбома и просмотр" description='Figma: Content (4682:25799), просмотр — 4682:25854. Сетка (4 в ряд с 1280, 3 — с 768, 2 — уже), при наведении — «Нравится» и «Скачать»; «Показать ещё N фото» — порциями из JSON альбома. Нажатие на фото — просмотр на весь экран (PhotoSwipe): листается весь альбом, миниатюры, «Нравится» синхронно с сеткой.'}}
-				{{#> state label="Обычное (нажмите на фото)" bg="page"}}<div class="container">{{> sections/gallery/AlbumPhotos/AlbumPhotos props=data.albumPhotos}}</div>{{/state}}
-				{{#> state label="Одно фото" bg="page"}}<div class="container">{{> sections/gallery/AlbumPhotos/AlbumPhotos props=data.albumPhotosOne}}</div>{{/state}}
-				{{#> state label="Пусто" bg="page"}}<div class="container">{{> sections/gallery/AlbumPhotos/AlbumPhotos props=data.albumPhotosEmpty}}</div>{{/state}}
+				{{#> state label="Обычное (нажмите на фото)" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumPhotos/AlbumPhotos props=data.albumPhotos}}</div>{{/state}}
+				{{#> state label="Одно фото" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumPhotos/AlbumPhotos props=data.albumPhotosOne}}</div>{{/state}}
+				{{#> state label="Пусто" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumPhotos/AlbumPhotos props=data.albumPhotosEmpty}}</div>{{/state}}
 				{{#> state label="Загрузка" note="фото грузятся лениво, под каждым — заготовка; просмотр показывает миниатюру, пока грузится большое фото"}}{{/state}}
 				{{#> state label="Ошибка" note="фото не загрузилось — в сетке заготовка, в просмотре «Не удалось загрузить фото»; «Нравится» не сохранилось — отметка откатывается, сообщение для скринридера"}}{{/state}}
 			{{/story}}
 
 			{{#> story id="documents-list" page="documents" group="Библиотека" title="Документы — список" description='Figma: PC.Library (4526:83), состояния 4531:543. Белая карточка: папка и число, «Новые в начале», выбранные фильтры чипами, шапка колонок (с 1280) и строки, страницы и «Всего». Колонки — «Название» и «Обновлён» (с 1280), уже дата — под названием. До 1024 (360 — 4967:809) — без карточки: поле «Папка: …» (открывает папки), «Фильтры · N» и сортировка полем.'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsList}}</div>
+					<div class="container page-inner">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsList}}</div>
 				{{/state}}
 				{{#> state label="Один документ" bg="page"}}
-					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListOne}}</div>
+					<div class="container page-inner">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListOne}}</div>
 				{{/state}}
 				{{#> state label="Применены фильтры (чипы)" bg="page"}}
-					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListFiltered}}</div>
+					<div class="container page-inner">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListFiltered}}</div>
 				{{/state}}
 				{{#> state label="Поиск (макет состояний 4532:794; на странице не выводится — места в макете нет)" bg="page"}}
-					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListSearch}}</div>
+					<div class="container page-inner">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListSearch}}</div>
 				{{/state}}
 				{{#> state label="Пусто: ничего не найдено" bg="page"}}
-					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListEmpty}}</div>
+					<div class="container page-inner">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListEmpty}}</div>
 				{{/state}}
 				{{#> state label="Пусто: в папке нет документов" bg="page"}}
-					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListFolderEmpty}}</div>
+					<div class="container page-inner">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListFolderEmpty}}</div>
 				{{/state}}
 				{{#> state label="Длинное: название, компания; другой тип файла" bg="page"}}
-					<div class="container">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListLong}}</div>
+					<div class="container page-inner">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListLong}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, фильтры, поиск, сортировка и страницы — обычные GET-переходы"}}{{/state}}
 				{{#> state label="Ошибка" note="не применимо: ошибку загрузки страницы показывает сервер. Не скопировалась ссылка — сообщение для скринридера, галочки и тоста нет"}}{{/state}}
@@ -676,49 +676,49 @@
 
 			{{#> story id="news-list" group="Новости" title="Лента раздела" description='Figma: PC.News (4467:758), 360 — 4963:43392. Карточки — как в «Новостях холдинга» на главной. До 1024 под заголовком категории «таблетками» и поля «Год» и сортировки (filters — те же данные, что у фильтров слева), 2 колонки, над пагинацией «Страница: N».'}}
 				{{#> state label="Обычное (с фильтрами — видны до 1024)" bg="page"}}
-					<div class="container">{{> sections/news/NewsList/NewsList props=data.newsList filters=data.newsFilters}}</div>
+					<div class="container page-inner"><div class="page-columns page-columns--start">{{> sections/news/NewsList/NewsList props=data.newsList filters=data.newsFilters}}</div></div>
 				{{/state}}
 				{{#> state label="Без фильтров" bg="page"}}
-					<div class="container">{{> sections/news/NewsList/NewsList props=data.newsList}}</div>
+					<div class="container page-inner"><div class="page-columns page-columns--start">{{> sections/news/NewsList/NewsList props=data.newsList}}</div></div>
 				{{/state}}
 				{{#> state label="Одна страница" bg="page"}}
-					<div class="container">{{> sections/news/NewsList/NewsList props=data.newsListOnePage}}</div>
+					<div class="container page-inner"><div class="page-columns page-columns--start">{{> sections/news/NewsList/NewsList props=data.newsListOnePage}}</div></div>
 				{{/state}}
 				{{#> state label="Пусто" bg="page"}}
-					<div class="container">{{> sections/news/NewsList/NewsList props=data.newsListEmpty}}</div>
+					<div class="container page-inner"><div class="page-columns page-columns--start">{{> sections/news/NewsList/NewsList props=data.newsListEmpty}}</div></div>
 				{{/state}}
 				{{#> state label="Длинный контент" bg="page"}}
-					<div class="container">{{> sections/news/NewsList/NewsList props=data.newsListLong}}</div>
+					<div class="container page-inner"><div class="page-columns page-columns--start">{{> sections/news/NewsList/NewsList props=data.newsListLong}}</div></div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, переход по страницам и фильтрам — обычные ссылки"}}{{/state}}
 			{{/story}}
 
 			{{#> story id="journal-list" group="Новости" title="Журнал" description='Figma: PC.Journal (4520:23829). Та же лента раздела (NewsList, card: journal): обложки 1:1, «Читать», «Скачать · размер», «Нравится». На 1920 — 3 по 360 через 60; с 1280 — 3, 1024–1279 — 2, планшет — 3, мобильный — 2 (наше).'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container">{{> sections/news/NewsList/NewsList props=data.journalList}}</div>
+					<div class="container page-inner">{{> sections/news/NewsList/NewsList props=data.journalList}}</div>
 				{{/state}}
 				{{#> state label="Один выпуск" bg="page"}}
-					<div class="container">{{> sections/news/NewsList/NewsList props=data.journalListOne}}</div>
+					<div class="container page-inner">{{> sections/news/NewsList/NewsList props=data.journalListOne}}</div>
 				{{/state}}
 				{{#> state label="Пусто" bg="page"}}
-					<div class="container">{{> sections/news/NewsList/NewsList props=data.journalListEmpty}}</div>
+					<div class="container page-inner">{{> sections/news/NewsList/NewsList props=data.journalListEmpty}}</div>
 				{{/state}}
 				{{#> state label="Длинный контент" bg="page"}}
-					<div class="container">{{> sections/news/NewsList/NewsList props=data.journalListLong}}</div>
+					<div class="container page-inner">{{> sections/news/NewsList/NewsList props=data.journalListLong}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, страницы и фильтры — обычные ссылки"}}{{/state}}
 			{{/story}}
 
 			{{#> story id="news-filters" group="Новости" title="Фильтры раздела" description='Figma: PC.News (4467:758), Frame 369. Десктоп — карточка слева; до 1024 на странице скрыта — фильтры выводит лента (NewsList, filters). Сам блок до 1024 — строки «таблеток» с прокруткой вбок, текущая категория — Main Blue (Figma 360: 4963:43446).'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container"><div class="story-column-narrow">{{> sections/news/NewsFilters/NewsFilters props=data.newsFilters}}</div></div>
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/news/NewsFilters/NewsFilters props=data.newsFilters}}</div></div>
 				{{/state}}
 				{{#> state label="Только категории (новость, журнал)" bg="page"}}
-					<div class="container"><div class="story-column-narrow">{{> sections/news/NewsFilters/NewsFilters props=data.newsFiltersCategories}}</div></div>
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/news/NewsFilters/NewsFilters props=data.newsFiltersCategories}}</div></div>
 				{{/state}}
 				{{#> state label="Пусто" note="блок не выводится (ни категорий, ни годов)"}}{{/state}}
 				{{#> state label="Вертикальный баннер (с 1024)" bg="page"}}
-					<div class="container"><div class="story-column-narrow">{{> sections/shared/SideBanner/SideBanner props=data.sideBanner}}</div></div>
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/shared/SideBanner/SideBanner props=data.sideBanner}}</div></div>
 				{{/state}}
 			{{/story}}
 
@@ -751,34 +751,34 @@
 
 			{{#> story id="news-article" group="Новости" title="Новость" description='Figma: PC.News article v2 (4652:12003). Карточка с 1024, на мобильном (наше) — без рамки внутри белого блока страницы. «Скопировать ссылку» — буфер обмена и галочка на 2 с.'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container"><div class="page-stack page-stack--article">{{> sections/news/NewsArticle/NewsArticle props=data.article}}</div></div>
+					<div class="container page-inner"><div class="page-stack page-stack--article">{{> sections/news/NewsArticle/NewsArticle props=data.article}}</div></div>
 				{{/state}}
 				{{#> state label="Длинный заголовок, без обложки и галереи" bg="page"}}
-					<div class="container"><div class="page-stack page-stack--article">{{> sections/news/NewsArticle/NewsArticle props=data.articleLong}}</div></div>
+					<div class="container page-inner"><div class="page-stack page-stack--article">{{> sections/news/NewsArticle/NewsArticle props=data.articleLong}}</div></div>
 				{{/state}}
 			{{/story}}
 
 			{{#> story id="comments" group="Новости" title="Комментарии" description='Figma: 4494:780 (компоненты и состояния 1–10). Дерево рисует скрипт по JSON-API (docs/contracts/comments.md), в витрине сервер имитируется: текст со словом «ошибка» — отказ, «модерац» — «на модерации».'}}
 				{{#> state label="Администратор: ветки, реакции, ⋯" bg="page"}}
-					<div class="container"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-demo" url=data.comments.url entity=data.comments.entity entityId="demo")}}</div></div>
+					<div class="container page-inner"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-demo" url=data.comments.url entity=data.comments.entity entityId="demo")}}</div></div>
 				{{/state}}
 				{{#> state label="Сотрудник (без модерации)" bg="page"}}
-					<div class="container"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-user" url=data.comments.url entity=data.comments.entity entityId="user")}}</div></div>
+					<div class="container page-inner"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-user" url=data.comments.url entity=data.comments.entity entityId="user")}}</div></div>
 				{{/state}}
 				{{#> state label="Гость: только чтение" bg="page"}}
-					<div class="container"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-guest" url=data.comments.url entity=data.comments.entity entityId="guest")}}</div></div>
+					<div class="container page-inner"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-guest" url=data.comments.url entity=data.comments.entity entityId="guest")}}</div></div>
 				{{/state}}
 				{{#> state label="Пусто" bg="page"}}
-					<div class="container"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-empty" url=data.comments.url entity=data.comments.entity entityId="empty")}}</div></div>
+					<div class="container page-inner"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-empty" url=data.comments.url entity=data.comments.entity entityId="empty")}}</div></div>
 				{{/state}}
 				{{#> state label="Комментарии отключены" bg="page"}}
-					<div class="container"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-disabled" url=data.comments.url entity=data.comments.entity entityId="disabled")}}</div></div>
+					<div class="container page-inner"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-disabled" url=data.comments.url entity=data.comments.entity entityId="disabled")}}</div></div>
 				{{/state}}
 				{{#> state label="Загрузка" bg="page"}}
-					<div class="container"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-loading" url=data.comments.url entity=data.comments.entity entityId="loading")}}</div></div>
+					<div class="container page-inner"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-loading" url=data.comments.url entity=data.comments.entity entityId="loading")}}</div></div>
 				{{/state}}
 				{{#> state label="Ошибка загрузки" bg="page"}}
-					<div class="container"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-fail" url=data.comments.url entity=data.comments.entity entityId="fail")}}</div></div>
+					<div class="container page-inner"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-fail" url=data.comments.url entity=data.comments.entity entityId="fail")}}</div></div>
 				{{/state}}
 				{{#> state label="Длинный контент" note="в «Администратор»: ветка в 4 уровня, текст с переносами, догрузка ответов и ленты"}}{{/state}}
 			{{/story}}
@@ -813,19 +813,19 @@
 
 			{{#> story id="search-page" group="Поиск" title="Результаты поиска" description='Figma: 1920 — 4733:1650, 4779:3591, 4779:3855, 4779:4132, 4733:1908; 360 — 4790:3323…4790:4129. С 1024 — сайдбар с разделами и фильтрами (применяются сразу), до 1024 — лента разделов и «Фильтры · N» (панель на весь экран, «Показать N результатов» пересчитывается).'}}
 				{{#> state label="Справочник" bg="page"}}
-					<div class="container"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchDirectory.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchDirectory.results}}</form></div>
+					<div class="container page-inner"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchDirectory.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchDirectory.results}}</form></div>
 				{{/state}}
 				{{#> state label="Новости — период" bg="page"}}
-					<div class="container"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchNews.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchNews.results}}</form></div>
+					<div class="container page-inner"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchNews.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchNews.results}}</form></div>
 				{{/state}}
 				{{#> state label="Документы — тип и прочее" bg="page"}}
-					<div class="container"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchDocs.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchDocs.results}}</form></div>
+					<div class="container page-inner"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchDocs.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchDocs.results}}</form></div>
 				{{/state}}
 				{{#> state label="Вакансии — зарплата" bg="page"}}
-					<div class="container"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchVacancies.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchVacancies.results}}</form></div>
+					<div class="container page-inner"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchVacancies.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchVacancies.results}}</form></div>
 				{{/state}}
 				{{#> state label="Пусто" bg="page"}}
-					<div class="container"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchEmpty.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchEmpty.results}}</form></div>
+					<div class="container page-inner"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchEmpty.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchEmpty.results}}</form></div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера; фильтры применяются переходом, «Показать ещё» — кнопка в состоянии загрузки"}}{{/state}}
 				{{#> state label="Ошибка" note="страница поиска отдаётся бэком целиком; ошибка подсчёта в панели — на кнопке остаётся прошлое число"}}{{/state}}
@@ -843,13 +843,13 @@
 
 			{{#> story id="holding-hero" page="holding" group="Холдинг" title="Шапка «Структуры холдинга»" description='Figma: 4814:1121 (мобильного макета нет — наше). С 1024 — заголовок и цифры слева, карточка председателя справа; до 1024 — друг под другом. Заголовок, цифры, ФИО и высота фото растут от 360 к 1024 плавно.'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container">{{> sections/holding/HoldingHero/HoldingHero props=data.holdingHero}}</div>
+					<div class="container page-inner">{{> sections/holding/HoldingHero/HoldingHero props=data.holdingHero}}</div>
 				{{/state}}
 				{{#> state label="Без карточки председателя" bg="page"}}
-					<div class="container">{{> sections/holding/HoldingHero/HoldingHero props=data.holdingHeroSolo}}</div>
+					<div class="container page-inner">{{> sections/holding/HoldingHero/HoldingHero props=data.holdingHeroSolo}}</div>
 				{{/state}}
 				{{#> state label="Длинный контент" bg="page"}}
-					<div class="container">{{> sections/holding/HoldingHero/HoldingHero props=data.holdingHeroLong}}</div>
+					<div class="container page-inner">{{> sections/holding/HoldingHero/HoldingHero props=data.holdingHeroLong}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: шапка приходит с сервера вместе со страницей"}}{{/state}}
 				{{#> state label="Пусто" note="не применимо: заголовок обязателен; без цифр и карточки — только заголовок"}}{{/state}}
@@ -857,13 +857,13 @@
 
 			{{#> story id="holding-entities" page="holding" group="Холдинг" title="Юрлица холдинга" description='Figma: 4814:1146, карточка — Card 4814:1466. С 1280 по 3 в ряд, с 768 по 2, на телефоне по одной; карточки ряда одной высоты, «Подробнее» внизу. Брендов нет — «Бренды уточняются».'}}
 				{{#> state label="Несколько" bg="page"}}
-					<div class="container">{{> sections/holding/HoldingEntities/HoldingEntities props=data.holdingEntities}}</div>
+					<div class="container page-inner">{{> sections/holding/HoldingEntities/HoldingEntities props=data.holdingEntities}}</div>
 				{{/state}}
 				{{#> state label="Одно" bg="page"}}
-					<div class="container">{{> sections/holding/HoldingEntities/HoldingEntities props=data.holdingEntitiesOne}}</div>
+					<div class="container page-inner">{{> sections/holding/HoldingEntities/HoldingEntities props=data.holdingEntitiesOne}}</div>
 				{{/state}}
 				{{#> state label="Длинный контент" bg="page"}}
-					<div class="container">{{> sections/holding/HoldingEntities/HoldingEntities props=data.holdingEntitiesLong}}</div>
+					<div class="container page-inner">{{> sections/holding/HoldingEntities/HoldingEntities props=data.holdingEntitiesLong}}</div>
 				{{/state}}
 				{{#> state label="Пусто" note="блок не выводится"}}{{/state}}
 				{{#> state label="Загрузка" note="не применимо: список приходит с сервера вместе со страницей (11 юрлиц — без догрузки)"}}{{/state}}
@@ -871,13 +871,13 @@
 
 			{{#> story id="entity-info" page="holding-entity" group="Холдинг" title="Юрлицо — карточка" description='Figma: 4821:790. Название, «Адрес / Телефон / Бренды», описание из редактора (.content) и лента фото; «Скрыть описание» сворачивает описание и фото (без JS — всегда открыто).'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container">{{> sections/holding/EntityInfo/EntityInfo props=data.entityInfo}}</div>
+					<div class="container page-inner">{{> sections/holding/EntityInfo/EntityInfo props=data.entityInfo}}</div>
 				{{/state}}
 				{{#> state label="Одно фото, короткое описание" bg="page"}}
-					<div class="container">{{> sections/holding/EntityInfo/EntityInfo props=data.entityInfoOnePhoto}}</div>
+					<div class="container page-inner">{{> sections/holding/EntityInfo/EntityInfo props=data.entityInfoOnePhoto}}</div>
 				{{/state}}
 				{{#> state label="Без описания и фото" bg="page"}}
-					<div class="container">{{> sections/holding/EntityInfo/EntityInfo props=data.entityInfoBare}}</div>
+					<div class="container page-inner">{{> sections/holding/EntityInfo/EntityInfo props=data.entityInfoBare}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: карточка приходит с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
@@ -897,13 +897,13 @@
 
 			{{#> story id="entity-staff" page="holding-entity" group="Холдинг" title="Сотрудники по отделам" description='Figma: 4821:875. Отделы — details/summary (работают без JS, раскрытие анимировано): название, до 5 фото, руководитель и число; внутри — сотрудники. Открытый отдел задаёт бэк.'}}
 				{{#> state label="Несколько отделов" bg="page"}}
-					<div class="container">{{> sections/holding/EntityStaff/EntityStaff props=data.entityStaff}}</div>
+					<div class="container page-inner">{{> sections/holding/EntityStaff/EntityStaff props=data.entityStaff}}</div>
 				{{/state}}
 				{{#> state label="Один отдел" bg="page"}}
-					<div class="container">{{> sections/holding/EntityStaff/EntityStaff props=data.entityStaffOne}}</div>
+					<div class="container page-inner">{{> sections/holding/EntityStaff/EntityStaff props=data.entityStaffOne}}</div>
 				{{/state}}
 				{{#> state label="Длинный контент, без фото" bg="page"}}
-					<div class="container">{{> sections/holding/EntityStaff/EntityStaff props=data.entityStaffLong}}</div>
+					<div class="container page-inner">{{> sections/holding/EntityStaff/EntityStaff props=data.entityStaffLong}}</div>
 				{{/state}}
 				{{#> state label="Пусто" note="блок не выводится"}}{{/state}}
 				{{#> state label="Загрузка" note="не применимо: отделы приходят со страницей; если сотрудников тысячи — догрузка отдела при раскрытии (вопрос бэку, docs/contracts/holding.md)"}}{{/state}}
@@ -920,13 +920,13 @@
 
 			{{#> story id="employee-profile" page="holding-employee" group="Холдинг" title="Карточка сотрудника" description='Figma: Employee card 4833:1187 (единый стиль справочника, ЛК и CRM). Фото 160 (на 360 — 96, между — плавно), разделы «Контакты / Работа / Личное»; с 768 — от колонки ФИО, подпись слева. Нет фото — инициалы.'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container">{{> sections/holding/EmployeeProfile/EmployeeProfile props=data.employeeProfile}}</div>
+					<div class="container page-inner">{{> sections/holding/EmployeeProfile/EmployeeProfile props=data.employeeProfile}}</div>
 				{{/state}}
 				{{#> state label="Без фото, один раздел" bg="page"}}
-					<div class="container">{{> sections/holding/EmployeeProfile/EmployeeProfile props=data.employeeProfileNoPhoto}}</div>
+					<div class="container page-inner">{{> sections/holding/EmployeeProfile/EmployeeProfile props=data.employeeProfileNoPhoto}}</div>
 				{{/state}}
 				{{#> state label="Длинный контент" bg="page"}}
-					<div class="container">{{> sections/holding/EmployeeProfile/EmployeeProfile props=data.employeeProfileLong}}</div>
+					<div class="container page-inner">{{> sections/holding/EmployeeProfile/EmployeeProfile props=data.employeeProfileLong}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: карточка приходит с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
@@ -942,10 +942,10 @@
 
 			{{#> story id="employee-colleagues" page="holding-employee" group="Холдинг" title="Коллеги по подразделению" description='Figma: Colleagues 4833:1253. Заголовок и «Все N сотрудников →», ниже — сотрудники (как в отделах юрлица).'}}
 				{{#> state label="Несколько" bg="page"}}
-					<div class="container">{{> sections/holding/EmployeeColleagues/EmployeeColleagues props=data.employeeColleagues}}</div>
+					<div class="container page-inner">{{> sections/holding/EmployeeColleagues/EmployeeColleagues props=data.employeeColleagues}}</div>
 				{{/state}}
 				{{#> state label="Один, без ссылки «Все»" bg="page"}}
-					<div class="container">{{> sections/holding/EmployeeColleagues/EmployeeColleagues props=data.employeeColleaguesOne}}</div>
+					<div class="container page-inner">{{> sections/holding/EmployeeColleagues/EmployeeColleagues props=data.employeeColleaguesOne}}</div>
 				{{/state}}
 				{{#> state label="Пусто" note="блок не выводится"}}{{/state}}
 			{{/story}}

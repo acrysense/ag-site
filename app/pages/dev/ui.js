@@ -7,12 +7,19 @@ const crumb = document.querySelector('[data-ui-group]')
 const title = document.querySelector('[data-ui-title]')
 const description = document.querySelector('[data-ui-description]')
 const states = document.querySelector('[data-ui-states]')
+const widths = document.querySelector('[data-ui-widths]')
 const boundsToggle = document.querySelector('[data-ui-bounds]')
 const openLink = document.querySelector('[data-ui-open]')
+const stage = document.querySelector('[data-ui-stage]')
+const screen = document.querySelector('[data-ui-screen]')
+const scaleNote = document.querySelector('[data-ui-scale]')
 const frame = document.querySelector('[data-ui-frame]')
 
 // dev: /dev/ui.html → /dev/canvas.html; сборка: /BASE/dev-ui.html → /BASE/dev-canvas.html
 const canvasUrl = window.location.pathname.replace(/ui\.html$/, 'canvas.html')
+
+// Ширины макета: мобильный, планшет, десктоп
+const WIDTHS = ['360', '768', '1440']
 
 let stories = []
 
@@ -61,41 +68,17 @@ function buildNav() {
 	nav.replaceChildren(
 		...[...groups].map(([group, items]) => {
 			const section = el('section', 'ui__group')
-			const heading = el('h2', 'ui__group-title', group)
-			heading.append(el('span', 'ui__group-count', String(items.length)))
-
 			const list = el('ul', 'ui__list')
 			for (const story of items) {
-				const states = shown(story)
 				const link = el('a', 'ui__link', story.title)
-				link.href = storyHash(story, states[0])
+				link.href = storyHash(story)
 				link.dataset.storyLink = story.id
-				if (states[0]) link.dataset.stateLink = states[0].index
-				if (states.length > 1)
-					link.append(el('span', 'ui__link-count', String(states.length)))
-
 				const item = el('li')
 				item.dataset.storyItem = story.id
 				item.append(link)
-
-				// Состояния компонента — вложенным списком, раскрыт у выбранного
-				if (states.length > 1) {
-					const sub = el('ul', 'ui__sublist')
-					for (const state of states) {
-						const subLink = el('a', 'ui__sublink', state.label)
-						subLink.href = storyHash(story, state)
-						subLink.dataset.storyLink = story.id
-						subLink.dataset.stateLink = state.index
-						const subItem = el('li')
-						subItem.append(subLink)
-						sub.append(subItem)
-					}
-					item.append(sub)
-				}
 				list.append(item)
 			}
-
-			section.append(heading, list)
+			section.append(el('h2', 'ui__group-title', group), list)
 			return section
 		})
 	)
@@ -128,35 +111,57 @@ function current() {
 }
 
 function renderInfo(story, active) {
-	crumb.textContent = story ? [story.group, active?.label].filter(Boolean).join(' · ') : ''
+	crumb.textContent = story?.group || ''
 	title.textContent = story?.title || 'Историй пока нет'
-	description.textContent = story?.description || ''
-	description.hidden = !story?.description
 
-	const items = story?.states || []
-	states.previousElementSibling.hidden = items.length === 0
+	// Описание и неприменимые состояния — мелким текстом под заголовком
+	const skipped = story?.states.filter((state) => state.note) || []
+	description.replaceChildren(
+		...(story?.description ? [el('p', '', story.description)] : []),
+		...skipped.map((state) => {
+			const note = el('p', 'ui__note')
+			note.append(el('strong', '', `${state.label}:`), ` ${state.note}`)
+			return note
+		})
+	)
+	description.hidden = !description.childElementCount
+
+	// Вкладки состояний — только когда есть из чего выбирать
+	const items = story ? shown(story) : []
+	states.hidden = items.length < 2
 	states.replaceChildren(
-		...items.map((state) => {
-			const item = el('li')
-			if (state.note) {
-				const muted = el('span', 'ui__state is-muted', state.label)
-				muted.append(el('span', 'ui__state-note', state.note))
-				item.append(muted)
-				return item
-			}
+		...(items.length < 2 ? [] : items).map((state) => {
 			const link = el('a', 'ui__state', state.label)
 			link.href = storyHash(story, state)
 			link.dataset.storyLink = story.id
 			link.dataset.stateLink = state.index
-			if (state.index === active?.index) link.setAttribute('aria-current', 'true')
-			item.append(link)
-			return item
+			if (state.index === active?.index) link.setAttribute('aria-current', 'page')
+			return link
 		})
 	)
+	states.querySelector('[aria-current]')?.scrollIntoView({ block: 'nearest', inline: 'nearest' })
+}
+
+const currentWidth = () => (WIDTHS.includes(readHash().width) ? readHash().width : WIDTHS[0])
+
+// Широкий макет не влезает в окно — уменьшаем iframe целиком, медиазапросы остаются от ширины
+function fitFrame() {
+	const width = Number(currentWidth())
+	const styles = getComputedStyle(stage)
+	const room = stage.clientWidth - parseFloat(styles.paddingLeft) - parseFloat(styles.paddingRight)
+	const height = stage.clientHeight - parseFloat(styles.paddingTop) - parseFloat(styles.paddingBottom)
+	const scale = Math.min(1, room / width)
+
+	screen.style.width = `${Math.floor(width * scale)}px`
+	frame.style.width = `${width}px`
+	frame.style.height = `${height / scale}px`
+	frame.style.transform = scale < 1 ? `scale(${scale})` : ''
+	scaleNote.hidden = scale >= 1
+	scaleNote.textContent = `масштаб ${Math.round(scale * 100)} %`
 }
 
 function applyBounds() {
-	const on = readHash().bounds !== '0'
+	const on = readHash().bounds === '1'
 	boundsToggle.setAttribute('aria-pressed', String(on))
 	frame.contentDocument?.documentElement.classList.toggle('show-bounds', on)
 }
@@ -177,17 +182,15 @@ function apply() {
 	}
 
 	openLink.href = src
-	for (const item of nav.querySelectorAll('[data-story-item]')) {
-		item.classList.toggle('is-open', item.dataset.storyItem === story?.id)
-	}
 	for (const link of nav.querySelectorAll('[data-story-link]')) {
-		const isStory = link.dataset.storyLink === story?.id
-		const isState = link.classList.contains('ui__sublink')
-		const active = isStory && (!isState || link.dataset.stateLink === state?.index)
-		if (active) link.setAttribute('aria-current', 'page')
+		if (link.dataset.storyLink === story?.id) link.setAttribute('aria-current', 'page')
 		else link.removeAttribute('aria-current')
 	}
+	for (const button of widths.querySelectorAll('[data-ui-width]')) {
+		button.setAttribute('aria-pressed', String(button.dataset.uiWidth === currentWidth()))
+	}
 	renderInfo(story, state)
+	fitFrame()
 	applyBounds()
 }
 
@@ -199,15 +202,14 @@ frame.addEventListener('load', () => {
 	apply()
 })
 
-// Ссылки на историю и состояние — в меню и в списке состояний справа
+// Ссылки на историю (меню) и на состояние (вкладки)
 const onStoryClick = (event) => {
 	const link = event.target.closest('[data-story-link]')
 	if (!link || event.metaKey || event.ctrlKey || event.shiftKey) return
 	event.preventDefault()
-	const patch = { story: link.dataset.storyLink }
-	if (link.dataset.stateLink) patch.state = link.dataset.stateLink
-	const next = new URLSearchParams({ ...readHash(), ...patch })
-	if (!link.dataset.stateLink) next.delete('state')
+	const next = new URLSearchParams({ ...readHash(), story: link.dataset.storyLink })
+	if (link.dataset.stateLink) next.set('state', link.dataset.stateLink)
+	else next.delete('state')
 	history.replaceState(null, '', `#${next}`)
 	apply()
 }
@@ -223,10 +225,16 @@ document.addEventListener('keydown', (event) => {
 	search.focus()
 })
 
+widths.addEventListener('click', (event) => {
+	const button = event.target.closest('[data-ui-width]')
+	if (button) writeHash({ width: button.dataset.uiWidth })
+})
+
 boundsToggle.addEventListener('click', () => {
 	writeHash({ bounds: boundsToggle.getAttribute('aria-pressed') === 'true' ? '0' : '1' })
 })
 
+new ResizeObserver(fitFrame).observe(stage)
 window.addEventListener('hashchange', apply)
 
 apply()
