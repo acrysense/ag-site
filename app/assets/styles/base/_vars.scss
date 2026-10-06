@@ -205,7 +205,14 @@ $text-styles: (
 			size: 22,
 			line-height: 22,
 		),
-	// Заголовок «В цифрах» 1920 (RF Rufo Bold 80, строки через 80)
+	// Заголовок «В цифрах» 1920 (RF Rufo Bold 76, строки через 80)
+	"stats-title": (
+			family: heading,
+			weight: 700,
+			size: 76,
+			line-height: 80,
+		),
+	// Крупный заголовок 1920 (RF Rufo Bold 80, строки через 80): шапка «Структуры холдинга»
 	"display": (
 			family: heading,
 			weight: 700,
@@ -232,6 +239,13 @@ $text-styles: (
 			weight: 700,
 			size: 32,
 			line-height: 34,
+		),
+	// 360/HEADER/H2: заголовки альбома и «Другие альбомы» на телефоне
+	"h2-360": (
+			family: heading,
+			weight: 700,
+			size: 24,
+			line-height: normal,
 		),
 	// ФИО председателя в шапке «Структуры холдинга» (RF Rufo Bold 38/32)
 	"person-xl": (

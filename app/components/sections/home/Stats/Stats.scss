@@ -24,19 +24,36 @@
 			min-height: 200px;
 		}
 
+		// Заголовок и подпись под ним. С 1280 — колонка 390 слева, по центру ряда 200
+		&__head {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+
+			@include up(wide) {
+				flex: 0 0 390px;
+				gap: 10px;
+			}
+		}
+
 		&__title {
-			@include text("h2");
+			@include text("h1");
 
 			color: palette("black-h");
+			text-transform: uppercase;
 
-			// Колонка 390. Поля 20 сверху и снизу: две строки по 80 дают ряд 200
+			// Заголовок 366 (подпись — во всю колонку 390)
 			@include up(wide) {
-				@include text("display");
+				@include text("stats-title");
 
-				flex: 0 0 390px;
-				padding: 20px 24px 20px 0;
-				text-transform: uppercase;
+				padding-right: 24px;
 			}
+		}
+
+		&__subtitle {
+			@include text("l-400");
+
+			color: palette("dark-grey-txt");
 		}
 
 		&__list {

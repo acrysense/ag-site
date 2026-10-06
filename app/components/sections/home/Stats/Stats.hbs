@@ -1,5 +1,5 @@
 {{!--
-	«Аптека групп в цифрах». props: title,
+	«Аптека групп в цифрах». props: title, subtitle (необязательно — строка под заголовком),
 	items [{ value, caption }]. Пункты, число и подпись редактирует админ; скрытый пункт
 	бэк не выводит, пусто — блок не выводится. На 1920 заголовок крупно слева и в верхнем
 	регистре (регистр — стилем, в админке пишут как обычно). При первом показе числа набегают
@@ -7,7 +7,10 @@
 --}}
 {{#if props.items.length}}
     <section class="stats" data-module="Stats" data-path="sections/home">
-        <h2 class="stats__title">{{default props.title "Аптека групп в цифрах"}}</h2>
+        <div class="stats__head">
+            <h2 class="stats__title">{{default props.title "Аптека групп в цифрах"}}</h2>
+            {{#if props.subtitle}}<p class="stats__subtitle">{{props.subtitle}}</p>{{/if}}
+        </div>
         <ul class="stats__list" role="list">
             {{#each props.items}}
                 <li class="stats__item">
