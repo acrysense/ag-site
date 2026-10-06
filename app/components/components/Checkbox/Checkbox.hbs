@@ -10,7 +10,6 @@
         <span class="checkbox__text">{{props.text}}{{#if props.link}} <a href="{{props.link.url}}" target="_blank" rel="noopener noreferrer">{{props.link.text}}</a>{{/if}}</span>
     </label>
     <p class="field__error" id="{{props.id}}-error" hidden>
-        {{> components/Icon/Icon name="alert" class="field__error-icon"}}
         <span data-field-error></span>
     </p>
 </div>

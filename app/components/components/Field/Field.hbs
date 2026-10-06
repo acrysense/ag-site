@@ -29,7 +29,6 @@
     {{/if}}
     {{#if props.hint}}<p class="field__hint" id="{{props.id}}-hint">{{props.hint}}</p>{{/if}}
     <p class="field__error" id="{{props.id}}-error" {{#unless props.error}}hidden{{/unless}}>
-        {{> components/Icon/Icon name="alert" class="field__error-icon"}}
         <span data-field-error>{{props.error}}</span>
     </p>
     {{#if props.link}}<a class="field__link" href="{{props.link.url}}">{{props.link.text}}</a>{{/if}}

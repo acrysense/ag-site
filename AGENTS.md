@@ -88,8 +88,8 @@ The main requirement of the spec: everything the admin edits must not be hard-co
 - Validate on submit for short forms, on blur for long ones. No errors on every keystroke.
 - While sending: button disabled, `aria-busy` on the form, spinner with the button label unchanged.
 - Server field errors go to their fields, the rest to the form level. No silently swallowed errors.
-- Error is not only color: color, icon, text; `aria-invalid`, `aria-describedby`, announced via
-  `aria-live`. Success is announced too.
+- Error is not only color: red border and text under the field, as in the UI kit; `aria-invalid`,
+  `aria-describedby`, announced via `aria-live`. Success is announced too.
 - A filled form in a modal asks for confirmation on close.
 
 ## Accessibility and security
