@@ -20,7 +20,7 @@
 		}
 	}
 
-	// Figma: Button General — синяя, «Войти в ЛК»
+	// Синяя, «Войти в ЛК»
 	.btn--general {
 		@include text("m-500");
 
@@ -34,7 +34,7 @@
 		}
 	}
 
-	// Figma: Button / S.Light.Left
+	// Светлая
 	.btn--light {
 		color: palette("black-txt");
 		background: palette("bg-info");
@@ -48,19 +48,19 @@
 		border-radius: $radius-button;
 	}
 
-	// Высота 46: PC.HEADER.v2 «Войти в ЛК» (на мобильном шапка уменьшает до 36 — M.General)
+	// Высота 46: «Войти в ЛК» в шапке (на мобильном шапка уменьшает до 36)
 	.btn--m {
 		height: 46px;
 		padding: 12px 24px;
 		border-radius: $radius-button;
 	}
 
-	// Figma (кит 2408:108): Light — Regular 14/22; General задаёт свой жирный выше
+	// Light — Regular 14/22; General задаёт свой жирный выше
 	.btn--light.btn--m {
 		@include text("m-400");
 	}
 
-	// Figma: L (Error, L.Light) — во всю ширину, 16px жирный
+	// L (Error, L.Light) — во всю ширину, 16px жирный
 	.btn--l {
 		@include text("l-500");
 
@@ -69,12 +69,12 @@
 		border-radius: $radius-button;
 	}
 
-	// Figma: L.Light — светлая с синим текстом
+	// L.Light — светлая с синим текстом
 	.btn--light.btn--l {
 		color: palette("main-blue");
 	}
 
-	// Отправка: значок загрузки перед надписью, надпись та же, кнопка неактивна (в макете нет)
+	// Отправка: значок загрузки перед надписью, надпись та же, кнопка неактивна
 	.btn.is-loading {
 		cursor: progress;
 
@@ -90,8 +90,8 @@
 		}
 	}
 
-	// Кит (Button · loader): синяя кнопка при загрузке — Blue.Hover. Надпись остаётся рядом со
-	// значком (в ките только значок): кнопка не меняет ширину, скринридер читает название
+	// Синяя кнопка при загрузке — Blue.Hover. Надпись остаётся рядом со значком: кнопка не
+	// меняет ширину, скринридер читает название
 	.btn--general.is-loading {
 		background: palette("blue-hover");
 	}
@@ -102,13 +102,13 @@
 		}
 	}
 
-	// Figma: Error — красная, «Выйти»
+	// Error — красная, «Выйти»
 	.btn--error {
 		color: palette("white");
 		background: palette("red");
 	}
 
-	// Наведение (в Figma нет — наше, только цвет): светлая — текст и значок Blue.TXT, красная — на тон
+	// Наведение (только цвет): светлая — текст и значок Blue.TXT, красная — на тон
 	// темнее
 	.btn--light {
 		transition: color $transition-default;

@@ -1,7 +1,7 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: Doc/Checkbox (4528:212) — строка с полями 5 сверху и снизу, между частями 10: флажок 18
+// Флажок фильтра — строка с полями 5 сверху и снизу, между частями 10: флажок 18
 // (рамка Icon.Grey, скругление 5; отмеченный — Main Blue с белой галочкой), название M/400
 // Black.TXT, число 13/19 Dark-grey.TXT. Неактивный (0) — прозрачность 50%, как у Checkbox.
 @layer components {
@@ -76,7 +76,7 @@
 		color: palette("dark-grey-txt");
 	}
 
-	// Наведение (наше): название Blue.TXT, рамка флажка Main Blue
+	// Наведение: название Blue.TXT, рамка флажка Main Blue
 	.filter-checkbox:not(.is-disabled):hover .filter-checkbox__text,
 	.filter-checkbox__input:focus-visible ~ .filter-checkbox__text {
 		color: palette("blue-txt");

@@ -5,16 +5,16 @@
 
 $fluid-cap: 2560 !default;
 $mq-epsilon: 0.02 !default;
-// Диапазон по умолчанию для vw-range и миксинов ниже: ширина десктопного макета.
-// Макеты my.apteka-group.by: десктоп 1920, мобильный 360.
+// Диапазон по умолчанию для vw-range и миксинов ниже: десктопная ширина.
+// Базовые ширины: десктоп 1920, мобильный 360.
 $default-range: xl !default;
 
 $breakpoints: (
 	mobile: 0,
-	// По описанию TabBar в Figma: мобильная версия до 767px
+	// Мобильная версия — до 767px
 	tablet: 768,
 	desktop: 1024,
-	// Наша, не из макета: с неё помещается ряд «В цифрах» 1920 (заголовок 80px слева)
+	// С неё помещается ряд «В цифрах» 1920 (заголовок 80px слева)
 	wide: 1280,
 	cap: $fluid-cap,
 );
@@ -116,8 +116,8 @@ $alias-bp: (
 	@return vw-clamp($n, _rv($range, base), _rv($range, from), _rv($range, to));
 }
 
-// Плавное значение для размеров, которые иначе прыгают на брейкпоинте (мобильный — наш, десктоп —
-// макет): $min на ширине окна $from, $max на $to (px), между — по прямой, за пределами — края.
+// Плавное значение для размеров, которые иначе прыгают на брейкпоинте: $min на ширине окна
+// $from, $max на $to (px), между — по прямой, за пределами — края.
 // $rem — края в rem (шрифты: растут вместе с размером шрифта в браузере).
 @function fluid($min, $max, $from: 360, $to: 1024, $rem: false) {
 	$slope: math.div($max - $min, $to - $from);
@@ -218,7 +218,7 @@ $alias-bp: (
 
 // Стиль текста из $text-styles. Способ задания размеров живёт только здесь:
 // блоки вызывают text("имя") и не знают, как он устроен.
-// Размеры фиксированные, как в макете: font-size в rem, line-height и letter-spacing —
+// Размеры фиксированные: font-size в rem, line-height и letter-spacing —
 // относительно размера шрифта.
 @function _px-to-rem($px) {
 	@return math.div($px, 16) * 1rem;
@@ -247,7 +247,7 @@ $alias-bp: (
 	}
 	font-size: _px-to-rem($size);
 	font-weight: map.get($style, weight);
-	// normal — Auto в Figma, иначе пиксели макета
+	// normal — высота строки по шрифту, иначе пиксели
 	@if $line-height == normal {
 		line-height: normal;
 	} @else {
@@ -274,7 +274,7 @@ $alias-bp: (
 	border: 0;
 }
 
-// Поле-кнопка фильтров 46 (Figma: Input · Select в поиске, 2408:338): рамка Form.Border,
+// Поле-кнопка фильтров 46: рамка Form.Border,
 // скругление 14, поля 15, текст M/400; открыто или в фокусе — рамка Form.Focus.
 // Селект (components/Select) нарисован теми же значениями.
 @mixin control-box {
@@ -291,7 +291,7 @@ $alias-bp: (
 	border-radius: vars.$radius-button;
 	transition: border-color vars.$transition-default;
 
-	// Наведение (наше): рамка Icon.Grey; фокус и «открыто» блок задаёт после миксина
+	// Наведение: рамка Icon.Grey; фокус и «открыто» блок задаёт после миксина
 	&:hover,
 	&:focus-visible {
 		border-color: palette("icon-grey");
@@ -302,14 +302,14 @@ $alias-bp: (
 	}
 }
 
-// Фокус поля (Figma: Input · Focus 2408:190): рамка перекрашивается в Form.Focus, толщина та же,
+// Фокус поля: рамка перекрашивается в Form.Focus, толщина та же,
 // без отдельного кольца поверх. Кольцо заменено цветом рамки, не убрано
 @mixin field-focus($color: palette("form-focus")) {
 	border-color: $color;
 	outline: none;
 }
 
-// Нижний лист на мобильном (Figma: Bottom sheet · Отдел 4786:2839, как у Modal): у нижнего края,
+// Нижний лист на мобильном (как у Modal): у нижнего края,
 // скругление сверху, тень вверх; над таб-баром и шапкой. Затемнение — sheet-backdrop.
 @mixin sheet {
 	position: fixed;

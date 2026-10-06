@@ -1,7 +1,7 @@
 import { lockBody } from '@/utils/scroll-lock'
 
 // Мобильное меню. Открывается кнопками с data-main-menu-open (бургер в шапке, «Меню» в
-// TabBar). Немодальное: TabBar остаётся поверх и доступен, как в макете, а основная
+// TabBar). Немодальное: TabBar остаётся поверх и доступен, а основная
 // страница (.wrapper) на время открытия становится inert.
 const desktop = window.matchMedia('(min-width: 1024px)')
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')

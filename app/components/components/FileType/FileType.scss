@@ -1,8 +1,8 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: Doc/File type (4526:29709) — 40×40, скругление 10, Bold 11/16 с разрядкой; цвета по типу.
-// Другой тип (в макете нет, наше) — фон BG.Neutral, подпись Dark-grey.TXT
+// Значок типа файла — 40×40, скругление 10, Bold 11/16 с разрядкой; цвета по типу.
+// Другой тип — фон BG.Neutral, подпись Dark-grey.TXT
 @layer components {
 	.file-type {
 		@include text("file-type");

@@ -1,7 +1,6 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: 360 — 4865:1470, 1920 — 4615:43032
 @layer components {
 	.news-feed {
 		display: grid;
@@ -55,7 +54,7 @@
 		}
 	}
 
-	// Наведение (наше): «Показать все» — Blue.Hover
+	// Наведение: «Показать все» — Blue.Hover
 	.news-feed__all:hover,
 	.news-feed__all:focus-visible {
 		color: palette("blue-hover");

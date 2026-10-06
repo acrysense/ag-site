@@ -1,7 +1,7 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: vertical-banner (4471:4972) — 350×800, скругление 20. Пропорция фиксирована: любая
+// Вертикальный баннер — 350×800, скругление 20. Пропорция фиксирована: любая
 // картинка обрезается по cover.
 @layer components {
 	.side-banner {
@@ -26,7 +26,7 @@
 		object-fit: cover;
 	}
 
-	// Наведение (наше): картинка чуть притемняется
+	// Наведение: картинка чуть притемняется
 	.side-banner__link img {
 		transition: opacity $transition-default;
 	}

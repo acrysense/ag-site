@@ -1,8 +1,8 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: Filter.NumberRange (4779:4361): два поля по половине через «—» (Dark-grey, M/400),
-// между ними 8. Шрифт поля — 16 (iOS не увеличивает страницу), в макете 14.
+// Два поля по половине через «—» (Dark-grey, M/400),
+// между ними 8. Шрифт поля — 16, а не 14: иначе iOS увеличивает страницу.
 @layer components {
 	.number-range {
 		display: flex;

@@ -1,9 +1,9 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: Pagination (3172:13909) — кнопки 36 со скруглением 7, BG.Info, текст S/400
+// Кнопки 36 со скруглением 7, BG.Info, текст S/400
 // Dark-grey.TXT; текущая — BG.Main 2 и Black.TXT; «Назад»/«Вперёд» шириной 65.
-// До 768 (Figma: раздел новостей 360, 4962:6966): сверху строка «Страница: N» слева и «Всего: N»
+// До 768: сверху строка «Страница: N» слева и «Всего: N»
 // справа (M/400 Dark-grey.TXT, числа Black.TXT), через 20 — кнопки; дальние страницы скрыты.
 @layer components {
 	.pagination {

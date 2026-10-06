@@ -1,8 +1,8 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: 4652:12790 — 1040×500, скругление 20, рамка Block.Border, стрелки 40 в 24 от края по
-// центру, точки внизу на фото в 20 от низа. 360 (4963:43706): 340×220, стрелки 40 в 10 от края.
+// Десктоп: 1040×500, скругление 20, рамка Block.Border, стрелки 40 в 24 от края по
+// центру, точки внизу на фото в 20 от низа. 360: 340×220, стрелки 40 в 10 от края.
 @layer components {
 	.gallery {
 		position: relative;
@@ -82,7 +82,7 @@
 		left: 0;
 	}
 
-	// Наведение на стрелку (наше): Main Blue
+	// Наведение на стрелку: Main Blue
 	.gallery__arrow {
 		transition: color $transition-default;
 

@@ -4,7 +4,7 @@ import { isSheet, lockIfSheet } from '@/utils/sheet'
 import { createIcon } from '@/utils/icon'
 
 // Выпадающий список. Без JS работает нативный <select> прозрачным слоем поверх поля. Здесь он
-// заменяется списком по макету (шаблон WAI-ARIA «combobox + listbox»): активный пункт —
+// заменяется своим списком (шаблон WAI-ARIA «combobox + listbox»): активный пункт —
 // aria-activedescendant, выбор пишется в <select> и вызывает у него change, поэтому форма и
 // автоотправка (data-select-submit) работают как с нативным списком.
 //
@@ -110,8 +110,8 @@ export default function init(root) {
 	popup.className = 'select__popup'
 	popup.hidden = true
 
-	// multiple (фильтры, Figma: Dropdown List — с поиском 4764:2732): пункты с флажками, выбранные —
-	// сверху, под чертой — остальные. До 768 любой список — нижний лист (4786:2839), как у
+	// multiple (фильтры): пункты с флажками, выбранные —
+	// сверху, под чертой — остальные. До 768 любой список — нижний лист, как у
 	// сортировки (SortMenu): заголовок, ×, (поиск), список, у multiple — «Готово»; шапка, «Готово»
 	// и затемнение на десктопе скрыты стилями. Заголовок — data-select-sheet-title, иначе подпись
 	// поля без двоеточия или заглушка
@@ -182,7 +182,7 @@ export default function init(root) {
 	statusBox.className = 'select__status'
 	statusBox.hidden = true
 
-	// Прокрутка — SimpleBar: окно не выше ~7 пунктов, полоса по макету, а не системная
+	// Прокрутка — SimpleBar: окно не выше ~7 пунктов, полоса своя, а не системная
 	const scroll = document.createElement('div')
 	scroll.className = 'select__scroll'
 	popup.append(scroll, statusBox)

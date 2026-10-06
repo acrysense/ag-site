@@ -1,8 +1,7 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Figma: 1920 — 4704:1060 (текущая страница Black.TXT, разделитель Icon.Grey),
-// 360 — 4706:1408 (всё Dark-grey.TXT)
+// 1920: текущая страница Black.TXT, разделитель Icon.Grey; 360: всё Dark-grey.TXT
 @layer components {
 	.breadcrumbs__list {
 		@include text("s-400");
@@ -46,7 +45,7 @@
 	}
 
 	// --short: на мобильном без текущей страницы — её название сразу ниже заголовком
-	// (Figma: раздел новостей 360, 4963:43444)
+	// (например, раздел новостей)
 	.breadcrumbs--short .breadcrumbs__item:last-child {
 		@include down(desktop) {
 			display: none;

@@ -1,8 +1,8 @@
 import { showToast } from '@/utils/toast'
 
 // Кнопка «Скопировать ссылку»: data-copy-link — адрес (пусто — текущая страница). После
-// копирования на 2 секунды класс is-copied (на кнопке — галочка) и тост «Ссылка скопирована»
-// (Figma, кит: Quick info · Ok); не получилось — тост с ошибкой.
+// копирования на 2 секунды класс is-copied (на кнопке — галочка) и тост «Ссылка скопирована»;
+// не получилось — тост с ошибкой.
 export default function init(button) {
 	const controller = new AbortController()
 	let timer = 0
