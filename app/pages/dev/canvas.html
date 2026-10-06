@@ -285,6 +285,9 @@
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container page-blocks">{{> sections/home/Stats/Stats props=data.stats}}</div>
 				{{/state}}
+				{{#> state label="Без подзаголовка" bg="page"}}
+					<div class="container page-blocks">{{> sections/home/Stats/Stats props=(obj title=data.stats.title items=data.stats.items)}}</div>
+				{{/state}}
 				{{#> state label="Два пункта" bg="page"}}
 					<div class="container page-blocks">{{> sections/home/Stats/Stats props=data.statsTwo}}</div>
 				{{/state}}
@@ -700,7 +703,7 @@
 
 			{{#> story id="journal-list" group="Новости" title="Журнал" how='Обложки 1:1, «Читать», «Скачать · размер», «Нравится». С 1280 — 3 в ряд, 1024–1279 — 2, планшет — 3, мобильный — 2.' figma='PC.Journal (4520:23829)' backend='app/components/sections/news/NewsList/ (card: journal) · docs/contracts/journal.md'}}
 				{{#> state label="Обычное" bg="page"}}
-					<div class="container page-inner">{{> sections/news/NewsList/NewsList props=data.journalList}}</div>
+					<div class="container page-inner"><div class="page-columns page-columns--start">{{> sections/news/NewsList/NewsList props=data.journalList filters=data.journalFilters}}</div></div>
 				{{/state}}
 				{{#> state label="Один выпуск" bg="page"}}
 					<div class="container page-inner">{{> sections/news/NewsList/NewsList props=data.journalListOne}}</div>
