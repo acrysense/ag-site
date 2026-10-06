@@ -1,9 +1,11 @@
 {{!--
 	Список вакансий «Карьерный шанс»: белая карточка,
-	заголовок H1 и «Новые в начале», вводный текст, карточки (на 1920 — 3 в ряд), страницы и
-	«Всего: 24». До 1024 — кнопка «Фильтры · N» открывает панель фильтров (VacancyFilters).
+	заголовок H1 и «Новые в начале», вводный текст с картинкой справа, карточки (на 1920 — 3 в
+	ряд), страницы и «Всего: 24». До 1024 — картинка над текстом, ниже в ряд кнопка «Фильтры · N»
+	(открывает панель фильтров VacancyFilters) и сортировка полем.
 	Окна вакансий (VacancyModal) выводятся здесь же, после списка — по одному на карточку.
-	props: title, sort (SortMenu: id, label, options [{ text, url, current }]), intro, filtersId, filtersText
+	props: title, sort (SortMenu: id, label, options [{ text, url, current }]), intro, introImage
+	{ src, srcset, alt } (необязательно), filtersId, filtersText
 	(«Фильтры»), activeFilters (число выбранных), items [вакансия: VacancyCard + VacancyModal],
 	empty { text, resetText, resetUrl }, pagination (Pagination), applyId, applyText, note,
 	loginUrl, loginText (для окон). Контракт — docs/contracts/career.md.
@@ -11,9 +13,14 @@
 <section class="vacancy-list{{#if props.class}} {{props.class}}{{/if}}" aria-labelledby="vacancy-list-title">
     <div class="vacancy-list__head">
         <h1 class="vacancy-list__title" id="vacancy-list-title">{{props.title}}</h1>
-        {{> components/SortMenu/SortMenu props=props.sort}}
+        {{> components/SortMenu/SortMenu props=(obj id=props.sort.id label=props.sort.label options=props.sort.options class="sort-menu--field vacancy-list__sort")}}
     </div>
-    {{#if props.intro}}<p class="vacancy-list__intro">{{props.intro}}</p>{{/if}}
+    {{#if (or props.intro props.introImage.src)}}
+        <div class="vacancy-list__about">
+            {{#if props.intro}}<p class="vacancy-list__intro">{{props.intro}}</p>{{/if}}
+            {{#if props.introImage.src}}<img class="vacancy-list__intro-image" src="{{props.introImage.src}}" {{#if props.introImage.srcset}}srcset="{{props.introImage.srcset}}" sizes="(min-width: 1024px) 386px, 100vw"{{/if}} width="386" height="250" alt="{{default props.introImage.alt ''}}" decoding="async" />{{/if}}
+        </div>
+    {{/if}}
     {{#if props.filtersId}}
         <button class="btn btn--light btn--m vacancy-list__filters" type="button" data-vacancy-filters-open="{{props.filtersId}}" aria-controls="{{props.filtersId}}" aria-expanded="false">{{default props.filtersText "Фильтры"}}{{#if props.activeFilters}} · {{props.activeFilters}}{{/if}}</button>
     {{/if}}

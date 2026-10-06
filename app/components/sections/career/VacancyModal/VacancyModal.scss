@@ -95,7 +95,9 @@
 		grid-area: actions;
 		align-self: start;
 
+		// С 768 «Откликнуться» — внизу левой колонки, вровень с концом описания
 		@include up(tablet) {
+			align-self: end;
 			margin-top: 8px;
 		}
 	}

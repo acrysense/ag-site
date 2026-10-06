@@ -116,7 +116,7 @@
 		flex: 1 1 auto;
 		flex-direction: column;
 		min-height: 0;
-		padding: 0 14px 20px;
+		padding: 8px 10px 20px;
 		overflow-y: auto;
 		overscroll-behavior: contain;
 
@@ -150,6 +150,16 @@
 		margin-bottom: 0;
 		padding: 0;
 		color: palette("black-txt");
+
+		// До 1024 (панель на весь экран) — как подписи групп в фильтрах документов
+		@include down(desktop) {
+			@include text("s-700-caps");
+
+			margin-bottom: 4px;
+			padding-left: 4px;
+			color: palette("dark-grey-txt");
+			text-transform: uppercase;
+		}
 
 		// float снимает у legend особое место в рамке fieldset — дальше обычный поток
 		+ * {

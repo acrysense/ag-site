@@ -3,7 +3,8 @@
 
 // Белая карточка, поля 20, части через 30: заголовок H1 Black.H и
 // «Новые в начале», главный альбом, сетка (3 в ряд, через 15 вбок и 30 вниз), страницы и «Всего».
-// До 1024: без карточки, части через 20; карточки — 2 в ряд с 768, 1 — уже.
+// До 1024: без карточки, части через 20 — заголовок, годы «таблетками», сортировка полем во всю
+// ширину, главный альбом, сетка по 2 в ряд (на телефоне через 10 вбок и 20 вниз).
 @layer components {
 	.album-list {
 		display: flex;
@@ -25,6 +26,11 @@
 		gap: 8px 20px;
 		align-items: center;
 		justify-content: space-between;
+
+		// До 1024 шапка «растворяется»: порядок заголовок → годы → сортировка задаёт order
+		@include down(desktop) {
+			display: contents;
+		}
 	}
 
 	.album-list__title {
@@ -34,21 +40,42 @@
 		color: palette("black-h");
 		overflow-wrap: anywhere;
 
+		@include down(desktop) {
+			order: -3;
+		}
+
 		@include up(desktop) {
 			@include text("h1");
 		}
 	}
 
+	// Годы под заголовком — только до 1024 (с 1024 они в боковой колонке)
+	.album-list__years {
+		@include down(desktop) {
+			order: -2;
+		}
+
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.album-list__sort {
+		@include down(desktop) {
+			order: -1;
+		}
+	}
+
 	.album-list__grid {
 		display: grid;
-		grid-template-columns: minmax(0, 1fr);
-		gap: 24px 15px;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 20px 10px;
 		margin: 0;
 		padding: 0;
 		list-style: none;
 
 		@include up(tablet) {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 24px 15px;
 		}
 
 		@include up(wide) {

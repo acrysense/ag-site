@@ -3,20 +3,25 @@
 
 // Карточка вакансии — BG.Info, рамка Block.Border, скругление 20, поля 20, части
 // через 20: метки (белые, скругление 10, поля 6/12, S/400 Dark-grey.TXT, через 8), должность H4
-// Black.TXT, юр. лицо M/400 и адрес S/400 Dark-grey.TXT, низ — дата S/400 Dark-grey.TXT и
-// «Подробнее» S/400 Main Blue по краям. Карточки ряда одной высоты: низ прижат к низу.
+// Black.TXT, адрес S/400 Dark-grey.TXT, «Подробнее» S/400 Main Blue слева внизу (юр. лицо и дата —
+// если переданы). Карточки ряда одной высоты: низ прижат к низу. Телефон: поля 16, через 14.
 @layer components {
 	.vacancy-card {
 		position: relative;
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		gap: 14px;
 		height: 100%;
 		min-width: 0;
-		padding: 19px;
+		padding: 15px;
 		background: palette("bg-info");
 		border: 1px solid palette("block-border");
 		border-radius: $radius-content-block;
+
+		@include up(tablet) {
+			gap: 20px;
+			padding: 19px;
+		}
 	}
 
 	.vacancy-card__tags {
@@ -85,7 +90,6 @@
 	.vacancy-card__more {
 		@include text("s-400");
 
-		margin-left: auto;
 		color: palette("main-blue");
 		transition: color $transition-default;
 

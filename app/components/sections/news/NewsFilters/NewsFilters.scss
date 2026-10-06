@@ -78,10 +78,16 @@
 	// Разделитель — у годов: без них (страница новости) под категориями линии нет
 	.news-filters__list--years {
 		@include up(desktop) {
-			padding-top: 20px;
-			border-top: 1px solid palette("form-border");
 			flex-wrap: wrap;
 			gap: 20px 10px;
+		}
+	}
+
+	// Черта между категориями и годами — только когда есть обе группы (в журнале — одни годы)
+	.news-filters__list--categories + .news-filters__list--years {
+		@include up(desktop) {
+			padding-top: 20px;
+			border-top: 1px solid palette("form-border");
 		}
 	}
 

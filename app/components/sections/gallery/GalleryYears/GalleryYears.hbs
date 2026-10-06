@@ -1,12 +1,12 @@
 {{!--
 	Фотогалерея: альбомы по годам — «Все альбомы» и годы со
 	счётчиком альбомов. Обычные ссылки (GET), текущий пункт — aria-current.
-	props: title («Фотогалерея»), label (для скринридера), items [{ text, url, count, current }].
+	props: title («Фотогалерея»), label (для скринридера), items [{ text, url, count, current }], class.
 	С 1024 — карточка слева; уже — строка «таблеток» с прокруткой вбок.
 	Контракт — docs/contracts/gallery.md.
 --}}
 {{#if props.items.length}}
-    <nav class="gallery-years" aria-label="{{default props.label 'Альбомы по годам'}}">
+    <nav class="gallery-years{{#if props.class}} {{props.class}}{{/if}}" aria-label="{{default props.label 'Альбомы по годам'}}">
         <h2 class="gallery-years__title">{{default props.title "Фотогалерея"}}</h2>
         <ul class="gallery-years__list" role="list">
             {{#each props.items}}

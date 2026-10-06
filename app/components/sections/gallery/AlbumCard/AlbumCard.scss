@@ -4,12 +4,13 @@
 // Карточка альбома — обложка 390×260 (3:2), скругление 10, внизу слева счётчик:
 // плашка Black 55%, скругление 14, поля 5/10, значок 14 через 6, S/500 белым; под обложкой через 10
 // название H4 Black.TXT и дата M/400 Dark-grey.TXT. Наведение (правило проекта): название
-// Blue.TXT, обложка — прозрачность 0.9.
+// Blue.TXT, обложка — прозрачность 0.9. Телефон: обложка 165×124, счётчик через 8, название
+// 18 (до 2 строк) и дата 12 через 6.
 @layer components {
 	.album-card {
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
+		gap: 6px;
 		min-width: 0;
 		color: palette("black-txt");
 	}
@@ -20,8 +21,8 @@
 		position: relative;
 		display: flex;
 		align-items: flex-end;
-		aspect-ratio: 390 / 260;
-		padding: 12px;
+		aspect-ratio: 165 / 124;
+		padding: 8px;
 		overflow: hidden;
 		border-radius: $radius-inner-block;
 	}
@@ -54,8 +55,25 @@
 		height: 14px;
 	}
 
+	.album-card {
+		@include up(tablet) {
+			gap: 10px;
+		}
+	}
+
+	.album-card__cover {
+		@include up(tablet) {
+			aspect-ratio: 390 / 260;
+			padding: 12px;
+		}
+	}
+
 	.album-card__title {
-		@include text("h4");
+		@include text("h4-360");
+
+		@include up(tablet) {
+			@include text("h4");
+		}
 
 		display: -webkit-box;
 		overflow: hidden;
@@ -66,7 +84,11 @@
 	}
 
 	.album-card__date {
-		@include text("m-400");
+		@include text("s-400");
+
+		@include up(tablet) {
+			@include text("m-400");
+		}
 
 		color: palette("dark-grey-txt");
 	}

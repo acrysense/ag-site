@@ -6,7 +6,8 @@ import { lockBody } from '@/utils/scroll-lock'
 // увеличение (два касания, щипок, колесо с Ctrl), свайпы, клавиатура (стрелки, Esc), фокус
 // внутри окна и возврат на фото, с которого открыли. Свой вид: сверху название
 // альбома, «Фото N из M», «Нравится», «Скачать», крестик; по бокам стрелки; снизу лента
-// миниатюр. До 1024 — без стрелок (свайп), до 768 — и без миниатюр.
+// миниатюр. До 1024 — без стрелок (свайп). До 768 вверху только название, счётчик и крестик,
+// внизу миниатюры поменьше и под ними «Нравится» и «Скачать».
 // Модуль не монтируется сам — его создаёт блок с фото (sections/gallery/AlbumPhotos).
 //
 // createPhotoViewer({ title, items, onLike, withLikes }) → { open(index), update(index, item), destroy() }
@@ -16,9 +17,8 @@ import { lockBody } from '@/utils/scroll-lock'
 
 const DESKTOP = 1024
 const TABLET = 768
-// Лента миниатюр: 96 через 8, не шире 1344 (на 1920 — 13 миниатюр)
-const THUMB_GAP = 8
-const THUMB_STEP = 96 + THUMB_GAP
+// Лента миниатюр: 96 через 8, не шире 1344 (на 1920 — 13 миниатюр); до 768 — 64 через 6
+const thumbSize = (x) => (x >= TABLET ? { width: 96, gap: 8 } : { width: 64, gap: 6 })
 const THUMBS_MAX = 1344
 // Низкий экран (телефон горизонтально): без миниатюр, поля минимальные — фото на весь экран.
 // Та же граница — в PhotoViewer.scss
@@ -35,7 +35,8 @@ function padding({ x, y }) {
 		return { top: 108, bottom: 184, left: side, right: side }
 	}
 	if (x >= TABLET) return { top: 80, bottom: 112, left: 16, right: 16 }
-	return { top: 64, bottom: 16, left: 0, right: 0 }
+	// Телефон: полоса 72; снизу миниатюры 44 и кнопки 36 через 16, поля 12 и 24
+	return { top: 72, bottom: 132, left: 0, right: 0 }
 }
 
 const el = (tag, className, text) => {
@@ -123,8 +124,11 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {}, w
 				close.setAttribute('aria-label', 'Закрыть просмотр')
 				close.append(createIcon('cross', 'photo-viewer__icon photo-viewer__icon--close'))
 				close.addEventListener('click', () => pswp.close())
-				if (withLikes) actions.append(likeSlot)
-				actions.append(download, divider, close)
+				// «Нравится» и «Скачать» — одной группой: до 768 она внизу экрана (PhotoViewer.scss)
+				const tools = el('div', 'photo-viewer__tools')
+				if (withLikes) tools.append(likeSlot)
+				tools.append(download)
+				actions.append(tools, divider, close)
 				root.append(head, actions)
 
 				const render = () => {
@@ -210,10 +214,11 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {}, w
 				// лента сдвигается на целые миниатюры, текущая — ближе к середине
 				let visible = 0
 				const fit = () => {
-					const free = Math.min(THUMBS_MAX, root.clientWidth - 32)
+					const { width, gap } = thumbSize(root.clientWidth)
+					const free = Math.min(THUMBS_MAX, root.clientWidth - (width < 96 ? 20 : 32))
 					visible = Math.max(
 						1,
-						Math.min(items.length, Math.floor((free + THUMB_GAP) / THUMB_STEP))
+						Math.min(items.length, Math.floor((free + gap) / (width + gap)))
 					)
 					list.style.setProperty('--photo-viewer-thumbs', String(visible))
 				}
@@ -228,8 +233,9 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {}, w
 						Math.max(0, pswp.currIndex - Math.floor(visible / 2)),
 						Math.max(0, items.length - visible)
 					)
+					const { width, gap } = thumbSize(root.clientWidth)
 					list.scrollTo({
-						left: first * THUMB_STEP,
+						left: first * (width + gap),
 						behavior: smooth ? 'smooth' : 'auto',
 					})
 				}

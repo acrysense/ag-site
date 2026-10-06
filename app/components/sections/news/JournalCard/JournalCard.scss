@@ -3,8 +3,9 @@
 
 // Обложка 360×360 со скруглением 10, через 10
 // дата (S/400 Dark-grey) и название (карточка 20/24) через 10, через 20 — кнопки S.Light 36
-// через 10: «Читать» (только значок), «Скачать 1.2Гб», «Нравится». Мобильный:
-// название H4-360, кнопки переносятся.
+// через 10: «Читать» (только значок), «Скачать 1.2Гб», «Нравится». Телефон: название H4-360,
+// кнопки через 10 после названия и 6 между собой, «Скачать» — только значок (размер — для
+// скринридера).
 @layer components {
 	.journal-card {
 		position: relative;
@@ -80,12 +81,28 @@
 		z-index: 1;
 		display: flex;
 		flex-wrap: wrap;
-		gap: 8px;
+		gap: 6px;
 		margin-top: auto;
-		padding-top: 10px;
+
+		@include up(tablet) {
+			gap: 8px;
+			padding-top: 10px;
+		}
 
 		@include up(desktop) {
 			gap: 10px;
+		}
+	}
+
+	// Телефон: «Скачать» — только значок, как «Читать» (40×36)
+	.journal-card__download {
+		@include down(tablet) {
+			width: 40px;
+			padding: 0;
+
+			.btn__text {
+				@include visually-hidden;
+			}
 		}
 	}
 

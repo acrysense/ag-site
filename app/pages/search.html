@@ -9,7 +9,7 @@
 		<div class="wrapper">
 			{{> layouts/Header/Header props=(default data.header site.header) }}
 			<main class="wrapper__content">
-				{{!-- Результаты поиска (1920 — 4733:1650, 360 — 4790:3323) --}}
+				{{!-- Результаты поиска --}}
 				<div class="container page-inner">
 					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.breadcrumbs) }}
 					<form class="page-columns page-columns--start page-columns--gap-20" action="./search.html" method="get">

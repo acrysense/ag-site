@@ -2,9 +2,10 @@
 @use "@/assets/styles/base/vars" as *;
 
 // Шапка альбома — 1240×440, скругление 20, поля 40; затемнение: Black 15% до 10%
-// высоты, к низу Black 80%; слева снизу через 14: название H0, дата и число L/400 85%, описание
-// M/400 75% — белым; справа снизу кнопки S.Light через 10. Мобильный: поля 20, название
-// H1-360, кнопки под текстом.
+// высоты, к низу Black 80%; слева снизу через 14: название H0, описание M/400 75% (дата и
+// число L/400 85% — если есть) — белым; справа снизу кнопки S.Light через 10. До 1024: от 340,
+// скругление 14, поля 16, название 24 (360/HEADER/H2) и описание 14/20 через 8, кнопки под
+// текстом через 16.
 @layer components {
 	// Страница альбома: шапка и карточка с фото — через 10
 	.album-page {
@@ -24,13 +25,13 @@
 		position: relative;
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		gap: 16px;
 		justify-content: flex-end;
-		min-height: 360px;
-		padding: 20px;
+		min-height: 340px;
+		padding: 16px;
 		overflow: hidden;
 		color: palette("white");
-		border-radius: $radius-content-block;
+		border-radius: $radius-button;
 
 		&::after {
 			position: absolute;
@@ -51,6 +52,7 @@
 			justify-content: space-between;
 			min-height: 440px;
 			padding: 40px;
+			border-radius: $radius-content-block;
 		}
 	}
 
@@ -67,12 +69,16 @@
 		z-index: 1;
 		display: flex;
 		flex-direction: column;
-		gap: 14px;
+		gap: 8px;
 		min-width: 0;
+
+		@include up(desktop) {
+			gap: 14px;
+		}
 	}
 
 	.album-hero__title {
-		@include text("h1-360");
+		@include text("h2-360");
 
 		overflow-wrap: anywhere;
 
@@ -88,10 +94,14 @@
 	}
 
 	.album-hero__text {
-		@include text("m-400");
+		@include text("m-400-360");
 
 		max-width: 760px;
 		opacity: 0.75;
+
+		@include up(desktop) {
+			@include text("m-400");
+		}
 	}
 
 	.album-hero__actions {
