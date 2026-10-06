@@ -27,7 +27,7 @@
 		"autoprefixer": "^10.6.1",
 		"esbuild": "^0.28.2",
 		"handlebars": "^4.7.9",
-		"postcss": "^8.5.28",
+		"postcss": "^8.5.29",
 		"prettier": "^3.9.9",
 		"sass": "^1.105.1",
 		"tinyglobby": "^0.2.17",
