@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru" data-icons="/ag-site/assets/icons/sprite.svg">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta name="format-detection" content="telephone=no" />
+
+		<title>Витрина компонентов — dev</title>
+
+		<meta
+			name="description"
+			content="Служебная страница: компоненты и их состояния. В сборку для Битрикса не попадает."
+		/>
+
+		<meta name="robots" content="noindex" />
+
+		<link rel="preload" href="/ag-site/fonts/RFRufo/RFRufo-Bold.woff2" as="font" type="font/woff2" crossorigin="" />
+		<link rel="preload" href="/ag-site/fonts/RFRufo/RFRufo-Regular.woff2" as="font" type="font/woff2" crossorigin="" />
+
+		<link rel="icon" href="/ag-site/favicon.svg" type="image/svg+xml" />
+
+		<link rel="canonical" href="https://acrysense.github.io/ag-site/dev-ui.html" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://acrysense.github.io/ag-site/dev-ui.html" />
+		<meta property="og:locale" content="ru_RU" />
+		<meta property="og:site_name" content="Корпоративный сайт холдинга «Аптека групп»" />
+		<meta property="og:title" content="Витрина компонентов — dev" />
+		<meta
+			property="og:description"
+			content="Служебная страница: компоненты и их состояния. В сборку для Битрикса не попадает."
+		/>
+		<meta property="og:image" content="https://acrysense.github.io/ag-site/og-default.jpg" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Витрина компонентов — dev" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Витрина компонентов — dev" />
+		<meta
+			name="twitter:description"
+			content="Служебная страница: компоненты и их состояния. В сборку для Битрикса не попадает."
+		/>
+		<meta name="twitter:image" content="https://acrysense.github.io/ag-site/og-default.jpg" />
+
+		<meta name="dev-pages" content="/ag-site/dev-pages.json" />
+		<script type="text/plain" data-cookie-consent>
+			window.__agDemoCounter = (window.__agDemoCounter || 0) + 1; console.info('[demo] счётчик включён после согласия на cookie')
+		</script>
+		<meta name="robots" content="noindex, nofollow" />
+		<script type="module" crossorigin src="/ag-site/assets/js/dev-ui-BhPWpV9n.js"></script>
+		<link rel="modulepreload" crossorigin href="/ag-site/assets/js/pages-nav-Df9646uR.js" />
+		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/pages-nav--aTdp9SH.css" />
+		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/dev-ui-Y3kXciNo.css" />
+	</head>
+	<body class="ui">
+		<aside class="ui__side">
+			<p class="ui__brand">
+				Витрина
+				<span class="ui__brand-sub">Корпоративный сайт холдинга «Аптека групп»</span>
+			</p>
+
+			<div class="ui__search">
+				<label class="ui__search-label" for="ui-search">Поиск компонента</label>
+				<input
+					class="ui__search-input"
+					id="ui-search"
+					type="search"
+					placeholder="Поиск"
+					autocomplete="off"
+					data-ui-search
+				/>
+				<kbd class="ui__search-key" aria-hidden="true">/</kbd>
+			</div>
+
+			<nav class="ui__nav" aria-label="Компоненты" data-ui-nav></nav>
+			<p class="ui__empty" data-ui-empty hidden>Ничего не найдено</p>
+		</aside>
+
+		<main class="ui__main">
+			<header class="ui__toolbar">
+				<div class="ui__heading">
+					<p class="ui__crumb" data-ui-group></p>
+					<h1 class="ui__title" data-ui-title>Загрузка…</h1>
+					<p class="ui__backend" data-ui-backend></p>
+				</div>
+
+				<div class="ui__actions">
+					<div class="ui__widths" role="group" aria-label="Ширина" data-ui-widths>
+						<button class="ui__width" type="button" aria-pressed="true" data-ui-width="360">360</button>
+						<button class="ui__width" type="button" aria-pressed="false" data-ui-width="768">768</button>
+						<button class="ui__width" type="button" aria-pressed="false" data-ui-width="1440">1440</button>
+					</div>
+					<a class="ui__button" href="#" target="_blank" rel="noopener noreferrer" data-ui-open>
+						Отдельно <span aria-hidden="true">↗</span>
+					</a>
+				</div>
+
+				<nav class="ui__states" aria-label="Состояния" data-ui-states></nav>
+			</header>
+
+			<div class="ui__stage" data-ui-stage>
+				<div class="ui__screen" data-ui-screen>
+					<iframe class="ui__frame" title="Выбранный компонент" data-ui-frame></iframe>
+				</div>
+				<p class="ui__scale" data-ui-scale hidden></p>
+			</div>
+		</main>
+	</body>
+</html>
