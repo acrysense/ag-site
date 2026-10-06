@@ -4,7 +4,8 @@
 // Главный альбом — 1200×480, скругление 10, поля 40, затемнение: прозрачно
 // до 35% высоты, к низу Black 80%; содержимое снизу через 16: метка Main Blue (S/500 белым, поля
 // 5/10, скругление 14), название H0 белым, дата и число L/400 85%, кнопка General M.
-// Мобильный: 3:4, поля 20, название H1-360.
+// Телефон: 340×260, поля 16, через 10: название 24 (360/HEADER/H2), дата и число 14/20,
+// кнопка. Планшет: 1200×480, поля 40, название H1-360.
 @layer components {
 	.album-featured {
 		@include image-placeholder;
@@ -12,8 +13,8 @@
 		position: relative;
 		display: flex;
 		align-items: flex-end;
-		min-height: 360px;
-		padding: 20px;
+		aspect-ratio: 340 / 260;
+		padding: 16px;
 		overflow: hidden;
 		color: palette("white");
 		border-radius: $radius-inner-block;
@@ -32,7 +33,6 @@
 
 		@include up(tablet) {
 			aspect-ratio: 1200 / 480;
-			min-height: 0;
 			padding: 40px;
 		}
 	}
@@ -51,8 +51,12 @@
 		z-index: 1;
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 10px;
 		align-items: flex-start;
+
+		@include up(tablet) {
+			gap: 16px;
+		}
 		min-width: 0;
 	}
 
@@ -65,7 +69,11 @@
 	}
 
 	.album-featured__title {
-		@include text("h1-360");
+		@include text("h2-360");
+
+		@include up(tablet) {
+			@include text("h1-360");
+		}
 
 		overflow-wrap: anywhere;
 
@@ -75,7 +83,11 @@
 	}
 
 	.album-featured__meta {
-		@include text("l-400");
+		@include text("m-400-360");
+
+		@include up(tablet) {
+			@include text("l-400");
+		}
 
 		opacity: 0.85;
 	}

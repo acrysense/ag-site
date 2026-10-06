@@ -3,13 +3,16 @@
 	(AlbumFeatured), сетка карточек (AlbumCard: 3 в ряд с 1280, 2 — с 768, 1 — на мобильном),
 	страницы и «Всего».
 	props: class, title, sort (SortMenu), featured (AlbumFeatured), items [AlbumCard], pagination
-	(Pagination: total — «24 альбома»), empty { text }. Контракт — docs/contracts/gallery.md.
+	(Pagination: total — «24 альбома»), empty { text }; years — те же данные, что у GalleryYears в
+	боковой колонке: до 1024 годы «таблетками» под заголовком, ниже сортировка полем во всю
+	ширину (боковая колонка до 1024 скрыта). Контракт — docs/contracts/gallery.md.
 --}}
 <section class="album-list{{#if props.class}} {{props.class}}{{/if}}" aria-labelledby="album-list-title">
     <div class="album-list__head">
         <h1 class="album-list__title" id="album-list-title">{{props.title}}</h1>
-        {{> components/SortMenu/SortMenu props=props.sort}}
+        {{> components/SortMenu/SortMenu props=(obj id=props.sort.id label=props.sort.label options=props.sort.options class="sort-menu--field album-list__sort")}}
     </div>
+    {{#if years.items.length}}{{> sections/gallery/GalleryYears/GalleryYears props=(obj label=years.label items=years.items class="album-list__years")}}{{/if}}
     {{> sections/gallery/AlbumFeatured/AlbumFeatured props=props.featured}}
     {{#if props.items.length}}
         <ul class="album-list__grid" role="list">

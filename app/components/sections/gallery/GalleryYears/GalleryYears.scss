@@ -3,8 +3,8 @@
 
 // Фильтр альбомов — белая карточка 350, скругление 20, поля 20, пункты через
 // 15: «Фотогалерея» H3, ссылки L/400 Black.TXT (текущая Main Blue), справа число M/400
-// Dark-grey.TXT. Мобильный: «таблетки» 36 BG.Info с числом, прокрутка вбок, как годы
-// в новостях; текущая — BG.Main 2.
+// Dark-grey.TXT. Мобильный: «таблетки» 36 BG.Info без числа (оно для скринридера), прокрутка
+// вбок, как годы в новостях; текущая — BG.Main 2.
 @layer components {
 	.gallery-years {
 		min-width: 0;
@@ -113,5 +113,9 @@
 
 	.gallery-years__count {
 		color: palette("dark-grey-txt");
+
+		@include down(desktop) {
+			@include visually-hidden;
+		}
 	}
 }

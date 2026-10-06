@@ -9,15 +9,15 @@
 		<div class="wrapper">
 			{{> layouts/Header/Header props=(default data.header site.header) }}
 			<main class="wrapper__content">
-				{{!-- Фотогалерея — список альбомов (1920 — 4682:25610; мобильного макета нет) --}}
+				{{!-- Фотогалерея — список альбомов. До 1024 годы — «таблетками» под заголовком списка --}}
 				<div class="container page-inner">
 					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.breadcrumbs) }}
 					<div class="page-columns page-columns--start">
-						<aside class="page-columns__aside">
+						<aside class="page-columns__aside page-columns__aside--desktop">
 							{{> sections/gallery/GalleryYears/GalleryYears props=data.years }}
 							{{> sections/shared/SideBanner/SideBanner props=data.banner }}
 						</aside>
-						{{> sections/gallery/AlbumList/AlbumList props=data.list }}
+						{{> sections/gallery/AlbumList/AlbumList props=data.list years=data.years }}
 					</div>
 				</div>
 			</main>

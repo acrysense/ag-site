@@ -5,7 +5,8 @@
 // 10 (фото 292.5×220, 4:3, скругление 10), «Показать ещё N фото» (Light M по центру), «Другие
 // альбомы» (H2 Black.H, карточки через 15). Фото при наведении: затемнение 12%,
 // справа снизу (поля 12) «Нравится» и «Скачать» — белые 92%, высота 36, скругление 20, тень.
-// До 1024: без карточки; фото — 3 в ряд с 768, 2 — уже, через 8.
+// До 1024: без карточки; фото — 3 в ряд. Телефон: квадраты через 5, «Показать ещё» во всю
+// ширину, «Другие альбомы» (24, 360/HEADER/H2) — лента карточек 240 с прокруткой вбок.
 @layer components {
 	.album-photos {
 		display: flex;
@@ -23,14 +24,13 @@
 
 	.album-photos__grid {
 		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 8px;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 5px;
 		margin: 0;
 		padding: 0;
 		list-style: none;
 
 		@include up(tablet) {
-			grid-template-columns: repeat(3, minmax(0, 1fr));
 			gap: 10px;
 		}
 
@@ -48,9 +48,13 @@
 		@include image-placeholder;
 
 		display: block;
-		aspect-ratio: 292.5 / 220;
+		aspect-ratio: 1;
 		overflow: hidden;
 		border-radius: $radius-inner-block;
+
+		@include up(tablet) {
+			aspect-ratio: 292.5 / 220;
+		}
 
 		&::after {
 			position: absolute;
@@ -137,7 +141,11 @@
 	}
 
 	.album-photos__more {
-		align-self: center;
+		align-self: stretch;
+
+		@include up(tablet) {
+			align-self: center;
+		}
 
 		&[hidden] {
 			display: none;
@@ -153,7 +161,11 @@
 	.album-photos__other {
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		gap: 16px;
+
+		@include up(tablet) {
+			gap: 20px;
+		}
 
 		@include up(desktop) {
 			padding-top: 10px;
@@ -161,21 +173,43 @@
 	}
 
 	.album-photos__other-title {
-		@include text("h2");
+		@include text("h2-360");
 
 		color: palette("black-h");
+
+		@include up(tablet) {
+			@include text("h2");
+		}
 	}
 
+	// Телефон: лента карточек 240 (обложка 3:2) с прокруткой вбок до краёв экрана
 	.album-photos__other-list {
 		display: grid;
-		grid-template-columns: minmax(0, 1fr);
-		gap: 24px 15px;
-		margin: 0;
-		padding: 0;
+		grid-auto-columns: 240px;
+		grid-auto-flow: column;
+		gap: 10px;
+		margin: 0 -10px;
+		padding: 0 10px;
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
 		list-style: none;
+		scrollbar-width: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
 
 		@include up(tablet) {
 			grid-template-columns: repeat(3, minmax(0, 1fr));
+			grid-auto-flow: row;
+			gap: 24px 15px;
+			margin: 0;
+			padding: 0;
+			overflow: visible;
 		}
+	}
+
+	.album-photos__other-list .album-card__cover {
+		aspect-ratio: 3 / 2;
 	}
 }

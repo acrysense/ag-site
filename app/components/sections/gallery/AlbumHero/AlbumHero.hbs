@@ -1,6 +1,6 @@
 {{!--
-	Шапка альбома: обложка 1240×440, затемнение, название H0, дата и
-	число фото, описание; справа внизу — «Нравится», «Скачать альбом» (размер архива) и
+	Шапка альбома: обложка 1240×440, затемнение, название H0, описание (дата и число фото —
+	необязательная строка под названием); справа внизу — «Нравится», «Скачать альбом» (размер архива) и
 	«Скопировать ссылку».
 	props: title, date, dateText, countText («148 фото»), text, cover { src, srcset, alt },
 	like (LikeButton: count, liked, url), download { url, size («1,2 ГБ») }, url (ссылка на альбом
@@ -10,7 +10,7 @@
     {{#if props.cover.src}}<img class="album-hero__image" src="{{props.cover.src}}" {{#if props.cover.srcset}}srcset="{{props.cover.srcset}}" sizes="(min-width: 1280px) 1240px, 100vw"{{/if}} width="1240" height="440" alt="" decoding="async" />{{/if}}
     <div class="album-hero__info">
         <h1 class="album-hero__title" id="album-hero-title">{{props.title}}</h1>
-        <p class="album-hero__meta">{{#if props.dateText}}<time datetime="{{props.date}}">{{props.dateText}}</time>{{/if}}{{#if (and props.dateText props.countText)}} · {{/if}}{{props.countText}}</p>
+        {{#if (or props.dateText props.countText)}}<p class="album-hero__meta">{{#if props.dateText}}<time datetime="{{props.date}}">{{props.dateText}}</time>{{/if}}{{#if (and props.dateText props.countText)}} · {{/if}}{{props.countText}}</p>{{/if}}
         {{#if props.text}}<p class="album-hero__text">{{props.text}}</p>{{/if}}
     </div>
     <div class="album-hero__actions">
