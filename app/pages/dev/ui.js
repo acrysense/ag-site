@@ -5,7 +5,7 @@ const empty = document.querySelector('[data-ui-empty]')
 const search = document.querySelector('[data-ui-search]')
 const crumb = document.querySelector('[data-ui-group]')
 const title = document.querySelector('[data-ui-title]')
-const description = document.querySelector('[data-ui-description]')
+const backend = document.querySelector('[data-ui-backend]')
 const states = document.querySelector('[data-ui-states]')
 const widths = document.querySelector('[data-ui-widths]')
 const openLink = document.querySelector('[data-ui-open]')
@@ -61,7 +61,6 @@ function readStories(doc) {
 		id: node.dataset.story,
 		group: node.dataset.group || 'Прочее',
 		title: node.dataset.title || node.dataset.story,
-		how: node.dataset.how || '',
 		backend: node.dataset.backend || '',
 		states: [...node.querySelectorAll('[data-state-label]')].map((state, index) => ({
 			index: String(index),
@@ -129,29 +128,49 @@ function current() {
 	return { story, state }
 }
 
+// Пути к файлам (шаблон, контракт) — кнопки: нажатие копирует путь
+const PATH = /((?:app|docs)\/[\w./-]+)/
+const withPaths = (text) =>
+	text
+		.split(PATH)
+		.filter(Boolean)
+		.map((part) => {
+			if (!PATH.test(part)) return part
+			const button = el('button', 'ui__path', part)
+			button.type = 'button'
+			button.title = 'Скопировать путь'
+			button.dataset.copy = part
+			return button
+		})
+
+let copiedTimer = 0
+backend.addEventListener('click', async (event) => {
+	const button = event.target.closest('[data-copy]')
+	if (!button) return
+	try {
+		await navigator.clipboard.writeText(button.dataset.copy)
+	} catch {
+		return
+	}
+	clearTimeout(copiedTimer)
+	backend.querySelector('.is-copied')?.classList.remove('is-copied')
+	button.classList.add('is-copied')
+	copiedTimer = setTimeout(() => button.classList.remove('is-copied'), 1500)
+})
+
 function renderInfo(story, active) {
 	crumb.textContent = story?.group || ''
 	title.textContent = story?.title || 'Историй пока нет'
 
-	// Строки с подписью: поведение, бэку, неприменимые состояния
-	const meta = (label, text) => {
-		const line = el('p', 'ui__meta')
-		line.append(el('b', '', label), ` ${text}`)
-		return line
-	}
-	const skipped = story?.states.filter((state) => state.note) || []
-	description.replaceChildren(
-		...(story?.how ? [meta('Как работает.', story.how)] : []),
-		...(story?.backend ? [meta('Бэку.', story.backend)] : []),
-		...(skipped.length
-			? [meta('Не показано.', skipped.map((state) => `${state.label} — ${state.note.replace(/^не применимо:\s*/, '')}`).join('; '))]
-			: [])
+	// Одна строка для бэка: шаблон · контракт — главное правило. Не влезла — многоточие,
+	// целиком во всплывающей подсказке. Строка есть всегда, чтобы панель не меняла высоту
+	backend.replaceChildren(
+		...(story?.backend ? [el('b', '', 'Бэку:'), ' ', ...withPaths(story.backend)] : [])
 	)
-	description.hidden = !description.childElementCount
+	backend.title = story?.backend || ''
 
-	// Вкладки состояний — только когда есть из чего выбирать
+	// Вкладки состояний — только когда есть из чего выбирать; место под них остаётся
 	const items = story ? shown(story) : []
-	states.hidden = items.length < 2
 	states.replaceChildren(
 		...(items.length < 2 ? [] : items).map((state) => {
 			const link = el('a', 'ui__state', state.label)

@@ -16,8 +16,9 @@
 			page="<страница>" — история раздела, который ещё не показываем: пока страницы нет в
 			tools/published-pages.txt, история не выкладывается (демо, natix).
 
-			Новая история (необязательные: how — поведение и адаптив, backend — данные и контракт
-			для бэка; figma — узлы макета, только для того, кто правит историю, на экран не выводятся):
+			Новая история. backend — одна строка для бэка над превью: путь к шаблону · контракт —
+			главное правило; без шаблона строки нет. Необязательные how (поведение, адаптив) и figma
+			(узлы макета) — заметки для того, кто правит историю, на экран не выводятся:
 			{{#> story id="button" group="Компоненты" title="Кнопка" how="…" backend="…" figma="…"}}
 				{{#> state label="Обычная"}} разметка {{/state}}
 			{{/story}}
@@ -27,12 +28,10 @@
 			первого появления.
 		--}}
 		{{#*inline "story"}}
-			<article class="story" data-story="{{id}}" data-group="{{group}}" data-title="{{title}}" {{#if how}}data-how="{{how}}"{{/if}} {{#if backend}}data-backend="{{backend}}"{{/if}} {{#if page}}data-page="{{page}}"{{/if}}>
+			<article class="story" data-story="{{id}}" data-group="{{group}}" data-title="{{title}}" {{#if backend}}data-backend="{{backend}}"{{/if}} {{#if page}}data-page="{{page}}"{{/if}}>
 				<header class="story__header">
 					<p class="story__group">{{group}}</p>
 					<h2 class="story__title">{{title}}</h2>
-					{{#if how}}<p class="story__meta"><b>Как работает.</b> {{how}}</p>{{/if}}
-					{{#if backend}}<p class="story__meta"><b>Бэку.</b> {{backend}}</p>{{/if}}
 				</header>
 				<div class="story__states">{{> @partial-block}}</div>
 			</article>
@@ -48,15 +47,15 @@
 		{{/inline}}
 
 		<main class="stories">
-			{{#> story id="colors" group="Основа" title="Цвета" backend='Карта $colors в _vars.scss, в коде — palette("имя"). Список строится сам.' how='Контраст текста — на белом и на чёрном.'}}
+			{{#> story id="colors" group="Основа" title="Цвета" how='Контраст текста — на белом и на чёрном.'}}
 				<div class="tokens tokens--colors" data-token-list="colors"></div>
 			{{/story}}
 
-			{{#> story id="typography" group="Основа" title="Типографика" backend='Карта $text-styles в _vars.scss, в коде — @include text("имя").' how='Размер пересчитывается при смене ширины.'}}
+			{{#> story id="typography" group="Основа" title="Типографика" how='Размер пересчитывается при смене ширины.'}}
 				<div class="tokens tokens--text" data-token-list="text"></div>
 			{{/story}}
 
-			{{#> story id="icons" group="Основа" title="Иконки" how='В тех размерах, в которых иконки стоят на сайте. Толщина линии измеряется по отрисовке (медиана по центрам линий); у залитых иконок не считается. Разбор расхождений — docs/design-review/icons.md.'}}
+			{{#> story id="icons" group="Основа" title="Иконки" how='В тех размерах, в которых иконки стоят на сайте. Толщина линии измеряется по отрисовке (медиана по центрам линий); у залитых иконок не считается. Разбор расхождений — docs/design-review/icons.md.' backend='app/components/components/Icon/Icon.hbs — name из спрайта, цвет наследует от текста'}}
 				{{#> state label="Как в макете"}}
 					<div class="tokens tokens--icons" data-icon-list>
 						{{#each data.icons}}
@@ -98,14 +97,14 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="header" group="Каркас" title="Шапка" how='Подменю «Новости» — наведением, стрелкой и Escape. Бургер открывает мобильное меню.' backend='Данные — site.header в site.config.json.' figma='PC.HEADER.v2 (4652:8752), 360.HEADER (4865:1334)'}}
+			{{#> story id="header" group="Каркас" title="Шапка" how='Подменю «Новости» — наведением, стрелкой и Escape. Бургер открывает мобильное меню.' figma='PC.HEADER.v2 (4652:8752), 360.HEADER (4865:1334)' backend='app/components/layouts/Header/Header.hbs · docs/contracts/header.md — данные site.header'}}
 				{{#> state label="Гость" bg="page"}}
 					{{> layouts/Header/Header props=site.header}}
 				{{/state}}
 				{{#> state label="Вошёл" bg="page"}}
 					{{> layouts/Header/Header props=data.headerUser}}
 				{{/state}}
-				{{#> state label="Много пунктов меню" bg="page"}}
+				{{#> state label="Много пунктов" bg="page"}}
 					{{> layouts/Header/Header props=data.headerLong}}
 				{{/state}}
 				{{#> state label="Длинное имя" bg="page"}}
@@ -114,14 +113,14 @@
 				{{#> state label="Загрузка" note="не применимо: шапка приходит с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="footer" group="Каркас" title="Подвал" backend='Данные — site.footer.' figma='PC.FOOTER v2 — компакт (Light) (4699:29656), 360.FOOTER (4865:41007)' how='На мобильном — тот же подвал в одну колонку.'}}
+			{{#> story id="footer" group="Каркас" title="Подвал" figma='PC.FOOTER v2 — компакт (Light) (4699:29656), 360.FOOTER (4865:41007)' how='На мобильном — тот же подвал в одну колонку.' backend='app/components/layouts/Footer/Footer.hbs · docs/contracts/footer.md — данные site.footer'}}
 				{{#> state label="Обычный" bg="page"}}
 					{{> layouts/Footer/Footer props=site.footer}}
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: подвал приходит с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="main-menu" group="Каркас" title="Мобильное меню" how='На весь экран. Открывается бургером в шапке и пунктом «Меню» в нижней панели; поверх всего, кроме нижней панели. Кнопка выхода открывает шторку.' backend='Данные — site.mainMenu.' figma='360.MainMenu v2 (4558:842)'}}
+			{{#> story id="main-menu" group="Каркас" title="Мобильное меню" how='На весь экран. Открывается бургером в шапке и пунктом «Меню» в нижней панели; поверх всего, кроме нижней панели. Кнопка выхода открывает шторку.' figma='360.MainMenu v2 (4558:842)' backend='app/components/layouts/MainMenu/MainMenu.hbs · docs/contracts/main-menu.md — данные site.mainMenu, пункты по доступу'}}
 				{{#> state label="Открыто" bg="page"}}
 					{{> layouts/MainMenu/MainMenu props=data.mainMenuOpen}}
 				{{/state}}
@@ -133,23 +132,23 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="tab-bar" group="Каркас" title="Нижняя панель" how='До 767px, фиксирована внизу, высота 60 + safe-area. Набор пунктов зависит от доступа.' figma='360.TabBar (4870:1538)'}}
-				{{#> state label="Новости и обучение" bg="page"}}
+			{{#> story id="tab-bar" group="Каркас" title="Нижняя панель" how='До 767px, фиксирована внизу, высота 60 + safe-area. Набор пунктов зависит от доступа.' figma='360.TabBar (4870:1538)' backend='app/components/layouts/TabBar/TabBar.hbs · docs/contracts/main-menu.md — пункты по доступу'}}
+				{{#> state label="Обычное" bg="page"}}
 					{{> layouts/TabBar/TabBar props=data.tabBar}}
 				{{/state}}
-				{{#> state label="Справочник и CRM" bg="page"}}
+				{{#> state label="С CRM" bg="page"}}
 					{{> layouts/TabBar/TabBar props=data.tabBarCrm}}
 				{{/state}}
 				{{#> state label="Активный раздел" bg="page"}}
 					{{> layouts/TabBar/TabBar props=data.tabBarCurrent}}
 				{{/state}}
-				{{#> state label="Открыто меню" bg="page"}}
+				{{#> state label="Меню открыто" bg="page"}}
 					{{> layouts/TabBar/TabBar props=data.tabBarMenuOpen}}
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="modal" group="Компоненты" title="Модальное окно" how='С 768 — карточка по центру, до 768 — шторка снизу. Фон размыт; закрывается крестиком, Escape и нажатием по фону. Не помещается — прокручивается тело.' figma='1920 — 4132:1034, 4134:27265; 360 — 4879:1361, 4880:1513, 4568:1079'}}
-				{{#> state label="Подтверждение: выход" bg="page"}}
+			{{#> story id="modal" group="Компоненты" title="Модальное окно" how='С 768 — карточка по центру, до 768 — шторка снизу. Фон размыт; закрывается крестиком, Escape и нажатием по фону. Не помещается — прокручивается тело.' figma='1920 — 4132:1034, 4134:27265; 360 — 4879:1361, 4880:1513, 4568:1079' backend='app/components/components/Modal/Modal.hbs · docs/contracts/modal.md — открывает кнопка с data-modal-open="id"'}}
+				{{#> state label="Выход" bg="page"}}
 					{{#> components/Modal/Modal props=(obj id="story-modal-confirm" title=data.logout.title text=data.logout.text size="s" variant="confirm" close=false open=true)}}
 						<div class="modal__actions">
 							{{> components/Button/Button props=(obj href=data.logout.url text="Выйти" variant="error" size="l")}}
@@ -162,7 +161,7 @@
 						{{> components/Button/Button props=(obj text="Закрыть" variant="general" size="m" attrs=(obj data-modal-close=""))}}
 					{{/components/Modal/Modal}}
 				{{/state}}
-				{{#> state label="Живые окна"}}
+				{{#> state label="Вживую"}}
 					<div class="story-row">
 						{{> components/Button/Button props=(obj text="Выйти из аккаунта?" variant="light" size="m" attrs=(obj data-modal-open="live-modal-confirm"))}}
 						{{> components/Button/Button props=(obj text="Успех" variant="light" size="m" attrs=(obj data-modal-open="live-modal-success"))}}
@@ -184,8 +183,8 @@
 				{{#> state label="Загрузка" note="не применимо: содержимое приходит со страницей; отправка формы — в её кнопке"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="button-icon" group="Компоненты" title="Кнопка со значком" backend='props: text, icon, hiddenText, variant="light", size="s", href.' figma='Button / S.Light.Left'}}
-				{{#> state label="С иконкой и числом"}}
+			{{#> story id="button-icon" group="Компоненты" title="Кнопка со значком" figma='Button / S.Light.Left' backend='app/components/components/Button/Button.hbs — text, icon, hiddenText, variant="light", size="s"'}}
+				{{#> state label="С числом"}}
 					{{> components/Button/Button props=(obj href="#comments" icon="comment" hiddenText="Комментарии: " text="12" variant="light" size="s")}}
 				{{/state}}
 				{{#> state label="Большое число"}}
@@ -196,7 +195,7 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="like" group="Компоненты" title="Нравится" how='Переключатель (aria-pressed). Ошибка — отметка откатывается, об этом объявляется скринридеру.' backend='С data-like-url уходит POST с bitrix_sessid. В витрине без бэка отметка меняется только на странице.'}}
+			{{#> story id="like" group="Компоненты" title="Нравится" how='Переключатель (aria-pressed). Ошибка — отметка откатывается, об этом объявляется скринридеру.' backend='app/components/components/LikeButton/LikeButton.hbs — POST на data-like-url с bitrix_sessid'}}
 				{{#> state label="Не отмечено"}}
 					{{> components/LikeButton/LikeButton props=(obj count=4)}}
 				{{/state}}
@@ -209,7 +208,7 @@
 				{{#> state label="Ошибка" note="после неудачного запроса отметка возвращается как была, скринридер слышит сообщение"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="hero" group="Главная" title="Баннеры" how='У слайда две картинки: для десктопа и мобильного.' backend='Текст баннеров — в картинках, поэтому alt обязателен.' figma='1920 — 4615:42835, 360 — 4865:1335'}}
+			{{#> story id="hero" group="Главная" title="Баннеры" how='У слайда две картинки: для десктопа и мобильного.' figma='1920 — 4615:42835, 360 — 4865:1335' backend='app/components/sections/home/HeroBanners/HeroBanners.hbs · docs/contracts/hero-banners.md — две картинки на слайд, alt обязателен'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container">{{> sections/home/HeroBanners/HeroBanners props=data.hero}}</div>
 				{{/state}}
@@ -222,7 +221,7 @@
 				{{#> state label="Один слайд" bg="page"}}
 					<div class="container">{{> sections/home/HeroBanners/HeroBanners props=data.heroOneSlide}}</div>
 				{{/state}}
-				{{#> state label="Промо без мобильных картинок" bg="page"}}
+				{{#> state label="Без мобильных картинок" bg="page"}}
 					<div class="container">{{> sections/home/HeroBanners/HeroBanners props=data.heroPromosNoMobile}}</div>
 				{{/state}}
 				{{#> state label="Только промо" bg="page"}}
@@ -234,17 +233,17 @@
 				{{#> state label="Загрузка" note="не применимо: баннеры приходят с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="post-list" group="Главная" title="Акции и корпоративные новости" how='Один компонент для «Акций» и «Корпоративных новостей». На десктопе по 4, стрелки листают; на мобильном первые 4.' figma='1920 — 4615:42853, 360 — 4865:1354'}}
-				{{#> state label="Обычное (2 страницы)" bg="page"}}
+			{{#> story id="post-list" group="Главная" title="Акции и новости" how='Один компонент для «Акций» и «Корпоративных новостей». На десктопе по 4, стрелки листают; на мобильном первые 4.' figma='1920 — 4615:42853, 360 — 4865:1354' backend='app/components/sections/home/PostList/PostList.hbs · docs/contracts/post-list.md — один шаблон для «Акций» и «Новостей»'}}
+				{{#> state label="Обычное" bg="page"}}
 					<div class="container">{{> sections/home/PostList/PostList props=data.posts}}</div>
 				{{/state}}
-				{{#> state label="Мало пунктов (без стрелок)" bg="page"}}
+				{{#> state label="Мало пунктов" bg="page"}}
 					<div class="container">{{> sections/home/PostList/PostList props=data.postsFew}}</div>
 				{{/state}}
 				{{#> state label="Без картинок" bg="page"}}
 					<div class="container">{{> sections/home/PostList/PostList props=data.postsNoImages}}</div>
 				{{/state}}
-				{{#> state label="Длинный контент" bg="page"}}
+				{{#> state label="Длинный текст" bg="page"}}
 					<div class="container">{{> sections/home/PostList/PostList props=data.postsLong}}</div>
 				{{/state}}
 				{{#> state label="Пусто" bg="page"}}
@@ -253,7 +252,7 @@
 				{{#> state label="Загрузка" note="не применимо: список приходит с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="birthdays" group="Главная" title="День рождения" how='Всего 6 строк: сначала сегодня, потом ближайшие. Сегодня больше 6 — 5 и «+N Все именинники сегодня». Нет фото — значок подарка. На десктопе — третья колонка ряда с «Акциями».' figma='1920 — 4615:42940, 360 — 4865:1402'}}
+			{{#> story id="birthdays" group="Главная" title="День рождения" how='Всего 6 строк: сначала сегодня, потом ближайшие. Сегодня больше 6 — 5 и «+N Все именинники сегодня». Нет фото — значок подарка. На десктопе — третья колонка ряда с «Акциями».' figma='1920 — 4615:42940, 360 — 4865:1402' backend='app/components/sections/shared/Birthdays/Birthdays.hbs · docs/contracts/birthdays.md — 6 строк, сначала сегодня'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container"><div class="story-column">{{> sections/shared/Birthdays/Birthdays props=data.birthdays}}</div></div>
 				{{/state}}
@@ -278,14 +277,14 @@
 				{{#> state label="Загрузка" note="не применимо: список приходит с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="stats" group="Главная" title="В цифрах" how='С 1280 крупный заголовок слева; на планшете и узком десктопе пункты в ряд под заголовком.' backend='Числа и подписи редактирует админ, пункт можно скрыть.' figma='1920 — 4857:2701, 360 — 4865:1438'}}
+			{{#> story id="stats" group="Главная" title="В цифрах" how='С 1280 крупный заголовок слева; на планшете и узком десктопе пункты в ряд под заголовком.' figma='1920 — 4857:2701, 360 — 4865:1438' backend='app/components/sections/home/Stats/Stats.hbs · docs/contracts/stats.md — числа и подписи правит админ, пункт можно скрыть'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container">{{> sections/home/Stats/Stats props=data.stats}}</div>
 				{{/state}}
 				{{#> state label="Два пункта" bg="page"}}
 					<div class="container">{{> sections/home/Stats/Stats props=data.statsTwo}}</div>
 				{{/state}}
-				{{#> state label="Длинный контент" bg="page"}}
+				{{#> state label="Длинный текст" bg="page"}}
 					<div class="container">{{> sections/home/Stats/Stats props=data.statsLong}}</div>
 				{{/state}}
 				{{#> state label="Пусто" bg="page"}}
@@ -294,7 +293,7 @@
 				{{#> state label="Загрузка" note="не применимо: данные приходят с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="news-feed" group="Главная" title="Новости холдинга" how='На мобильном 6 карточек в 2 колонки, на десктопе 5 в ряд. Карточка кликабельна целиком.' figma='1920 — 4615:43032, 360 — 4865:1470'}}
+			{{#> story id="news-feed" group="Главная" title="Новости холдинга" how='На мобильном 6 карточек в 2 колонки, на десктопе 5 в ряд. Карточка кликабельна целиком.' figma='1920 — 4615:43032, 360 — 4865:1470' backend='app/components/sections/home/NewsFeed/NewsFeed.hbs · docs/contracts/news-feed.md'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container">{{> sections/home/NewsFeed/NewsFeed props=data.news}}</div>
 				{{/state}}
@@ -304,14 +303,14 @@
 				{{#> state label="Пусто" bg="page"}}
 					<div class="container">{{> sections/home/NewsFeed/NewsFeed props=data.newsEmpty}}</div>
 				{{/state}}
-				{{#> state label="Длинный контент" bg="page"}}
+				{{#> state label="Длинный текст" bg="page"}}
 					<div class="container">{{> sections/home/NewsFeed/NewsFeed props=data.newsLong}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: новости приходят с сервера вместе со страницей"}}{{/state}}
 				{{#> state label="Ошибка" note="не применимо: при ошибке бэк не выводит блок, как при пустом списке"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="wide-banner" group="Главная" title="Растянутый баннер" how='На десктопе стрелки, на мобильном точки. У слайда две картинки: для десктопа (с 768) и мобильного.' figma='1920 — 4617:43487, 360 — 4865:40484'}}
+			{{#> story id="wide-banner" group="Главная" title="Растянутый баннер" how='На десктопе стрелки, на мобильном точки. У слайда две картинки: для десктопа (с 768) и мобильного.' figma='1920 — 4617:43487, 360 — 4865:40484' backend='app/components/sections/home/WideBanner/WideBanner.hbs · docs/contracts/wide-banner.md — две картинки на слайд'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container">{{> sections/home/WideBanner/WideBanner props=data.wideBanner}}</div>
 				{{/state}}
@@ -325,11 +324,11 @@
 					<div class="container">{{> sections/home/WideBanner/WideBanner props=data.wideBannerEmpty}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: баннеры приходят с сервера вместе со страницей"}}{{/state}}
-				{{#> state label="Длинный контент" note="не применимо: текст в картинке"}}{{/state}}
+				{{#> state label="Длинный текст" note="не применимо: текст в картинке"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="leaders" group="Главная" title="Галерея живой заботы" how='Десктоп — карусель по 5 (по 4 до 1280), мобильный — первые 6 и «Показать все».' backend='Скрытую вкладку бэк не выводит.' figma='1920 — 4615:43127, 360 — 4865:1668'}}
-				{{#> state label="Обычное (две вкладки)" bg="page"}}
+			{{#> story id="leaders" group="Главная" title="Галерея живой заботы" how='Десктоп — карусель по 5 (по 4 до 1280), мобильный — первые 6 и «Показать все».' figma='1920 — 4615:43127, 360 — 4865:1668' backend='app/components/sections/home/Leaders/Leaders.hbs · docs/contracts/leaders.md — скрытую вкладку не выводить'}}
+				{{#> state label="Обычное" bg="page"}}
 					<div class="container">{{> sections/home/Leaders/Leaders props=data.leaders}}</div>
 				{{/state}}
 				{{#> state label="Одна вкладка" bg="page"}}
@@ -338,7 +337,7 @@
 				{{#> state label="Мало лидеров" bg="page"}}
 					<div class="container">{{> sections/home/Leaders/Leaders props=data.leadersFew}}</div>
 				{{/state}}
-				{{#> state label="Длинный контент, без фото" bg="page"}}
+				{{#> state label="Длинный текст, без фото" bg="page"}}
 					<div class="container">{{> sections/home/Leaders/Leaders props=data.leadersLong}}</div>
 				{{/state}}
 				{{#> state label="Пусто" bg="page"}}
@@ -347,7 +346,7 @@
 				{{#> state label="Загрузка" note="не применимо: списки приходят с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="tabs" group="Компоненты" title="Вкладки" how='Панели выводит сам блок. Клавиатура: стрелки, Home, End.' figma='Tabs'}}
+			{{#> story id="tabs" group="Компоненты" title="Вкладки" how='Панели выводит сам блок. Клавиатура: стрелки, Home, End.' figma='Tabs' backend='app/components/components/Tabs/Tabs.hbs — панели выводит сам блок'}}
 				{{#> state label="Две вкладки"}}
 					{{> components/Tabs/Tabs props=(obj id="tabs-demo" label="Пример" items=(arr (obj title="Лидеры месяца") (obj title="Фарм-лидеры")))}}
 				{{/state}}
@@ -356,7 +355,7 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="birthday-calendar" group="Дни рождения" title="Календарь" how='Сетка месяца с 1024, ниже — список дней с именинниками. Прошедшие дни бледнее, выходные — фон BG.Info, сегодня — BG.Violet.' figma='1920 — 4704:1065, 360 — 4706:1407'}}
+			{{#> story id="birthday-calendar" group="Дни рождения" title="Календарь именинников" how='Сетка месяца с 1024, ниже — список дней с именинниками. Прошедшие дни бледнее, выходные — фон BG.Info, сегодня — BG.Violet.' figma='1920 — 4704:1065, 360 — 4706:1407' backend='app/components/sections/birthdays/BirthdayCalendar/BirthdayCalendar.hbs · docs/contracts/birthday-calendar.md'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container page-inner">{{> sections/birthdays/BirthdayCalendar/BirthdayCalendar props=data.calendar}}</div>
 				{{/state}}
@@ -367,10 +366,10 @@
 					<div class="container page-inner">{{> sections/birthdays/BirthdayCalendar/BirthdayCalendar props=data.calendarEmpty}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: месяц приходит с сервера, смена фильтра перезагружает страницу"}}{{/state}}
-				{{#> state label="Длинный контент" note="в «Обычном»: 7 человек в один день и ФИО на две строки — строка обрезается «…»"}}{{/state}}
+				{{#> state label="Длинный текст" note="в «Обычном»: 7 человек в один день и ФИО на две строки — строка обрезается «…»"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="breadcrumbs" group="Компоненты" title="Хлебные крошки" how='Последний пункт — текущая страница, без ссылки.' figma='1920 — 4704:1060, 360 — 4706:1408'}}
+			{{#> story id="breadcrumbs" group="Компоненты" title="Хлебные крошки" how='Последний пункт — текущая страница, без ссылки.' figma='1920 — 4704:1060, 360 — 4706:1408' backend='app/components/components/Breadcrumbs/Breadcrumbs.hbs — последний пункт без ссылки'}}
 				{{#> state label="Два пункта"}}
 					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.crumbs)}}
 				{{/state}}
@@ -379,7 +378,7 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="skeleton" group="Компоненты" title="Скелетон" how='В макете нет — наше. Заготовка на месте загружаемого содержимого. Все заготовки на экране переливаются одной волной; при «уменьшить движение» — без блика. Стоит в фильтрах поиска, первых подсказках, первой загрузке комментариев и «Показать ещё».' backend='Разметка — components/Skeleton, из JS — utils/skeleton.js.'}}
+			{{#> story id="skeleton" group="Компоненты" title="Скелетон" how='В макете нет — наше. Заготовка на месте загружаемого содержимого. Все заготовки на экране переливаются одной волной; при «уменьшить движение» — без блика. Стоит в фильтрах поиска, первых подсказках, первой загрузке комментариев и «Показать ещё».'}}
 				{{#> state label="Варианты"}}
 					<div class="story-column story-skeleton">
 						{{> components/Skeleton/Skeleton props=(obj variant="text" class="story-skeleton__text")}}
@@ -391,7 +390,7 @@
 						</div>
 					</div>
 				{{/state}}
-				{{#> state label="Пункт списка: картинка и две строки"}}
+				{{#> state label="Пункт списка"}}
 					<div class="story-column story-skeleton">
 						{{#each (range 3)}}
 							<div class="story-skeleton__row">
@@ -404,26 +403,26 @@
 				{{#> state label="Пусто, ошибка" note="не применимо: заготовка видна только пока идёт загрузка"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="select" group="Компоненты" title="Выпадающий список" how='Список по макету поверх нативного select. Поиск по пунктам. Без JS — системный список.' backend='Пункты с сервера — по открытию, с задержкой ввода, отменой прошлого запроса, кешем и порциями при прокрутке. В витрине сервер имитируется, запросы видны в консоли.' figma='Select — Месяц (4704:1079), открыт — 4706:1207'}}
+			{{#> story id="select" group="Компоненты" title="Выпадающий список" how='Список по макету поверх нативного select. Поиск по пунктам. Без JS — системный список.' figma='Select — Месяц (4704:1079), открыт — 4706:1207' backend='app/components/components/Select/Select.hbs · docs/contracts/select.md — пункты с сервера по запросу, порциями'}}
 				{{#> state label="Обычное"}}
 					{{> components/Select/Select props=data.selectMonth}}
 				{{/state}}
 				{{#> state label="Длинное значение"}}
 					{{> components/Select/Select props=data.selectLong}}
 				{{/state}}
-				{{#> state label="С поиском по пунктам"}}
+				{{#> state label="С поиском"}}
 					{{> components/Select/Select props=data.selectSearch}}
 				{{/state}}
-				{{#> state label="С сервера: поиск и порции"}}
+				{{#> state label="С сервера"}}
 					{{> components/Select/Select props=data.selectRemote}}
 				{{/state}}
-				{{#> state label="С сервера: ошибка"}}
+				{{#> state label="Ошибка сервера"}}
 					{{> components/Select/Select props=data.selectRemoteError}}
 				{{/state}}
-				{{#> state label="Мультивыбор (фильтр): выбрано 2"}}
+				{{#> state label="Мультивыбор"}}
 					<div class="story-column-narrow">{{#with (lookup data.searchDirectory.filters.filters 1)}}{{> components/Select/Select props=(obj name=name placeholder=placeholder options=options multiple=true search=true searchPlaceholder=searchPlaceholder valueText=valueText)}}{{/with}}</div>
 				{{/state}}
-				{{#> state label="Мультивыбор: ничего не выбрано"}}
+				{{#> state label="Мультивыбор, пусто"}}
 					<div class="story-column-narrow">{{#with (lookup data.searchDirectory.filters.filters 2)}}{{> components/Select/Select props=(obj name=name placeholder=placeholder options=options multiple=true search=true searchPlaceholder=searchPlaceholder valueText=valueText)}}{{/with}}</div>
 				{{/state}}
 			{{/story}}
@@ -437,7 +436,7 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="date-range" group="Компоненты" title="Поле периода" how='По клику — календарь под полем, на мобильном — нижний лист. «Применить» пишет даты в форму, «Сбросить» очищает. Без JS — два поля даты.' figma='нижний лист — 4786:2977'}}
+			{{#> story id="date-range" group="Компоненты" title="Поле периода" how='По клику — календарь под полем, на мобильном — нижний лист. «Применить» пишет даты в форму, «Сбросить» очищает. Без JS — два поля даты.' figma='нижний лист — 4786:2977' backend='app/components/components/DateRange/DateRange.hbs · docs/contracts/search.md — без JS два поля даты'}}
 				{{#> state label="Пусто"}}
 					<div class="story-column-narrow">{{> components/DateRange/DateRange props=(lookup data.searchDocs.filters.filters 0)}}</div>
 				{{/state}}
@@ -446,7 +445,7 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="number-range" group="Компоненты" title="Диапазон чисел" how='Разряды через пробел.' backend='В форму уходят только цифры.' figma='Filter.NumberRange (4779:4361)'}}
+			{{#> story id="number-range" group="Компоненты" title="Диапазон чисел" how='Разряды через пробел.' figma='Filter.NumberRange (4779:4361)' backend='app/components/components/NumberRange/NumberRange.hbs · docs/contracts/search.md — в форму уходят только цифры'}}
 				{{#> state label="Заполнено"}}
 					<div class="story-column-narrow">{{> components/NumberRange/NumberRange props=(lookup data.searchVacancies.filters.filters 0)}}</div>
 				{{/state}}
@@ -455,7 +454,7 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="suggest-topic" group="Каркас" title="Предложить тему" how='Окно из подвала: сотрудник предлагает тему редакции. Проверка при отправке, ошибки у полей; после отправки — окно «Спасибо».' backend='Отправка с sessid. В витрине сервер имитируется: тема со словом «ошибка» — ошибка поля, «сбой» — общая ошибка.' figma='1920 — 4132:1034, 4134:27265; 360 — 4879:1361, 4880:1513'}}
+			{{#> story id="suggest-topic" group="Каркас" title="Предложить тему" how='Окно из подвала: сотрудник предлагает тему редакции. Проверка при отправке, ошибки у полей; после отправки — окно «Спасибо».' figma='1920 — 4132:1034, 4134:27265; 360 — 4879:1361, 4880:1513' backend='app/components/layouts/SiteModals/SuggestForm.hbs · docs/contracts/form.md — тексты в site.modals.suggest, отправка с sessid'}}
 				{{#> state label="Форма" bg="page"}}
 					{{#with data.suggestStatic}}
 						{{#> components/Modal/Modal props=(obj id=id title=title size="l" open=true)}}
@@ -463,7 +462,7 @@
 						{{/components/Modal/Modal}}
 					{{/with}}
 				{{/state}}
-				{{#> state label="Живое окно"}}
+				{{#> state label="Вживую"}}
 					<div class="story-row">
 						{{> components/Button/Button props=(obj text="Предложить тему" variant="general" size="m" attrs=(obj data-modal-open="suggest-topic"))}}
 					</div>
@@ -472,50 +471,50 @@
 				{{#> state label="Ошибка" note="в живом окне: пустые поля при отправке; тема со словом «ошибка» или «сбой»"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="cookie-banner" group="Каркас" title="Согласие на cookie" how='В левом нижнем углу без затемнения (на мобильном — над нижней панелью), фокус не перехватывает.' backend='Выбор — в cookie на год; с cookie баннер не выводится.' figma='4711:32225'}}
+			{{#> story id="cookie-banner" group="Каркас" title="Согласие на cookie" how='В левом нижнем углу без затемнения (на мобильном — над нижней панелью), фокус не перехватывает.' figma='4711:32225' backend='app/components/layouts/CookieBanner/CookieBanner.hbs · docs/contracts/cookie-banner.md — с cookie ag_cookie_consent не выводить'}}
 				{{#> state label="Обычное" bg="page"}}
 					{{> layouts/CookieBanner/CookieBanner props=data.cookiesStatic}}
 				{{/state}}
 				{{#> state label="Выбор сделан" note="баннера нет: бэк не выводит его при cookie ag_cookie_consent, а если страница из кеша — скрывает скрипт"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="auth" group="Авторизация" title="Вход и восстановление пароля" how='Как в ЛК: «К порталу», логотип, карточка, «AG» справа внизу, полоса слогана. Восстановление — без формы: обратиться в техподдержку.' backend='Вход — обычная POST-форма Битрикса: пустые поля проверяет Form, ошибку входа выводит сервер. Страницы: login, recovery.'}}
+			{{#> story id="auth" group="Авторизация" title="Вход" how='Как в ЛК: «К порталу», логотип, карточка, «AG» справа внизу, полоса слогана. Восстановление — без формы: обратиться в техподдержку.' backend='app/components/sections/auth/ · docs/contracts/auth.md — обычная POST-форма входа Битрикса'}}
 				{{#> state label="Вход" bg="page"}}{{> sections/auth/AuthLogin/AuthLogin props=data.authLogin}}{{/state}}
-				{{#> state label="Ошибка входа (с сервера)" bg="page"}}{{> sections/auth/AuthLogin/AuthLogin props=data.authLoginError}}{{/state}}
-				{{#> state label="Восстановление пароля" bg="page"}}{{> sections/auth/AuthRecovery/AuthRecovery props=data.authRecovery}}{{/state}}
+				{{#> state label="Ошибка входа" bg="page"}}{{> sections/auth/AuthLogin/AuthLogin props=data.authLoginError}}{{/state}}
+				{{#> state label="Восстановление" bg="page"}}{{> sections/auth/AuthRecovery/AuthRecovery props=data.authRecovery}}{{/state}}
 				{{#> state label="Загрузка" note="кнопка неактивна со значком загрузки, пока страница уходит на сервер (модуль Form)"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="career-list" group="Карьера" title="Карьерный шанс — список" how='Карточки: 3 в ряд с 1280, 2 — с 768, 1 — на мобильном. До 1024 — кнопка «Фильтры · N». Карточка открывает окно вакансии.' figma='PC.Career (4588:83)'}}
+			{{#> story id="career-list" group="Карьера" title="Вакансии" how='Карточки: 3 в ряд с 1280, 2 — с 768, 1 — на мобильном. До 1024 — кнопка «Фильтры · N». Карточка открывает окно вакансии.' figma='PC.Career (4588:83)' backend='app/components/sections/career/VacancyList/VacancyList.hbs · docs/contracts/career.md'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container page-inner">{{> sections/career/VacancyList/VacancyList props=data.careerList}}</div>
 				{{/state}}
 				{{#> state label="Одна вакансия" bg="page"}}
 					<div class="container page-inner">{{> sections/career/VacancyList/VacancyList props=data.careerListOne}}</div>
 				{{/state}}
-				{{#> state label="Пусто (выбраны фильтры)" bg="page"}}
+				{{#> state label="Пусто" bg="page"}}
 					<div class="container page-inner">{{> sections/career/VacancyList/VacancyList props=data.careerListEmpty}}</div>
 				{{/state}}
-				{{#> state label="Длинный контент" bg="page"}}
+				{{#> state label="Длинный текст" bg="page"}}
 					<div class="container page-inner">{{> sections/career/VacancyList/VacancyList props=data.careerListLong}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, фильтры, сортировка и страницы — обычные GET-переходы"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="vacancy-filters" group="Карьера" title="Фильтры вакансий" how='С 1024 — карточка, выбор применяется сразу; до 1024 — панель на весь экран с «Показать N вакансий». «Показать ещё N» раскрывает группу; пункт с 0 вакансий неактивен.' backend='Число в «Показать N вакансий» — с сервера, в витрине имитация.' figma='4607:523, пункт — Doc/Checkbox (4528:212)'}}
+			{{#> story id="vacancy-filters" group="Карьера" title="Фильтры вакансий" how='С 1024 — карточка, выбор применяется сразу; до 1024 — панель на весь экран с «Показать N вакансий». «Показать ещё N» раскрывает группу; пункт с 0 вакансий неактивен.' figma='4607:523, пункт — Doc/Checkbox (4528:212)' backend='app/components/sections/career/VacancyFilters/VacancyFilters.hbs · docs/contracts/career.md — число вакансий считает сервер'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container"><div class="story-column-narrow">{{> sections/career/VacancyFilters/VacancyFilters props=data.vacancyFilters}}</div></div>
 				{{/state}}
-				{{#> state label="Выбраны (в т. ч. за «Показать ещё»), длинное название" bg="page"}}
+				{{#> state label="Выбраны" bg="page"}}
 					<div class="container"><div class="story-column-narrow">{{> sections/career/VacancyFilters/VacancyFilters props=data.vacancyFiltersChecked}}</div></div>
 				{{/state}}
 				{{#> state label="Пусто" note="групп нет — блок не выводится, кнопки «Фильтры» в списке тоже нет (бэк не передаёт filtersId)"}}{{/state}}
-				{{#> state label="Панель до 1024 (на странице — на весь экран, здесь — на месте)" bg="page"}}
+				{{#> state label="Панель на мобильном" bg="page"}}
 					<div class="container"><div class="story-column-narrow">{{> sections/career/VacancyFilters/VacancyFilters props=data.vacancyFiltersStatic}}</div></div>
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="career-steps" group="Карьера" title="Как это работает" how='На мобильном — плашка BG.Info под списком.' backend='Шаги правит админ.' figma='4588:456'}}
+			{{#> story id="career-steps" group="Карьера" title="Как это работает" how='На мобильном — плашка BG.Info под списком.' figma='4588:456' backend='app/components/sections/career/CareerSteps/CareerSteps.hbs · docs/contracts/career.md — шаги правит админ'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container"><div class="story-column-narrow">{{> sections/career/CareerSteps/CareerSteps props=data.careerSteps}}</div></div>
 				{{/state}}
@@ -525,7 +524,7 @@
 				{{#> state label="Пусто" note="шагов нет — блок не выводится"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="vacancy-modal" group="Карьера" title="Окно вакансии" how='Слева должность, метки, параметры и «Откликнуться» (открывает заявку), справа описание из редактора. До 768 — шторка в одну колонку.' figma='4590:510'}}
+			{{#> story id="vacancy-modal" group="Карьера" title="Окно вакансии" how='Слева должность, метки, параметры и «Откликнуться» (открывает заявку), справа описание из редактора. До 768 — шторка в одну колонку.' figma='4590:510' backend='app/components/sections/career/VacancyModal/VacancyModal.hbs · docs/contracts/career.md — описание из редактора'}}
 				{{#> state label="Сотрудник" bg="page"}}
 					{{> sections/career/VacancyModal/VacancyModal props=data.vacancyModal list=data.vacancyModalList}}
 				{{/state}}
@@ -537,14 +536,14 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="vacancy-apply" group="Карьера" title="Заявка на вакансию" how='Телефон обязателен; резюме — PDF или DOC до 5 МБ, проверка при отправке.' backend='Данные из профиля — с бэка. В витрине сервер имитируется: телефон с «111» — ошибка поля, «сбой» в сообщении — общая ошибка.' figma='4593:587, «Заявка принята» 4593:647'}}
+			{{#> story id="vacancy-apply" group="Карьера" title="Заявка на вакансию" how='Телефон обязателен; резюме — PDF или DOC до 5 МБ, проверка при отправке.' figma='4593:587, «Заявка принята» 4593:647' backend='app/components/sections/career/VacancyApply/VacancyApply.hbs · docs/contracts/career.md — данные из профиля, резюме до 5 МБ'}}
 				{{#> state label="Форма" bg="page"}}
 					{{> sections/career/VacancyApply/VacancyApply props=data.vacancyApplyStatic}}
 				{{/state}}
 				{{#> state label="Заявка принята" bg="page"}}
 					{{> sections/career/VacancyApply/VacancyApply props=data.vacancyApplySuccess}}
 				{{/state}}
-				{{#> state label="Живое окно"}}
+				{{#> state label="Вживую"}}
 					<div class="story-row">
 						{{> components/Button/Button props=(obj text="Откликнуться" variant="general" size="m" attrs=(obj data-modal-open="vacancy-apply" data-vacancy-apply="101" data-vacancy-apply-title="Провизор / фармацевт · ЛибертФарм, Минск"))}}
 					</div>
@@ -553,81 +552,81 @@
 				{{#> state label="Ошибка" note="в живом окне: пустой телефон, неверный номер, файл не того типа или больше 5 МБ, без согласия; телефон с «111» или «сбой» в сообщении"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="toast" group="Компоненты" title="Тост" how='Внизу экрана по центру (на мобильном — над нижней панелью), 2,5 с, новый заменяет текущий.' backend='Бэк вызывает событием ui:toast или заготовкой в разметке (data-module="Toast") — docs/contracts/toast.md.' figma='кит: Quick info (2543:906)'}}
-				{{#> state label="Живой: как вызывает бэк"}}
+			{{#> story id="toast" group="Компоненты" title="Тост" how='Внизу экрана по центру (на мобильном — над нижней панелью), 2,5 с, новый заменяет текущий.' figma='кит: Quick info (2543:906)' backend='app/components/components/Toast/Toast.hbs · docs/contracts/toast.md — событие ui:toast или заготовка в разметке'}}
+				{{#> state label="Вживую"}}
 					<div class="story-row">
 						{{> components/Button/Button props=(obj text="Событием ui:toast (ok)" variant="light" size="s" attrs=(obj data-demo-toast="event" data-demo-toast-type="ok" data-demo-toast-text="Документ сохранён"))}}
 						{{> components/Button/Button props=(obj text="Разметкой (error)" variant="light" size="s" attrs=(obj data-demo-toast="markup" data-demo-toast-type="error" data-demo-toast-text="Не удалось сохранить"))}}
 						{{> components/Button/Button props=(obj text="Разметкой (info)" variant="light" size="s" attrs=(obj data-demo-toast="markup" data-demo-toast-type="info" data-demo-toast-text="Это нейтральное событие."))}}
 					</div>
 				{{/state}}
-				{{#> state label="Ok"}}<div class="story-row">{{> components/Toast/Toast props=(obj type="ok" text="Ссылка скопирована" static=true)}}</div>{{/state}}
+				{{#> state label="Успех"}}<div class="story-row">{{> components/Toast/Toast props=(obj type="ok" text="Ссылка скопирована" static=true)}}</div>{{/state}}
 				{{#> state label="Ошибка"}}<div class="story-row">{{> components/Toast/Toast props=(obj type="error" text="Не удалось скопировать ссылку" static=true)}}</div>{{/state}}
 				{{#> state label="Нейтральный"}}<div class="story-row">{{> components/Toast/Toast props=(obj type="info" text="Это нейтральное событие." static=true)}}</div>{{/state}}
 				{{#> state label="Длинный текст"}}<div class="story-row">{{> components/Toast/Toast props=(obj type="error" text="Не удалось скопировать ссылку: браузер запретил доступ к буферу обмена. Скопируйте адрес из строки браузера." static=true)}}</div>{{/state}}
 				{{#> state label="Пусто" note="не применимо: тост без текста не показывается"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="album-list" page="gallery" group="Галерея" title="Список альбомов" how='Главный альбом и сетка: 3 в ряд с 1280, 2 — с 768, 1 — уже. До 1024 — без белой карточки.' figma='PC.Gallery — A. Список альбомов (4682:25610)'}}
+			{{#> story id="album-list" page="gallery" group="Галерея" title="Список альбомов" how='Главный альбом и сетка: 3 в ряд с 1280, 2 — с 768, 1 — уже. До 1024 — без белой карточки.' figma='PC.Gallery — A. Список альбомов (4682:25610)' backend='app/components/sections/gallery/AlbumList/AlbumList.hbs · docs/contracts/gallery.md'}}
 				{{#> state label="Обычное" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumList/AlbumList props=data.albumList}}</div>{{/state}}
-				{{#> state label="Без главного альбома, два альбома" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumList/AlbumList props=data.albumListNoFeatured}}</div>{{/state}}
-				{{#> state label="Длинные названия, большое число фото, альбом без обложки" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumList/AlbumList props=data.albumListLong}}</div>{{/state}}
+				{{#> state label="Без главного" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumList/AlbumList props=data.albumListNoFeatured}}</div>{{/state}}
+				{{#> state label="Длинный текст" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumList/AlbumList props=data.albumListLong}}</div>{{/state}}
 				{{#> state label="Пусто" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumList/AlbumList props=data.albumListEmpty}}</div>{{/state}}
 				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, год, сортировка и страницы — обычные GET-переходы"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="gallery-years" page="gallery" group="Галерея" title="Альбомы по годам" how='С 1024 — карточка слева со ссылками и числом альбомов; уже — «таблетки» с прокруткой вбок.' figma='4682:25616'}}
+			{{#> story id="gallery-years" page="gallery" group="Галерея" title="Альбомы по годам" how='С 1024 — карточка слева со ссылками и числом альбомов; уже — «таблетки» с прокруткой вбок.' figma='4682:25616' backend='app/components/sections/gallery/GalleryYears/GalleryYears.hbs · docs/contracts/gallery.md'}}
 				{{#> state label="Обычное" bg="page"}}<div class="container page-inner"><div class="story-column-narrow">{{> sections/gallery/GalleryYears/GalleryYears props=data.galleryYears}}</div></div>{{/state}}
 				{{#> state label="Один пункт" bg="page"}}<div class="container page-inner"><div class="story-column-narrow">{{> sections/gallery/GalleryYears/GalleryYears props=data.galleryYearsOne}}</div></div>{{/state}}
 				{{#> state label="Пусто" note="пунктов нет — блок не выводится"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="album-card" page="gallery" group="Галерея" title="Карточка альбома" how='Обложка 3:2 со счётчиком фото, название до 2 строк, дата.' figma='Album card (4682:25672)'}}
-				{{#> state label="Обычная и без обложки (заготовка), длинное название"}}<div class="story-row">{{> sections/gallery/AlbumCard/AlbumCard props=data.albumCard}}{{> sections/gallery/AlbumCard/AlbumCard props=data.albumCardNoCover}}</div>{{/state}}
+			{{#> story id="album-card" page="gallery" group="Галерея" title="Карточка альбома" how='Обложка 3:2 со счётчиком фото, название до 2 строк, дата.' figma='Album card (4682:25672)' backend='app/components/sections/gallery/AlbumCard/AlbumCard.hbs · docs/contracts/gallery.md'}}
+				{{#> state label="Варианты"}}<div class="story-row">{{> sections/gallery/AlbumCard/AlbumCard props=data.albumCard}}{{> sections/gallery/AlbumCard/AlbumCard props=data.albumCardNoCover}}</div>{{/state}}
 			{{/story}}
 
-			{{#> story id="album-hero" page="gallery" group="Галерея" title="Шапка альбома" how='Обложка с затемнением, название, дата, число фото, описание; «Нравится», «Скачать альбом», «Скопировать ссылку».' figma='Album hero (4682:25790)'}}
+			{{#> story id="album-hero" page="gallery" group="Галерея" title="Шапка альбома" how='Обложка с затемнением, название, дата, число фото, описание; «Нравится», «Скачать альбом», «Скопировать ссылку».' figma='Album hero (4682:25790)' backend='app/components/sections/gallery/AlbumHero/AlbumHero.hbs · docs/contracts/gallery.md — размер архива для «Скачать»'}}
 				{{#> state label="Обычное" bg="page"}}<div class="container">{{> sections/gallery/AlbumHero/AlbumHero props=data.albumHero}}</div>{{/state}}
-				{{#> state label="Минимум: без обложки, описания, лайков и архива" bg="page"}}<div class="container">{{> sections/gallery/AlbumHero/AlbumHero props=data.albumHeroMin}}</div>{{/state}}
-				{{#> state label="Длинное название и описание, отмечено «Нравится»" bg="page"}}<div class="container">{{> sections/gallery/AlbumHero/AlbumHero props=data.albumHeroLong}}</div>{{/state}}
+				{{#> state label="Минимум" bg="page"}}<div class="container">{{> sections/gallery/AlbumHero/AlbumHero props=data.albumHeroMin}}</div>{{/state}}
+				{{#> state label="Длинный текст" bg="page"}}<div class="container">{{> sections/gallery/AlbumHero/AlbumHero props=data.albumHeroLong}}</div>{{/state}}
 			{{/story}}
 
-			{{#> story id="album-photos" page="gallery" group="Галерея" title="Фото альбома и просмотр" how='Сетка: 4 в ряд с 1280, 3 — с 768, 2 — уже. Нажатие на фото — просмотр: листается весь альбом, «Нравится» синхронно с сеткой.' backend='«Показать ещё N фото» — порциями из JSON альбома.' figma='Content (4682:25799), просмотр — 4682:25854'}}
-				{{#> state label="Обычное (нажмите на фото)" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumPhotos/AlbumPhotos props=data.albumPhotos}}</div>{{/state}}
+			{{#> story id="album-photos" page="gallery" group="Галерея" title="Фото альбома" how='Сетка: 4 в ряд с 1280, 3 — с 768, 2 — уже. Нажатие на фото — просмотр: листается весь альбом, «Нравится» синхронно с сеткой. В «Обычном» нажмите на фото — откроется просмотр.' figma='Content (4682:25799), просмотр — 4682:25854' backend='app/components/sections/gallery/AlbumPhotos/AlbumPhotos.hbs · docs/contracts/gallery.md — остальные фото порциями из JSON'}}
+				{{#> state label="Обычное" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumPhotos/AlbumPhotos props=data.albumPhotos}}</div>{{/state}}
 				{{#> state label="Одно фото" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumPhotos/AlbumPhotos props=data.albumPhotosOne}}</div>{{/state}}
 				{{#> state label="Пусто" bg="page"}}<div class="container page-inner">{{> sections/gallery/AlbumPhotos/AlbumPhotos props=data.albumPhotosEmpty}}</div>{{/state}}
 				{{#> state label="Загрузка" note="фото грузятся лениво, под каждым — заготовка; просмотр показывает миниатюру, пока грузится большое фото"}}{{/state}}
 				{{#> state label="Ошибка" note="фото не загрузилось — в сетке заготовка, в просмотре «Не удалось загрузить фото»; «Нравится» не сохранилось — отметка откатывается, сообщение для скринридера"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="documents-list" page="documents" group="Библиотека" title="Документы — список" how='Колонки «Название» и «Обновлён» с 1280, уже дата под названием. До 1024 — без карточки: поле «Папка», «Фильтры · N» и сортировка полем.' figma='PC.Library (4526:83), состояния 4531:543, 360 — 4967:809'}}
+			{{#> story id="documents-list" page="documents" group="Библиотека" title="Список документов" how='Колонки «Название» и «Обновлён» с 1280, уже дата под названием. До 1024 — без карточки: поле «Папка», «Фильтры · N» и сортировка полем. Состояние «Поиск» — по макету 4532:794, на странице не выводится: места в макете нет.' figma='PC.Library (4526:83), состояния 4531:543, 360 — 4967:809' backend='app/components/sections/documents/DocumentsList/DocumentsList.hbs · docs/contracts/documents.md'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container page-inner">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsList}}</div>
 				{{/state}}
 				{{#> state label="Один документ" bg="page"}}
 					<div class="container page-inner">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListOne}}</div>
 				{{/state}}
-				{{#> state label="Применены фильтры (чипы)" bg="page"}}
+				{{#> state label="С фильтрами" bg="page"}}
 					<div class="container page-inner">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListFiltered}}</div>
 				{{/state}}
-				{{#> state label="Поиск (макет состояний 4532:794; на странице не выводится — места в макете нет)" bg="page"}}
+				{{#> state label="Поиск" bg="page"}}
 					<div class="container page-inner">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListSearch}}</div>
 				{{/state}}
-				{{#> state label="Пусто: ничего не найдено" bg="page"}}
+				{{#> state label="Ничего не найдено" bg="page"}}
 					<div class="container page-inner">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListEmpty}}</div>
 				{{/state}}
-				{{#> state label="Пусто: в папке нет документов" bg="page"}}
+				{{#> state label="Пустая папка" bg="page"}}
 					<div class="container page-inner">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListFolderEmpty}}</div>
 				{{/state}}
-				{{#> state label="Длинное: название, компания; другой тип файла" bg="page"}}
+				{{#> state label="Длинный текст" bg="page"}}
 					<div class="container page-inner">{{> sections/documents/DocumentsList/DocumentsList props=data.documentsListLong}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, фильтры, поиск, сортировка и страницы — обычные GET-переходы"}}{{/state}}
 				{{#> state label="Ошибка" note="не применимо: ошибку загрузки страницы показывает сервер. Не скопировалась ссылка — сообщение для скринридера, галочки и тоста нет"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="document-row" page="documents" group="Библиотека" title="Строка документа" how='Наведение — фон BG.Info, у кнопок подсказки. «Скопировать ссылку» — галочка на 2 с и тост. До 768 — кнопки столбиком.' figma='Doc/Row (4526:29793), 360 — 4967:831'}}
-				{{#> state label="Строки (наведите на кнопки, нажмите «Скопировать ссылку»)"}}
+			{{#> story id="document-row" page="documents" group="Библиотека" title="Строка документа" how='Наведение — фон BG.Info, у кнопок подсказки. «Скопировать ссылку» — галочка на 2 с и тост. До 768 — кнопки столбиком. В «Строках» наведите на кнопки и нажмите «Скопировать ссылку».' figma='Doc/Row (4526:29793), 360 — 4967:831' backend='app/components/sections/documents/DocumentRow/DocumentRow.hbs · docs/contracts/documents.md'}}
+				{{#> state label="Строки"}}
 					<div class="container"><ul class="documents-list__rows" role="list">{{#each data.documentRows}}{{> sections/documents/DocumentRow/DocumentRow props=this}}{{/each}}</ul></div>
 				{{/state}}
 				{{#> state label="Типы файлов"}}
@@ -642,42 +641,42 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="documents-folders" page="documents" group="Библиотека" title="Папки документов" how='Шеврон раскрывает подпапки, текущая подсвечена. До 1024 — панель на весь экран по полю «Папка»; в витрине — на месте.' figma='4528:218, пункт Doc/Tree item (4528:200), 360 — 4967:44140'}}
+			{{#> story id="documents-folders" page="documents" group="Библиотека" title="Папки документов" how='Шеврон раскрывает подпапки, текущая подсвечена. До 1024 — панель на весь экран по полю «Папка»; в витрине — на месте.' figma='4528:218, пункт Doc/Tree item (4528:200), 360 — 4967:44140' backend='app/components/sections/documents/DocumentsFolders/DocumentsFolders.hbs · docs/contracts/documents.md — текущую папку отмечает бэк'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFolders/DocumentsFolders props=data.documentsFolders}}</div></div>
 				{{/state}}
 				{{#> state label="Одна папка" bg="page"}}
 					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFolders/DocumentsFolders props=data.documentsFoldersOne}}</div></div>
 				{{/state}}
-				{{#> state label="Длинные названия, три уровня, большие числа" bg="page"}}
+				{{#> state label="Длинный текст" bg="page"}}
 					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFolders/DocumentsFolders props=data.documentsFoldersLong}}</div></div>
 				{{/state}}
 				{{#> state label="Пусто" note="папок нет — блок не выводится"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="documents-filters" page="documents" group="Библиотека" title="Фильтры документов" how='С 1024 выбор применяется сразу; до 1024 — панель на весь экран с «Показать N документов». «Год публикации» из макета убран.' figma='4528:304, выбранные — 4531:548, 360 — 4967:44254'}}
-				{{#> state label="Обычное (на мобильном — панель на месте)" bg="page"}}
+			{{#> story id="documents-filters" page="documents" group="Библиотека" title="Фильтры документов" how='С 1024 выбор применяется сразу; до 1024 — панель на весь экран с «Показать N документов». «Год публикации» из макета убран.' figma='4528:304, выбранные — 4531:548, 360 — 4967:44254' backend='app/components/sections/documents/DocumentsFilters/DocumentsFilters.hbs · docs/contracts/documents.md'}}
+				{{#> state label="Обычное" bg="page"}}
 					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFilters/DocumentsFilters props=data.documentsFilters}}</div></div>
 				{{/state}}
-				{{#> state label="Выбраны (в т. ч. за «Показать ещё»)" bg="page"}}
+				{{#> state label="Выбраны" bg="page"}}
 					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFilters/DocumentsFilters props=data.documentsFiltersChecked}}</div></div>
 				{{/state}}
-				{{#> state label="Варианты без документов — неактивные" bg="page"}}
+				{{#> state label="Неактивные" bg="page"}}
 					<div class="container"><div class="story-column-narrow">{{> sections/documents/DocumentsFilters/DocumentsFilters props=data.documentsFiltersZero}}</div></div>
 				{{/state}}
 				{{#> state label="Пусто" note="групп нет — блок не выводится, кнопки «Фильтры» в списке тоже нет"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="sort-menu" group="Новости" title="Сортировка списка" how='Где: новости, журнал, вакансии. Текущий порядок текстом со стрелкой, по клику — список. До 768 — нижний лист с затемнением. Закрывают Esc, ×, клик мимо.' backend='Пункты — обычные ссылки.' figma='PC.News 4467:758, список — 4706:1207'}}
+			{{#> story id="sort-menu" group="Новости" title="Сортировка списка" how='Где: новости, журнал, вакансии. Текущий порядок текстом со стрелкой, по клику — список. До 768 — нижний лист с затемнением. Закрывают Esc, ×, клик мимо. «Полем» — sort-menu--field, до 1024, как в макете 360.' figma='PC.News 4467:758, список — 4706:1207' backend='app/components/components/SortMenu/SortMenu.hbs — пункты обычные ссылки'}}
 				{{#> state label="Два варианта" bg="page"}}<div class="container"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenu}}</div></div>{{/state}}
 				{{#> state label="Три варианта" bg="page"}}<div class="container"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenuThree}}</div></div>{{/state}}
-				{{#> state label="Один вариант — без меню" bg="page"}}<div class="container"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenuOne}}</div></div>{{/state}}
-				{{#> state label="Поле (sort-menu--field), до 1024 — как в макете 360" bg="page"}}<div class="container"><div class="story-column-narrow">{{> components/SortMenu/SortMenu props=(obj id="sort-menu-field" label=data.sortMenu.label options=data.sortMenu.options class="sort-menu--field")}}</div></div>{{/state}}
+				{{#> state label="Один вариант" bg="page"}}<div class="container"><div class="story-row story-row--end">{{> components/SortMenu/SortMenu props=data.sortMenuOne}}</div></div>{{/state}}
+				{{#> state label="Полем" bg="page"}}<div class="container"><div class="story-column-narrow">{{> components/SortMenu/SortMenu props=(obj id="sort-menu-field" label=data.sortMenu.label options=data.sortMenu.options class="sort-menu--field")}}</div></div>{{/state}}
 				{{#> state label="Пусто" note="вариантов нет — блок не выводится"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="news-list" group="Новости" title="Лента раздела" how='Карточки как на главной. До 1024 — категории «таблетками», поля «Год» и сортировки, 2 колонки.' backend='filters — те же данные, что у фильтров слева.' figma='PC.News (4467:758), 360 — 4963:43392'}}
-				{{#> state label="Обычное (с фильтрами — видны до 1024)" bg="page"}}
+			{{#> story id="news-list" group="Новости" title="Лента раздела" how='Карточки как на главной. До 1024 — категории «таблетками», поля «Год» и сортировки, 2 колонки.' figma='PC.News (4467:758), 360 — 4963:43392' backend='app/components/sections/news/NewsList/NewsList.hbs · docs/contracts/news-list.md — filters те же, что у фильтров слева'}}
+				{{#> state label="Обычное" bg="page"}}
 					<div class="container page-inner"><div class="page-columns page-columns--start">{{> sections/news/NewsList/NewsList props=data.newsList filters=data.newsFilters}}</div></div>
 				{{/state}}
 				{{#> state label="Без фильтров" bg="page"}}
@@ -689,13 +688,13 @@
 				{{#> state label="Пусто" bg="page"}}
 					<div class="container page-inner"><div class="page-columns page-columns--start">{{> sections/news/NewsList/NewsList props=data.newsListEmpty}}</div></div>
 				{{/state}}
-				{{#> state label="Длинный контент" bg="page"}}
+				{{#> state label="Длинный текст" bg="page"}}
 					<div class="container page-inner"><div class="page-columns page-columns--start">{{> sections/news/NewsList/NewsList props=data.newsListLong}}</div></div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, переход по страницам и фильтрам — обычные ссылки"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="journal-list" group="Новости" title="Журнал" how='Обложки 1:1, «Читать», «Скачать · размер», «Нравится». С 1280 — 3 в ряд, 1024–1279 — 2, планшет — 3, мобильный — 2.' backend='NewsList, card: journal.' figma='PC.Journal (4520:23829)'}}
+			{{#> story id="journal-list" group="Новости" title="Журнал" how='Обложки 1:1, «Читать», «Скачать · размер», «Нравится». С 1280 — 3 в ряд, 1024–1279 — 2, планшет — 3, мобильный — 2.' figma='PC.Journal (4520:23829)' backend='app/components/sections/news/NewsList/NewsList.hbs (card: journal) · docs/contracts/journal.md'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container page-inner">{{> sections/news/NewsList/NewsList props=data.journalList}}</div>
 				{{/state}}
@@ -705,26 +704,26 @@
 				{{#> state label="Пусто" bg="page"}}
 					<div class="container page-inner">{{> sections/news/NewsList/NewsList props=data.journalListEmpty}}</div>
 				{{/state}}
-				{{#> state label="Длинный контент" bg="page"}}
+				{{#> state label="Длинный текст" bg="page"}}
 					<div class="container page-inner">{{> sections/news/NewsList/NewsList props=data.journalListLong}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, страницы и фильтры — обычные ссылки"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="news-filters" group="Новости" title="Фильтры раздела" how='Десктоп — карточка слева; до 1024 на странице её нет — фильтры выводит лента. Сам блок до 1024 — «таблетки» с прокруткой вбок.' figma='PC.News (4467:758), Frame 369; 360 — 4963:43446'}}
+			{{#> story id="news-filters" group="Новости" title="Фильтры раздела" how='Десктоп — карточка слева; до 1024 на странице её нет — фильтры выводит лента. Сам блок до 1024 — «таблетки» с прокруткой вбок.' figma='PC.News (4467:758), Frame 369; 360 — 4963:43446' backend='app/components/sections/news/NewsFilters/NewsFilters.hbs · docs/contracts/news-list.md'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container page-inner"><div class="story-column-narrow">{{> sections/news/NewsFilters/NewsFilters props=data.newsFilters}}</div></div>
 				{{/state}}
-				{{#> state label="Только категории (новость, журнал)" bg="page"}}
+				{{#> state label="Только категории" bg="page"}}
 					<div class="container page-inner"><div class="story-column-narrow">{{> sections/news/NewsFilters/NewsFilters props=data.newsFiltersCategories}}</div></div>
 				{{/state}}
 				{{#> state label="Пусто" note="блок не выводится (ни категорий, ни годов)"}}{{/state}}
-				{{#> state label="Вертикальный баннер (с 1024)" bg="page"}}
+				{{#> state label="С баннером" bg="page"}}
 					<div class="container page-inner"><div class="story-column-narrow">{{> sections/shared/SideBanner/SideBanner props=data.sideBanner}}</div></div>
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="pagination" group="Компоненты" title="Постраничная навигация" how='До 768 сверху «Страница: N … Всего: N», ниже кнопки; дальние страницы скрыты.' figma='Pagination (3172:13909), 360 — 4962:6966'}}
+			{{#> story id="pagination" group="Компоненты" title="Постраничная навигация" how='До 768 сверху «Страница: N … Всего: N», ниже кнопки; дальние страницы скрыты.' figma='Pagination (3172:13909), 360 — 4962:6966' backend='app/components/components/Pagination/Pagination.hbs — одна страница: только «Всего»'}}
 				{{#> state label="Середина списка"}}
 					{{> components/Pagination/Pagination props=data.newsList.pagination}}
 				{{/state}}
@@ -733,7 +732,7 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="content" group="Новости" title="Текст из редактора" how='Таблица прокручивается вбок в своей рамке; details/summary — раскрывающийся блок.' backend='Модуль .content: HTML из редактора как есть, обёртки не нужны.'}}
+			{{#> story id="content" group="Новости" title="Текст из редактора" how='Таблица прокручивается вбок в своей рамке; details/summary — раскрывающийся блок.' backend='div.content — HTML из визуального редактора как есть, без обёрток'}}
 				{{#> state label="Обычное"}}
 					<div class="content" data-module="Content" data-path="components">{{{data.article.html}}}</div>
 				{{/state}}
@@ -741,7 +740,7 @@
 				{{#> state label="Загрузка" note="не применимо: HTML приходит с сервера готовым"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="gallery" group="Новости" title="Фотогалерея" how='Внутри новости. 1040×500, фото обрезается по cover. Одно фото — без стрелок и точек, пусто — блока нет.' figma='4652:12790'}}
+			{{#> story id="gallery" group="Новости" title="Фотогалерея" how='Внутри новости. 1040×500, фото обрезается по cover. Одно фото — без стрелок и точек, пусто — блока нет.' figma='4652:12790' backend='app/components/components/Gallery/Gallery.hbs · docs/contracts/news-article.md — одно фото без стрелок, пусто — блока нет'}}
 				{{#> state label="Несколько фото"}}
 					{{> components/Gallery/Gallery props=data.gallery}}
 				{{/state}}
@@ -751,41 +750,41 @@
 				{{#> state label="Пусто" note="блок не выводится"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="news-article" group="Новости" title="Новость" how='Карточка с 1024, на мобильном — без рамки. «Скопировать ссылку» — галочка на 2 с.' figma='PC.News article v2 (4652:12003)'}}
+			{{#> story id="news-article" group="Новости" title="Новость" how='Карточка с 1024, на мобильном — без рамки. «Скопировать ссылку» — галочка на 2 с.' figma='PC.News article v2 (4652:12003)' backend='app/components/sections/news/NewsArticle/NewsArticle.hbs · docs/contracts/news-article.md'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container page-inner"><div class="page-stack page-stack--article">{{> sections/news/NewsArticle/NewsArticle props=data.article}}</div></div>
 				{{/state}}
-				{{#> state label="Длинный заголовок, без обложки и галереи" bg="page"}}
+				{{#> state label="Без обложки" bg="page"}}
 					<div class="container page-inner"><div class="page-stack page-stack--article">{{> sections/news/NewsArticle/NewsArticle props=data.articleLong}}</div></div>
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="comments" group="Новости" title="Комментарии" backend='Дерево рисует скрипт по JSON-API — docs/contracts/comments.md. В витрине сервер имитируется: «ошибка» в тексте — отказ, «модерац» — «на модерации».' figma='4494:780 (компоненты и состояния 1–10)'}}
-				{{#> state label="Администратор: ветки, реакции, ⋯" bg="page"}}
+			{{#> story id="comments" group="Новости" title="Комментарии" figma='4494:780 (компоненты и состояния 1–10)' backend='app/components/sections/shared/Comments/Comments.hbs · docs/contracts/comments.md — дерево по JSON-API'}}
+				{{#> state label="Администратор" bg="page"}}
 					<div class="container page-inner"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-demo" url=data.comments.url entity=data.comments.entity entityId="demo")}}</div></div>
 				{{/state}}
-				{{#> state label="Сотрудник (без модерации)" bg="page"}}
+				{{#> state label="Сотрудник" bg="page"}}
 					<div class="container page-inner"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-user" url=data.comments.url entity=data.comments.entity entityId="user")}}</div></div>
 				{{/state}}
-				{{#> state label="Гость: только чтение" bg="page"}}
+				{{#> state label="Гость" bg="page"}}
 					<div class="container page-inner"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-guest" url=data.comments.url entity=data.comments.entity entityId="guest")}}</div></div>
 				{{/state}}
 				{{#> state label="Пусто" bg="page"}}
 					<div class="container page-inner"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-empty" url=data.comments.url entity=data.comments.entity entityId="empty")}}</div></div>
 				{{/state}}
-				{{#> state label="Комментарии отключены" bg="page"}}
+				{{#> state label="Отключены" bg="page"}}
 					<div class="container page-inner"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-disabled" url=data.comments.url entity=data.comments.entity entityId="disabled")}}</div></div>
 				{{/state}}
 				{{#> state label="Загрузка" bg="page"}}
 					<div class="container page-inner"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-loading" url=data.comments.url entity=data.comments.entity entityId="loading")}}</div></div>
 				{{/state}}
-				{{#> state label="Ошибка загрузки" bg="page"}}
+				{{#> state label="Ошибка" bg="page"}}
 					<div class="container page-inner"><div class="page-stack page-stack--article">{{> sections/shared/Comments/Comments props=(obj id="comments-fail" url=data.comments.url entity=data.comments.entity entityId="fail")}}</div></div>
 				{{/state}}
-				{{#> state label="Длинный контент" note="в «Администратор»: ветка в 4 уровня, текст с переносами, догрузка ответов и ленты"}}{{/state}}
+				{{#> state label="Длинный текст" note="в «Администратор»: ветка в 4 уровня, текст с переносами, догрузка ответов и ленты"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="site-search" group="Поиск" title="Поиск в шапке" how='Нажмите в поле: разделы и фильтры; с 2-го символа подсказки («иван», «ывапролд» — пусто), ↑↓ и Enter. До 1024 — на весь экран.' backend='Сервер в витрине имитируется.' figma='1920 — 4760:2199…4777:3705, 360 — 4786:2643'}}
+			{{#> story id="site-search" group="Поиск" title="Поиск в шапке" how='Нажмите в поле: разделы и фильтры; с 2-го символа подсказки («иван», «ывапролд» — пусто), ↑↓ и Enter. До 1024 — на весь экран.' figma='1920 — 4760:2199…4777:3705, 360 — 4786:2643' backend='app/components/layouts/SiteSearch/SiteSearch.hbs · docs/contracts/site-search.md — подсказки и фильтры с сервера'}}
 				{{#> state label="Пусто" bg="page"}}
 					<div class="story-search-field">{{> layouts/SiteSearch/SiteSearch props=site.search id="story-search"}}</div>
 				{{/state}}
@@ -795,8 +794,8 @@
 				{{#> state label="Загрузка, пусто, ошибка" note="в окне: скелетон фильтров при смене раздела, «По запросу … ничего не найдено», «Подсказки не загрузились — откройте все результаты»"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="search-result" group="Поиск" title="Результат поиска" how='Без картинки — заглушка по типу.' backend='Совпадения — в mark, экранирует бэк.' figma='Result — person / news / doc / other / vac'}}
-				{{#> state label="Сотрудник, новость, документ, прочее, вакансия"}}
+			{{#> story id="search-result" group="Поиск" title="Результат поиска" how='Без картинки — заглушка по типу.' figma='Result — person / news / doc / other / vac' backend='app/components/sections/search/SearchResult/SearchResult.hbs · docs/contracts/search.md — совпадения в mark, экранирует бэк'}}
+				{{#> state label="Все типы"}}
 					<ul class="search-results__list" role="list">
 						<li>{{> sections/search/SearchResult/SearchResult props=(lookup data.searchDirectory.results.items 0)}}</li>
 						<li>{{> sections/search/SearchResult/SearchResult props=(lookup data.searchDirectory.results.items 2)}}</li>
@@ -806,24 +805,24 @@
 						<li>{{> sections/search/SearchResult/SearchResult props=(lookup data.searchVacancies.results.items 0)}}</li>
 					</ul>
 				{{/state}}
-				{{#> state label="Длинный контент"}}
+				{{#> state label="Длинный текст"}}
 					<ul class="search-results__list" role="list">
 						<li>{{> sections/search/SearchResult/SearchResult props=(lookup data.searchResultsLong.items 0)}}</li>
 					</ul>
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="search-page" group="Поиск" title="Результаты поиска" how='С 1024 — сайдбар с разделами и фильтрами (применяются сразу); до 1024 — лента разделов и «Фильтры · N» с пересчётом «Показать N результатов».' figma='1920 — 4733:1650, 4779:3591, 4779:3855, 4779:4132, 4733:1908; 360 — 4790:3323…4790:4129'}}
+			{{#> story id="search-page" group="Поиск" title="Результаты поиска" how='С 1024 — сайдбар с разделами и фильтрами (применяются сразу); до 1024 — лента разделов и «Фильтры · N» с пересчётом «Показать N результатов».' figma='1920 — 4733:1650, 4779:3591, 4779:3855, 4779:4132, 4733:1908; 360 — 4790:3323…4790:4129' backend='app/components/sections/search/ · docs/contracts/search.md'}}
 				{{#> state label="Справочник" bg="page"}}
 					<div class="container page-inner"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchDirectory.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchDirectory.results}}</form></div>
 				{{/state}}
-				{{#> state label="Новости — период" bg="page"}}
+				{{#> state label="Новости" bg="page"}}
 					<div class="container page-inner"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchNews.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchNews.results}}</form></div>
 				{{/state}}
-				{{#> state label="Документы — тип и прочее" bg="page"}}
+				{{#> state label="Документы" bg="page"}}
 					<div class="container page-inner"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchDocs.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchDocs.results}}</form></div>
 				{{/state}}
-				{{#> state label="Вакансии — зарплата" bg="page"}}
+				{{#> state label="Вакансии" bg="page"}}
 					<div class="container page-inner"><form class="page-columns page-columns--start page-columns--gap-20" action="#" method="get">{{> sections/search/SearchFilters/SearchFilters props=data.searchVacancies.filters}}{{> sections/search/SearchResults/SearchResults props=data.searchVacancies.results}}</form></div>
 				{{/state}}
 				{{#> state label="Пусто" bg="page"}}
@@ -832,7 +831,7 @@
 				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера; фильтры применяются переходом, «Показать ещё» — кнопка в состоянии загрузки"}}{{/state}}
 				{{#> state label="Ошибка" note="страница поиска отдаётся бэком целиком; ошибка подсчёта в панели — на кнопке остаётся прошлое число"}}{{/state}}
 			{{/story}}
-			{{#> story id="photo-strip" page="holding-entity" group="Компоненты" title="Лента фото" how='Высота 400 (на 360 — 240, между — плавно). Листается пальцем, колесом и стрелками с 768. Фото открывает просмотр на весь экран.' figma='4821:864'}}
+			{{#> story id="photo-strip" page="holding-entity" group="Компоненты" title="Лента фото" how='Высота 400 (на 360 — 240, между — плавно). Листается пальцем, колесом и стрелками с 768. Фото открывает просмотр на весь экран.' figma='4821:864' backend='app/components/components/PhotoStrip/PhotoStrip.hbs · docs/contracts/holding.md — width/height у каждого фото'}}
 				{{#> state label="Несколько фото"}}
 					{{> components/PhotoStrip/PhotoStrip props=data.photoStrip}}
 				{{/state}}
@@ -843,39 +842,39 @@
 				{{#> state label="Загрузка" note="фото грузятся лениво: до загрузки — серая заготовка своей ширины (по width/height), лента не прыгает"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="holding-hero" page="holding" group="Холдинг" title="Шапка «Структуры холдинга»" how='С 1024 — заголовок и цифры слева, председатель справа; уже — друг под другом. Мобильного макета нет — наше.' figma='4814:1121'}}
+			{{#> story id="holding-hero" page="holding" group="Холдинг" title="Шапка раздела" how='С 1024 — заголовок и цифры слева, председатель справа; уже — друг под другом. Мобильного макета нет — наше.' figma='4814:1121' backend='app/components/sections/holding/HoldingHero/HoldingHero.hbs · docs/contracts/holding.md'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/HoldingHero/HoldingHero props=data.holdingHero}}</div>
 				{{/state}}
-				{{#> state label="Без карточки председателя" bg="page"}}
+				{{#> state label="Без председателя" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/HoldingHero/HoldingHero props=data.holdingHeroSolo}}</div>
 				{{/state}}
-				{{#> state label="Длинный контент" bg="page"}}
+				{{#> state label="Длинный текст" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/HoldingHero/HoldingHero props=data.holdingHeroLong}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: шапка приходит с сервера вместе со страницей"}}{{/state}}
 				{{#> state label="Пусто" note="не применимо: заголовок обязателен; без цифр и карточки — только заголовок"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="holding-entities" page="holding" group="Холдинг" title="Юрлица холдинга" how='С 1280 по 3 в ряд, с 768 по 2, на телефоне по одной; карточки ряда одной высоты.' backend='Брендов нет — «Бренды уточняются».' figma='4814:1146, карточка — 4814:1466'}}
+			{{#> story id="holding-entities" page="holding" group="Холдинг" title="Юрлица холдинга" how='С 1280 по 3 в ряд, с 768 по 2, на телефоне по одной; карточки ряда одной высоты.' figma='4814:1146, карточка — 4814:1466' backend='app/components/sections/holding/HoldingEntities/HoldingEntities.hbs · docs/contracts/holding.md'}}
 				{{#> state label="Несколько" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/HoldingEntities/HoldingEntities props=data.holdingEntities}}</div>
 				{{/state}}
 				{{#> state label="Одно" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/HoldingEntities/HoldingEntities props=data.holdingEntitiesOne}}</div>
 				{{/state}}
-				{{#> state label="Длинный контент" bg="page"}}
+				{{#> state label="Длинный текст" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/HoldingEntities/HoldingEntities props=data.holdingEntitiesLong}}</div>
 				{{/state}}
 				{{#> state label="Пусто" note="блок не выводится"}}{{/state}}
 				{{#> state label="Загрузка" note="не применимо: список приходит с сервера вместе со страницей (11 юрлиц — без догрузки)"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="entity-info" page="holding-entity" group="Холдинг" title="Юрлицо — карточка" how='Адрес, телефон, бренды, описание и лента фото; «Скрыть описание» сворачивает их. Без JS — всегда открыто.' backend='Описание — из редактора (.content).' figma='4821:790'}}
+			{{#> story id="entity-info" page="holding-entity" group="Холдинг" title="Карточка юрлица" how='Адрес, телефон, бренды, описание и лента фото; «Скрыть описание» сворачивает их. Без JS — всегда открыто.' figma='4821:790' backend='app/components/sections/holding/EntityInfo/EntityInfo.hbs · docs/contracts/holding.md — описание из редактора'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/EntityInfo/EntityInfo props=data.entityInfo}}</div>
 				{{/state}}
-				{{#> state label="Одно фото, короткое описание" bg="page"}}
+				{{#> state label="Мало данных" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/EntityInfo/EntityInfo props=data.entityInfoOnePhoto}}</div>
 				{{/state}}
 				{{#> state label="Без описания и фото" bg="page"}}
@@ -884,56 +883,56 @@
 				{{#> state label="Загрузка" note="не применимо: карточка приходит с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="brand-card" page="holding-entity" group="Холдинг" title="Бренд юрлица" how='Боковая колонка 350 с 1024; на планшете по две в ряд, на телефоне друг под другом.' figma='Brand 4821:1327'}}
+			{{#> story id="brand-card" page="holding-entity" group="Холдинг" title="Бренд юрлица" how='Боковая колонка 350 с 1024; на планшете по две в ряд, на телефоне друг под другом.' figma='Brand 4821:1327' backend='app/components/sections/holding/BrandCard/BrandCard.hbs · docs/contracts/holding.md'}}
 				{{#> state label="Бренды" bg="page"}}
 					<div class="container"><div class="page-aside-cards">{{#each data.entityBrands}}{{> sections/holding/BrandCard/BrandCard props=this}}{{/each}}</div></div>
 				{{/state}}
 				{{#> state label="Только название" bg="page"}}
 					<div class="container"><div class="page-aside-cards">{{> sections/holding/BrandCard/BrandCard props=data.entityBrandMin}}</div></div>
 				{{/state}}
-				{{#> state label="Длинный контент, без логотипа" bg="page"}}
+				{{#> state label="Длинный текст" bg="page"}}
 					<div class="container"><div class="page-aside-cards">{{> sections/holding/BrandCard/BrandCard props=data.entityBrandLong}}</div></div>
 				{{/state}}
 				{{#> state label="Пусто" note="брендов нет — боковой колонки нет, сотрудники встают под карточку юрлица"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="entity-staff" page="holding-entity" group="Холдинг" title="Сотрудники по отделам" how='Отдел раскрывается (работает без JS): название, до 5 фото, руководитель и число.' backend='Открытый отдел задаёт бэк.' figma='4821:875'}}
+			{{#> story id="entity-staff" page="holding-entity" group="Холдинг" title="Сотрудники по отделам" how='Отдел раскрывается (работает без JS): название, до 5 фото, руководитель и число.' figma='4821:875' backend='app/components/sections/holding/EntityStaff/EntityStaff.hbs · docs/contracts/holding.md — открытый отдел задаёт бэк'}}
 				{{#> state label="Несколько отделов" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/EntityStaff/EntityStaff props=data.entityStaff}}</div>
 				{{/state}}
 				{{#> state label="Один отдел" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/EntityStaff/EntityStaff props=data.entityStaffOne}}</div>
 				{{/state}}
-				{{#> state label="Длинный контент, без фото" bg="page"}}
+				{{#> state label="Длинный текст, без фото" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/EntityStaff/EntityStaff props=data.entityStaffLong}}</div>
 				{{/state}}
 				{{#> state label="Пусто" note="блок не выводится"}}{{/state}}
 				{{#> state label="Загрузка" note="не применимо: отделы приходят со страницей; если сотрудников тысячи — догрузка отдела при раскрытии (вопрос бэку, docs/contracts/holding.md)"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="employee-row" page="holding-entity" group="Холдинг" title="Сотрудник в списке" how='Вся строка — ссылка на карточку, телефон и e-mail — свои ссылки. С 1280 — в одну строку. Нет фото — инициалы.' figma='Employee 4821:1284'}}
-				{{#> state label="Руководитель и сотрудник"}}
+			{{#> story id="employee-row" page="holding-entity" group="Холдинг" title="Сотрудник в списке" how='Вся строка — ссылка на карточку, телефон и e-mail — свои ссылки. С 1280 — в одну строку. Нет фото — инициалы.' figma='Employee 4821:1284' backend='app/components/sections/holding/EmployeeRow/EmployeeRow.hbs · docs/contracts/holding.md'}}
+				{{#> state label="Обычное"}}
 					<ul class="employee-colleagues__list" role="list">{{#each data.employeeRows}}{{> sections/holding/EmployeeRow/EmployeeRow props=this}}{{/each}}</ul>
 				{{/state}}
-				{{#> state label="Длинный контент, без фото"}}
+				{{#> state label="Длинный текст, без фото"}}
 					<ul class="employee-colleagues__list" role="list">{{#each data.employeeRowsLong}}{{> sections/holding/EmployeeRow/EmployeeRow props=this}}{{/each}}</ul>
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="employee-profile" page="holding-employee" group="Холдинг" title="Карточка сотрудника" how='Единый стиль справочника, ЛК и CRM. Фото 160 (на 360 — 96), разделы «Контакты / Работа / Личное». Нет фото — инициалы.' figma='Employee card 4833:1187'}}
+			{{#> story id="employee-profile" page="holding-employee" group="Холдинг" title="Карточка сотрудника" how='Единый стиль справочника, ЛК и CRM. Фото 160 (на 360 — 96), разделы «Контакты / Работа / Личное». Нет фото — инициалы.' figma='Employee card 4833:1187' backend='app/components/sections/holding/EmployeeProfile/EmployeeProfile.hbs · docs/contracts/holding.md'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/EmployeeProfile/EmployeeProfile props=data.employeeProfile}}</div>
 				{{/state}}
-				{{#> state label="Без фото, один раздел" bg="page"}}
+				{{#> state label="Мало данных" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/EmployeeProfile/EmployeeProfile props=data.employeeProfileNoPhoto}}</div>
 				{{/state}}
-				{{#> state label="Длинный контент" bg="page"}}
+				{{#> state label="Длинный текст" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/EmployeeProfile/EmployeeProfile props=data.employeeProfileLong}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: карточка приходит с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="entity-brief" page="holding-employee" group="Холдинг" title="Юрлицо сотрудника" how='Боковая колонка карточки сотрудника: название, телефон, адрес, бренд, «Все сотрудники юр. лица →».' figma='Legal entity card 4833:1172'}}
+			{{#> story id="entity-brief" page="holding-employee" group="Холдинг" title="Юрлицо сотрудника" how='Боковая колонка карточки сотрудника: название, телефон, адрес, бренд, «Все сотрудники юр. лица →».' figma='Legal entity card 4833:1172' backend='app/components/sections/holding/EntityBrief/EntityBrief.hbs · docs/contracts/holding.md'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container"><div class="page-aside-cards">{{> sections/holding/EntityBrief/EntityBrief props=data.entityBrief}}</div></div>
 				{{/state}}
@@ -942,11 +941,11 @@
 				{{/state}}
 			{{/story}}
 
-			{{#> story id="employee-colleagues" page="holding-employee" group="Холдинг" title="Коллеги по подразделению" how='Заголовок и «Все N сотрудников →», ниже сотрудники.' figma='Colleagues 4833:1253'}}
+			{{#> story id="employee-colleagues" page="holding-employee" group="Холдинг" title="Коллеги по подразделению" how='Заголовок и «Все N сотрудников →», ниже сотрудники.' figma='Colleagues 4833:1253' backend='app/components/sections/holding/EmployeeColleagues/EmployeeColleagues.hbs · docs/contracts/holding.md'}}
 				{{#> state label="Несколько" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/EmployeeColleagues/EmployeeColleagues props=data.employeeColleagues}}</div>
 				{{/state}}
-				{{#> state label="Один, без ссылки «Все»" bg="page"}}
+				{{#> state label="Один" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/EmployeeColleagues/EmployeeColleagues props=data.employeeColleaguesOne}}</div>
 				{{/state}}
 				{{#> state label="Пусто" note="блок не выводится"}}{{/state}}
