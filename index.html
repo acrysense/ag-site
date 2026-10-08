@@ -54,9 +54,9 @@
 		<script type="module" crossorigin src="/ag-site/assets/js/pages-nav-Df9646uR.js"></script>
 		<script type="module" crossorigin src="/ag-site/assets/js/announce-D3OkgBby.js"></script>
 		<script type="module" crossorigin src="/ag-site/assets/js/icon-NLq4soTO.js"></script>
-		<script type="module" crossorigin src="/ag-site/assets/js/app-DxAXt7kL.js"></script>
+		<script type="module" crossorigin src="/ag-site/assets/js/app-nZ26ml8O.js"></script>
 		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/pages-nav--aTdp9SH.css" />
-		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-CK23SXGg.css" />
+		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-Bc3MGmyw.css" />
 	</head>
 	<body>
 		<div class="wrapper">
@@ -1272,7 +1272,7 @@
 						<h2 class="news-feed__title">Новости холдинга</h2>
 						<ul class="news-feed__list" role="list">
 							<li class="news-feed__item">
-								<article class="news-card">
+								<article class="news-card news-card--desktop">
 									<div class="news-card__media">
 										<img
 											class="news-card__image"
@@ -1324,7 +1324,7 @@
 								</article>
 							</li>
 							<li class="news-feed__item">
-								<article class="news-card">
+								<article class="news-card news-card--desktop">
 									<div class="news-card__media">
 										<img
 											class="news-card__image"
@@ -1374,7 +1374,7 @@
 								</article>
 							</li>
 							<li class="news-feed__item">
-								<article class="news-card">
+								<article class="news-card news-card--desktop">
 									<div class="news-card__media">
 										<img
 											class="news-card__image"
@@ -1421,7 +1421,7 @@
 								</article>
 							</li>
 							<li class="news-feed__item">
-								<article class="news-card">
+								<article class="news-card news-card--desktop">
 									<div class="news-card__media">
 										<img
 											class="news-card__image"
@@ -1470,7 +1470,7 @@
 								</article>
 							</li>
 							<li class="news-feed__item">
-								<article class="news-card">
+								<article class="news-card news-card--desktop">
 									<div class="news-card__media">
 										<img
 											class="news-card__image"
@@ -1522,7 +1522,7 @@
 								</article>
 							</li>
 							<li class="news-feed__item">
-								<article class="news-card">
+								<article class="news-card news-card--desktop">
 									<div class="news-card__media">
 										<img
 											class="news-card__image"
@@ -2175,9 +2175,18 @@
 
 			<div class="main-menu__content">
 				<div class="main-menu__login">
-					<p class="main-menu__login-title">Войдите в личный кабинет</p>
-					<p class="main-menu__login-text">CRM, мотивация, учебный портал и другие разделы — после входа</p>
-					<a class="btn btn--general btn--m main-menu__login-button" href="#"><span class="btn__text">Войти в ЛК</span></a>
+					<div class="main-menu__login-top">
+						<span class="main-menu__login-avatar" aria-hidden="true"
+							><svg class="icon main-menu__login-icon" aria-hidden="true" focusable="false">
+								<use href="/ag-site/assets/icons/sprite.svg#icon-profile"></use>
+							</svg>
+						</span>
+						<div class="main-menu__login-info">
+							<p class="main-menu__login-title">Войдите в личный кабинет</p>
+							<p class="main-menu__login-text">Чтобы открыть доступ к закрытым разделам портала</p>
+						</div>
+					</div>
+					<a class="btn btn--general btn--m main-menu__login-button" href="#"><span class="btn__text">Войти</span></a>
 				</div>
 
 				<p class="main-menu__label">Портал</p>
