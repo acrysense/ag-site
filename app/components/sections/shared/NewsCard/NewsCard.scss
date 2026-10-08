@@ -82,7 +82,8 @@
 			}
 		}
 
-		// Мобильный: дата над реакциями и линия снизу; десктоп: реакции слева, дата справа
+		// Мобильный: дата над реакциями и линия снизу; десктоп: реакции слева, дата справа (в узкой
+		// карточке не помещается — дата целиком на строку ниже, справа)
 		&__footer {
 			display: flex;
 			flex-direction: column;
@@ -92,21 +93,25 @@
 			border-bottom: 1px solid palette("grey");
 
 			@include up(desktop) {
-				flex-direction: row-reverse;
+				flex-flow: row wrap;
 				align-items: flex-end;
-				justify-content: space-between;
 				padding-bottom: 0;
 				border-bottom: 0;
 			}
 		}
 
+		// Дата не переносится посередине (узкие карточки на 1024)
 		&__date {
 			@include text("m-400");
 
+			flex: none;
 			color: palette("dark-grey-txt");
+			white-space: nowrap;
 
 			@include up(desktop) {
 				@include text("xs-400");
+
+				margin-left: auto;
 			}
 		}
 
@@ -115,6 +120,42 @@
 			z-index: 1;
 			display: flex;
 			gap: 10px;
+
+			@include up(desktop) {
+				order: -1;
+			}
+		}
+	}
+
+	// Вид как на десктопе на всех ширинах (лента «Новости холдинга» на главной): заголовок
+	// Card title в 2 строки, анонс M/400, реакции слева, дата XS/400 справа, без черты снизу
+	.news-card--desktop {
+		.news-card__title {
+			@include text("card-title");
+
+			min-height: 2lh;
+			-webkit-line-clamp: 2;
+		}
+
+		.news-card__excerpt {
+			@include text("m-400");
+		}
+
+		.news-card__footer {
+			flex-flow: row wrap;
+			align-items: flex-end;
+			padding-bottom: 0;
+			border-bottom: 0;
+		}
+
+		.news-card__date {
+			@include text("xs-400");
+
+			margin-left: auto;
+		}
+
+		.news-card__actions {
+			order: -1;
 		}
 	}
 

@@ -300,7 +300,7 @@
 				{{#> state label="Загрузка" note="не применимо: данные приходят с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="news-feed" group="Главная" title="Новости холдинга" how='На мобильном 6 карточек в 2 колонки, на десктопе 5 в ряд. Карточка кликабельна целиком.' figma='1920 — 4615:43032, 360 — 4865:1470' backend='app/components/sections/home/NewsFeed/ · docs/contracts/news-feed.md'}}
+			{{#> story id="news-feed" group="Главная" title="Новости холдинга" how='До 1024 — все карточки лентой (листается пальцем), вид карточки как на десктопе; с 1280 — 5 в ряд, 1024–1279 — 4. Карточка кликабельна целиком.' figma='1920 — 4615:43032, 360 — 4865:1470' backend='app/components/sections/home/NewsFeed/ · docs/contracts/news-feed.md'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container page-blocks">{{> sections/home/NewsFeed/NewsFeed props=data.news}}</div>
 				{{/state}}
@@ -334,7 +334,7 @@
 				{{#> state label="Длинный текст" note="не применимо: текст в картинке"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="leaders" group="Главная" title="Галерея живой заботы" how='Десктоп — карусель по 5 (по 4 до 1280), мобильный — первые 6 и «Показать все».' figma='1920 — 4615:43127, 360 — 4865:1668' backend='app/components/sections/home/Leaders/ · docs/contracts/leaders.md — скрытую вкладку не выводить'}}
+			{{#> story id="leaders" group="Главная" title="Галерея живой заботы" how='Десктоп — карусель по 5 (по 4 до 1280), до 1024 — лента карточек 220 и «Показать все».' figma='1920 — 4615:43127, 360 — 4865:1668' backend='app/components/sections/home/Leaders/ · docs/contracts/leaders.md — скрытую вкладку не выводить'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container page-blocks">{{> sections/home/Leaders/Leaders props=data.leaders}}</div>
 				{{/state}}
