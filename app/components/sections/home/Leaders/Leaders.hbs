@@ -3,8 +3,8 @@
 	url (все лидеры), allText, lists [{ title, items [человек] }] — вкладки «Лидеры месяца»,
 	«Фарм-лидеры». Человек: { url, name, position, image: { src, srcset }, award: { icon, text } }.
 	Скрытый список бэк не выводит; один список — без вкладок; пусто — блока нет.
-	Десктоп: карусель по 5 (с 1280) или 4 карточки, стрелки. Мобильный: первые 6 сеткой и
-	«Показать все». Контракт — docs/contracts/leaders.md.
+	Десктоп: карусель по 5 (с 1280) или 4 карточки, стрелки. До 1024: лента карточек 220,
+	листается пальцем, и «Показать все». Контракт — docs/contracts/leaders.md.
 --}}
 {{#if props.lists.length}}
     <section class="leaders">
@@ -23,7 +23,7 @@
                                 {{!-- Значок профиля всегда, фото поверх: нет фото или оно не загрузилось — значок --}}
                                 <span class="leaders__photo">
                                     {{> components/Icon/Icon name="profile" class="leaders__photo-icon"}}
-                                    {{#if image.src}}<img class="leaders__photo-img" src="{{image.src}}" {{#if image.srcset}}srcset="{{image.srcset}}" sizes="(min-width: 1024px) 300px, 50vw"{{/if}} width="300" height="300" alt="" loading="lazy" decoding="async" />{{/if}}
+                                    {{#if image.src}}<img class="leaders__photo-img" src="{{image.src}}" {{#if image.srcset}}srcset="{{image.srcset}}" sizes="(min-width: 1024px) 300px, 220px"{{/if}} width="300" height="300" alt="" loading="lazy" decoding="async" />{{/if}}
                                 </span>
                                 <span class="leaders__info">
                                     <span class="leaders__name">{{name}}</span>

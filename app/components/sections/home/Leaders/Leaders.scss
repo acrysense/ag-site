@@ -1,9 +1,9 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// 360: сетка 2 колонки, первые 6, круглые фото, «Показать все».
-// 1920: карусель по 5 карточек 300, фото со скруглением 10, заслуга под именем.
-// Планшет — сетка в 3 колонки; 1024–1279 — карусель по 4.
+// 360: лента карточек 220 через 10 (листается пальцем), фото со скруглением 10, имя L/500,
+// должность M/400, заслуга под ними, «Показать все». 1920: карусель по 5 карточек 300, стрелки.
+// Планшет — та же лента, что на мобильном; 1024–1279 — карусель по 4.
 $leaders-gap: 14.5px; // 1920: 5 карточек по 300 в 1558 — промежутки 14.5
 
 @layer components {
@@ -53,34 +53,19 @@ $leaders-gap: 14.5px; // 1920: 5 карточек по 300 в 1558 — пром�
 		}
 
 		&__track {
-			display: grid;
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-			gap: 20px 10px;
+			gap: 10px;
 			margin: 0;
 			padding: 0;
-			overflow: visible;
 			list-style: none;
 
-			@include up(tablet) {
-				grid-template-columns: repeat(3, minmax(0, 1fr));
-			}
-
 			@include up(desktop) {
-				display: flex;
 				gap: $leaders-gap;
-				overflow-x: auto;
 			}
 		}
 
 		&__item {
+			flex: 0 0 220px;
 			min-width: 0;
-
-			// На мобильном и планшете — первые 6
-			@include down(desktop) {
-				&:nth-child(n + 7) {
-					display: none;
-				}
-			}
 
 			@include up(desktop) {
 				flex: 0 0 calc((100% - #{$leaders-gap} * 3) / 4);
@@ -116,11 +101,7 @@ $leaders-gap: 14.5px; // 1920: 5 карточек по 300 в 1558 — пром�
 			overflow: hidden;
 			color: palette("icon-grey");
 			background: palette("bg-info");
-			border-radius: 50%;
-
-			@include up(desktop) {
-				border-radius: $radius-inner-block;
-			}
+			border-radius: $radius-inner-block;
 		}
 
 		&__photo-img {
@@ -167,18 +148,13 @@ $leaders-gap: 14.5px; // 1920: 5 карточек по 300 в 1558 — пром�
 			color: palette("dark-grey-txt");
 		}
 
-		// Заслуга — только на десктопе
 		&__award {
 			@include text("l-400");
 
-			display: none;
+			display: flex;
 			gap: 12px;
 			align-items: center;
 			justify-content: center;
-
-			@include up(desktop) {
-				display: flex;
-			}
 		}
 
 		&__award-icon {

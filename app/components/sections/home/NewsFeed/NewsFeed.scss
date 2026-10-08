@@ -1,6 +1,8 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
+// 360: заголовок H1, через 20 лента карточек 260 (вид как на десктопе), через 20 «Показать все»
+// L/400 Main Blue по центру. 1920: карточка с рамкой, 5 карточек в ряд.
 @layer components {
 	.news-feed {
 		display: grid;
@@ -22,23 +24,49 @@
 			color: palette("black-h");
 		}
 
-		// Мобильный: колонки от 165px (2 на 360); десктоп: ровно 5 в ряд
+		// До 1024 — лента карточек 260 через 10, листается пальцем с привязкой к карточке;
+		// 1024–1279 — 4 в ряд (в 5 колонок реакции и дата не помещаются в строку), с 1280 — 5
 		&__list {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
-			gap: 20px 10px;
+			display: flex;
+			gap: 10px;
 			margin: 0;
 			padding: 0;
+			overflow-x: auto;
+			overscroll-behavior-x: contain;
 			list-style: none;
+			scroll-snap-type: x mandatory;
+			scrollbar-width: none;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
 
 			@include up(desktop) {
-				grid-template-columns: repeat(5, minmax(0, 1fr));
+				display: grid;
+				grid-template-columns: repeat(4, minmax(0, 1fr));
 				gap: 15px;
+				overflow: visible;
+			}
+
+			@include up(wide) {
+				grid-template-columns: repeat(5, minmax(0, 1fr));
+			}
+		}
+
+		&__item {
+			flex: 0 0 260px;
+			min-width: 0;
+			scroll-snap-align: start;
+		}
+
+		&__item:nth-child(n + 5) {
+			@include only(desktop) {
+				display: none;
 			}
 		}
 
 		&__item:nth-child(n + 6) {
-			@include up(desktop) {
+			@include up(wide) {
 				display: none;
 			}
 		}

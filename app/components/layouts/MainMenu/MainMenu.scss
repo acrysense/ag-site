@@ -92,19 +92,53 @@
 		}
 
 		// Гость: карточка входа на месте профиля: заголовок, пояснение, кнопка во всю ширину
+		// Гость: белая карточка, поля 14, через 14 — строка (кружок 48 BG.Info со значком профиля 24,
+		// через 12 заголовок L/500 и пояснение S/400 Dark-grey.TXT через 4) и кнопка во всю ширину
 		&__login {
 			display: flex;
 			flex-direction: column;
-			gap: 4px;
+			gap: 14px;
 			padding: 14px;
 			background: palette("white");
 			border-radius: $radius-inner-block;
 		}
 
+		&__login-top {
+			display: flex;
+			gap: 12px;
+			align-items: center;
+		}
+
+		&__login-avatar {
+			display: flex;
+			flex: none;
+			align-items: center;
+			justify-content: center;
+			width: 48px;
+			height: 48px;
+			color: palette("black-txt");
+			background: palette("bg-info");
+			border-radius: 50%;
+		}
+
+		&__login-icon {
+			width: 24px;
+			height: 24px;
+		}
+
+		&__login-info {
+			display: flex;
+			flex: 1 1 auto;
+			flex-direction: column;
+			gap: 4px;
+			min-width: 0;
+		}
+
 		&__login-title {
-			@include text("m-500");
+			@include text("l-500-360");
 
 			margin: 0;
+			color: palette("black-txt");
 		}
 
 		&__login-text {
@@ -116,7 +150,6 @@
 
 		&__login-button {
 			width: 100%;
-			margin-top: 10px;
 		}
 
 		// Без фото — инициалы

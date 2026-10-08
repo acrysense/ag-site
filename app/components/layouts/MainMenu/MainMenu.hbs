@@ -35,9 +35,14 @@
         {{else if props.login}}
             {{!-- Гость: вместо профиля — вход --}}
             <div class="main-menu__login">
-                <p class="main-menu__login-title">{{props.login.title}}</p>
-                {{#if props.login.text}}<p class="main-menu__login-text">{{props.login.text}}</p>{{/if}}
-                {{> components/Button/Button props=(obj href=props.login.url text=(default props.login.button 'Войти в ЛК') variant="general" size="m" class="main-menu__login-button")}}
+                <div class="main-menu__login-top">
+                    <span class="main-menu__login-avatar" aria-hidden="true">{{> components/Icon/Icon name="profile" class="main-menu__login-icon"}}</span>
+                    <div class="main-menu__login-info">
+                        <p class="main-menu__login-title">{{props.login.title}}</p>
+                        {{#if props.login.text}}<p class="main-menu__login-text">{{props.login.text}}</p>{{/if}}
+                    </div>
+                </div>
+                {{> components/Button/Button props=(obj href=props.login.url text=(default props.login.button 'Войти') variant="general" size="m" class="main-menu__login-button")}}
             </div>
         {{/if}}
 

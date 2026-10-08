@@ -2,44 +2,56 @@
 @use "@/assets/styles/base/vars" as *;
 
 @layer components {
+	// Белый блок, поля 32/10, части через 20: заголовок H2 Main Blue, «Поздравляем сегодня» (строка 40,
+	// Main Blue) — аватары 40 в цветном кольце, «Ближайшие» (строка 30, Dark-grey.TXT) — аватары 30;
+	// строки 5/5, черта Form.Border под каждой с отступом 40; конфетти справа. С 1024 — карточка
+	// с рамкой и тенью, поля 20.
 	.birthdays {
+		position: relative;
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 20px;
 		min-width: 0;
 		padding: 32px 10px;
+		overflow: clip;
 		background: palette("white");
+		isolation: isolate;
 		container-type: inline-size;
 
-		// Десктоп: карточка с конфетти справа. Строки с белым фоном перекрывают конфетти —
-		// оно видно только в просветах. Конфетти — два слоя вперемешку
-		// (::before и ::after), под содержимым блока.
-		@include up(desktop) {
-			position: relative;
-			gap: 20px;
-			height: 100%;
-			padding: 20px;
-			overflow: clip;
-			background: palette("white");
-			border: 1px solid palette("block-border");
-			isolation: isolate;
+		// Конфетти справа (на мобильном — тот же рисунок у правого края). Строки с белым фоном
+		// перекрывают конфетти — оно видно только в просветах. Два слоя вперемешку (::before и
+		// ::after), под содержимым блока.
+		&::before,
+		&::after {
+			position: absolute;
+			top: -2px;
+			right: -2px;
+			z-index: -1;
+			width: 385px;
+			height: 520px;
+			pointer-events: none;
+			content: "";
+			background: url("@/assets/images/decor/birthdays-confetti-a.svg") no-repeat;
+		}
 
+		&::after {
+			background-image: url("@/assets/images/decor/birthdays-confetti-b.svg");
+		}
+
+		// До 1024 конфетти только сверху (до 110) и внизу (с 455), как в макете 360: середина рисунка
+		// пришлась бы на подзаголовки
+		@include down(desktop) {
 			&::before,
 			&::after {
-				position: absolute;
-				top: -2px;
-				right: -2px;
-				z-index: -1;
-				width: 385px;
-				height: 520px;
-				pointer-events: none;
-				content: "";
-				background: url("@/assets/images/decor/birthdays-confetti-a.svg") no-repeat;
+				mask-image: linear-gradient(#000 112px, transparent 112px 452px, #000 452px);
 			}
+		}
 
-			&::after {
-				background-image: url("@/assets/images/decor/birthdays-confetti-b.svg");
-			}
+		// Десктоп: карточка
+		@include up(desktop) {
+			height: 100%;
+			padding: 20px;
+			border: 1px solid palette("block-border");
 			border-radius: $radius-content-block;
 			box-shadow: $shadow-content-block;
 		}
@@ -47,11 +59,7 @@
 		&__title {
 			@include text("h2");
 
-			color: palette("black-h");
-
-			@include up(desktop) {
-				color: palette("main-blue");
-			}
+			color: palette("main-blue");
 		}
 
 		// Заголовок — ссылка на страницу дней рождения, без «→» (стрелка убрана по
@@ -76,11 +84,7 @@
 		&__body {
 			display: flex;
 			flex-direction: column;
-			gap: 16px;
-
-			@include up(desktop) {
-				gap: 20px;
-			}
+			gap: 20px;
 
 			// Блок во всю ширину (планшет, десктоп 1024–1279) — группы рядом
 			@container (min-width: 640px) {
@@ -94,11 +98,6 @@
 		&__group {
 			display: flex;
 			flex-direction: column;
-			gap: 16px;
-
-			@include up(desktop) {
-				gap: 0;
-			}
 		}
 
 		&__subtitle {
@@ -106,67 +105,42 @@
 
 			display: flex;
 			align-items: center;
+			min-height: 30px;
 			color: palette("dark-grey-txt");
-
-			@include up(desktop) {
-				min-height: 30px;
-			}
 		}
 
 		&__group--today &__subtitle {
-			@include up(desktop) {
-				min-height: 40px;
-				color: palette("main-blue");
-			}
+			min-height: 40px;
+			color: palette("main-blue");
 		}
 
 		// Группы рядом — подзаголовки одной высоты, чтобы строки не съезжали
 		@container (min-width: 640px) {
 			&__group--upcoming &__subtitle {
-				@include up(desktop) {
-					min-height: 40px;
-				}
+				min-height: 40px;
 			}
 		}
 
 		&__list {
 			display: flex;
 			flex-direction: column;
-			gap: 16px;
 			margin: 0;
 			padding: 0;
 			list-style: none;
-
-			@include up(desktop) {
-				gap: 0;
-			}
 		}
 
-		// Разделитель: на мобильном между строками с отступом 70, на десктопе под каждой
-		// строкой с отступом 40
+		// Строка: поля 5 сверху и снизу, под каждой строкой черта с отступом 40
 		&__item {
-			@include down(desktop) {
-				& + &::before {
-					display: block;
-					height: 1px;
-					margin: 0 0 16px 70px;
-					content: "";
-					background: palette("form-border");
-				}
-			}
+			position: relative;
+			padding-block: 5px;
+			background: palette("white");
 
-			@include up(desktop) {
-				position: relative;
-				padding-block: 5px;
-				background: palette("white");
-
-				&::after {
-					display: block;
-					height: 1px;
-					margin: 5px 0 0 40px;
-					content: "";
-					background: palette("form-border");
-				}
+			&::after {
+				display: block;
+				height: 1px;
+				margin: 5px 0 0 40px;
+				content: "";
+				background: palette("form-border");
 			}
 		}
 
@@ -209,16 +183,11 @@
 			flex: none;
 			align-items: center;
 			justify-content: center;
-			width: 30px;
-			height: 30px;
+			width: 40px;
+			height: 40px;
 			color: palette("main-blue");
 			background: palette("bg-info");
 			border-radius: 50%;
-
-			@include up(desktop) {
-				width: 40px;
-				height: 40px;
-			}
 		}
 
 		&__more .birthdays__name {
@@ -230,33 +199,25 @@
 			height: 18px;
 		}
 
-		// Сегодня на десктопе — аватар 40 в цветном кольце 2px, фото 30 внутри
+		// Сегодня — аватар 40 в цветном кольце 2px, фото 30 внутри
 		&__group--today &__avatar {
-			@include up(desktop) {
-				width: 40px;
-				height: 40px;
-				background-clip: content-box;
-				border: 2px solid palette("festive-pink");
-				padding: 3px;
-			}
+			width: 40px;
+			height: 40px;
+			background-clip: content-box;
+			border: 2px solid palette("festive-pink");
+			padding: 3px;
 		}
 
 		&__group--today &__item:nth-child(3n + 2) &__avatar {
-			@include up(desktop) {
-				border-color: palette("festive-gold");
-			}
+			border-color: palette("festive-gold");
 		}
 
 		&__group--today &__item:nth-child(3n) &__avatar {
-			@include up(desktop) {
-				border-color: palette("main-blue");
-			}
+			border-color: palette("main-blue");
 		}
 
 		&__group--today &__photo {
-			@include up(desktop) {
-				border-radius: 50%;
-			}
+			border-radius: 50%;
 		}
 
 		&__name {

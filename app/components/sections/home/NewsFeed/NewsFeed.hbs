@@ -1,7 +1,8 @@
 {{!--
 	Блок «Новости холдинга» на главной.
 	props: title, items (карточки, см. NewsCard), allUrl, allText.
-	Без новостей блок не выводится. На десктопе видно 5 карточек, на мобильном — 6.
+	Без новостей блок не выводится. С 1280 видно 5 карточек в ряд, 1024–1279 — 4; до 1024 — все лентой
+	карточек 260 (листается пальцем), карточки в десктопном виде.
 	Контракт — docs/contracts/news-feed.md.
 --}}
 {{#if props.items.length}}
@@ -9,7 +10,7 @@
         <h2 class="news-feed__title">{{props.title}}</h2>
         <ul class="news-feed__list" role="list">
             {{#each props.items}}
-                <li class="news-feed__item">{{> sections/shared/NewsCard/NewsCard props=this}}</li>
+                <li class="news-feed__item">{{> sections/shared/NewsCard/NewsCard props=this modifier="news-card--desktop" sizes="(min-width: 1024px) 300px, 260px"}}</li>
             {{/each}}
         </ul>
         {{#if props.allUrl}}<a class="news-feed__all" href="{{props.allUrl}}">{{default props.allText 'Показать все'}}</a>{{/if}}
