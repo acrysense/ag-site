@@ -28,13 +28,14 @@
 		}
 	}
 
+	// Наведение: серый текст — Blue.TXT, как у остальных серых ссылок
 	.breadcrumbs__link {
 		color: inherit;
 		transition: color $transition-default;
 
 		&:hover,
 		&:focus-visible {
-			color: palette("blue-hover");
+			color: palette("blue-txt");
 		}
 	}
 
