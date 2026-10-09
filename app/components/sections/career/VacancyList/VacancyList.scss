@@ -20,11 +20,13 @@
 			min-width: 0;
 		}
 
+		// Десктоп: белая карточка с рамкой и тенью, как остальные блоки; поля 20 вместе с рамкой
 		@include up(desktop) {
 			flex-flow: column nowrap;
 			gap: 40px;
-			padding: 20px;
+			padding: 19px;
 			background: palette("white");
+			border: 1px solid palette("block-border");
 			border-radius: $radius-content-block;
 			box-shadow: $shadow-content-block;
 		}
@@ -79,15 +81,19 @@
 		}
 	}
 
-	// Вводный текст и картинка: до 1024 картинка сверху во всю ширину, с 1024 — справа
+	// Вводный текст и картинка: до 1024 картинка сверху во всю ширину; 1024–1279 — картинка 386
+	// над текстом (рядом текст сжимался в узкую колонку); с 1280 — справа от текста
 	.vacancy-list__about {
 		display: flex;
 		flex-direction: column-reverse;
 		gap: 16px;
 
 		@include up(desktop) {
-			flex-direction: row;
 			gap: 20px;
+		}
+
+		@include up(wide) {
+			flex-direction: row;
 			align-items: flex-start;
 			justify-content: space-between;
 		}

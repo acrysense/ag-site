@@ -602,7 +602,7 @@
 				"resume": "Резюме",
 				"resumePlaceholder": "Прикрепите файл PDF или DOC до 5 МБ",
 				"message": "Сопроводительное сообщение",
-				"messagePlaceholder": "Почему вас интересует эта вакансия, какой у вас опыт"
+				"messagePlaceholder": "Дополнительная информация для HR (необязательно)"
 			},
 			"resume": {
 				"accept": ".pdf,.doc,.docx",

@@ -6,7 +6,8 @@
 // 6/12, S/400 Dark-grey.TXT, через 8), параметры через 14 (подпись S/400 Dark-grey.TXT, значение
 // M/400 через 2), плашка BG.Green (поля 10/14, скругление 10, S/400 Green) после отступа 8,
 // кнопка General во всю ширину. Справа: разделы через 28 — заголовок H4, пункты M/400 через 8.
-// Крестик 20 в 24 от края. До 768 — на весь экран в одну колонку, части через 20: должность H1
+// Крестик 20 в 24 от края. 768–1023 — окно по центру, но в одну колонку (в две описанию не
+// хватает места). До 768 — на весь экран в одну колонку, части через 20: должность H1
 // 360, метки, параметры, черта BG.Main, разделы описания через 20; «Откликнуться» закреплена внизу
 // (Modal full), в шапке «Вакансия».
 @layer components {
@@ -17,7 +18,7 @@
 		gap: 20px;
 		min-width: 0;
 
-		@include up(tablet) {
+		@include up(desktop) {
 			display: grid;
 			grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
 			grid-template-rows: auto auto 1fr;
@@ -112,8 +113,8 @@
 		gap: 24px;
 		grid-area: actions;
 
-		// С 768 «Откликнуться» — внизу левой колонки, вровень с концом описания
-		@include up(tablet) {
+		// С 1024 «Откликнуться» — внизу левой колонки, вровень с концом описания
+		@include up(desktop) {
 			align-self: end;
 			margin-top: 8px;
 		}
@@ -136,13 +137,13 @@
 	.vacancy-modal__content {
 		grid-area: content;
 
-		// До 768 — под параметрами через черту BG.Main
-		@include down(tablet) {
+		// До 1024 (одна колонка) — под параметрами через черту BG.Main
+		@include down(desktop) {
 			padding-top: 20px;
 			border-top: 1px solid palette("bg-main");
 		}
 
-		@include up(tablet) {
+		@include up(desktop) {
 			position: relative;
 			padding-right: 24px;
 
