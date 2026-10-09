@@ -12,9 +12,10 @@
 		gap: 10px;
 		min-width: 0;
 
+		// Поля 20 считаются от внешнего края рамки, как в макете: 19 + рамка 1
 		@include up(desktop) {
 			gap: 20px;
-			padding: 20px;
+			padding: 19px;
 			background: palette("white");
 			border: 1px solid palette("block-border");
 			border-radius: $radius-content-block;

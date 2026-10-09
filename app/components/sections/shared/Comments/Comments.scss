@@ -72,14 +72,15 @@
 			}
 		}
 
-		// «Показать ещё комментарии»: во всю ширину, 48, серая рамка; загрузка — спиннер .btn
+		// «Показать ещё комментарии»: во всю ширину, 48, серая рамка, Inter Medium 14/22 Main Blue;
+		// загрузка — спиннер .btn
 		&__more {
-			@include text("m-400");
+			@include text("m-medium");
 
 			width: 100%;
 			height: 48px;
 			padding: 0 16px;
-			color: palette("black-txt");
+			color: palette("main-blue");
 			cursor: pointer;
 			border: 1px solid palette("grey");
 			border-radius: $radius-button;
@@ -89,7 +90,7 @@
 
 			&:hover:not(:disabled),
 			&:focus-visible:not(:disabled) {
-				color: palette("main-blue");
+				color: palette("blue-hover");
 				border-color: palette("main-blue");
 			}
 
@@ -210,7 +211,7 @@
 		}
 
 		&__hint {
-			@include text("xs-400");
+			@include text("s-400");
 
 			line-height: 16px;
 			color: palette("dark-grey-txt");
@@ -325,7 +326,7 @@
 		}
 
 		&__role {
-			@include text("xs-400");
+			@include text("s-400");
 
 			padding: 3px 10px;
 			color: palette("black-txt");
@@ -337,7 +338,7 @@
 		&__time,
 		&__edited,
 		&__pending {
-			@include text("xs-400");
+			@include text("s-400");
 
 			color: palette("dark-grey-txt");
 			white-space: nowrap;
@@ -348,7 +349,7 @@
 		}
 
 		&__score {
-			@include text("xs-400");
+			@include text("s-400");
 
 			font-weight: 600;
 			line-height: 16px;
@@ -754,7 +755,7 @@
 		}
 
 		&__load-replies {
-			@include text("m-400");
+			@include text("m-medium");
 
 			height: 30px;
 			padding: 0;
