@@ -251,7 +251,7 @@
 		display: flex;
 		flex: none;
 		gap: 10px;
-		padding: 10px 10px calc(14px + env(safe-area-inset-bottom));
+		padding: 9px 10px calc(14px + env(safe-area-inset-bottom));
 		border-top: 1px solid palette("form-border");
 
 		@include up(desktop) {
