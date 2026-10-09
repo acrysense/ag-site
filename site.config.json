@@ -134,7 +134,8 @@
 			}
 		],
 		"loginUrl": "#",
-		"loginText": "Войти в ЛК"
+		"loginText": "Войти в ЛК",
+		"loginTextShort": "Войти"
 	},
 	"headerUser": {
 		"homeUrl": "/",
@@ -210,6 +211,7 @@
 		],
 		"loginUrl": "#",
 		"loginText": "Войти в ЛК",
+		"loginTextShort": "Войти",
 		"user": {
 			"name": "Волкова Анна",
 			"initials": "ВА",
