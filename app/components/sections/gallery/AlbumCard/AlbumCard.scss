@@ -42,7 +42,6 @@
 
 		position: relative;
 		display: flex;
-		gap: 6px;
 		align-items: center;
 		padding: 5px 10px;
 		color: palette("white");
@@ -50,9 +49,12 @@
 		border-radius: $radius-button;
 	}
 
+	// Отступ у значка, а не gap: скрытое « фото» после числа в Chrome добавляло ещё 6
 	.album-card__count-icon {
+		flex: none;
 		width: 14px;
 		height: 14px;
+		margin-right: 6px;
 	}
 
 	.album-card {

@@ -128,6 +128,10 @@
 		margin-left: 4px;
 		color: palette("dark-grey-txt");
 		white-space: nowrap;
+
+		@include up(desktop) {
+			margin-left: 7px;
+		}
 	}
 
 	.documents-list__tools {
@@ -138,6 +142,13 @@
 
 		@include down(desktop) {
 			display: contents;
+		}
+	}
+
+	// С 1024 «Папка» и «Фильтры» скрыты: без поиска ряд пустой — убираем, чтобы не было лишних 24
+	.documents-list__tools:not(:has(.documents-list__search)) {
+		@include up(desktop) {
+			display: none;
 		}
 	}
 
