@@ -35,9 +35,9 @@
 			}
 		}
 
-		// Логотип с названием — картинка (как в ЛК): на мобильном 141×40 (знак 40, название
-		// через 10); с 1024 — крупнее, 47 по высоте: название длинной картинки
-		// с 1280 тогда шириной 389
+		// Логотип с названием — картинка: на мобильном 190×40 (знак 40, через 10 название в две
+		// строки); не хватает места (узкий экран, кнопка входа) — уменьшается пропорционально; с 1024
+		// — крупнее, 47 по высоте; с 1280 — длинная картинка в одну строку шириной 389
 		&__brand {
 			display: flex;
 			grid-area: brand;
@@ -56,15 +56,20 @@
 		// <picture> не сразу, и на кадр длинный логотип вылезал за экран мобильной шапки
 		&__logo {
 			display: flex;
+			min-width: 0;
 
 			img {
-				width: 141px;
-				height: 40px;
+				width: 190px;
+				max-width: 100%;
+				height: auto;
+				aspect-ratio: 190 / 40;
 				object-fit: contain;
 				object-position: left center;
 
 				@include up(desktop) {
-					width: 166px;
+					width: 223px;
+					max-width: none;
+					aspect-ratio: auto;
 					height: 47px;
 				}
 
@@ -361,7 +366,8 @@
 
 	.header__logo-link {
 		display: flex;
-		flex: none;
+		flex: 0 1 auto;
+		min-width: 0;
 		border-radius: 2px;
 		transition: opacity $transition-default;
 
@@ -451,5 +457,18 @@
 	.user-menu__divider {
 		height: 1px;
 		background: palette("grey");
+	}
+
+	// Кнопка входа гостя: до 1024 — короткая надпись («Войти»), чтобы рядом поместился логотип
+	.header__login-text--short {
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.header__login-text:not(.header__login-text--short) {
+		@include down(desktop) {
+			display: none;
+		}
 	}
 }
