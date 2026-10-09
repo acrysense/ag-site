@@ -25,12 +25,14 @@
 			display: flex;
 		}
 
+		// Десктоп: карточка с рамкой Block.Border, без тени; поля 20 от внутреннего края рамки
 		@include up(desktop) {
 			display: flex;
 			flex-direction: column;
 			gap: 20px;
 			padding: 20px;
 			background: palette("white");
+			border: 1px solid palette("block-border");
 			border-radius: $radius-content-block;
 		}
 	}
@@ -46,7 +48,7 @@
 		@include up(desktop) {
 			height: auto;
 			padding: 0 0 20px;
-			border-bottom: 1px solid palette("block-border");
+			border-bottom: 1px solid palette("form-border");
 		}
 	}
 
@@ -138,7 +140,7 @@
 		& + & {
 			margin-top: 20px;
 			padding-top: 20px;
-			border-top: 1px solid palette("block-border");
+			border-top: 1px solid palette("form-border");
 		}
 	}
 
@@ -202,7 +204,8 @@
 		display: flex;
 		flex: none;
 		gap: 10px;
-		padding: 10px 10px calc(14px + env(safe-area-inset-bottom));
+		// 70 вместе с чертой сверху: 9 + 1
+		padding: 9px 10px calc(14px + env(safe-area-inset-bottom));
 		border-top: 1px solid palette("form-border");
 
 		@include up(desktop) {

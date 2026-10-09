@@ -25,13 +25,9 @@
 	}
 
 	.career-steps__title {
-		@include text("h3-360");
+		@include text("h3");
 
 		color: palette("black-txt");
-
-		@include up(desktop) {
-			@include text("h3");
-		}
 	}
 
 	.career-steps__list {
