@@ -570,7 +570,7 @@
 		}
 
 		@include down(desktop) {
-			padding: 24px 0 0;
+			padding: 12px 0 0;
 
 			.btn {
 				align-self: stretch;
@@ -709,7 +709,8 @@
 			bottom: 0;
 			left: 0;
 			z-index: 1;
-			padding: 10px 10px calc(14px + env(safe-area-inset-bottom));
+			// 70 вместе с чертой сверху: 9 + 1
+			padding: 9px 10px calc(14px + env(safe-area-inset-bottom));
 			background: palette("white");
 			border-top: 1px solid palette("form-border");
 		}

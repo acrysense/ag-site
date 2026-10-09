@@ -95,10 +95,15 @@
 		}
 	}
 
+	// Сортировки нет (ничего не найдено) — кнопка во всю ширину
 	.search-results__filters {
 		@include text("m-400");
 
 		color: palette("black-txt");
+
+		&:only-child {
+			flex: 1 1 auto;
+		}
 
 		@include up(desktop) {
 			display: none;
@@ -146,11 +151,24 @@
 		flex-direction: column;
 		gap: 14px;
 		align-items: center;
-		padding: 40px 0;
+		padding: 24px 0 40px;
 		text-align: center;
 
 		@include up(desktop) {
 			padding: 60px 0;
+		}
+	}
+
+	// Где разделы: на десктопе — слева, до 1024 — вкладками выше
+	.search-results__where--top {
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.search-results__where--side {
+		@include down(desktop) {
+			display: none;
 		}
 	}
 

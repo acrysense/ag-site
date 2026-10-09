@@ -56,7 +56,7 @@
 | Результаты | `items[]` (SearchResult) | 10 на страницу |
 | Страницы | `pagination` (Pagination) | с 1024 |
 | Показать ещё | `more.url` | до 1024: адрес следующей страницы (`?page=N`), скрипт берёт из неё `[data-search-items]` |
-| Пусто | `empty` | `title`, `text`, `resetUrl` (только если есть фильтры), `clearUrl` |
+| Пусто | `empty` | `title`, `text`, `whereSide` («слева», с 1024) и `whereTop` («выше», до 1024) — слово в конце текста о том, где разделы; `resetUrl` (только если есть фильтры), `clearUrl` |
 | Запрос в шапке | `header.search.value` | строка поиска показывает запрос |
 
 ### Фильтры

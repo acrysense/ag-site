@@ -4,7 +4,8 @@
 	страниц — «Показать ещё» (догружает следующую страницу без перехода).
 	props: id, title, query, foundText, sections (для ленты), filtersId, activeFilters (число
 	выбранных), sort (Select), items [SearchResult], pagination (Pagination), more { url, text },
-	empty { title, text, resetUrl, resetText, clearUrl, clearText }.
+	empty { title, text, whereSide («слева» — с 1024), whereTop («выше» — до 1024), resetUrl, resetText,
+	clearUrl, clearText }: whereSide и whereTop дописываются в конец text, где сейчас разделы.
 --}}
 <section class="search-results" id="{{default props.id 'search-results'}}" aria-labelledby="{{default props.id 'search-results'}}-title" data-module="SearchResults" data-path="sections/search">
     <div class="search-results__head">
@@ -36,7 +37,7 @@
         <div class="search-results__empty">
             <span class="search-results__empty-icon">{{> components/Icon/Icon name="search" class="search-results__empty-glyph"}}</span>
             <h2 class="search-results__empty-title">{{default props.empty.title "По вашему запросу ничего не найдено"}}</h2>
-            {{#if props.empty.text}}<p class="search-results__empty-text">{{props.empty.text}}</p>{{/if}}
+            {{#if props.empty.text}}<p class="search-results__empty-text">{{props.empty.text}}{{#if (or props.empty.whereSide props.empty.whereTop)}} <span class="search-results__where--side">{{props.empty.whereSide}}</span><span class="search-results__where--top">{{props.empty.whereTop}}</span>.{{/if}}</p>{{/if}}
             <div class="search-results__empty-actions">
                 {{#if props.empty.resetUrl}}<a class="btn btn--general btn--m" href="{{props.empty.resetUrl}}">{{default props.empty.resetText "Сбросить фильтры"}}</a>{{/if}}
                 {{#if props.empty.clearUrl}}<a class="btn btn--light btn--m search-results__clear" href="{{props.empty.clearUrl}}">{{default props.empty.clearText "Очистить поиск"}}</a>{{/if}}
