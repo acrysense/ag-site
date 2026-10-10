@@ -9,12 +9,8 @@
     "file": "assets/js/announce-D3OkgBby.js",
     "name": "announce"
   },
-  "_app-ChUSeO1K.css": {
-    "file": "assets/css/app-ChUSeO1K.css",
-    "src": "_app-ChUSeO1K.css"
-  },
-  "_app-DSLNSGR5.js": {
-    "file": "assets/js/app-DSLNSGR5.js",
+  "_app-B_SxR862.js": {
+    "file": "assets/js/app-B_SxR862.js",
     "name": "app",
     "imports": [
       "_announce-D3OkgBby.js",
@@ -51,6 +47,7 @@
       "components/sections/gallery/AlbumPhotos/AlbumPhotos.js",
       "components/sections/holding/EntityInfo/EntityInfo.js",
       "components/sections/home/Stats/Stats.js",
+      "components/sections/news/JournalIssue/JournalIssue.js",
       "components/sections/news/NewsFilters/NewsFilters.js",
       "components/sections/search/SearchFilters/SearchFilters.js",
       "components/sections/search/SearchResults/SearchResults.js",
@@ -58,11 +55,15 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-ChUSeO1K.css"
+      "assets/css/app-NsgoO_WN.css"
     ],
     "assets": [
       "assets/images/auth-ag-m2GDsMwR.svg"
     ]
+  },
+  "_app-NsgoO_WN.css": {
+    "file": "assets/css/app-NsgoO_WN.css",
+    "src": "_app-NsgoO_WN.css"
   },
   "_filter-panel-CZYuA1j-.js": {
     "file": "assets/js/filter-panel-CZYuA1j-.js",
@@ -152,12 +153,12 @@
     ]
   },
   "components/components/CopyLink/CopyLink.js": {
-    "file": "assets/js/CopyLink-CEv9buw9.js",
+    "file": "assets/js/CopyLink-Ddzi6PeY.js",
     "name": "CopyLink",
     "src": "components/components/CopyLink/CopyLink.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-DSLNSGR5.js"
+      "_app-B_SxR862.js"
     ]
   },
   "components/components/DateRange/DateRange.js": {
@@ -218,7 +219,7 @@
     "isDynamicEntry": true
   },
   "components/components/PhotoStrip/PhotoStrip.js": {
-    "file": "assets/js/PhotoStrip-DO3z2C-s.js",
+    "file": "assets/js/PhotoStrip-S8gdbzYK.js",
     "name": "PhotoStrip",
     "src": "components/components/PhotoStrip/PhotoStrip.js",
     "isDynamicEntry": true,
@@ -227,12 +228,12 @@
     ]
   },
   "components/components/PhotoViewer/PhotoViewer.js": {
-    "file": "assets/js/PhotoViewer-DoPYpGo5.js",
+    "file": "assets/js/PhotoViewer-4CuiCXIk.js",
     "name": "PhotoViewer",
     "src": "components/components/PhotoViewer/PhotoViewer.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-DSLNSGR5.js",
+      "_app-B_SxR862.js",
       "_icon-NLq4soTO.js",
       "_scroll-lock-D4dlW757.js"
     ],
@@ -274,12 +275,12 @@
     "isDynamicEntry": true
   },
   "components/components/Toast/Toast.js": {
-    "file": "assets/js/Toast-DVI6SJDG.js",
+    "file": "assets/js/Toast-pAPCAFEs.js",
     "name": "Toast",
     "src": "components/components/Toast/Toast.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-DSLNSGR5.js"
+      "_app-B_SxR862.js"
     ]
   },
   "components/layouts/CookieBanner/CookieBanner.js": {
@@ -356,7 +357,7 @@
     ]
   },
   "components/sections/gallery/AlbumPhotos/AlbumPhotos.js": {
-    "file": "assets/js/AlbumPhotos-Bv34xhZO.js",
+    "file": "assets/js/AlbumPhotos-DzrUeYse.js",
     "name": "AlbumPhotos",
     "src": "components/sections/gallery/AlbumPhotos/AlbumPhotos.js",
     "isDynamicEntry": true,
@@ -375,6 +376,15 @@
     "name": "Stats",
     "src": "components/sections/home/Stats/Stats.js",
     "isDynamicEntry": true
+  },
+  "components/sections/news/JournalIssue/JournalIssue.js": {
+    "file": "assets/js/JournalIssue-C0QtALBV.js",
+    "name": "JournalIssue",
+    "src": "components/sections/news/JournalIssue/JournalIssue.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "components/components/PhotoViewer/PhotoViewer.js"
+    ]
   },
   "components/sections/news/NewsFilters/NewsFilters.js": {
     "file": "assets/js/NewsFilters-CY9aMJ3_.js",
@@ -424,16 +434,16 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-CvhC9xsS.js",
+    "file": "assets/js/dev-canvas-DDI0WN4D.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
       "_pages-nav-Df9646uR.js",
-      "_app-DSLNSGR5.js"
+      "_app-B_SxR862.js"
     ],
     "css": [
-      "assets/css/dev-canvas-Bt0m7Ilb.css"
+      "assets/css/dev-canvas-COyjihdl.css"
     ],
     "assets": [
       "assets/images/logotype-desktop-BIC32Kew.svg",
@@ -482,6 +492,40 @@
       "assets/images/photo-13-BAmDrzwt.webp",
       "assets/images/journal-1-CvFQH_nj.webp",
       "assets/images/journal-2-3hgfWDPs.webp",
+      "assets/images/page-01-C9ghzCj_.webp",
+      "assets/images/page-02-J-Dh9PFB.webp",
+      "assets/images/page-03-DH0c8e-y.webp",
+      "assets/images/page-04-DC5mEsXi.webp",
+      "assets/images/page-05-CbmyUFw2.webp",
+      "assets/images/page-06-CPBsbtaF.webp",
+      "assets/images/page-07-Bd6vXDPd.webp",
+      "assets/images/page-08-CDHJ3BaY.webp",
+      "assets/images/page-09-BYGezYms.webp",
+      "assets/images/page-10-Cb2uEpNY.webp",
+      "assets/images/page-11-EhWFAFEE.webp",
+      "assets/images/page-12-CVzJlQPF.webp",
+      "assets/images/page-13-Dpo-C9SK.webp",
+      "assets/images/page-14-BzoiNjm6.webp",
+      "assets/images/page-15-Dmiq6cRC.webp",
+      "assets/images/page-16-CgrRRs27.webp",
+      "assets/images/page-17-ldQNyMd2.webp",
+      "assets/images/page-18-CzKFC9LY.webp",
+      "assets/images/page-19-DRbdU6se.webp",
+      "assets/images/page-03-thumb-BdhlS878.webp",
+      "assets/images/page-04-thumb-BIKZXb29.webp",
+      "assets/images/page-05-thumb-B79ewTUO.webp",
+      "assets/images/page-06-thumb-GF-tdI-z.webp",
+      "assets/images/page-07-thumb-CfHBywaM.webp",
+      "assets/images/page-08-thumb-DEIOvtVB.webp",
+      "assets/images/page-09-thumb-ByxJ7RXO.webp",
+      "assets/images/page-10-thumb-B-rxxN07.webp",
+      "assets/images/page-11-thumb-DSryAYZ7.webp",
+      "assets/images/page-12-thumb-uFxAtyk4.webp",
+      "assets/images/page-13-thumb-CjTfngqa.webp",
+      "assets/images/page-14-thumb-B5c-1Lwc.webp",
+      "assets/images/page-15-thumb-W22luoqi.webp",
+      "assets/images/page-16-thumb-Cy9wmRkF.webp",
+      "assets/images/page-17-thumb-B8-cHESo.webp",
       "assets/images/side-banner-DNv6ADL6.webp",
       "assets/images/photo-1-fqVRD9sN.webp",
       "assets/images/photo-2-CIHX9BlK.webp",
@@ -652,6 +696,142 @@
   "pages/dev/img/journal-2.webp": {
     "file": "assets/images/journal-2-3hgfWDPs.webp",
     "src": "pages/dev/img/journal-2.webp"
+  },
+  "pages/dev/img/journal-issue/page-01.webp": {
+    "file": "assets/images/page-01-C9ghzCj_.webp",
+    "src": "pages/dev/img/journal-issue/page-01.webp"
+  },
+  "pages/dev/img/journal-issue/page-02.webp": {
+    "file": "assets/images/page-02-J-Dh9PFB.webp",
+    "src": "pages/dev/img/journal-issue/page-02.webp"
+  },
+  "pages/dev/img/journal-issue/page-03-thumb.webp": {
+    "file": "assets/images/page-03-thumb-BdhlS878.webp",
+    "src": "pages/dev/img/journal-issue/page-03-thumb.webp"
+  },
+  "pages/dev/img/journal-issue/page-03.webp": {
+    "file": "assets/images/page-03-DH0c8e-y.webp",
+    "src": "pages/dev/img/journal-issue/page-03.webp"
+  },
+  "pages/dev/img/journal-issue/page-04-thumb.webp": {
+    "file": "assets/images/page-04-thumb-BIKZXb29.webp",
+    "src": "pages/dev/img/journal-issue/page-04-thumb.webp"
+  },
+  "pages/dev/img/journal-issue/page-04.webp": {
+    "file": "assets/images/page-04-DC5mEsXi.webp",
+    "src": "pages/dev/img/journal-issue/page-04.webp"
+  },
+  "pages/dev/img/journal-issue/page-05-thumb.webp": {
+    "file": "assets/images/page-05-thumb-B79ewTUO.webp",
+    "src": "pages/dev/img/journal-issue/page-05-thumb.webp"
+  },
+  "pages/dev/img/journal-issue/page-05.webp": {
+    "file": "assets/images/page-05-CbmyUFw2.webp",
+    "src": "pages/dev/img/journal-issue/page-05.webp"
+  },
+  "pages/dev/img/journal-issue/page-06-thumb.webp": {
+    "file": "assets/images/page-06-thumb-GF-tdI-z.webp",
+    "src": "pages/dev/img/journal-issue/page-06-thumb.webp"
+  },
+  "pages/dev/img/journal-issue/page-06.webp": {
+    "file": "assets/images/page-06-CPBsbtaF.webp",
+    "src": "pages/dev/img/journal-issue/page-06.webp"
+  },
+  "pages/dev/img/journal-issue/page-07-thumb.webp": {
+    "file": "assets/images/page-07-thumb-CfHBywaM.webp",
+    "src": "pages/dev/img/journal-issue/page-07-thumb.webp"
+  },
+  "pages/dev/img/journal-issue/page-07.webp": {
+    "file": "assets/images/page-07-Bd6vXDPd.webp",
+    "src": "pages/dev/img/journal-issue/page-07.webp"
+  },
+  "pages/dev/img/journal-issue/page-08-thumb.webp": {
+    "file": "assets/images/page-08-thumb-DEIOvtVB.webp",
+    "src": "pages/dev/img/journal-issue/page-08-thumb.webp"
+  },
+  "pages/dev/img/journal-issue/page-08.webp": {
+    "file": "assets/images/page-08-CDHJ3BaY.webp",
+    "src": "pages/dev/img/journal-issue/page-08.webp"
+  },
+  "pages/dev/img/journal-issue/page-09-thumb.webp": {
+    "file": "assets/images/page-09-thumb-ByxJ7RXO.webp",
+    "src": "pages/dev/img/journal-issue/page-09-thumb.webp"
+  },
+  "pages/dev/img/journal-issue/page-09.webp": {
+    "file": "assets/images/page-09-BYGezYms.webp",
+    "src": "pages/dev/img/journal-issue/page-09.webp"
+  },
+  "pages/dev/img/journal-issue/page-10-thumb.webp": {
+    "file": "assets/images/page-10-thumb-B-rxxN07.webp",
+    "src": "pages/dev/img/journal-issue/page-10-thumb.webp"
+  },
+  "pages/dev/img/journal-issue/page-10.webp": {
+    "file": "assets/images/page-10-Cb2uEpNY.webp",
+    "src": "pages/dev/img/journal-issue/page-10.webp"
+  },
+  "pages/dev/img/journal-issue/page-11-thumb.webp": {
+    "file": "assets/images/page-11-thumb-DSryAYZ7.webp",
+    "src": "pages/dev/img/journal-issue/page-11-thumb.webp"
+  },
+  "pages/dev/img/journal-issue/page-11.webp": {
+    "file": "assets/images/page-11-EhWFAFEE.webp",
+    "src": "pages/dev/img/journal-issue/page-11.webp"
+  },
+  "pages/dev/img/journal-issue/page-12-thumb.webp": {
+    "file": "assets/images/page-12-thumb-uFxAtyk4.webp",
+    "src": "pages/dev/img/journal-issue/page-12-thumb.webp"
+  },
+  "pages/dev/img/journal-issue/page-12.webp": {
+    "file": "assets/images/page-12-CVzJlQPF.webp",
+    "src": "pages/dev/img/journal-issue/page-12.webp"
+  },
+  "pages/dev/img/journal-issue/page-13-thumb.webp": {
+    "file": "assets/images/page-13-thumb-CjTfngqa.webp",
+    "src": "pages/dev/img/journal-issue/page-13-thumb.webp"
+  },
+  "pages/dev/img/journal-issue/page-13.webp": {
+    "file": "assets/images/page-13-Dpo-C9SK.webp",
+    "src": "pages/dev/img/journal-issue/page-13.webp"
+  },
+  "pages/dev/img/journal-issue/page-14-thumb.webp": {
+    "file": "assets/images/page-14-thumb-B5c-1Lwc.webp",
+    "src": "pages/dev/img/journal-issue/page-14-thumb.webp"
+  },
+  "pages/dev/img/journal-issue/page-14.webp": {
+    "file": "assets/images/page-14-BzoiNjm6.webp",
+    "src": "pages/dev/img/journal-issue/page-14.webp"
+  },
+  "pages/dev/img/journal-issue/page-15-thumb.webp": {
+    "file": "assets/images/page-15-thumb-W22luoqi.webp",
+    "src": "pages/dev/img/journal-issue/page-15-thumb.webp"
+  },
+  "pages/dev/img/journal-issue/page-15.webp": {
+    "file": "assets/images/page-15-Dmiq6cRC.webp",
+    "src": "pages/dev/img/journal-issue/page-15.webp"
+  },
+  "pages/dev/img/journal-issue/page-16-thumb.webp": {
+    "file": "assets/images/page-16-thumb-Cy9wmRkF.webp",
+    "src": "pages/dev/img/journal-issue/page-16-thumb.webp"
+  },
+  "pages/dev/img/journal-issue/page-16.webp": {
+    "file": "assets/images/page-16-CgrRRs27.webp",
+    "src": "pages/dev/img/journal-issue/page-16.webp"
+  },
+  "pages/dev/img/journal-issue/page-17-thumb.webp": {
+    "file": "assets/images/page-17-thumb-B8-cHESo.webp",
+    "src": "pages/dev/img/journal-issue/page-17-thumb.webp"
+  },
+  "pages/dev/img/journal-issue/page-17.webp": {
+    "file": "assets/images/page-17-ldQNyMd2.webp",
+    "src": "pages/dev/img/journal-issue/page-17.webp"
+  },
+  "pages/dev/img/journal-issue/page-18.webp": {
+    "file": "assets/images/page-18-CzKFC9LY.webp",
+    "src": "pages/dev/img/journal-issue/page-18.webp"
+  },
+  "pages/dev/img/journal-issue/page-19.webp": {
+    "file": "assets/images/page-19-DRbdU6se.webp",
+    "src": "pages/dev/img/journal-issue/page-19.webp"
   },
   "pages/dev/img/leader-1.webp": {
     "file": "assets/images/leader-1-BfKBo96P.webp",
