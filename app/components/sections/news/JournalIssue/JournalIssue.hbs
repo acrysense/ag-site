@@ -1,0 +1,68 @@
+{{!--
+	Выпуск журнала: заголовок и дата, страницы листаются (стрелки, свайп, миниатюры), «N / M»,
+	«На весь экран» (PhotoViewer), «Нравится», «Скачать PDF», «Скопировать ссылку». Без скрипта страницы
+	листаются пальцем и колесом, страница открывается картинкой. Контракт — docs/contracts/journal.md.
+	props: id, title, date, dateText, pagesText («19 страниц»), url (ссылка на выпуск для копирования;
+	пусто — адрес страницы), file { url, typeText («PDF»), sizeText («3,3 МБ») }, like (LikeButton),
+	pages [{ src, srcset, width, height, thumb, thumbSrcset, alt }].
+--}}
+<article class="journal-issue" aria-labelledby="{{default props.id 'journal-issue'}}-title" data-module="JournalIssue" data-path="sections/news" data-title="{{props.title}}"{{#if props.file.url}} data-download="{{props.file.url}}"{{/if}}>
+    <header class="journal-issue__head">
+        <h1 class="journal-issue__title" id="{{default props.id 'journal-issue'}}-title">{{props.title}}</h1>
+        <p class="journal-issue__meta">
+            {{#if props.pagesText}}<span class="journal-issue__meta-extra">{{props.pagesText}}{{#if props.file.sizeText}} · {{props.file.typeText}}, {{props.file.sizeText}}{{/if}} · </span>{{/if}}{{#if props.date}}<time datetime="{{props.date}}">{{props.dateText}}</time>{{/if}}
+        </p>
+    </header>
+    {{#if props.pages.length}}
+        <div class="journal-issue__stage">
+            <ul class="journal-issue__track" role="list" aria-label="Страницы выпуска" data-journal-track>
+                {{#each props.pages}}
+                    <li class="journal-issue__page">
+                        <a class="journal-issue__link" href="{{src}}" data-width="{{width}}" data-height="{{height}}"{{#if thumb}} data-thumb="{{thumb}}"{{/if}} aria-label="Страница {{add @index 1}} из {{../props.pages.length}} — на весь экран">
+                            <img class="journal-issue__image" src="{{src}}" {{#if srcset}}srcset="{{srcset}}" sizes="(min-width: 1280px) 1200px, 100vw"{{/if}} width="{{width}}" height="{{height}}" alt="{{alt}}" {{#if @first}}fetchpriority="high"{{else}}loading="lazy"{{/if}} decoding="async" />
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
+            {{#if props.pages.[1]}}
+                <button class="journal-issue__arrow journal-issue__arrow--prev" type="button" aria-label="Предыдущая страница" data-journal-prev disabled>
+                    {{> components/Icon/Icon name="chevron-right" class="journal-issue__arrow-icon"}}
+                </button>
+                <button class="journal-issue__arrow journal-issue__arrow--next" type="button" aria-label="Следующая страница" data-journal-next>
+                    {{> components/Icon/Icon name="chevron-right" class="journal-issue__arrow-icon"}}
+                </button>
+                <p class="journal-issue__pill journal-issue__counter" aria-live="polite" data-journal-counter>1 / {{props.pages.length}}</p>
+            {{/if}}
+            <button class="journal-issue__pill journal-issue__full" type="button" data-journal-full>
+                {{> components/Icon/Icon name="fullscreen" class="journal-issue__full-icon"}}
+                <span class="journal-issue__full-text">На весь экран</span>
+            </button>
+        </div>
+        {{#if props.pages.[1]}}
+            <ul class="journal-issue__thumbs" role="list" aria-label="Миниатюры страниц" data-journal-thumbs>
+                {{#each props.pages}}
+                    <li>
+                        <button class="journal-issue__thumb" type="button" aria-label="Страница {{add @index 1}}" data-journal-thumb{{#if @first}} aria-current="true"{{/if}}>
+                            <img class="journal-issue__thumb-image" src="{{default thumb src}}" {{#if thumbSrcset}}srcset="{{thumbSrcset}}" sizes="112px"{{/if}} width="112" height="63" alt="" loading="lazy" decoding="async" />
+                            <span class="journal-issue__thumb-number" aria-hidden="true">{{add @index 1}}</span>
+                        </button>
+                    </li>
+                {{/each}}
+            </ul>
+        {{/if}}
+    {{/if}}
+    <div class="journal-issue__actions">
+        {{#if props.like}}{{> components/LikeButton/LikeButton props=props.like}}{{/if}}
+        {{#if props.file.url}}
+            <a class="btn btn--light btn--s journal-issue__download" href="{{props.file.url}}" download>
+                {{> components/Icon/Icon name="download" class="btn__icon"}}
+                <span class="btn__text"><span class="journal-issue__wide">Скачать </span>{{default props.file.typeText "PDF"}}{{#if props.file.sizeText}} · {{props.file.sizeText}}{{/if}}</span>
+            </a>
+        {{/if}}
+        <button class="btn btn--light btn--s journal-issue__share" type="button" data-copy-link="{{props.url}}" data-module="CopyLink" data-path="components">
+            {{> components/Icon/Icon name="link" class="btn__icon journal-issue__share-icon"}}
+            {{> components/Icon/Icon name="tick" class="btn__icon journal-issue__share-icon journal-issue__share-icon--copied"}}
+            <span class="btn__text"><span class="journal-issue__wide">Скопировать ссылку</span><span class="journal-issue__narrow">Поделиться</span></span>
+        </button>
+    </div>
+</article>

@@ -2,6 +2,329 @@
 	"title": "Холст витрины — dev",
 	"description": "Служебная страница: истории компонентов для витрины. В сборку для Битрикса не попадает.",
 	"data": {
+		"journalIssue": {
+			"title": "HR-дайджест. Сентябрь 2026",
+			"date": "2026-09-12",
+			"dateText": "12.09.2026",
+			"pagesText": "19 страниц",
+			"file": {
+				"url": "#",
+				"typeText": "PDF",
+				"sizeText": "3,3 МБ"
+			},
+			"like": {
+				"count": 24,
+				"liked": false
+			},
+			"pages": [
+				{
+					"src": "./img/journal-issue/page-01.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-01-thumb.webp",
+					"alt": "Страница 1"
+				},
+				{
+					"src": "./img/journal-issue/page-02.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-02-thumb.webp",
+					"alt": "Страница 2"
+				},
+				{
+					"src": "./img/journal-issue/page-03.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-03-thumb.webp",
+					"alt": "Страница 3"
+				},
+				{
+					"src": "./img/journal-issue/page-04.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-04-thumb.webp",
+					"alt": "Страница 4"
+				},
+				{
+					"src": "./img/journal-issue/page-05.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-05-thumb.webp",
+					"alt": "Страница 5"
+				},
+				{
+					"src": "./img/journal-issue/page-06.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-06-thumb.webp",
+					"alt": "Страница 6"
+				},
+				{
+					"src": "./img/journal-issue/page-07.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-07-thumb.webp",
+					"alt": "Страница 7"
+				},
+				{
+					"src": "./img/journal-issue/page-08.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-08-thumb.webp",
+					"alt": "Страница 8"
+				},
+				{
+					"src": "./img/journal-issue/page-09.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-09-thumb.webp",
+					"alt": "Страница 9"
+				},
+				{
+					"src": "./img/journal-issue/page-10.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-10-thumb.webp",
+					"alt": "Страница 10"
+				},
+				{
+					"src": "./img/journal-issue/page-11.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-11-thumb.webp",
+					"alt": "Страница 11"
+				},
+				{
+					"src": "./img/journal-issue/page-12.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-12-thumb.webp",
+					"alt": "Страница 12"
+				},
+				{
+					"src": "./img/journal-issue/page-13.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-13-thumb.webp",
+					"alt": "Страница 13"
+				},
+				{
+					"src": "./img/journal-issue/page-14.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-14-thumb.webp",
+					"alt": "Страница 14"
+				},
+				{
+					"src": "./img/journal-issue/page-15.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-15-thumb.webp",
+					"alt": "Страница 15"
+				},
+				{
+					"src": "./img/journal-issue/page-16.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-16-thumb.webp",
+					"alt": "Страница 16"
+				},
+				{
+					"src": "./img/journal-issue/page-17.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-17-thumb.webp",
+					"alt": "Страница 17"
+				},
+				{
+					"src": "./img/journal-issue/page-18.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-18-thumb.webp",
+					"alt": "Страница 18"
+				},
+				{
+					"src": "./img/journal-issue/page-19.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-19-thumb.webp",
+					"alt": "Страница 19"
+				}
+			],
+			"id": "story-journal-issue"
+		},
+		"journalIssueOne": {
+			"title": "HR-дайджест. Спецвыпуск",
+			"date": "2026-09-12",
+			"dateText": "12.09.2026",
+			"pagesText": "1 страница",
+			"file": {
+				"url": "#",
+				"typeText": "PDF",
+				"sizeText": "3,3 МБ"
+			},
+			"like": {
+				"count": 24,
+				"liked": false
+			},
+			"pages": [
+				{
+					"src": "./img/journal-issue/page-01.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-01-thumb.webp",
+					"alt": "Страница 1"
+				}
+			],
+			"id": "story-journal-issue-one"
+		},
+		"journalIssueLong": {
+			"title": "HR-дайджест. Итоги года: лучшие аптеки, люди и проекты холдинга «Аптека групп» в 2026 году",
+			"date": "2026-09-12",
+			"dateText": "12.09.2026",
+			"pagesText": "19 страниц",
+			"file": {
+				"url": "#",
+				"typeText": "PDF",
+				"sizeText": "3,3 МБ"
+			},
+			"pages": [
+				{
+					"src": "./img/journal-issue/page-01.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-01-thumb.webp",
+					"alt": "Страница 1"
+				},
+				{
+					"src": "./img/journal-issue/page-02.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-02-thumb.webp",
+					"alt": "Страница 2"
+				},
+				{
+					"src": "./img/journal-issue/page-03.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-03-thumb.webp",
+					"alt": "Страница 3"
+				},
+				{
+					"src": "./img/journal-issue/page-04.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-04-thumb.webp",
+					"alt": "Страница 4"
+				},
+				{
+					"src": "./img/journal-issue/page-05.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-05-thumb.webp",
+					"alt": "Страница 5"
+				},
+				{
+					"src": "./img/journal-issue/page-06.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-06-thumb.webp",
+					"alt": "Страница 6"
+				},
+				{
+					"src": "./img/journal-issue/page-07.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-07-thumb.webp",
+					"alt": "Страница 7"
+				},
+				{
+					"src": "./img/journal-issue/page-08.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-08-thumb.webp",
+					"alt": "Страница 8"
+				},
+				{
+					"src": "./img/journal-issue/page-09.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-09-thumb.webp",
+					"alt": "Страница 9"
+				},
+				{
+					"src": "./img/journal-issue/page-10.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-10-thumb.webp",
+					"alt": "Страница 10"
+				},
+				{
+					"src": "./img/journal-issue/page-11.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-11-thumb.webp",
+					"alt": "Страница 11"
+				},
+				{
+					"src": "./img/journal-issue/page-12.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-12-thumb.webp",
+					"alt": "Страница 12"
+				},
+				{
+					"src": "./img/journal-issue/page-13.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-13-thumb.webp",
+					"alt": "Страница 13"
+				},
+				{
+					"src": "./img/journal-issue/page-14.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-14-thumb.webp",
+					"alt": "Страница 14"
+				},
+				{
+					"src": "./img/journal-issue/page-15.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-15-thumb.webp",
+					"alt": "Страница 15"
+				},
+				{
+					"src": "./img/journal-issue/page-16.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-16-thumb.webp",
+					"alt": "Страница 16"
+				},
+				{
+					"src": "./img/journal-issue/page-17.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-17-thumb.webp",
+					"alt": "Страница 17"
+				},
+				{
+					"src": "./img/journal-issue/page-18.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-18-thumb.webp",
+					"alt": "Страница 18"
+				},
+				{
+					"src": "./img/journal-issue/page-19.webp",
+					"width": 1536,
+					"height": 864,
+					"thumb": "./img/journal-issue/page-19-thumb.webp",
+					"alt": "Страница 19"
+				}
+			],
+			"id": "story-journal-issue-long"
+		},
 		"news": {
 			"title": "Новости холдинга",
 			"allUrl": "#",
