@@ -10,10 +10,15 @@ import { lockBody } from '@/utils/scroll-lock'
 // внизу миниатюры поменьше и под ними «Нравится» и «Скачать».
 // Модуль не монтируется сам — его создаёт блок с фото (sections/gallery/AlbumPhotos).
 //
-// createPhotoViewer({ title, items, onLike, withLikes }) → { open(index), update(index, item), destroy() }
+// createPhotoViewer({ title, items, onLike, withLikes, labels, thumbs, className, onClose })
+//   → { open(index), update(index, item), destroy() }
 // items: [{ src, srcset, width, height, thumb, alt, likes, liked, likeUrl, download }].
 // «Нравится» — модуль LikeButton (кнопку монтирует app.js); onLike(index, liked, likes) —
 // чтобы блок обновил ту же отметку в сетке. withLikes: false — без «Нравится» (фото юрлица и т. п.).
+// Для страниц журнала: labels — подписи вместо «Фото» (counter(n, total), item(n), prev, next,
+// download, dialog, error), thumbs — размер миниатюр { desktop: { width, gap }, mobile: { width, gap } }
+// (высоту задаёт className в стилях), className — свой класс окна, onClose(index) — какое было
+// открыто при закрытии.
 
 const DESKTOP = 1024
 const TABLET = 768
@@ -65,9 +70,29 @@ function likeButton(item) {
 	return button
 }
 
-export function createPhotoViewer({ title = '', items = [], onLike = () => {}, withLikes = true }) {
+export function createPhotoViewer({
+	title = '',
+	items = [],
+	onLike = () => {},
+	withLikes = true,
+	labels = {},
+	thumbs = null,
+	className = '',
+	onClose = () => {},
+}) {
 	let release = null
 	let likeObserver = null
+	const text = {
+		counter: (n, total) => `Фото ${n} из ${total}`,
+		item: (n) => `Фото ${n}`,
+		prev: 'Предыдущее фото',
+		next: 'Следующее фото',
+		download: 'Скачать фото',
+		dialog: title ? `Фото альбома «${title}»` : 'Фото',
+		error: 'Не удалось загрузить фото',
+		...labels,
+	}
+	const thumbOf = (x) => (thumbs ? (x >= TABLET ? thumbs.desktop : thumbs.mobile) : thumbSize(x))
 
 	const lightbox = new PhotoSwipeLightbox({
 		dataSource: items.map((item) => ({
@@ -79,7 +104,7 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {}, w
 			alt: item.alt || '',
 		})),
 		pswpModule: () => import('photoswipe'),
-		mainClass: 'photo-viewer',
+		mainClass: `photo-viewer${className ? ` ${className}` : ''}`,
 		bgOpacity: 1,
 		showHideAnimationType: 'fade',
 		arrowPrev: false,
@@ -90,7 +115,7 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {}, w
 		imageClickAction: 'zoom',
 		tapAction: 'toggle-controls',
 		paddingFn: padding,
-		errorMsg: 'Не удалось загрузить фото',
+		errorMsg: text.error,
 	})
 
 	lightbox.on('uiRegister', () => {
@@ -115,7 +140,7 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {}, w
 				const likeSlot = el('div', 'photo-viewer__like-slot')
 				const download = el('a', 'photo-viewer__button photo-viewer__download')
 				download.setAttribute('download', '')
-				download.setAttribute('aria-label', 'Скачать фото')
+				download.setAttribute('aria-label', text.download)
 				download.append(createIcon('download', 'photo-viewer__icon'))
 				const divider = el('span', 'photo-viewer__divider')
 				divider.setAttribute('aria-hidden', 'true')
@@ -134,7 +159,7 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {}, w
 				const render = () => {
 					const index = pswp.currIndex
 					const item = items[index] || {}
-					counter.textContent = `Фото ${index + 1} из ${pswp.getNumItems()}`
+					counter.textContent = text.counter(index + 1, pswp.getNumItems())
 					download.hidden = !item.download
 					if (item.download) download.href = item.download
 					// Черта отделяет «Нравится» и «Скачать» от крестика — без них не нужна
@@ -179,7 +204,7 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {}, w
 					button.classList.add('photo-viewer__arrow', `photo-viewer__arrow--${dir}`)
 					button.setAttribute(
 						'aria-label',
-						dir === 'prev' ? 'Предыдущее фото' : 'Следующее фото'
+						dir === 'prev' ? text.prev : text.next
 					)
 					button.append(createIcon('chevron-right', 'photo-viewer__icon'))
 				},
@@ -198,7 +223,7 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {}, w
 				const buttons = items.map((item, index) => {
 					const button = el('button', 'photo-viewer__thumb')
 					button.type = 'button'
-					button.setAttribute('aria-label', `Фото ${index + 1}`)
+					button.setAttribute('aria-label', text.item(index + 1))
 					const img = el('img')
 					img.src = item.thumb || item.src
 					img.alt = ''
@@ -214,8 +239,8 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {}, w
 				// лента сдвигается на целые миниатюры, текущая — ближе к середине
 				let visible = 0
 				const fit = () => {
-					const { width, gap } = thumbSize(root.clientWidth)
-					const free = Math.min(THUMBS_MAX, root.clientWidth - (width < 96 ? 20 : 32))
+					const { width, gap } = thumbOf(root.clientWidth)
+					const free = Math.min(THUMBS_MAX, root.clientWidth - (root.clientWidth >= TABLET ? 32 : 20))
 					visible = Math.max(
 						1,
 						Math.min(items.length, Math.floor((free + gap) / (width + gap)))
@@ -233,7 +258,7 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {}, w
 						Math.max(0, pswp.currIndex - Math.floor(visible / 2)),
 						Math.max(0, items.length - visible)
 					)
-					const { width, gap } = thumbSize(root.clientWidth)
+					const { width, gap } = thumbOf(root.clientWidth)
 					list.scrollTo({
 						left: first * (width + gap),
 						behavior: smooth ? 'smooth' : 'auto',
@@ -254,11 +279,9 @@ export function createPhotoViewer({ title = '', items = [], onLike = () => {}, w
 	lightbox.on('openingAnimationStart', () => {
 		release?.()
 		release = lockBody()
-		lightbox.pswp?.element?.setAttribute(
-			'aria-label',
-			title ? `Фото альбома «${title}»` : 'Фото'
-		)
+		lightbox.pswp?.element?.setAttribute('aria-label', text.dialog)
 	})
+	lightbox.on('close', () => onClose(lightbox.pswp?.currIndex ?? 0))
 	lightbox.on('destroy', () => {
 		likeObserver?.disconnect()
 		likeObserver = null

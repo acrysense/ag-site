@@ -9,6 +9,7 @@ birthdays
 news
 news-article
 journal
+journal-issue
 career
 login
 recovery

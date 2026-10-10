@@ -717,6 +717,19 @@
 				{{#> state label="Загрузка" note="не применимо: страница приходит с сервера, страницы и фильтры — обычные ссылки"}}{{/state}}
 			{{/story}}
 
+			{{#> story id="journal-issue" group="Новости" title="Выпуск журнала" how='Страницы 16:9 листаются стрелками, свайпом и миниатюрами; «N / M»; «На весь экран» — просмотр страниц; «Нравится», «Скачать PDF», «Скопировать ссылку».' figma='PC.Journal — выпуск (5054:1919), 360 (5054:48412), на весь экран (5054:48287)' backend='app/components/sections/news/JournalIssue/ · docs/contracts/journal.md'}}
+				{{#> state label="19 страниц" bg="page"}}
+					<div class="container page-inner"><div class="page-stack">{{> sections/news/JournalIssue/JournalIssue props=data.journalIssue}}</div></div>
+				{{/state}}
+				{{#> state label="Одна страница" bg="page"}}
+					<div class="container page-inner"><div class="page-stack">{{> sections/news/JournalIssue/JournalIssue props=data.journalIssueOne}}</div></div>
+				{{/state}}
+				{{#> state label="Длинное название, без «Нравится»" bg="page"}}
+					<div class="container page-inner"><div class="page-stack">{{> sections/news/JournalIssue/JournalIssue props=data.journalIssueLong}}</div></div>
+				{{/state}}
+				{{#> state label="Нет страниц" note="Выпуск без картинок страниц не выводится: бэк готовит их из PDF вместе с публикацией"}}{{/state}}
+			{{/story}}
+
 			{{#> story id="news-filters" group="Новости" title="Фильтры раздела" how='Десктоп — карточка слева; до 1024 на странице её нет — фильтры выводит лента. Сам блок до 1024 — «таблетки» с прокруткой вбок.' figma='PC.News (4467:758), Frame 369; 360 — 4963:43446' backend='app/components/sections/news/NewsFilters/ · docs/contracts/news-list.md'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container page-inner"><div class="story-column-narrow">{{> sections/news/NewsFilters/NewsFilters props=data.newsFilters}}</div></div>

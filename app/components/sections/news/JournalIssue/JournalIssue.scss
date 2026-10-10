@@ -1,0 +1,359 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Карточка 1240, поля 20, всё через 20: заголовок H1 и через 4 дата M/400 Dark-grey; страница
+// 1200×675 (16:9) на #F2F5FA, скругление 14, по бокам стрелки 46 (чёрный 40%, в 20 от края), внизу
+// через 16 «N / M» по центру и «На весь экран» справа (чёрный 55%, скругление 18, поля 8/14,
+// Semi Bold 14 белым); миниатюры 112×63 через 8 (скругление 6, текущая — рамка 2 Main Blue) с
+// номером XS/400 под ними через 4 (текущий — Main Blue); «Нравится», «Скачать PDF · размер»,
+// «Скопировать ссылку» — S.Light через 10. До 1024: без карточки; заголовок 24, под ним
+// «N страниц · PDF, размер · дата» S/400; страница на тёмном (скругление 10), без стрелок (свайп),
+// «На весь экран» — только значок; миниатюры 72×40 через 6 без номеров; «PDF · размер», «Поделиться».
+@layer components {
+	.journal-issue {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		min-width: 0;
+
+		@include up(desktop) {
+			gap: 20px;
+			padding: 19px;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+	}
+
+	.journal-issue__head {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.journal-issue__title {
+		@include text("h2-360");
+
+		margin: 0;
+		color: palette("black-h");
+		overflow-wrap: anywhere;
+
+		@include up(desktop) {
+			@include text("h1");
+		}
+	}
+
+	.journal-issue__meta {
+		@include text("s-400");
+
+		margin: 0;
+		color: palette("dark-grey-txt");
+
+		@include up(desktop) {
+			@include text("m-400");
+		}
+	}
+
+	.journal-issue__meta-extra {
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.journal-issue__stage {
+		position: relative;
+		overflow: hidden;
+		background: palette("viewer-bg");
+		border-radius: $radius-inner-block;
+
+		@include up(desktop) {
+			background: palette("stage-bg");
+			border-radius: $radius-button;
+		}
+	}
+
+	// Страницы — лента с привязкой к целой странице: листается пальцем, колесом и стрелками
+	.journal-issue__track {
+		display: flex;
+		margin: 0;
+		padding: 0;
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: none;
+		list-style: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	.journal-issue__page {
+		flex: 0 0 100%;
+		scroll-snap-align: start;
+		aspect-ratio: 16 / 9;
+	}
+
+	.journal-issue__link {
+		@include image-placeholder;
+
+		display: block;
+		width: 100%;
+		height: 100%;
+		cursor: zoom-in;
+	}
+
+	.journal-issue__image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+
+	.journal-issue__arrow {
+		position: absolute;
+		top: 50%;
+		z-index: 1;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		width: 46px;
+		height: 46px;
+		padding: 0;
+		color: palette("white");
+		cursor: pointer;
+		background: rgba(palette("black-h"), 0.4);
+		border: 0;
+		border-radius: 50%;
+		transform: translateY(-50%);
+		transition:
+			background-color $transition-default,
+			opacity $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			background: rgba(palette("black-h"), 0.55);
+		}
+
+		&:disabled {
+			cursor: default;
+			opacity: 0;
+		}
+
+		@include up(tablet) {
+			display: flex;
+		}
+	}
+
+	.journal-issue__arrow--prev {
+		left: 20px;
+
+		.journal-issue__arrow-icon {
+			transform: scaleX(-1);
+		}
+	}
+
+	.journal-issue__arrow--next {
+		right: 20px;
+	}
+
+	.journal-issue__arrow-icon {
+		width: 18px;
+		height: 18px;
+	}
+
+	// «N / M» и «На весь экран» — поверх страницы внизу
+	.journal-issue__pill {
+		@include text("m-600");
+
+		position: absolute;
+		bottom: 10px;
+		z-index: 1;
+		display: flex;
+		gap: 6px;
+		align-items: center;
+		justify-content: center;
+		min-height: 33px;
+		margin: 0;
+		padding: 8px 14px;
+		color: palette("white");
+		white-space: nowrap;
+		background: rgba(palette("black-h"), 0.55);
+		border: 0;
+		border-radius: 18px;
+
+		@include up(desktop) {
+			bottom: 16px;
+		}
+	}
+
+	.journal-issue__counter {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.journal-issue__full {
+		right: 10px;
+		cursor: pointer;
+		transition: background-color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			background: rgba(palette("black-h"), 0.7);
+		}
+
+		@include up(desktop) {
+			right: 16px;
+		}
+	}
+
+	.journal-issue__full-icon {
+		flex: none;
+		width: 14px;
+		height: 14px;
+	}
+
+	// До 1024 — только значок (подпись остаётся для скринридера)
+	.journal-issue__full-text {
+		@include down(desktop) {
+			@include visually-hidden;
+		}
+	}
+
+	// Миниатюры — лента с прокруткой вбок
+	.journal-issue__thumbs {
+		display: flex;
+		gap: 6px;
+		margin: 0;
+		padding: 0;
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scrollbar-width: none;
+		list-style: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		@include up(desktop) {
+			gap: 8px;
+		}
+	}
+
+	.journal-issue__thumbs > li {
+		flex: none;
+	}
+
+	.journal-issue__thumb {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		align-items: center;
+		padding: 0;
+		color: palette("dark-grey-txt");
+		cursor: pointer;
+		background: none;
+		border: 0;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-txt");
+		}
+
+		&[aria-current] {
+			color: palette("main-blue");
+		}
+	}
+
+	.journal-issue__thumb-image {
+		display: block;
+		width: 72px;
+		height: 40px;
+		object-fit: cover;
+		background: palette("stage-bg");
+		border-radius: 4px;
+		transition: opacity $transition-default;
+
+		@include up(desktop) {
+			width: 112px;
+			height: 63px;
+			border-radius: 6px;
+		}
+	}
+
+	.journal-issue__thumb:hover .journal-issue__thumb-image,
+	.journal-issue__thumb:focus-visible .journal-issue__thumb-image {
+		opacity: 0.9;
+	}
+
+	.journal-issue__thumb[aria-current] .journal-issue__thumb-image {
+		outline: 2px solid palette("main-blue");
+		outline-offset: -2px;
+	}
+
+	.journal-issue__thumb-number {
+		@include text("xs-400");
+
+		@include down(desktop) {
+			display: none;
+		}
+	}
+
+	.journal-issue__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		align-items: center;
+	}
+
+	// «Скачать», «Скопировать ссылку» — с 1024; до — «PDF · …», «Поделиться»
+	.journal-issue__wide {
+		@include down(desktop) {
+			display: none;
+		}
+	}
+
+	.journal-issue__narrow {
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	// После копирования (CopyLink) — галочка на светло-зелёном, как в новости
+	.journal-issue__share.is-copied {
+		color: palette("copied");
+		background: palette("copied-bg");
+	}
+
+	.journal-issue__share-icon--copied {
+		display: none;
+	}
+
+	.journal-issue__share.is-copied > .journal-issue__share-icon {
+		display: none;
+	}
+
+	.journal-issue__share.is-copied > .journal-issue__share-icon--copied {
+		display: block;
+	}
+
+	// Полноэкранный просмотр страниц (PhotoViewer): миниатюры 16:9 — 84×47, на телефоне 64×36
+	.photo-viewer--pages {
+		.photo-viewer__thumb {
+			height: 36px;
+
+			@include up(tablet) {
+				width: 84px;
+				height: 47px;
+			}
+		}
+
+		.photo-viewer__thumbs-list {
+			@include up(tablet) {
+				width: calc(var(--photo-viewer-thumbs, 13) * 92px - 8px);
+			}
+		}
+	}
+}
