@@ -282,6 +282,13 @@ export function createPhotoViewer({
 		lightbox.pswp?.element?.setAttribute('aria-label', text.dialog)
 	})
 	lightbox.on('close', () => onClose(lightbox.pswp?.currIndex ?? 0))
+	// Миниатюра-заглушка шириной 250 растянута scale(width / 250) — скругление делим обратно
+	// (PhotoViewer.scss), чтобы угол был тот же, что у большого фото
+	lightbox.on('contentResize', ({ content, width }) => {
+		const placeholder = content.placeholder?.element
+		if (placeholder?.tagName === 'IMG' && width > 0)
+			placeholder.style.setProperty('--placeholder-unscale', String(250 / width))
+	})
 	lightbox.on('destroy', () => {
 		likeObserver?.disconnect()
 		likeObserver = null
