@@ -451,8 +451,9 @@
 		color: palette("black-txt");
 		border-radius: 8px;
 
+		// Сотрудник без фото — светлая, как остальные заглушки
 		&--person {
-			background: palette("grey");
+			background: palette("bg-main");
 		}
 
 		&--news {

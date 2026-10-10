@@ -1,7 +1,7 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// 1920: текущая страница Black.TXT, разделитель Icon.Grey; 360: всё Dark-grey.TXT
+// 1920: M/400 (14/22), текущая страница Black.TXT, разделитель Icon.Grey; 360: S/400, всё Dark-grey.TXT
 @layer components {
 	.breadcrumbs__list {
 		@include text("s-400");
@@ -13,6 +13,10 @@
 		padding: 0;
 		color: palette("dark-grey-txt");
 		list-style: none;
+
+		@include up(desktop) {
+			@include text("m-400");
+		}
 	}
 
 	.breadcrumbs__item {
