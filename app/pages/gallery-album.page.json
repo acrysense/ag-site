@@ -753,6 +753,12 @@
 					}
 				]
 			}
+		},
+		"comments": {
+			"url": "/__mock/comments",
+			"entity": "album",
+			"entityId": "korporativ-2026",
+			"count": 28
 		}
 	}
 }

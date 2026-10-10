@@ -42,11 +42,22 @@
 			display: none;
 		}
 
+		// С 1024 строки не тянутся на всю карточку: поле — до 650, ветки — до 800
+		&__composer {
+			@include up(desktop) {
+				max-width: 650px;
+			}
+		}
+
 		&__list {
 			display: flex;
 			flex-direction: column;
 			gap: 20px;
 			min-width: 0;
+
+			@include up(desktop) {
+				max-width: 800px;
+			}
 		}
 
 		&__empty,

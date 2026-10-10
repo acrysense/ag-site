@@ -31,8 +31,9 @@
 			height: 64px;
 		}
 
+		// Сотрудник без фото — светлая, как остальные заглушки
 		&--person {
-			background: palette("grey");
+			background: palette("bg-main");
 		}
 
 		&--news {
