@@ -22,12 +22,15 @@
 
 ## Альбом
 
-Справа — `AlbumHero` и `AlbumPhotos` в обёртке `page-columns__main album-page`.
+Справа — `AlbumHero`, `AlbumPhotos` и комментарии в обёртке `page-columns__main album-page`.
 
 | Блок | Поля |
 | --- | --- |
 | `AlbumHero` | `title`, `date`, `dateText`, `countText`, `text`, `cover{src, srcset}` (1240×440), `like` (LikeButton: `count`, `liked`, `url`), `download{url, size}` (архив альбома, «1,2 ГБ»), `url` (ссылка для копирования; пусто — адрес страницы) |
 | `AlbumPhotos` | `title` (для просмотра), `step` (по сколько фото, 24), `photos[]`, `other{title, items[AlbumCard]}` |
+
+Под фото — комментарии: общий блок `sections/shared/Comments` (comments.md) с `entity: "album"` и
+`entityId` — id альбома.
 
 ### Фото альбома
 
