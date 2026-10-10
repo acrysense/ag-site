@@ -17,10 +17,12 @@
 
 		color: palette("white");
 
-		// Само фото — со скруглением; на телефоне фото во всю ширину — без него
+		// Само фото — со скруглением; на телефоне фото во всю ширину — без него. Пока грузится
+		// большое фото, видна миниатюра, растянутая трансформацией: её скругление делится на тот же
+		// масштаб (--placeholder-unscale ставит PhotoViewer.js), иначе угол сначала круглее
 		.pswp__img {
 			@include up(tablet) {
-				border-radius: $radius-inner-block;
+				border-radius: calc(#{$radius-inner-block} * var(--placeholder-unscale, 1));
 			}
 		}
 	}
