@@ -1,0 +1,21 @@
+{{!--
+	Системная страница: крупный код («404»), заголовок, пояснение и кнопка. Классы — как у такого же
+	блока в ЛК (ag), разметку можно переносить между шаблонами.
+	props: code («404»), title, text, button { text, url }. Без button.url — без кнопки.
+--}}
+<section class="not-found" aria-labelledby="not-found-title">
+    <span class="not-found__decor" aria-hidden="true">{{default props.code "404"}}</span>
+    <div class="not-found__wrapper">
+        <h1 class="not-found__title" id="not-found-title">{{default props.title "Страница не найдена"}}</h1>
+        {{#if props.text}}<p class="not-found__description">{{props.text}}</p>{{/if}}
+        {{#if props.button.url}}
+            {{> components/Button/Button props=(obj
+                class="not-found__btn"
+                variant="general"
+                size="m"
+                href=props.button.url
+                text=(default props.button.text "На главную")
+            )}}
+        {{/if}}
+    </div>
+</section>

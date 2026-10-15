@@ -24,6 +24,19 @@
 		min-width: 0;
 	}
 
+	// Значения с одной линии: подписи — колонка по самой длинной, строки — её части (subgrid)
+	.info-list--aligned {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		column-gap: var(--info-list-gap, 10px);
+
+		.info-list__row {
+			display: grid;
+			grid-column: 1 / -1;
+			grid-template-columns: subgrid;
+		}
+	}
+
 	.info-list__label {
 		flex: none;
 		color: palette("dark-grey-txt");

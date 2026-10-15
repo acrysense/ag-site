@@ -492,6 +492,19 @@
 				{{#> state label="Загрузка" note="кнопка неактивна со значком загрузки, пока страница уходит на сервер (модуль Form)"}}{{/state}}
 			{{/story}}
 
+			{{#> story id="not-found" group="Служебные" title="Страница не найдена" how='Без крошек. С 1024 — код 198 и белая карточка 500, до 1024 — всё в белом блоке страницы. Классы — как у такого же блока в ЛК.' figma='ЛК: PC.404 (2632:4260), 360.404 (2591:3288)' backend='app/components/sections/error/NotFound/ · docs/contracts/not-found.md'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container page-inner">{{> sections/error/NotFound/NotFound props=data.notFound}}</div>
+				{{/state}}
+				{{#> state label="Длинные заголовок и текст" bg="page"}}
+					<div class="container page-inner">{{> sections/error/NotFound/NotFound props=data.notFoundLong}}</div>
+				{{/state}}
+				{{#> state label="Без кнопки" bg="page"}}
+					<div class="container page-inner">{{> sections/error/NotFound/NotFound props=data.notFoundNoButton}}</div>
+				{{/state}}
+				{{#> state label="Загрузка, пусто, ошибка" note="Статичная страница: данных не грузит, пустой не бывает"}}{{/state}}
+			{{/story}}
+
 			{{#> story id="career-list" group="Карьера" title="Вакансии" how='Карточки: 3 в ряд с 1280, 2 — с 768, 1 — на мобильном. До 1024 — кнопка «Фильтры · N». Карточка открывает окно вакансии.' figma='PC.Career (4588:83)' backend='app/components/sections/career/VacancyList/ · docs/contracts/career.md'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container page-inner">{{> sections/career/VacancyList/VacancyList props=data.careerList}}</div>

@@ -1,11 +1,12 @@
 {{!--
 	Строки «подпись: значение» в карточках «Структуры холдинга»; значение может быть ссылками
 	(телефон, сайт, e-mail), несколько ссылок в строке — через «; ».
-	props: items [{ label, value, links [{ text, url }] }], tight (строки через 5, а не 6), class.
+	props: items [{ label, value, links [{ text, url }] }], tight (строки через 5, а не 6), aligned
+	(значения с одной линии — подписи в колонку по самой длинной), class.
 	Пустая строка (ни value, ни links) не выводится.
 --}}
 {{#if props.items.length}}
-    <dl class="info-list{{#if props.tight}} info-list--tight{{/if}}{{#if props.class}} {{props.class}}{{/if}}">
+    <dl class="info-list{{#if props.tight}} info-list--tight{{/if}}{{#if props.aligned}} info-list--aligned{{/if}}{{#if props.class}} {{props.class}}{{/if}}">
         {{#each props.items}}
             {{#if (or value links.length)}}
                 <div class="info-list__row">

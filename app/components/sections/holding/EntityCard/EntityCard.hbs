@@ -6,7 +6,7 @@
 --}}
 <article class="entity-card">
     <h3 class="entity-card__title">{{props.name}}</h3>
-    {{> sections/holding/InfoList/InfoList props=(obj items=(arr (obj label="Телефон:" links=props.phones) (obj label="Адрес:" value=props.address)))}}
+    {{> sections/holding/InfoList/InfoList props=(obj items=(arr (obj label="Телефон:" links=props.phones) (obj label="Адрес:" value=props.address)) aligned=true)}}
     {{> sections/holding/BrandChips/BrandChips props=(obj label=props.brandsLabel items=props.brands class="entity-card__brands")}}
     <a class="btn btn--general btn--m entity-card__more" href="{{props.url}}">{{default props.moreText "Подробнее"}}<span class="visually-hidden">: {{props.name}}</span></a>
 </article>
