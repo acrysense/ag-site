@@ -1,14 +1,19 @@
 // Праздничный салют в день рождения: конфетти вылетает веером из метки, снизу поднимаются шары.
 // Рисуется на холсте поверх страницы (нажатия проходят сквозь него), около 4 с, потом холст
 // удаляется. Сам — раз в день на сотрудника (localStorage, ключ — data-celebration-key); если
-// вкладка открыта в фоне — когда на неё перейдут. Повтор — нажатием на метку (добавляет залп).
+// вкладка открыта в фоне — когда на неё перейдут; стартует после полной загрузки страницы.
+// Повтор — нажатием на метку (новый залп не чаще раза в COOLDOWN, частиц и шаров на экране не
+// больше MAX_*: частые нажатия не нагружают страницу).
 // «Уменьшить движение» — конфетти вокруг метки проявляется и гаснет на месте, без полёта и шаров.
 // Цвета — из CSS-переменных метки (--celebration-*, палитра в Celebration.scss).
 const STORE = 'ag:celebrated:'
 const GRAVITY = 900 // пикселей в секунду²
 const DRAG = 1.4 // торможение конфетти в воздухе, доля скорости в секунду
 const FADE = 0.6 // последние секунды жизни конфетти — гаснет
-const AUTO_DELAY = 450 // после открытия страницы — чтобы её успели увидеть
+const AUTO_DELAY = 450 // после загрузки страницы — чтобы её успели увидеть
+const COOLDOWN = 1500 // между залпами по нажатию
+const MAX_PIECES = 450
+const MAX_BALLOONS = 10
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 
 const random = (min, max) => min + Math.random() * (max - min)
@@ -27,6 +32,7 @@ export default function init(root) {
 	let frame = 0
 	let last = 0
 	let timer = 0
+	let lastPlay = -Infinity
 	let pieces = []
 	let balloons = []
 
@@ -63,7 +69,7 @@ export default function init(root) {
 
 	// Залп из точки: веер вверх, разлёт шире на широком экране
 	const burst = (x, y, palette) => {
-		const count = window.innerWidth < 768 ? 90 : 150
+		const count = Math.min(window.innerWidth < 768 ? 90 : 150, MAX_PIECES - pieces.length)
 		for (let i = 0; i < count; i++) {
 			const angle = random(-Math.PI * 0.88, -Math.PI * 0.12)
 			const speed = random(380, 980)
@@ -89,7 +95,8 @@ export default function init(root) {
 
 	// Без движения: листочки вокруг метки проявляются и гаснут
 	const sprinkle = (x, y, palette) => {
-		for (let i = 0; i < 40; i++) {
+		const count = Math.min(40, MAX_PIECES - pieces.length)
+		for (let i = 0; i < count; i++) {
 			const angle = random(0, Math.PI * 2)
 			const distance = random(24, 170)
 			pieces.push({
@@ -118,7 +125,7 @@ export default function init(root) {
 	const launchBalloons = (palette) => {
 		const width = window.innerWidth
 		const height = window.innerHeight
-		const count = width < 768 ? 3 : 5
+		const count = Math.min(width < 768 ? 3 : 5, MAX_BALLOONS - balloons.length)
 		for (let i = 0; i < count; i++) {
 			const radius = width < 768 ? random(18, 24) : random(24, 32)
 			const start = height + radius * 2 + random(0, 80)
@@ -228,23 +235,31 @@ export default function init(root) {
 		frame = requestAnimationFrame(loop)
 	}
 
+	// Залп; false — не нарисовался (рано после прошлого или холст недоступен)
 	const play = () => {
+		const now = performance.now()
+		if (now - lastPlay < COOLDOWN) return false
 		const palette = colors()
 		stringColor = cssVar('--celebration-string') || 'transparent'
 		shineColor = cssVar('--celebration-shine') || 'transparent'
+		// Метка за краем экрана (страницу прокрутили) — залп от ближайшего видимого места
 		const rect = root.getBoundingClientRect()
-		const x = rect.left + rect.width / 2
-		const y = rect.top + rect.height / 2
+		const x = Math.min(Math.max(rect.left + rect.width / 2, 24), window.innerWidth - 24)
+		const y = Math.min(Math.max(rect.top + rect.height / 2, 24), window.innerHeight - 24)
 		if (!canvas) {
 			canvas = document.createElement('canvas')
 			canvas.className = 'celebration-canvas'
 			canvas.setAttribute('aria-hidden', 'true')
 			ctx = canvas.getContext('2d')
-			if (!ctx) return stop()
+			if (!ctx) {
+				stop()
+				return false
+			}
 			document.body.append(canvas)
 			resize()
 			window.addEventListener('resize', resize)
 		}
+		lastPlay = now
 		if (reducedMotion.matches) sprinkle(x, y, palette)
 		else {
 			burst(x, y, palette)
@@ -254,9 +269,10 @@ export default function init(root) {
 			last = performance.now()
 			frame = requestAnimationFrame(loop)
 		}
+		return true
 	}
 
-	root.addEventListener('click', play, { signal })
+	root.addEventListener('click', () => play(), { signal })
 
 	// Сам — раз в день на сотрудника; вкладка в фоне — когда её откроют
 	const seen = () => {
@@ -273,21 +289,24 @@ export default function init(root) {
 			localStorage.setItem(STORE + key, today())
 		} catch {}
 	}
-	const auto = () => {
+	// Старт — после полной загрузки страницы и только на видимой вкладке; «показан сегодня»
+	// записывается, когда салют действительно нарисовался
+	const visible = () => document.visibilityState === 'visible'
+	const start = () => {
+		if (timer || seen() || !visible()) return
 		timer = setTimeout(() => {
 			timer = 0
-			play()
-			remember()
+			if (visible() && play()) remember()
 		}, AUTO_DELAY)
 	}
 	if (!seen()) {
-		if (document.visibilityState === 'visible') auto()
-		else
-			document.addEventListener(
-				'visibilitychange',
-				() => document.visibilityState === 'visible' && !timer && !seen() && auto(),
-				{ signal }
-			)
+		if (document.readyState === 'complete') start()
+		else window.addEventListener('load', start, { once: true, signal })
+		document.addEventListener(
+			'visibilitychange',
+			() => document.readyState === 'complete' && start(),
+			{ signal }
+		)
 	}
 
 	return () => {
