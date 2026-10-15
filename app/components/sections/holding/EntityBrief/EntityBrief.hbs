@@ -6,7 +6,7 @@
 <aside class="entity-brief" aria-label="{{default props.label 'Юридическое лицо'}}">
     <p class="entity-brief__label">{{default props.label "Юридическое лицо"}}</p>
     <h2 class="entity-brief__name">{{props.name}}</h2>
-    {{> sections/holding/InfoList/InfoList props=(obj items=props.rows class="entity-brief__rows")}}
+    {{> sections/holding/InfoList/InfoList props=(obj items=props.rows aligned=true class="entity-brief__rows")}}
     {{#if props.brands.length}}{{> sections/holding/BrandChips/BrandChips props=(obj label=props.brandsLabel items=props.brands)}}{{/if}}
     {{#if props.staffUrl}}<a class="entity-brief__link" href="{{props.staffUrl}}">{{default props.staffText "Все сотрудники юр. лица"}} →</a>{{/if}}
 </aside>

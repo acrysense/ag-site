@@ -100,17 +100,16 @@
 			}
 		}
 
-		// Дата не переносится посередине (узкие карточки на 1024)
+		// Дата XS/400 на всех ширинах, как на десктопе; не переносится посередине (узкие карточки
+		// на 1024)
 		&__date {
-			@include text("m-400");
+			@include text("xs-400");
 
 			flex: none;
 			color: palette("dark-grey-txt");
 			white-space: nowrap;
 
 			@include up(desktop) {
-				@include text("xs-400");
-
 				margin-left: auto;
 			}
 		}
