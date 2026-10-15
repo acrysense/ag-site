@@ -572,10 +572,10 @@
 				{{#> state label="Ошибка" note="в живом окне: пустой телефон, неверный номер, файл не того типа или больше 5 МБ, без согласия; телефон с «111» или «сбой» в сообщении"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="celebration" group="Компоненты" title="День рождения: салют" how='Метка под ФИО в день рождения. Салют — конфетти от метки и шары снизу, около 4 с, на холсте поверх страницы (нажатия проходят). Сам — раз в день на сотрудника, повтор — нажатием на метку. «Уменьшить движение» — конфетти проявляется и гаснет на месте.' backend='app/components/components/Celebration/ · docs/contracts/holding.md — «День рождения»'}}
-				{{#> state label="Метка (нажмите — салют)"}}{{> components/Celebration/Celebration props=(obj key="story-celebration")}}{{/state}}
-				{{#> state label="В карточке сотрудника" bg="page"}}<div class="container page-inner">{{> sections/holding/EmployeeProfile/EmployeeProfile props=(obj name="Новая Владислава Митрофановна" birthday=(obj key="story-celebration-profile") meta=(arr (obj icon="profile" text="Заведующая аптекой")))}}</div>{{/state}}
-				{{#> state label="Не день рождения" note="Метки нет — бэк не выводит birthday"}}{{/state}}
+			{{#> story id="celebration" group="Компоненты" title="День рождения: салют" how='Только в день рождения. Конфетти и шары, около 4 с, на холсте поверх страницы (нажатия проходят). Сам — раз в день на сотрудника. Основной вид — невидимый блок, конфетти от фото; запасной — метка «Сегодня день рождения», нажатие повторяет салют. Кнопка «Запустить салют» — только в витрине и демо. «Уменьшить движение» — конфетти проявляется и гаснет на месте.' backend='app/components/components/Celebration/ · docs/contracts/holding.md — «День рождения»'}}
+				{{#> state label="Основной: невидимый блок, салют от фото" bg="page"}}<div class="container page-inner">{{> sections/holding/EmployeeProfile/EmployeeProfile props=(obj name="Новая Владислава Митрофановна" birthday=(obj key="story-celebration-profile") meta=(arr (obj icon="profile" text="Заведующая аптекой")))}}<p><button class="btn btn--light btn--s" type="button" data-celebration-play="story-celebration-profile">Запустить салют</button></p></div>{{/state}}
+				{{#> state label="Запасной: метка (нажмите — салют)"}}{{> components/Celebration/Celebration props=(obj key="story-celebration" badge=true)}}{{/state}}
+				{{#> state label="Не день рождения" note="Блока нет — бэк его не выводит"}}{{/state}}
 			{{/story}}
 
 			{{#> story id="toast" group="Компоненты" title="Тост" how='Внизу экрана по центру (на мобильном — над нижней панелью), 2,5 с, новый заменяет текущий.' figma='кит: Quick info (2543:906)' backend='app/components/components/Toast/ · docs/contracts/toast.md — событие ui:toast или заготовка в разметке'}}

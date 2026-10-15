@@ -109,19 +109,22 @@ youtube, telegram, tiktok; `label` — для скринридера: «ADEL в 
 
 ### День рождения
 
-В день рождения сотрудника под ФИО выводится метка (`components/Celebration`), остальные дни —
-ничего:
+В день рождения сотрудника выводится невидимый блок салюта (`components/Celebration`): при открытии
+страницы конфетти вылетает от фото, снизу поднимаются шары. В остальные дни блока нет.
 
 ```html
-<button class="celebration" type="button" data-module="Celebration" data-path="components"
-  data-celebration-key="ID сотрудника">… Сегодня день рождения …</button>
+<div class="celebration" hidden data-module="Celebration" data-path="components"
+  data-celebration-key="ID сотрудника" data-celebration-origin=".employee-profile__photo"></div>
 ```
 
-- `data-celebration-key` — постоянный ID сотрудника. По нему салют (конфетти и шары) запускается
-  сам один раз в день у каждого посетителя; повтор — нажатием на метку.
+- `data-celebration-key` — постоянный ID сотрудника: салют сам показывается один раз в день у
+  каждого посетителя.
 - Выводить тем же сотрудникам и по той же дате, что и в блоке «День рождения» (дата сервера:
   скрипт её не проверяет).
 - Если страница сотрудника кэшируется, признак «сегодня день рождения» считать вне кэша.
+- Запасной вид — видимая метка «Сегодня день рождения» под ФИО (нажатие повторяет салют): вместо
+  блока — кнопка `button.celebration.celebration--badge` из `Celebration.hbs` (`badge`).
+- Кнопка «Салют (тест)» на демо-странице — только для показа, в шаблон не входит.
 
 **`EntityBrief`** — `label` («Юридическое лицо»), `name`, `rows[]` (`InfoList`: телефон, адрес),
 `brands[]`, `brandsLabel`, `staffUrl`, `staffText` («Все сотрудники юр. лица»).

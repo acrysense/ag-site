@@ -3,6 +3,7 @@ import './pages-nav.scss'
 
 // Кнопка «Страницы» на страницах демо и dev (подключает layouts/Head при demo): список страниц
 // вёрстки по разделам, текущая отмечена, «Скопировать ссылку», переход ко всем страницам и витрине.
+// Рядом — «Салют (тест)», если на странице есть салют дня рождения.
 // Длинный список прокручивается внутри панели — SimpleBar, как списки сайта (стили — сайта).
 // Список — dev-pages.json (плагин pagesIndexPlugin в vite.config.ts). Не показывается в iframe
 // витрины, на служебных страницах (dev/*) и с ?nav=0 (для чистых скриншотов).
@@ -77,6 +78,14 @@ async function mount(indexUrl) {
 	panel.append(foot)
 
 	root.append(panel, toggle)
+	// Тестовая кнопка салюта (components/Celebration) — только на демо-страницах с салютом: в разметку
+	// шаблона не входит, бэку её не переносить
+	if (document.querySelector('[data-module="Celebration"]')) {
+		const celebrate = make('button', 'pages-nav__toggle', 'Салют (тест)')
+		celebrate.type = 'button'
+		celebrate.dataset.celebrationPlay = ''
+		root.insertBefore(celebrate, toggle)
+	}
 	document.body.append(root)
 
 	let copyTimer = 0
