@@ -1,0 +1,55 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Метка «Сегодня день рождения»: пилюля 32, BG.Info, M/500, значок подарка Festive.Pink.
+// Наведение — текст Blue.TXT. Цвета салюта — из палитры (как у «Дня рождения» на главной):
+// скрипт берёт их из переменных --celebration-*.
+// Холст салюта — на весь экран поверх шапки и нижней панели, под окнами и плашкой cookie;
+// нажатия проходят сквозь него.
+@layer components {
+	.celebration {
+		--celebration-pink: #{palette("festive-pink")};
+		--celebration-gold: #{palette("festive-gold")};
+		--celebration-blue: #{palette("main-blue")};
+		// нитка шара и блик на нём
+		--celebration-string: #{rgba(palette("black-txt"), 0.35)};
+		--celebration-shine: #{rgba(palette("white"), 0.55)};
+
+		@include text("m-500");
+
+		display: inline-flex;
+		flex: none;
+		gap: 6px;
+		align-items: center;
+		align-self: flex-start;
+		height: 32px;
+		padding: 0 12px;
+		color: palette("black-txt");
+		cursor: pointer;
+		background: palette("bg-info");
+		border: 0;
+		border-radius: 16px;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-txt");
+		}
+	}
+
+	.celebration__icon {
+		flex: none;
+		width: 16px;
+		height: 16px;
+		color: palette("festive-pink");
+	}
+
+	.celebration-canvas {
+		position: fixed;
+		inset: 0;
+		z-index: 100;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+	}
+}

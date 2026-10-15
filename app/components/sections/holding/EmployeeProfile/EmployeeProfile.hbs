@@ -4,7 +4,8 @@
 	телефон); ниже разделы «Контакты / Работа / Личное» — строки «подпись: значение» (подпись 200,
 	значение — текст или ссылка). Нет фото — инициалы.
 	props: name, photo { src, srcset }, meta [{ icon (profile, case, phone), text }], sections [{
-	title, rows [{ label, value, url }] }]. Пустой раздел (без строк) не выводится.
+	title, rows [{ label, value, url }] }], birthday { key, text } — только в день рождения: метка
+	под ФИО и салют (components/Celebration). Пустой раздел (без строк) не выводится.
 --}}
 <article class="employee-profile" aria-labelledby="employee-profile-name">
     <div class="employee-profile__header">
@@ -14,6 +15,7 @@
         </span>
         <div class="employee-profile__info">
             <h1 class="employee-profile__name" id="employee-profile-name">{{props.name}}</h1>
+            {{#if props.birthday}}{{> components/Celebration/Celebration props=props.birthday}}{{/if}}
             {{#if props.meta.length}}
                 <ul class="employee-profile__meta" role="list">
                     {{#each props.meta}}
