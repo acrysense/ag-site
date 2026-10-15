@@ -384,6 +384,10 @@ export default function init(root) {
 	const renderReactions = (node) => {
 		const { data, reactionsEl } = node
 		const mine = new Set(data.myReactions || [])
+		// Фокус был на пилюле — после перерисовки на той же (или на «+ Реакция», если её больше нет)
+		const focused = reactionsEl.contains(document.activeElement)
+			? document.activeElement.dataset.reaction
+			: null
 		const pills = REACTIONS.filter(([type]) => (data.reactions?.[type] || 0) > 0).map(
 			([type, emoji, label]) => {
 				const count = data.reactions[type]
@@ -409,6 +413,12 @@ export default function init(root) {
 			}
 		)
 		reactionsEl.replaceChildren(...pills)
+		if (focused) {
+			const target =
+				reactionsEl.querySelector(`[data-reaction="${focused}"]`) ||
+				node.actionsEl?.querySelector('.comment__add-reaction')
+			target?.focus({ preventScroll: true })
+		}
 		// Рейтинг = 👍 − 👎: зелёный «+N», красный «−N», при 0 скрыт
 		const score = data.score ?? (data.reactions?.like || 0) - (data.reactions?.dislike || 0)
 		node.scoreEl.hidden = !score || data.deleted
@@ -872,6 +882,16 @@ export default function init(root) {
 		)
 		node.textEl = h('p', { class: 'comment__text', text: data.deleted ? '' : data.text || '' })
 		node.reactionsEl = h('div', { class: 'comment__reactions' })
+		// Нажатие на пилюлю ставит или снимает свою реакцию этого типа (пилюли перерисовываются —
+		// слушатель один, на ряду)
+		node.reactionsEl.addEventListener(
+			'click',
+			(event) => {
+				const pill = event.target.closest('[data-reaction]')
+				if (pill && !pill.disabled) react(node, pill.dataset.reaction)
+			},
+			{ signal }
+		)
 		node.actionsEl = h('div', { class: 'comment__actions' }, node.reactionsEl)
 
 		if (!data.deleted && canWrite()) {

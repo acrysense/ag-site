@@ -491,7 +491,8 @@
 			display: contents;
 		}
 
-		// Пилюля реакции: 32, от 60, моя — синяя, мой 👎 — красный
+		// Пилюля реакции: 32, от 60, моя — синяя, мой 👎 — красный. Смайлик и число — по центру:
+		// с одной цифрой справа не остаётся пустоты
 		&__reaction {
 			@include text("m-400");
 
@@ -499,6 +500,7 @@
 			flex: none;
 			gap: 5px;
 			align-items: center;
+			justify-content: center;
 			min-width: 60px;
 			height: 32px;
 			padding: 0 10px;
