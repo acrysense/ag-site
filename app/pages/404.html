@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="{{ lang }}" data-icons="{{sprite}}">
+	<head>
+		{{> layouts/Head/Head }}
+		<link rel="stylesheet" href="/assets/styles/main.scss" />
+		<script type="module" src="/app.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			{{> layouts/Header/Header props=site.header }}
+			<main class="wrapper__content">
+				{{!-- Страница не найдена: без крошек --}}
+				<div class="container page-inner">
+					{{> sections/error/NotFound/NotFound props=data.notFound }}
+				</div>
+			</main>
+			{{> layouts/Footer/Footer props=site.footer }}
+		</div>
+		{{> layouts/MainMenu/MainMenu props=site.mainMenu }}
+		{{> layouts/TabBar/TabBar props=site.tabBar }}
+		{{> layouts/SiteModals/SiteModals props=site.modals }}
+		{{> layouts/CookieBanner/CookieBanner props=site.cookies }}
+	</body>
+</html>

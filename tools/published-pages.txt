@@ -19,3 +19,4 @@ gallery-album
 holding
 holding-entity
 holding-employee
+404
