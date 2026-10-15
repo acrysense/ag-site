@@ -1,9 +1,8 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Метка «Сегодня день рождения»: пилюля 32, BG.Info, M/500, значок подарка Festive.Pink.
-// Наведение — текст Blue.TXT. Цвета салюта — из палитры (как у «Дня рождения» на главной):
-// скрипт берёт их из переменных --celebration-*.
+// Салют в день рождения. Основной блок .celebration невидим — на нём только цвета салюта (палитра, как у
+// «Дня рождения» на главной): скрипт берёт их из переменных --celebration-*.
 // Холст салюта — на весь экран поверх шапки и нижней панели, под окнами и плашкой cookie;
 // нажатия проходят сквозь него.
 @layer components {
@@ -14,7 +13,11 @@
 		// нитка шара и блик на нём
 		--celebration-string: #{rgba(palette("black-txt"), 0.35)};
 		--celebration-shine: #{rgba(palette("white"), 0.55)};
+	}
 
+	// Запасной вид — метка «Сегодня день рождения»: пилюля 32, BG.Info, M/500, значок подарка
+	// Festive.Pink; наведение — текст Blue.TXT
+	.celebration--badge {
 		@include text("m-500");
 
 		display: inline-flex;

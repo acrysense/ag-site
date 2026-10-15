@@ -1,13 +1,20 @@
 {{!--
-	Метка «Сегодня день рождения» и праздничный салют: конфетти от метки и шары снизу.
-	Салют запускается сам раз в день на сотрудника (по key), повтор — нажатием на метку.
-	props: key (постоянный id сотрудника), text (по умолчанию «Сегодня день рождения»), class.
-	Контракт — docs/contracts/holding.md («День рождения»).
+	Праздничный салют в день рождения: конфетти и шары. Выводится только в день рождения, салют
+	запускается сам раз в день на сотрудника (по key).
+	props: key (постоянный id сотрудника), origin (селектор, откуда летит конфетти — фото), class.
+	Запасной вид — badge: видимая метка-кнопка (text, по умолчанию «Сегодня день рождения»):
+	конфетти от неё, нажатие повторяет салют. Контракт — docs/contracts/holding.md («День рождения»).
 --}}
-<button class="celebration{{#if props.class}} {{props.class}}{{/if}}" type="button"
-    data-module="Celebration" data-path="components"
-    {{#if props.key}}data-celebration-key="{{props.key}}"{{/if}}>
-    {{> components/Icon/Icon name="gift" class="celebration__icon"}}
-    <span class="celebration__text">{{default props.text "Сегодня день рождения"}}</span>
-    <span class="visually-hidden">— запустить салют ещё раз</span>
-</button>
+{{#if props.badge}}
+    <button class="celebration celebration--badge{{#if props.class}} {{props.class}}{{/if}}" type="button"
+        data-module="Celebration" data-path="components"
+        {{#if props.key}}data-celebration-key="{{props.key}}"{{/if}}>
+        {{> components/Icon/Icon name="gift" class="celebration__icon"}}
+        <span class="celebration__text">{{default props.text "Сегодня день рождения"}}</span>
+        <span class="visually-hidden">— запустить салют ещё раз</span>
+    </button>
+{{else}}
+    <div class="celebration" hidden data-module="Celebration" data-path="components"
+        {{#if props.key}}data-celebration-key="{{props.key}}"{{/if}}
+        {{#if props.origin}}data-celebration-origin="{{props.origin}}"{{/if}}></div>
+{{/if}}

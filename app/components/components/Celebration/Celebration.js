@@ -1,17 +1,20 @@
-// Праздничный салют в день рождения: конфетти вылетает веером из метки, снизу поднимаются шары.
-// Рисуется на холсте поверх страницы (нажатия проходят сквозь него), около 4 с, потом холст
-// удаляется. Сам — раз в день на сотрудника (localStorage, ключ — data-celebration-key); если
-// вкладка открыта в фоне — когда на неё перейдут; стартует после полной загрузки страницы.
-// Повтор — нажатием на метку (новый залп не чаще раза в COOLDOWN, частиц и шаров на экране не
-// больше MAX_*: частые нажатия не нагружают страницу).
-// «Уменьшить движение» — конфетти вокруг метки проявляется и гаснет на месте, без полёта и шаров.
-// Цвета — из CSS-переменных метки (--celebration-*, палитра в Celebration.scss).
+// Праздничный салют в день рождения: конфетти вылетает веером, снизу поднимаются шары. Рисуется на
+// холсте поверх страницы (нажатия проходят сквозь него), около 4 с, потом холст удаляется.
+// Два вида блока (бэк выводит его только в день рождения):
+// - невидимый (основной) — салют запускается сам, конфетти летит от data-celebration-origin (фото);
+// - метка-кнопка (запасной) — то же, конфетти от метки, нажатие повторяет салют.
+// Сам — раз в день на сотрудника (localStorage, ключ — data-celebration-key): после полной загрузки
+// страницы и только на видимой вкладке; «показан сегодня» записывается, когда салют нарисовался.
+// Повтор вручную — нажатием на метку или на кнопку [data-celebration-play] (тестовая, только в демо):
+// залп не чаще раза в COOLDOWN, частиц и шаров на экране не больше MAX_* — частые нажатия не
+// нагружают страницу. «Уменьшить движение» — конфетти проявляется и гаснет на месте, без полёта и
+// шаров. Цвета — из CSS-переменных блока (--celebration-*, палитра в Celebration.scss).
 const STORE = 'ag:celebrated:'
 const GRAVITY = 900 // пикселей в секунду²
 const DRAG = 1.4 // торможение конфетти в воздухе, доля скорости в секунду
 const FADE = 0.6 // последние секунды жизни конфетти — гаснет
 const AUTO_DELAY = 450 // после загрузки страницы — чтобы её успели увидеть
-const COOLDOWN = 1500 // между залпами по нажатию
+const COOLDOWN = 1500 // между залпами вручную
 const MAX_PIECES = 450
 const MAX_BALLOONS = 10
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -235,6 +238,17 @@ export default function init(root) {
 		frame = requestAnimationFrame(loop)
 	}
 
+	// Откуда залп: метка (если блок видимый) или фото (data-celebration-origin), если на экране;
+	// иначе — верхняя треть экрана
+	const origin = () => {
+		const selector = root.dataset.celebrationOrigin
+		const target = root.hidden ? (selector ? document.querySelector(selector) : null) : root
+		const rect = target?.getBoundingClientRect()
+		const onScreen = rect && rect.width && rect.bottom > 0 && rect.top < window.innerHeight
+		if (!onScreen) return { x: window.innerWidth / 2, y: window.innerHeight / 3 }
+		return { x: rect.left + rect.width / 2, y: Math.max(rect.top + rect.height / 2, 24) }
+	}
+
 	// Залп; false — не нарисовался (рано после прошлого или холст недоступен)
 	const play = () => {
 		const now = performance.now()
@@ -242,10 +256,7 @@ export default function init(root) {
 		const palette = colors()
 		stringColor = cssVar('--celebration-string') || 'transparent'
 		shineColor = cssVar('--celebration-shine') || 'transparent'
-		// Метка за краем экрана (страницу прокрутили) — залп от ближайшего видимого места
-		const rect = root.getBoundingClientRect()
-		const x = Math.min(Math.max(rect.left + rect.width / 2, 24), window.innerWidth - 24)
-		const y = Math.min(Math.max(rect.top + rect.height / 2, 24), window.innerHeight - 24)
+		const { x, y } = origin()
 		if (!canvas) {
 			canvas = document.createElement('canvas')
 			canvas.className = 'celebration-canvas'
@@ -272,7 +283,17 @@ export default function init(root) {
 		return true
 	}
 
-	root.addEventListener('click', () => play(), { signal })
+	// Вручную: нажатие на метку или на тестовую кнопку демо
+	if (!root.hidden) root.addEventListener('click', () => play(), { signal })
+	document.addEventListener(
+		'click',
+		(event) => {
+			// data-celebration-play="key" — только свой салют; пусто — любой на странице
+			const button = event.target.closest('[data-celebration-play]')
+			if (button && (!button.dataset.celebrationPlay || button.dataset.celebrationPlay === key)) play()
+		},
+		{ signal }
+	)
 
 	// Сам — раз в день на сотрудника; вкладка в фоне — когда её откроют
 	const seen = () => {
