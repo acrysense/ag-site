@@ -42,7 +42,7 @@
 			display: none;
 		}
 
-		// С 1024 строки не тянутся на всю карточку: поле — до 650, ветки — до 800
+		// С 1024 строки не тянутся на всю карточку: поле — до 650, ветки и «Показать ещё» — до 800
 		&__composer {
 			@include up(desktop) {
 				max-width: 650px;
@@ -83,7 +83,7 @@
 			}
 		}
 
-		// «Показать ещё комментарии»: во всю ширину, 48, серая рамка, Inter Medium 14/22 Main Blue;
+		// «Показать ещё комментарии»: во всю ширину ленты, 48, серая рамка, Inter Medium 14/22 Main Blue;
 		// загрузка — спиннер .btn
 		&__more {
 			@include text("m-medium");
@@ -98,6 +98,10 @@
 			transition:
 				color $transition-default,
 				border-color $transition-default;
+
+			@include up(desktop) {
+				max-width: 800px;
+			}
 
 			&:hover:not(:disabled),
 			&:focus-visible:not(:disabled) {
