@@ -1,0 +1,13 @@
+{{!--
+	Метка «Сегодня день рождения» и праздничный салют: конфетти от метки и шары снизу.
+	Салют запускается сам раз в день на сотрудника (по key), повтор — нажатием на метку.
+	props: key (постоянный id сотрудника), text (по умолчанию «Сегодня день рождения»), class.
+	Контракт — docs/contracts/holding.md («День рождения»).
+--}}
+<button class="celebration{{#if props.class}} {{props.class}}{{/if}}" type="button"
+    data-module="Celebration" data-path="components"
+    {{#if props.key}}data-celebration-key="{{props.key}}"{{/if}}>
+    {{> components/Icon/Icon name="gift" class="celebration__icon"}}
+    <span class="celebration__text">{{default props.text "Сегодня день рождения"}}</span>
+    <span class="visually-hidden">— запустить салют ещё раз</span>
+</button>

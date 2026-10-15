@@ -27,6 +27,9 @@
 		],
 		"profile": {
 			"name": "Новая Владислава Митрофановна",
+			"birthday": {
+				"key": "employee-demo"
+			},
 			"photo": {
 				"src": "./dev/img/holding/employee.webp"
 			},
