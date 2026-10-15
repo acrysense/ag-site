@@ -14,7 +14,7 @@
         <span class="visually-hidden">— запустить салют ещё раз</span>
     </button>
 {{else}}
-    <div class="celebration" hidden data-module="Celebration" data-path="components"
+    <div class="celebration{{#if props.class}} {{props.class}}{{/if}}" hidden data-module="Celebration" data-path="components"
         {{#if props.key}}data-celebration-key="{{props.key}}"{{/if}}
         {{#if props.origin}}data-celebration-origin="{{props.origin}}"{{/if}}></div>
 {{/if}}
