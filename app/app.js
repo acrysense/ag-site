@@ -27,6 +27,12 @@ function init() {
 	})
 
 	lifecycleObserver.observe(document.body, { childList: true, subtree: true })
+
+	// Раскрытие блоков (миксин expand) анимируется после первой отрисовки: открытое при загрузке
+	// не «въезжает», а всё, что открывают или добавляют потом, — плавно
+	const motionReady = () => document.documentElement.classList.add('motion-ready')
+	requestAnimationFrame(() => requestAnimationFrame(motionReady))
+	setTimeout(motionReady, 100) // запасной путь: во вкладке в фоне кадры не идут
 }
 
 if (document.readyState === 'loading') {

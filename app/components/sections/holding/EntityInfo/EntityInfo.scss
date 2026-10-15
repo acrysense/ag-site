@@ -33,7 +33,10 @@
 		}
 	}
 
+	// Описание раскрывается по высоте
 	.entity-info__about {
+		@include expand;
+
 		display: flex;
 		flex-direction: column;
 		gap: 20px;

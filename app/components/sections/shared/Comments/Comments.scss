@@ -801,11 +801,12 @@
 		}
 	}
 
-	// Появление: панели проявляются со сдвигом от своей кнопки (реакции — снизу вверх).
-	// Закрываются сразу: их удаляет скрипт
+	// Появление: панели и форма ответа проявляются со сдвигом от своей кнопки (реакции — снизу
+	// вверх). Закрытие: скрипт ставит is-closing — гаснут в полтора раза быстрее, потом удаляются
 	.comment__picker,
 	.comment__menu,
-	.comment__confirm {
+	.comment__confirm,
+	.comment-form--reply {
 		transition:
 			opacity $duration-popup $ease-out,
 			transform $duration-popup $ease-out;
@@ -814,11 +815,28 @@
 			opacity: 0;
 			transform: translateY(-4px);
 		}
+
+		&.is-closing {
+			pointer-events: none;
+			opacity: 0;
+			transform: translateY(-4px);
+			transition-duration: $duration-popup * 0.67;
+		}
 	}
 
 	.comment__picker {
 		@starting-style {
 			transform: translateY(4px);
 		}
+
+		&.is-closing {
+			transform: translateY(4px);
+		}
+	}
+
+	// Ответы, свёрнутые или развёрнутые по нажатию (is-animated ставит скрипт), — проявление и
+	// скрытие, как у всплывающих блоков
+	.comment__replies.is-animated {
+		@include appear;
 	}
 }

@@ -28,9 +28,9 @@
 		opacity: 0;
 		transform: translate(-50%, 4px);
 		transition:
-			opacity $duration-popup,
-			transform $duration-popup $ease-out,
-			visibility 0s $duration-popup;
+			opacity $duration-popup * 0.67 $ease-out,
+			transform $duration-popup * 0.67 $ease-out,
+			visibility 0s $duration-popup * 0.67;
 
 		// Справа у края блока — подсказка не выходит за него (кнопки в конце строки)
 		&--end {
@@ -58,7 +58,7 @@
 		opacity: 1;
 		transform: translate(-50%, 0);
 		transition:
-			opacity $duration-popup,
+			opacity $duration-popup $ease-out,
 			transform $duration-popup $ease-out;
 	}
 

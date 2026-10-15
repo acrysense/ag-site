@@ -331,6 +331,11 @@
 		display: none;
 	}
 
+	// Ссылка и галочка сменяют друг друга с проявлением
+	.journal-issue__share > .journal-issue__share-icon {
+		@include swap-in;
+	}
+
 	.journal-issue__share.is-copied > .journal-issue__share-icon {
 		display: none;
 	}

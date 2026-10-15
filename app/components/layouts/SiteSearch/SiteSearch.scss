@@ -694,10 +694,27 @@
 			padding: 8px 10px 90px;
 		}
 
-		// При вводе фильтры сворачиваются в строку-сводку
+		// При вводе фильтры сворачиваются в строку-сводку; раскрытые по сводке — проявляются
+		// со сдвигом, сворачиваются в полтора раза быстрее (как всплывающие блоки)
+		.site-search.has-query .site-search__filters-head,
+		.site-search.has-query .site-search__filter-list {
+			transition:
+				opacity $duration-popup $ease-out,
+				transform $duration-popup $ease-out,
+				display $duration-popup allow-discrete;
+
+			@starting-style {
+				opacity: 0;
+				transform: translateY(-4px);
+			}
+		}
+
 		.site-search.has-query:not(.is-filters-open) .site-search__filters-head,
 		.site-search.has-query:not(.is-filters-open) .site-search__filter-list {
 			display: none;
+			opacity: 0;
+			transform: translateY(-4px);
+			transition-duration: $duration-popup * 0.67;
 		}
 
 		.site-search.has-query .site-search__summary {

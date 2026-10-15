@@ -261,6 +261,11 @@
 			color: palette("icon-grey");
 		}
 
+		// Стрелка группы поворачивается плавно, как остальные
+		&__group-arrow {
+			transition: transform $transition-default;
+		}
+
 		&__group[aria-expanded="false"] &__group-arrow {
 			transform: rotate(180deg);
 		}

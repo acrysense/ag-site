@@ -138,6 +138,11 @@
 		padding: 5.75px 4.17px;
 	}
 
+	// Ссылка и галочка сменяют друг друга с проявлением
+	.album-hero__share > .album-hero__share-icon {
+		@include swap-in;
+	}
+
 	.album-hero__share.is-copied > .album-hero__share-icon {
 		display: none;
 	}
