@@ -393,6 +393,50 @@ $alias-bp: (
 	}
 }
 
+// Раскрытие по высоте блока, который прячется атрибутом hidden (подпапки, «Показать ещё»,
+// описание): высота от 0 и проявление за $transition-default — как у <details>. Блок обрезает
+// содержимое по краю (overflow: clip), поэтому не для блоков со всплывающими меню внутри — им
+// appear. Где браузер не умеет анимировать height: auto (interpolate-size) — сразу.
+@mixin expand($duration: vars.$transition-default) {
+	// min-height: 0 — иначе во flex-колонке высоту держит содержимое и она не анимируется
+	min-height: 0;
+	interpolate-size: allow-keywords;
+	overflow: clip;
+	transition:
+		height $duration,
+		opacity $duration,
+		display $duration allow-discrete;
+
+	&[hidden] {
+		height: 0;
+		opacity: 0;
+	}
+
+	// Только после первой отрисовки (класс motion-ready на <html> ставит app.js): открытое при
+	// загрузке страницы не анимируется
+	:root.motion-ready & {
+		@starting-style {
+			height: 0;
+			opacity: 0;
+		}
+	}
+}
+
+// Значок, который подменяет другой на месте (галочка «Скопировано» вместо ссылки и обратно):
+// появляется с проявлением и лёгким увеличением. Только после первой отрисовки (motion-ready)
+@mixin swap-in($duration: vars.$duration-popup) {
+	transition:
+		opacity $duration vars.$ease-out,
+		transform $duration vars.$ease-out;
+
+	:root.motion-ready & {
+		@starting-style {
+			opacity: 0;
+			transform: scale(0.6);
+		}
+	}
+}
+
 // Аватар пользователя: инициалы есть всегда, фото — поверх. Нет фото или оно не загрузилось
 // (img.is-broken) — видны инициалы. Размер кружка задаёт блок
 @mixin avatar($background) {

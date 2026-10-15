@@ -27,16 +27,16 @@
 		opacity: 0;
 		transform: translate(-50%, 8px);
 		transition:
-			opacity $duration-popup,
-			transform $duration-popup $ease-out,
-			visibility 0s $duration-popup;
+			opacity $duration-popup * 0.67 $ease-out,
+			transform $duration-popup * 0.67 $ease-out,
+			visibility 0s $duration-popup * 0.67;
 
 		&.is-visible {
 			visibility: visible;
 			opacity: 1;
 			transform: translate(-50%, 0);
 			transition:
-				opacity $duration-popup,
+				opacity $duration-popup $ease-out,
 				transform $duration-popup $ease-out;
 		}
 

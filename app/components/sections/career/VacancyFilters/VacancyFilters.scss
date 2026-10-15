@@ -180,6 +180,11 @@
 		> [hidden] {
 			display: none;
 		}
+
+		// «Показать ещё N» — спрятанные пункты раскрываются по высоте
+		> [data-filter-extra] {
+			@include expand;
+		}
 	}
 
 	.vacancy-filters__more {

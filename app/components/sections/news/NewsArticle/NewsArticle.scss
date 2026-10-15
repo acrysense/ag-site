@@ -109,6 +109,11 @@
 		}
 	}
 
+	// Ссылка и галочка сменяют друг друга с проявлением
+	.news-article__share > .news-article__share-icon {
+		@include swap-in;
+	}
+
 	.news-article__share.is-copied > .news-article__share-icon {
 		display: none;
 	}

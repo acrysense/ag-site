@@ -84,7 +84,8 @@ export default function init(root) {
 	const statusEl = root.querySelector('[data-comments-status]')
 	const moreButton = root.querySelector('[data-comments-more]')
 	const pending = new Set()
-	const timers = new Set() // подсветка новых
+	const timers = new Set() // подсветка новых, плавное закрытие
+	const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 	const nodes = new Map() // id → { data, el }
 	let state = {
 		currentUser: null,
@@ -183,13 +184,27 @@ export default function init(root) {
 		timers.add(timer)
 	}
 
+	// Закрытие с анимацией: блок гаснет (класс is-closing, стили — в Comments.scss) и удаляется
+	// после неё; при «уменьшить движение» — сразу
+	const CLOSE_MS = 140
+	const removeSmoothly = (el) => {
+		if (reducedMotion.matches) return el.remove()
+		el.classList.add('is-closing')
+		el.inert = true
+		const timer = setTimeout(() => {
+			timers.delete(timer)
+			el.remove()
+		}, CLOSE_MS)
+		timers.add(timer)
+	}
+
 	// Всплывающие панели (реакции, меню, удаление): одна за раз, закрываются кликом вне и Esc,
 	// не выходят за край экрана
 	const closePopover = ({ focus = false } = {}) => {
 		if (!popover) return
 		const { el, anchor } = popover
 		popover = null
-		el.remove()
+		removeSmoothly(el)
 		anchor.setAttribute('aria-expanded', 'false')
 		anchor.classList.remove('is-active')
 		if (focus) anchor.focus()
@@ -686,7 +701,7 @@ export default function init(root) {
 
 	const toggleReply = (node, anchor) => {
 		if (node.replyForm) {
-			node.replyForm.remove()
+			removeSmoothly(node.replyForm)
 			node.replyForm = null
 			anchor.setAttribute('aria-expanded', 'false')
 			return
@@ -734,6 +749,8 @@ export default function init(root) {
 
 	const setCollapsed = (node, collapsed) => {
 		if (!node.collapseButton) return
+		// Свернули или развернули по нажатию — ветка проявляется и гаснет (при отрисовке — сразу)
+		node.repliesEl.classList.add('is-animated')
 		node.repliesEl.hidden = collapsed
 		node.collapseButton.setAttribute('aria-expanded', String(!collapsed))
 		const label = collapsed ? 'Развернуть ответы' : 'Свернуть ответы'

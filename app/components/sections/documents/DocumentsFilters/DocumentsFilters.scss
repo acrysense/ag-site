@@ -179,6 +179,11 @@
 		> [hidden] {
 			display: none;
 		}
+
+		// «Показать ещё N» — спрятанные пункты раскрываются по высоте
+		> [data-filter-extra] {
+			@include expand;
+		}
 	}
 
 	.documents-filters__more {

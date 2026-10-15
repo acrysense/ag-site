@@ -187,6 +187,12 @@
 			padding: 5.75px 4.17px;
 		}
 
+		// Ссылка и галочка сменяют друг друга с проявлением
+		&--link,
+		&--copied {
+			@include swap-in;
+		}
+
 		.is-copied > &--link {
 			display: none;
 		}
