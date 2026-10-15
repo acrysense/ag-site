@@ -32,16 +32,14 @@
 			color: palette("black-h");
 		}
 
+		// Стрелки — на всех ширинах (на телефоне — по просьбе коллеги, в макете 360 их нет)
 		&__arrows {
-			display: none;
+			display: flex;
 			gap: 5px;
-
-			@include up(desktop) {
-				display: flex;
-			}
 		}
 
 		&__arrow {
+			position: relative;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -63,10 +61,13 @@
 			height: 12px;
 		}
 
-		// На мобильном — только первая страница, листания нет
-		&__track {
+		// На телефоне область нажатия больше стрелки: 40 в высоту (вбок — до половины промежутка,
+		// области соседних стрелок не пересекаются)
+		&__arrow::after {
 			@include down(desktop) {
-				overflow: visible;
+				position: absolute;
+				inset: -6px -2px;
+				content: "";
 			}
 		}
 
@@ -77,12 +78,6 @@
 			margin: 0;
 			padding: 0;
 			list-style: none;
-
-			@include down(desktop) {
-				&:not(:first-child) {
-					display: none;
-				}
-			}
 
 			@include up(desktop) {
 				gap: 10px;

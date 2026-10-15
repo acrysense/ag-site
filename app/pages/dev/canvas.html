@@ -237,7 +237,7 @@
 				{{#> state label="Загрузка" note="не применимо: баннеры приходят с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="post-list" group="Главная" title="Акции и новости" how='Один компонент для «Акций» и «Корпоративных новостей». На десктопе по 4, стрелки листают; на мобильном первые 4.' figma='1920 — 4615:42853, 360 — 4865:1354' backend='app/components/sections/home/PostList/ · docs/contracts/post-list.md — один шаблон для «Акций» и «Новостей»'}}
+			{{#> story id="post-list" group="Главная" title="Акции и новости" how='Один компонент для «Акций» и «Корпоративных новостей». По 4 на странице, стрелки листают (на телефоне — и пальцем).' figma='1920 — 4615:42853, 360 — 4865:1354' backend='app/components/sections/home/PostList/ · docs/contracts/post-list.md — один шаблон для «Акций» и «Новостей»'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container page-blocks">{{> sections/home/PostList/PostList props=data.posts}}</div>
 				{{/state}}
