@@ -9,12 +9,8 @@
     "file": "assets/js/announce-D3OkgBby.js",
     "name": "announce"
   },
-  "_app-Bea3J9Sv.css": {
-    "file": "assets/css/app-Bea3J9Sv.css",
-    "src": "_app-Bea3J9Sv.css"
-  },
-  "_app-BmjjIa-R.js": {
-    "file": "assets/js/app-BmjjIa-R.js",
+  "_app-1Bm7VtuF.js": {
+    "file": "assets/js/app-1Bm7VtuF.js",
     "name": "app",
     "imports": [
       "_announce-D3OkgBby.js",
@@ -23,6 +19,7 @@
     "dynamicImports": [
       "components/components/Calendar/Calendar.js",
       "components/components/Carousel/Carousel.js",
+      "components/components/Celebration/Celebration.js",
       "components/components/Content/Content.js",
       "components/components/CopyLink/CopyLink.js",
       "components/components/DateRange/DateRange.js",
@@ -59,11 +56,15 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-Bea3J9Sv.css"
+      "assets/css/app-CBOZUbcV.css"
     ],
     "assets": [
       "assets/images/auth-ag-m2GDsMwR.svg"
     ]
+  },
+  "_app-CBOZUbcV.css": {
+    "file": "assets/css/app-CBOZUbcV.css",
+    "src": "_app-CBOZUbcV.css"
   },
   "_filter-panel-CZYuA1j-.js": {
     "file": "assets/js/filter-panel-CZYuA1j-.js",
@@ -143,6 +144,12 @@
     "src": "components/components/Carousel/Carousel.js",
     "isDynamicEntry": true
   },
+  "components/components/Celebration/Celebration.js": {
+    "file": "assets/js/Celebration-BqFt9mZn.js",
+    "name": "Celebration",
+    "src": "components/components/Celebration/Celebration.js",
+    "isDynamicEntry": true
+  },
   "components/components/Content/Content.js": {
     "file": "assets/js/Content-4FpAZjPL.js",
     "name": "Content",
@@ -153,12 +160,12 @@
     ]
   },
   "components/components/CopyLink/CopyLink.js": {
-    "file": "assets/js/CopyLink-BnWDoAqb.js",
+    "file": "assets/js/CopyLink-CbxjhRZA.js",
     "name": "CopyLink",
     "src": "components/components/CopyLink/CopyLink.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-BmjjIa-R.js"
+      "_app-1Bm7VtuF.js"
     ]
   },
   "components/components/DateRange/DateRange.js": {
@@ -219,7 +226,7 @@
     "isDynamicEntry": true
   },
   "components/components/PhotoStrip/PhotoStrip.js": {
-    "file": "assets/js/PhotoStrip-Cc0RIcAc.js",
+    "file": "assets/js/PhotoStrip-40qqCLLy.js",
     "name": "PhotoStrip",
     "src": "components/components/PhotoStrip/PhotoStrip.js",
     "isDynamicEntry": true,
@@ -228,12 +235,12 @@
     ]
   },
   "components/components/PhotoViewer/PhotoViewer.js": {
-    "file": "assets/js/PhotoViewer-KoYoHOyf.js",
+    "file": "assets/js/PhotoViewer-6jXiyIvV.js",
     "name": "PhotoViewer",
     "src": "components/components/PhotoViewer/PhotoViewer.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-BmjjIa-R.js",
+      "_app-1Bm7VtuF.js",
       "_icon-NLq4soTO.js",
       "_scroll-lock-D4dlW757.js"
     ],
@@ -275,12 +282,12 @@
     "isDynamicEntry": true
   },
   "components/components/Toast/Toast.js": {
-    "file": "assets/js/Toast-DZ6erpb0.js",
+    "file": "assets/js/Toast-De1Md_M4.js",
     "name": "Toast",
     "src": "components/components/Toast/Toast.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-BmjjIa-R.js"
+      "_app-1Bm7VtuF.js"
     ]
   },
   "components/layouts/CookieBanner/CookieBanner.js": {
@@ -357,7 +364,7 @@
     ]
   },
   "components/sections/gallery/AlbumPhotos/AlbumPhotos.js": {
-    "file": "assets/js/AlbumPhotos-l0aWWS8I.js",
+    "file": "assets/js/AlbumPhotos-dNVpzaIg.js",
     "name": "AlbumPhotos",
     "src": "components/sections/gallery/AlbumPhotos/AlbumPhotos.js",
     "isDynamicEntry": true,
@@ -378,7 +385,7 @@
     "isDynamicEntry": true
   },
   "components/sections/news/JournalIssue/JournalIssue.js": {
-    "file": "assets/js/JournalIssue-DAkj8NHO.js",
+    "file": "assets/js/JournalIssue-CKsDYNtc.js",
     "name": "JournalIssue",
     "src": "components/sections/news/JournalIssue/JournalIssue.js",
     "isDynamicEntry": true,
@@ -434,13 +441,13 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-DEnw5MX7.js",
+    "file": "assets/js/dev-canvas-i0NmtXBM.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
       "_pages-nav-Df9646uR.js",
-      "_app-BmjjIa-R.js"
+      "_app-1Bm7VtuF.js"
     ],
     "css": [
       "assets/css/dev-canvas-DllwxHnK.css"

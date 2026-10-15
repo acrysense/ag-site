@@ -52,13 +52,13 @@
 			window.__agDemoCounter = (window.__agDemoCounter || 0) + 1; console.info('[demo] счётчик включён после согласия на cookie')
 		</script>
 		<meta name="robots" content="noindex, nofollow" />
-		<script type="module" crossorigin src="/ag-site/assets/js/dev-canvas-DEnw5MX7.js"></script>
+		<script type="module" crossorigin src="/ag-site/assets/js/dev-canvas-i0NmtXBM.js"></script>
 		<link rel="modulepreload" crossorigin href="/ag-site/assets/js/pages-nav-Df9646uR.js" />
 		<link rel="modulepreload" crossorigin href="/ag-site/assets/js/announce-D3OkgBby.js" />
 		<link rel="modulepreload" crossorigin href="/ag-site/assets/js/icon-NLq4soTO.js" />
-		<link rel="modulepreload" crossorigin href="/ag-site/assets/js/app-BmjjIa-R.js" />
+		<link rel="modulepreload" crossorigin href="/ag-site/assets/js/app-1Bm7VtuF.js" />
 		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/pages-nav--aTdp9SH.css" />
-		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-Bea3J9Sv.css" />
+		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-CBOZUbcV.css" />
 		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/dev-canvas-DllwxHnK.css" />
 	</head>
 	<body>
@@ -17339,6 +17339,91 @@
 								>в живом окне: пустой телефон, неверный номер, файл не того типа или больше 5 МБ, без согласия; телефон с «111»
 								или «сбой» в сообщении</span
 							>
+						</h3>
+					</section>
+				</div>
+			</article>
+
+			<article
+				class="story"
+				data-story="celebration"
+				data-group="Компоненты"
+				data-title="День рождения: салют"
+				data-backend="app/components/components/Celebration/ · docs/contracts/holding.md — «День рождения»"
+				data-page="[object Object]"
+			>
+				<header class="story__header">
+					<p class="story__group">Компоненты</p>
+					<h2 class="story__title">День рождения: салют</h2>
+				</header>
+				<div class="story__states">
+					<section class="story-state" data-state-label="Метка (нажмите — салют)">
+						<h3 class="story-state__label">Метка (нажмите — салют)</h3>
+						<div class="story-state__frame">
+							<button
+								class="celebration"
+								type="button"
+								data-module="Celebration"
+								data-path="components"
+								data-celebration-key="story-celebration"
+							>
+								<svg class="icon celebration__icon" aria-hidden="true" focusable="false">
+									<use href="/ag-site/assets/icons/sprite.svg#icon-gift"></use>
+								</svg>
+								<span class="celebration__text">Сегодня день рождения</span>
+								<span class="visually-hidden">— запустить салют ещё раз</span>
+							</button>
+						</div>
+					</section>
+
+					<section class="story-state" data-state-label="В карточке сотрудника">
+						<h3 class="story-state__label">В карточке сотрудника</h3>
+						<div class="story-state__frame story-state__frame--page">
+							<div class="container page-inner">
+								<article class="employee-profile" aria-labelledby="employee-profile-name">
+									<div class="employee-profile__header">
+										<span class="employee-profile__photo">
+											<span class="employee-profile__initials" aria-hidden="true">НВ</span>
+										</span>
+										<div class="employee-profile__info">
+											<h1 class="employee-profile__name" id="employee-profile-name">Новая Владислава Митрофановна</h1>
+											<button
+												class="celebration"
+												type="button"
+												data-module="Celebration"
+												data-path="components"
+												data-celebration-key="story-celebration-profile"
+											>
+												<svg class="icon celebration__icon" aria-hidden="true" focusable="false">
+													<use href="/ag-site/assets/icons/sprite.svg#icon-gift"></use>
+												</svg>
+												<span class="celebration__text">Сегодня день рождения</span>
+												<span class="visually-hidden">— запустить салют ещё раз</span>
+											</button>
+
+											<ul class="employee-profile__meta" role="list">
+												<li class="employee-profile__meta-row">
+													<svg class="icon employee-profile__meta-icon" aria-hidden="true" focusable="false">
+														<use href="/ag-site/assets/icons/sprite.svg#icon-profile"></use>
+													</svg>
+													<span>Заведующая аптекой</span>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</article>
+							</div>
+						</div>
+					</section>
+
+					<section
+						class="story-state story-state--na"
+						data-state-label="Не день рождения"
+						data-state-note="Метки нет — бэк не выводит birthday"
+					>
+						<h3 class="story-state__label">
+							Не день рождения
+							<span class="story-state__note">Метки нет — бэк не выводит birthday</span>
 						</h3>
 					</section>
 				</div>
@@ -36759,6 +36844,7 @@
 										</span>
 										<div class="employee-profile__info">
 											<h1 class="employee-profile__name" id="employee-profile-name">Новая Владислава Митрофановна</h1>
+
 											<ul class="employee-profile__meta" role="list">
 												<li class="employee-profile__meta-row">
 													<svg class="icon employee-profile__meta-icon" aria-hidden="true" focusable="false">
@@ -36867,6 +36953,7 @@
 										</span>
 										<div class="employee-profile__info">
 											<h1 class="employee-profile__name" id="employee-profile-name">Новая Владислава Митрофановна</h1>
+
 											<ul class="employee-profile__meta" role="list">
 												<li class="employee-profile__meta-row">
 													<svg class="icon employee-profile__meta-icon" aria-hidden="true" focusable="false">
@@ -36930,6 +37017,7 @@
 											<h1 class="employee-profile__name" id="employee-profile-name">
 												Константинопольская Александра-Мария Владиславовна
 											</h1>
+
 											<ul class="employee-profile__meta" role="list">
 												<li class="employee-profile__meta-row">
 													<svg class="icon employee-profile__meta-icon" aria-hidden="true" focusable="false">
