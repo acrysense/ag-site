@@ -4,16 +4,26 @@
 	листаются пальцем и колесом, страница открывается картинкой. Контракт — docs/contracts/journal.md.
 	props: id, title, date, dateText, pagesText («19 страниц»), url (ссылка на выпуск для копирования;
 	пусто — адрес страницы), file { url, typeText («PDF»), sizeText («3,3 МБ») }, like (LikeButton),
-	pages [{ src, srcset, width, height, thumb, thumbSrcset, alt }].
+	pages [{ src, srcset, width, height, thumb, thumbSrcset, alt }], loading — страницы ещё готовятся
+	(скелетон вместо страниц; готовые — заменить блок целиком или вывести страницы и снять класс
+	journal-issue--loading).
 --}}
-<article class="journal-issue" aria-labelledby="{{default props.id 'journal-issue'}}-title" data-module="JournalIssue" data-path="sections/news" data-title="{{props.title}}"{{#if props.file.url}} data-download="{{props.file.url}}"{{/if}}>
+<article class="journal-issue{{#if props.loading}} journal-issue--loading{{/if}}"{{#if props.loading}} aria-busy="true"{{/if}} aria-labelledby="{{default props.id 'journal-issue'}}-title" data-module="JournalIssue" data-path="sections/news" data-title="{{props.title}}"{{#if props.file.url}} data-download="{{props.file.url}}"{{/if}}>
     <header class="journal-issue__head">
         <h1 class="journal-issue__title" id="{{default props.id 'journal-issue'}}-title">{{props.title}}</h1>
         <p class="journal-issue__meta">
             {{#if props.pagesText}}<span class="journal-issue__meta-extra">{{props.pagesText}}{{#if props.file.sizeText}} · {{props.file.typeText}}, {{props.file.sizeText}}{{/if}} · </span>{{/if}}{{#if props.date}}<time datetime="{{props.date}}">{{props.dateText}}</time>{{/if}}
         </p>
     </header>
-    {{#if props.pages.length}}
+    {{#if props.loading}}
+        <div class="journal-issue__loading" data-journal-loading>
+            <span class="skeleton journal-issue__loading-stage" aria-hidden="true"></span>
+            <span class="journal-issue__loading-thumbs" aria-hidden="true">
+                {{#each (range 8)}}<span class="skeleton journal-issue__loading-thumb"></span>{{/each}}
+            </span>
+            <span class="visually-hidden" role="status">Загружаем страницы выпуска</span>
+        </div>
+    {{else if props.pages.length}}
         <div class="journal-issue__stage">
             <ul class="journal-issue__track" role="list" aria-label="Страницы выпуска" data-journal-track>
                 {{#each props.pages}}

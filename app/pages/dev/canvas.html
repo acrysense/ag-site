@@ -746,6 +746,9 @@
 				{{#> state label="Длинное название, без «Нравится»" bg="page"}}
 					<div class="container page-inner"><div class="page-stack">{{> sections/news/JournalIssue/JournalIssue props=data.journalIssueLong}}</div></div>
 				{{/state}}
+				{{#> state label="Загрузка (страницы готовятся)" bg="page"}}
+					<div class="container page-inner"><div class="page-stack">{{> sections/news/JournalIssue/JournalIssue props=data.journalIssueLoading}}</div></div>
+				{{/state}}
 				{{#> state label="Нет страниц" note="Выпуск без картинок страниц не выводится: бэк готовит их из PDF вместе с публикацией"}}{{/state}}
 			{{/story}}
 
