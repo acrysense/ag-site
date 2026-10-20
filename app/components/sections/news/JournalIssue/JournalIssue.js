@@ -6,7 +6,26 @@ import { createPhotoViewer } from '@/components/components/PhotoViewer/PhotoView
 // странице), «Скачать PDF». После закрытия лента стоит на той странице, где закрыли.
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 
+// Страницы ещё готовятся (journal-issue--loading): ждём, пока бэк выведет их и снимет класс.
+// Если вместо этого он заменит блок целиком — новый блок смонтируется сам (app.js)
 export default function init(root) {
+	if (!root.classList.contains('journal-issue--loading')) return setup(root)
+	let dispose = null
+	const observer = new MutationObserver(() => {
+		if (root.classList.contains('journal-issue--loading')) return
+		observer.disconnect()
+		root.removeAttribute('aria-busy')
+		root.querySelector('[data-journal-loading]')?.remove()
+		dispose = setup(root)
+	})
+	observer.observe(root, { attributes: true, attributeFilter: ['class'] })
+	return () => {
+		observer.disconnect()
+		dispose?.()
+	}
+}
+
+function setup(root) {
 	const controller = new AbortController()
 	const { signal } = controller
 	const track = root.querySelector('[data-journal-track]')

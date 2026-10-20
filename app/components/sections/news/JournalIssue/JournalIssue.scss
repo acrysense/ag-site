@@ -73,6 +73,45 @@
 		}
 	}
 
+	// Загрузка (journal-issue--loading): страницы ещё готовятся — на месте области страниц и
+	// миниатюр скелетоны тех же размеров (общий .skeleton с бликом); кадр и ряд — как у готового
+	// выпуска, части блока через те же промежутки
+	.journal-issue__loading {
+		display: contents;
+	}
+
+	.journal-issue__loading-stage {
+		aspect-ratio: 16 / 9;
+		border-radius: $radius-inner-block;
+
+		@include up(desktop) {
+			border-radius: $radius-button;
+		}
+	}
+
+	.journal-issue__loading-thumbs {
+		display: flex;
+		gap: 6px;
+		overflow: hidden;
+
+		@include up(desktop) {
+			gap: 8px;
+		}
+	}
+
+	.journal-issue__loading-thumb {
+		flex: none;
+		width: 72px;
+		height: 40px;
+		border-radius: 4px;
+
+		@include up(desktop) {
+			width: 112px;
+			height: 63px;
+			border-radius: 6px;
+		}
+	}
+
 	// Страницы — лента с привязкой к целой странице: листается пальцем, колесом и стрелками
 	.journal-issue__track {
 		display: flex;
@@ -271,7 +310,7 @@
 		display: block;
 		width: 72px;
 		height: 40px;
-		object-fit: cover;
+		object-fit: contain;
 		background: palette("stage-bg");
 		border-radius: 4px;
 		transition: opacity $transition-default;
@@ -348,6 +387,11 @@
 	.photo-viewer--pages {
 		.photo-viewer__thumb {
 			height: 36px;
+
+			// Страница целиком, без обрезки: и горизонтальные, и вертикальные (A4) выпуски
+			img {
+				object-fit: contain;
+			}
 
 			@include up(tablet) {
 				width: 84px;

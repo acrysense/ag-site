@@ -195,6 +195,23 @@
 			"title": "Страница не найдена",
 			"text": "Возможно, страница устарела или изменился её адрес."
 		},
+		"journalIssueLoading": {
+			"title": "HR-дайджест. Спецвыпуск",
+			"date": "2026-09-12",
+			"dateText": "12.09.2026",
+			"pagesText": "1 страница",
+			"file": {
+				"url": "#",
+				"typeText": "PDF",
+				"sizeText": "3,3 МБ"
+			},
+			"like": {
+				"count": 24,
+				"liked": false
+			},
+			"id": "journal-issue-loading",
+			"loading": true
+		},
 		"journalIssueLong": {
 			"title": "HR-дайджест. Итоги года: лучшие аптеки, люди и проекты холдинга «Аптека групп» в 2026 году",
 			"date": "2026-09-12",
