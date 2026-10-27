@@ -187,7 +187,12 @@
 			}
 		}
 
+		// «Настройки cookie» — кнопка, выглядит как остальные ссылки
 		&__legal-link {
+			padding: 0;
+			border: 0;
+			background: none;
+			text-align: left;
 			color: palette("dark-grey-txt");
 			transition: color $transition-default;
 

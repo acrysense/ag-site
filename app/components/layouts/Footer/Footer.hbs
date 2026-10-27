@@ -1,7 +1,8 @@
 {{!--
 	Подвал.
 	props: slogan, social [{ icon, label, text, url }], contacts [{ icon, text, url }],
-	suggest { text, url, modal — id окна; без JS ссылка ведёт на url }, copyright, legal [{ text, url }]. Данные — site.footer.
+	suggest { text, url, modal — id окна; без JS ссылка ведёт на url }, copyright, legal [{ text, url, cookieSettings — кнопка «Настройки cookie»
+	вместо ссылки: снова показывает баннер согласия }]. Данные — site.footer.
 	Контракт — docs/contracts/footer.md.
 --}}
 <footer class="footer">
@@ -50,7 +51,11 @@
             {{#if props.legal}}
                 <ul class="footer__legal" role="list">
                     {{#each props.legal}}
-                        <li><a class="footer__legal-link" href="{{url}}">{{text}}</a></li>
+                        {{#if cookieSettings}}
+                            <li><button class="footer__legal-link" type="button" data-cookie-settings>{{text}}</button></li>
+                        {{else}}
+                            <li><a class="footer__legal-link" href="{{url}}">{{text}}</a></li>
+                        {{/if}}
                     {{/each}}
                 </ul>
             {{/if}}
