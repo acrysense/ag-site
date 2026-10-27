@@ -482,7 +482,7 @@
 				{{#> state label="Обычное" bg="page"}}
 					{{> layouts/CookieBanner/CookieBanner props=data.cookiesStatic}}
 				{{/state}}
-				{{#> state label="Выбор сделан" note="баннера нет: бэк не выводит его при cookie ag_cookie_consent, а если страница из кеша — скрывает скрипт"}}{{/state}}
+				{{#> state label="Выбор сделан" note="баннер в разметке скрыт (hidden), скрипт не показывает его при cookie ag_cookie_consent; «Настройки cookie» в подвале показывают снова"}}{{/state}}
 			{{/story}}
 
 			{{#> story id="auth" group="Авторизация" title="Вход" how='Как в ЛК: «К порталу», логотип, карточка, «AG» справа внизу, полоса слогана. Восстановление — без формы: обратиться в техподдержку.' backend='app/components/sections/auth/ · docs/contracts/auth.md — обычная POST-форма входа Битрикса'}}
