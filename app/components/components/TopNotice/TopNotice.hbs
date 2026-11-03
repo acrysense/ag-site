@@ -1,0 +1,25 @@
+{{!--
+	Плашка-объявление над шапкой, во всю ширину (как в ЛК, components/TopNotice). Выводится перед
+	шапкой (layouts/Header), данные — site.notice; нет текста — блока нет.
+	props: key — меняется вместе с объявлением: закрытая плашка не показывается до конца дня, новый
+	key — показывается снова; type — warning («Важно») | critical («Критично»), без type — инфо;
+	label — жирная подпись перед текстом («Важно:»), text, link { url, text («Подробнее») }, class.
+	Закрытие хранится в cookie (cookieName, по умолчанию ag_top_notice = key) — бэк может не
+	выводить плашку тому, кто её закрыл. Контракт — docs/contracts/top-notice.md.
+--}}
+{{#if props.text}}
+    <section class="top-notice{{#if props.type}} top-notice--{{props.type}}{{/if}}{{#if props.class}} {{props.class}}{{/if}}" aria-label="Объявление" data-module="TopNotice" data-path="components" data-key="{{default props.key 'global'}}" data-cookie-name="{{default props.cookieName 'ag_top_notice'}}">
+        <div class="top-notice__inner">
+            <span class="top-notice__mark" aria-hidden="true">!</span>
+            <p class="top-notice__text">
+                {{#if props.label}}<b class="top-notice__label">{{props.label}}</b> {{/if}}{{props.text}}
+            </p>
+            {{#if props.link.url}}
+                <a class="top-notice__link" href="{{props.link.url}}">{{default props.link.text 'Подробнее'}} →</a>
+            {{/if}}
+            <button class="top-notice__close" type="button" aria-label="Закрыть объявление" data-top-notice-close>
+                {{> components/Icon/Icon name="close" class="top-notice__close-icon"}}
+            </button>
+        </div>
+    </section>
+{{/if}}

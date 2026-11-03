@@ -10,8 +10,11 @@
 	menu: [{ label, url, icon, modal } | { divider: true }] — меню под аватаром }
 	(links — быстрые ссылки на десктопе: личный кабинет, учебный портал, CRM),
 	иначе кнопка входа: loginUrl, loginText («Войти в ЛК»), loginTextShort («Войти» — до 1024).
+	Перед шапкой — плашка-объявление (components/TopNotice, данные site.notice); hideNotice — без
+	неё (витрина).
 	Контракт — docs/contracts/header.md.
 --}}
+{{#unless hideNotice}}{{> components/TopNotice/TopNotice props=@root.site.notice}}{{/unless}}
 <header class="header" data-module="Header" data-path="layouts">
     <div class="header__top">
         {{!--

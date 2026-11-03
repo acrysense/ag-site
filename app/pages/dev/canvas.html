@@ -102,16 +102,16 @@
 
 			{{#> story id="header" group="Каркас" title="Шапка" how='Подменю «Новости» — наведением, стрелкой и Escape. Бургер открывает мобильное меню.' figma='PC.HEADER.v2 (4652:8752), 360.HEADER (4865:1334)' backend='app/components/layouts/Header/ · docs/contracts/header.md — данные site.header'}}
 				{{#> state label="Гость" bg="page"}}
-					{{> layouts/Header/Header props=site.header}}
+					{{> layouts/Header/Header props=site.header hideNotice=true}}
 				{{/state}}
 				{{#> state label="Вошёл" bg="page"}}
-					{{> layouts/Header/Header props=data.headerUser}}
+					{{> layouts/Header/Header props=data.headerUser hideNotice=true}}
 				{{/state}}
 				{{#> state label="Много пунктов" bg="page"}}
-					{{> layouts/Header/Header props=data.headerLong}}
+					{{> layouts/Header/Header props=data.headerLong hideNotice=true}}
 				{{/state}}
 				{{#> state label="Длинное имя" bg="page"}}
-					{{> layouts/Header/Header props=data.headerLongText}}
+					{{> layouts/Header/Header props=data.headerLongText hideNotice=true}}
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: шапка приходит с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
@@ -478,7 +478,25 @@
 				{{#> state label="Ошибка" note="в живом окне: пустые поля при отправке; тема со словом «ошибка» или «сбой»"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="cookie-banner" group="Каркас" title="Согласие на cookie" how='В левом нижнем углу без затемнения (на мобильном — над нижней панелью), фокус не перехватывает.' figma='4711:32225' backend='app/components/layouts/CookieBanner/ · docs/contracts/cookie-banner.md — с cookie ag_cookie_consent не выводить'}}
+			{{#> story id="top-notice" group="Каркас" title="Плашка над шапкой" how='Над шапкой во всю ширину, как в ЛК. Инфо, «Важно», «Критично»; подпись и «Подробнее →» необязательны. Крестик — сворачивается и не показывается до конца дня (новый key — снова). С 1024 — в строку, до 1024 — «Подробнее →» отдельной строкой.' figma='Top.Banner — макет ЛК' backend='app/components/components/TopNotice/ · docs/contracts/top-notice.md — данные site.notice; с cookie ag_top_notice = key не выводить'}}
+				{{#> state label="Инфо"}}
+					{{> components/TopNotice/TopNotice props=(obj key="story-info" text="Сообщение-растяжка для всех сотрудников компании. У нас для вас важные новости." link=(obj url="#"))}}
+				{{/state}}
+				{{#> state label="Важно"}}
+					{{> components/TopNotice/TopNotice props=(obj key="story-warning" type="warning" label="Важно:" text="приём заявок на корпоративный отдых продлён до 15 ноября." link=(obj url="#"))}}
+				{{/state}}
+				{{#> state label="Критично, без ссылки"}}
+					{{> components/TopNotice/TopNotice props=(obj key="story-critical" type="critical" label="Плановые работы:" text="7 ноября с 22:00 до 02:00 портал будет недоступен.")}}
+				{{/state}}
+				{{#> state label="Длинный текст"}}
+					{{> components/TopNotice/TopNotice props=(obj key="story-long" type="warning" label="Важно:" text="приём заявок на корпоративный отдых продлён до 15 ноября, а списки участников нужно согласовать с руководителем до конца недели — после этого изменения в списках будут закрыты для всех аптек сети." link=(obj url="#" text="Подробнее"))}}
+				{{/state}}
+				{{#> state label="Пусто" note="нет текста — блока нет, шапка сверху страницы"}}{{/state}}
+				{{#> state label="Закрыта" note="до конца дня не выводится: бэк — по cookie ag_top_notice = key; страница из кеша — скрипт прячет сам"}}{{/state}}
+				{{#> state label="Загрузка" note="не применимо: плашка приходит с сервера вместе со страницей"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="cookie-banner" group="Каркас" title="Согласие на cookie" how='В левом нижнем углу без затемнения (на мобильном — над нижней панелью), фокус не перехватывает.' figma='4711:32225' backend='app/components/layouts/CookieBanner/ · docs/contracts/cookie-banner.md — выводить всегда, скрытым (hidden)'}}
 				{{#> state label="Обычное" bg="page"}}
 					{{> layouts/CookieBanner/CookieBanner props=data.cookiesStatic}}
 				{{/state}}
