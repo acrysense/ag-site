@@ -9,8 +9,8 @@
     "file": "assets/js/announce-D3OkgBby.js",
     "name": "announce"
   },
-  "_app-D6uHO-RT.js": {
-    "file": "assets/js/app-D6uHO-RT.js",
+  "_app-9jnfhDTZ.js": {
+    "file": "assets/js/app-9jnfhDTZ.js",
     "name": "app",
     "imports": [
       "_announce-D3OkgBby.js",
@@ -36,6 +36,7 @@
       "components/components/SortMenu/SortMenu.js",
       "components/components/Tabs/Tabs.js",
       "components/components/Toast/Toast.js",
+      "components/components/TopNotice/TopNotice.js",
       "components/layouts/CookieBanner/CookieBanner.js",
       "components/layouts/Header/Header.js",
       "components/layouts/MainMenu/MainMenu.js",
@@ -56,15 +57,15 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-kQBQ50PL.css"
+      "assets/css/app-wy_bXK_6.css"
     ],
     "assets": [
       "assets/images/auth-ag-m2GDsMwR.svg"
     ]
   },
-  "_app-kQBQ50PL.css": {
-    "file": "assets/css/app-kQBQ50PL.css",
-    "src": "_app-kQBQ50PL.css"
+  "_app-wy_bXK_6.css": {
+    "file": "assets/css/app-wy_bXK_6.css",
+    "src": "_app-wy_bXK_6.css"
   },
   "_filter-panel-CZYuA1j-.js": {
     "file": "assets/js/filter-panel-CZYuA1j-.js",
@@ -160,12 +161,12 @@
     ]
   },
   "components/components/CopyLink/CopyLink.js": {
-    "file": "assets/js/CopyLink-B9uPspTu.js",
+    "file": "assets/js/CopyLink-yvZ9piTo.js",
     "name": "CopyLink",
     "src": "components/components/CopyLink/CopyLink.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-D6uHO-RT.js"
+      "_app-9jnfhDTZ.js"
     ]
   },
   "components/components/DateRange/DateRange.js": {
@@ -226,7 +227,7 @@
     "isDynamicEntry": true
   },
   "components/components/PhotoStrip/PhotoStrip.js": {
-    "file": "assets/js/PhotoStrip-D7G8-az3.js",
+    "file": "assets/js/PhotoStrip-Bh0cLjPo.js",
     "name": "PhotoStrip",
     "src": "components/components/PhotoStrip/PhotoStrip.js",
     "isDynamicEntry": true,
@@ -235,12 +236,12 @@
     ]
   },
   "components/components/PhotoViewer/PhotoViewer.js": {
-    "file": "assets/js/PhotoViewer-z5hqyp02.js",
+    "file": "assets/js/PhotoViewer-DXx84tSb.js",
     "name": "PhotoViewer",
     "src": "components/components/PhotoViewer/PhotoViewer.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-D6uHO-RT.js",
+      "_app-9jnfhDTZ.js",
       "_icon-NLq4soTO.js",
       "_scroll-lock-D4dlW757.js"
     ],
@@ -282,13 +283,19 @@
     "isDynamicEntry": true
   },
   "components/components/Toast/Toast.js": {
-    "file": "assets/js/Toast-CixMJtGI.js",
+    "file": "assets/js/Toast-Cyf3u-1t.js",
     "name": "Toast",
     "src": "components/components/Toast/Toast.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-D6uHO-RT.js"
+      "_app-9jnfhDTZ.js"
     ]
+  },
+  "components/components/TopNotice/TopNotice.js": {
+    "file": "assets/js/TopNotice-Qv8C5a_a.js",
+    "name": "TopNotice",
+    "src": "components/components/TopNotice/TopNotice.js",
+    "isDynamicEntry": true
   },
   "components/layouts/CookieBanner/CookieBanner.js": {
     "file": "assets/js/CookieBanner-DNghBQMB.js",
@@ -364,7 +371,7 @@
     ]
   },
   "components/sections/gallery/AlbumPhotos/AlbumPhotos.js": {
-    "file": "assets/js/AlbumPhotos-xn6zONvk.js",
+    "file": "assets/js/AlbumPhotos-CygTVsha.js",
     "name": "AlbumPhotos",
     "src": "components/sections/gallery/AlbumPhotos/AlbumPhotos.js",
     "isDynamicEntry": true,
@@ -385,7 +392,7 @@
     "isDynamicEntry": true
   },
   "components/sections/news/JournalIssue/JournalIssue.js": {
-    "file": "assets/js/JournalIssue-CZ3LAL1E.js",
+    "file": "assets/js/JournalIssue-CBwMiOjq.js",
     "name": "JournalIssue",
     "src": "components/sections/news/JournalIssue/JournalIssue.js",
     "isDynamicEntry": true,
@@ -441,16 +448,16 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-BrOWESTW.js",
+    "file": "assets/js/dev-canvas-BhiLlrW5.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
       "_pages-nav-BC1-eOxQ.js",
-      "_app-D6uHO-RT.js"
+      "_app-9jnfhDTZ.js"
     ],
     "css": [
-      "assets/css/dev-canvas-DllwxHnK.css"
+      "assets/css/dev-canvas-BOKDw_8B.css"
     ],
     "assets": [
       "assets/images/logotype-desktop-BIC32Kew.svg",
