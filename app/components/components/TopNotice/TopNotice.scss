@@ -1,0 +1,147 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Плашка над шапкой — как в ЛК (Top.Banner из макета ЛК), поля — как у шапки сайта.
+// «Инфо» (по умолчанию) — фон Notice.Info и значок Main Blue; «Важно» (--warning) и «Критично»
+// (--critical) — свой фон, значок и полоса 4 слева. Значок — круг 24 с «!» (белый, Bold).
+// С 1024: в строку, поля 12/30, через 12: значок, текст M/400 Black.TXT (подпись — Bold), через 8
+// «Подробнее →» Main Blue, справа крестик 14 Dark-grey. До 1024: поля 12/10, через 10, значок 22,
+// текст 14/20, «Подробнее →» Bold отдельной строкой через 4, крестик сверху справа.
+// Закрыли — сворачивается по высоте (expand).
+@layer components {
+	.top-notice {
+		@include expand;
+
+		--notice-accent: #{palette("main-blue")};
+
+		color: palette("black-txt");
+		background: palette("notice-info-bg");
+
+		&--warning {
+			--notice-accent: #{palette("notice-warning")};
+
+			background: palette("notice-warning-bg");
+			border-left: 4px solid var(--notice-accent);
+		}
+
+		&--critical {
+			--notice-accent: #{palette("notice-critical")};
+
+			background: palette("notice-critical-bg");
+			border-left: 4px solid var(--notice-accent);
+		}
+	}
+
+	.top-notice__inner {
+		display: grid;
+		grid-template-columns: 22px minmax(0, 1fr) auto;
+		gap: 4px 10px;
+		align-items: start;
+		padding: 12px 10px;
+
+		@include up(desktop) {
+			display: flex;
+			gap: 12px;
+			align-items: center;
+			padding: 12px 30px;
+		}
+	}
+
+	.top-notice__mark {
+		@include text("m-500");
+
+		display: flex;
+		grid-row: 1;
+		grid-column: 1;
+		align-items: center;
+		justify-content: center;
+		width: 22px;
+		height: 22px;
+		font-size: 13px;
+		line-height: 1;
+		color: palette("white");
+		background: var(--notice-accent);
+		border-radius: 50%;
+
+		@include up(desktop) {
+			flex: none;
+			width: 24px;
+			height: 24px;
+			font-size: 14px;
+		}
+	}
+
+	.top-notice__text {
+		@include text("m-400-360");
+
+		grid-row: 1;
+		grid-column: 2;
+		min-width: 0;
+		margin: 0;
+
+		@include up(desktop) {
+			@include text("m-400");
+
+			flex: 0 1 auto;
+		}
+	}
+
+	.top-notice__label {
+		font-weight: 700;
+	}
+
+	.top-notice__link {
+		@include text("m-500");
+
+		grid-row: 2;
+		grid-column: 2;
+		justify-self: start;
+		color: palette("main-blue");
+		white-space: nowrap;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+
+		@include up(desktop) {
+			@include text("m-400");
+
+			flex: none;
+			margin-left: -4px;
+		}
+	}
+
+	.top-notice__close {
+		display: flex;
+		grid-row: 1;
+		grid-column: 3;
+		align-items: center;
+		justify-content: center;
+		width: 24px;
+		height: 24px;
+		margin: -1px -5px 0;
+		padding: 0;
+		color: palette("dark-grey-txt");
+		background: none;
+		border: 0;
+		border-radius: 50%;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("main-blue");
+		}
+
+		@include up(desktop) {
+			flex: none;
+			margin: 0 -5px 0 auto;
+		}
+	}
+
+	.top-notice__close-icon {
+		width: 14px;
+		height: 14px;
+	}
+}

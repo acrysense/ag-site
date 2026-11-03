@@ -101,6 +101,13 @@ $colors: (
 	// Светлая заливка (бывший фон кабинета и входа; в кабинете — заливки внутри блоков). Фон
 	// страниц везде — "bg-main"
 	"bg-auth": #f5f8fa,
+	// Плашка над шапкой (Top.Banner из макета ЛК): «Инфо» — фон, «Важно» и «Критично» — акцент
+	// (значок, полоса слева) и фон
+	"notice-info-bg": #e6f2ff,
+	"notice-warning": #ff9f0a,
+	"notice-warning-bg": #fff5e0,
+	"notice-critical": #e5484d,
+	"notice-critical-bg": #fdecea,
 	// Значки типа файла — фон и подпись
 	"file-pdf-bg": #fdecea,
 	"file-pdf": #d93a2b,
