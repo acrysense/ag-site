@@ -4,13 +4,14 @@
 	и затемнением. Пункты — обычные ссылки (GET с параметром сортировки), текущий отмечен.
 	Новости, журнал, вакансии.
 	props: id, label («Сортировка» — заголовок листа и подпись для скринридера), options [{ text,
-	url, current }]. Один вариант — меню не нужно, выводится просто текст.
+	url, current }], prefix — видимая подпись перед текущим вариантом («Город:» → «Город: все»).
+	Один вариант — меню не нужно, выводится просто текст.
 	Контракт — docs/contracts/news-list.md.
 --}}
 {{#if props.options.[1]}}
     <div class="sort-menu{{#if props.class}} {{props.class}}{{/if}}" data-module="SortMenu" data-path="components">
         <button class="sort-menu__toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="{{default props.id 'sort-menu'}}">
-            <span class="visually-hidden">{{default props.label "Сортировка"}}: </span>
+            {{#if props.prefix}}{{props.prefix}} {{else}}<span class="visually-hidden">{{default props.label "Сортировка"}}: </span>{{/if}}
             {{#each props.options}}{{#if current}}{{text}}{{/if}}{{/each}}
             {{> components/Icon/Icon name="chevron-down" class="sort-menu__arrow"}}
         </button>

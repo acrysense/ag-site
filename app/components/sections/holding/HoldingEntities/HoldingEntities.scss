@@ -1,49 +1,53 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Заголовок H1 Black.TXT и подзаголовок L/400 Dark-grey.TXT через 8; через 24
-// сетка карточек: колонки через 20, ряды через 24. Карточки ряда — одной высоты.
+// Белый блок, поля 20: заголовок H1 Black.H и число Dark-grey.TXT через 12; через 16 сетка
+// карточек через 16 (колонки и ряды). Карточки ряда — одной высоты. Телефон: без белого блока
+// (страница и так белая), карточки через 10.
 @layer components {
 	.holding-entities {
 		display: flex;
 		flex-direction: column;
-		gap: 24px;
+		gap: 16px;
 		min-width: 0;
-	}
 
-	.holding-entities__head {
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
+		@include up(desktop) {
+			padding: 19px;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
 	}
 
 	.holding-entities__title {
 		@include text("h1-360");
 
-		color: palette("black-txt");
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0 12px;
+		color: palette("black-h");
 
 		@include up(desktop) {
 			@include text("h1");
 		}
 	}
 
-	.holding-entities__subtitle {
-		@include text("l-400");
-
+	.holding-entities__count {
 		color: palette("dark-grey-txt");
 	}
 
 	.holding-entities__grid {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
-		gap: 16px 20px;
+		gap: 10px;
 		margin: 0;
 		padding: 0;
 		list-style: none;
 
 		@include up(tablet) {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
-			row-gap: 24px;
+			gap: 16px;
 		}
 
 		@include up(wide) {

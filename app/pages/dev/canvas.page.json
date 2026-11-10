@@ -10726,76 +10726,42 @@
 			"other": null
 		},
 		"holdingHero": {
-			"titleLines": [
-				"Холдинг",
-				"Аптека групп"
-			],
+			"title": "Холдинг Аптека групп",
 			"subtitle": "Надежный партнер с 30-летней историей",
-			"stats": [
+			"views": [
 				{
-					"value": "11",
-					"label": "Юридических лиц"
+					"text": "По управлению",
+					"url": "#"
 				},
 				{
-					"value": "2000+",
-					"label": "работников в команде холдинга"
-				}
-			],
-			"person": {
-				"name": "Томчин Леонид Альбертович",
-				"role": "Председатель совета директоров",
-				"photo": {
-					"src": "./img/holding/chairman.webp",
-					"alt": "Томчин Леонид Альбертович"
-				}
-			}
-		},
-		"holdingHeroSolo": {
-			"titleLines": [
-				"Холдинг",
-				"Аптека групп"
-			],
-			"subtitle": "Надежный партнер с 30-летней историей",
-			"stats": [
-				{
-					"value": "11",
-					"label": "Юридических лиц"
-				},
-				{
-					"value": "2000+",
-					"label": "работников в команде холдинга"
+					"text": "По юрлицам",
+					"url": "#",
+					"current": true
 				}
 			]
 		},
+		"holdingHeroSolo": {
+			"title": "Холдинг Аптека групп",
+			"subtitle": "Надежный партнер с 30-летней историей"
+		},
 		"holdingHeroLong": {
-			"titleLines": [
-				"Холдинг",
-				"Аптека групп",
-				"и партнёры"
-			],
+			"title": "Холдинг Аптека групп и партнёры по всей Беларуси",
 			"subtitle": "Надежный партнер с 30-летней историей: аптеки, клиники, дистрибуция и производство по всей Беларуси",
-			"stats": [
+			"views": [
 				{
-					"value": "11",
-					"label": "Юридических лиц"
+					"text": "По управлению",
+					"url": "#"
 				},
 				{
-					"value": "2000+",
-					"label": "работников в команде холдинга во всех регионах страны"
+					"text": "По юрлицам",
+					"url": "#",
+					"current": true
 				}
-			],
-			"person": {
-				"name": "Константинопольский Александр Владимирович",
-				"role": "Председатель совета директоров и генеральный директор управляющей компании",
-				"photo": {
-					"src": "./img/holding/chairman.webp",
-					"alt": "Томчин Леонид Альбертович"
-				}
-			}
+			]
 		},
 		"holdingEntities": {
 			"title": "Юридические лица холдинга",
-			"subtitle": "В холдинг входят 11 юридических лиц. У каждого — свои бренды, отделы и сотрудники.",
+			"count": "4",
 			"items": [
 				{
 					"name": "ООО «УКХ Аптека групп»",
@@ -10876,7 +10842,7 @@
 		},
 		"holdingEntitiesOne": {
 			"title": "Юридические лица холдинга",
-			"subtitle": "В холдинг входит одно юридическое лицо.",
+			"count": "1",
 			"items": [
 				{
 					"name": "ООО «УКХ Аптека групп»",
@@ -10907,7 +10873,7 @@
 		},
 		"holdingEntitiesLong": {
 			"title": "Юридические лица холдинга",
-			"subtitle": "В холдинг входят 11 юридических лиц. У каждого — свои бренды, отделы и сотрудники.",
+			"count": "3",
 			"items": [
 				{
 					"name": "Общество с ограниченной ответственностью «Управляющая компания холдинга Аптека групп»",
@@ -11687,6 +11653,250 @@
 				}
 			]
 		},
+		"entityStaffPharmacies": {
+			"title": "Сотрудники",
+			"views": [
+				{
+					"text": "По отделам",
+					"url": "#"
+				},
+				{
+					"text": "По аптекам",
+					"url": "#",
+					"current": true
+				}
+			],
+			"controls": [
+				{
+					"id": "staff-city",
+					"label": "Город",
+					"prefix": "Город:",
+					"options": [
+						{
+							"text": "все",
+							"url": "#",
+							"current": true
+						},
+						{
+							"text": "Минск",
+							"url": "#"
+						},
+						{
+							"text": "Борисов",
+							"url": "#"
+						},
+						{
+							"text": "Жодино",
+							"url": "#"
+						},
+						{
+							"text": "Молодечно",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"id": "staff-sort",
+					"label": "Сортировка",
+					"options": [
+						{
+							"text": "По номеру",
+							"url": "#",
+							"current": true
+						},
+						{
+							"text": "По алфавиту",
+							"url": "#"
+						},
+						{
+							"text": "По адресу",
+							"url": "#"
+						}
+					]
+				}
+			],
+			"summary": "96 аптек · 310 сотрудников",
+			"groups": [
+				{
+					"id": "pharmacy-1",
+					"name": "Аптека №50 · г. Борисов, ул. Днепропетровская, 21М",
+					"headLabel": "Заведующая:",
+					"head": "Новая В.М.",
+					"count": 4,
+					"avatars": [
+						"./dev/img/person-1.webp",
+						"./dev/img/person-2.webp",
+						"./dev/img/person-3.webp",
+						"./dev/img/person-4.webp"
+					],
+					"open": true,
+					"employees": [
+						{
+							"name": "Новая Владислава Митрофановна",
+							"url": "./holding-employee.html",
+							"position": "Заведующая аптекой",
+							"photo": "./dev/img/person-1.webp",
+							"phone": {
+								"text": "+375 17 900-01-01",
+								"url": "tel:+375179000101"
+							},
+							"email": {
+								"text": "vlada.jein@apteka-group.by",
+								"url": "mailto:vlada.jein@apteka-group.by"
+							},
+							"head": true
+						},
+						{
+							"name": "Кравченко Игорь Олегович",
+							"url": "./holding-employee.html",
+							"position": "Фармацевт",
+							"photo": "./dev/img/person-2.webp",
+							"phone": {
+								"text": "+375 17 900-01-03",
+								"url": "tel:+375179000103"
+							},
+							"email": {
+								"text": "i.kravchenko@apteka-group.by",
+								"url": "mailto:i.kravchenko@apteka-group.by"
+							}
+						},
+						{
+							"name": "Сидорова Анна Павловна",
+							"url": "./holding-employee.html",
+							"position": "Провизор",
+							"photo": "./dev/img/person-3.webp",
+							"phone": {
+								"text": "+375 17 900-01-02",
+								"url": "tel:+375179000102"
+							},
+							"email": {
+								"text": "a.sidorova@apteka-group.by",
+								"url": "mailto:a.sidorova@apteka-group.by"
+							}
+						},
+						{
+							"name": "Ковальчук Андрей Сергеевич",
+							"url": "./holding-employee.html",
+							"position": "Фармацевт",
+							"photo": "./dev/img/person-4.webp",
+							"phone": {
+								"text": "+375 17 900-01-04",
+								"url": "tel:+375179000104"
+							},
+							"email": {
+								"text": "a.kovalchuk@apteka-group.by",
+								"url": "mailto:a.kovalchuk@apteka-group.by"
+							}
+						}
+					]
+				},
+				{
+					"id": "pharmacy-2",
+					"name": "Аптека №12 · г. Минск, пр-т Независимости, 95",
+					"headLabel": "Заведующая:",
+					"head": "Петрова И.С.",
+					"count": 6,
+					"avatars": [
+						"./dev/img/person-2.webp",
+						"./dev/img/person-3.webp",
+						"./dev/img/person-4.webp",
+						"./dev/img/person-5.webp",
+						"./dev/img/person-1.webp"
+					],
+					"employees": []
+				},
+				{
+					"id": "pharmacy-3",
+					"name": "Аптека №17 · г. Минск, ул. Притыцкого, 83",
+					"headLabel": "Заведующая:",
+					"head": "Кузьмич О.А.",
+					"count": 5,
+					"avatars": [
+						"./dev/img/person-5.webp",
+						"./dev/img/person-4.webp",
+						"./dev/img/person-3.webp",
+						"./dev/img/person-2.webp",
+						"./dev/img/person-1.webp"
+					],
+					"employees": []
+				},
+				{
+					"id": "pharmacy-4",
+					"name": "Аптека №23 · г. Молодечно, ул. Великий Гостинец, 40",
+					"headLabel": "Заведующая:",
+					"head": "Ковалёва Н.Н.",
+					"count": 4,
+					"avatars": [
+						"./dev/img/person-3.webp",
+						"./dev/img/person-1.webp",
+						"./dev/img/person-5.webp"
+					],
+					"employees": []
+				},
+				{
+					"id": "pharmacy-5",
+					"name": "Аптека №31 · г. Жодино, пр-т Мира, 12",
+					"headLabel": "Заведующая:",
+					"head": "Сидоренко Е.В.",
+					"count": 3,
+					"avatars": [
+						"./dev/img/person-4.webp",
+						"./dev/img/person-2.webp",
+						"./dev/img/person-1.webp",
+						"./dev/img/person-5.webp",
+						"./dev/img/person-3.webp"
+					],
+					"employees": []
+				}
+			],
+			"pagination": {
+				"next": {
+					"url": "#"
+				},
+				"pages": [
+					{
+						"number": 1,
+						"current": true
+					},
+					{
+						"number": 2,
+						"url": "#"
+					},
+					{
+						"number": 3,
+						"url": "#"
+					},
+					{
+						"number": 4,
+						"url": "#",
+						"far": true
+					},
+					{
+						"gap": true
+					},
+					{
+						"number": 17,
+						"url": "#",
+						"far": true
+					},
+					{
+						"number": 18,
+						"url": "#",
+						"far": true
+					},
+					{
+						"number": 19,
+						"url": "#",
+						"far": true
+					},
+					{
+						"number": 20,
+						"url": "#"
+					}
+				],
+				"total": 96
+			}
+		},
 		"employeeRows": [
 			{
 				"name": "Козлова Наталья Викторовна",
@@ -12008,6 +12218,91 @@
 				}
 			],
 			"staffUrl": "./holding-entity.html"
+		},
+		"structurePlace": {
+			"chain": [
+				{
+					"text": "Совет директоров",
+					"url": "#"
+				},
+				{
+					"text": "Управляющая компания",
+					"url": "#"
+				},
+				{
+					"text": "Дирекция розничного бизнеса",
+					"url": "#"
+				},
+				{
+					"text": "ООО «Аптека групп Центр»",
+					"url": "#"
+				},
+				{
+					"text": "Аптека №50 пятой категории"
+				}
+			],
+			"manager": {
+				"name": "Петров А.И.",
+				"meta": "ООО «Аптека групп Центр»",
+				"photo": "./dev/img/person-4.webp",
+				"url": "#"
+			},
+			"link": {
+				"url": "#"
+			}
+		},
+		"structurePlaceNoManager": {
+			"chain": [
+				{
+					"text": "Совет директоров",
+					"url": "#"
+				},
+				{
+					"text": "Управляющая компания",
+					"url": "#"
+				},
+				{
+					"text": "Дирекция розничного бизнеса",
+					"url": "#"
+				},
+				{
+					"text": "Финансовая дирекция"
+				}
+			],
+			"link": {
+				"url": "#"
+			}
+		},
+		"structurePlaceLong": {
+			"chain": [
+				{
+					"text": "Совет директоров холдинга «Аптека групп»",
+					"url": "#"
+				},
+				{
+					"text": "Управляющая компания ООО «УКХ Аптека групп»",
+					"url": "#"
+				},
+				{
+					"text": "Дирекция розничного бизнеса и развития аптечных сетей",
+					"url": "#"
+				},
+				{
+					"text": "ООО «Аптека групп Центр»",
+					"url": "#"
+				},
+				{
+					"text": "Аптека №50 пятой категории, г. Борисов, ул. Днепропетровская, 21М"
+				}
+			],
+			"manager": {
+				"name": "Константинопольская-Задунайская Анастасия Владимировна",
+				"meta": "ООО «Аптека групп Центр», Дирекция розничного бизнеса",
+				"url": "#"
+			},
+			"link": {
+				"url": "#"
+			}
 		},
 		"employeeColleagues": {
 			"title": "Коллеги по подразделению",

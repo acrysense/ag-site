@@ -14,8 +14,9 @@
 					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.breadcrumbs) }}
 					<div class="page-columns page-columns--aside-start">
 						{{> sections/holding/EmployeeProfile/EmployeeProfile props=data.profile }}
-						<div class="page-columns__aside">
+						<div class="page-columns__aside page-aside-cards page-aside-cards--tight">
 							{{> sections/holding/EntityBrief/EntityBrief props=data.entity }}
+							{{> sections/holding/StructurePlace/StructurePlace props=data.place }}
 						</div>
 						{{> sections/holding/EmployeeColleagues/EmployeeColleagues props=data.colleagues }}
 					</div>

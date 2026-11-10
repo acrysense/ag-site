@@ -25,16 +25,49 @@
 			color $transition-default,
 			background-color $transition-default;
 
-		&[aria-selected="true"] {
+		&[aria-selected="true"],
+		&[aria-current="page"] {
 			color: palette("white");
 			background: palette("main-blue");
 			box-shadow: $shadow-content-block;
 		}
 	}
 
+	// Белая подложка на сером фоне страницы (вид «Структуры холдинга»): высота 46 — поля 3,
+	// вкладка 40
+	.tabs--light {
+		gap: 10px;
+		padding: 3px;
+		background: palette("white");
+
+		.tabs__tab {
+			padding-block: 9px;
+		}
+	}
+
+	// Переключатель внутри белого блока («По отделам / По аптекам»): подложка BG.Main, высота 36,
+	// выбранная — белая с лёгкой тенью и Black.TXT, остальные Dark-grey.TXT
+	.tabs--segmented {
+		gap: 10px;
+		padding: 1px 2px;
+		background: palette("bg-main");
+
+		.tabs__tab {
+			padding-block: 6px;
+			color: palette("dark-grey-txt");
+
+			&[aria-selected="true"],
+			&[aria-current="page"] {
+				color: palette("black-txt");
+				background: palette("white");
+				box-shadow: $shadow-segment;
+			}
+		}
+	}
+
 	// Наведение на невыбранную вкладку: Blue.TXT
-	.tabs__tab:hover:not([aria-selected="true"]),
-	.tabs__tab:focus-visible:not([aria-selected="true"]) {
+	.tabs__tab:hover:not([aria-selected="true"], [aria-current="page"]),
+	.tabs__tab:focus-visible:not([aria-selected="true"], [aria-current="page"]) {
 		color: palette("blue-txt");
 	}
 }
