@@ -663,6 +663,12 @@
 				"where": "в Справочнике"
 			},
 			{
+				"value": "units",
+				"text": "Подразделения",
+				"icon": "folder",
+				"where": "в Подразделениях"
+			},
+			{
 				"value": "news",
 				"text": "Новости",
 				"icon": "news",
@@ -922,6 +928,52 @@
 						{
 							"value": "6",
 							"text": "Могилёв"
+						}
+					]
+				}
+			],
+			"units": [
+				{
+					"type": "select",
+					"name": "unit_type[]",
+					"placeholder": "Тип",
+					"searchPlaceholder": "Найти тип",
+					"options": [
+						{
+							"value": "directorate",
+							"text": "Дирекция"
+						},
+						{
+							"value": "service",
+							"text": "Служба"
+						},
+						{
+							"value": "department",
+							"text": "Отдел"
+						},
+						{
+							"value": "pharmacy",
+							"text": "Аптека"
+						}
+					]
+				},
+				{
+					"type": "select",
+					"name": "company[]",
+					"placeholder": "Юр. лицо",
+					"searchPlaceholder": "Найти юр. лицо",
+					"options": [
+						{
+							"value": "ukh",
+							"text": "ООО «УКХ Аптека групп»"
+						},
+						{
+							"value": "center",
+							"text": "ООО «Аптека групп Центр»"
+						},
+						{
+							"value": "north",
+							"text": "ЗАО «Аптека групп Север»"
 						}
 					]
 				}

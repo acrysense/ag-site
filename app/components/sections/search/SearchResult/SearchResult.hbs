@@ -2,8 +2,8 @@
 	Результат поиска (сотрудник, новость, документ, вакансия, прочее). Превью 64 (мобильный — 48):
 	фото или картинка; без неё — заглушка по типу. Метка раздела, название-ссылка, фрагмент текста,
 	мета-строка.
-	props: url, section (directory | news | documents | vacancies — цвет метки), sectionLabel,
-	type (person | news | document | other | vacancy — заглушка), image { src, srcset },
+	props: url, section (directory | units | news | documents | vacancies — цвет метки), sectionLabel,
+	type (person | unit | news | document | other | vacancy — заглушка), image { src, srcset },
 	titleHtml, snippetHtml — текст с совпадениями в <mark> (экранирует бэк!), meta.
 --}}
 <article class="search-result">
@@ -14,6 +14,7 @@
         {{else if (eq props.type 'news')}}{{> components/Icon/Icon name="news" class="search-result__icon search-result__icon--l"}}
         {{else if (eq props.type 'vacancy')}}{{> components/Icon/Icon name="case" class="search-result__icon search-result__icon--l"}}
         {{else if (eq props.type 'document')}}{{> components/Icon/Icon name="document" class="search-result__icon"}}
+        {{else if (eq props.type 'unit')}}{{> components/Icon/Icon name="folder" class="search-result__icon"}}
         {{else}}{{> components/Icon/Icon name="chain" class="search-result__icon"}}
         {{/if}}
     </div>

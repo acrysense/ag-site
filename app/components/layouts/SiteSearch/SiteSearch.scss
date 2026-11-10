@@ -468,6 +468,11 @@
 			background: palette("bg-green");
 		}
 
+		// Подразделение (дирекция, отдел) — папка на BG.Info, как узлы оргсхемы
+		&--unit {
+			background: palette("bg-info");
+		}
+
 		&--other {
 			background: palette("bg-neutral");
 		}
