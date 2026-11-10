@@ -52,13 +52,13 @@
 			window.__agDemoCounter = (window.__agDemoCounter || 0) + 1; console.info('[demo] счётчик включён после согласия на cookie')
 		</script>
 		<meta name="robots" content="noindex, nofollow" />
-		<script type="module" crossorigin src="/ag-site/assets/js/dev-canvas-C7gRdIUu.js"></script>
+		<script type="module" crossorigin src="/ag-site/assets/js/dev-canvas-BhVk_TKT.js"></script>
 		<link rel="modulepreload" crossorigin href="/ag-site/assets/js/pages-nav-BC1-eOxQ.js" />
 		<link rel="modulepreload" crossorigin href="/ag-site/assets/js/announce-D3OkgBby.js" />
 		<link rel="modulepreload" crossorigin href="/ag-site/assets/js/icon-NLq4soTO.js" />
-		<link rel="modulepreload" crossorigin href="/ag-site/assets/js/app-DnurTJYz.js" />
+		<link rel="modulepreload" crossorigin href="/ag-site/assets/js/app-DRoegKPz.js" />
 		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/pages-nav--aTdp9SH.css" />
-		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-BxS27xl4.css" />
+		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-Dtd_efA8.css" />
 		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/dev-canvas-BOKDw_8B.css" />
 	</head>
 	<body>
@@ -41660,6 +41660,315 @@
 						<h3 class="story-state__label">
 							Пусто
 							<span class="story-state__note">нет цепочки — блок не выводится</span>
+						</h3>
+					</section>
+
+					<section
+						class="story-state story-state--na"
+						data-state-label="Загрузка"
+						data-state-note="не применимо: приходит с сервера вместе с карточкой"
+					>
+						<h3 class="story-state__label">
+							Загрузка
+							<span class="story-state__note">не применимо: приходит с сервера вместе с карточкой</span>
+						</h3>
+					</section>
+				</div>
+			</article>
+
+			<article
+				class="story"
+				data-story="manager-place"
+				data-group="Холдинг"
+				data-title="Место руководителя в структуре"
+				data-backend="app/components/sections/holding/ManagerPlace/ · docs/contracts/holding.md"
+				data-page="holding-manager"
+			>
+				<header class="story__header">
+					<p class="story__group">Холдинг</p>
+					<h2 class="story__title">Место руководителя в структуре</h2>
+				</header>
+				<div class="story__states">
+					<section class="story-state" data-state-label="Совмещения">
+						<h3 class="story-state__label">Совмещения</h3>
+						<div class="story-state__frame story-state__frame--page">
+							<div class="container page-inner">
+								<section class="manager-place" aria-labelledby="manager-place-title">
+									<div class="manager-place__head">
+										<h2 class="manager-place__title" id="manager-place-title">Место в структуре</h2>
+										<a class="manager-place__link" href="#">Открыть в структуре →</a>
+									</div>
+									<h3 class="manager-place__label">Должности</h3>
+									<ul class="manager-place__positions" role="list">
+										<li class="manager-place__position manager-place__position--main">
+											<span class="manager-place__kind">Основная</span>
+											<span class="manager-place__post">Председатель правления</span>
+											<a class="manager-place__unit" href="#">Правление · подчиняется Совету директоров</a>
+										</li>
+										<li class="manager-place__position">
+											<span class="manager-place__kind">Совмещение</span>
+											<span class="manager-place__post">Директор управляющей компании</span>
+											<a class="manager-place__unit" href="#">ООО «УКХ Аптека групп»</a>
+										</li>
+										<li class="manager-place__position">
+											<span class="manager-place__kind">Совмещение</span>
+											<span class="manager-place__post">Руководитель</span>
+											<a class="manager-place__unit" href="#">Дирекция оптового бизнеса</a>
+										</li>
+									</ul>
+									<h3 class="manager-place__label">В прямом подчинении</h3>
+									<ul class="manager-place__reports" role="list">
+										<li class="manager-place__person">
+											<span class="manager-place__avatar" aria-hidden="true">
+												<span class="manager-place__initials">ДО</span>
+												<img
+													src="data:image/webp;base64,UklGRqYOAABXRUJQVlA4WAoAAAAMAAAAOwAAOwAAVlA4IMQDAACQEACdASo8ADwAPm0ukkakIqGhLBgKaIANiWMAucx/iohddOfXZlbVZTx1yCr8mneWSBApJfWnusO+UBr7QrCGABbfEsiaY2+8SaEH1Wpx3h4xJAnbF4gf8hqfXVoWliCgDFxOByk1eIDx+v8A9+JmkQDuYs/lx3TWv7V3/CnKLsbJcdZXUfSoifa2EFAA/vkETa+XBzRSLE2/Tn24XkJ3i+SzQqelz97083thQnbZj9MzFcEQ7WFj3b0FshSpSyiQHNeqXTDq39QxUpRw1dW1dMPXNlnI9BZ4JOyubxvEofZi9nDFgIV0ZhFY+YOW/+L7zEfYTziKDoP5/oQx+O4tf/ID1HO3lRUYqlg5pDIdTRZ1p7IC0JKd/6xAsBsN3zqkXR2KOeW1MULJZ4lu2KOYrBc3p6ZhvWCOpyM0qActhcOD1eJe7DciR7XFQOa7LcQLhyNIQNqlAgilU+V7Z5JX3X2PcXnryFwUSbDCHoebuupvrLN95S6Sl3TcVxqoCYyZdaupn7V32uXtSL48893gZHZmrZgXNg1159GhGEtT1imidkvqlFszG2+H9/o4iHSx7dcvzA54hxBnZhbU1DnJRxia/zhmnjBgnYjBGAM/aFHVQdKrT7w+VYblnIa1c8JUuI7kzqf6vFCcVX2BzoebAwQjfHaEZ1rCP/cWMVis2wSO9xaTQKsMUqwyAZYBTn9nJEusZDQHSSiaeOenNJvdPeJwDjFOjpDZiPignj4Kkztu87PR958B2f9ukowCpB9Zq6wd9GF9G1IKAwgjL3PmPM2Ye+yoVGsI77Tbwuadj49MavYmPMdJ9k/KuA2H4+UhGJymiLCyeURsZ54aNCzhq/+M5Pz+P9/blQiXF0i9J6L4YyX/JkwQAqvGDlaJBAnOk2JxjnOorxwW6IOXqm40+WR7Po9qnEJQmbM7hP9EPaWFTd8GAx1VWInrFtvj7KnRe+AlrhQ2PFA9SLMBlpR42Xl6JStEfqHi+df2J23wClMFr/KqfecBmG5+vGgPCY2U3st/rxaiJl2TeTLCR99v3NiTufsNf+PQpEyNRxlJzUH8sjDja0cBarSTYPUiMEsHzX/tZCmySJSFsAmaXT94a3LlW9qaSYxrCyM+3ZUpZkgh4tQPoZ4wY3h5Rk0R3Z6wgtqSu9HeaHu8/kMt+FqxLPIUDUl9HscnQ7EgWogEv87Z8/x+6QWgYhVdAb6aUo13jcsv3SvFDsY2d2PndrWV+/ucW4X3V314rUY2aDkuXaRL6dHRxah7V8bLsRSHBoeqAAAARVhJRkQAAABNTQAqAAAACAABh2kABAAAAAEAAAAaAAAAAAADoAEAAwAAAAEAAQAAoAIABAAAAAEAAAA8oAMABAAAAAEAAAA8AAAAAFhNUCBvCgAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNi4wLjAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtbG5zOklwdGM0eG1wRXh0PSJodHRwOi8vaXB0Yy5vcmcvc3RkL0lwdGM0eG1wRXh0LzIwMDgtMDItMjkvIiBwaG90b3Nob3A6Q3JlZGl0PSJNYWRlIHdpdGggR29vZ2xlIEFJIiBJcHRjNHhtcEV4dDpEaWdpdGFsU291cmNlVHlwZT0iaHR0cDovL2N2LmlwdGMub3JnL25ld3Njb2Rlcy9kaWdpdGFsc291cmNldHlwZS90cmFpbmVkQWxnb3JpdGhtaWNNZWRpYSIgSXB0YzR4bXBFeHQ6RGlnaXRhbFNvdXJjZUZpbGVUeXBlPSJodHRwOi8vY3YuaXB0Yy5vcmcvbmV3c2NvZGVzL2RpZ2l0YWxzb3VyY2V0eXBlL3RyYWluZWRBbGdvcml0aG1pY01lZGlhIi8+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPD94cGFja2V0IGVuZD0idyI/PgA="
+													width="36"
+													height="36"
+													alt=""
+													loading="lazy"
+													decoding="async"
+												/>
+											</span>
+											<span class="manager-place__info">
+												<a class="manager-place__name" href="#">Дубовец О.В.</a>
+												<span class="manager-place__role">Первый заместитель директора</span>
+											</span>
+										</li>
+										<li class="manager-place__person">
+											<span class="manager-place__avatar" aria-hidden="true">
+												<span class="manager-place__initials">ША</span>
+												<img
+													src="/ag-site/assets/images/person-2-BSdhiEQf.webp"
+													width="36"
+													height="36"
+													alt=""
+													loading="lazy"
+													decoding="async"
+												/>
+											</span>
+											<span class="manager-place__info">
+												<a class="manager-place__name" href="#">Шукало А.А.</a>
+												<span class="manager-place__role">Дирекция по маркетингу</span>
+											</span>
+										</li>
+										<li class="manager-place__person">
+											<span class="manager-place__avatar" aria-hidden="true">
+												<span class="manager-place__initials">РН</span>
+												<img
+													src="data:image/webp;base64,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Yy5vcmcvbmV3c2NvZGVzL2RpZ2l0YWxzb3VyY2V0eXBlL3RyYWluZWRBbGdvcml0aG1pY01lZGlhIiBJcHRjNHhtcEV4dDpEaWdpdGFsU291cmNlRmlsZVR5cGU9Imh0dHA6Ly9jdi5pcHRjLm9yZy9uZXdzY29kZXMvZGlnaXRhbHNvdXJjZXR5cGUvdHJhaW5lZEFsZ29yaXRobWljTWVkaWEiLz4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8P3hwYWNrZXQgZW5kPSJ3Ij8+AA=="
+													width="36"
+													height="36"
+													alt=""
+													loading="lazy"
+													decoding="async"
+												/>
+											</span>
+											<span class="manager-place__info">
+												<a class="manager-place__name" href="#">Рябцева Н.В.</a>
+												<span class="manager-place__role">Коммерческая дирекция</span>
+											</span>
+										</li>
+										<li class="manager-place__person">
+											<span class="manager-place__avatar" aria-hidden="true">
+												<span class="manager-place__initials">МЕ</span>
+												<img
+													src="data:image/webp;base64,UklGRqwEAABXRUJQVlA4WAoAAAAIAAAAOwAAOwAAVlA4IA4EAABQEgCdASo8ADwAPmkskEWkIqGXDt8YQAaEoArk+llw+sDoTH98AlBUyb9PwlUR3L6td3Xs0frRBI/63tvVL/fuO5uuujCek+VSwh3tzNUFZp7ezzsoQUxM7P8UIyt0Lt3gRHjzWZLhMr3CPSxtddzgUfDJEnYuX9WsMHwxR23obubJHJ1qNbnoHDenuDXJCv/zQzUMk+s0Yf8sAAD+/11xgWH0/zyY+rlogynqVEqPeE8YCD6YJXpME4SSZ+k1z4bQ2WYnYDqfJ1gir1gHzrIQsu3nbKq0CQoFwkCZmkjSVQk8PGNKu+dbhC7v/oHGkPBxZl/xnyt0M1TiqBqGVXfO5g41WDW3wktxxO1kYF8pg7CXP1+Y9I67y2UWmV+u0b44/B89btSSuYCQxy6dRTAGAsdHI2nwbBvz8lSjDy9ZDNK9dXWlLIHrPUSq+Wn/1YQt0c9P+2FKLm6b+UuMt+QsKDBsP5FqS0z5tW0MIGSw6Lif8ULLkO/NRlDxPrWOIFY0qrWEJ4L1BSSj+fXn058Ntd79MUAoGAEQwxmhjCgcN+0fY0R/IUTZEYNdIXqF++mq26xrwOpsK4uuwBsv/2w3EqsEcjbO4Cu7AsUsXvNuSomIWi+86joArceKcozoyh7G/yv1OPWExwqDKG4fX8E4LZqzTdLUfKl31O7rKH2DjsKZP2QI6GZieP+W/SXdL6ZyzWUGBjMoGpP5GdEOctWUQko2Y54LapEbmmekxYp2hF6s8/zZjtqz+LYJotYHBAxgDLWPr7u1EB8kxxc5tF2i87Chmny55oGIKEF8OueZWE/1fvTBZJ9IkWzcEnPnOQFriHeQcUnrq7w+044F2mEUqlFnxT7e2CztE4nbPJ4c6GjZDv7kZ/iRIJ2a87pWjOrhdWZhYRlfF/ttu8j1UW29gJ9RXa2tmm0wK+yaQHmN19BJZJDFLt9MO/fFPnGJ2oM9d9/oyJzabmDeSTvn3EhrVveWeNwYn0fKdnpxHd1JvsYwC/dCrfwgwc2GW+j/UrsL71WT4vYqxlUzrb37C7hfnuQGxpzpUNkpNW6/u9KhjinFaI0WC29RzcxKalv1lkEBGxegs5MIsaCYIMHvQvF81nBKQgCjbcf3mhe+qzAs2JF5R6HtGjvx9ayNaYkpKl8Ri656RPmocnWQ9Xgzt3yTxaYr1UUBcBqQMf3+m8wdJpCY3Y2J3VrE17ymUg66p6TAb7ZWVgbsb/xmC1rHhN2q3cT6jCFANZL5MYfqsBr4NM5dXGDRjkYnoB03VYl0KUgwYbITjCao4HWuOUeU7MhKkYK93U4cp5IhMe4AaI82tjJiAZQczLv0se9GwqqXn11UbNL6nq1pe6U/jne3mLCk6LG4WYa54STgJFwwAABFWElGeAAAAE1NACoAAAAIAAQBGgAFAAAAAQAAAD4BGwAFAAAAAQAAAEYBKAADAAAAAQACAACHaQAEAAAAAQAAAE4AAAAAAAAAkAAAAAEAAACQAAAAAQADoAEAAwAAAAEAAQAAoAIABAAAAAEAAAA8oAMABAAAAAEAAAA8AAAAAA=="
+													width="36"
+													height="36"
+													alt=""
+													loading="lazy"
+													decoding="async"
+												/>
+											</span>
+											<span class="manager-place__info">
+												<a class="manager-place__name" href="#">Мелюха Е.И.</a>
+												<span class="manager-place__role">Дирекция розничного бизнеса</span>
+											</span>
+										</li>
+										<li class="manager-place__more-item"><a class="manager-place__link" href="#">+ ещё 2</a></li>
+									</ul>
+								</section>
+							</div>
+						</div>
+					</section>
+					<section class="story-state" data-state-label="Одна должность">
+						<h3 class="story-state__label">Одна должность</h3>
+						<div class="story-state__frame story-state__frame--page">
+							<div class="container page-inner">
+								<section class="manager-place" aria-labelledby="manager-place-title">
+									<div class="manager-place__head">
+										<h2 class="manager-place__title" id="manager-place-title">Место в структуре</h2>
+										<a class="manager-place__link" href="#">Открыть в структуре →</a>
+									</div>
+									<h3 class="manager-place__label">Должности</h3>
+									<ul class="manager-place__positions" role="list">
+										<li class="manager-place__position manager-place__position--main">
+											<span class="manager-place__kind">Основная</span>
+											<span class="manager-place__post">Председатель правления</span>
+											<a class="manager-place__unit" href="#">Правление · подчиняется Совету директоров</a>
+										</li>
+									</ul>
+									<h3 class="manager-place__label">В прямом подчинении</h3>
+									<ul class="manager-place__reports" role="list">
+										<li class="manager-place__person">
+											<span class="manager-place__avatar" aria-hidden="true">
+												<span class="manager-place__initials">ДО</span>
+												<img
+													src="data:image/webp;base64,UklGRqYOAABXRUJQVlA4WAoAAAAMAAAAOwAAOwAAVlA4IMQDAACQEACdASo8ADwAPm0ukkakIqGhLBgKaIANiWMAucx/iohddOfXZlbVZTx1yCr8mneWSBApJfWnusO+UBr7QrCGABbfEsiaY2+8SaEH1Wpx3h4xJAnbF4gf8hqfXVoWliCgDFxOByk1eIDx+v8A9+JmkQDuYs/lx3TWv7V3/CnKLsbJcdZXUfSoifa2EFAA/vkETa+XBzRSLE2/Tn24XkJ3i+SzQqelz97083thQnbZj9MzFcEQ7WFj3b0FshSpSyiQHNeqXTDq39QxUpRw1dW1dMPXNlnI9BZ4JOyubxvEofZi9nDFgIV0ZhFY+YOW/+L7zEfYTziKDoP5/oQx+O4tf/ID1HO3lRUYqlg5pDIdTRZ1p7IC0JKd/6xAsBsN3zqkXR2KOeW1MULJZ4lu2KOYrBc3p6ZhvWCOpyM0qActhcOD1eJe7DciR7XFQOa7LcQLhyNIQNqlAgilU+V7Z5JX3X2PcXnryFwUSbDCHoebuupvrLN95S6Sl3TcVxqoCYyZdaupn7V32uXtSL48893gZHZmrZgXNg1159GhGEtT1imidkvqlFszG2+H9/o4iHSx7dcvzA54hxBnZhbU1DnJRxia/zhmnjBgnYjBGAM/aFHVQdKrT7w+VYblnIa1c8JUuI7kzqf6vFCcVX2BzoebAwQjfHaEZ1rCP/cWMVis2wSO9xaTQKsMUqwyAZYBTn9nJEusZDQHSSiaeOenNJvdPeJwDjFOjpDZiPignj4Kkztu87PR958B2f9ukowCpB9Zq6wd9GF9G1IKAwgjL3PmPM2Ye+yoVGsI77Tbwuadj49MavYmPMdJ9k/KuA2H4+UhGJymiLCyeURsZ54aNCzhq/+M5Pz+P9/blQiXF0i9J6L4YyX/JkwQAqvGDlaJBAnOk2JxjnOorxwW6IOXqm40+WR7Po9qnEJQmbM7hP9EPaWFTd8GAx1VWInrFtvj7KnRe+AlrhQ2PFA9SLMBlpR42Xl6JStEfqHi+df2J23wClMFr/KqfecBmG5+vGgPCY2U3st/rxaiJl2TeTLCR99v3NiTufsNf+PQpEyNRxlJzUH8sjDja0cBarSTYPUiMEsHzX/tZCmySJSFsAmaXT94a3LlW9qaSYxrCyM+3ZUpZkgh4tQPoZ4wY3h5Rk0R3Z6wgtqSu9HeaHu8/kMt+FqxLPIUDUl9HscnQ7EgWogEv87Z8/x+6QWgYhVdAb6aUo13jcsv3SvFDsY2d2PndrWV+/ucW4X3V314rUY2aDkuXaRL6dHRxah7V8bLsRSHBoeqAAAARVhJRkQAAABNTQAqAAAACAABh2kABAAAAAEAAAAaAAAAAAADoAEAAwAAAAEAAQAAoAIABAAAAAEAAAA8oAMABAAAAAEAAAA8AAAAAFhNUCBvCgAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNi4wLjAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtbG5zOklwdGM0eG1wRXh0PSJodHRwOi8vaXB0Yy5vcmcvc3RkL0lwdGM0eG1wRXh0LzIwMDgtMDItMjkvIiBwaG90b3Nob3A6Q3JlZGl0PSJNYWRlIHdpdGggR29vZ2xlIEFJIiBJcHRjNHhtcEV4dDpEaWdpdGFsU291cmNlVHlwZT0iaHR0cDovL2N2LmlwdGMub3JnL25ld3Njb2Rlcy9kaWdpdGFsc291cmNldHlwZS90cmFpbmVkQWxnb3JpdGhtaWNNZWRpYSIgSXB0YzR4bXBFeHQ6RGlnaXRhbFNvdXJjZUZpbGVUeXBlPSJodHRwOi8vY3YuaXB0Yy5vcmcvbmV3c2NvZGVzL2RpZ2l0YWxzb3VyY2V0eXBlL3RyYWluZWRBbGdvcml0aG1pY01lZGlhIi8+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPD94cGFja2V0IGVuZD0idyI/PgA="
+													width="36"
+													height="36"
+													alt=""
+													loading="lazy"
+													decoding="async"
+												/>
+											</span>
+											<span class="manager-place__info">
+												<a class="manager-place__name" href="#">Дубовец О.В.</a>
+												<span class="manager-place__role">Первый заместитель директора</span>
+											</span>
+										</li>
+										<li class="manager-place__person">
+											<span class="manager-place__avatar" aria-hidden="true">
+												<span class="manager-place__initials">ША</span>
+												<img
+													src="/ag-site/assets/images/person-2-BSdhiEQf.webp"
+													width="36"
+													height="36"
+													alt=""
+													loading="lazy"
+													decoding="async"
+												/>
+											</span>
+											<span class="manager-place__info">
+												<a class="manager-place__name" href="#">Шукало А.А.</a>
+												<span class="manager-place__role">Дирекция по маркетингу</span>
+											</span>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+					</section>
+					<section class="story-state" data-state-label="Длинный текст, без фото">
+						<h3 class="story-state__label">Длинный текст, без фото</h3>
+						<div class="story-state__frame story-state__frame--page">
+							<div class="container page-inner">
+								<section class="manager-place" aria-labelledby="manager-place-title">
+									<div class="manager-place__head">
+										<h2 class="manager-place__title" id="manager-place-title">Место в структуре</h2>
+										<a class="manager-place__link" href="#">Открыть в структуре →</a>
+									</div>
+									<h3 class="manager-place__label">Должности</h3>
+									<ul class="manager-place__positions" role="list">
+										<li class="manager-place__position manager-place__position--main">
+											<span class="manager-place__kind">Основная</span>
+											<span class="manager-place__post"
+												>Заместитель директора по развитию розничного бизнеса и партнёрских программ</span
+											>
+											<a class="manager-place__unit" href="#"
+												>Дирекция по развитию розничного бизнеса, аптечных сетей и партнёрских программ</a
+											>
+										</li>
+										<li class="manager-place__position">
+											<span class="manager-place__kind">Совмещение</span>
+											<span class="manager-place__post">Директор</span>
+											<a class="manager-place__unit" href="#">ООО «Аптека групп Центр»</a>
+										</li>
+									</ul>
+									<h3 class="manager-place__label">В прямом подчинении</h3>
+									<ul class="manager-place__reports" role="list">
+										<li class="manager-place__person">
+											<span class="manager-place__avatar" aria-hidden="true">
+												<span class="manager-place__initials">КА</span>
+											</span>
+											<span class="manager-place__info">
+												<a class="manager-place__name" href="#">Константинопольская-Задунайская А.В.</a>
+												<span class="manager-place__role">Департамент по развитию и организации фарм. деятельности</span>
+											</span>
+										</li>
+										<li class="manager-place__person">
+											<span class="manager-place__avatar" aria-hidden="true">
+												<span class="manager-place__initials">ДО</span>
+												<img
+													src="data:image/webp;base64,UklGRqYOAABXRUJQVlA4WAoAAAAMAAAAOwAAOwAAVlA4IMQDAACQEACdASo8ADwAPm0ukkakIqGhLBgKaIANiWMAucx/iohddOfXZlbVZTx1yCr8mneWSBApJfWnusO+UBr7QrCGABbfEsiaY2+8SaEH1Wpx3h4xJAnbF4gf8hqfXVoWliCgDFxOByk1eIDx+v8A9+JmkQDuYs/lx3TWv7V3/CnKLsbJcdZXUfSoifa2EFAA/vkETa+XBzRSLE2/Tn24XkJ3i+SzQqelz97083thQnbZj9MzFcEQ7WFj3b0FshSpSyiQHNeqXTDq39QxUpRw1dW1dMPXNlnI9BZ4JOyubxvEofZi9nDFgIV0ZhFY+YOW/+L7zEfYTziKDoP5/oQx+O4tf/ID1HO3lRUYqlg5pDIdTRZ1p7IC0JKd/6xAsBsN3zqkXR2KOeW1MULJZ4lu2KOYrBc3p6ZhvWCOpyM0qActhcOD1eJe7DciR7XFQOa7LcQLhyNIQNqlAgilU+V7Z5JX3X2PcXnryFwUSbDCHoebuupvrLN95S6Sl3TcVxqoCYyZdaupn7V32uXtSL48893gZHZmrZgXNg1159GhGEtT1imidkvqlFszG2+H9/o4iHSx7dcvzA54hxBnZhbU1DnJRxia/zhmnjBgnYjBGAM/aFHVQdKrT7w+VYblnIa1c8JUuI7kzqf6vFCcVX2BzoebAwQjfHaEZ1rCP/cWMVis2wSO9xaTQKsMUqwyAZYBTn9nJEusZDQHSSiaeOenNJvdPeJwDjFOjpDZiPignj4Kkztu87PR958B2f9ukowCpB9Zq6wd9GF9G1IKAwgjL3PmPM2Ye+yoVGsI77Tbwuadj49MavYmPMdJ9k/KuA2H4+UhGJymiLCyeURsZ54aNCzhq/+M5Pz+P9/blQiXF0i9J6L4YyX/JkwQAqvGDlaJBAnOk2JxjnOorxwW6IOXqm40+WR7Po9qnEJQmbM7hP9EPaWFTd8GAx1VWInrFtvj7KnRe+AlrhQ2PFA9SLMBlpR42Xl6JStEfqHi+df2J23wClMFr/KqfecBmG5+vGgPCY2U3st/rxaiJl2TeTLCR99v3NiTufsNf+PQpEyNRxlJzUH8sjDja0cBarSTYPUiMEsHzX/tZCmySJSFsAmaXT94a3LlW9qaSYxrCyM+3ZUpZkgh4tQPoZ4wY3h5Rk0R3Z6wgtqSu9HeaHu8/kMt+FqxLPIUDUl9HscnQ7EgWogEv87Z8/x+6QWgYhVdAb6aUo13jcsv3SvFDsY2d2PndrWV+/ucW4X3V314rUY2aDkuXaRL6dHRxah7V8bLsRSHBoeqAAAARVhJRkQAAABNTQAqAAAACAABh2kABAAAAAEAAAAaAAAAAAADoAEAAwAAAAEAAQAAoAIABAAAAAEAAAA8oAMABAAAAAEAAAA8AAAAAFhNUCBvCgAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNi4wLjAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtbG5zOklwdGM0eG1wRXh0PSJodHRwOi8vaXB0Yy5vcmcvc3RkL0lwdGM0eG1wRXh0LzIwMDgtMDItMjkvIiBwaG90b3Nob3A6Q3JlZGl0PSJNYWRlIHdpdGggR29vZ2xlIEFJIiBJcHRjNHhtcEV4dDpEaWdpdGFsU291cmNlVHlwZT0iaHR0cDovL2N2LmlwdGMub3JnL25ld3Njb2Rlcy9kaWdpdGFsc291cmNldHlwZS90cmFpbmVkQWxnb3JpdGhtaWNNZWRpYSIgSXB0YzR4bXBFeHQ6RGlnaXRhbFNvdXJjZUZpbGVUeXBlPSJodHRwOi8vY3YuaXB0Yy5vcmcvbmV3c2NvZGVzL2RpZ2l0YWxzb3VyY2V0eXBlL3RyYWluZWRBbGdvcml0aG1pY01lZGlhIi8+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPD94cGFja2V0IGVuZD0idyI/PgA="
+													width="36"
+													height="36"
+													alt=""
+													loading="lazy"
+													decoding="async"
+												/>
+											</span>
+											<span class="manager-place__info">
+												<a class="manager-place__name" href="#">Дубовец О.В.</a>
+												<span class="manager-place__role">Первый заместитель директора</span>
+											</span>
+										</li>
+										<li class="manager-place__person">
+											<span class="manager-place__avatar" aria-hidden="true">
+												<span class="manager-place__initials">ША</span>
+												<img
+													src="/ag-site/assets/images/person-2-BSdhiEQf.webp"
+													width="36"
+													height="36"
+													alt=""
+													loading="lazy"
+													decoding="async"
+												/>
+											</span>
+											<span class="manager-place__info">
+												<a class="manager-place__name" href="#">Шукало А.А.</a>
+												<span class="manager-place__role">Дирекция по маркетингу</span>
+											</span>
+										</li>
+										<li class="manager-place__person">
+											<span class="manager-place__avatar" aria-hidden="true">
+												<span class="manager-place__initials">РН</span>
+												<img
+													src="data:image/webp;base64,UklGRtQPAABXRUJQVlA4WAoAAAAMAAAAOwAAOwAAVlA4IPIEAADQFACdASo8ADwAPm0wk0ckIyGhKhZq6IANiUAYIfLXeri47apn2m2nv6rig8+eZH1bxu8pXfqo8uAu8PE19dNeAoAfob0J9BL1UnEonqyXC4FkcY08YjHuirckthtfQ1Tfq0yN2/dtosrEgRhwwWnAeOK/1IuonqTbsfybrj2g7iUQDNHUUgNmANTicY6zs1AKV1cLPPeE2k0fRzO1U6PT+pHm8/r03tR2nefie/bwAP774eA6gUpnSs/QZ7whQiVl0eD0+x6cqsxZSyBUVKMHT8FKbcdt1SQ42/IjK4dRcBfGJN1X3O5jYcmf9cK6Axc1MsuDfEuGUPoDzCMa/+ua0T4+NRbTv6QrygkX6MlYytU5IfXTwlxJ0e17uHwYtWTcEpNcoV4PciWLcBrNWb2xg+fm3Z/I68iLrnhvM6lHQGv2g4/zZZneZ1Wr9DEDGe2sNNrxLOBby0W5SLK283pEj3Z5AYx5XJdkLBfBwqJzYZ7lGmcpi3Ji2NKGXaU20O59Tp8TAOvY1qyfqWm59Xsd3xeBv34pP/F+4K7+0riTPuQWK4bICB1gUwN+mME+oYDaGvFyaDDkByvXVtjjOv7Jh5LeSMNqprl2VbSPoX+V+O/E49SEvt1y26LcAIslo48RrwOwjaZw8/e8z88B0Cko92fGxUS3Wc3mSTTcVCp0wDDXGu6dYQAtTmMAT7vl8/tl43ktOkw84UEybu1D8jlWAfwvZezD1klR+vOV3r9zmvz0sg1eZpwLuEzRa+FzMBZldWrmHTH2Zlwbq/S4Sq+Gvak+rfYuKA3RDeO479yuSGCNapZLuNyHopfiqsHI6Y00BxYLGxzuJXY6iev83NHvPB0J/911yMiH0Ahe7RKHz+THc1LubRv2VsUfmTdVW/ty+9IAv/pEhn551e9hxkVja9vQMS1KnHXiWqJ8deMhLQxxpV6shfyQypdXkabKOhaffD1sYUX/kabCx8HD3K6CXAK2dMrW8EZQ55bEOL+oZDwhNsiOj7ZdmxLHVX/xiH9SBVuNZgl3LQ8HjzPkQB3VI/9bF0dpCZtW5ILKnHF+IMLOvM61H8MIlsHd7oHHm3k1aWfJsZ3p224zFM1EbcNM5whWf6xm3gfDUyBFqnzjWRDoL5xkraYKCJG+vcjgfQhUhai0DlSbpgqv9/fGC+DIly8widJaZlV/chYICGnTCufXzB77JkdXT7dwzV/DaeMAAha6lHoGuGii3a9nP49qbYKfaios5JTr26hUXGdBdNTIXyKnMXHcqrNNeOi/O4IsgWZSRpFNR0BiGJmCM/feJG7dEvJhdUOl4tZkcfaOO1Kd07mg5+TGhM3s0u5wnNH8zvMSzqz3p9wzqBb8NmSBsgbgUMaX+Q2ATHuhZwf4QS1Wd4DdjLDOp8SWb3agKKEq+wUmil0d1dxGQZlIN54c/384VD1Br5DQIwIlGYkQX5f55JW5Z/xc6+Hdr37/eZqnWxwN0SQ1Z406v9JzCjtuUgQwtPN9oaDNry51wzZ1LpsObT4yUVW2VrS5Q+X8fRR+Ob9t3u+CQv38/z5PJ+bu0vCTMIO7elxXq3dqjReL6+vMZv2kY6DkpPBxwgZjqVs9Kq/oxe9BgfeDcO/GePa2y+D314Yz3Ky9/1of4c+h8g9V28Js9vqYwujv9oW4ZU6uZFD+QkYGFDCw6fsY29qAAABFWElGRAAAAE1NACoAAAAIAAGHaQAEAAAAAQAAABoAAAAAAAOgAQADAAAAAQABAACgAgAEAAAAAQAAADygAwAEAAAAAQAAADwAAAAAWE1QIG8KAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA2LjAuMCI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6SXB0YzR4bXBFeHQ9Imh0dHA6Ly9pcHRjLm9yZy9zdGQvSXB0YzR4bXBFeHQvMjAwOC0wMi0yOS8iIHBob3Rvc2hvcDpDcmVkaXQ9Ik1hZGUgd2l0aCBHb29nbGUgQUkiIElwdGM0eG1wRXh0OkRpZ2l0YWxTb3VyY2VUeXBlPSJodHRwOi8vY3YuaXB0Yy5vcmcvbmV3c2NvZGVzL2RpZ2l0YWxzb3VyY2V0eXBlL3RyYWluZWRBbGdvcml0aG1pY01lZGlhIiBJcHRjNHhtcEV4dDpEaWdpdGFsU291cmNlRmlsZVR5cGU9Imh0dHA6Ly9jdi5pcHRjLm9yZy9uZXdzY29kZXMvZGlnaXRhbHNvdXJjZXR5cGUvdHJhaW5lZEFsZ29yaXRobWljTWVkaWEiLz4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8P3hwYWNrZXQgZW5kPSJ3Ij8+AA=="
+													width="36"
+													height="36"
+													alt=""
+													loading="lazy"
+													decoding="async"
+												/>
+											</span>
+											<span class="manager-place__info">
+												<a class="manager-place__name" href="#">Рябцева Н.В.</a>
+												<span class="manager-place__role">Коммерческая дирекция</span>
+											</span>
+										</li>
+										<li class="manager-place__person">
+											<span class="manager-place__avatar" aria-hidden="true">
+												<span class="manager-place__initials">МЕ</span>
+												<img
+													src="data:image/webp;base64,UklGRqwEAABXRUJQVlA4WAoAAAAIAAAAOwAAOwAAVlA4IA4EAABQEgCdASo8ADwAPmkskEWkIqGXDt8YQAaEoArk+llw+sDoTH98AlBUyb9PwlUR3L6td3Xs0frRBI/63tvVL/fuO5uuujCek+VSwh3tzNUFZp7ezzsoQUxM7P8UIyt0Lt3gRHjzWZLhMr3CPSxtddzgUfDJEnYuX9WsMHwxR23obubJHJ1qNbnoHDenuDXJCv/zQzUMk+s0Yf8sAAD+/11xgWH0/zyY+rlogynqVEqPeE8YCD6YJXpME4SSZ+k1z4bQ2WYnYDqfJ1gir1gHzrIQsu3nbKq0CQoFwkCZmkjSVQk8PGNKu+dbhC7v/oHGkPBxZl/xnyt0M1TiqBqGVXfO5g41WDW3wktxxO1kYF8pg7CXP1+Y9I67y2UWmV+u0b44/B89btSSuYCQxy6dRTAGAsdHI2nwbBvz8lSjDy9ZDNK9dXWlLIHrPUSq+Wn/1YQt0c9P+2FKLm6b+UuMt+QsKDBsP5FqS0z5tW0MIGSw6Lif8ULLkO/NRlDxPrWOIFY0qrWEJ4L1BSSj+fXn058Ntd79MUAoGAEQwxmhjCgcN+0fY0R/IUTZEYNdIXqF++mq26xrwOpsK4uuwBsv/2w3EqsEcjbO4Cu7AsUsXvNuSomIWi+86joArceKcozoyh7G/yv1OPWExwqDKG4fX8E4LZqzTdLUfKl31O7rKH2DjsKZP2QI6GZieP+W/SXdL6ZyzWUGBjMoGpP5GdEOctWUQko2Y54LapEbmmekxYp2hF6s8/zZjtqz+LYJotYHBAxgDLWPr7u1EB8kxxc5tF2i87Chmny55oGIKEF8OueZWE/1fvTBZJ9IkWzcEnPnOQFriHeQcUnrq7w+044F2mEUqlFnxT7e2CztE4nbPJ4c6GjZDv7kZ/iRIJ2a87pWjOrhdWZhYRlfF/ttu8j1UW29gJ9RXa2tmm0wK+yaQHmN19BJZJDFLt9MO/fFPnGJ2oM9d9/oyJzabmDeSTvn3EhrVveWeNwYn0fKdnpxHd1JvsYwC/dCrfwgwc2GW+j/UrsL71WT4vYqxlUzrb37C7hfnuQGxpzpUNkpNW6/u9KhjinFaI0WC29RzcxKalv1lkEBGxegs5MIsaCYIMHvQvF81nBKQgCjbcf3mhe+qzAs2JF5R6HtGjvx9ayNaYkpKl8Ri656RPmocnWQ9Xgzt3yTxaYr1UUBcBqQMf3+m8wdJpCY3Y2J3VrE17ymUg66p6TAb7ZWVgbsb/xmC1rHhN2q3cT6jCFANZL5MYfqsBr4NM5dXGDRjkYnoB03VYl0KUgwYbITjCao4HWuOUeU7MhKkYK93U4cp5IhMe4AaI82tjJiAZQczLv0se9GwqqXn11UbNL6nq1pe6U/jne3mLCk6LG4WYa54STgJFwwAABFWElGeAAAAE1NACoAAAAIAAQBGgAFAAAAAQAAAD4BGwAFAAAAAQAAAEYBKAADAAAAAQACAACHaQAEAAAAAQAAAE4AAAAAAAAAkAAAAAEAAACQAAAAAQADoAEAAwAAAAEAAQAAoAIABAAAAAEAAAA8oAMABAAAAAEAAAA8AAAAAA=="
+													width="36"
+													height="36"
+													alt=""
+													loading="lazy"
+													decoding="async"
+												/>
+											</span>
+											<span class="manager-place__info">
+												<a class="manager-place__name" href="#">Мелюха Е.И.</a>
+												<span class="manager-place__role">Дирекция розничного бизнеса</span>
+											</span>
+										</li>
+										<li class="manager-place__more-item"><a class="manager-place__link" href="#">+ ещё 12</a></li>
+									</ul>
+								</section>
+							</div>
+						</div>
+					</section>
+					<section
+						class="story-state story-state--na"
+						data-state-label="Пусто"
+						data-state-note="нет должностей и подчинённых — блок не выводится (рядовой сотрудник)"
+					>
+						<h3 class="story-state__label">
+							Пусто
+							<span class="story-state__note">нет должностей и подчинённых — блок не выводится (рядовой сотрудник)</span>
 						</h3>
 					</section>
 
