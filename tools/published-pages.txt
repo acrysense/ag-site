@@ -24,4 +24,5 @@ holding-entity-pharmacies
 holding-directorate
 holding-unit
 holding-employee
+holding-manager
 404

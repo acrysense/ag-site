@@ -155,6 +155,13 @@ youtube, telegram, tiktok; `label` — для скринридера: «ADEL в 
 отдавать 72×72), url }`, `link{ text, url }` («Открыть в структуре» — страница подразделения в
 оргсхеме). Нет цепочки — блока нет; нет руководителя — без него.
 
+**`ManagerPlace`** — только в карточке руководителя, под `EmployeeProfile` (вместо
+`EmployeeColleagues`): `title` («Место в структуре»), `link{ text, url }` («Открыть в структуре»),
+`positionsLabel`, `positions[{ kind («Основная» / «Совмещение»), title, main, unit{ text, url } }]`
+— основная должность с `main: true`, `reportsLabel`, `reports[{ name, role (где работает), photo (36
+— отдавать 72×72), url }]` — прямое подчинение (до 4–6 человек), `more{ text («+ ещё 2»), url }`.
+Нет должностей и подчинённых — блока нет. Демо: `holding-manager.html`.
+
 **`EmployeeColleagues`** — `title`, `moreText` («Все 8 сотрудников»), `moreUrl`, `items[]`
 (`EmployeeRow`). Пусто — блока нет; без `moreUrl` — без ссылки.
 
