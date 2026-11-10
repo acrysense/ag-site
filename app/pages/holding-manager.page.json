@@ -1,0 +1,214 @@
+{
+	"title": "Машинская Юлия Геннадьевна — сотрудник холдинга «Аптека групп»",
+	"auth": true,
+	"description": "Карточка руководителя холдинга «Аптека групп»: контакты, должности и подчинённые.",
+	"nav": {
+		"group": "Холдинг",
+		"title": "Руководитель — карточка",
+		"order": 97
+	},
+	"data": {
+		"breadcrumbs": [
+			{
+				"title": "Главная",
+				"url": "./index.html"
+			},
+			{
+				"title": "Структура холдинга",
+				"url": "./holding-management.html"
+			},
+			{
+				"title": "Правление",
+				"url": "./holding-management.html"
+			},
+			{
+				"title": "Машинская Юлия Геннадьевна"
+			}
+		],
+		"profile": {
+			"name": "Машинская Юлия Геннадьевна",
+			"photo": {
+				"src": "./dev/img/person-3.webp"
+			},
+			"meta": [
+				{
+					"icon": "profile",
+					"text": "Председатель правления"
+				},
+				{
+					"icon": "case",
+					"text": "Правление"
+				},
+				{
+					"icon": "phone",
+					"text": "+375 17 394 70 34, доб. 100"
+				}
+			],
+			"sections": [
+				{
+					"title": "Контакты",
+					"rows": [
+						{
+							"label": "Рабочий телефон:",
+							"value": "+375 17 394 70 34, доб. 100",
+							"url": "tel:+375173947034,100"
+						},
+						{
+							"label": "E-mail:",
+							"value": "y.mashinskaya@apteka-group.by",
+							"url": "mailto:y.mashinskaya@apteka-group.by"
+						}
+					]
+				},
+				{
+					"title": "Работа",
+					"rows": [
+						{
+							"label": "Юр. лицо:",
+							"value": "ООО «УКХ Аптека групп»",
+							"url": "./holding-entity.html"
+						},
+						{
+							"label": "Подразделение:",
+							"value": "Правление",
+							"url": "./holding-management.html"
+						},
+						{
+							"label": "Должность:",
+							"value": "Председатель правления"
+						},
+						{
+							"label": "Руководитель:",
+							"value": "Томчин Л.А.",
+							"url": "./holding-employee.html"
+						}
+					]
+				},
+				{
+					"title": "Личное",
+					"rows": [
+						{
+							"label": "День рождения:",
+							"value": "14 марта"
+						}
+					]
+				}
+			]
+		},
+		"entity": {
+			"name": "ООО «УКХ Аптека групп»",
+			"rows": [
+				{
+					"label": "Телефон:",
+					"links": [
+						{
+							"text": "+375 17 394 70 34",
+							"url": "tel:+375173947034"
+						}
+					]
+				},
+				{
+					"label": "Адрес:",
+					"value": "220020, г. Минск, пр-т Победителей, 84-2, офис 27"
+				}
+			],
+			"brands": [
+				{
+					"name": "ADEL",
+					"logo": "./dev/img/holding/logo-adel.webp"
+				},
+				{
+					"name": "Добрыя лекі",
+					"logo": "./dev/img/holding/logo-dleki.webp"
+				},
+				{
+					"name": "Аптечка+",
+					"logo": "./dev/img/holding/logo-apte4ka.webp"
+				}
+			],
+			"staffUrl": "./holding-entity.html"
+		},
+		"place": {
+			"chain": [
+				{
+					"text": "Совет директоров",
+					"url": "./holding-management.html"
+				},
+				{
+					"text": "Правление"
+				}
+			],
+			"manager": {
+				"name": "Томчин Л.А.",
+				"meta": "Председатель Совета директоров",
+				"photo": "./dev/img/holding/chairman.webp",
+				"url": "./holding-employee.html"
+			},
+			"link": {
+				"url": "./holding-management.html"
+			}
+		},
+		"managerPlace": {
+			"link": {
+				"url": "./holding-management.html"
+			},
+			"positions": [
+				{
+					"kind": "Основная",
+					"title": "Председатель правления",
+					"main": true,
+					"unit": {
+						"text": "Правление · подчиняется Совету директоров",
+						"url": "./holding-management.html"
+					}
+				},
+				{
+					"kind": "Совмещение",
+					"title": "Директор управляющей компании",
+					"unit": {
+						"text": "ООО «УКХ Аптека групп»",
+						"url": "./holding-entity.html"
+					}
+				},
+				{
+					"kind": "Совмещение",
+					"title": "Руководитель",
+					"unit": {
+						"text": "Дирекция оптового бизнеса",
+						"url": "./holding-unit.html"
+					}
+				}
+			],
+			"reports": [
+				{
+					"name": "Дубовец О.В.",
+					"role": "Первый заместитель директора",
+					"photo": "./dev/img/person-4.webp",
+					"url": "./holding-employee.html"
+				},
+				{
+					"name": "Шукало А.А.",
+					"role": "Дирекция по маркетингу",
+					"photo": "./dev/img/person-2.webp",
+					"url": "./holding-employee.html"
+				},
+				{
+					"name": "Рябцева Н.В.",
+					"role": "Коммерческая дирекция",
+					"photo": "./dev/img/person-5.webp",
+					"url": "./holding-employee.html"
+				},
+				{
+					"name": "Мелюха Е.И.",
+					"role": "Дирекция розничного бизнеса",
+					"photo": "./dev/img/person-1.webp",
+					"url": "./holding-directorate.html"
+				}
+			],
+			"more": {
+				"text": "+ ещё 2",
+				"url": "./holding-management.html"
+			}
+		}
+	}
+}

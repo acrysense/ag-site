@@ -1,0 +1,47 @@
+{{!--
+	Место руководителя в структуре — белый блок под карточкой руководителя: заголовок H3 и справа
+	«Открыть в структуре →»; «Должности» — карточки (основная — синяя рамка, совмещения):
+	вид, должность, подразделение — ссылка; «В прямом подчинении» — люди (фото 36, ФИО, где
+	работает — ссылка на карточку) и «+ ещё N».
+	props: title, link { text, url }, positionsLabel, positions [{ kind («Основная» /
+	«Совмещение»), title, main, unit { text, url } }], reportsLabel, reports [{ name, role, photo,
+	url }], more { text, url }. Нет должностей и подчинённых — блока нет.
+--}}
+{{#if (or props.positions.length props.reports.length)}}
+    <section class="manager-place" aria-labelledby="manager-place-title">
+        <div class="manager-place__head">
+            <h2 class="manager-place__title" id="manager-place-title">{{default props.title "Место в структуре"}}</h2>
+            {{#if props.link.url}}<a class="manager-place__link" href="{{props.link.url}}">{{default props.link.text "Открыть в структуре"}} →</a>{{/if}}
+        </div>
+        {{#if props.positions.length}}
+            <h3 class="manager-place__label">{{default props.positionsLabel "Должности"}}</h3>
+            <ul class="manager-place__positions" role="list">
+                {{#each props.positions}}
+                    <li class="manager-place__position{{#if main}} manager-place__position--main{{/if}}">
+                        {{#if kind}}<span class="manager-place__kind">{{kind}}</span>{{/if}}
+                        <span class="manager-place__post">{{title}}</span>
+                        {{#if unit.text}}{{#if unit.url}}<a class="manager-place__unit" href="{{unit.url}}">{{unit.text}}</a>{{else}}<span class="manager-place__unit">{{unit.text}}</span>{{/if}}{{/if}}
+                    </li>
+                {{/each}}
+            </ul>
+        {{/if}}
+        {{#if props.reports.length}}
+            <h3 class="manager-place__label">{{default props.reportsLabel "В прямом подчинении"}}</h3>
+            <ul class="manager-place__reports" role="list">
+                {{#each props.reports}}
+                    <li class="manager-place__person">
+                        <span class="manager-place__avatar" aria-hidden="true">
+                            <span class="manager-place__initials">{{initials name}}</span>
+                            {{#if photo}}<img src="{{photo}}" width="36" height="36" alt="" loading="lazy" decoding="async" />{{/if}}
+                        </span>
+                        <span class="manager-place__info">
+                            {{#if url}}<a class="manager-place__name" href="{{url}}">{{name}}</a>{{else}}<span class="manager-place__name">{{name}}</span>{{/if}}
+                            {{#if role}}<span class="manager-place__role">{{role}}</span>{{/if}}
+                        </span>
+                    </li>
+                {{/each}}
+                {{#if props.more.url}}<li class="manager-place__more-item"><a class="manager-place__link" href="{{props.more.url}}">{{props.more.text}}</a></li>{{/if}}
+            </ul>
+        {{/if}}
+    </section>
+{{/if}}

@@ -1086,6 +1086,20 @@
 				{{#> state label="Загрузка" note="не применимо: приходит с сервера вместе с карточкой"}}{{/state}}
 			{{/story}}
 
+			{{#> story id="manager-place" page="holding-manager" group="Холдинг" title="Место руководителя в структуре" how='Только в карточке руководителя, под ней: должности (основная — синяя рамка, совмещения), с 1024 в ряд; «В прямом подчинении» — люди в строку с переносом и «+ ещё N». У рядового сотрудника — короткий блок слева («Место в структуре»).' figma='8674:1475' backend='app/components/sections/holding/ManagerPlace/ · docs/contracts/holding.md'}}
+				{{#> state label="Совмещения" bg="page"}}
+					<div class="container page-inner">{{> sections/holding/ManagerPlace/ManagerPlace props=data.managerPlace}}</div>
+				{{/state}}
+				{{#> state label="Одна должность" bg="page"}}
+					<div class="container page-inner">{{> sections/holding/ManagerPlace/ManagerPlace props=data.managerPlaceOne}}</div>
+				{{/state}}
+				{{#> state label="Длинный текст, без фото" bg="page"}}
+					<div class="container page-inner">{{> sections/holding/ManagerPlace/ManagerPlace props=data.managerPlaceLong}}</div>
+				{{/state}}
+				{{#> state label="Пусто" note="нет должностей и подчинённых — блок не выводится (рядовой сотрудник)"}}{{/state}}
+				{{#> state label="Загрузка" note="не применимо: приходит с сервера вместе с карточкой"}}{{/state}}
+			{{/story}}
+
 			{{#> story id="employee-colleagues" page="holding-employee" group="Холдинг" title="Коллеги по подразделению" how='Заголовок и «Все N сотрудников →», ниже сотрудники.' figma='Colleagues 4833:1253' backend='app/components/sections/holding/EmployeeColleagues/ · docs/contracts/holding.md'}}
 				{{#> state label="Несколько" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/EmployeeColleagues/EmployeeColleagues props=data.employeeColleagues}}</div>

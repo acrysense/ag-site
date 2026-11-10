@@ -1,0 +1,168 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Белый блок, поля 20, части через 24: заголовок H3 Black.TXT и ссылка M/400 Main Blue справа;
+// подписи S/600 прописными Dark-grey.TXT. Должности — в ряд через 16 (до 1024 — столбиком через
+// 10): карточка BG.Info с рамкой Block.Border (основная — Main Blue), поля 20, скругление 20,
+// вид S/400 Dark-grey.TXT, должность M/500 Black.TXT, подразделение S/400 Main Blue — через 6.
+// Подчинённые — в строку с переносом через 24: фото 36, через 12 ФИО M/500 и место S/400
+// Dark-grey.TXT через 2. Телефон — без белого блока.
+@layer components {
+	.manager-place {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		min-width: 0;
+
+		@include up(desktop) {
+			padding: 19px;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+	}
+
+	.manager-place__head {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px 16px;
+		align-items: baseline;
+		justify-content: space-between;
+	}
+
+	.manager-place__title {
+		@include text("h3");
+
+		color: palette("black-txt");
+	}
+
+	.manager-place__link {
+		@include text("m-400");
+
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+
+	.manager-place__label {
+		@include text("s-600");
+
+		color: palette("dark-grey-txt");
+		text-transform: uppercase;
+	}
+
+	.manager-place__positions {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 10px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		@include up(desktop) {
+			grid-auto-columns: minmax(0, 1fr);
+			grid-auto-flow: column;
+			gap: 16px;
+		}
+	}
+
+	.manager-place__position {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		min-width: 0;
+		padding: 19px;
+		background: palette("bg-info");
+		border: 1px solid palette("block-border");
+		border-radius: $radius-content-block;
+
+		&--main {
+			border-color: palette("main-blue");
+		}
+	}
+
+	.manager-place__kind {
+		@include text("s-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.manager-place__post {
+		@include text("m-500");
+
+		color: palette("black-txt");
+		overflow-wrap: anywhere;
+	}
+
+	.manager-place__unit {
+		@include text("s-400");
+
+		color: palette("main-blue");
+		overflow-wrap: anywhere;
+		transition: color $transition-default;
+	}
+
+	a.manager-place__unit:hover,
+	a.manager-place__unit:focus-visible {
+		color: palette("blue-hover");
+	}
+
+	.manager-place__reports {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 16px 24px;
+		align-items: center;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.manager-place__person {
+		display: flex;
+		gap: 12px;
+		align-items: center;
+		min-width: 0;
+	}
+
+	.manager-place__avatar {
+		@include avatar(palette("icon-grey"));
+
+		flex: none;
+		width: 36px;
+		height: 36px;
+	}
+
+	.manager-place__initials {
+		@include avatar-initials;
+	}
+
+	.manager-place__info {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		min-width: 0;
+	}
+
+	.manager-place__name {
+		@include text("m-500");
+
+		color: palette("black-txt");
+		transition: color $transition-default;
+	}
+
+	a.manager-place__name:hover,
+	a.manager-place__name:focus-visible {
+		color: palette("blue-txt");
+	}
+
+	.manager-place__role {
+		@include text("s-400");
+
+		color: palette("dark-grey-txt");
+	}
+}
