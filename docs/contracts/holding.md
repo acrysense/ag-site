@@ -1,13 +1,17 @@
 # Контракт: «Структура холдинга»
 
-Черновик для согласования с бэкендом (Битрикс). Страницы: `app/pages/holding.html` (юрлица),
-`holding-entity.html` (юрлицо), `holding-employee.html` (сотрудник). Блоки — `app/components/sections/holding/*`, общий — `components/PhotoStrip` (лента
-фото, просмотр — `PhotoViewer` без «Нравится»). Витрина: `/dev/ui.html#story=holding-hero` (и
-`holding-entities`, `entity-info`, `brand-card`, `entity-staff`, `employee-row`, `employee-profile`,
-`entity-brief`, `employee-colleagues`, `photo-strip`).
+Черновик для согласования с бэкендом (Битрикс). Справочник смотрят двумя способами: по
+юрлицам (этот документ) и по управленческой структуре (оргсхема, страницы дирекций и
+подразделений — отдельно, по мере вёрстки). Карточка сотрудника — одна для обоих.
 
-На демо (GitHub Pages, natix) раздел пока скрыт: строки в `tools/published-pages.txt`
-закомментированы.
+Страницы: `app/pages/holding.html` (юрлица), `holding-entity.html` (юрлицо без аптек — только
+отделы), `holding-entity-network.html` и `holding-entity-pharmacies.html` (юрлицо с аптеками — по
+отделам и по аптекам; на бэке это одна страница юрлица с параметром вида), `holding-employee.html`
+(сотрудник). Блоки — `app/components/sections/holding/*`, общие — `components/Tabs`,
+`components/SortMenu`, `components/Pagination`, `components/PhotoStrip` (лента фото, просмотр —
+`PhotoViewer` без «Нравится»). Витрина: `/dev/ui.html#story=holding-hero` (и `holding-entities`,
+`entity-info`, `brand-card`, `entity-staff`, `employee-row`, `employee-profile`, `entity-brief`,
+`structure-place`, `employee-colleagues`, `photo-strip`).
 
 ## Страницы
 
@@ -19,8 +23,8 @@
    С 1024 бренды — колонка 350 справа на всю высоту, до 1024 — между карточкой и сотрудниками
    (на планшете по две в ряд). Брендов нет — боковой нет, место не остаётся.
 3. **Сотрудник** — `page-columns page-columns--aside-start`: `EmployeeProfile`, боковая
-   `page-columns__aside` с `EntityBrief`, `EmployeeColleagues`. С 1024 юрлицо — колонка 350
-   слева.
+   `page-columns__aside page-aside-cards page-aside-cards--tight` с `EntityBrief` и
+   `StructurePlace`, `EmployeeColleagues`. С 1024 боковая — колонка 350 слева.
 
 Порядок в разметке — порядок на телефоне: первый блок основной колонки, боковая, остальные.
 
@@ -34,6 +38,10 @@
 «Бренды» по числу), `emptyText` («Бренды уточняются» — пунктирная плашка, когда брендов нет).
 Логотип — квадрат 28 (отдавать 56×56 для 2x).
 
+**Вид страницы** («По управлению / По юрлицам», «По отделам / По аптекам») — `components/Tabs`
+со ссылками: `links[{ text, url, current }]`, текущая — `aria-current="page"`. Это обычные
+ссылки на страницы (GET), без JS.
+
 **`EmployeeRow`** — сотрудник в списке: `name`, `url` (карточка), `position`, `head` (метка
 «Руководитель», текст — `headText`), `photo` (48, отдавать 96×96), `phone{ text, url }`,
 `email{ text, url }`. Вся строка — ссылка, телефон и e-mail — свои ссылки поверх. Нет фото —
@@ -41,22 +49,22 @@
 
 ## Юрлица
 
-**`HoldingHero`**
+**`HoldingHero`** — общая шапка обоих видов справочника.
 
 | Поле | Что это |
 | --- | --- |
-| `titleLines[]` | строки заголовка («Холдинг», «Аптека групп») — каждая с новой строки |
+| `title` | «Холдинг Аптека групп» (прописные задаёт CSS) — H1 страницы |
 | `subtitle` | «Надежный партнер с 30-летней историей» |
-| `stats[{ value, label }]` | цифры («11 — Юридических лиц»); нет — блок без них |
-| `person{ name, role, photo{ src, srcset, alt } }` | председатель; нет — заголовок на всю ширину |
+| `views[{ text, url, current }]` | переключатель «По управлению / По юрлицам»; нет — без него |
 
-Фото председателя — обрезка по cover от верха, на 1920 — 790×335 (отдавать 1580×670).
-
-**`HoldingEntities`** — `title`, `subtitle`, `items[]` (`EntityCard`). Все юрлица одной
-страницей (их 11), без догрузки. Пусто — блока нет.
+**`HoldingEntities`** — `title`, `count` (число рядом с заголовком, «11»), `items[]`
+(`EntityCard`). Все юрлица одной страницей, без догрузки. Пусто — блока нет.
 
 **`EntityCard`** — `name`, `url` (страница юрлица), `phones[{ text, url }]`, `address`,
-`brands[{ name, logo }]`, `brandsLabel`, `moreText` (по умолчанию «Подробнее»).
+`pharmacies` (число аптек; нет — без строки «Аптек»), `brands[{ name, logo }]`, `brandsLabel`,
+`brandsPending` (бренды ещё не заданы — пунктирная плашка «Бренды уточняются»; нет брендов и не
+`brandsPending` — без блока брендов), `moreText` (по умолчанию «Подробнее»). Та же карточка — в
+блоке «Юридические лица» страницы дирекции.
 
 ## Юрлицо
 
@@ -80,15 +88,20 @@
 youtube, telegram, tiktok; `label` — для скринридера: «ADEL в Instagram»), `text`, `siteUrl`,
 `siteText` (по умолчанию «Перейти на сайт»). Соцсети и сайт открываются в новой вкладке.
 
-**`EntityStaff`**
+**`EntityStaff`** — сотрудники юрлица по отделам или по аптекам.
 
 | Поле | Что это |
 | --- | --- |
-| `title`, `summary` | «Сотрудники», «8 отделов · 48 сотрудников» (склонения — бэк) |
-| `departments[]` | `id` (якорь, `dept-<id>`), `name`, `open`, `head` («Козлова Н.В.»), `count`, `avatars[]` (до 5 фото, 40 — отдавать 80×80), `employees[]` (`EmployeeRow`) |
+| `title`, `summary` | «Сотрудники», «8 отделов · 48 сотрудников» / «96 аптек · 310 сотрудников» (склонения — бэк) |
+| `views[]` | «По отделам / По аптекам» (вид страницы, см. «Общие части»); у юрлица без аптек — не выводить |
+| `controls[]` | `SortMenu` справа: `{ id, label, prefix, options[{ text, url, current }] }` — по отделам «По алфавиту»; по аптекам «Город: все» (`prefix: "Город:"`) и «По номеру / По алфавиту / По адресу» |
+| `groups[]` | отделы или аптеки: `id` (якорь, `dept-<id>` / `pharmacy-<id>`), `name` («Аптека №50 · г. Борисов, ул. …»), `open`, `headLabel` («Руководитель:», у аптеки «Заведующая:»), `head` («Козлова Н.В.»), `count`, `avatars[]` (до 5 фото, 40 — отдавать 80×80), `employees[]` (`EmployeeRow`) |
+| `pagination` | `Pagination` под списком — когда групп много (аптеки, порция 20) |
 
-- Отдел — `details/summary`: раскрывается без JS. Какой открыт — решает бэк (`open`), по
-  умолчанию первый. Раскрытие не запоминается.
+- Вид, город, сортировка и страница — параметры адреса страницы юрлица (GET), всё рисует бэк.
+- Группа — `details/summary`: раскрывается без JS. Какая открыта — решает бэк (`open`), по
+  умолчанию первая. Раскрытие не запоминается.
+- `departments[]` — прежнее имя `groups[]`, работает так же.
 - Руководитель — первым в списке отдела, с `head: true`.
 - «Все N сотрудников» у коллег ведёт на юрлицо к отделу: `?dept=<id>#dept-<id>` — по параметру
   бэк выводит этот отдел открытым (`open`), якорь прокручивает к нему.
@@ -128,6 +141,12 @@ youtube, telegram, tiktok; `label` — для скринридера: «ADEL в 
 
 **`EntityBrief`** — `label` («Юридическое лицо»), `name`, `rows[]` (`InfoList`: телефон, адрес),
 `brands[]`, `brandsLabel`, `staffUrl`, `staffText` («Все сотрудники юр. лица»).
+
+**`StructurePlace`** — «Место в структуре» под юрлицом: `label`, `chain[{ text, url }]` —
+цепочка от Совета директоров до подразделения сотрудника (последний шаг — без ссылки),
+`managerLabel` («Непосредственный руководитель»), `manager{ name, meta (где работает), photo (36 —
+отдавать 72×72), url }`, `link{ text, url }` («Открыть в структуре» — страница подразделения в
+оргсхеме). Нет цепочки — блока нет; нет руководителя — без него.
 
 **`EmployeeColleagues`** — `title`, `moreText` («Все 8 сотрудников»), `moreUrl`, `items[]`
 (`EmployeeRow`). Пусто — блока нет; без `moreUrl` — без ссылки.
