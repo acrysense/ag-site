@@ -1,0 +1,58 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Белый блок, поля 20, части через 16: заголовок H2 Black.TXT и сортировка справа, вкладки-фильтры
+// по отделам, список. Подпись группы — S/500 прописными Dark-grey.TXT, поля 16/12/4; под ней
+// сотрудники (EmployeeRow). Внизу — страницы и «Всего». Телефон — без белого блока.
+@layer components {
+	.unit-staff {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		min-width: 0;
+
+		@include up(desktop) {
+			padding: 19px;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+	}
+
+	.unit-staff__head {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px 16px;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.unit-staff__title {
+		@include text("h2-360");
+
+		color: palette("black-txt");
+
+		@include up(desktop) {
+			@include text("h2");
+		}
+	}
+
+	.unit-staff__list {
+		min-width: 0;
+	}
+
+	.unit-staff__group-title {
+		@include text("s-600");
+
+		padding: 16px 12px 4px;
+		color: palette("dark-grey-txt");
+		text-transform: uppercase;
+	}
+
+	.unit-staff__rows {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+}

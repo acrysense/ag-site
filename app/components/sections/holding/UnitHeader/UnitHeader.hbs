@@ -1,0 +1,66 @@
+{{!--
+	Шапка страницы подразделения (дирекция, служба, отдел) — белый блок: подпись («Дирекция ·
+	Управляющая компания»), название H1, плашки («Направление: розница», «Бренды: …»), справа
+	«Скопировать ссылку»; «Подчиняется: Совет директоров › Управляющая компания» (ссылки);
+	руководитель — карточка (фото 72, ФИО, метка «Руководитель», должность, телефон и e-mail) и
+	цифры справа («5 юрлиц», «1 200 сотрудников»).
+	props: caption, title, tags [строки], copyText («Скопировать ссылку»), parentLabel
+	(«Подчиняется:»), parents [{ text, url }], head { name, url, role, photo, phone { text, url },
+	email { text, url }, badge («Руководитель») }, stats [{ value, label }]. Нет руководителя или
+	цифр — без них.
+--}}
+<section class="unit-header" aria-labelledby="unit-header-title">
+    <div class="unit-header__top">
+        <div class="unit-header__intro">
+            {{#if props.caption}}<p class="unit-header__caption">{{props.caption}}</p>{{/if}}
+            <h1 class="unit-header__title" id="unit-header-title">{{props.title}}</h1>
+            {{#if props.tags.length}}
+                <ul class="unit-header__tags" role="list">
+                    {{#each props.tags}}<li class="unit-header__tag">{{this}}</li>{{/each}}
+                </ul>
+            {{/if}}
+        </div>
+        <button class="btn btn--light btn--m unit-header__copy" type="button" data-copy-link="" data-module="CopyLink" data-path="components">{{default props.copyText "Скопировать ссылку"}}</button>
+    </div>
+    {{#if props.parents.length}}
+        <p class="unit-header__parents">
+            <span class="unit-header__parents-label">{{default props.parentLabel "Подчиняется:"}}</span>
+            {{#each props.parents}}
+                {{#unless @first}}<span class="unit-header__sep" aria-hidden="true">›</span>{{/unless}}
+                {{#if url}}<a class="unit-header__parent" href="{{url}}">{{text}}</a>{{else}}<span class="unit-header__parent">{{text}}</span>{{/if}}
+            {{/each}}
+        </p>
+    {{/if}}
+    {{#if (or props.head.name props.stats.length)}}
+        <div class="unit-header__summary">
+            {{#if props.head.name}}
+                <div class="unit-header__head">
+                    <span class="unit-header__avatar" aria-hidden="true">
+                        <span class="unit-header__initials">{{initials props.head.name}}</span>
+                        {{#if props.head.photo}}<img src="{{props.head.photo}}" width="72" height="72" alt="" loading="lazy" decoding="async" />{{/if}}
+                    </span>
+                    <div class="unit-header__person">
+                        <p class="unit-header__name-row">
+                            {{#if props.head.url}}<a class="unit-header__name" href="{{props.head.url}}">{{props.head.name}}</a>{{else}}<span class="unit-header__name">{{props.head.name}}</span>{{/if}}
+                            <span class="unit-header__badge">{{default props.head.badge "Руководитель"}}</span>
+                        </p>
+                        {{#if props.head.role}}<p class="unit-header__role">{{props.head.role}}</p>{{/if}}
+                        {{#if (or props.head.phone.text props.head.email.text)}}
+                            <p class="unit-header__contacts">
+                                {{#if props.head.phone.text}}<a class="unit-header__contact" href="{{props.head.phone.url}}"><span class="visually-hidden">Телефон: </span>{{props.head.phone.text}}</a>{{/if}}
+                                {{#if props.head.email.text}}<a class="unit-header__contact" href="{{props.head.email.url}}"><span class="visually-hidden">E-mail: </span>{{props.head.email.text}}</a>{{/if}}
+                            </p>
+                        {{/if}}
+                    </div>
+                </div>
+            {{/if}}
+            {{#if props.stats.length}}
+                <ul class="unit-header__stats" role="list">
+                    {{#each props.stats}}
+                        <li class="unit-header__stat"><span class="unit-header__value">{{value}}</span> <span class="unit-header__label">{{label}}</span></li>
+                    {{/each}}
+                </ul>
+            {{/if}}
+        </div>
+    {{/if}}
+</section>

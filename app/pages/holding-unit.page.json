@@ -1,0 +1,590 @@
+{
+	"title": "Финансовая дирекция — структура холдинга «Аптека групп»",
+	"auth": true,
+	"description": "Финансовая дирекция: руководитель, отделы и сотрудники.",
+	"nav": {
+		"group": "Холдинг",
+		"title": "Подразделение (без юрлиц)",
+		"order": 96
+	},
+	"data": {
+		"breadcrumbs": [
+			{
+				"title": "Главная",
+				"url": "./index.html"
+			},
+			{
+				"title": "Структура холдинга",
+				"url": "./holding-management.html"
+			},
+			{
+				"title": "Управляющая компания",
+				"url": "./holding-management.html"
+			},
+			{
+				"title": "Корпоративный центр",
+				"url": "./holding-management.html"
+			},
+			{
+				"title": "Финансовая дирекция"
+			}
+		],
+		"unit": {
+			"caption": "Дирекция · Корпоративный центр",
+			"title": "Финансовая дирекция",
+			"tags": [
+				"Сквозная функция — обслуживает все компании холдинга",
+				"Юрлицо: ООО «УКХ Аптека групп»"
+			],
+			"parents": [
+				{
+					"text": "Совет директоров",
+					"url": "./holding-management.html"
+				},
+				{
+					"text": "Управляющая компания",
+					"url": "./holding-management.html"
+				},
+				{
+					"text": "Корпоративный центр",
+					"url": "./holding-management.html"
+				}
+			],
+			"head": {
+				"name": "Цыркунов Виталий Владимирович",
+				"url": "./holding-employee.html",
+				"role": "Заместитель директора по финансам",
+				"photo": "./dev/img/person-4.webp",
+				"phone": {
+					"text": "+375 17 394 70 34, доб. 120",
+					"url": "tel:+375173947034,120"
+				},
+				"email": {
+					"text": "v.tsyrkunov@apteka-group.by",
+					"url": "mailto:v.tsyrkunov@apteka-group.by"
+				}
+			},
+			"stats": [
+				{
+					"value": "3",
+					"label": "отдела"
+				},
+				{
+					"value": "24",
+					"label": "сотрудника"
+				}
+			]
+		},
+		"units": {
+			"title": "Подразделения",
+			"kind": "units",
+			"items": [
+				{
+					"type": "Отдел",
+					"title": "Отдел учета",
+					"head": {
+						"name": "Лазаревич Н.С.",
+						"role": "Начальник отдела",
+						"photo": "./dev/img/person-2.webp"
+					},
+					"meta": "11 сотрудников",
+					"url": "#"
+				},
+				{
+					"type": "Отдел",
+					"title": "Отдел корпоративного контроллинга",
+					"head": {
+						"name": "Чигилейчик Е.А.",
+						"role": "Начальник отдела",
+						"photo": "./dev/img/person-3.webp"
+					},
+					"meta": "7 сотрудников",
+					"url": "#"
+				},
+				{
+					"type": "Отдел",
+					"title": "Аналитический центр",
+					"head": {
+						"name": "Богдан Е.В.",
+						"role": "Руководитель",
+						"photo": "./dev/img/person-5.webp"
+					},
+					"meta": "5 сотрудников",
+					"url": "#"
+				}
+			]
+		},
+		"staff": {
+			"title": "Сотрудники",
+			"sort": {
+				"id": "unit-staff-sort",
+				"label": "Сортировка",
+				"options": [
+					{
+						"text": "По подразделениям",
+						"url": "#",
+						"current": true
+					},
+					{
+						"text": "По алфавиту",
+						"url": "#"
+					}
+				]
+			},
+			"filters": [
+				{
+					"text": "Все",
+					"url": "#",
+					"count": 24,
+					"icon": "profile",
+					"current": true
+				},
+				{
+					"text": "Отдел учета",
+					"url": "#",
+					"count": 11,
+					"icon": "folder"
+				},
+				{
+					"text": "Контроллинг",
+					"url": "#",
+					"count": 7,
+					"icon": "folder"
+				},
+				{
+					"text": "Аналитический центр",
+					"url": "#",
+					"count": 5,
+					"icon": "folder"
+				}
+			],
+			"groups": [
+				{
+					"title": "Руководство дирекции",
+					"employees": [
+						{
+							"name": "Цыркунов Виталий Владимирович",
+							"url": "./holding-employee.html",
+							"position": "Заместитель директора по финансам",
+							"photo": "./dev/img/person-4.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 120",
+								"url": "tel:+375173947034,120"
+							},
+							"email": {
+								"text": "v.tsyrkunov@apteka-group.by",
+								"url": "mailto:v.tsyrkunov@apteka-group.by"
+							},
+							"head": true
+						}
+					]
+				},
+				{
+					"title": "Отдел учета",
+					"employees": [
+						{
+							"name": "Лазаревич Наталья Сергеевна",
+							"url": "./holding-employee.html",
+							"position": "Начальник отдела учета, главный бухгалтер",
+							"photo": "./dev/img/person-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 131",
+								"url": "tel:+375173947034,131"
+							},
+							"email": {
+								"text": "n.lazarevich@apteka-group.by",
+								"url": "mailto:n.lazarevich@apteka-group.by"
+							},
+							"head": true
+						},
+						{
+							"name": "Кравченко Ирина Олеговна",
+							"url": "./holding-employee.html",
+							"position": "Ведущий бухгалтер",
+							"photo": "./dev/img/person-3.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 132",
+								"url": "tel:+375173947034,132"
+							},
+							"email": {
+								"text": "i.kravchenko@apteka-group.by",
+								"url": "mailto:i.kravchenko@apteka-group.by"
+							}
+						},
+						{
+							"name": "Сидорова Анна Павловна",
+							"url": "./holding-employee.html",
+							"position": "Бухгалтер",
+							"photo": "./dev/img/person-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 133",
+								"url": "tel:+375173947034,133"
+							},
+							"email": {
+								"text": "a.sidorova@apteka-group.by",
+								"url": "mailto:a.sidorova@apteka-group.by"
+							}
+						}
+					]
+				},
+				{
+					"title": "Аналитический центр",
+					"employees": [
+						{
+							"name": "Богдан Елена Викторовна",
+							"url": "./holding-employee.html",
+							"position": "Руководитель аналитического центра",
+							"photo": "./dev/img/person-5.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 150",
+								"url": "tel:+375173947034,150"
+							},
+							"email": {
+								"text": "e.bogdan@apteka-group.by",
+								"url": "mailto:e.bogdan@apteka-group.by"
+							},
+							"head": true
+						}
+					]
+				}
+			],
+			"pagination": {
+				"next": {
+					"url": "#"
+				},
+				"pages": [
+					{
+						"number": 1,
+						"current": true
+					},
+					{
+						"number": 2,
+						"url": "#"
+					},
+					{
+						"number": 3,
+						"url": "#"
+					},
+					{
+						"number": 4,
+						"url": "#"
+					}
+				],
+				"total": 24
+			}
+		},
+		"tree": {
+			"id": "unit-tree",
+			"title": "Структура",
+			"collapseAll": "Свернуть всё",
+			"countLabel": ", сотрудников: ",
+			"inline": true,
+			"items": [
+				{
+					"title": "Совет директоров",
+					"url": "./holding-management.html",
+					"count": "2 000+",
+					"expanded": true,
+					"children": [
+						{
+							"title": "Правление",
+							"url": "./holding-management.html",
+							"count": 6
+						},
+						{
+							"title": "Служба внутреннего контроля",
+							"url": "./holding-unit.html",
+							"count": 4
+						},
+						{
+							"title": "Управляющая компания",
+							"url": "./holding-management.html",
+							"count": 180,
+							"expanded": true,
+							"children": [
+								{
+									"title": "Дирекция по маркетингу",
+									"url": "./holding-unit.html",
+									"count": 14,
+									"children": [
+										{
+											"title": "Отдел 1",
+											"url": "#",
+											"count": 5
+										},
+										{
+											"title": "Отдел 2",
+											"url": "#",
+											"count": 4
+										}
+									]
+								},
+								{
+									"title": "Коммерческая дирекция",
+									"url": "./holding-unit.html",
+									"count": 22,
+									"children": [
+										{
+											"title": "Отдел 1",
+											"url": "#",
+											"count": 5
+										},
+										{
+											"title": "Отдел 2",
+											"url": "#",
+											"count": 4
+										}
+									]
+								},
+								{
+									"title": "Дирекция розничного бизнеса",
+									"url": "./holding-directorate.html",
+									"count": 48,
+									"children": [
+										{
+											"title": "Департамент фарм. деятельности",
+											"url": "#",
+											"count": 12
+										},
+										{
+											"title": "Отдел персонала розницы",
+											"url": "#",
+											"count": 8
+										},
+										{
+											"title": "Центр управления торговлей",
+											"url": "#",
+											"count": 10
+										},
+										{
+											"title": "Корпоративный учебный центр",
+											"url": "#",
+											"count": 6
+										},
+										{
+											"title": "Аптека групп Центр",
+											"url": "#",
+											"count": 310,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										},
+										{
+											"title": "Аптека групп Север",
+											"url": "#",
+											"count": 280,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										},
+										{
+											"title": "Аптека групп Юг",
+											"url": "#",
+											"count": 240,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										},
+										{
+											"title": "Аптека групп Запад",
+											"url": "#",
+											"count": 190,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										},
+										{
+											"title": "Либерти-Фарм",
+											"url": "#",
+											"count": 150,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										}
+									]
+								},
+								{
+									"title": "Служба рекрутинга и адаптации",
+									"url": "./holding-unit.html",
+									"count": 6
+								},
+								{
+									"title": "Корпоративный центр",
+									"url": "./holding-management.html",
+									"count": 92,
+									"expanded": true,
+									"children": [
+										{
+											"title": "ИТ дирекция",
+											"url": "./holding-unit.html",
+											"count": 31,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										},
+										{
+											"title": "Финансовая дирекция",
+											"url": "./holding-unit.html",
+											"count": 24,
+											"current": true,
+											"expanded": true,
+											"children": [
+												{
+													"title": "Отдел учета",
+													"url": "#",
+													"count": 11
+												},
+												{
+													"title": "Отдел корп. контроллинга",
+													"url": "#",
+													"count": 7
+												},
+												{
+													"title": "Аналитический центр",
+													"url": "#",
+													"count": 5
+												}
+											]
+										},
+										{
+											"title": "Правовое обеспечение",
+											"url": "./holding-unit.html",
+											"count": 6,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										},
+										{
+											"title": "Кадровый учет",
+											"url": "./holding-unit.html",
+											"count": 9
+										},
+										{
+											"title": "Проектный офис",
+											"url": "./holding-unit.html",
+											"count": 4
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Дирекция медицинской деятельности",
+							"url": "./holding-unit.html",
+							"count": 60,
+							"children": [
+								{
+									"title": "Отдел 1",
+									"url": "#",
+									"count": 5
+								},
+								{
+									"title": "Отдел 2",
+									"url": "#",
+									"count": 4
+								}
+							]
+						},
+						{
+							"title": "Дирекция e-commerce",
+							"url": "./holding-unit.html",
+							"count": 40,
+							"children": [
+								{
+									"title": "Отдел 1",
+									"url": "#",
+									"count": 5
+								},
+								{
+									"title": "Отдел 2",
+									"url": "#",
+									"count": 4
+								}
+							]
+						},
+						{
+							"title": "Дирекция бьюти услуг",
+							"url": "./holding-unit.html",
+							"count": 25,
+							"children": [
+								{
+									"title": "Отдел 1",
+									"url": "#",
+									"count": 5
+								},
+								{
+									"title": "Отдел 2",
+									"url": "#",
+									"count": 4
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	}
+}

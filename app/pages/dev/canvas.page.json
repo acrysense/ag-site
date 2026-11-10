@@ -11724,10 +11724,10 @@
 					"head": "Новая В.М.",
 					"count": 4,
 					"avatars": [
-						"./dev/img/person-1.webp",
-						"./dev/img/person-2.webp",
-						"./dev/img/person-3.webp",
-						"./dev/img/person-4.webp"
+						"./img/person-1.webp",
+						"./img/person-2.webp",
+						"./img/person-3.webp",
+						"./img/person-4.webp"
 					],
 					"open": true,
 					"employees": [
@@ -11735,7 +11735,7 @@
 							"name": "Новая Владислава Митрофановна",
 							"url": "./holding-employee.html",
 							"position": "Заведующая аптекой",
-							"photo": "./dev/img/person-1.webp",
+							"photo": "./img/person-1.webp",
 							"phone": {
 								"text": "+375 17 900-01-01",
 								"url": "tel:+375179000101"
@@ -11750,7 +11750,7 @@
 							"name": "Кравченко Игорь Олегович",
 							"url": "./holding-employee.html",
 							"position": "Фармацевт",
-							"photo": "./dev/img/person-2.webp",
+							"photo": "./img/person-2.webp",
 							"phone": {
 								"text": "+375 17 900-01-03",
 								"url": "tel:+375179000103"
@@ -11764,7 +11764,7 @@
 							"name": "Сидорова Анна Павловна",
 							"url": "./holding-employee.html",
 							"position": "Провизор",
-							"photo": "./dev/img/person-3.webp",
+							"photo": "./img/person-3.webp",
 							"phone": {
 								"text": "+375 17 900-01-02",
 								"url": "tel:+375179000102"
@@ -11778,7 +11778,7 @@
 							"name": "Ковальчук Андрей Сергеевич",
 							"url": "./holding-employee.html",
 							"position": "Фармацевт",
-							"photo": "./dev/img/person-4.webp",
+							"photo": "./img/person-4.webp",
 							"phone": {
 								"text": "+375 17 900-01-04",
 								"url": "tel:+375179000104"
@@ -11797,11 +11797,11 @@
 					"head": "Петрова И.С.",
 					"count": 6,
 					"avatars": [
-						"./dev/img/person-2.webp",
-						"./dev/img/person-3.webp",
-						"./dev/img/person-4.webp",
-						"./dev/img/person-5.webp",
-						"./dev/img/person-1.webp"
+						"./img/person-2.webp",
+						"./img/person-3.webp",
+						"./img/person-4.webp",
+						"./img/person-5.webp",
+						"./img/person-1.webp"
 					],
 					"employees": []
 				},
@@ -11812,11 +11812,11 @@
 					"head": "Кузьмич О.А.",
 					"count": 5,
 					"avatars": [
-						"./dev/img/person-5.webp",
-						"./dev/img/person-4.webp",
-						"./dev/img/person-3.webp",
-						"./dev/img/person-2.webp",
-						"./dev/img/person-1.webp"
+						"./img/person-5.webp",
+						"./img/person-4.webp",
+						"./img/person-3.webp",
+						"./img/person-2.webp",
+						"./img/person-1.webp"
 					],
 					"employees": []
 				},
@@ -11827,9 +11827,9 @@
 					"head": "Ковалёва Н.Н.",
 					"count": 4,
 					"avatars": [
-						"./dev/img/person-3.webp",
-						"./dev/img/person-1.webp",
-						"./dev/img/person-5.webp"
+						"./img/person-3.webp",
+						"./img/person-1.webp",
+						"./img/person-5.webp"
 					],
 					"employees": []
 				},
@@ -11840,11 +11840,11 @@
 					"head": "Сидоренко Е.В.",
 					"count": 3,
 					"avatars": [
-						"./dev/img/person-4.webp",
-						"./dev/img/person-2.webp",
-						"./dev/img/person-1.webp",
-						"./dev/img/person-5.webp",
-						"./dev/img/person-3.webp"
+						"./img/person-4.webp",
+						"./img/person-2.webp",
+						"./img/person-1.webp",
+						"./img/person-5.webp",
+						"./img/person-3.webp"
 					],
 					"employees": []
 				}
@@ -12244,7 +12244,7 @@
 			"manager": {
 				"name": "Петров А.И.",
 				"meta": "ООО «Аптека групп Центр»",
-				"photo": "./dev/img/person-4.webp",
+				"photo": "./img/person-4.webp",
 				"url": "#"
 			},
 			"link": {
@@ -12314,7 +12314,7 @@
 						"head": {
 							"name": "Томчин Леонид Альбертович",
 							"role": "Председатель Совета директоров",
-							"photo": "./dev/img/holding/chairman.webp"
+							"photo": "./img/holding/chairman.webp"
 						},
 						"meta": "7 подразделений в прямом подчинении"
 					}
@@ -12327,7 +12327,7 @@
 							"head": {
 								"name": "Шагалова Д.Г.",
 								"role": "Помощник руководителя",
-								"photo": "./dev/img/person-1.webp"
+								"photo": "./img/person-1.webp"
 							}
 						},
 						{
@@ -12336,7 +12336,7 @@
 							"head": {
 								"name": "Альтшулер Р.В.",
 								"role": "Руководитель службы",
-								"photo": "./dev/img/person-2.webp"
+								"photo": "./img/person-2.webp"
 							},
 							"meta": "4 сотрудника"
 						},
@@ -12346,7 +12346,7 @@
 							"head": {
 								"name": "Машинская Ю.Г.",
 								"role": "Председатель правления",
-								"photo": "./dev/img/person-3.webp"
+								"photo": "./img/person-3.webp"
 							},
 							"meta": "Зам. — Дубовец О.В."
 						},
@@ -12356,7 +12356,7 @@
 							"head": {
 								"name": "Рогатнюк О.Л.",
 								"role": "Директор",
-								"photo": "./dev/img/person-4.webp"
+								"photo": "./img/person-4.webp"
 							},
 							"meta": "Клиника здоровья · 2 центра"
 						},
@@ -12366,7 +12366,7 @@
 							"head": {
 								"name": "Старовойтова С.М.",
 								"role": "Директор",
-								"photo": "./dev/img/person-5.webp"
+								"photo": "./img/person-5.webp"
 							},
 							"meta": "АптекаБайМаркет"
 						},
@@ -12376,7 +12376,7 @@
 							"head": {
 								"name": "Томчина А.Л.",
 								"role": "Директор",
-								"photo": "./dev/img/person-1.webp"
+								"photo": "./img/person-1.webp"
 							},
 							"meta": "Салон ADEL"
 						}
@@ -12389,7 +12389,7 @@
 						"head": {
 							"name": "Машинская Ю.Г.",
 							"role": "Директор управляющей компании",
-							"photo": "./dev/img/person-3.webp"
+							"photo": "./img/person-3.webp"
 						},
 						"meta": "5 дирекций и служб + Корпоративный центр"
 					}
@@ -12402,7 +12402,7 @@
 							"head": {
 								"name": "Шукало А.А.",
 								"role": "Зам. директора по маркетингу",
-								"photo": "./dev/img/person-2.webp"
+								"photo": "./img/person-2.webp"
 							},
 							"meta": "2 отдела · 14 сотрудников",
 							"url": "#"
@@ -12413,7 +12413,7 @@
 							"head": {
 								"name": "Рябцева Н.В.",
 								"role": "Зам. директора по коммерции",
-								"photo": "./dev/img/person-5.webp"
+								"photo": "./img/person-5.webp"
 							},
 							"meta": "3 отдела · 22 сотрудника",
 							"url": "#"
@@ -12424,7 +12424,7 @@
 							"head": {
 								"name": "Мелюха Е.И.",
 								"role": "Зам. директора по развитию розницы",
-								"photo": "./dev/img/person-1.webp"
+								"photo": "./img/person-1.webp"
 							},
 							"meta": "4 подразделения · 5 юрлиц · 312 аптек",
 							"url": "#"
@@ -12435,7 +12435,7 @@
 							"head": {
 								"name": "Божаткина Л.И.",
 								"role": "Руководитель",
-								"photo": "./dev/img/person-3.webp"
+								"photo": "./img/person-3.webp"
 							},
 							"meta": "6 сотрудников",
 							"url": "#"
@@ -12446,7 +12446,7 @@
 							"head": {
 								"name": "Машинская Ю.Г.",
 								"role": "Руководитель (совмещение)",
-								"photo": "./dev/img/person-3.webp"
+								"photo": "./img/person-3.webp"
 							},
 							"meta": "ВитФармМаркет",
 							"url": "#"
@@ -12457,7 +12457,7 @@
 							"head": {
 								"name": "Дубовец О.В.",
 								"role": "Первый заместитель директора",
-								"photo": "./dev/img/person-4.webp"
+								"photo": "./img/person-4.webp"
 							},
 							"meta": "3 дирекции · 5 служб",
 							"panel": "story-org-center",
@@ -12469,7 +12469,7 @@
 								"head": {
 									"name": "Дубовец О.В.",
 									"role": "Первый заместитель директора",
-									"photo": "./dev/img/person-4.webp"
+									"photo": "./img/person-4.webp"
 								},
 								"items": [
 									{
@@ -12478,7 +12478,7 @@
 										"head": {
 											"name": "Лагода П.С.",
 											"role": "Директор ООО «СофтФарм»",
-											"photo": "./dev/img/person-2.webp"
+											"photo": "./img/person-2.webp"
 										},
 										"meta": "4 отдела · 31 сотрудник",
 										"url": "#"
@@ -12489,7 +12489,7 @@
 										"head": {
 											"name": "Цыркунов В.В.",
 											"role": "Зам. директора по финансам",
-											"photo": "./dev/img/person-4.webp"
+											"photo": "./img/person-4.webp"
 										},
 										"meta": "3 отдела · 24 сотрудника",
 										"url": "#"
@@ -12500,7 +12500,7 @@
 										"head": {
 											"name": "Стефанович Н.Л.",
 											"role": "Руководитель",
-											"photo": "./dev/img/person-5.webp"
+											"photo": "./img/person-5.webp"
 										},
 										"meta": "1 отдел · 6 сотрудников",
 										"url": "#"
@@ -12511,7 +12511,7 @@
 										"head": {
 											"name": "Петрашко А.И.",
 											"role": "Руководитель",
-											"photo": "./dev/img/person-1.webp"
+											"photo": "./img/person-1.webp"
 										},
 										"meta": "9 сотрудников",
 										"url": "#"
@@ -12522,7 +12522,7 @@
 										"head": {
 											"name": "Ивашко М.В.",
 											"role": "Руководитель",
-											"photo": "./dev/img/person-3.webp"
+											"photo": "./img/person-3.webp"
 										},
 										"meta": "5 сотрудников",
 										"url": "#"
@@ -12533,7 +12533,7 @@
 										"head": {
 											"name": "Кардаш Т.В.",
 											"role": "Руководитель",
-											"photo": "./dev/img/person-2.webp"
+											"photo": "./img/person-2.webp"
 										},
 										"meta": "4 сотрудника",
 										"url": "#"
@@ -12544,7 +12544,7 @@
 										"head": {
 											"name": "Маркиянов Н.С.",
 											"role": "Руководитель",
-											"photo": "./dev/img/person-4.webp"
+											"photo": "./img/person-4.webp"
 										},
 										"meta": "3 сотрудника",
 										"url": "#"
@@ -12573,7 +12573,7 @@
 						"head": {
 							"name": "Томчин Леонид Альбертович",
 							"role": "Председатель Совета директоров",
-							"photo": "./dev/img/holding/chairman.webp"
+							"photo": "./img/holding/chairman.webp"
 						},
 						"meta": "7 подразделений в прямом подчинении"
 					}
@@ -12586,7 +12586,7 @@
 							"head": {
 								"name": "Шагалова Д.Г.",
 								"role": "Помощник руководителя",
-								"photo": "./dev/img/person-1.webp"
+								"photo": "./img/person-1.webp"
 							}
 						},
 						{
@@ -12595,7 +12595,7 @@
 							"head": {
 								"name": "Альтшулер Р.В.",
 								"role": "Руководитель службы",
-								"photo": "./dev/img/person-2.webp"
+								"photo": "./img/person-2.webp"
 							},
 							"meta": "4 сотрудника"
 						},
@@ -12605,7 +12605,7 @@
 							"head": {
 								"name": "Машинская Ю.Г.",
 								"role": "Председатель правления",
-								"photo": "./dev/img/person-3.webp"
+								"photo": "./img/person-3.webp"
 							},
 							"meta": "Зам. — Дубовец О.В."
 						},
@@ -12615,7 +12615,7 @@
 							"head": {
 								"name": "Рогатнюк О.Л.",
 								"role": "Директор",
-								"photo": "./dev/img/person-4.webp"
+								"photo": "./img/person-4.webp"
 							},
 							"meta": "Клиника здоровья · 2 центра"
 						},
@@ -12625,7 +12625,7 @@
 							"head": {
 								"name": "Старовойтова С.М.",
 								"role": "Директор",
-								"photo": "./dev/img/person-5.webp"
+								"photo": "./img/person-5.webp"
 							},
 							"meta": "АптекаБайМаркет"
 						},
@@ -12635,7 +12635,7 @@
 							"head": {
 								"name": "Томчина А.Л.",
 								"role": "Директор",
-								"photo": "./dev/img/person-1.webp"
+								"photo": "./img/person-1.webp"
 							},
 							"meta": "Салон ADEL"
 						}
@@ -12648,7 +12648,7 @@
 						"head": {
 							"name": "Машинская Ю.Г.",
 							"role": "Директор управляющей компании",
-							"photo": "./dev/img/person-3.webp"
+							"photo": "./img/person-3.webp"
 						},
 						"meta": "5 дирекций и служб + Корпоративный центр"
 					}
@@ -12661,7 +12661,7 @@
 							"head": {
 								"name": "Шукало А.А.",
 								"role": "Зам. директора по маркетингу",
-								"photo": "./dev/img/person-2.webp"
+								"photo": "./img/person-2.webp"
 							},
 							"meta": "2 отдела · 14 сотрудников",
 							"url": "#"
@@ -12672,7 +12672,7 @@
 							"head": {
 								"name": "Рябцева Н.В.",
 								"role": "Зам. директора по коммерции",
-								"photo": "./dev/img/person-5.webp"
+								"photo": "./img/person-5.webp"
 							},
 							"meta": "3 отдела · 22 сотрудника",
 							"url": "#"
@@ -12683,7 +12683,7 @@
 							"head": {
 								"name": "Мелюха Е.И.",
 								"role": "Зам. директора по развитию розницы",
-								"photo": "./dev/img/person-1.webp"
+								"photo": "./img/person-1.webp"
 							},
 							"meta": "4 подразделения · 5 юрлиц · 312 аптек",
 							"url": "#"
@@ -12694,7 +12694,7 @@
 							"head": {
 								"name": "Божаткина Л.И.",
 								"role": "Руководитель",
-								"photo": "./dev/img/person-3.webp"
+								"photo": "./img/person-3.webp"
 							},
 							"meta": "6 сотрудников",
 							"url": "#"
@@ -12705,7 +12705,7 @@
 							"head": {
 								"name": "Машинская Ю.Г.",
 								"role": "Руководитель (совмещение)",
-								"photo": "./dev/img/person-3.webp"
+								"photo": "./img/person-3.webp"
 							},
 							"meta": "ВитФармМаркет",
 							"url": "#"
@@ -12716,7 +12716,7 @@
 							"head": {
 								"name": "Дубовец О.В.",
 								"role": "Первый заместитель директора",
-								"photo": "./dev/img/person-4.webp"
+								"photo": "./img/person-4.webp"
 							},
 							"meta": "3 дирекции · 5 служб",
 							"panel": "story-org-center-closed",
@@ -12727,7 +12727,7 @@
 								"head": {
 									"name": "Дубовец О.В.",
 									"role": "Первый заместитель директора",
-									"photo": "./dev/img/person-4.webp"
+									"photo": "./img/person-4.webp"
 								},
 								"items": [
 									{
@@ -12736,7 +12736,7 @@
 										"head": {
 											"name": "Лагода П.С.",
 											"role": "Директор ООО «СофтФарм»",
-											"photo": "./dev/img/person-2.webp"
+											"photo": "./img/person-2.webp"
 										},
 										"meta": "4 отдела · 31 сотрудник",
 										"url": "#"
@@ -12747,7 +12747,7 @@
 										"head": {
 											"name": "Цыркунов В.В.",
 											"role": "Зам. директора по финансам",
-											"photo": "./dev/img/person-4.webp"
+											"photo": "./img/person-4.webp"
 										},
 										"meta": "3 отдела · 24 сотрудника",
 										"url": "#"
@@ -12758,7 +12758,7 @@
 										"head": {
 											"name": "Стефанович Н.Л.",
 											"role": "Руководитель",
-											"photo": "./dev/img/person-5.webp"
+											"photo": "./img/person-5.webp"
 										},
 										"meta": "1 отдел · 6 сотрудников",
 										"url": "#"
@@ -12769,7 +12769,7 @@
 										"head": {
 											"name": "Петрашко А.И.",
 											"role": "Руководитель",
-											"photo": "./dev/img/person-1.webp"
+											"photo": "./img/person-1.webp"
 										},
 										"meta": "9 сотрудников",
 										"url": "#"
@@ -12780,7 +12780,7 @@
 										"head": {
 											"name": "Ивашко М.В.",
 											"role": "Руководитель",
-											"photo": "./dev/img/person-3.webp"
+											"photo": "./img/person-3.webp"
 										},
 										"meta": "5 сотрудников",
 										"url": "#"
@@ -12791,7 +12791,7 @@
 										"head": {
 											"name": "Кардаш Т.В.",
 											"role": "Руководитель",
-											"photo": "./dev/img/person-2.webp"
+											"photo": "./img/person-2.webp"
 										},
 										"meta": "4 сотрудника",
 										"url": "#"
@@ -12802,7 +12802,7 @@
 										"head": {
 											"name": "Маркиянов Н.С.",
 											"role": "Руководитель",
-											"photo": "./dev/img/person-4.webp"
+											"photo": "./img/person-4.webp"
 										},
 										"meta": "3 сотрудника",
 										"url": "#"
@@ -12831,7 +12831,7 @@
 						"head": {
 							"name": "Томчин Леонид Альбертович",
 							"role": "Председатель Совета директоров",
-							"photo": "./dev/img/holding/chairman.webp"
+							"photo": "./img/holding/chairman.webp"
 						},
 						"meta": "7 подразделений в прямом подчинении"
 					}
@@ -12844,7 +12844,7 @@
 							"head": {
 								"name": "Шагалова Д.Г.",
 								"role": "Помощник руководителя",
-								"photo": "./dev/img/person-1.webp"
+								"photo": "./img/person-1.webp"
 							}
 						},
 						{
@@ -12853,7 +12853,7 @@
 							"head": {
 								"name": "Альтшулер Р.В.",
 								"role": "Руководитель службы",
-								"photo": "./dev/img/person-2.webp"
+								"photo": "./img/person-2.webp"
 							},
 							"meta": "4 сотрудника"
 						}
@@ -12868,7 +12868,7 @@
 				"head": {
 					"name": "Мелюха Е.И.",
 					"role": "Зам. директора по развитию розницы",
-					"photo": "./dev/img/person-1.webp"
+					"photo": "./img/person-1.webp"
 				},
 				"meta": "4 подразделения · 5 юрлиц · 312 аптек",
 				"url": "#"
@@ -12879,7 +12879,7 @@
 				"head": {
 					"name": "Шагалова Д.Г.",
 					"role": "Помощник руководителя",
-					"photo": "./dev/img/person-1.webp"
+					"photo": "./img/person-1.webp"
 				}
 			},
 			"nohead": {
@@ -13023,6 +13023,691 @@
 					"width": 534,
 					"height": 797,
 					"alt": "Стенд аптеки на празднике"
+				}
+			]
+		},
+		"unitHeader": {
+			"caption": "Дирекция · Управляющая компания",
+			"title": "Дирекция розничного бизнеса",
+			"tags": ["Направление: розница", "Бренды: Добрыя лекі, Аптечка+, ADEL"],
+			"parents": [
+				{
+					"text": "Совет директоров",
+					"url": "#"
+				},
+				{
+					"text": "Управляющая компания",
+					"url": "#"
+				}
+			],
+			"head": {
+				"name": "Мелюха Елена Ивановна",
+				"url": "#",
+				"role": "Заместитель директора по развитию розничного бизнеса",
+				"photo": "./img/person-1.webp",
+				"phone": {
+					"text": "+375 17 394 70 34, доб. 140",
+					"url": "#"
+				},
+				"email": {
+					"text": "e.melyuha@apteka-group.by",
+					"url": "#"
+				}
+			},
+			"stats": [
+				{
+					"value": "5",
+					"label": "юрлиц"
+				},
+				{
+					"value": "1 200",
+					"label": "сотрудников"
+				}
+			]
+		},
+		"unitHeaderBare": {
+			"caption": "Дирекция · Корпоративный центр",
+			"title": "Финансовая дирекция",
+			"parents": [
+				{
+					"text": "Совет директоров",
+					"url": "#"
+				},
+				{
+					"text": "Управляющая компания",
+					"url": "#"
+				},
+				{
+					"text": "Корпоративный центр",
+					"url": "#"
+				}
+			]
+		},
+		"unitHeaderLong": {
+			"caption": "Дирекция · Управляющая компания",
+			"title": "Дирекция по развитию розничного бизнеса, аптечных сетей и партнёрских программ холдинга",
+			"tags": [
+				"Направление: розница",
+				"Бренды: Добрыя лекі, Аптечка+, ADEL",
+				"Регионы: Минская, Витебская, Гомельская, Гродненская, Могилевская, Брестская области"
+			],
+			"parents": [
+				{
+					"text": "Совет директоров",
+					"url": "#"
+				},
+				{
+					"text": "Управляющая компания",
+					"url": "#"
+				}
+			],
+			"head": {
+				"name": "Константинопольская-Задунайская Анастасия Владимировна",
+				"url": "#",
+				"role": "Заместитель директора по развитию розничного бизнеса",
+				"phone": {
+					"text": "+375 17 394 70 34, доб. 140",
+					"url": "#"
+				},
+				"email": {
+					"text": "e.melyuha@apteka-group.by",
+					"url": "#"
+				}
+			},
+			"stats": [
+				{
+					"value": "5",
+					"label": "юрлиц"
+				},
+				{
+					"value": "1 200",
+					"label": "сотрудников"
+				}
+			]
+		},
+		"unitUnits": {
+			"title": "Подразделения",
+			"kind": "units",
+			"items": [
+				{
+					"type": "Отдел",
+					"title": "Отдел учета",
+					"head": {
+						"name": "Лазаревич Н.С.",
+						"role": "Начальник отдела",
+						"photo": "./img/person-2.webp"
+					},
+					"meta": "11 сотрудников",
+					"url": "#"
+				},
+				{
+					"type": "Отдел",
+					"title": "Отдел корпоративного контроллинга",
+					"head": {
+						"name": "Чигилейчик Е.А.",
+						"role": "Начальник отдела",
+						"photo": "./img/person-3.webp"
+					},
+					"meta": "7 сотрудников",
+					"url": "#"
+				},
+				{
+					"type": "Отдел",
+					"title": "Аналитический центр",
+					"head": {
+						"name": "Богдан Е.В.",
+						"role": "Руководитель",
+						"photo": "./img/person-5.webp"
+					},
+					"meta": "5 сотрудников",
+					"url": "#"
+				}
+			]
+		},
+		"unitEntities": {
+			"title": "Юридические лица",
+			"kind": "entities",
+			"link": {
+				"text": "Все юрлица холдинга",
+				"url": "#"
+			},
+			"items": [
+				{
+					"name": "ООО «Аптека групп Центр»",
+					"url": "#",
+					"phones": [
+						{
+							"text": "+375 17 249 00 05",
+							"url": "#"
+						}
+					],
+					"address": "г. Минск, пр-т Победителей, 84-2, офис 16",
+					"pharmacies": "96",
+					"brands": []
+				},
+				{
+					"name": "ЗАО «Аптека групп Север»",
+					"url": "#",
+					"phones": [
+						{
+							"text": "+375 212 35 21 80",
+							"url": "#"
+						}
+					],
+					"address": "г. Витебск, ул. 5-я Кооперативная, 8",
+					"pharmacies": "70",
+					"brands": []
+				},
+				{
+					"name": "ЗАО «Аптека групп Юг»",
+					"url": "#",
+					"phones": [
+						{
+							"text": "+375 232 55 87 08",
+							"url": "#"
+						}
+					],
+					"address": "Гомельская обл., г. Гомель, ул. Кирова, 59А",
+					"pharmacies": "58",
+					"brands": []
+				},
+				{
+					"name": "ООО «Аптека групп Запад»",
+					"url": "#",
+					"phones": [
+						{
+							"text": "+375 152 31 51 26",
+							"url": "#"
+						}
+					],
+					"address": "Гродненская обл., г. Гродно, пр-т Янки Купалы, 87, офис 609",
+					"pharmacies": "48",
+					"brands": []
+				},
+				{
+					"name": "ООО «Либерти-Фарм»",
+					"url": "#",
+					"phones": [
+						{
+							"text": "+375 222 65 03 66",
+							"url": "#"
+						}
+					],
+					"address": "г. Могилев, ул. Якубовского, 37А-88",
+					"pharmacies": "40",
+					"brands": []
+				}
+			]
+		},
+		"unitStaff": {
+			"title": "Сотрудники",
+			"sort": {
+				"id": "unit-staff-sort",
+				"label": "Сортировка",
+				"options": [
+					{
+						"text": "По подразделениям",
+						"url": "#",
+						"current": true
+					},
+					{
+						"text": "По алфавиту",
+						"url": "#"
+					}
+				]
+			},
+			"filters": [
+				{
+					"text": "Все",
+					"url": "#",
+					"count": 24,
+					"icon": "profile",
+					"current": true
+				},
+				{
+					"text": "Отдел учета",
+					"url": "#",
+					"count": 11,
+					"icon": "folder"
+				},
+				{
+					"text": "Контроллинг",
+					"url": "#",
+					"count": 7,
+					"icon": "folder"
+				},
+				{
+					"text": "Аналитический центр",
+					"url": "#",
+					"count": 5,
+					"icon": "folder"
+				}
+			],
+			"groups": [
+				{
+					"title": "Руководство дирекции",
+					"employees": [
+						{
+							"name": "Цыркунов Виталий Владимирович",
+							"url": "#",
+							"position": "Заместитель директора по финансам",
+							"photo": "./img/person-4.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 120",
+								"url": "#"
+							},
+							"email": {
+								"text": "v.tsyrkunov@apteka-group.by",
+								"url": "#"
+							},
+							"head": true
+						}
+					]
+				},
+				{
+					"title": "Отдел учета",
+					"employees": [
+						{
+							"name": "Лазаревич Наталья Сергеевна",
+							"url": "#",
+							"position": "Начальник отдела учета, главный бухгалтер",
+							"photo": "./img/person-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 131",
+								"url": "#"
+							},
+							"email": {
+								"text": "n.lazarevich@apteka-group.by",
+								"url": "#"
+							},
+							"head": true
+						},
+						{
+							"name": "Кравченко Ирина Олеговна",
+							"url": "#",
+							"position": "Ведущий бухгалтер",
+							"photo": "./img/person-3.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 132",
+								"url": "#"
+							},
+							"email": {
+								"text": "i.kravchenko@apteka-group.by",
+								"url": "#"
+							}
+						},
+						{
+							"name": "Сидорова Анна Павловна",
+							"url": "#",
+							"position": "Бухгалтер",
+							"photo": "./img/person-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 133",
+								"url": "#"
+							},
+							"email": {
+								"text": "a.sidorova@apteka-group.by",
+								"url": "#"
+							}
+						}
+					]
+				},
+				{
+					"title": "Аналитический центр",
+					"employees": [
+						{
+							"name": "Богдан Елена Викторовна",
+							"url": "#",
+							"position": "Руководитель аналитического центра",
+							"photo": "./img/person-5.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 150",
+								"url": "#"
+							},
+							"email": {
+								"text": "e.bogdan@apteka-group.by",
+								"url": "#"
+							},
+							"head": true
+						}
+					]
+				}
+			],
+			"pagination": {
+				"next": {
+					"url": "#"
+				},
+				"pages": [
+					{
+						"number": 1,
+						"current": true
+					},
+					{
+						"number": 2,
+						"url": "#"
+					},
+					{
+						"number": 3,
+						"url": "#"
+					},
+					{
+						"number": 4,
+						"url": "#"
+					}
+				],
+				"total": 24
+			}
+		},
+		"unitTree": {
+			"id": "story-unit-tree",
+			"title": "Структура",
+			"collapseAll": "Свернуть всё",
+			"countLabel": ", сотрудников: ",
+			"inline": true,
+			"items": [
+				{
+					"title": "Совет директоров",
+					"url": "#",
+					"count": "2 000+",
+					"expanded": true,
+					"children": [
+						{
+							"title": "Правление",
+							"url": "#",
+							"count": 6
+						},
+						{
+							"title": "Служба внутреннего контроля",
+							"url": "#",
+							"count": 4
+						},
+						{
+							"title": "Управляющая компания",
+							"url": "#",
+							"count": 180,
+							"expanded": true,
+							"children": [
+								{
+									"title": "Дирекция по маркетингу",
+									"url": "#",
+									"count": 14,
+									"children": [
+										{
+											"title": "Отдел 1",
+											"url": "#",
+											"count": 5
+										},
+										{
+											"title": "Отдел 2",
+											"url": "#",
+											"count": 4
+										}
+									]
+								},
+								{
+									"title": "Коммерческая дирекция",
+									"url": "#",
+									"count": 22,
+									"children": [
+										{
+											"title": "Отдел 1",
+											"url": "#",
+											"count": 5
+										},
+										{
+											"title": "Отдел 2",
+											"url": "#",
+											"count": 4
+										}
+									]
+								},
+								{
+									"title": "Дирекция розничного бизнеса",
+									"url": "#",
+									"count": 48,
+									"children": [
+										{
+											"title": "Департамент фарм. деятельности",
+											"url": "#",
+											"count": 12
+										},
+										{
+											"title": "Отдел персонала розницы",
+											"url": "#",
+											"count": 8
+										},
+										{
+											"title": "Центр управления торговлей",
+											"url": "#",
+											"count": 10
+										},
+										{
+											"title": "Корпоративный учебный центр",
+											"url": "#",
+											"count": 6
+										},
+										{
+											"title": "Аптека групп Центр",
+											"url": "#",
+											"count": 310,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										},
+										{
+											"title": "Аптека групп Север",
+											"url": "#",
+											"count": 280,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										},
+										{
+											"title": "Аптека групп Юг",
+											"url": "#",
+											"count": 240,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										},
+										{
+											"title": "Аптека групп Запад",
+											"url": "#",
+											"count": 190,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										},
+										{
+											"title": "Либерти-Фарм",
+											"url": "#",
+											"count": 150,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										}
+									]
+								},
+								{
+									"title": "Служба рекрутинга и адаптации",
+									"url": "#",
+									"count": 6
+								},
+								{
+									"title": "Корпоративный центр",
+									"url": "#",
+									"count": 92,
+									"expanded": true,
+									"children": [
+										{
+											"title": "ИТ дирекция",
+											"url": "#",
+											"count": 31,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										},
+										{
+											"title": "Финансовая дирекция",
+											"url": "#",
+											"count": 24,
+											"current": true,
+											"expanded": true,
+											"children": [
+												{
+													"title": "Отдел учета",
+													"url": "#",
+													"count": 11
+												},
+												{
+													"title": "Отдел корп. контроллинга",
+													"url": "#",
+													"count": 7
+												},
+												{
+													"title": "Аналитический центр",
+													"url": "#",
+													"count": 5
+												}
+											]
+										},
+										{
+											"title": "Правовое обеспечение",
+											"url": "#",
+											"count": 6,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										},
+										{
+											"title": "Кадровый учет",
+											"url": "#",
+											"count": 9
+										},
+										{
+											"title": "Проектный офис",
+											"url": "#",
+											"count": 4
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Дирекция медицинской деятельности",
+							"url": "#",
+							"count": 60,
+							"children": [
+								{
+									"title": "Отдел 1",
+									"url": "#",
+									"count": 5
+								},
+								{
+									"title": "Отдел 2",
+									"url": "#",
+									"count": 4
+								}
+							]
+						},
+						{
+							"title": "Дирекция e-commerce",
+							"url": "#",
+							"count": 40,
+							"children": [
+								{
+									"title": "Отдел 1",
+									"url": "#",
+									"count": 5
+								},
+								{
+									"title": "Отдел 2",
+									"url": "#",
+									"count": 4
+								}
+							]
+						},
+						{
+							"title": "Дирекция бьюти услуг",
+							"url": "#",
+							"count": 25,
+							"children": [
+								{
+									"title": "Отдел 1",
+									"url": "#",
+									"count": 5
+								},
+								{
+									"title": "Отдел 2",
+									"url": "#",
+									"count": 4
+								}
+							]
+						}
+					]
 				}
 			]
 		}

@@ -1,0 +1,670 @@
+{
+	"title": "Дирекция розничного бизнеса — структура холдинга «Аптека групп»",
+	"auth": true,
+	"description": "Дирекция розничного бизнеса: руководитель, подразделения, юридические лица и сотрудники.",
+	"nav": {
+		"group": "Холдинг",
+		"title": "Дирекция (с юрлицами)",
+		"order": 95
+	},
+	"data": {
+		"breadcrumbs": [
+			{
+				"title": "Главная",
+				"url": "./index.html"
+			},
+			{
+				"title": "Структура холдинга",
+				"url": "./holding-management.html"
+			},
+			{
+				"title": "Управляющая компания",
+				"url": "./holding-management.html"
+			},
+			{
+				"title": "Дирекция розничного бизнеса"
+			}
+		],
+		"unit": {
+			"caption": "Дирекция · Управляющая компания",
+			"title": "Дирекция розничного бизнеса",
+			"tags": ["Направление: розница", "Бренды: Добрыя лекі, Аптечка+, ADEL"],
+			"parents": [
+				{
+					"text": "Совет директоров",
+					"url": "./holding-management.html"
+				},
+				{
+					"text": "Управляющая компания",
+					"url": "./holding-management.html"
+				}
+			],
+			"head": {
+				"name": "Мелюха Елена Ивановна",
+				"url": "./holding-employee.html",
+				"role": "Заместитель директора по развитию розничного бизнеса",
+				"photo": "./dev/img/person-1.webp",
+				"phone": {
+					"text": "+375 17 394 70 34, доб. 140",
+					"url": "tel:+375173947034,140"
+				},
+				"email": {
+					"text": "e.melyuha@apteka-group.by",
+					"url": "mailto:e.melyuha@apteka-group.by"
+				}
+			},
+			"stats": [
+				{
+					"value": "5",
+					"label": "юрлиц"
+				},
+				{
+					"value": "1 200",
+					"label": "сотрудников"
+				}
+			]
+		},
+		"units": {
+			"title": "Подразделения",
+			"kind": "units",
+			"items": [
+				{
+					"type": "Подразделение",
+					"title": "Департамент по развитию и организации фарм. деятельности",
+					"head": {
+						"name": "Трунева О.П.",
+						"role": "Руководитель",
+						"photo": "./dev/img/person-2.webp"
+					},
+					"meta": "12 сотрудников",
+					"url": "./holding-unit.html"
+				},
+				{
+					"type": "Подразделение",
+					"title": "Отдел управления персоналом розничной торговли",
+					"head": {
+						"name": "Смелова Ю.В.",
+						"role": "Начальник отдела",
+						"photo": "./dev/img/person-3.webp"
+					},
+					"meta": "8 сотрудников",
+					"url": "./holding-unit.html"
+				},
+				{
+					"type": "Подразделение",
+					"title": "Центр управления торговлей",
+					"head": {
+						"name": "Панковец В.И.",
+						"role": "Руководитель",
+						"photo": "./dev/img/person-4.webp"
+					},
+					"meta": "10 сотрудников",
+					"url": "./holding-unit.html"
+				},
+				{
+					"type": "Подразделение",
+					"title": "Корпоративный учебный центр",
+					"head": {
+						"name": "Шульман К.В.",
+						"role": "Руководитель",
+						"photo": "./dev/img/person-5.webp"
+					},
+					"meta": "6 сотрудников",
+					"url": "./holding-unit.html"
+				}
+			]
+		},
+		"entities": {
+			"title": "Юридические лица",
+			"kind": "entities",
+			"link": {
+				"text": "Все юрлица холдинга",
+				"url": "./holding.html"
+			},
+			"items": [
+				{
+					"name": "ООО «Аптека групп Центр»",
+					"url": "./holding-entity-network.html",
+					"phones": [
+						{
+							"text": "+375 17 249 00 05",
+							"url": "tel:+375172490005"
+						}
+					],
+					"address": "г. Минск, пр-т Победителей, 84-2, офис 16",
+					"pharmacies": "96",
+					"brands": []
+				},
+				{
+					"name": "ЗАО «Аптека групп Север»",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 212 35 21 80",
+							"url": "tel:+375212352180"
+						}
+					],
+					"address": "г. Витебск, ул. 5-я Кооперативная, 8",
+					"pharmacies": "70",
+					"brands": []
+				},
+				{
+					"name": "ЗАО «Аптека групп Юг»",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 232 55 87 08",
+							"url": "tel:+375232558708"
+						}
+					],
+					"address": "Гомельская обл., г. Гомель, ул. Кирова, 59А",
+					"pharmacies": "58",
+					"brands": []
+				},
+				{
+					"name": "ООО «Аптека групп Запад»",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 152 31 51 26",
+							"url": "tel:+375152315126"
+						}
+					],
+					"address": "Гродненская обл., г. Гродно, пр-т Янки Купалы, 87, офис 609",
+					"pharmacies": "48",
+					"brands": []
+				},
+				{
+					"name": "ООО «Либерти-Фарм»",
+					"url": "./holding-entity.html",
+					"phones": [
+						{
+							"text": "+375 222 65 03 66",
+							"url": "tel:+375222650366"
+						}
+					],
+					"address": "г. Могилев, ул. Якубовского, 37А-88",
+					"pharmacies": "40",
+					"brands": []
+				}
+			]
+		},
+		"staff": {
+			"title": "Сотрудники",
+			"sort": {
+				"id": "unit-staff-sort",
+				"label": "Сортировка",
+				"options": [
+					{
+						"text": "По подразделениям",
+						"url": "#",
+						"current": true
+					},
+					{
+						"text": "По алфавиту",
+						"url": "#"
+					}
+				]
+			},
+			"filters": [
+				{
+					"text": "Все",
+					"url": "#",
+					"count": 36,
+					"icon": "profile",
+					"current": true
+				},
+				{
+					"text": "Фарм. деятельность",
+					"url": "#",
+					"count": 12,
+					"icon": "folder"
+				},
+				{
+					"text": "Персонал",
+					"url": "#",
+					"count": 8,
+					"icon": "folder"
+				},
+				{
+					"text": "Управление торговлей",
+					"url": "#",
+					"count": 10,
+					"icon": "folder"
+				},
+				{
+					"text": "Учебный центр",
+					"url": "#",
+					"count": 6,
+					"icon": "folder"
+				}
+			],
+			"groups": [
+				{
+					"title": "Руководство дирекции",
+					"employees": [
+						{
+							"name": "Мелюха Елена Ивановна",
+							"url": "./holding-employee.html",
+							"position": "Заместитель директора по развитию розничного бизнеса",
+							"photo": "./dev/img/person-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 140",
+								"url": "tel:+375173947034,140"
+							},
+							"email": {
+								"text": "e.melyuha@apteka-group.by",
+								"url": "mailto:e.melyuha@apteka-group.by"
+							},
+							"head": true
+						}
+					]
+				},
+				{
+					"title": "Департамент фарм. деятельности",
+					"employees": [
+						{
+							"name": "Трунева Ольга Петровна",
+							"url": "./holding-employee.html",
+							"position": "Руководитель департамента",
+							"photo": "./dev/img/person-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 141",
+								"url": "tel:+375173947034,141"
+							},
+							"email": {
+								"text": "o.truneva@apteka-group.by",
+								"url": "mailto:o.truneva@apteka-group.by"
+							},
+							"head": true
+						},
+						{
+							"name": "Лис Мария Андреевна",
+							"url": "./holding-employee.html",
+							"position": "Ведущий специалист",
+							"photo": "./dev/img/person-3.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 142",
+								"url": "tel:+375173947034,142"
+							},
+							"email": {
+								"text": "m.lis@apteka-group.by",
+								"url": "mailto:m.lis@apteka-group.by"
+							}
+						}
+					]
+				},
+				{
+					"title": "Отдел управления персоналом",
+					"employees": [
+						{
+							"name": "Смелова Юлия Викторовна",
+							"url": "./holding-employee.html",
+							"position": "Начальник отдела",
+							"photo": "./dev/img/person-4.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 151",
+								"url": "tel:+375173947034,151"
+							},
+							"email": {
+								"text": "y.smelova@apteka-group.by",
+								"url": "mailto:y.smelova@apteka-group.by"
+							},
+							"head": true
+						},
+						{
+							"name": "Ковш Татьяна Александровна",
+							"url": "./holding-employee.html",
+							"position": "Специалист по персоналу",
+							"photo": "./dev/img/person-5.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 152",
+								"url": "tel:+375173947034,152"
+							},
+							"email": {
+								"text": "t.kovsh@apteka-group.by",
+								"url": "mailto:t.kovsh@apteka-group.by"
+							}
+						}
+					]
+				}
+			],
+			"pagination": {
+				"next": {
+					"url": "#"
+				},
+				"pages": [
+					{
+						"number": 1,
+						"current": true
+					},
+					{
+						"number": 2,
+						"url": "#"
+					},
+					{
+						"number": 3,
+						"url": "#"
+					},
+					{
+						"number": 4,
+						"url": "#"
+					}
+				],
+				"total": 36
+			}
+		},
+		"tree": {
+			"id": "unit-tree",
+			"title": "Структура",
+			"collapseAll": "Свернуть всё",
+			"countLabel": ", сотрудников: ",
+			"inline": true,
+			"items": [
+				{
+					"title": "Совет директоров",
+					"url": "./holding-management.html",
+					"count": "2 000+",
+					"expanded": true,
+					"children": [
+						{
+							"title": "Правление",
+							"url": "./holding-management.html",
+							"count": 6
+						},
+						{
+							"title": "Служба внутреннего контроля",
+							"url": "./holding-unit.html",
+							"count": 4
+						},
+						{
+							"title": "Управляющая компания",
+							"url": "./holding-management.html",
+							"count": 180,
+							"expanded": true,
+							"children": [
+								{
+									"title": "Дирекция по маркетингу",
+									"url": "./holding-unit.html",
+									"count": 14,
+									"children": [
+										{
+											"title": "Отдел 1",
+											"url": "#",
+											"count": 5
+										},
+										{
+											"title": "Отдел 2",
+											"url": "#",
+											"count": 4
+										}
+									]
+								},
+								{
+									"title": "Коммерческая дирекция",
+									"url": "./holding-unit.html",
+									"count": 22,
+									"children": [
+										{
+											"title": "Отдел 1",
+											"url": "#",
+											"count": 5
+										},
+										{
+											"title": "Отдел 2",
+											"url": "#",
+											"count": 4
+										}
+									]
+								},
+								{
+									"title": "Дирекция розничного бизнеса",
+									"url": "./holding-directorate.html",
+									"count": 48,
+									"current": true,
+									"expanded": true,
+									"children": [
+										{
+											"title": "Департамент фарм. деятельности",
+											"url": "#",
+											"count": 12
+										},
+										{
+											"title": "Отдел персонала розницы",
+											"url": "#",
+											"count": 8
+										},
+										{
+											"title": "Центр управления торговлей",
+											"url": "#",
+											"count": 10
+										},
+										{
+											"title": "Корпоративный учебный центр",
+											"url": "#",
+											"count": 6
+										},
+										{
+											"title": "Аптека групп Центр",
+											"url": "#",
+											"count": 310,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										},
+										{
+											"title": "Аптека групп Север",
+											"url": "#",
+											"count": 280,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										},
+										{
+											"title": "Аптека групп Юг",
+											"url": "#",
+											"count": 240,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										},
+										{
+											"title": "Аптека групп Запад",
+											"url": "#",
+											"count": 190,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										},
+										{
+											"title": "Либерти-Фарм",
+											"url": "#",
+											"count": 150,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										}
+									]
+								},
+								{
+									"title": "Служба рекрутинга и адаптации",
+									"url": "./holding-unit.html",
+									"count": 6
+								},
+								{
+									"title": "Корпоративный центр",
+									"url": "./holding-management.html",
+									"count": 92,
+									"children": [
+										{
+											"title": "ИТ дирекция",
+											"url": "./holding-unit.html",
+											"count": 31,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										},
+										{
+											"title": "Финансовая дирекция",
+											"url": "./holding-unit.html",
+											"count": 24,
+											"children": [
+												{
+													"title": "Отдел учета",
+													"url": "#",
+													"count": 11
+												},
+												{
+													"title": "Отдел корп. контроллинга",
+													"url": "#",
+													"count": 7
+												},
+												{
+													"title": "Аналитический центр",
+													"url": "#",
+													"count": 5
+												}
+											]
+										},
+										{
+											"title": "Правовое обеспечение",
+											"url": "./holding-unit.html",
+											"count": 6,
+											"children": [
+												{
+													"title": "Отдел 1",
+													"url": "#",
+													"count": 5
+												},
+												{
+													"title": "Отдел 2",
+													"url": "#",
+													"count": 4
+												}
+											]
+										},
+										{
+											"title": "Кадровый учет",
+											"url": "./holding-unit.html",
+											"count": 9
+										},
+										{
+											"title": "Проектный офис",
+											"url": "./holding-unit.html",
+											"count": 4
+										}
+									]
+								}
+							]
+						},
+						{
+							"title": "Дирекция медицинской деятельности",
+							"url": "./holding-unit.html",
+							"count": 60,
+							"children": [
+								{
+									"title": "Отдел 1",
+									"url": "#",
+									"count": 5
+								},
+								{
+									"title": "Отдел 2",
+									"url": "#",
+									"count": 4
+								}
+							]
+						},
+						{
+							"title": "Дирекция e-commerce",
+							"url": "./holding-unit.html",
+							"count": 40,
+							"children": [
+								{
+									"title": "Отдел 1",
+									"url": "#",
+									"count": 5
+								},
+								{
+									"title": "Отдел 2",
+									"url": "#",
+									"count": 4
+								}
+							]
+						},
+						{
+							"title": "Дирекция бьюти услуг",
+							"url": "./holding-unit.html",
+							"count": 25,
+							"children": [
+								{
+									"title": "Отдел 1",
+									"url": "#",
+									"count": 5
+								},
+								{
+									"title": "Отдел 2",
+									"url": "#",
+									"count": 4
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	}
+}

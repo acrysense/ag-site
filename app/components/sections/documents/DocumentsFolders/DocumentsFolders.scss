@@ -63,6 +63,23 @@
 		}
 	}
 
+	// «Свернуть всё» (дерево «Структура» холдинга) — M/400 Main Blue
+	.documents-folders__collapse {
+		@include text("m-400");
+
+		flex: none;
+		padding: 0;
+		color: palette("main-blue");
+		background: none;
+		border: 0;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+
 	.documents-folders__close {
 		display: flex;
 		flex: none;
@@ -258,7 +275,13 @@
 		}
 	}
 
-	// Витрина: панель на месте (не на весь экран), чтобы её было видно на 360
+	// Витрина: панель на месте (не на весь экран), чтобы её было видно на 360. inline — так же на
+	// месте и на сайте (дерево «Структура» холдинга внизу страницы), без ×
+	.documents-folders--inline .documents-folders__close {
+		display: none;
+	}
+
+	.documents-folders--inline,
 	.documents-folders--static {
 		@include down(desktop) {
 			position: static;
