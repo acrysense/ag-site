@@ -76,9 +76,9 @@
 | Поле | Примечание |
 | --- | --- |
 | `url` | ссылка — вся строка |
-| `section` | `directory`, `news`, `documents`, `vacancies` — цвет метки |
+| `section` | `directory`, `units`, `news`, `documents`, `vacancies` — цвет метки |
 | `sectionLabel` | «Справочник» |
-| `type` | заглушка без картинки: `person`, `news`, `document`, `other` (страница, ссылка), `vacancy` |
+| `type` | заглушка без картинки: `person`, `unit` (подразделение), `news`, `document`, `other` (страница, ссылка), `vacancy` |
 | `image.src`, `image.srcset` | превью 64×64 (2x — 128×128), обрезка по cover; фото сотрудника, картинка новости |
 | `titleHtml`, `snippetHtml` | совпадения — в `<mark>`; **текст экранирует бэк** (htmlspecialchars), `<mark>` — единственный тег |
 | `meta` | «PDF · 1,2 МБ · Библиотека / Регламенты · обновлено 02.09.2026», «Новости · 08.07.2026» и т. п. |
