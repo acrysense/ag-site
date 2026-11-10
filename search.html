@@ -51,12 +51,12 @@
 		<script type="text/plain" data-cookie-consent>
 			window.__agDemoCounter = (window.__agDemoCounter || 0) + 1; console.info('[demo] счётчик включён после согласия на cookie')
 		</script>
-		<script type="module" crossorigin src="/ag-site/assets/js/pages-nav-BC1-eOxQ.js"></script>
+		<script type="module" crossorigin src="/ag-site/assets/js/pages-nav-tMX_YTRV.js"></script>
 		<script type="module" crossorigin src="/ag-site/assets/js/announce-D3OkgBby.js"></script>
 		<script type="module" crossorigin src="/ag-site/assets/js/icon-NLq4soTO.js"></script>
-		<script type="module" crossorigin src="/ag-site/assets/js/app-DRoegKPz.js"></script>
+		<script type="module" crossorigin src="/ag-site/assets/js/app-BS-3lGsK.js"></script>
 		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/pages-nav--aTdp9SH.css" />
-		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-Dtd_efA8.css" />
+		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-ScFfcrJB.css" />
 	</head>
 	<body>
 		<div class="wrapper">
@@ -159,6 +159,21 @@
 											</svg>
 
 											<span>Справочник</span>
+										</label>
+										<label class="site-search__section">
+											<input
+												class="site-search__radio"
+												type="radio"
+												name="section"
+												value="units"
+												data-label="Подразделения"
+												data-where="в Подразделениях"
+											/>
+											<svg class="icon site-search__section-icon" aria-hidden="true" focusable="false">
+												<use href="/ag-site/assets/icons/sprite.svg#icon-folder"></use>
+											</svg>
+
+											<span>Подразделения</span>
 										</label>
 										<label class="site-search__section">
 											<input
@@ -445,6 +460,51 @@
 											<option value="4">Гомель</option>
 											<option value="5">Витебск</option>
 											<option value="6">Могилёв</option>
+										</select>
+										<svg class="icon select__icon" aria-hidden="true" focusable="false">
+											<use href="/ag-site/assets/icons/sprite.svg#icon-chevron-down"></use>
+										</svg>
+									</label>
+								</div>
+							</div>
+						</template>
+						<template data-site-search-demo="units"
+							><div class="search-filter">
+								<div
+									class="select"
+									data-module="Select"
+									data-path="components"
+									data-select-search
+									data-select-search-placeholder="Найти тип"
+								>
+									<label class="select__field">
+										<span class="select__value" aria-hidden="true" data-select-value data-placeholder="Тип">Тип</span>
+										<select class="select__control" name="unit_type[]" multiple>
+											<option value="directorate">Дирекция</option>
+											<option value="service">Служба</option>
+											<option value="department">Отдел</option>
+											<option value="pharmacy">Аптека</option>
+										</select>
+										<svg class="icon select__icon" aria-hidden="true" focusable="false">
+											<use href="/ag-site/assets/icons/sprite.svg#icon-chevron-down"></use>
+										</svg>
+									</label>
+								</div>
+							</div>
+							<div class="search-filter">
+								<div
+									class="select"
+									data-module="Select"
+									data-path="components"
+									data-select-search
+									data-select-search-placeholder="Найти юр. лицо"
+								>
+									<label class="select__field">
+										<span class="select__value" aria-hidden="true" data-select-value data-placeholder="Юр. лицо">Юр. лицо</span>
+										<select class="select__control" name="company[]" multiple>
+											<option value="ukh">ООО «УКХ Аптека групп»</option>
+											<option value="center">ООО «Аптека групп Центр»</option>
+											<option value="north">ЗАО «Аптека групп Север»</option>
 										</select>
 										<svg class="icon select__icon" aria-hidden="true" focusable="false">
 											<use href="/ag-site/assets/icons/sprite.svg#icon-chevron-down"></use>
@@ -860,6 +920,12 @@
 											</li>
 											<li class="search-sections__li">
 												<a class="search-sections__item" href="#">
+													<span class="search-sections__text">Подразделения</span>
+													<span class="search-sections__count"><span class="visually-hidden">: найдено </span>3</span>
+												</a>
+											</li>
+											<li class="search-sections__li">
+												<a class="search-sections__item" href="#">
 													<span class="search-sections__text">Новости</span>
 													<span class="search-sections__count"><span class="visually-hidden">: найдено </span>8</span>
 												</a>
@@ -1023,6 +1089,16 @@
 
 													<span class="search-sections__text">Справочник</span>
 													<span class="search-sections__count"><span class="visually-hidden">: найдено </span>5</span>
+												</a>
+											</li>
+											<li class="search-sections__li">
+												<a class="search-sections__item" href="#">
+													<svg class="icon search-sections__icon" aria-hidden="true" focusable="false">
+														<use href="/ag-site/assets/icons/sprite.svg#icon-folder"></use>
+													</svg>
+
+													<span class="search-sections__text">Подразделения</span>
+													<span class="search-sections__count"><span class="visually-hidden">: найдено </span>3</span>
 												</a>
 											</li>
 											<li class="search-sections__li">
