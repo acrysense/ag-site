@@ -48,6 +48,11 @@
 			background: palette("bg-green");
 		}
 
+		// Подразделение — папка на BG.Info, как узлы оргсхемы
+		&--unit {
+			background: palette("bg-info");
+		}
+
 		&--other {
 			background: palette("bg-neutral");
 		}
@@ -102,6 +107,11 @@
 		&--vacancies {
 			color: palette("green");
 			background: palette("bg-green");
+		}
+
+		&--units {
+			color: palette("blue-txt");
+			background: palette("bg-info");
 		}
 	}
 

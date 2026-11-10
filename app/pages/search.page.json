@@ -146,6 +146,12 @@
 						"current": true
 					},
 					{
+						"text": "Подразделения",
+						"url": "#",
+						"count": 3,
+						"icon": "folder"
+					},
+					{
 						"text": "Новости",
 						"url": "#",
 						"count": 8,
@@ -306,6 +312,12 @@
 						"count": 5,
 						"icon": "profile",
 						"current": true
+					},
+					{
+						"text": "Подразделения",
+						"url": "#",
+						"count": 3,
+						"icon": "folder"
 					},
 					{
 						"text": "Новости",

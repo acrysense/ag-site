@@ -24,6 +24,7 @@ const PREVIEW_ICONS = {
 	news: ['news', 'l'],
 	vacancy: ['case', 'l'],
 	document: ['document', ''],
+	unit: ['folder', ''],
 	other: ['chain', ''],
 }
 
