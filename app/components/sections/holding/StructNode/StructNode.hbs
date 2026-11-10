@@ -1,0 +1,51 @@
+{{!--
+	Узел оргсхемы (и подразделение на странице дирекции): тип S/400, название H4, руководитель
+	(фото 36, ФИО, должность), внизу через черту мета («3 отдела · 18 сотрудников») и стрелка.
+	С url — вся карточка ссылка на страницу подразделения; с panel — кнопка, раскрывает панель
+	подчинённых под схемой (id панели, OrgChart), стрелка вниз; без того и другого — просто карточка.
+	props: type, title, url, panel, open (панель раскрыта), head { name, role, photo } (нет — без
+	руководителя; «Руководитель не указан» бэк пишет в meta), meta, class.
+--}}
+{{#*inline "structNodeInner"}}
+    <span class="struct-node__top">
+        <span class="struct-node__heading">
+            {{#if node.type}}<span class="struct-node__type">{{node.type}}</span>{{/if}}
+            <span class="struct-node__title">{{node.title}}</span>
+        </span>
+        {{#if node.head.name}}
+            <span class="struct-node__head">
+                <span class="struct-node__avatar" aria-hidden="true">
+                    <span class="struct-node__initials">{{initials node.head.name}}</span>
+                    {{#if node.head.photo}}<img src="{{node.head.photo}}" width="36" height="36" alt="" loading="lazy" decoding="async" />{{/if}}
+                </span>
+                <span class="struct-node__person">
+                    <span class="struct-node__name">{{node.head.name}}</span>
+                    {{#if node.head.role}}<span class="struct-node__role">{{node.head.role}}</span>{{/if}}
+                </span>
+            </span>
+        {{/if}}
+    </span>
+    {{#if (or node.meta node.url node.panel)}}
+        <span class="struct-node__footer">
+            <span class="struct-node__meta">{{node.meta}}</span>
+            {{#if node.panel}}
+                {{> components/Icon/Icon name="chevron-down" class="struct-node__arrow struct-node__arrow--toggle"}}
+            {{else if node.url}}
+                {{> components/Icon/Icon name="angle-right" class="struct-node__arrow"}}
+            {{/if}}
+        </span>
+    {{/if}}
+{{/inline}}
+{{#if props.panel}}
+    <button class="struct-node struct-node--toggle{{#if props.class}} {{props.class}}{{/if}}" type="button" aria-expanded="{{#if props.open}}true{{else}}false{{/if}}" aria-controls="{{props.panel}}" data-org-toggle>
+        {{> structNodeInner node=props}}
+    </button>
+{{else if props.url}}
+    <a class="struct-node struct-node--link{{#if props.class}} {{props.class}}{{/if}}" href="{{props.url}}">
+        {{> structNodeInner node=props}}
+    </a>
+{{else}}
+    <div class="struct-node{{#if props.class}} {{props.class}}{{/if}}">
+        {{> structNodeInner node=props}}
+    </div>
+{{/if}}

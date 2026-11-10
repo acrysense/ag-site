@@ -16,6 +16,7 @@ recovery
 documents
 gallery
 gallery-album
+holding-management
 holding
 holding-entity
 holding-entity-network

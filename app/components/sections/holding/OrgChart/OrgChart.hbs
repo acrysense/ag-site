@@ -1,0 +1,58 @@
+{{!--
+	Оргсхема «Управление холдингом» — белый блок: заголовок H1, уровни сверху вниз, между ними
+	вертикальная связь. Уровень — один узел по центру (node: Совет директоров, управляющая
+	компания) или ряд узлов (nodes) с общей горизонтальной связью. Узел ряда с подчинёнными
+	(panel — id панели) раскрывает под рядом панель: подпись, название — ссылка на страницу
+	подразделения, описание, руководитель (фото 44), «Свернуть», сетка узлов подчинённых. Раскрыта
+	одна панель; какую раскрыть сразу — open. Внизу — откуда данные.
+	props: title, levels [{ node } | { nodes }] — узлы StructNode; у узла с panel — children {
+	caption, title, url, text, head { name, role, photo }, items [StructNode] }, footnote.
+	До 1280 ряды — сеткой (по 2, на телефоне по одному), без горизонтальных связей.
+--}}
+<section class="org-chart" aria-labelledby="org-chart-title" data-module="OrgChart" data-path="sections/holding">
+    <h2 class="org-chart__title" id="org-chart-title">{{default props.title "Управление холдингом"}}</h2>
+    {{#each props.levels}}
+        {{#unless @first}}<span class="org-chart__connector" aria-hidden="true"></span>{{/unless}}
+        {{#if node}}
+            <div class="org-chart__single">{{> sections/holding/StructNode/StructNode props=node}}</div>
+        {{else}}
+            <ul class="org-chart__row" role="list">
+                {{#each nodes}}
+                    <li class="org-chart__col">{{> sections/holding/StructNode/StructNode props=this}}</li>
+                {{/each}}
+            </ul>
+            {{#each nodes}}
+                {{#if panel}}
+                    <div class="org-panel" id="{{panel}}" {{#unless open}}hidden{{/unless}} data-org-panel>
+                        <div class="org-panel__head">
+                            <div class="org-panel__intro">
+                                {{#if children.caption}}<p class="org-panel__caption">{{children.caption}}</p>{{/if}}
+                                <h3 class="org-panel__title">{{#if children.url}}<a class="org-panel__link" href="{{children.url}}">{{default children.title title}}</a>{{else}}{{default children.title title}}{{/if}}</h3>
+                                {{#if children.text}}<p class="org-panel__text">{{children.text}}</p>{{/if}}
+                            </div>
+                            {{#if children.head.name}}
+                                <div class="org-panel__person">
+                                    <span class="org-panel__avatar" aria-hidden="true">
+                                        <span class="org-panel__initials">{{initials children.head.name}}</span>
+                                        {{#if children.head.photo}}<img src="{{children.head.photo}}" width="44" height="44" alt="" loading="lazy" decoding="async" />{{/if}}
+                                    </span>
+                                    <span class="org-panel__who">
+                                        <span class="org-panel__name">{{children.head.name}}</span>
+                                        {{#if children.head.role}}<span class="org-panel__role">{{children.head.role}}</span>{{/if}}
+                                    </span>
+                                </div>
+                            {{/if}}
+                            <button class="btn btn--light btn--m org-panel__close" type="button" aria-controls="{{panel}}" data-org-collapse>{{default children.collapseText "Свернуть"}}</button>
+                        </div>
+                        {{#if children.items.length}}
+                            <ul class="org-panel__grid" role="list">
+                                {{#each children.items}}<li class="org-panel__item">{{> sections/holding/StructNode/StructNode props=this}}</li>{{/each}}
+                            </ul>
+                        {{/if}}
+                    </div>
+                {{/if}}
+            {{/each}}
+        {{/if}}
+    {{/each}}
+    {{#if props.footnote}}<p class="org-chart__footnote">{{props.footnote}}</p>{{/if}}
+</section>

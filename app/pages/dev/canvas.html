@@ -916,6 +916,35 @@
 				{{#> state label="Пусто" note="не применимо: заголовок обязателен; без переключателя — только заголовок"}}{{/state}}
 			{{/story}}
 
+			{{#> story id="org-chart" page="holding-management" group="Холдинг" title="Оргсхема" how='Уровни сверху вниз со связями. С 1280 ряд узлов — в линию с общей связью, уже — сеткой по 2 (на телефоне по одному). Узел с подчинёнными раскрывает панель под рядом (одна за раз), «Свернуть» — назад к узлу; остальные узлы — ссылки на страницы подразделений.' figma='8717:1858' backend='app/components/sections/holding/OrgChart/ · docs/contracts/holding.md — «По управлению»'}}
+				{{#> state label="Корпоративный центр раскрыт" bg="page"}}
+					<div class="container page-inner">{{> sections/holding/OrgChart/OrgChart props=data.orgChart}}</div>
+				{{/state}}
+				{{#> state label="Всё свёрнуто" bg="page"}}
+					<div class="container page-inner">{{> sections/holding/OrgChart/OrgChart props=data.orgChartClosed}}</div>
+				{{/state}}
+				{{#> state label="Два уровня" bg="page"}}
+					<div class="container page-inner">{{> sections/holding/OrgChart/OrgChart props=data.orgChartSmall}}</div>
+				{{/state}}
+				{{#> state label="Пусто" note="не применимо: у холдинга всегда есть Совет директоров; нет уровней — блок не выводится"}}{{/state}}
+				{{#> state label="Загрузка" note="не применимо: схема приходит с сервера вместе со страницей"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="struct-node" page="holding-management" group="Холдинг" title="Узел оргсхемы" how='Тип, название, руководитель и мета; ссылка — стрелка вправо, раскрывает панель — стрелка вниз, раскрытый — синяя рамка. Наведение — название Blue.TXT.' figma='Struct/Node 8670:544' backend='app/components/sections/holding/StructNode/ · docs/contracts/holding.md'}}
+				{{#> state label="Ссылка" bg="page"}}
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/holding/StructNode/StructNode props=data.structNodes.link}}</div></div>
+				{{/state}}
+				{{#> state label="Без ссылки и меты" bg="page"}}
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/holding/StructNode/StructNode props=data.structNodes.plain}}</div></div>
+				{{/state}}
+				{{#> state label="Без руководителя" bg="page"}}
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/holding/StructNode/StructNode props=data.structNodes.nohead}}</div></div>
+				{{/state}}
+				{{#> state label="Длинный текст, без фото" bg="page"}}
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/holding/StructNode/StructNode props=data.structNodes.long}}</div></div>
+				{{/state}}
+			{{/story}}
+
 			{{#> story id="holding-entities" page="holding" group="Холдинг" title="Юрлица холдинга" how='Белый блок, заголовок и число юрлиц. С 1280 по 3 в ряд, с 768 по 2, на телефоне по одной; карточки ряда одной высоты. Бренды — только если есть; у сетей аптек — «Аптек: N».' figma='8728:4143, карточка — 8728:2473' backend='app/components/sections/holding/HoldingEntities/ · docs/contracts/holding.md'}}
 				{{#> state label="Несколько" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/HoldingEntities/HoldingEntities props=data.holdingEntities}}</div>
