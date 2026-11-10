@@ -16,7 +16,12 @@ recovery
 documents
 gallery
 gallery-album
+holding-management
 holding
 holding-entity
+holding-entity-network
+holding-entity-pharmacies
+holding-directorate
+holding-unit
 holding-employee
 404

@@ -1,0 +1,162 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Белая карточка, поля 20, части через 10: подпись M/400 Dark-grey.TXT, цепочка — шаги M/400 Main
+// Blue через 6, слева «рельс»: точка 8 (кольцо Icon.Grey) и линия 2 BG.Main 2 до следующего шага,
+// текст через 12; текущий шаг — M/500 Black.TXT, точка Main Blue. Черта Form.Border, руководитель —
+// фото 36, ФИО M/500 Black.TXT и где работает S/400 Dark-grey.TXT через 10; «Открыть в структуре →»
+// M/400 Main Blue. Рамка и тень — как у всех белых блоков.
+@layer components {
+	.structure-place {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		min-width: 0;
+		padding: 19px;
+		background: palette("white");
+		border: 1px solid palette("block-border");
+		border-radius: $radius-content-block;
+		box-shadow: $shadow-content-block;
+	}
+
+	.structure-place__label {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.structure-place__chain {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	// Точка — по центру первой строки текста (22 / 2 − 4), линия — от точки до низа шага
+	.structure-place__step {
+		position: relative;
+		padding: 0 0 6px 20px;
+
+		&::before {
+			position: absolute;
+			top: 7px;
+			left: 0;
+			box-sizing: border-box;
+			width: 8px;
+			height: 8px;
+			content: "";
+			border: 2px solid palette("icon-grey");
+			border-radius: 50%;
+		}
+
+		&::after {
+			position: absolute;
+			top: 15px;
+			bottom: 0;
+			left: 3px;
+			width: 2px;
+			content: "";
+			background: palette("bg-main-2");
+		}
+
+		&--current {
+			padding-bottom: 0;
+
+			&::before {
+				background: palette("main-blue");
+				border-color: palette("main-blue");
+			}
+
+			&::after {
+				content: none;
+			}
+		}
+	}
+
+	.structure-place__text {
+		@include text("m-400");
+
+		display: block;
+		color: palette("main-blue");
+		overflow-wrap: anywhere;
+
+		.structure-place__step--current & {
+			@include text("m-500");
+
+			color: palette("black-txt");
+		}
+	}
+
+	.structure-place__link {
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+
+	.structure-place__manager {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		padding-top: 10px;
+		border-top: 1px solid palette("form-border");
+	}
+
+	.structure-place__person {
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		min-width: 0;
+	}
+
+	.structure-place__avatar {
+		@include avatar(palette("icon-grey"));
+
+		flex: none;
+		width: 36px;
+		height: 36px;
+	}
+
+	.structure-place__initials {
+		@include avatar-initials;
+	}
+
+	.structure-place__info {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+	}
+
+	.structure-place__name {
+		@include text("m-500");
+
+		color: palette("black-txt");
+		overflow-wrap: anywhere;
+		transition: color $transition-default;
+	}
+
+	a.structure-place__name:hover,
+	a.structure-place__name:focus-visible {
+		color: palette("blue-txt");
+	}
+
+	.structure-place__meta {
+		@include text("s-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.structure-place__more {
+		@include text("m-400");
+
+		align-self: flex-start;
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+}

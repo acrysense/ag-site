@@ -1,0 +1,25 @@
+{{!--
+	Блок карточек на странице подразделения — белый блок: заголовок H2, справа ссылка («Все юрлица
+	холдинга →»), сетка: подразделения (узлы StructNode, с 1280 по 4) или юрлица (EntityCard, с
+	1280 по 3); с 768 по 2, на телефоне по одной.
+	props: title, link { text, url }, kind — units | entities, items. Пусто — блока нет.
+--}}
+{{#if props.items.length}}
+    <section class="unit-cards unit-cards--{{default props.kind 'units'}}" aria-label="{{props.title}}">
+        <div class="unit-cards__head">
+            <h2 class="unit-cards__title">{{props.title}}</h2>
+            {{#if props.link.url}}<a class="unit-cards__link" href="{{props.link.url}}">{{props.link.text}} →</a>{{/if}}
+        </div>
+        <ul class="unit-cards__grid" role="list">
+            {{#each props.items}}
+                <li class="unit-cards__item">
+                    {{#if (eq ../props.kind "entities")}}
+                        {{> sections/holding/EntityCard/EntityCard props=this}}
+                    {{else}}
+                        {{> sections/holding/StructNode/StructNode props=this}}
+                    {{/if}}
+                </li>
+            {{/each}}
+        </ul>
+    </section>
+{{/if}}

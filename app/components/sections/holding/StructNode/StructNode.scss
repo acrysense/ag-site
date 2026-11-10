@@ -1,0 +1,133 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Узел — фон BG.Info, рамка Block.Border, поля 20, скругление 20: тип S/400 Dark-grey.TXT и
+// название H4 Black.TXT через 4; через 12 руководитель — фото 36, ФИО M/500 Black.TXT и должность
+// S/400 Dark-grey.TXT через 10; через 20 черта Block.Border, через 16 мета S/400 Dark-grey.TXT и
+// стрелка 16 через 8 — прижаты к низу (узлы ряда одной высоты). Раскрытый (панель под схемой) —
+// рамка Main Blue. Наведение на ссылку или кнопку — название Blue.TXT.
+@layer components {
+	.struct-node {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+		min-width: 0;
+		padding: 19px;
+		color: palette("black-txt");
+		text-align: left;
+		background: palette("bg-info");
+		border: 1px solid palette("block-border");
+		border-radius: $radius-content-block;
+		transition: border-color $transition-default;
+
+		&--toggle[aria-expanded="true"] {
+			border-color: palette("main-blue");
+		}
+	}
+
+	.struct-node__top {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		min-width: 0;
+		padding-bottom: 20px;
+	}
+
+	.struct-node__heading {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		min-width: 0;
+	}
+
+	.struct-node__type {
+		@include text("s-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.struct-node__title {
+		@include text("h4");
+
+		color: palette("black-txt");
+		overflow-wrap: anywhere;
+		transition: color $transition-default;
+	}
+
+	.struct-node--link:hover .struct-node__title,
+	.struct-node--link:focus-visible .struct-node__title,
+	.struct-node--toggle:hover .struct-node__title,
+	.struct-node--toggle:focus-visible .struct-node__title {
+		color: palette("blue-txt");
+	}
+
+	.struct-node__head {
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		min-width: 0;
+	}
+
+	.struct-node__avatar {
+		@include avatar(palette("icon-grey"));
+
+		flex: none;
+		width: 36px;
+		height: 36px;
+	}
+
+	.struct-node__initials {
+		@include avatar-initials;
+	}
+
+	.struct-node__person {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+	}
+
+	.struct-node__name {
+		@include text("m-500");
+
+		overflow-wrap: anywhere;
+	}
+
+	.struct-node__role {
+		@include text("s-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.struct-node__footer {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+		margin-top: auto;
+		padding-top: 16px;
+		border-top: 1px solid palette("block-border");
+	}
+
+	.struct-node__meta {
+		@include text("s-400");
+
+		flex: 1 1 auto;
+		min-width: 0;
+		color: palette("dark-grey-txt");
+	}
+
+	.struct-node__arrow {
+		flex: none;
+		width: 16px;
+		height: 16px;
+		color: palette("black-txt");
+
+		&--toggle {
+			transition: transform $transition-default;
+
+			.struct-node[aria-expanded="true"] & {
+				transform: rotate(180deg);
+			}
+		}
+	}
+}

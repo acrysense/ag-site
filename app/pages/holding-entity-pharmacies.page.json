@@ -1,0 +1,336 @@
+{
+	"title": "ООО «Аптека групп Центр» — структура холдинга «Аптека групп»",
+	"auth": true,
+	"description": "ООО «Аптека групп Центр»: контакты, бренд, отделы, аптеки и сотрудники.",
+	"nav": {
+		"group": "Холдинг",
+		"title": "Юрлицо с аптеками — по аптекам",
+		"order": 93
+	},
+	"data": {
+		"breadcrumbs": [
+			{
+				"title": "Главная",
+				"url": "./index.html"
+			},
+			{
+				"title": "Структура холдинга",
+				"url": "./holding.html"
+			},
+			{
+				"title": "ООО «Аптека групп Центр»"
+			}
+		],
+		"entity": {
+			"name": "ООО «Аптека групп Центр»",
+			"rows": [
+				{
+					"label": "Адрес:",
+					"value": "г. Минск, пр-т Победителей, 84-2, офис 16"
+				},
+				{
+					"label": "Телефон:",
+					"links": [
+						{
+							"text": "+375 17 249 00 05",
+							"url": "tel:+375172490005"
+						}
+					]
+				},
+				{
+					"label": "Бренд:",
+					"value": "ADEL"
+				}
+			],
+			"html": "<p>ООО «Аптека групп Центр» — розничная аптечная сеть холдинга «Аптека групп» в Минске и Минской области: 96 аптек и около 310 сотрудников.</p>"
+		},
+		"brands": [
+			{
+				"name": "ADEL",
+				"logo": "./dev/img/holding/logo-adel.webp",
+				"rows": [
+					{
+						"label": "Телефон:",
+						"links": [
+							{
+								"text": "+375 (44) 503-42-64",
+								"url": "tel:+375445034264"
+							}
+						]
+					},
+					{
+						"label": "Сайт:",
+						"links": [
+							{
+								"text": "apteka-adel.by",
+								"url": "https://apteka-adel.by"
+							}
+						]
+					},
+					{
+						"label": "Email:",
+						"links": [
+							{
+								"text": "info@apteka-adel.by",
+								"url": "mailto:info@apteka-adel.by"
+							}
+						]
+					}
+				],
+				"social": [
+					{
+						"icon": "instagram",
+						"label": "ADEL в Instagram",
+						"url": "#"
+					}
+				],
+				"text": "Сеть аптек, где вас ждут профессиональная помощь, индивидуальный подход, а также большой выбор средств для здоровья и ухода за собой.",
+				"siteUrl": "https://apteka-adel.by"
+			}
+		],
+		"staff": {
+			"title": "Сотрудники",
+			"views": [
+				{
+					"text": "По отделам",
+					"url": "./holding-entity-network.html"
+				},
+				{
+					"text": "По аптекам",
+					"url": "./holding-entity-pharmacies.html",
+					"current": true
+				}
+			],
+			"controls": [
+				{
+					"id": "staff-city",
+					"label": "Город",
+					"prefix": "Город:",
+					"options": [
+						{
+							"text": "все",
+							"url": "#",
+							"current": true
+						},
+						{
+							"text": "Минск",
+							"url": "#"
+						},
+						{
+							"text": "Борисов",
+							"url": "#"
+						},
+						{
+							"text": "Жодино",
+							"url": "#"
+						},
+						{
+							"text": "Молодечно",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"id": "staff-sort",
+					"label": "Сортировка",
+					"options": [
+						{
+							"text": "По номеру",
+							"url": "#",
+							"current": true
+						},
+						{
+							"text": "По алфавиту",
+							"url": "#"
+						},
+						{
+							"text": "По адресу",
+							"url": "#"
+						}
+					]
+				}
+			],
+			"summary": "96 аптек · 310 сотрудников",
+			"groups": [
+				{
+					"id": "pharmacy-1",
+					"name": "Аптека №50 · г. Борисов, ул. Днепропетровская, 21М",
+					"headLabel": "Заведующая:",
+					"head": "Новая В.М.",
+					"count": 4,
+					"avatars": [
+						"./dev/img/person-1.webp",
+						"./dev/img/person-2.webp",
+						"./dev/img/person-3.webp",
+						"./dev/img/person-4.webp"
+					],
+					"open": true,
+					"employees": [
+						{
+							"name": "Новая Владислава Митрофановна",
+							"url": "./holding-employee.html",
+							"position": "Заведующая аптекой",
+							"photo": "./dev/img/person-1.webp",
+							"phone": {
+								"text": "+375 17 900-01-01",
+								"url": "tel:+375179000101"
+							},
+							"email": {
+								"text": "vlada.jein@apteka-group.by",
+								"url": "mailto:vlada.jein@apteka-group.by"
+							},
+							"head": true
+						},
+						{
+							"name": "Кравченко Игорь Олегович",
+							"url": "./holding-employee.html",
+							"position": "Фармацевт",
+							"photo": "./dev/img/person-2.webp",
+							"phone": {
+								"text": "+375 17 900-01-03",
+								"url": "tel:+375179000103"
+							},
+							"email": {
+								"text": "i.kravchenko@apteka-group.by",
+								"url": "mailto:i.kravchenko@apteka-group.by"
+							}
+						},
+						{
+							"name": "Сидорова Анна Павловна",
+							"url": "./holding-employee.html",
+							"position": "Провизор",
+							"photo": "./dev/img/person-3.webp",
+							"phone": {
+								"text": "+375 17 900-01-02",
+								"url": "tel:+375179000102"
+							},
+							"email": {
+								"text": "a.sidorova@apteka-group.by",
+								"url": "mailto:a.sidorova@apteka-group.by"
+							}
+						},
+						{
+							"name": "Ковальчук Андрей Сергеевич",
+							"url": "./holding-employee.html",
+							"position": "Фармацевт",
+							"photo": "./dev/img/person-4.webp",
+							"phone": {
+								"text": "+375 17 900-01-04",
+								"url": "tel:+375179000104"
+							},
+							"email": {
+								"text": "a.kovalchuk@apteka-group.by",
+								"url": "mailto:a.kovalchuk@apteka-group.by"
+							}
+						}
+					]
+				},
+				{
+					"id": "pharmacy-2",
+					"name": "Аптека №12 · г. Минск, пр-т Независимости, 95",
+					"headLabel": "Заведующая:",
+					"head": "Петрова И.С.",
+					"count": 6,
+					"avatars": [
+						"./dev/img/person-2.webp",
+						"./dev/img/person-3.webp",
+						"./dev/img/person-4.webp",
+						"./dev/img/person-5.webp",
+						"./dev/img/person-1.webp"
+					],
+					"employees": []
+				},
+				{
+					"id": "pharmacy-3",
+					"name": "Аптека №17 · г. Минск, ул. Притыцкого, 83",
+					"headLabel": "Заведующая:",
+					"head": "Кузьмич О.А.",
+					"count": 5,
+					"avatars": [
+						"./dev/img/person-5.webp",
+						"./dev/img/person-4.webp",
+						"./dev/img/person-3.webp",
+						"./dev/img/person-2.webp",
+						"./dev/img/person-1.webp"
+					],
+					"employees": []
+				},
+				{
+					"id": "pharmacy-4",
+					"name": "Аптека №23 · г. Молодечно, ул. Великий Гостинец, 40",
+					"headLabel": "Заведующая:",
+					"head": "Ковалёва Н.Н.",
+					"count": 4,
+					"avatars": [
+						"./dev/img/person-3.webp",
+						"./dev/img/person-1.webp",
+						"./dev/img/person-5.webp"
+					],
+					"employees": []
+				},
+				{
+					"id": "pharmacy-5",
+					"name": "Аптека №31 · г. Жодино, пр-т Мира, 12",
+					"headLabel": "Заведующая:",
+					"head": "Сидоренко Е.В.",
+					"count": 3,
+					"avatars": [
+						"./dev/img/person-4.webp",
+						"./dev/img/person-2.webp",
+						"./dev/img/person-1.webp",
+						"./dev/img/person-5.webp",
+						"./dev/img/person-3.webp"
+					],
+					"employees": []
+				}
+			],
+			"pagination": {
+				"next": {
+					"url": "#"
+				},
+				"pages": [
+					{
+						"number": 1,
+						"current": true
+					},
+					{
+						"number": 2,
+						"url": "#"
+					},
+					{
+						"number": 3,
+						"url": "#"
+					},
+					{
+						"number": 4,
+						"url": "#",
+						"far": true
+					},
+					{
+						"gap": true
+					},
+					{
+						"number": 17,
+						"url": "#",
+						"far": true
+					},
+					{
+						"number": 18,
+						"url": "#",
+						"far": true
+					},
+					{
+						"number": 19,
+						"url": "#",
+						"far": true
+					},
+					{
+						"number": 20,
+						"url": "#"
+					}
+				],
+				"total": 96
+			}
+		}
+	}
+}

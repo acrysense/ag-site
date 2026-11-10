@@ -1,0 +1,31 @@
+{{!--
+	Сотрудники подразделения — белый блок: заголовок H2, справа сортировка (SortMenu, «По
+	подразделениям»), фильтр по отделам — вкладки «Все · 24», «Отдел учета · 11»… (ссылки,
+	SearchSections tabs; прокрутка вбок), список по группам: подпись группы («Руководство
+	дирекции», «Отдел учета») и сотрудники (EmployeeRow); внизу страницы и «Всего».
+	props: title, sort [SortMenu], filters [{ text, url, count, current, icon (profile — «Все»,
+	folder — отдел) }], groups [{ title, employees [EmployeeRow] }], pagination [Pagination].
+	Пусто — блока нет.
+--}}
+{{#if props.groups.length}}
+    <section class="unit-staff" aria-labelledby="unit-staff-title">
+        <div class="unit-staff__head">
+            <h2 class="unit-staff__title" id="unit-staff-title">{{default props.title "Сотрудники"}}</h2>
+            {{#if props.sort}}{{> components/SortMenu/SortMenu props=props.sort}}{{/if}}
+        </div>
+        {{#if props.filters.length}}
+            {{> sections/search/SearchSections/SearchSections props=(obj title=(default props.filtersLabel "Отделы") variant="tabs" countLabel=": сотрудников " items=props.filters)}}
+        {{/if}}
+        <div class="unit-staff__list">
+            {{#each props.groups}}
+                <div class="unit-staff__group">
+                    {{#if title}}<h3 class="unit-staff__group-title">{{title}}</h3>{{/if}}
+                    <ul class="unit-staff__rows" role="list">
+                        {{#each employees}}{{> sections/holding/EmployeeRow/EmployeeRow props=this}}{{/each}}
+                    </ul>
+                </div>
+            {{/each}}
+        </div>
+        {{#if props.pagination}}{{> components/Pagination/Pagination props=props.pagination}}{{/if}}
+    </section>
+{{/if}}

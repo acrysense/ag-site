@@ -5,7 +5,7 @@
 	"nav": {
 		"group": "Холдинг",
 		"title": "Сотрудник — карточка",
-		"order": 92
+		"order": 94
 	},
 	"data": {
 		"breadcrumbs": [
@@ -141,6 +141,38 @@
 				}
 			],
 			"staffUrl": "./holding-entity.html"
+		},
+		"place": {
+			"chain": [
+				{
+					"text": "Совет директоров",
+					"url": "./holding-management.html"
+				},
+				{
+					"text": "Управляющая компания",
+					"url": "./holding-management.html"
+				},
+				{
+					"text": "Дирекция розничного бизнеса",
+					"url": "./holding-directorate.html"
+				},
+				{
+					"text": "ООО «Аптека групп Центр»",
+					"url": "./holding-entity-network.html"
+				},
+				{
+					"text": "Аптека №50 пятой категории"
+				}
+			],
+			"manager": {
+				"name": "Петров А.И.",
+				"meta": "ООО «Аптека групп Центр»",
+				"photo": "./dev/img/person-4.webp",
+				"url": "./holding-employee.html"
+			},
+			"link": {
+				"url": "./holding-management.html"
+			}
 		},
 		"colleagues": {
 			"title": "Коллеги по подразделению",

@@ -1,0 +1,415 @@
+{
+	"title": "ООО «Аптека групп Центр» — структура холдинга «Аптека групп»",
+	"auth": true,
+	"description": "ООО «Аптека групп Центр»: контакты, бренд, отделы, аптеки и сотрудники.",
+	"nav": {
+		"group": "Холдинг",
+		"title": "Юрлицо с аптеками — по отделам",
+		"order": 92
+	},
+	"data": {
+		"breadcrumbs": [
+			{
+				"title": "Главная",
+				"url": "./index.html"
+			},
+			{
+				"title": "Структура холдинга",
+				"url": "./holding.html"
+			},
+			{
+				"title": "ООО «Аптека групп Центр»"
+			}
+		],
+		"entity": {
+			"name": "ООО «Аптека групп Центр»",
+			"rows": [
+				{
+					"label": "Адрес:",
+					"value": "г. Минск, пр-т Победителей, 84-2, офис 16"
+				},
+				{
+					"label": "Телефон:",
+					"links": [
+						{
+							"text": "+375 17 249 00 05",
+							"url": "tel:+375172490005"
+						}
+					]
+				},
+				{
+					"label": "Бренд:",
+					"value": "ADEL"
+				}
+			],
+			"html": "<p>ООО «Аптека групп Центр» — розничная аптечная сеть холдинга «Аптека групп» в Минске и Минской области: 96 аптек и около 310 сотрудников.</p>"
+		},
+		"brands": [
+			{
+				"name": "ADEL",
+				"logo": "./dev/img/holding/logo-adel.webp",
+				"rows": [
+					{
+						"label": "Телефон:",
+						"links": [
+							{
+								"text": "+375 (44) 503-42-64",
+								"url": "tel:+375445034264"
+							}
+						]
+					},
+					{
+						"label": "Сайт:",
+						"links": [
+							{
+								"text": "apteka-adel.by",
+								"url": "https://apteka-adel.by"
+							}
+						]
+					},
+					{
+						"label": "Email:",
+						"links": [
+							{
+								"text": "info@apteka-adel.by",
+								"url": "mailto:info@apteka-adel.by"
+							}
+						]
+					}
+				],
+				"social": [
+					{
+						"icon": "instagram",
+						"label": "ADEL в Instagram",
+						"url": "#"
+					}
+				],
+				"text": "Сеть аптек, где вас ждут профессиональная помощь, индивидуальный подход, а также большой выбор средств для здоровья и ухода за собой.",
+				"siteUrl": "https://apteka-adel.by"
+			}
+		],
+		"staff": {
+			"title": "Сотрудники",
+			"views": [
+				{
+					"text": "По отделам",
+					"url": "./holding-entity-network.html",
+					"current": true
+				},
+				{
+					"text": "По аптекам",
+					"url": "./holding-entity-pharmacies.html"
+				}
+			],
+			"controls": [
+				{
+					"id": "staff-sort",
+					"label": "Сортировка",
+					"options": [
+						{
+							"text": "По алфавиту",
+							"url": "#",
+							"current": true
+						},
+						{
+							"text": "По числу сотрудников",
+							"url": "#"
+						}
+					]
+				}
+			],
+			"summary": "4 отдела · 27 сотрудников",
+			"groups": [
+				{
+					"id": "dept-1",
+					"name": "Бухгалтерия",
+					"head": "Иванов Д.А.",
+					"count": 7,
+					"avatars": [
+						"./dev/img/person-4.webp",
+						"./dev/img/person-5.webp",
+						"./dev/img/leader-1.webp",
+						"./dev/img/leader-2.webp",
+						"./dev/img/leader-3.webp"
+					],
+					"employees": [
+						{
+							"name": "Козлова Наталья Викторовна",
+							"url": "./holding-employee.html",
+							"position": "Начальник юридического отдела",
+							"photo": "./dev/img/person-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 201",
+								"url": "tel:+375173947034,201"
+							},
+							"email": {
+								"text": "n.kozlova@apteka-group.by",
+								"url": "mailto:n.kozlova@apteka-group.by"
+							},
+							"head": true
+						},
+						{
+							"name": "Смирнов Алексей Игоревич",
+							"url": "./holding-employee.html",
+							"position": "Ведущий юрисконсульт",
+							"photo": "./dev/img/leader-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 202",
+								"url": "tel:+375173947034,202"
+							},
+							"email": {
+								"text": "a.smirnov@apteka-group.by",
+								"url": "mailto:a.smirnov@apteka-group.by"
+							}
+						},
+						{
+							"name": "Павлюк Ольга Сергеевна",
+							"url": "./holding-employee.html",
+							"position": "Юрисконсульт",
+							"photo": "./dev/img/person-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 203",
+								"url": "tel:+375173947034,203"
+							},
+							"email": {
+								"text": "o.pavlyuk@apteka-group.by",
+								"url": "mailto:o.pavlyuk@apteka-group.by"
+							}
+						},
+						{
+							"name": "Громов Денис Андреевич",
+							"url": "./holding-employee.html",
+							"position": "Специалист по договорной работе",
+							"photo": "./dev/img/leader-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 204",
+								"url": "tel:+375173947034,204"
+							},
+							"email": {
+								"text": "d.gromov@apteka-group.by",
+								"url": "mailto:d.gromov@apteka-group.by"
+							}
+						}
+					],
+					"open": true
+				},
+				{
+					"id": "dept-2",
+					"name": "Отдел персонала",
+					"head": "Морозов К.С.",
+					"count": 5,
+					"avatars": [
+						"./dev/img/leader-5.webp",
+						"./dev/img/person-1.webp",
+						"./dev/img/person-2.webp",
+						"./dev/img/person-3.webp",
+						"./dev/img/person-4.webp"
+					],
+					"employees": [
+						{
+							"name": "Козлова Наталья Викторовна",
+							"url": "./holding-employee.html",
+							"position": "Начальник юридического отдела",
+							"photo": "./dev/img/person-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 201",
+								"url": "tel:+375173947034,201"
+							},
+							"email": {
+								"text": "n.kozlova@apteka-group.by",
+								"url": "mailto:n.kozlova@apteka-group.by"
+							},
+							"head": true
+						},
+						{
+							"name": "Смирнов Алексей Игоревич",
+							"url": "./holding-employee.html",
+							"position": "Ведущий юрисконсульт",
+							"photo": "./dev/img/leader-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 202",
+								"url": "tel:+375173947034,202"
+							},
+							"email": {
+								"text": "a.smirnov@apteka-group.by",
+								"url": "mailto:a.smirnov@apteka-group.by"
+							}
+						},
+						{
+							"name": "Павлюк Ольга Сергеевна",
+							"url": "./holding-employee.html",
+							"position": "Юрисконсульт",
+							"photo": "./dev/img/person-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 203",
+								"url": "tel:+375173947034,203"
+							},
+							"email": {
+								"text": "o.pavlyuk@apteka-group.by",
+								"url": "mailto:o.pavlyuk@apteka-group.by"
+							}
+						},
+						{
+							"name": "Громов Денис Андреевич",
+							"url": "./holding-employee.html",
+							"position": "Специалист по договорной работе",
+							"photo": "./dev/img/leader-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 204",
+								"url": "tel:+375173947034,204"
+							},
+							"email": {
+								"text": "d.gromov@apteka-group.by",
+								"url": "mailto:d.gromov@apteka-group.by"
+							}
+						}
+					]
+				},
+				{
+					"id": "dept-3",
+					"name": "Отдел закупок",
+					"head": "Белова О.Л.",
+					"count": 6,
+					"avatars": [
+						"./dev/img/leader-1.webp",
+						"./dev/img/leader-2.webp",
+						"./dev/img/leader-3.webp",
+						"./dev/img/leader-4.webp",
+						"./dev/img/leader-5.webp"
+					],
+					"employees": [
+						{
+							"name": "Козлова Наталья Викторовна",
+							"url": "./holding-employee.html",
+							"position": "Начальник юридического отдела",
+							"photo": "./dev/img/person-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 201",
+								"url": "tel:+375173947034,201"
+							},
+							"email": {
+								"text": "n.kozlova@apteka-group.by",
+								"url": "mailto:n.kozlova@apteka-group.by"
+							},
+							"head": true
+						},
+						{
+							"name": "Смирнов Алексей Игоревич",
+							"url": "./holding-employee.html",
+							"position": "Ведущий юрисконсульт",
+							"photo": "./dev/img/leader-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 202",
+								"url": "tel:+375173947034,202"
+							},
+							"email": {
+								"text": "a.smirnov@apteka-group.by",
+								"url": "mailto:a.smirnov@apteka-group.by"
+							}
+						},
+						{
+							"name": "Павлюк Ольга Сергеевна",
+							"url": "./holding-employee.html",
+							"position": "Юрисконсульт",
+							"photo": "./dev/img/person-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 203",
+								"url": "tel:+375173947034,203"
+							},
+							"email": {
+								"text": "o.pavlyuk@apteka-group.by",
+								"url": "mailto:o.pavlyuk@apteka-group.by"
+							}
+						},
+						{
+							"name": "Громов Денис Андреевич",
+							"url": "./holding-employee.html",
+							"position": "Специалист по договорной работе",
+							"photo": "./dev/img/leader-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 204",
+								"url": "tel:+375173947034,204"
+							},
+							"email": {
+								"text": "d.gromov@apteka-group.by",
+								"url": "mailto:d.gromov@apteka-group.by"
+							}
+						}
+					]
+				},
+				{
+					"id": "dept-4",
+					"name": "Отдел продаж",
+					"head": "Егоров В.Н.",
+					"count": 9,
+					"avatars": [
+						"./dev/img/leader-4.webp",
+						"./dev/img/leader-5.webp",
+						"./dev/img/person-1.webp",
+						"./dev/img/person-2.webp",
+						"./dev/img/person-3.webp"
+					],
+					"employees": [
+						{
+							"name": "Козлова Наталья Викторовна",
+							"url": "./holding-employee.html",
+							"position": "Начальник юридического отдела",
+							"photo": "./dev/img/person-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 201",
+								"url": "tel:+375173947034,201"
+							},
+							"email": {
+								"text": "n.kozlova@apteka-group.by",
+								"url": "mailto:n.kozlova@apteka-group.by"
+							},
+							"head": true
+						},
+						{
+							"name": "Смирнов Алексей Игоревич",
+							"url": "./holding-employee.html",
+							"position": "Ведущий юрисконсульт",
+							"photo": "./dev/img/leader-1.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 202",
+								"url": "tel:+375173947034,202"
+							},
+							"email": {
+								"text": "a.smirnov@apteka-group.by",
+								"url": "mailto:a.smirnov@apteka-group.by"
+							}
+						},
+						{
+							"name": "Павлюк Ольга Сергеевна",
+							"url": "./holding-employee.html",
+							"position": "Юрисконсульт",
+							"photo": "./dev/img/person-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 203",
+								"url": "tel:+375173947034,203"
+							},
+							"email": {
+								"text": "o.pavlyuk@apteka-group.by",
+								"url": "mailto:o.pavlyuk@apteka-group.by"
+							}
+						},
+						{
+							"name": "Громов Денис Андреевич",
+							"url": "./holding-employee.html",
+							"position": "Специалист по договорной работе",
+							"photo": "./dev/img/leader-2.webp",
+							"phone": {
+								"text": "+375 17 394 70 34, доб. 204",
+								"url": "tel:+375173947034,204"
+							},
+							"email": {
+								"text": "d.gromov@apteka-group.by",
+								"url": "mailto:d.gromov@apteka-group.by"
+							}
+						}
+					]
+				}
+			]
+		}
+	}
+}

@@ -1,7 +1,8 @@
 {{!--
 	Разделы поиска с количеством найденного. Текущий — синий, раздел без результатов — серый.
 	variant: menu — список в сайдбаре (с 1024), tabs — лента вкладок с иконками (до 1024).
-	props: title («Разделы»), variant, items [{ text, url, count, current, icon }].
+	props: title («Разделы»), variant, countLabel (для скринридера перед числом, «: найдено »), items
+	[{ text, url, count, current, icon }]. Тот же вид вкладок — фильтр по отделам (holding/UnitStaff).
 --}}
 {{#if props.items.length}}
     <nav class="search-sections search-sections--{{default props.variant 'menu'}}" aria-label="{{default props.title 'Разделы'}}" {{#if (eq props.variant 'tabs')}}data-module="SearchSections" data-path="sections/search"{{/if}}>
@@ -12,7 +13,7 @@
                     <a class="search-sections__item{{#unless count}} is-empty{{/unless}}" href="{{url}}" {{#if current}}aria-current="page"{{/if}}>
                         {{#if (and icon (eq ../props.variant 'tabs'))}}{{> components/Icon/Icon name=icon class="search-sections__icon"}}{{/if}}
                         <span class="search-sections__text">{{text}}</span>
-                        <span class="search-sections__count"><span class="visually-hidden">: найдено </span>{{default count 0}}</span>
+                        <span class="search-sections__count"><span class="visually-hidden">{{default ../props.countLabel ": найдено "}}</span>{{default count 0}}</span>
                     </a>
                 </li>
             {{/each}}

@@ -35,6 +35,25 @@
 		color: palette("black-txt");
 	}
 
+	// Вид и фильтры в строку: переключатель слева, сортировки справа через 8; не помещаются —
+	// сортировки переносятся под переключатель
+	.entity-staff__bar {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px 8px;
+		align-items: center;
+		justify-content: space-between;
+		min-width: 0;
+	}
+
+	.entity-staff__controls {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px 12px;
+		align-items: center;
+		margin-left: auto;
+	}
+
 	.entity-staff__summary {
 		@include text("m-400");
 

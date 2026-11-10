@@ -902,21 +902,89 @@
 				{{#> state label="Загрузка" note="фото грузятся лениво: до загрузки — серая заготовка своей ширины (по width/height), лента не прыгает"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="holding-hero" page="holding" group="Холдинг" title="Шапка раздела" how='С 1024 — заголовок и цифры слева, председатель справа; уже — друг под другом. Мобильного макета нет — наше.' figma='4814:1121' backend='app/components/sections/holding/HoldingHero/ · docs/contracts/holding.md'}}
+			{{#> story id="holding-hero" page="holding" group="Холдинг" title="Шапка раздела" how='Компактная: заголовок и подзаголовок, справа переключатель вида «По управлению / По юрлицам» (ссылки на страницы). До 1024 — переключатель под заголовком. Мобильного макета нет — наше.' figma='8728:4137' backend='app/components/sections/holding/HoldingHero/ · docs/contracts/holding.md'}}
 				{{#> state label="Обычное" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/HoldingHero/HoldingHero props=data.holdingHero}}</div>
 				{{/state}}
-				{{#> state label="Без председателя" bg="page"}}
+				{{#> state label="Без переключателя" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/HoldingHero/HoldingHero props=data.holdingHeroSolo}}</div>
 				{{/state}}
 				{{#> state label="Длинный текст" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/HoldingHero/HoldingHero props=data.holdingHeroLong}}</div>
 				{{/state}}
 				{{#> state label="Загрузка" note="не применимо: шапка приходит с сервера вместе со страницей"}}{{/state}}
-				{{#> state label="Пусто" note="не применимо: заголовок обязателен; без цифр и карточки — только заголовок"}}{{/state}}
+				{{#> state label="Пусто" note="не применимо: заголовок обязателен; без переключателя — только заголовок"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="holding-entities" page="holding" group="Холдинг" title="Юрлица холдинга" how='С 1280 по 3 в ряд, с 768 по 2, на телефоне по одной; карточки ряда одной высоты.' figma='4814:1146, карточка — 4814:1466' backend='app/components/sections/holding/HoldingEntities/ · docs/contracts/holding.md'}}
+			{{#> story id="org-chart" page="holding-management" group="Холдинг" title="Оргсхема" how='Уровни сверху вниз со связями. С 1280 ряд узлов — в линию с общей связью, уже — сеткой по 2 (на телефоне по одному). Узел с подчинёнными раскрывает панель под рядом (одна за раз), «Свернуть» — назад к узлу; остальные узлы — ссылки на страницы подразделений.' figma='8717:1858' backend='app/components/sections/holding/OrgChart/ · docs/contracts/holding.md — «По управлению»'}}
+				{{#> state label="Корпоративный центр раскрыт" bg="page"}}
+					<div class="container page-inner">{{> sections/holding/OrgChart/OrgChart props=data.orgChart}}</div>
+				{{/state}}
+				{{#> state label="Всё свёрнуто" bg="page"}}
+					<div class="container page-inner">{{> sections/holding/OrgChart/OrgChart props=data.orgChartClosed}}</div>
+				{{/state}}
+				{{#> state label="Два уровня" bg="page"}}
+					<div class="container page-inner">{{> sections/holding/OrgChart/OrgChart props=data.orgChartSmall}}</div>
+				{{/state}}
+				{{#> state label="Пусто" note="не применимо: у холдинга всегда есть Совет директоров; нет уровней — блок не выводится"}}{{/state}}
+				{{#> state label="Загрузка" note="не применимо: схема приходит с сервера вместе со страницей"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="struct-node" page="holding-management" group="Холдинг" title="Узел оргсхемы" how='Тип, название, руководитель и мета; ссылка — стрелка вправо, раскрывает панель — стрелка вниз, раскрытый — синяя рамка. Наведение — название Blue.TXT.' figma='Struct/Node 8670:544' backend='app/components/sections/holding/StructNode/ · docs/contracts/holding.md'}}
+				{{#> state label="Ссылка" bg="page"}}
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/holding/StructNode/StructNode props=data.structNodes.link}}</div></div>
+				{{/state}}
+				{{#> state label="Без ссылки и меты" bg="page"}}
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/holding/StructNode/StructNode props=data.structNodes.plain}}</div></div>
+				{{/state}}
+				{{#> state label="Без руководителя" bg="page"}}
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/holding/StructNode/StructNode props=data.structNodes.nohead}}</div></div>
+				{{/state}}
+				{{#> state label="Длинный текст, без фото" bg="page"}}
+					<div class="container page-inner"><div class="story-column-narrow">{{> sections/holding/StructNode/StructNode props=data.structNodes.long}}</div></div>
+				{{/state}}
+			{{/story}}
+
+			{{#> story id="unit-header" page="holding-directorate" group="Холдинг" title="Шапка подразделения" how='Подпись, название, плашки, «Скопировать ссылку»; «Подчиняется: … › …»; руководитель и цифры (юрлиц или отделов и сотрудников). До 1024 — друг под другом, цифры в ряд.' figma='8712:2243' backend='app/components/sections/holding/UnitHeader/ · docs/contracts/holding.md — «Подразделение»'}}
+				{{#> state label="Дирекция с юрлицами" bg="page"}}
+					<div class="container page-inner">{{> sections/holding/UnitHeader/UnitHeader props=data.unitHeader}}</div>
+				{{/state}}
+				{{#> state label="Без руководителя и цифр" bg="page"}}
+					<div class="container page-inner">{{> sections/holding/UnitHeader/UnitHeader props=data.unitHeaderBare}}</div>
+				{{/state}}
+				{{#> state label="Длинный текст, без фото" bg="page"}}
+					<div class="container page-inner">{{> sections/holding/UnitHeader/UnitHeader props=data.unitHeaderLong}}</div>
+				{{/state}}
+				{{#> state label="Пусто" note="не применимо: название обязательно"}}{{/state}}
+				{{#> state label="Загрузка" note="не применимо: приходит с сервера вместе со страницей"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="unit-cards" page="holding-directorate" group="Холдинг" title="Подразделения и юрлица подразделения" how='Белый блок с заголовком; подразделения — узлы, с 1280 по 4; юрлица — карточки, с 1280 по 3 и ссылка «Все юрлица холдинга →». С 768 по 2.' figma='8712:2282, 8712:2289' backend='app/components/sections/holding/UnitCards/ · docs/contracts/holding.md'}}
+				{{#> state label="Подразделения" bg="page"}}
+					<div class="container page-inner">{{> sections/holding/UnitCards/UnitCards props=data.unitUnits}}</div>
+				{{/state}}
+				{{#> state label="Юрлица" bg="page"}}
+					<div class="container page-inner">{{> sections/holding/UnitCards/UnitCards props=data.unitEntities}}</div>
+				{{/state}}
+				{{#> state label="Пусто" note="блок не выводится (у подразделения нет юрлиц или подразделений)"}}{{/state}}
+				{{#> state label="Загрузка" note="не применимо: приходит с сервера вместе со страницей"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="unit-staff" page="holding-unit" group="Холдинг" title="Сотрудники подразделения" how='Сортировка справа, вкладки-фильтры по отделам (ссылки, прокрутка вбок), группы с подписью, страницы и «Всего».' figma='8739:15534' backend='app/components/sections/holding/UnitStaff/ · docs/contracts/holding.md'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container page-inner">{{> sections/holding/UnitStaff/UnitStaff props=data.unitStaff}}</div>
+				{{/state}}
+				{{#> state label="Пусто" note="блок не выводится"}}{{/state}}
+				{{#> state label="Загрузка" note="не применимо: список приходит со страницей, порции — страницами (GET)"}}{{/state}}
+			{{/story}}
+
+			{{#> story id="unit-tree" page="holding-unit" group="Холдинг" title="Дерево структуры" how='Тот же вид, что папки документов: шевроны раскрывают ветки, «Свернуть всё», текущее подразделение подсвечено, число — сотрудники. С 1024 — колонка 350 слева; на телефоне — внизу страницы, на месте.' figma='8712:2210' backend='app/components/sections/documents/DocumentsFolders/ (inline, collapseAll, countLabel) · docs/contracts/holding.md'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container page-inner"><div class="page-aside-cards">{{> sections/documents/DocumentsFolders/DocumentsFolders props=data.unitTree}}</div></div>
+				{{/state}}
+			{{/story}}
+
+			{{#> story id="holding-entities" page="holding" group="Холдинг" title="Юрлица холдинга" how='Белый блок, заголовок и число юрлиц. С 1280 по 3 в ряд, с 768 по 2, на телефоне по одной; карточки ряда одной высоты. Бренды — только если есть; у сетей аптек — «Аптек: N».' figma='8728:4143, карточка — 8728:2473' backend='app/components/sections/holding/HoldingEntities/ · docs/contracts/holding.md'}}
 				{{#> state label="Несколько" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/HoldingEntities/HoldingEntities props=data.holdingEntities}}</div>
 				{{/state}}
@@ -956,7 +1024,7 @@
 				{{#> state label="Пусто" note="брендов нет — боковой колонки нет, сотрудники встают под карточку юрлица"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="entity-staff" page="holding-entity" group="Холдинг" title="Сотрудники по отделам" how='Отдел раскрывается (работает без JS): название, до 5 фото, руководитель и число.' figma='4821:875' backend='app/components/sections/holding/EntityStaff/ · docs/contracts/holding.md — открытый отдел задаёт бэк'}}
+			{{#> story id="entity-staff" page="holding-entity" group="Холдинг" title="Сотрудники по отделам и аптекам" how='Группа (отдел или аптека) раскрывается без JS: название, до 5 фото, руководитель (у аптеки — заведующая) и число. У юрлица с аптеками — переключатель «По отделам / По аптекам» (ссылки), справа «Город: все» и сортировка; аптек много — страницы.' figma='4821:875, по аптекам — 8737:3043' backend='app/components/sections/holding/EntityStaff/ · docs/contracts/holding.md — открытый отдел задаёт бэк'}}
 				{{#> state label="Несколько отделов" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/EntityStaff/EntityStaff props=data.entityStaff}}</div>
 				{{/state}}
@@ -965,6 +1033,9 @@
 				{{/state}}
 				{{#> state label="Длинный текст, без фото" bg="page"}}
 					<div class="container page-inner">{{> sections/holding/EntityStaff/EntityStaff props=data.entityStaffLong}}</div>
+				{{/state}}
+				{{#> state label="По аптекам" bg="page"}}
+					<div class="container page-inner">{{> sections/holding/EntityStaff/EntityStaff props=data.entityStaffPharmacies}}</div>
 				{{/state}}
 				{{#> state label="Пусто" note="блок не выводится"}}{{/state}}
 				{{#> state label="Загрузка" note="не применимо: отделы приходят со страницей; если сотрудников тысячи — догрузка отдела при раскрытии (вопрос бэку, docs/contracts/holding.md)"}}{{/state}}
@@ -999,6 +1070,20 @@
 				{{#> state label="Без брендов" bg="page"}}
 					<div class="container page-inner"><div class="page-aside-cards">{{> sections/holding/EntityBrief/EntityBrief props=data.entityBriefNoBrands}}</div></div>
 				{{/state}}
+			{{/story}}
+
+			{{#> story id="structure-place" page="holding-employee" group="Холдинг" title="Место в структуре" how='Боковая колонка карточки сотрудника, под юрлицом: цепочка подчинения (ссылки на подразделения, последний шаг — подразделение сотрудника), непосредственный руководитель, «Открыть в структуре →».' figma='Structure card 8739:15244' backend='app/components/sections/holding/StructurePlace/ · docs/contracts/holding.md'}}
+				{{#> state label="Обычное" bg="page"}}
+					<div class="container page-inner"><div class="page-aside-cards">{{> sections/holding/StructurePlace/StructurePlace props=data.structurePlace}}</div></div>
+				{{/state}}
+				{{#> state label="Без руководителя" bg="page"}}
+					<div class="container page-inner"><div class="page-aside-cards">{{> sections/holding/StructurePlace/StructurePlace props=data.structurePlaceNoManager}}</div></div>
+				{{/state}}
+				{{#> state label="Длинный текст, без фото" bg="page"}}
+					<div class="container page-inner"><div class="page-aside-cards">{{> sections/holding/StructurePlace/StructurePlace props=data.structurePlaceLong}}</div></div>
+				{{/state}}
+				{{#> state label="Пусто" note="нет цепочки — блок не выводится"}}{{/state}}
+				{{#> state label="Загрузка" note="не применимо: приходит с сервера вместе с карточкой"}}{{/state}}
 			{{/story}}
 
 			{{#> story id="employee-colleagues" page="holding-employee" group="Холдинг" title="Коллеги по подразделению" how='Заголовок и «Все N сотрудников →», ниже сотрудники.' figma='Colleagues 4833:1253' backend='app/components/sections/holding/EmployeeColleagues/ · docs/contracts/holding.md'}}

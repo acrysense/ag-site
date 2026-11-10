@@ -1,6 +1,7 @@
 {{!--
 	Уровень дерева папок (DocumentsFolders), вызывает себя для подпапок.
-	items — папки уровня, id — основа id вложенных списков, hidden — уровень свёрнут.
+	items — папки уровня, id — основа id вложенных списков, hidden — уровень свёрнут, countLabel —
+	подпись числа для скринридера.
 --}}
 <ul class="documents-folders__list" role="list" {{#if id}}id="{{id}}"{{/if}} {{#if hidden}}hidden{{/if}}>
     {{#each items}}
@@ -16,11 +17,11 @@
                 <a class="documents-folders__link" href="{{url}}" {{#if current}}aria-current="page"{{/if}}>
                     {{> components/Icon/Icon name="folder" class="documents-folders__icon"}}
                     <span class="documents-folders__name">{{title}}</span>
-                    {{#if (isSet count)}}<span class="documents-folders__count"><span class="visually-hidden">, документов: </span>{{count}}</span>{{/if}}
+                    {{#if (isSet count)}}<span class="documents-folders__count"><span class="visually-hidden">{{../countLabel}}</span>{{count}}</span>{{/if}}
                 </a>
             </div>
             {{#if children.length}}
-                {{> sections/documents/DocumentsFolders/DocumentsFolderTree items=children id=(concat ../id '-' @index) hidden=(not expanded)}}
+                {{> sections/documents/DocumentsFolders/DocumentsFolderTree items=children id=(concat ../id '-' @index) hidden=(not expanded) countLabel=../countLabel}}
             {{/if}}
         </li>
     {{/each}}

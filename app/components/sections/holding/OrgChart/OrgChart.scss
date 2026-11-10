@@ -1,0 +1,263 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Белый блок, поля 20, части через 24: заголовок H1 Black.TXT (до схемы — ещё 32). Связи — линии
+// 2 BG.Main 2: между уровнями — 28 по центру; ряд — общая горизонтальная от центра первого узла до
+// центра последнего и от неё 20 к каждому узлу. Одиночный узел — 520 по центру. Узлы ряда через 16,
+// одной высоты. Раскрытая панель — под рядом, от раскрытого узла к ней связь 28; панель — белая с
+// рамкой Block.Border, поля 20, шапка через 20 от сетки: подпись S/400 Dark-grey.TXT, название H3,
+// описание M/400 Dark-grey.TXT через 4; руководитель (фото 44) и «Свернуть» (Light M) справа через
+// 16; сетка — 4 в ряд через 16. Внизу — S/400 Dark-grey.TXT. До 1280 ряды и панель — сеткой по 2
+// (до 768 — по одному), без горизонтальных связей; телефон — без белого блока.
+@layer components {
+	.org-chart {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		min-width: 0;
+
+		@include up(desktop) {
+			padding: 19px;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+	}
+
+	.org-chart__title {
+		@include text("h1-360");
+
+		margin-bottom: 8px;
+		color: palette("black-txt");
+
+		@include up(desktop) {
+			@include text("h1");
+
+			margin-bottom: 32px;
+		}
+	}
+
+	.org-chart__connector {
+		align-self: center;
+		width: 2px;
+		height: 28px;
+		background: palette("bg-main-2");
+	}
+
+	.org-chart__single {
+		align-self: center;
+		width: 100%;
+		max-width: 520px;
+	}
+
+	.org-chart__row {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 10px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		@include up(tablet) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 16px;
+		}
+
+		@include up(wide) {
+			display: flex;
+		}
+	}
+
+	.org-chart__col {
+		position: relative;
+		min-width: 0;
+
+		// С 1280 — ряд в линию: горизонтальная связь (::before — своя часть до соседей) и 20 вниз
+		// к узлу (::after)
+		@include up(wide) {
+			flex: 1 1 0;
+			padding-top: 22px;
+
+			&::before {
+				position: absolute;
+				top: 0;
+				right: -8px;
+				left: -8px;
+				height: 2px;
+				content: "";
+				background: palette("bg-main-2");
+			}
+
+			&:first-child::before {
+				left: 50%;
+			}
+
+			&:last-child::before {
+				right: 50%;
+			}
+
+			&:only-child::before {
+				content: none;
+			}
+
+			&::after {
+				position: absolute;
+				top: 0;
+				left: calc(50% - 1px);
+				width: 2px;
+				height: 22px;
+				content: "";
+				background: palette("bg-main-2");
+			}
+		}
+	}
+
+	// Связь от раскрытого узла к панели (с 1280, когда ряд в линию)
+	.org-chart__col .struct-node--toggle[aria-expanded="true"] {
+		@include up(wide) {
+			position: relative;
+
+			&::after {
+				position: absolute;
+				top: calc(100% + 25px);
+				left: calc(50% - 1px);
+				width: 2px;
+				height: 28px;
+				content: "";
+				background: palette("bg-main-2");
+			}
+		}
+	}
+
+	.org-panel {
+		@include expand;
+
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		min-width: 0;
+		padding: 19px;
+		background: palette("white");
+		border: 1px solid palette("block-border");
+		border-radius: $radius-content-block;
+
+		@include up(wide) {
+			margin-top: 52px;
+		}
+	}
+
+	.org-panel__head {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 16px;
+		align-items: center;
+		min-width: 0;
+	}
+
+	.org-panel__intro {
+		display: flex;
+		flex: 1 1 360px;
+		flex-direction: column;
+		gap: 4px;
+		min-width: 0;
+	}
+
+	.org-panel__caption {
+		@include text("s-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.org-panel__title {
+		@include text("h3");
+
+		color: palette("black-txt");
+		overflow-wrap: anywhere;
+	}
+
+	.org-panel__link {
+		color: inherit;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-txt");
+		}
+	}
+
+	.org-panel__text {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.org-panel__person {
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		min-width: 0;
+	}
+
+	.org-panel__avatar {
+		@include avatar(palette("icon-grey"));
+
+		flex: none;
+		width: 44px;
+		height: 44px;
+	}
+
+	.org-panel__initials {
+		@include avatar-initials;
+	}
+
+	.org-panel__who {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+	}
+
+	.org-panel__name {
+		@include text("m-500");
+
+		color: palette("black-txt");
+	}
+
+	.org-panel__role {
+		@include text("s-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.org-panel__close {
+		flex: none;
+	}
+
+	.org-panel__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 10px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		@include up(tablet) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 16px;
+		}
+
+		@include up(wide) {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+	}
+
+	.org-panel__item {
+		min-width: 0;
+	}
+
+	.org-chart__footnote {
+		@include text("s-400");
+
+		color: palette("dark-grey-txt");
+	}
+}

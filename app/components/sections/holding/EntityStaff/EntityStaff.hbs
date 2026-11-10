@@ -1,18 +1,35 @@
 {{!--
-	Сотрудники юрлица по отделам: заголовок H2, «8 отделов · 48 сотрудников»,
-	отделы — раскрывающиеся (details/summary, без JS): название, до 5 фото, «Руководитель» и
-	«Сотрудников»; внутри — сотрудники (EmployeeRow). Открытый отдел задаёт бэк (open).
-	props: title, summary, departments [{ id, name, open, head, count, avatars [фото, до 5],
-	employees [EmployeeRow] }]. Пусто — блока нет.
+	Сотрудники юрлица — по отделам или по аптекам: заголовок H2, переключатель вида «По отделам /
+	По аптекам» (ссылки, у юрлица без аптек — нет), справа фильтры и сортировка (SortMenu —
+	«По алфавиту», «Город: все», «По номеру»), «8 отделов · 48 сотрудников», группы —
+	раскрывающиеся (details/summary, без JS): название, до 5 фото, «Руководитель» («Заведующая» у
+	аптеки) и «Сотрудников»; внутри — сотрудники (EmployeeRow). Открытую группу задаёт бэк (open).
+	Много групп (аптеки) — страницы (Pagination).
+	props: title, views [{ text, url, current }], controls [SortMenu: { id, label, options }],
+	summary, groups [{ id, name, open, headLabel («Руководитель:»), head, count, avatars [фото, до 5],
+	employees [EmployeeRow] }] (departments — старое имя того же списка), pagination [Pagination].
+	Пусто — блока нет.
 --}}
-{{#if props.departments.length}}
+{{#if (or props.groups.length props.departments.length)}}
     <section class="entity-staff" aria-labelledby="entity-staff-title">
         <div class="entity-staff__head">
             <h2 class="entity-staff__title" id="entity-staff-title">{{default props.title "Сотрудники"}}</h2>
+            {{#if (or props.views.length props.controls.length)}}
+                <div class="entity-staff__bar">
+                    {{#if props.views.length}}
+                        {{> components/Tabs/Tabs props=(obj links=props.views label=(default props.viewsLabel "Сотрудники: вид") class="tabs--segmented entity-staff__views")}}
+                    {{/if}}
+                    {{#if props.controls.length}}
+                        <div class="entity-staff__controls">
+                            {{#each props.controls}}{{> components/SortMenu/SortMenu props=this}}{{/each}}
+                        </div>
+                    {{/if}}
+                </div>
+            {{/if}}
             {{#if props.summary}}<p class="entity-staff__summary">{{props.summary}}</p>{{/if}}
         </div>
         <div class="entity-staff__list">
-            {{#each props.departments}}
+            {{#each (or props.groups props.departments)}}
                 <details class="entity-dept" {{#if id}}id="{{id}}"{{/if}} {{#if open}}open{{/if}}>
                     <summary class="entity-dept__summary">
                         <span class="entity-dept__title">{{name}}</span>
@@ -23,7 +40,7 @@
                             </span>
                         {{/if}}
                         <span class="entity-dept__meta">
-                            {{#if head}}<span class="entity-dept__fact"><span class="entity-dept__fact-label">Руководитель:</span> {{head}}</span>{{/if}}
+                            {{#if head}}<span class="entity-dept__fact"><span class="entity-dept__fact-label">{{default headLabel "Руководитель:"}}</span> {{head}}</span>{{/if}}
                             {{#if (isSet count)}}<span class="entity-dept__fact"><span class="entity-dept__fact-label">Сотрудников:</span> {{count}}</span>{{/if}}
                         </span>
                     </summary>
@@ -35,5 +52,8 @@
                 </details>
             {{/each}}
         </div>
+        {{#if props.pagination}}
+            {{> components/Pagination/Pagination props=props.pagination}}
+        {{/if}}
     </section>
 {{/if}}

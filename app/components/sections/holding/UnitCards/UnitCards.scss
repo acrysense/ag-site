@@ -1,0 +1,86 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Белый блок, поля 20: заголовок H2 Black.TXT и ссылка M/400 Main Blue справа, через 20 сетка
+// через 16 (юрлица — ряды через 20). Карточки ряда одной высоты. Телефон — без белого блока.
+@layer components {
+	.unit-cards {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		min-width: 0;
+
+		@include up(desktop) {
+			gap: 20px;
+			padding: 19px;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+	}
+
+	.unit-cards__head {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px 16px;
+		align-items: baseline;
+		justify-content: space-between;
+	}
+
+	.unit-cards__title {
+		@include text("h2-360");
+
+		color: palette("black-txt");
+
+		@include up(desktop) {
+			@include text("h2");
+		}
+	}
+
+	.unit-cards__link {
+		@include text("m-400");
+
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+
+	.unit-cards__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 10px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		@include up(tablet) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 16px;
+		}
+	}
+
+	.unit-cards--units .unit-cards__grid {
+		@include up(wide) {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+	}
+
+	.unit-cards--entities .unit-cards__grid {
+		@include up(tablet) {
+			row-gap: 20px;
+		}
+
+		@include up(wide) {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	.unit-cards__item {
+		min-width: 0;
+	}
+}

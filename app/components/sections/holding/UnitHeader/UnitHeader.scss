@@ -1,0 +1,250 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Белый блок, поля 20, части через 24: подпись M/400 Dark-grey.TXT, название H1 Black.TXT и плашки
+// (S/400 Dark-grey.TXT на BG.Info, поля 6/12, скругление 10, через 8) — через 10; справа
+// «Скопировать ссылку» (Light M). «Подчиняется:» M/400 Dark-grey.TXT, ссылки Main Blue через «›».
+// Руководитель — карточка BG.Info с рамкой Block.Border, поля 20, скругление 20: фото 72, через 16
+// ФИО L/500 и метка, должность M/400 Dark-grey.TXT, телефон и e-mail Main Blue через 24; цифры —
+// такие же карточки справа через 20: число H0, подпись M/400 Dark-grey.TXT через 4. До 1024 —
+// друг под другом, цифры в ряд; телефон — без белого блока.
+@layer components {
+	.unit-header {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		min-width: 0;
+
+		@include up(desktop) {
+			padding: 19px;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+	}
+
+	.unit-header__top {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 16px 24px;
+		align-items: flex-start;
+	}
+
+	.unit-header__intro {
+		display: flex;
+		flex: 1 1 320px;
+		flex-direction: column;
+		gap: 10px;
+		min-width: 0;
+	}
+
+	.unit-header__caption {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.unit-header__title {
+		@include text("h1-360");
+
+		color: palette("black-txt");
+		overflow-wrap: anywhere;
+
+		@include up(desktop) {
+			@include text("h1");
+		}
+	}
+
+	.unit-header__tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.unit-header__tag {
+		@include text("s-400");
+
+		padding: 6px 12px;
+		color: palette("dark-grey-txt");
+		background: palette("bg-info");
+		border-radius: $radius-inner-block;
+	}
+
+	.unit-header__copy {
+		flex: none;
+	}
+
+	.unit-header__parents {
+		@include text("m-400");
+
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0 8px;
+		color: palette("dark-grey-txt");
+	}
+
+	.unit-header__parent {
+		color: palette("main-blue");
+		transition: color $transition-default;
+	}
+
+	a.unit-header__parent:hover,
+	a.unit-header__parent:focus-visible {
+		color: palette("blue-hover");
+	}
+
+	.unit-header__summary {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		min-width: 0;
+
+		@include up(desktop) {
+			flex-direction: row;
+			gap: 20px;
+		}
+	}
+
+	.unit-header__head,
+	.unit-header__stat {
+		background: palette("bg-info");
+		border: 1px solid palette("block-border");
+		border-radius: $radius-content-block;
+	}
+
+	.unit-header__head {
+		display: flex;
+		flex: 1 1 auto;
+		gap: 16px;
+		align-items: center;
+		min-width: 0;
+		padding: 19px;
+	}
+
+	.unit-header__avatar {
+		@include avatar(palette("icon-grey"));
+
+		flex: none;
+		width: 56px;
+		height: 56px;
+
+		@include up(desktop) {
+			width: 72px;
+			height: 72px;
+		}
+	}
+
+	.unit-header__initials {
+		@include avatar-initials;
+	}
+
+	.unit-header__person {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		min-width: 0;
+	}
+
+	.unit-header__name-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px 8px;
+		align-items: center;
+	}
+
+	.unit-header__name {
+		@include text("l-500");
+
+		color: palette("black-txt");
+		overflow-wrap: anywhere;
+		transition: color $transition-default;
+	}
+
+	a.unit-header__name:hover,
+	a.unit-header__name:focus-visible {
+		color: palette("blue-txt");
+	}
+
+	.unit-header__badge {
+		@include text("s-600");
+
+		padding: 2px 8px;
+		color: palette("main-blue");
+		background: palette("bg-violet");
+		border-radius: 6px;
+	}
+
+	.unit-header__role {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+	}
+
+	.unit-header__contacts {
+		@include text("m-400");
+
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0 24px;
+	}
+
+	.unit-header__contact {
+		color: palette("main-blue");
+		overflow-wrap: anywhere;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+
+	.unit-header__stats {
+		display: flex;
+		gap: 10px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		@include up(desktop) {
+			flex: none;
+			gap: 20px;
+		}
+	}
+
+	.unit-header__stat {
+		display: flex;
+		flex: 1 1 0;
+		flex-direction: column;
+		gap: 4px;
+		justify-content: center;
+		min-width: 0;
+		padding: 19px 23px;
+
+		@include up(desktop) {
+			flex: none;
+			min-width: 150px;
+		}
+	}
+
+	.unit-header__value {
+		@include text("h1-360");
+
+		color: palette("black-txt");
+		white-space: nowrap;
+
+		@include up(desktop) {
+			@include text("h0");
+		}
+	}
+
+	.unit-header__label {
+		@include text("m-400");
+
+		color: palette("dark-grey-txt");
+	}
+}

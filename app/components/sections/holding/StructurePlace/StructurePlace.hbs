@@ -1,0 +1,42 @@
+{{!--
+	Место сотрудника в структуре — карточка в боковой колонке: «Место в структуре», цепочка
+	подчинения сверху вниз (ссылки на подразделения, последний шаг — подразделение сотрудника,
+	жирным и без ссылки), «Непосредственный руководитель» (фото 36, ФИО, где работает — ссылка на
+	карточку), «Открыть в структуре →».
+	props: label, chain [{ text, url }], managerLabel, manager { name, meta, photo, url }, link {
+	text, url }. Нет цепочки — блока нет; нет руководителя — без него.
+--}}
+{{#if props.chain.length}}
+    <aside class="structure-place" aria-label="{{default props.label 'Место в структуре'}}">
+        <p class="structure-place__label">{{default props.label "Место в структуре"}}</p>
+        <ol class="structure-place__chain" role="list">
+            {{#each props.chain}}
+                <li class="structure-place__step{{#if @last}} structure-place__step--current{{/if}}">
+                    {{#if @last}}
+                        <span class="structure-place__text" aria-current="location">{{text}}</span>
+                    {{else if url}}
+                        <a class="structure-place__text structure-place__link" href="{{url}}">{{text}}</a>
+                    {{else}}
+                        <span class="structure-place__text">{{text}}</span>
+                    {{/if}}
+                </li>
+            {{/each}}
+        </ol>
+        {{#if props.manager.name}}
+            <div class="structure-place__manager">
+                <p class="structure-place__label">{{default props.managerLabel "Непосредственный руководитель"}}</p>
+                <div class="structure-place__person">
+                    <span class="structure-place__avatar" aria-hidden="true">
+                        <span class="structure-place__initials">{{initials props.manager.name}}</span>
+                        {{#if props.manager.photo}}<img src="{{props.manager.photo}}" width="36" height="36" alt="" loading="lazy" decoding="async" />{{/if}}
+                    </span>
+                    <span class="structure-place__info">
+                        {{#if props.manager.url}}<a class="structure-place__name" href="{{props.manager.url}}">{{props.manager.name}}</a>{{else}}<span class="structure-place__name">{{props.manager.name}}</span>{{/if}}
+                        {{#if props.manager.meta}}<span class="structure-place__meta">{{props.manager.meta}}</span>{{/if}}
+                    </span>
+                </div>
+            </div>
+        {{/if}}
+        {{#if props.link.url}}<a class="structure-place__more" href="{{props.link.url}}">{{default props.link.text "Открыть в структуре"}} →</a>{{/if}}
+    </aside>
+{{/if}}
