@@ -9,8 +9,12 @@
     "file": "assets/js/announce-D3OkgBby.js",
     "name": "announce"
   },
-  "_app-9jnfhDTZ.js": {
-    "file": "assets/js/app-9jnfhDTZ.js",
+  "_app-BxS27xl4.css": {
+    "file": "assets/css/app-BxS27xl4.css",
+    "src": "_app-BxS27xl4.css"
+  },
+  "_app-DnurTJYz.js": {
+    "file": "assets/js/app-DnurTJYz.js",
     "name": "app",
     "imports": [
       "_announce-D3OkgBby.js",
@@ -48,6 +52,7 @@
       "components/sections/documents/DocumentsFolders/DocumentsFolders.js",
       "components/sections/gallery/AlbumPhotos/AlbumPhotos.js",
       "components/sections/holding/EntityInfo/EntityInfo.js",
+      "components/sections/holding/OrgChart/OrgChart.js",
       "components/sections/home/Stats/Stats.js",
       "components/sections/news/JournalIssue/JournalIssue.js",
       "components/sections/news/NewsFilters/NewsFilters.js",
@@ -57,15 +62,11 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-wy_bXK_6.css"
+      "assets/css/app-BxS27xl4.css"
     ],
     "assets": [
       "assets/images/auth-ag-m2GDsMwR.svg"
     ]
-  },
-  "_app-wy_bXK_6.css": {
-    "file": "assets/css/app-wy_bXK_6.css",
-    "src": "_app-wy_bXK_6.css"
   },
   "_filter-panel-CZYuA1j-.js": {
     "file": "assets/js/filter-panel-CZYuA1j-.js",
@@ -161,12 +162,12 @@
     ]
   },
   "components/components/CopyLink/CopyLink.js": {
-    "file": "assets/js/CopyLink-yvZ9piTo.js",
+    "file": "assets/js/CopyLink-C9LFfS7V.js",
     "name": "CopyLink",
     "src": "components/components/CopyLink/CopyLink.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-9jnfhDTZ.js"
+      "_app-DnurTJYz.js"
     ]
   },
   "components/components/DateRange/DateRange.js": {
@@ -227,7 +228,7 @@
     "isDynamicEntry": true
   },
   "components/components/PhotoStrip/PhotoStrip.js": {
-    "file": "assets/js/PhotoStrip-Bh0cLjPo.js",
+    "file": "assets/js/PhotoStrip-BO6S9HXM.js",
     "name": "PhotoStrip",
     "src": "components/components/PhotoStrip/PhotoStrip.js",
     "isDynamicEntry": true,
@@ -236,12 +237,12 @@
     ]
   },
   "components/components/PhotoViewer/PhotoViewer.js": {
-    "file": "assets/js/PhotoViewer-DXx84tSb.js",
+    "file": "assets/js/PhotoViewer-Did31_Uj.js",
     "name": "PhotoViewer",
     "src": "components/components/PhotoViewer/PhotoViewer.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-9jnfhDTZ.js",
+      "_app-DnurTJYz.js",
       "_icon-NLq4soTO.js",
       "_scroll-lock-D4dlW757.js"
     ],
@@ -283,12 +284,12 @@
     "isDynamicEntry": true
   },
   "components/components/Toast/Toast.js": {
-    "file": "assets/js/Toast-Cyf3u-1t.js",
+    "file": "assets/js/Toast-CSBF2H3M.js",
     "name": "Toast",
     "src": "components/components/Toast/Toast.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-9jnfhDTZ.js"
+      "_app-DnurTJYz.js"
     ]
   },
   "components/components/TopNotice/TopNotice.js": {
@@ -362,7 +363,7 @@
     ]
   },
   "components/sections/documents/DocumentsFolders/DocumentsFolders.js": {
-    "file": "assets/js/DocumentsFolders-CpZzChyo.js",
+    "file": "assets/js/DocumentsFolders-Dg7oVC6T.js",
     "name": "DocumentsFolders",
     "src": "components/sections/documents/DocumentsFolders/DocumentsFolders.js",
     "isDynamicEntry": true,
@@ -371,7 +372,7 @@
     ]
   },
   "components/sections/gallery/AlbumPhotos/AlbumPhotos.js": {
-    "file": "assets/js/AlbumPhotos-CygTVsha.js",
+    "file": "assets/js/AlbumPhotos-DaFYABbJ.js",
     "name": "AlbumPhotos",
     "src": "components/sections/gallery/AlbumPhotos/AlbumPhotos.js",
     "isDynamicEntry": true,
@@ -385,6 +386,12 @@
     "src": "components/sections/holding/EntityInfo/EntityInfo.js",
     "isDynamicEntry": true
   },
+  "components/sections/holding/OrgChart/OrgChart.js": {
+    "file": "assets/js/OrgChart-BcGf0Aij.js",
+    "name": "OrgChart",
+    "src": "components/sections/holding/OrgChart/OrgChart.js",
+    "isDynamicEntry": true
+  },
   "components/sections/home/Stats/Stats.js": {
     "file": "assets/js/Stats-DV7D1gpi.js",
     "name": "Stats",
@@ -392,7 +399,7 @@
     "isDynamicEntry": true
   },
   "components/sections/news/JournalIssue/JournalIssue.js": {
-    "file": "assets/js/JournalIssue-CBwMiOjq.js",
+    "file": "assets/js/JournalIssue-BqVcB8I8.js",
     "name": "JournalIssue",
     "src": "components/sections/news/JournalIssue/JournalIssue.js",
     "isDynamicEntry": true,
@@ -448,13 +455,13 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-BhiLlrW5.js",
+    "file": "assets/js/dev-canvas-C7gRdIUu.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
       "_pages-nav-BC1-eOxQ.js",
-      "_app-9jnfhDTZ.js"
+      "_app-DnurTJYz.js"
     ],
     "css": [
       "assets/css/dev-canvas-BOKDw_8B.css"
