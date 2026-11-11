@@ -18,6 +18,8 @@
 			border-radius: $radius-content-block;
 			box-shadow: $shadow-content-block;
 		}
+
+		@include mobile-block;
 	}
 
 	.unit-cards__head {

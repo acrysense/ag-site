@@ -275,13 +275,7 @@
 		}
 	}
 
-	// Витрина: панель на месте (не на весь экран), чтобы её было видно на 360. inline — так же на
-	// месте и на сайте (дерево «Структура» холдинга внизу страницы), без ×
-	.documents-folders--inline .documents-folders__close {
-		display: none;
-	}
-
-	.documents-folders--inline,
+	// Витрина: панель на месте (не на весь экран), чтобы её было видно на 360
 	.documents-folders--static {
 		@include down(desktop) {
 			position: static;

@@ -108,4 +108,128 @@
 			color: palette("blue-hover");
 		}
 	}
+
+	// До 1024 — компактная карточка (Brand.Card.Mobile): фон BG.Info, рамка Block.Border, поля 16,
+	// скругление 20, части через 12; логотип 28 на белом 44 (скругление 12), через 12 название M/500 и
+	// сайт S/400 Main Blue через 2; описание S/400 Dark-grey.TXT в 2 строки; телефон и e-mail S/400
+	// Main Blue через 16. Вся карточка — ссылка на сайт (телефон и e-mail — поверх)
+	.brand-card__compact {
+		display: none;
+	}
+
+	@include down(desktop) {
+		.brand-card {
+			position: relative;
+			gap: 12px;
+			padding: 15px;
+			background: palette("bg-info");
+			box-shadow: none;
+
+			> * + * {
+				padding-top: 0;
+				border-top: 0;
+			}
+
+			> :not(.brand-card__compact) {
+				display: none;
+			}
+		}
+
+		.brand-card__compact {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+			min-width: 0;
+		}
+
+		.brand-card__compact-head {
+			display: flex;
+			gap: 12px;
+			align-items: center;
+			min-width: 0;
+		}
+
+		.brand-card__compact-logo {
+			display: flex;
+			flex: none;
+			align-items: center;
+			justify-content: center;
+			width: 44px;
+			height: 44px;
+			background: palette("white");
+			border-radius: 12px;
+
+			img {
+				width: 28px;
+				height: 28px;
+				object-fit: contain;
+			}
+		}
+
+		.brand-card__compact-title {
+			display: flex;
+			flex-direction: column;
+			gap: 2px;
+			min-width: 0;
+		}
+
+		.brand-card__compact-name {
+			@include text("m-500");
+
+			color: palette("black-txt");
+			overflow-wrap: anywhere;
+		}
+
+		.brand-card__compact-site {
+			@include text("s-400");
+
+			color: palette("main-blue");
+
+			&::after {
+				position: absolute;
+				inset: 0;
+				content: "";
+				border-radius: inherit;
+			}
+
+			&:focus-visible::after {
+				outline: 1px solid palette("form-focus");
+				outline-offset: -1px;
+			}
+		}
+
+		.brand-card:hover .brand-card__compact-name {
+			color: palette("blue-txt");
+		}
+
+		.brand-card__compact-text {
+			@include text("s-400");
+
+			display: -webkit-box;
+			overflow: hidden;
+			color: palette("dark-grey-txt");
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+		}
+
+		.brand-card__compact-contacts {
+			@include text("s-400");
+
+			display: flex;
+			flex-wrap: wrap;
+			gap: 4px 16px;
+		}
+
+		.brand-card__compact-contact {
+			position: relative;
+			z-index: 1;
+			color: palette("main-blue");
+			transition: color $transition-default;
+
+			&:hover,
+			&:focus-visible {
+				color: palette("blue-hover");
+			}
+		}
+	}
 }

@@ -21,6 +21,8 @@
 			border-radius: $radius-content-block;
 			box-shadow: $shadow-content-block;
 		}
+
+		@include mobile-block;
 	}
 
 	.entity-staff__head {
@@ -30,9 +32,13 @@
 	}
 
 	.entity-staff__title {
-		@include text("h2");
+		@include text("h2-360");
 
 		color: palette("black-txt");
+
+		@include up(desktop) {
+			@include text("h2");
+		}
 	}
 
 	// Вид и фильтры в строку: переключатель слева, сортировки справа через 8; не помещаются —
@@ -171,5 +177,113 @@
 		margin: -8px 0 0;
 		padding: 0 0 20px;
 		list-style: none;
+	}
+
+	// Адрес аптеки: с 1024 — продолжение названия через « · », до 1024 — строкой под ним
+	.entity-dept__address {
+		@include down(desktop) {
+			@include text("s-400");
+
+			display: block;
+			margin-top: 6px;
+			color: palette("dark-grey-txt");
+		}
+	}
+
+	.entity-dept__sep {
+		@include down(desktop) {
+			display: none;
+		}
+	}
+
+	// Число у вкладки вида — только до 1024
+	.entity-staff__views .tabs__count {
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	// До 1024 (360.Holding — 2): части через 10; вкладки вида на всю ширину, поровну; фильтры — поля 46
+	// по два в ряд через 10; «96 аптек · 310 сотрудников» S/400. Группа — поля 14/0: название M/600
+	// Black.TXT и стрелка 16, через 6 адрес S/400 Dark-grey.TXT, через 6 фото 28 внахлёст на 8, через
+	// 6 «Заведующая: … · Сотрудников: …» S/400 Dark-grey.TXT одной строкой; сотрудники — через 6
+	@include down(desktop) {
+		.entity-staff,
+		.entity-staff__head {
+			gap: 10px;
+		}
+
+		.entity-staff__bar {
+			flex-direction: column;
+			gap: 10px;
+			align-items: stretch;
+		}
+
+		.entity-staff__views {
+			display: flex;
+
+			.tabs__tab {
+				flex: 1 1 0;
+				min-width: 0;
+				text-align: center;
+			}
+		}
+
+		.entity-staff__controls {
+			display: grid;
+			grid-auto-columns: minmax(0, 1fr);
+			grid-auto-flow: column;
+			gap: 10px;
+			margin-left: 0;
+		}
+
+		.entity-staff__control {
+			min-width: 0;
+		}
+
+		.entity-staff__summary {
+			@include text("s-400");
+		}
+
+		.entity-dept__summary {
+			grid-template-columns: minmax(0, 1fr) 16px;
+			gap: 6px 12px;
+			padding: 14px 0;
+		}
+
+		.entity-dept__title {
+			@include text("m-600");
+
+			color: palette("black-txt");
+		}
+
+		.entity-dept__arrow {
+			width: 16px;
+			height: 16px;
+			padding: 5px 3px;
+		}
+
+		.entity-dept__avatar {
+			width: 28px;
+			height: 28px;
+
+			& + & {
+				margin-left: -8px;
+			}
+		}
+
+		.entity-dept__meta {
+			display: block;
+			color: palette("dark-grey-txt");
+		}
+
+		.entity-dept__fact + .entity-dept__fact::before {
+			content: " · ";
+		}
+
+		.entity-dept__staff {
+			margin-top: -8px;
+			padding-bottom: 0;
+		}
 	}
 }

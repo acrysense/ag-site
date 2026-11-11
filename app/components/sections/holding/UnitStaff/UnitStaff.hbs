@@ -5,13 +5,14 @@
 	дирекции», «Отдел учета») и сотрудники (EmployeeRow); внизу страницы и «Всего».
 	props: title, sort [SortMenu], filters [{ text, url, count, current, icon (profile — «Все»,
 	folder — отдел) }], groups [{ title, employees [EmployeeRow] }], pagination [Pagination].
-	Пусто — блока нет.
+	Пусто — блока нет. До 1024 (360.Holding — 6): заголовок, вкладки-фильтры, сортировка — поле
+	выбора на всю ширину, группы.
 --}}
 {{#if props.groups.length}}
     <section class="unit-staff" aria-labelledby="unit-staff-title">
         <div class="unit-staff__head">
             <h2 class="unit-staff__title" id="unit-staff-title">{{default props.title "Сотрудники"}}</h2>
-            {{#if props.sort}}{{> components/SortMenu/SortMenu props=props.sort}}{{/if}}
+            {{#if props.sort}}{{> components/SortMenu/SortMenu props=(obj id=props.sort.id label=props.sort.label prefix=props.sort.prefix options=props.sort.options class="sort-menu--field unit-staff__sort")}}{{/if}}
         </div>
         {{#if props.filters.length}}
             {{> sections/search/SearchSections/SearchSections props=(obj title=(default props.filtersLabel "Отделы") variant="tabs" countLabel=": сотрудников " items=props.filters)}}

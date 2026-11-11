@@ -10,7 +10,7 @@
 			{{> layouts/Header/Header props=(default data.header site.header) }}
 			<main class="wrapper__content">
 				{{!-- Подразделение холдинга (дирекция, служба): шапка, подразделения, юрлица, сотрудники; слева дерево структуры --}}
-				<div class="container page-inner">
+				<div class="container page-inner page-inner--flush">
 					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.breadcrumbs) }}
 					<div class="page-columns page-columns--aside-start page-columns--aside-gap-20">
 						<div class="page-stack page-stack--gap-20">

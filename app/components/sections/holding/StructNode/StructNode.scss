@@ -130,4 +130,67 @@
 			}
 		}
 	}
+
+	// До 1024 — строка (Struct/NodeRow.Mobile): поля 14/16, скругление 16; тип S/400 Dark-grey.TXT,
+	// название M/500 Black.TXT, «ФИО · должность» S/400 Dark-grey.TXT — через 2; стрелка 16 справа
+	// по центру через 12. Без фото и меты (мета — на странице узла)
+	@include down(desktop) {
+		.struct-node {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) auto;
+			column-gap: 12px;
+			align-items: center;
+			padding: 13px 15px;
+			border-radius: 16px;
+		}
+
+		.struct-node__top {
+			gap: 2px;
+			padding-bottom: 0;
+		}
+
+		.struct-node__heading {
+			gap: 2px;
+		}
+
+		.struct-node__title {
+			@include text("m-500");
+		}
+
+		.struct-node__avatar {
+			display: none;
+		}
+
+		.struct-node__person {
+			@include text("s-400");
+
+			display: block;
+			color: palette("dark-grey-txt");
+		}
+
+		.struct-node__name,
+		.struct-node__role {
+			@include text("s-400");
+
+			display: inline;
+			color: palette("dark-grey-txt");
+		}
+
+		.struct-node__role::before {
+			content: " · ";
+		}
+
+		.struct-node__footer {
+			display: contents;
+		}
+
+		.struct-node__meta {
+			display: none;
+		}
+
+		.struct-node__arrow {
+			grid-row: 1;
+			grid-column: 2;
+		}
+	}
 }

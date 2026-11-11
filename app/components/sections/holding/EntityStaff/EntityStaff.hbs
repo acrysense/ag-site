@@ -5,8 +5,11 @@
 	раскрывающиеся (details/summary, без JS): название, до 5 фото, «Руководитель» («Заведующая» у
 	аптеки) и «Сотрудников»; внутри — сотрудники (EmployeeRow). Открытую группу задаёт бэк (open).
 	Много групп (аптеки) — страницы (Pagination).
-	props: title, views [{ text, url, current }], controls [SortMenu: { id, label, options }],
-	summary, groups [{ id, name, open, headLabel («Руководитель:»), head, count, avatars [фото, до 5],
+	До 1024: вкладки на всю ширину с числом (views[].count — «По аптекам · 96»), фильтры — поля
+	выбора по два в ряд, у аптеки адрес — строкой под названием, фото 28, «Заведующая: … · Сотрудников: …».
+	props: title, views [{ text, url, current, count }], controls [SortMenu: { id, label, options }],
+	summary, groups [{ id, name, address (адрес аптеки: с 1024 — после названия через « · », до 1024 — строкой под ним),
+	open, headLabel («Руководитель:»), head, count, avatars [фото, до 5],
 	employees [EmployeeRow] }] (departments — старое имя того же списка), pagination [Pagination].
 	Пусто — блока нет.
 --}}
@@ -21,7 +24,7 @@
                     {{/if}}
                     {{#if props.controls.length}}
                         <div class="entity-staff__controls">
-                            {{#each props.controls}}{{> components/SortMenu/SortMenu props=this}}{{/each}}
+                            {{#each props.controls}}{{> components/SortMenu/SortMenu props=(obj id=id label=label prefix=prefix options=options class="sort-menu--field entity-staff__control")}}{{/each}}
                         </div>
                     {{/if}}
                 </div>
@@ -32,7 +35,7 @@
             {{#each (or props.groups props.departments)}}
                 <details class="entity-dept" {{#if id}}id="{{id}}"{{/if}} {{#if open}}open{{/if}}>
                     <summary class="entity-dept__summary">
-                        <span class="entity-dept__title">{{name}}</span>
+                        <span class="entity-dept__title">{{name}}{{#if address}}<span class="entity-dept__address"><span class="entity-dept__sep"> · </span>{{address}}</span>{{/if}}</span>
                         {{> components/Icon/Icon name="chevron-down" class="entity-dept__arrow"}}
                         {{#if avatars.length}}
                             <span class="entity-dept__avatars" aria-hidden="true">

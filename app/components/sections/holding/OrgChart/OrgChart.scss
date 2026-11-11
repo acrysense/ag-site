@@ -7,8 +7,12 @@
 // одной высоты. Раскрытая панель — под рядом, от раскрытого узла к ней связь 28; панель — белая с
 // рамкой Block.Border, поля 20, шапка через 20 от сетки: подпись S/400 Dark-grey.TXT, название H3,
 // описание M/400 Dark-grey.TXT через 4; руководитель (фото 44) и «Свернуть» (Light M) справа через
-// 16; сетка — 4 в ряд через 16. Внизу — S/400 Dark-grey.TXT. До 1280 ряды и панель — сеткой по 2
-// (до 768 — по одному), без горизонтальных связей; телефон — без белого блока.
+// 16; сетка — 4 в ряд через 16. Внизу — S/400 Dark-grey.TXT. 1024–1279 ряды и панель — сеткой по 2,
+// без горизонтальных связей.
+// До 1024 (360.Holding — 4) — дерево: узлы друг под другом через 8, под узлом через 8 «В подчинении
+// · N» S/400 Main Blue (поля слева 4, стрелка 14 через 4; свёрнуто — стрелка вниз), через 8
+// подчинённые — с отступом 14 и линией 1 Block.Border слева (на 4). Раскрытый узел (кроме корня) —
+// рамка Main Blue. Панель — без шапки и рамки. Заголовок и подпись внизу — через 10.
 @layer components {
 	.org-chart {
 		display: flex;
@@ -23,10 +27,12 @@
 			border-radius: $radius-content-block;
 			box-shadow: $shadow-content-block;
 		}
+
+		@include mobile-block;
 	}
 
 	.org-chart__title {
-		@include text("h1-360");
+		@include text("h2-360");
 
 		margin-bottom: 8px;
 		color: palette("black-txt");
@@ -259,5 +265,125 @@
 		@include text("s-400");
 
 		color: palette("dark-grey-txt");
+	}
+
+	// Переключатель поддерева — только до 1024
+	.org-chart__more {
+		@include text("s-400");
+
+		display: inline-flex;
+		gap: 4px;
+		align-items: center;
+		align-self: flex-start;
+		padding: 0 0 0 4px;
+		color: palette("main-blue");
+		cursor: pointer;
+		background: none;
+		border: 0;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.org-chart__more-icon {
+		flex: none;
+		width: 14px;
+		height: 14px;
+		padding: 4px 2px;
+		transition: transform $transition-default;
+
+		[aria-expanded="true"] > & {
+			transform: rotate(180deg);
+		}
+	}
+
+	// С 1024 обёртка поддерева не влияет на раскладку (и не сворачивается)
+	.org-chart__sub {
+		@include up(desktop) {
+			display: contents;
+
+			&[hidden] {
+				display: contents;
+			}
+		}
+	}
+
+	@include down(desktop) {
+		.org-chart {
+			gap: 8px;
+		}
+
+		.org-chart__title {
+			margin-bottom: 2px;
+		}
+
+		.org-chart__footnote {
+			margin-top: 2px;
+		}
+
+		.org-chart__connector {
+			display: none;
+		}
+
+		.org-chart__single {
+			max-width: none;
+		}
+
+		.org-chart__row,
+		.org-panel__grid {
+			grid-template-columns: minmax(0, 1fr);
+			gap: 8px;
+		}
+
+		// Поддерево: отступ 14, линия слева
+		.org-chart__sub,
+		.org-panel:not([hidden]) {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			min-width: 0;
+			padding-left: 14px;
+
+			&::before {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 4px;
+				width: 1px;
+				content: "";
+				background: palette("block-border");
+			}
+		}
+
+		.org-chart__sub[hidden] {
+			display: none;
+		}
+
+		.org-panel {
+			padding-block: 0;
+			padding-right: 0;
+			background: none;
+			border: 0;
+			border-radius: 0;
+		}
+
+		.org-panel__head {
+			display: none;
+		}
+
+		// Раскрытый одиночный узел (не корень) — рамка Main Blue
+		.org-chart__sub
+			> .org-chart__single:has(+ .org-chart__more[aria-expanded="true"])
+			.struct-node {
+			border-color: palette("main-blue");
+		}
 	}
 }

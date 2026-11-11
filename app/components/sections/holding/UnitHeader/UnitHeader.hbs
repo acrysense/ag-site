@@ -6,10 +6,20 @@
 	цифры справа («5 юрлиц», «1 200 сотрудников»).
 	props: caption, title, tags [строки], copyText («Скопировать ссылку»), parentLabel
 	(«Подчиняется:»), parents [{ text, url }], head { name, url, role, photo, phone { text, url },
-	email { text, url }, badge («Руководитель») }, stats [{ value, label }]. Нет руководителя или
-	цифр — без них.
+	email { text, url }, badge («Руководитель») }, stats [{ value, label, short (короче — до 1024,
+	«сотр.»), mobileOnly (только до 1024) }]. Нет руководителя или цифр — без них.
+	До 1024 (360.Holding — 6, 7): сверху поле «Структура: …» — открывает дерево структуры на весь экран
+	(DocumentsFolders с тем же id): tree { id, label («Структура:»), path («Корпоративный центр /
+	Финансовая дирекция») }; нет tree — без поля. Без «Скопировать ссылку»; «Подчиняется:» — над
+	цепочкой; метка «Руководитель» — над ФИО.
 --}}
 <section class="unit-header" aria-labelledby="unit-header-title">
+    {{#if props.tree.id}}
+        <button class="unit-header__tree" type="button" data-documents-folders-open="{{props.tree.id}}" aria-controls="{{props.tree.id}}" aria-expanded="false" aria-haspopup="dialog">
+            <span class="unit-header__tree-text">{{default props.tree.label "Структура:"}} {{props.tree.path}}</span>
+            {{> components/Icon/Icon name="chevron-down" class="unit-header__tree-arrow"}}
+        </button>
+    {{/if}}
     <div class="unit-header__top">
         <div class="unit-header__intro">
             {{#if props.caption}}<p class="unit-header__caption">{{props.caption}}</p>{{/if}}
@@ -57,7 +67,7 @@
             {{#if props.stats.length}}
                 <ul class="unit-header__stats" role="list">
                     {{#each props.stats}}
-                        <li class="unit-header__stat"><span class="unit-header__value">{{value}}</span> <span class="unit-header__label">{{label}}</span></li>
+                        <li class="unit-header__stat{{#if mobileOnly}} unit-header__stat--mobile{{/if}}"><span class="unit-header__value">{{value}}</span> <span class="unit-header__label">{{#if short}}<span class="unit-header__label-full">{{label}}</span><span class="unit-header__label-short">{{short}}</span>{{else}}{{label}}{{/if}}</span></li>
                     {{/each}}
                 </ul>
             {{/if}}

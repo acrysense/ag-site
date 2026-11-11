@@ -6,8 +6,9 @@
 // текст M/400 Dark-grey.TXT через 10. Ниже, от колонки ФИО (отступ 188), разделы через 24 с чертой
 // Block.Border: заголовок H4, строки через 10: подпись 200 Dark-grey.
 // TXT и значение Black.TXT (ссылка — Main Blue) через 16. Рамка и тень — как у всех белых блоков.
-// Телефон: без карточки, фото 96 (плавно до 160 к 768), разделы на всю ширину, подпись
-// над значением.
+// 768–1023: фото 96 (плавно до 160 к 768) слева от ФИО. До 768 (360.Holding — 3): фото 120, ФИО
+// H2 360 и строки — друг под другом через 10; черта через 10 и разделы через 10 от неё, разделы через
+// 24 без черт; заголовок раздела и строки через 12, подпись S/400 над значением через 2.
 @layer components {
 	.employee-profile {
 		display: flex;
@@ -22,6 +23,13 @@
 			border: 1px solid palette("block-border");
 			border-radius: $radius-content-block;
 			box-shadow: $shadow-content-block;
+		}
+
+		@include mobile-block;
+
+		// Первый блок страницы — в одной полосе с крошками: сверху 10
+		@include down(desktop) {
+			padding-top: 10px;
 		}
 	}
 
@@ -166,6 +174,48 @@
 		&:hover,
 		&:focus-visible {
 			color: palette("blue-hover");
+		}
+	}
+
+	@include down(tablet) {
+		.employee-profile__header {
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.employee-profile__header + .employee-profile__section {
+			margin-top: -14px;
+			padding-top: 10px;
+		}
+
+		.employee-profile__section {
+			gap: 12px;
+		}
+
+		.employee-profile__photo {
+			width: 120px;
+			height: 120px;
+		}
+
+		.employee-profile__info {
+			gap: 10px;
+		}
+
+		.employee-profile__name {
+			@include text("h2-360");
+		}
+
+		.employee-profile__section + .employee-profile__section {
+			padding-top: 0;
+			border-top: 0;
+		}
+
+		.employee-profile__rows {
+			gap: 12px;
+		}
+
+		.employee-profile__label {
+			@include text("s-400");
 		}
 	}
 }

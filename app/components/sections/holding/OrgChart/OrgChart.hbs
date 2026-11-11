@@ -7,7 +7,12 @@
 	одна панель; какую раскрыть сразу — open. Внизу — откуда данные.
 	props: title, levels [{ node } | { nodes }] — узлы StructNode; у узла с panel — children {
 	caption, title, url, text, head { name, role, photo }, items [StructNode] }, footnote.
-	До 1280 ряды — сеткой (по 2, на телефоне по одному), без горизонтальных связей.
+	1024–1279 ряды — сеткой по 2, без горизонтальных связей.
+	До 1024 (360.Holding — 4) — дерево: под одиночным узлом «В подчинении · N» (node.subordinates — N;
+	нет — без переключателя, подчинённые открыты) сворачивает всё, что ниже: ряд и следующий одиночный
+	узел со своими подчинёнными — с отступом 14 и линией слева. Под узлом с панелью — тоже
+	«В подчинении · N» (N — число children.items), панель — без шапки, узлы списком с отступом.
+	Обёртки .org-chart__sub с 1024 не влияют на раскладку (display: contents).
 --}}
 <section class="org-chart" aria-labelledby="org-chart-title" data-module="OrgChart" data-path="sections/holding">
     <h2 class="org-chart__title" id="org-chart-title">{{default props.title "Управление холдингом"}}</h2>
@@ -15,6 +20,12 @@
         {{#unless @first}}<span class="org-chart__connector" aria-hidden="true"></span>{{/unless}}
         {{#if node}}
             <div class="org-chart__single">{{> sections/holding/StructNode/StructNode props=node}}</div>
+            {{#unless @last}}
+                {{#if node.subordinates}}
+                    <button class="org-chart__more" type="button" aria-expanded="true" aria-controls="org-sub-{{@index}}" data-org-sub><span class="visually-hidden">{{node.title}}: </span>{{default ../props.subordinatesText "В подчинении"}} · {{node.subordinates}}{{> components/Icon/Icon name="chevron-down" class="org-chart__more-icon"}}</button>
+                {{/if}}
+                <div class="org-chart__sub" id="org-sub-{{@index}}">
+            {{/unless}}
         {{else}}
             <ul class="org-chart__row" role="list">
                 {{#each nodes}}
@@ -23,6 +34,7 @@
             </ul>
             {{#each nodes}}
                 {{#if panel}}
+                    <button class="org-chart__more org-chart__more--panel" type="button" aria-expanded="{{#if open}}true{{else}}false{{/if}}" aria-controls="{{panel}}" data-org-toggle><span class="visually-hidden">{{title}}: </span>{{default ../../props.subordinatesText "В подчинении"}} · {{children.items.length}}{{> components/Icon/Icon name="chevron-down" class="org-chart__more-icon"}}</button>
                     <div class="org-panel" id="{{panel}}" {{#unless open}}hidden{{/unless}} data-org-panel>
                         <div class="org-panel__head">
                             <div class="org-panel__intro">
@@ -54,5 +66,6 @@
             {{/each}}
         {{/if}}
     {{/each}}
+    {{#each props.levels}}{{#if node}}{{#unless @last}}</div>{{/unless}}{{/if}}{{/each}}
     {{#if props.footnote}}<p class="org-chart__footnote">{{props.footnote}}</p>{{/if}}
 </section>

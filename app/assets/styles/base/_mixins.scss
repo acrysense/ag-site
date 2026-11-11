@@ -516,3 +516,12 @@ $alias-bp: (
 		content: none;
 	}
 }
+
+// Блок страницы до 1024 («Структура холдинга») — белая полоса на всю ширину, поля 30/10; между
+// блоками — серые 10 (страница .page-inner--flush). С 1024 блок задаёт свой вид сам.
+@mixin mobile-block {
+	@include down(desktop) {
+		padding: 30px 10px;
+		background: palette("white");
+	}
+}

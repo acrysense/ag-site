@@ -3,13 +3,14 @@
 	панели выводит блок: id панели «<id>-panel-<номер с 0>», вкладки — «<id>-tab-<номер>».
 	props: id, label (для скринридера), items [{ title }] — выбрана первая, class.
 	links [{ text, url, current }] вместо items — тот же вид, но ссылки на страницы (без JS):
-	текущая — aria-current="page" (например, вид «Структуры холдинга»).
+	текущая — aria-current="page" (например, вид «Структуры холдинга»); count — число после названия
+	(« · 96»; блок решает, где его показывать).
 	tabs--light в class — белая подложка (на сером фоне страницы).
 --}}
 {{#if props.links}}
 <nav class="tabs{{#if props.class}} {{props.class}}{{/if}}" aria-label="{{props.label}}">
     {{#each props.links}}
-        <a class="tabs__tab" href="{{url}}"{{#if current}} aria-current="page"{{/if}}>{{text}}</a>
+        <a class="tabs__tab" href="{{url}}"{{#if current}} aria-current="page"{{/if}}>{{text}}{{#if (isSet count)}}<span class="tabs__count"> · {{count}}</span>{{/if}}</a>
     {{/each}}
 </nav>
 {{else}}

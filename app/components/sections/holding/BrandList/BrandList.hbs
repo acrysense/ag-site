@@ -1,0 +1,14 @@
+{{!--
+	Бренды юрлица — боковая колонка из карточек BrandCard. С 1024 — без заголовка, карточки через 16.
+	До 1024 — белый блок под сотрудниками: заголовок «Бренды» и число
+	(один бренд — «Бренд» без числа), компактные карточки через 10.
+	props: items [BrandCard], title («Бренды»), titleOne («Бренд»), class. Пусто — блока нет.
+--}}
+{{#if props.items.length}}
+    <section class="brand-list page-aside-cards{{#if props.class}} {{props.class}}{{/if}}" aria-labelledby="brand-list-title">
+        <h2 class="brand-list__title" id="brand-list-title">
+            {{#if (eq props.items.length 1)}}{{default props.titleOne "Бренд"}}{{else}}{{default props.title "Бренды"}} <span class="brand-list__count">{{props.items.length}}</span>{{/if}}
+        </h2>
+        {{#each props.items}}{{> sections/holding/BrandCard/BrandCard props=this}}{{/each}}
+    </section>
+{{/if}}

@@ -1,0 +1,35 @@
+@use "@/assets/styles/base/mixins" as *;
+@use "@/assets/styles/base/vars" as *;
+
+// Бренды юрлица. С 1024 — боковая колонка карточек, заголовок только для чтения с экрана.
+// До 1024 — белый блок последним на странице: заголовок H2 360 Black.TXT и число Dark-grey.TXT через 8,
+// через 10 карточки через 10.
+@layer components {
+	.brand-list {
+		min-width: 0;
+
+		@include down(desktop) {
+			order: 1;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		@include mobile-block;
+	}
+
+	.brand-list__title {
+		@include text("h2-360");
+
+		color: palette("black-txt");
+
+		@include up(desktop) {
+			@include visually-hidden;
+		}
+	}
+
+	.brand-list__count {
+		margin-left: 8px;
+		color: palette("dark-grey-txt");
+	}
+}

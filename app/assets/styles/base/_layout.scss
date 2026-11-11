@@ -117,6 +117,34 @@
 		}
 	}
 
+	// «Структура холдинга» до 1024: страница без общей белой подложки — каждый блок белой полосой
+	// (миксин mobile-block), между ними серые 10; крошки — в одной полосе с первым блоком
+	.page-inner--flush {
+		@include down(desktop) {
+			gap: 0;
+			padding: 0;
+			background: none;
+
+			> .breadcrumbs {
+				padding: 20px 10px 10px;
+				background: palette("white");
+			}
+
+			.page-sections,
+			.page-columns,
+			.page-stack,
+			.page-aside-cards {
+				gap: 10px;
+			}
+
+			// Боковая только с деревом «Структура» — до 1024 оно панелью на весь экран: без пустой
+			// ячейки
+			.page-columns__aside:has(> .documents-folders:only-child) {
+				display: contents;
+			}
+		}
+	}
+
 	// Основная колонка и боковая 385 (как «День рождения» на главной). Рядом — с 1280, до
 	// этого боковая под основной.
 	.page-columns {

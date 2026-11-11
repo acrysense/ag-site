@@ -137,4 +137,52 @@
 		height: 20px;
 		color: palette("black-txt");
 	}
+
+	// До 1024 — компактная строка (Struct/EmployeeRow.Mobile): поля 12/0, черта снизу Block.Border;
+	// фото 44, через 12 метка «Руководитель» над ФИО (M/500), должность и телефон S/400 — через 2,
+	// без e-mail; стрелка 16
+	@include down(desktop) {
+		.employee-row {
+			grid-template-areas:
+				"avatar main arrow"
+				"avatar phone arrow";
+			grid-template-columns: 44px minmax(0, 1fr) 16px;
+			gap: 2px 12px;
+			padding: 12px 0;
+			border-bottom: 1px solid palette("block-border");
+
+			& + & {
+				border-top: 0;
+			}
+		}
+
+		.employee-row__avatar {
+			width: 44px;
+			height: 44px;
+		}
+
+		.employee-row__main {
+			gap: 2px;
+		}
+
+		.employee-row__name-row {
+			flex-direction: column-reverse;
+			gap: 2px;
+			align-items: flex-start;
+		}
+
+		.employee-row__position,
+		.employee-row__phone {
+			@include text("s-400");
+		}
+
+		.employee-row__email {
+			display: none;
+		}
+
+		.employee-row__arrow {
+			width: 16px;
+			height: 16px;
+		}
+	}
 }

@@ -4,10 +4,20 @@
 	и фото (по умолчанию открыто; без JS — всегда открыто).
 	props: name, rows [InfoList: { label, value, links }], html, photos [PhotoStrip], hideText,
 	showText. Нет ни описания, ни фото — нет и кнопки.
+	До 1024 вместо строк — meta [{ icon (home, phone, pharmacy, profile), text, url }]: адрес, телефон,
+	«96 аптек · 310 сотрудников» — строки со значками; бренды — отдельным блоком (BrandList). Нет meta —
+	строки rows и на телефоне. Кнопки «Скрыть описание» на телефоне нет — описание открыто.
 --}}
 <section class="entity-info" aria-labelledby="entity-info-title" data-module="EntityInfo" data-path="sections/holding">
     <h1 class="entity-info__title" id="entity-info-title">{{props.name}}</h1>
-    {{> sections/holding/InfoList/InfoList props=(obj items=props.rows tight=true)}}
+    {{> sections/holding/InfoList/InfoList props=(obj items=props.rows tight=true class="entity-info__rows")}}
+    {{#if props.meta.length}}
+        <ul class="entity-info__meta" role="list">
+            {{#each props.meta}}
+                <li class="entity-info__meta-row">{{> components/Icon/Icon name=icon class="entity-info__meta-icon"}}{{#if url}}<a class="entity-info__meta-link" href="{{url}}">{{text}}</a>{{else}}<span>{{text}}</span>{{/if}}</li>
+            {{/each}}
+        </ul>
+    {{/if}}
     {{#if (or props.html props.photos.length)}}
         <div class="entity-info__about" id="entity-info-about" data-entity-about>
             {{#if props.html}}<div class="content entity-info__content">{{{props.html}}}</div>{{/if}}
