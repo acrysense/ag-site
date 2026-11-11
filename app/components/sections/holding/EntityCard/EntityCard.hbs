@@ -1,18 +1,31 @@
 {{!--
-	Карточка юрлица (внутри белого блока): название H3, телефон, адрес и число аптек, бренды
-	(плашки), внизу «Подробнее» — страница юрлица.
+	Карточка юрлица (внутри белого блока): название H3 — ссылка на страницу юрлица, телефон, адрес и
+	число аптек, бренды (плашки), внизу «Подробнее». До 1024 — компактная (LegalEntity.Card.Mobile):
+	вся карточка — ссылка со стрелкой, адрес / телефон / аптеки — строки со значками, бренды —
+	логотипы и названия одной строкой, без «Подробнее».
 	props: name, url, phones [{ text, url }], address, pharmacies (число аптек; нет — без строки),
-	brands [{ name, logo }], brandsLabel, brandsPending — бренды ещё не заданы (пунктирная плашка
-	«Бренды уточняются»; нет брендов и не pending — без блока брендов), moreText.
-	Карточки ряда одной высоты — «Подробнее» прижата к низу.
+	pharmaciesText («96 аптек» — для телефона; нет — pharmacies), brands [{ name, logo }], brandsLabel,
+	brandsPending — бренды ещё не заданы (пунктирная плашка «Бренды уточняются»; нет брендов и не
+	pending — без блока брендов), moreText. Карточки ряда одной высоты — «Подробнее» прижата к низу.
 --}}
 <article class="entity-card">
     <div class="entity-card__top">
-        <h3 class="entity-card__title">{{props.name}}</h3>
-        {{> sections/holding/InfoList/InfoList props=(obj items=(arr (obj label="Телефон:" links=props.phones) (obj label="Адрес:" value=props.address) (obj label="Аптек:" value=props.pharmacies)) aligned=true)}}
+        <h3 class="entity-card__title"><a class="entity-card__link" href="{{props.url}}">{{props.name}}</a>{{> components/Icon/Icon name="angle-right" class="entity-card__arrow"}}</h3>
+        {{> sections/holding/InfoList/InfoList props=(obj items=(arr (obj label="Телефон:" links=props.phones) (obj label="Адрес:" value=props.address) (obj label="Аптек:" value=props.pharmacies)) aligned=true class="entity-card__info")}}
+        <ul class="entity-card__meta" role="list">
+            {{#if props.address}}<li class="entity-card__meta-row">{{> components/Icon/Icon name="home" class="entity-card__meta-icon"}}<span>{{props.address}}</span></li>{{/if}}
+            {{#each props.phones}}{{#if @first}}<li class="entity-card__meta-row">{{> components/Icon/Icon name="phone" class="entity-card__meta-icon"}}<a class="entity-card__phone" href="{{url}}">{{text}}</a></li>{{/if}}{{/each}}
+            {{#if props.pharmacies}}<li class="entity-card__meta-row">{{> components/Icon/Icon name="pharmacy" class="entity-card__meta-icon"}}<span>{{default props.pharmaciesText props.pharmacies}}</span></li>{{/if}}
+        </ul>
         {{#if (or props.brands.length props.brandsPending)}}
-            {{> sections/holding/BrandChips/BrandChips props=(obj label=props.brandsLabel items=props.brands class="brand-chips--white")}}
+            {{> sections/holding/BrandChips/BrandChips props=(obj label=props.brandsLabel items=props.brands class="brand-chips--white entity-card__brands")}}
+        {{/if}}
+        {{#if props.brands.length}}
+            <p class="entity-card__brands-line">
+                <span class="entity-card__logos" aria-hidden="true">{{#each props.brands}}{{#if logo}}<span class="entity-card__logo"><img src="{{logo}}" width="18" height="18" alt="" loading="lazy" decoding="async" /></span>{{/if}}{{/each}}</span>
+                <span class="entity-card__brand-names">{{#each props.brands}}{{#unless @first}} · {{/unless}}{{name}}{{/each}}</span>
+            </p>
         {{/if}}
     </div>
-    <a class="btn btn--general btn--m entity-card__more" href="{{props.url}}">{{default props.moreText "Подробнее"}}<span class="visually-hidden">: {{props.name}}</span></a>
+    <a class="btn btn--general btn--m entity-card__more" href="{{props.url}}" tabindex="-1" aria-hidden="true">{{default props.moreText "Подробнее"}}</a>
 </article>

@@ -23,6 +23,11 @@
 		],
 		"entity": {
 			"name": "ООО «Аптека групп Центр»",
+			"meta": [
+				{ "icon": "home", "text": "г. Минск, пр-т Победителей, 84-2, офис 16" },
+				{ "icon": "phone", "text": "+375 17 249 00 05", "url": "tel:+375172490005" },
+				{ "icon": "pharmacy", "text": "96 аптек · 310 сотрудников" }
+			],
 			"rows": [
 				{
 					"label": "Адрес:",
@@ -42,12 +47,61 @@
 					"value": "ADEL"
 				}
 			],
-			"html": "<p>ООО «Аптека групп Центр» — розничная аптечная сеть холдинга «Аптека групп» в Минске и Минской области: 96 аптек и около 310 сотрудников.</p>"
+			"html": "<p>ООО «Аптека групп Центр» — розничная аптечная сеть холдинга «Аптека групп» в Минске и Минской области: 96 аптек и около 310 сотрудников.</p>",
+			"photos": [
+				{
+					"src": "./dev/img/holding/photo-1.webp",
+					"thumb": "./dev/img/holding/photo-1.webp",
+					"width": 534,
+					"height": 797,
+					"alt": "Стенд аптеки на празднике"
+				},
+				{
+					"src": "./dev/img/holding/photo-2.webp",
+					"thumb": "./dev/img/holding/photo-2.webp",
+					"width": 530,
+					"height": 797,
+					"alt": "Сотрудница фотографирует праздник"
+				},
+				{
+					"src": "./dev/img/holding/photo-3.webp",
+					"thumb": "./dev/img/holding/photo-3.webp",
+					"width": 1199,
+					"height": 800,
+					"alt": "Шатры на летнем празднике холдинга"
+				},
+				{
+					"src": "./dev/img/holding/photo-4.webp",
+					"thumb": "./dev/img/holding/photo-4.webp",
+					"width": 1199,
+					"height": 800,
+					"alt": "Праздник холдинга на природе"
+				},
+				{
+					"src": "./dev/img/holding/photo-1.webp",
+					"thumb": "./dev/img/holding/photo-1.webp",
+					"width": 534,
+					"height": 797,
+					"alt": "Стенд аптеки на празднике"
+				},
+				{
+					"src": "./dev/img/holding/photo-2.webp",
+					"thumb": "./dev/img/holding/photo-2.webp",
+					"width": 530,
+					"height": 797,
+					"alt": "Сотрудница фотографирует праздник"
+				}
+			]
 		},
 		"brands": [
 			{
 				"name": "ADEL",
 				"logo": "./dev/img/holding/logo-adel.webp",
+				"site": { "text": "apteka-adel.by", "url": "https://apteka-adel.by" },
+				"contacts": [
+					{ "text": "+375 (44) 503-42-64", "url": "tel:+375445034264" },
+					{ "text": "info@apteka-adel.by", "url": "mailto:info@apteka-adel.by" }
+				],
 				"rows": [
 					{
 						"label": "Телефон:",
@@ -93,11 +147,13 @@
 			"views": [
 				{
 					"text": "По отделам",
-					"url": "./holding-entity-network.html"
+					"url": "./holding-entity-network.html",
+					"count": 4
 				},
 				{
 					"text": "По аптекам",
 					"url": "./holding-entity-pharmacies.html",
+					"count": 96,
 					"current": true
 				}
 			],
@@ -154,7 +210,8 @@
 			"groups": [
 				{
 					"id": "pharmacy-1",
-					"name": "Аптека №50 · г. Борисов, ул. Днепропетровская, 21М",
+					"name": "Аптека №50",
+					"address": "г. Борисов, ул. Днепропетровская, 21М",
 					"headLabel": "Заведующая:",
 					"head": "Новая В.М.",
 					"count": 4,
@@ -227,7 +284,8 @@
 				},
 				{
 					"id": "pharmacy-2",
-					"name": "Аптека №12 · г. Минск, пр-т Независимости, 95",
+					"name": "Аптека №12",
+					"address": "г. Минск, пр-т Независимости, 95",
 					"headLabel": "Заведующая:",
 					"head": "Петрова И.С.",
 					"count": 6,
@@ -242,7 +300,8 @@
 				},
 				{
 					"id": "pharmacy-3",
-					"name": "Аптека №17 · г. Минск, ул. Притыцкого, 83",
+					"name": "Аптека №17",
+					"address": "г. Минск, ул. Притыцкого, 83",
 					"headLabel": "Заведующая:",
 					"head": "Кузьмич О.А.",
 					"count": 5,
@@ -257,7 +316,8 @@
 				},
 				{
 					"id": "pharmacy-4",
-					"name": "Аптека №23 · г. Молодечно, ул. Великий Гостинец, 40",
+					"name": "Аптека №23",
+					"address": "г. Молодечно, ул. Великий Гостинец, 40",
 					"headLabel": "Заведующая:",
 					"head": "Ковалёва Н.Н.",
 					"count": 4,
@@ -270,7 +330,8 @@
 				},
 				{
 					"id": "pharmacy-5",
-					"name": "Аптека №31 · г. Жодино, пр-т Мира, 12",
+					"name": "Аптека №31",
+					"address": "г. Жодино, пр-т Мира, 12",
 					"headLabel": "Заведующая:",
 					"head": "Сидоренко Е.В.",
 					"count": 3,

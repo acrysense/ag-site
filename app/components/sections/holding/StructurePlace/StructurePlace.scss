@@ -12,11 +12,21 @@
 		flex-direction: column;
 		gap: 10px;
 		min-width: 0;
-		padding: 19px;
-		background: palette("white");
-		border: 1px solid palette("block-border");
-		border-radius: $radius-content-block;
-		box-shadow: $shadow-content-block;
+
+		@include up(desktop) {
+			padding: 19px;
+			background: palette("white");
+			border: 1px solid palette("block-border");
+			border-radius: $radius-content-block;
+			box-shadow: $shadow-content-block;
+		}
+
+		@include mobile-block;
+
+		// До 1024 — над «Юридическим лицом» (порядок макета: карточка → место в структуре → юрлицо)
+		@include down(desktop) {
+			order: -1;
+		}
 	}
 
 	.structure-place__label {

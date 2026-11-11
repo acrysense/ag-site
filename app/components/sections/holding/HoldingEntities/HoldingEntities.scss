@@ -18,18 +18,23 @@
 			border-radius: $radius-content-block;
 			box-shadow: $shadow-content-block;
 		}
+
+		@include mobile-block;
 	}
 
+	// До 1024 — H2 360 (24), число через 8
 	.holding-entities__title {
-		@include text("h1-360");
+		@include text("h2-360");
 
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0 12px;
+		gap: 0 8px;
 		color: palette("black-h");
 
 		@include up(desktop) {
 			@include text("h1");
+
+			gap: 0 12px;
 		}
 	}
 

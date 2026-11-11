@@ -4,8 +4,24 @@
 	props: name, logo, rows [InfoList: { label, value, links }], social [{ icon (instagram, vk,
 	facebook, youtube, telegram, tiktok), label, url }], text, siteUrl, siteText. Пустые части —
 	без черт и промежутков.
+	До 1024 — компактная (Brand.Card.Mobile): логотип 44, название и сайт, описание в 2 строки,
+	телефон и e-mail; вся карточка — ссылка на сайт. Для неё: site { text, url } (адрес сайта
+	текстом, «apteka-adel.by»; нет — siteUrl), contacts [{ text, url }] (телефон, e-mail).
 --}}
 <article class="brand-card">
+    <div class="brand-card__compact">
+        <div class="brand-card__compact-head">
+            {{#if props.logo}}<span class="brand-card__compact-logo"><img src="{{props.logo}}" width="28" height="28" alt="" loading="lazy" decoding="async" /></span>{{/if}}
+            <span class="brand-card__compact-title">
+                <span class="brand-card__compact-name">{{props.name}}</span>
+                {{#if (or props.site.url props.siteUrl)}}<a class="brand-card__compact-site" href="{{default props.site.url props.siteUrl}}" target="_blank" rel="noopener noreferrer">{{default props.site.text (default props.siteText "Перейти на сайт")}}<span class="visually-hidden"> — сайт {{props.name}}, откроется в новой вкладке</span></a>{{/if}}
+            </span>
+        </div>
+        {{#if props.text}}<p class="brand-card__compact-text">{{props.text}}</p>{{/if}}
+        {{#if props.contacts.length}}
+            <p class="brand-card__compact-contacts">{{#each props.contacts}}<a class="brand-card__compact-contact" href="{{url}}">{{text}}</a>{{/each}}</p>
+        {{/if}}
+    </div>
     <div class="brand-card__head">
         {{#if props.logo}}<img class="brand-card__logo" src="{{props.logo}}" width="120" height="120" alt="" loading="lazy" decoding="async" />{{/if}}
         <h3 class="brand-card__name">{{props.name}}</h3>

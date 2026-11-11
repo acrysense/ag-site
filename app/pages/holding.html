@@ -10,7 +10,7 @@
 			{{> layouts/Header/Header props=(default data.header site.header) }}
 			<main class="wrapper__content">
 				{{!-- «Структура холдинга» — юрлица --}}
-				<div class="container page-inner">
+				<div class="container page-inner page-inner--flush">
 					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.breadcrumbs) }}
 					<div class="page-sections">
 						{{> sections/holding/HoldingHero/HoldingHero props=data.hero }}

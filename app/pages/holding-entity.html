@@ -10,15 +10,11 @@
 			{{> layouts/Header/Header props=(default data.header site.header) }}
 			<main class="wrapper__content">
 				{{!-- Юрлицо холдинга: карточка, бренды справа, сотрудники по отделам --}}
-				<div class="container page-inner">
+				<div class="container page-inner page-inner--flush">
 					{{> components/Breadcrumbs/Breadcrumbs props=(obj items=data.breadcrumbs) }}
 					<div class="page-columns page-columns--aside-end">
 						{{> sections/holding/EntityInfo/EntityInfo props=data.entity }}
-						{{#if data.brands.length}}
-							<div class="page-columns__aside page-aside-cards">
-								{{#each data.brands}}{{> sections/holding/BrandCard/BrandCard props=this }}{{/each}}
-							</div>
-						{{/if}}
+						{{> sections/holding/BrandList/BrandList props=(obj items=data.brands class="page-columns__aside") }}
 						{{> sections/holding/EntityStaff/EntityStaff props=data.staff }}
 					</div>
 				</div>

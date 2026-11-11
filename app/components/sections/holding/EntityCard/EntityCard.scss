@@ -2,10 +2,15 @@
 @use "@/assets/styles/base/vars" as *;
 
 // Карточка юрлица внутри белого блока — фон BG.Info, рамка Block.Border, поля 20, скругление
-// 20: название H3 Black.TXT, через 16 строки «Телефон / Адрес / Аптек», через 16 бренды; от
+// 20: название H3 Black.TXT (ссылка), через 16 строки «Телефон / Адрес / Аптек», через 16 бренды; от
 // содержимого до «Подробнее» (General M) не меньше 24, кнопка прижата к низу.
+// До 1024 (LegalEntity.Card.Mobile): поля 16, части через 10; название M/500 и стрелка 16 справа,
+// вся карточка — ссылка; адрес, телефон (Main Blue) и аптеки — S/400 Dark-grey.TXT со значками 16
+// через 10, строки через 6; бренды — логотипы 28 (белый круг, рамка BG.Info 2, внахлёст на 6) и
+// названия через « · » S/400 Dark-grey.TXT; без «Подробнее».
 @layer components {
 	.entity-card {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		gap: 24px;
@@ -15,6 +20,11 @@
 		background: palette("bg-info");
 		border: 1px solid palette("block-border");
 		border-radius: $radius-content-block;
+
+		@include down(desktop) {
+			gap: 10px;
+			padding: 15px;
+		}
 	}
 
 	.entity-card__top {
@@ -22,17 +32,165 @@
 		flex-direction: column;
 		gap: 16px;
 		min-width: 0;
+
+		@include down(desktop) {
+			gap: 10px;
+		}
 	}
 
 	.entity-card__title {
 		@include text("h3");
 
+		display: flex;
+		gap: 8px;
+		align-items: center;
+		justify-content: space-between;
 		color: palette("black-txt");
+		overflow-wrap: anywhere;
+
+		@include down(desktop) {
+			@include text("m-500");
+		}
+	}
+
+	// Название — ссылка; до 1024 растянута на всю карточку (телефон — поверх)
+	.entity-card__link {
+		min-width: 0;
+		color: inherit;
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-txt");
+		}
+
+		@include down(desktop) {
+			&::after {
+				position: absolute;
+				inset: 0;
+				content: "";
+				border-radius: inherit;
+			}
+
+			&:focus-visible::after {
+				outline: 1px solid palette("form-focus");
+				outline-offset: -1px;
+			}
+		}
+	}
+
+	.entity-card__arrow {
+		flex: none;
+		width: 16px;
+		height: 16px;
+		color: palette("black-txt");
+
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.entity-card__info,
+	.entity-card__brands {
+		@include down(desktop) {
+			display: none;
+		}
+	}
+
+	.entity-card__meta {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.entity-card__meta-row {
+		@include text("s-400");
+
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		min-width: 0;
+		color: palette("dark-grey-txt");
+		overflow-wrap: anywhere;
+	}
+
+	.entity-card__meta-icon {
+		flex: none;
+		width: 16px;
+		height: 16px;
+		color: palette("dark-grey-txt");
+	}
+
+	.entity-card__phone {
+		position: relative;
+		z-index: 1;
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+
+	.entity-card__brands-line {
+		@include text("s-400");
+
+		display: flex;
+		gap: 8px;
+		align-items: center;
+		min-width: 0;
+		color: palette("dark-grey-txt");
+
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.entity-card__logos {
+		display: flex;
+		flex: none;
+	}
+
+	.entity-card__logo {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 28px;
+		height: 28px;
+		background: palette("white");
+		border: 2px solid palette("bg-info");
+		border-radius: 50%;
+
+		& + & {
+			margin-left: -6px;
+		}
+
+		img {
+			width: 18px;
+			height: 18px;
+			object-fit: contain;
+		}
+	}
+
+	.entity-card__brand-names {
+		min-width: 0;
 		overflow-wrap: anywhere;
 	}
 
 	.entity-card__more {
 		align-self: flex-start;
 		margin-top: auto;
+
+		@include down(desktop) {
+			display: none;
+		}
 	}
 }

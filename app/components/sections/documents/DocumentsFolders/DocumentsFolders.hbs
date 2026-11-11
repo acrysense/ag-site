@@ -3,14 +3,14 @@
 	фильтрами). Шеврон раскрывает подпапки (только если они есть). Текущая папка — подсвечена.
 	С 1024 — карточка слева над фильтрами. До 1024 — панель на весь экран:
 	шапка «Папки» с ×, дерево; открывает её поле «Папка: …» в списке (DocumentsList, foldersId).
-	props: id, title («Папки»), static (витрина: на мобильном на месте, не панелью), inline (на
-	мобильном на месте и без × — дерево «Структура» холдинга), items [{ title, url, count, current, expanded (подпапки раскрыты:
+	props: id, title («Папки»), static (витрина: на мобильном на месте, не панелью), items [{ title, url, count, current, expanded (подпапки раскрыты:
 	бэк раскрывает ветку текущей папки), children [те же поля] }], countLabel (для скринридера перед
 	числом, «, документов: »), collapseAll — текст кнопки «Свернуть всё» в шапке (нет — без неё).
-	Тот же вид — дерево «Структура» на странице подразделения холдинга. Контракт — docs/contracts/documents.md.
+	Тот же вид — дерево «Структура» на странице подразделения холдинга (до 1024 открывает поле
+	«Структура: …» в шапке, UnitHeader tree). Контракт — docs/contracts/documents.md.
 --}}
 {{#if props.items.length}}
-    <nav class="documents-folders{{#if props.static}} documents-folders--static{{/if}}{{#if props.inline}} documents-folders--inline{{/if}}{{#if props.class}} {{props.class}}{{/if}}" id="{{default props.id 'documents-folders'}}" aria-labelledby="{{default props.id 'documents-folders'}}-title" data-module="DocumentsFolders" data-path="sections/documents">
+    <nav class="documents-folders{{#if props.static}} documents-folders--static{{/if}}{{#if props.class}} {{props.class}}{{/if}}" id="{{default props.id 'documents-folders'}}" aria-labelledby="{{default props.id 'documents-folders'}}-title" data-module="DocumentsFolders" data-path="sections/documents">
         <div class="documents-folders__head">
             <h2 class="documents-folders__title" id="{{default props.id 'documents-folders'}}-title">{{default props.title "Папки"}}</h2>
             {{#if props.collapseAll}}<button class="documents-folders__collapse" type="button" data-folders-collapse-all>{{props.collapseAll}}</button>{{/if}}

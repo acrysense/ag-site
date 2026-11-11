@@ -20,6 +20,13 @@
 			border-radius: $radius-content-block;
 			box-shadow: $shadow-content-block;
 		}
+
+		@include mobile-block;
+
+		// Первый блок страницы — в одной полосе с крошками: сверху 10
+		@include down(desktop) {
+			padding-top: 10px;
+		}
 	}
 
 	.entity-info__title {
@@ -87,6 +94,56 @@
 
 		[aria-expanded="false"] > & {
 			transform: none;
+		}
+	}
+
+	// До 1024 (Employee.MetaRow): строки meta — S/400 Dark-grey.TXT со значком 16 через 10, строки
+	// через 6, телефон Main Blue; через 10 под названием. Строки rows скрыты (если есть meta),
+	// «Скрыть описание» нет
+	.entity-info__meta {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		margin: -14px 0 0;
+		padding: 0;
+		list-style: none;
+
+		@include up(desktop) {
+			display: none;
+		}
+	}
+
+	.entity-info__meta-row {
+		@include text("s-400");
+
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		min-width: 0;
+		color: palette("dark-grey-txt");
+		overflow-wrap: anywhere;
+	}
+
+	.entity-info__meta-icon {
+		flex: none;
+		width: 16px;
+		height: 16px;
+	}
+
+	.entity-info__meta-link {
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+	}
+
+	@include down(desktop) {
+		.entity-info__rows:has(+ .entity-info__meta),
+		.entity-info__toggle {
+			display: none;
 		}
 	}
 }

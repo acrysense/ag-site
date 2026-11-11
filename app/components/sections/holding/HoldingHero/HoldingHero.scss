@@ -16,6 +16,13 @@
 			gap: 40px;
 			align-items: flex-end;
 		}
+
+		@include mobile-block;
+
+		// Первый блок страницы — в одной полосе с крошками: сверху 10
+		@include down(desktop) {
+			padding-top: 10px;
+		}
 	}
 
 	.holding-hero__intro {
@@ -44,15 +51,43 @@
 		color: palette("dark-grey-txt");
 	}
 
-	// До 1024 страница белая — подложка переключателя серая, как у обычных вкладок
+	// До 1024 (360.Holding — 1) — как «По отделам / По аптекам»: подложка BG.Main, высота 36,
+	// выбранная — белая с лёгкой тенью и Black.TXT, остальные Dark-grey.TXT; до 768 — на всю ширину,
+	// вкладки поровну
 	.holding-hero__views {
 		flex: none;
 		align-self: flex-start;
-		background: palette("bg-main-2");
 
 		@include up(desktop) {
 			align-self: auto;
-			background: palette("white");
+		}
+
+		@include down(desktop) {
+			gap: 10px;
+			padding: 1px 2px;
+			background: palette("bg-main");
+
+			.tabs__tab {
+				padding-block: 6px;
+				color: palette("dark-grey-txt");
+
+				&[aria-current="page"] {
+					color: palette("black-txt");
+					background: palette("white");
+					box-shadow: $shadow-segment;
+				}
+			}
+		}
+
+		@include down(tablet) {
+			display: flex;
+			align-self: stretch;
+
+			.tabs__tab {
+				flex: 1 1 0;
+				min-width: 0;
+				text-align: center;
+			}
 		}
 	}
 }

@@ -3,7 +3,9 @@
 
 // Белый блок, поля 20, части через 16: заголовок H2 Black.TXT и сортировка справа, вкладки-фильтры
 // по отделам, список. Подпись группы — S/500 прописными Dark-grey.TXT, поля 16/12/4; под ней
-// сотрудники (EmployeeRow). Внизу — страницы и «Всего». Телефон — без белого блока.
+// сотрудники (EmployeeRow). Внизу — страницы и «Всего».
+// До 1024 (360.Holding — 6): части через 10; сортировка — поле 46 на всю ширину под вкладками;
+// подпись группы — поля 10/0/0.
 @layer components {
 	.unit-staff {
 		display: flex;
@@ -18,6 +20,8 @@
 			border-radius: $radius-content-block;
 			box-shadow: $shadow-content-block;
 		}
+
+		@include mobile-block;
 	}
 
 	.unit-staff__head {
@@ -54,5 +58,29 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
+	}
+
+	@include down(desktop) {
+		.unit-staff {
+			gap: 10px;
+		}
+
+		// Заголовок и сортировка — отдельными частями блока: сортировка под вкладками
+		.unit-staff__head {
+			display: contents;
+		}
+
+		.unit-staff__sort {
+			order: 1;
+		}
+
+		.unit-staff__list,
+		.unit-staff > .pagination {
+			order: 2;
+		}
+
+		.unit-staff__group-title {
+			padding: 10px 0 0;
+		}
 	}
 }
