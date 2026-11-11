@@ -11303,6 +11303,10 @@
 		},
 		"entityStaff": {
 			"title": "Сотрудники",
+			"views": [
+				{ "text": "По отделам", "url": "#", "count": 3, "current": true },
+				{ "text": "По аптекам", "url": "#", "count": 96 }
+			],
 			"summary": "3 отдела · 15 сотрудников",
 			"departments": [
 				{

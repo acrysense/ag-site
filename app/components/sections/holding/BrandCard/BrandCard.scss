@@ -17,8 +17,8 @@
 		border-radius: $radius-content-block;
 		box-shadow: $shadow-content-block;
 
-		// Черта между частями (не перед первой)
-		> * + * {
+		// Черта между частями (не перед первой; компактная часть с 1024 скрыта и не считается)
+		> :not(.brand-card__compact) ~ * {
 			padding-top: 20px;
 			border-top: 1px solid palette("form-border");
 		}
@@ -125,7 +125,7 @@
 			background: palette("bg-info");
 			box-shadow: none;
 
-			> * + * {
+			> :not(.brand-card__compact) ~ * {
 				padding-top: 0;
 				border-top: 0;
 			}
