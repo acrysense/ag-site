@@ -194,6 +194,15 @@
 		],
 		"staff": {
 			"title": "Сотрудники",
+			"views": [
+				{
+					"text": "По отделам",
+					"url": "./holding-entity.html",
+					"count": 8,
+					"current": true
+				},
+				{ "text": "По аптекам", "url": "./holding-entity-pharmacies.html", "count": 96 }
+			],
 			"controls": [
 				{
 					"id": "staff-sort",
