@@ -54,9 +54,9 @@
 		<script type="module" crossorigin src="/ag-site/assets/js/pages-nav-tMX_YTRV.js"></script>
 		<script type="module" crossorigin src="/ag-site/assets/js/announce-D3OkgBby.js"></script>
 		<script type="module" crossorigin src="/ag-site/assets/js/icon-NLq4soTO.js"></script>
-		<script type="module" crossorigin src="/ag-site/assets/js/app-BS-3lGsK.js"></script>
+		<script type="module" crossorigin src="/ag-site/assets/js/app-ANpDQut0.js"></script>
 		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/pages-nav--aTdp9SH.css" />
-		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-ScFfcrJB.css" />
+		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-D8DwSxMV.css" />
 	</head>
 	<body>
 		<div class="wrapper">
@@ -926,7 +926,7 @@
 				</nav>
 			</header>
 			<main class="wrapper__content">
-				<div class="container page-inner">
+				<div class="container page-inner page-inner--flush">
 					<nav class="breadcrumbs" aria-label="Хлебные крошки">
 						<ol class="breadcrumbs__list">
 							<li class="breadcrumbs__item"><a class="breadcrumbs__link" href="./index.html">Главная</a></li>
@@ -944,6 +944,19 @@
 					<div class="page-columns page-columns--aside-start page-columns--aside-gap-20">
 						<div class="page-stack page-stack--gap-20">
 							<section class="unit-header" aria-labelledby="unit-header-title">
+								<button
+									class="unit-header__tree"
+									type="button"
+									data-documents-folders-open="unit-tree"
+									aria-controls="unit-tree"
+									aria-expanded="false"
+									aria-haspopup="dialog"
+								>
+									<span class="unit-header__tree-text">Структура: Управляющая компания / Дирекция розничного бизнеса</span>
+									<svg class="icon unit-header__tree-arrow" aria-hidden="true" focusable="false">
+										<use href="/ag-site/assets/icons/sprite.svg#icon-chevron-down"></use>
+									</svg>
+								</button>
 								<div class="unit-header__top">
 									<div class="unit-header__intro">
 										<p class="unit-header__caption">Дирекция · Управляющая компания</p>
@@ -1003,8 +1016,15 @@
 										<li class="unit-header__stat">
 											<span class="unit-header__value">5</span> <span class="unit-header__label">юрлиц</span>
 										</li>
+										<li class="unit-header__stat unit-header__stat--mobile">
+											<span class="unit-header__value">312</span> <span class="unit-header__label">аптек</span>
+										</li>
 										<li class="unit-header__stat">
-											<span class="unit-header__value">1 200</span> <span class="unit-header__label">сотрудников</span>
+											<span class="unit-header__value">1 200</span>
+											<span class="unit-header__label"
+												><span class="unit-header__label-full">сотрудников</span
+												><span class="unit-header__label-short">сотр.</span></span
+											>
 										</li>
 									</ul>
 								</div>
@@ -1157,8 +1177,13 @@
 									<li class="unit-cards__item">
 										<article class="entity-card">
 											<div class="entity-card__top">
-												<h3 class="entity-card__title">ООО «Аптека групп Центр»</h3>
-												<dl class="info-list info-list--aligned">
+												<h3 class="entity-card__title">
+													<a class="entity-card__link" href="./holding-entity-network.html">ООО «Аптека групп Центр»</a
+													><svg class="icon entity-card__arrow" aria-hidden="true" focusable="false">
+														<use href="/ag-site/assets/icons/sprite.svg#icon-angle-right"></use>
+													</svg>
+												</h3>
+												<dl class="info-list info-list--aligned entity-card__info">
 													<div class="info-list__row">
 														<dt class="info-list__label">Телефон:</dt>
 														<dd class="info-list__value">
@@ -1174,17 +1199,46 @@
 														<dd class="info-list__value">96</dd>
 													</div>
 												</dl>
+												<ul class="entity-card__meta" role="list">
+													<li class="entity-card__meta-row">
+														<svg class="icon entity-card__meta-icon" aria-hidden="true" focusable="false">
+															<use href="/ag-site/assets/icons/sprite.svg#icon-home"></use>
+														</svg>
+														<span>г. Минск, пр-т Победителей, 84-2, офис 16</span>
+													</li>
+													<li class="entity-card__meta-row">
+														<svg class="icon entity-card__meta-icon" aria-hidden="true" focusable="false">
+															<use href="/ag-site/assets/icons/sprite.svg#icon-phone"></use>
+														</svg>
+														<a class="entity-card__phone" href="tel:+375172490005">+375 17 249 00 05</a>
+													</li>
+													<li class="entity-card__meta-row">
+														<svg class="icon entity-card__meta-icon" aria-hidden="true" focusable="false">
+															<use href="/ag-site/assets/icons/sprite.svg#icon-pharmacy"></use>
+														</svg>
+														<span>96 аптек</span>
+													</li>
+												</ul>
 											</div>
-											<a class="btn btn--general btn--m entity-card__more" href="./holding-entity-network.html"
-												>Подробнее<span class="visually-hidden">: ООО «Аптека групп Центр»</span></a
+											<a
+												class="btn btn--general btn--m entity-card__more"
+												href="./holding-entity-network.html"
+												tabindex="-1"
+												aria-hidden="true"
+												>Подробнее</a
 											>
 										</article>
 									</li>
 									<li class="unit-cards__item">
 										<article class="entity-card">
 											<div class="entity-card__top">
-												<h3 class="entity-card__title">ЗАО «Аптека групп Север»</h3>
-												<dl class="info-list info-list--aligned">
+												<h3 class="entity-card__title">
+													<a class="entity-card__link" href="./holding-entity.html">ЗАО «Аптека групп Север»</a
+													><svg class="icon entity-card__arrow" aria-hidden="true" focusable="false">
+														<use href="/ag-site/assets/icons/sprite.svg#icon-angle-right"></use>
+													</svg>
+												</h3>
+												<dl class="info-list info-list--aligned entity-card__info">
 													<div class="info-list__row">
 														<dt class="info-list__label">Телефон:</dt>
 														<dd class="info-list__value">
@@ -1200,17 +1254,46 @@
 														<dd class="info-list__value">70</dd>
 													</div>
 												</dl>
+												<ul class="entity-card__meta" role="list">
+													<li class="entity-card__meta-row">
+														<svg class="icon entity-card__meta-icon" aria-hidden="true" focusable="false">
+															<use href="/ag-site/assets/icons/sprite.svg#icon-home"></use>
+														</svg>
+														<span>г. Витебск, ул. 5-я Кооперативная, 8</span>
+													</li>
+													<li class="entity-card__meta-row">
+														<svg class="icon entity-card__meta-icon" aria-hidden="true" focusable="false">
+															<use href="/ag-site/assets/icons/sprite.svg#icon-phone"></use>
+														</svg>
+														<a class="entity-card__phone" href="tel:+375212352180">+375 212 35 21 80</a>
+													</li>
+													<li class="entity-card__meta-row">
+														<svg class="icon entity-card__meta-icon" aria-hidden="true" focusable="false">
+															<use href="/ag-site/assets/icons/sprite.svg#icon-pharmacy"></use>
+														</svg>
+														<span>70 аптек</span>
+													</li>
+												</ul>
 											</div>
-											<a class="btn btn--general btn--m entity-card__more" href="./holding-entity.html"
-												>Подробнее<span class="visually-hidden">: ЗАО «Аптека групп Север»</span></a
+											<a
+												class="btn btn--general btn--m entity-card__more"
+												href="./holding-entity.html"
+												tabindex="-1"
+												aria-hidden="true"
+												>Подробнее</a
 											>
 										</article>
 									</li>
 									<li class="unit-cards__item">
 										<article class="entity-card">
 											<div class="entity-card__top">
-												<h3 class="entity-card__title">ЗАО «Аптека групп Юг»</h3>
-												<dl class="info-list info-list--aligned">
+												<h3 class="entity-card__title">
+													<a class="entity-card__link" href="./holding-entity.html">ЗАО «Аптека групп Юг»</a
+													><svg class="icon entity-card__arrow" aria-hidden="true" focusable="false">
+														<use href="/ag-site/assets/icons/sprite.svg#icon-angle-right"></use>
+													</svg>
+												</h3>
+												<dl class="info-list info-list--aligned entity-card__info">
 													<div class="info-list__row">
 														<dt class="info-list__label">Телефон:</dt>
 														<dd class="info-list__value">
@@ -1226,17 +1309,46 @@
 														<dd class="info-list__value">58</dd>
 													</div>
 												</dl>
+												<ul class="entity-card__meta" role="list">
+													<li class="entity-card__meta-row">
+														<svg class="icon entity-card__meta-icon" aria-hidden="true" focusable="false">
+															<use href="/ag-site/assets/icons/sprite.svg#icon-home"></use>
+														</svg>
+														<span>Гомельская обл., г. Гомель, ул. Кирова, 59А</span>
+													</li>
+													<li class="entity-card__meta-row">
+														<svg class="icon entity-card__meta-icon" aria-hidden="true" focusable="false">
+															<use href="/ag-site/assets/icons/sprite.svg#icon-phone"></use>
+														</svg>
+														<a class="entity-card__phone" href="tel:+375232558708">+375 232 55 87 08</a>
+													</li>
+													<li class="entity-card__meta-row">
+														<svg class="icon entity-card__meta-icon" aria-hidden="true" focusable="false">
+															<use href="/ag-site/assets/icons/sprite.svg#icon-pharmacy"></use>
+														</svg>
+														<span>58 аптек</span>
+													</li>
+												</ul>
 											</div>
-											<a class="btn btn--general btn--m entity-card__more" href="./holding-entity.html"
-												>Подробнее<span class="visually-hidden">: ЗАО «Аптека групп Юг»</span></a
+											<a
+												class="btn btn--general btn--m entity-card__more"
+												href="./holding-entity.html"
+												tabindex="-1"
+												aria-hidden="true"
+												>Подробнее</a
 											>
 										</article>
 									</li>
 									<li class="unit-cards__item">
 										<article class="entity-card">
 											<div class="entity-card__top">
-												<h3 class="entity-card__title">ООО «Аптека групп Запад»</h3>
-												<dl class="info-list info-list--aligned">
+												<h3 class="entity-card__title">
+													<a class="entity-card__link" href="./holding-entity.html">ООО «Аптека групп Запад»</a
+													><svg class="icon entity-card__arrow" aria-hidden="true" focusable="false">
+														<use href="/ag-site/assets/icons/sprite.svg#icon-angle-right"></use>
+													</svg>
+												</h3>
+												<dl class="info-list info-list--aligned entity-card__info">
 													<div class="info-list__row">
 														<dt class="info-list__label">Телефон:</dt>
 														<dd class="info-list__value">
@@ -1252,17 +1364,46 @@
 														<dd class="info-list__value">48</dd>
 													</div>
 												</dl>
+												<ul class="entity-card__meta" role="list">
+													<li class="entity-card__meta-row">
+														<svg class="icon entity-card__meta-icon" aria-hidden="true" focusable="false">
+															<use href="/ag-site/assets/icons/sprite.svg#icon-home"></use>
+														</svg>
+														<span>Гродненская обл., г. Гродно, пр-т Янки Купалы, 87, офис 609</span>
+													</li>
+													<li class="entity-card__meta-row">
+														<svg class="icon entity-card__meta-icon" aria-hidden="true" focusable="false">
+															<use href="/ag-site/assets/icons/sprite.svg#icon-phone"></use>
+														</svg>
+														<a class="entity-card__phone" href="tel:+375152315126">+375 152 31 51 26</a>
+													</li>
+													<li class="entity-card__meta-row">
+														<svg class="icon entity-card__meta-icon" aria-hidden="true" focusable="false">
+															<use href="/ag-site/assets/icons/sprite.svg#icon-pharmacy"></use>
+														</svg>
+														<span>48 аптек</span>
+													</li>
+												</ul>
 											</div>
-											<a class="btn btn--general btn--m entity-card__more" href="./holding-entity.html"
-												>Подробнее<span class="visually-hidden">: ООО «Аптека групп Запад»</span></a
+											<a
+												class="btn btn--general btn--m entity-card__more"
+												href="./holding-entity.html"
+												tabindex="-1"
+												aria-hidden="true"
+												>Подробнее</a
 											>
 										</article>
 									</li>
 									<li class="unit-cards__item">
 										<article class="entity-card">
 											<div class="entity-card__top">
-												<h3 class="entity-card__title">ООО «Либерти-Фарм»</h3>
-												<dl class="info-list info-list--aligned">
+												<h3 class="entity-card__title">
+													<a class="entity-card__link" href="./holding-entity.html">ООО «Либерти-Фарм»</a
+													><svg class="icon entity-card__arrow" aria-hidden="true" focusable="false">
+														<use href="/ag-site/assets/icons/sprite.svg#icon-angle-right"></use>
+													</svg>
+												</h3>
+												<dl class="info-list info-list--aligned entity-card__info">
 													<div class="info-list__row">
 														<dt class="info-list__label">Телефон:</dt>
 														<dd class="info-list__value">
@@ -1278,9 +1419,33 @@
 														<dd class="info-list__value">40</dd>
 													</div>
 												</dl>
+												<ul class="entity-card__meta" role="list">
+													<li class="entity-card__meta-row">
+														<svg class="icon entity-card__meta-icon" aria-hidden="true" focusable="false">
+															<use href="/ag-site/assets/icons/sprite.svg#icon-home"></use>
+														</svg>
+														<span>г. Могилев, ул. Якубовского, 37А-88</span>
+													</li>
+													<li class="entity-card__meta-row">
+														<svg class="icon entity-card__meta-icon" aria-hidden="true" focusable="false">
+															<use href="/ag-site/assets/icons/sprite.svg#icon-phone"></use>
+														</svg>
+														<a class="entity-card__phone" href="tel:+375222650366">+375 222 65 03 66</a>
+													</li>
+													<li class="entity-card__meta-row">
+														<svg class="icon entity-card__meta-icon" aria-hidden="true" focusable="false">
+															<use href="/ag-site/assets/icons/sprite.svg#icon-pharmacy"></use>
+														</svg>
+														<span>40 аптек</span>
+													</li>
+												</ul>
 											</div>
-											<a class="btn btn--general btn--m entity-card__more" href="./holding-entity.html"
-												>Подробнее<span class="visually-hidden">: ООО «Либерти-Фарм»</span></a
+											<a
+												class="btn btn--general btn--m entity-card__more"
+												href="./holding-entity.html"
+												tabindex="-1"
+												aria-hidden="true"
+												>Подробнее</a
 											>
 										</article>
 									</li>
@@ -1289,7 +1454,7 @@
 							<section class="unit-staff" aria-labelledby="unit-staff-title">
 								<div class="unit-staff__head">
 									<h2 class="unit-staff__title" id="unit-staff-title">Сотрудники</h2>
-									<div class="sort-menu" data-module="SortMenu" data-path="components">
+									<div class="sort-menu sort-menu--field unit-staff__sort" data-module="SortMenu" data-path="components">
 										<button
 											class="sort-menu__toggle"
 											type="button"
@@ -1592,7 +1757,7 @@
 						</div>
 						<div class="page-columns__aside">
 							<nav
-								class="documents-folders documents-folders--inline"
+								class="documents-folders"
 								id="unit-tree"
 								aria-labelledby="unit-tree-title"
 								data-module="DocumentsFolders"

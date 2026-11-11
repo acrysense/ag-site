@@ -45,9 +45,9 @@
 		<script type="module" crossorigin src="/ag-site/assets/js/pages-nav-tMX_YTRV.js"></script>
 		<script type="module" crossorigin src="/ag-site/assets/js/announce-D3OkgBby.js"></script>
 		<script type="module" crossorigin src="/ag-site/assets/js/icon-NLq4soTO.js"></script>
-		<script type="module" crossorigin src="/ag-site/assets/js/app-BS-3lGsK.js"></script>
+		<script type="module" crossorigin src="/ag-site/assets/js/app-ANpDQut0.js"></script>
 		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/pages-nav--aTdp9SH.css" />
-		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-ScFfcrJB.css" />
+		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-D8DwSxMV.css" />
 	</head>
 	<body>
 		<div class="wrapper">
@@ -917,7 +917,7 @@
 				</nav>
 			</header>
 			<main class="wrapper__content">
-				<div class="container page-inner">
+				<div class="container page-inner page-inner--flush">
 					<nav class="breadcrumbs" aria-label="Хлебные крошки">
 						<ol class="breadcrumbs__list">
 							<li class="breadcrumbs__item"><a class="breadcrumbs__link" href="./index.html">Главная</a></li>
@@ -938,6 +938,19 @@
 					<div class="page-columns page-columns--aside-start page-columns--aside-gap-20">
 						<div class="page-stack page-stack--gap-20">
 							<section class="unit-header" aria-labelledby="unit-header-title">
+								<button
+									class="unit-header__tree"
+									type="button"
+									data-documents-folders-open="unit-tree"
+									aria-controls="unit-tree"
+									aria-expanded="false"
+									aria-haspopup="dialog"
+								>
+									<span class="unit-header__tree-text">Структура: Корпоративный центр / Финансовая дирекция</span>
+									<svg class="icon unit-header__tree-arrow" aria-hidden="true" focusable="false">
+										<use href="/ag-site/assets/icons/sprite.svg#icon-chevron-down"></use>
+									</svg>
+								</button>
 								<div class="unit-header__top">
 									<div class="unit-header__intro">
 										<p class="unit-header__caption">Дирекция · Корпоративный центр</p>
@@ -1114,7 +1127,7 @@
 							<section class="unit-staff" aria-labelledby="unit-staff-title">
 								<div class="unit-staff__head">
 									<h2 class="unit-staff__title" id="unit-staff-title">Сотрудники</h2>
-									<div class="sort-menu" data-module="SortMenu" data-path="components">
+									<div class="sort-menu sort-menu--field unit-staff__sort" data-module="SortMenu" data-path="components">
 										<button
 											class="sort-menu__toggle"
 											type="button"
@@ -1407,7 +1420,7 @@
 						</div>
 						<div class="page-columns__aside">
 							<nav
-								class="documents-folders documents-folders--inline"
+								class="documents-folders"
 								id="unit-tree"
 								aria-labelledby="unit-tree-title"
 								data-module="DocumentsFolders"
