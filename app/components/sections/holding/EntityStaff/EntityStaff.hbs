@@ -9,7 +9,8 @@
 	выбора по два в ряд, у аптеки адрес — строкой под названием, фото 28, «Заведующая: … · Сотрудников: …».
 	props: title, views [{ text, url, current, count }], controls [SortMenu: { id, label, options }],
 	summary, groups [{ id, name, address (адрес аптеки: с 1024 — после названия через « · », до 1024 — строкой под ним),
-	open, headLabel («Руководитель:»), head, count, avatars [фото, до 5],
+	open, headLabel («Руководитель:»), head, count, url (страница аптеки — «Перейти к аптеке →» в
+	строке с руководителем; нет — без ссылки), urlText, avatars [фото, до 5],
 	employees [EmployeeRow] }] (departments — старое имя того же списка), pagination [Pagination].
 	Пусто — блока нет.
 --}}
@@ -45,6 +46,7 @@
                         <span class="entity-dept__meta">
                             {{#if head}}<span class="entity-dept__fact"><span class="entity-dept__fact-label">{{default headLabel "Руководитель:"}}</span> {{head}}</span>{{/if}}
                             {{#if (isSet count)}}<span class="entity-dept__fact"><span class="entity-dept__fact-label">Сотрудников:</span> {{count}}</span>{{/if}}
+                            {{#if url}}<a class="entity-dept__link" href="{{url}}">{{default urlText "Перейти к аптеке"}} →</a>{{/if}}
                         </span>
                     </summary>
                     {{#if employees.length}}

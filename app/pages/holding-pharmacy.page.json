@@ -1,0 +1,216 @@
+{
+	"title": "Аптека №50 — структура холдинга «Аптека групп»",
+	"auth": true,
+	"description": "Аптека №50 ООО «Аптека групп Центр»: адрес, телефон, бренд и сотрудники.",
+	"nav": {
+		"group": "Холдинг",
+		"title": "Аптека — карточка и сотрудники",
+		"order": 93.5
+	},
+	"data": {
+		"breadcrumbs": [
+			{
+				"title": "Главная",
+				"url": "./index.html"
+			},
+			{
+				"title": "Структура холдинга",
+				"url": "./holding.html"
+			},
+			{
+				"title": "ООО «Аптека групп Центр»",
+				"url": "./holding-entity-pharmacies.html"
+			},
+			{
+				"title": "Аптека №50"
+			}
+		],
+		"entity": {
+			"name": "Аптека №50",
+			"meta": [
+				{
+					"icon": "home",
+					"text": "г. Борисов, ул. Днепропетровская, 21М"
+				},
+				{
+					"icon": "phone",
+					"text": "+375 177 73-50-50",
+					"url": "tel:+375177735050"
+				},
+				{
+					"icon": "profile",
+					"text": "4 сотрудника"
+				}
+			],
+			"rows": [
+				{
+					"label": "Адрес:",
+					"value": "г. Борисов, ул. Днепропетровская, 21М"
+				},
+				{
+					"label": "Телефон:",
+					"links": [
+						{
+							"text": "+375 177 73-50-50",
+							"url": "tel:+375177735050"
+						}
+					]
+				},
+				{
+					"label": "Юрлицо:",
+					"links": [
+						{
+							"text": "ООО «Аптека групп Центр»",
+							"url": "./holding-entity-pharmacies.html"
+						}
+					]
+				},
+				{
+					"label": "Бренд:",
+					"value": "ADEL"
+				}
+			],
+			"html": "<p>Аптека №50 пятой категории сети ADEL в Борисове. Рецептурный отдел, лекарства, косметика и товары для здоровья; работает ежедневно с 8:00 до 21:00.</p>",
+			"photos": [
+				{
+					"src": "./dev/img/holding/photo-1.webp",
+					"thumb": "./dev/img/holding/photo-1.webp",
+					"width": 534,
+					"height": 797,
+					"alt": "Стенд аптеки на празднике"
+				},
+				{
+					"src": "./dev/img/holding/photo-2.webp",
+					"thumb": "./dev/img/holding/photo-2.webp",
+					"width": 530,
+					"height": 797,
+					"alt": "Сотрудница фотографирует праздник"
+				}
+			]
+		},
+		"brands": [
+			{
+				"name": "ADEL",
+				"logo": "./dev/img/holding/logo-adel.webp",
+				"site": {
+					"text": "apteka-adel.by",
+					"url": "https://apteka-adel.by"
+				},
+				"contacts": [
+					{
+						"text": "+375 (44) 503-42-64",
+						"url": "tel:+375445034264"
+					},
+					{
+						"text": "info@apteka-adel.by",
+						"url": "mailto:info@apteka-adel.by"
+					}
+				],
+				"rows": [
+					{
+						"label": "Телефон:",
+						"links": [
+							{
+								"text": "+375 (44) 503-42-64",
+								"url": "tel:+375445034264"
+							}
+						]
+					},
+					{
+						"label": "Сайт:",
+						"links": [
+							{
+								"text": "apteka-adel.by",
+								"url": "https://apteka-adel.by"
+							}
+						]
+					},
+					{
+						"label": "Email:",
+						"links": [
+							{
+								"text": "info@apteka-adel.by",
+								"url": "mailto:info@apteka-adel.by"
+							}
+						]
+					}
+				],
+				"social": [
+					{
+						"icon": "instagram",
+						"label": "ADEL в Instagram",
+						"url": "#"
+					}
+				],
+				"text": "Сеть аптек, где вас ждут профессиональная помощь, индивидуальный подход, а также большой выбор средств для здоровья и ухода за собой.",
+				"siteUrl": "https://apteka-adel.by"
+			}
+		],
+		"staff": {
+			"title": "Сотрудники",
+			"groups": [
+				{
+					"employees": [
+						{
+							"name": "Новая Владислава Митрофановна",
+							"url": "./holding-employee.html",
+							"position": "Заведующая аптекой",
+							"photo": "./dev/img/person-1.webp",
+							"phone": {
+								"text": "+375 17 900-01-01",
+								"url": "tel:+375179000101"
+							},
+							"email": {
+								"text": "vlada.jein@apteka-group.by",
+								"url": "mailto:vlada.jein@apteka-group.by"
+							},
+							"head": true
+						},
+						{
+							"name": "Кравченко Игорь Олегович",
+							"url": "./holding-employee.html",
+							"position": "Фармацевт",
+							"photo": "./dev/img/person-2.webp",
+							"phone": {
+								"text": "+375 17 900-01-03",
+								"url": "tel:+375179000103"
+							},
+							"email": {
+								"text": "i.kravchenko@apteka-group.by",
+								"url": "mailto:i.kravchenko@apteka-group.by"
+							}
+						},
+						{
+							"name": "Сидорова Анна Павловна",
+							"url": "./holding-employee.html",
+							"position": "Провизор",
+							"photo": "./dev/img/person-3.webp",
+							"phone": {
+								"text": "+375 17 900-01-02",
+								"url": "tel:+375179000102"
+							},
+							"email": {
+								"text": "a.sidorova@apteka-group.by",
+								"url": "mailto:a.sidorova@apteka-group.by"
+							}
+						},
+						{
+							"name": "Ковальчук Андрей Сергеевич",
+							"url": "./holding-employee.html",
+							"position": "Фармацевт",
+							"photo": "./dev/img/person-4.webp",
+							"phone": {
+								"text": "+375 17 900-01-04",
+								"url": "tel:+375179000104"
+							},
+							"email": {
+								"text": "a.kovalchuk@apteka-group.by",
+								"url": "mailto:a.kovalchuk@apteka-group.by"
+							}
+						}
+					]
+				}
+			]
+		}
+	}
+}

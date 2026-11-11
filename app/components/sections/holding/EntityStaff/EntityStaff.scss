@@ -168,6 +168,23 @@
 		color: palette("black-txt");
 	}
 
+	// «Перейти к аптеке →» — S/400 Main Blue, через 20 от «Сотрудников» (до 1024 — строкой ниже, через 6)
+	.entity-dept__link {
+		color: palette("main-blue");
+		transition: color $transition-default;
+
+		&:hover,
+		&:focus-visible {
+			color: palette("blue-hover");
+		}
+
+		@include down(desktop) {
+			display: block;
+			width: fit-content;
+			margin-top: 6px;
+		}
+	}
+
 	.entity-dept__fact-label {
 		color: palette("dark-grey-txt");
 	}
