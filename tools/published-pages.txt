@@ -21,6 +21,7 @@ holding
 holding-entity
 holding-entity-network
 holding-entity-pharmacies
+holding-pharmacy
 holding-directorate
 holding-unit
 holding-employee
