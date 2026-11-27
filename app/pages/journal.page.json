@@ -204,7 +204,8 @@
 					"date": "2025-03-12",
 					"dateText": "12.03.2025",
 					"likes": 24,
-					"liked": false
+					"liked": false,
+					"reads": 128
 				},
 				{
 					"title": "HR-дайджест. Итоги 2025",
@@ -221,7 +222,8 @@
 					"date": "2025-03-12",
 					"dateText": "12.03.2025",
 					"likes": 24,
-					"liked": false
+					"liked": false,
+					"reads": 0
 				},
 				{
 					"title": "HR-дайджест. Итоги 2025",
@@ -238,7 +240,8 @@
 					"date": "2025-03-12",
 					"dateText": "12.03.2025",
 					"likes": 24,
-					"liked": false
+					"liked": false,
+					"reads": 57
 				},
 				{
 					"title": "HR-дайджест. Итоги 2025",
@@ -255,7 +258,8 @@
 					"date": "2025-03-12",
 					"dateText": "12.03.2025",
 					"likes": 24,
-					"liked": false
+					"liked": false,
+					"reads": 341
 				},
 				{
 					"title": "HR-дайджест. Итоги 2025",
@@ -272,7 +276,8 @@
 					"date": "2025-03-12",
 					"dateText": "12.03.2025",
 					"likes": 24,
-					"liked": true
+					"liked": true,
+					"reads": 12
 				},
 				{
 					"title": "HR-дайджест. Итоги 2025",
@@ -289,7 +294,8 @@
 					"date": "2025-03-12",
 					"dateText": "12.03.2025",
 					"likes": 24,
-					"liked": false
+					"liked": false,
+					"reads": 9
 				},
 				{
 					"title": "HR-дайджест. Итоги 2025",
@@ -306,7 +312,8 @@
 					"date": "2025-03-12",
 					"dateText": "12.03.2025",
 					"likes": 24,
-					"liked": false
+					"liked": false,
+					"reads": 76
 				},
 				{
 					"title": "HR-дайджест. Итоги 2025",
@@ -323,7 +330,8 @@
 					"date": "2025-03-12",
 					"dateText": "12.03.2025",
 					"likes": 24,
-					"liked": false
+					"liked": false,
+					"reads": 203
 				},
 				{
 					"title": "HR-дайджест. Итоги 2025",
@@ -340,7 +348,8 @@
 					"date": "2025-03-12",
 					"dateText": "12.03.2025",
 					"likes": 24,
-					"liked": false
+					"liked": false,
+					"reads": 44
 				},
 				{
 					"title": "HR-дайджест. Итоги 2025",
@@ -357,7 +366,8 @@
 					"date": "2025-03-12",
 					"dateText": "12.03.2025",
 					"likes": 24,
-					"liked": false
+					"liked": false,
+					"reads": 18
 				},
 				{
 					"title": "HR-дайджест. Итоги 2025",
@@ -374,7 +384,8 @@
 					"date": "2025-03-12",
 					"dateText": "12.03.2025",
 					"likes": 24,
-					"liked": false
+					"liked": false,
+					"reads": 95
 				},
 				{
 					"title": "HR-дайджест. Итоги 2025",
@@ -391,7 +402,8 @@
 					"date": "2025-03-12",
 					"dateText": "12.03.2025",
 					"likes": 24,
-					"liked": false
+					"liked": false,
+					"reads": 31
 				},
 				{
 					"title": "HR-дайджест. Итоги 2025",
@@ -408,7 +420,8 @@
 					"date": "2025-03-12",
 					"dateText": "12.03.2025",
 					"likes": 24,
-					"liked": false
+					"liked": false,
+					"reads": 128
 				},
 				{
 					"title": "HR-дайджест. Итоги 2025",
@@ -425,7 +438,8 @@
 					"date": "2025-03-12",
 					"dateText": "12.03.2025",
 					"likes": 24,
-					"liked": false
+					"liked": false,
+					"reads": 0
 				},
 				{
 					"title": "HR-дайджест. Итоги 2025",
@@ -442,7 +456,8 @@
 					"date": "2025-03-12",
 					"dateText": "12.03.2025",
 					"likes": 24,
-					"liked": false
+					"liked": false,
+					"reads": 57
 				}
 			],
 			"pagination": {
