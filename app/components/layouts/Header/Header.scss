@@ -397,6 +397,24 @@
 		position: relative;
 	}
 
+	// До 1024 аватар — ссылка на «Моя страница» без стрелки (меню профиля — в мобильном меню);
+	// с 1024 — кнопка с меню под аватаром. Нет ссылки в разметке — кнопка на всех ширинах, как раньше
+	.header__user--page {
+		@include up(desktop) {
+			display: none;
+		}
+
+		.header__user-arrow {
+			display: none;
+		}
+	}
+
+	.header__user--page ~ .header__user {
+		@include down(desktop) {
+			display: none;
+		}
+	}
+
 	button.header__user {
 		padding: 0;
 		font: inherit;

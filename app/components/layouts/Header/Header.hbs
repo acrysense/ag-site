@@ -7,7 +7,8 @@
 	menu — пункты [{ text, url, current, children: [{ text, url, current }] }]; пункт с подменю без url
 	(ТЗ: «О холдинге» не кликабелен) — целиком кнопка подменю,
 	user — для вошедшего: { name, initials, avatar, url, links: [{ icon, label, url }],
-	menu: [{ label, url, icon, modal } | { divider: true }] — меню под аватаром }
+	menu: [{ label, url, icon, modal } | { divider: true }] — меню под аватаром (с 1024; до 1024 аватар —
+	ссылка на url, меню профиля — в мобильном меню) }
 	(links — быстрые ссылки на десктопе: личный кабинет, учебный портал, CRM),
 	иначе кнопка входа: loginUrl, loginText («Войти в ЛК»), loginTextShort («Войти» — до 1024).
 	Перед шапкой — плашка-объявление (components/TopNotice, данные site.notice); hideNotice — без
@@ -61,6 +62,9 @@
                     {{!-- Меню под аватаром. Пункт: { label, url, icon }
                     или { divider: true }; modal — id окна, которое пункт открывает (выход) --}}
                     <div class="header__user-menu" data-user-menu>
+                        {{!-- До 1024 аватар — сразу ссылка на «Моя страница» (меню профиля — в мобильном меню),
+                        с 1024 — кнопка с меню под аватаром --}}
+                        <a class="header__user header__user--page" href="{{props.user.url}}">{{> headerUserInner user=props.user}}<span class="visually-hidden"> — моя страница</span></a>
                         <button class="header__user" type="button" aria-expanded="false" aria-controls="{{default props.id 'header'}}-user-menu" data-user-menu-toggle>
                             {{> headerUserInner user=props.user}}
                             <span class="visually-hidden">— меню профиля</span>
