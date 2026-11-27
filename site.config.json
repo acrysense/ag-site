@@ -340,6 +340,11 @@
 						"url": "#"
 					},
 					{
+						"icon": "sync",
+						"text": "Обмен с 1С",
+						"url": "#"
+					},
+					{
 						"icon": "refresh",
 						"text": "Сбросить кеш",
 						"url": "?api_nocache=1",
