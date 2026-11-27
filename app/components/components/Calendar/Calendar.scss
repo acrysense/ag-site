@@ -153,10 +153,26 @@
 			background: palette("bg-violet");
 		}
 
+		// Скруглённая плашка «Сегодня» и начала/конца — слоем под числом, а сама ячейка
+		// прямоугольная: полоса периода доходит до плашки, в углах нет белых зазубрин
+		&.is-today,
+		&.is-start,
+		&.is-end {
+			position: relative;
+			isolation: isolate;
+
+			&::before {
+				position: absolute;
+				inset: -1px;
+				z-index: -1;
+				content: "";
+				border: 1px solid palette("main-blue");
+				border-radius: $radius-inner-block;
+			}
+		}
+
 		&.is-today {
 			color: palette("blue-txt");
-			border-color: palette("main-blue");
-			border-radius: $radius-inner-block;
 		}
 
 		&.is-start,
@@ -164,9 +180,23 @@
 			@include text("m-500");
 
 			color: palette("white");
-			background: palette("main-blue");
-			border-color: palette("main-blue");
-			border-radius: $radius-inner-block;
+
+			&::before {
+				background: palette("main-blue");
+			}
+		}
+
+		// Полоса периода под скруглённой плашкой — только с той стороны, где период продолжается
+		&.is-start.is-in-range {
+			background: linear-gradient(to right, transparent 50%, palette("bg-violet") 50%) border-box;
+		}
+
+		&.is-end.is-in-range {
+			background: linear-gradient(to left, transparent 50%, palette("bg-violet") 50%) border-box;
+		}
+
+		&.is-start.is-end {
+			background: none;
 		}
 	}
 

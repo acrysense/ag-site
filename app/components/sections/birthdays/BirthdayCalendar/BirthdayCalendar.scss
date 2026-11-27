@@ -153,12 +153,12 @@
 			&.is-today {
 				background: palette("bg-violet");
 
-				// Сетка: «Сегодня» залито Main Blue, текст белый
+				// Сетка: «Сегодня» залито Main Blue, текст белый. Углы прямые, как у других залитых
+				// ячеек: у скруглённых в углах просвечивал белый фон карточки между серыми днями
 				@include up(desktop) {
 					color: palette("white");
 					background: palette("main-blue");
 					border: 1.5px solid palette("main-blue");
-					border-radius: $radius-inner-block;
 				}
 			}
 		}
