@@ -244,17 +244,18 @@ $text-styles: (
 			size: 120,
 			line-height: 120,
 		),
-	// Число в «В цифрах» 1920 (RF Rufo Regular 80, блок 80)
+	// Число в «В цифрах» 1920 (в макете RF Rufo Regular 80, блок 80; жирное — просьба заказчика:
+	// золото обычной толщины на сером терялось)
 	"stat-number": (
 			family: heading,
-			weight: 400,
+			weight: 700,
 			size: 80,
 			line-height: 80,
 		),
-	// Число в «В цифрах» 360 (RF Rufo Regular 64, блок 80)
+	// Число в «В цифрах» 360 (в макете RF Rufo Regular 64, блок 80; жирное — как на 1920)
 	"stat-number-360": (
 			family: heading,
-			weight: 400,
+			weight: 700,
 			size: 64,
 			line-height: 80,
 		),
