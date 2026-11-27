@@ -165,7 +165,8 @@
 			height: 30px;
 			overflow: hidden;
 			color: palette("white");
-			background: palette("grey");
+			// Нет фото — подарок на Main Blue (цветная заглушка, не серая пустота)
+			background: palette("main-blue");
 			border-radius: 50%;
 		}
 
@@ -199,21 +200,13 @@
 			height: 18px;
 		}
 
-		// Сегодня — аватар 40 в цветном кольце 2px, фото 30 внутри
+		// Сегодня — аватар 40 в розовом кольце 2px (у всех одного цвета), фото 30 внутри
 		&__group--today &__avatar {
 			width: 40px;
 			height: 40px;
 			background-clip: content-box;
 			border: 2px solid palette("festive-pink");
 			padding: 3px;
-		}
-
-		&__group--today &__item:nth-child(3n + 2) &__avatar {
-			border-color: palette("festive-gold");
-		}
-
-		&__group--today &__item:nth-child(3n) &__avatar {
-			border-color: palette("main-blue");
 		}
 
 		&__group--today &__photo {
