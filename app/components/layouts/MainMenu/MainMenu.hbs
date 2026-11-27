@@ -1,12 +1,37 @@
 {{!--
 	Мобильное меню по бургеру и пункту «Меню» в TabBar.
-	props: title, user { name, role, url, urlText, avatar }, logout { url, title, text },
+	props: title, user { name, role, url, urlText, avatar, settingsUrl — кнопка «Настройки» }, logout { url, title, text },
 	login { title, text, button, url } — гостю вместо профиля (user нет),
-	groups — раскрывающиеся разделы [{ label, title, icon, meta, expanded, items: [{ icon, text, url, current }] }],
-	portal { label, items: [{ icon, text, url, current }] }, join { label, items: [{ logo, text, url }] }.
+	groups — разделы CRM и «Личный кабинет» [{ label, items: [пункт] }],
+	portal { label, items: [пункт] } — те же пункты, что в меню шапки, join { label, items: [{ logo, text, url }] }.
+	Пункт: { icon, text, url, current, expanded, action, children: [{ text, url, current }] } — с children
+	строка раскрывает второй уровень (expanded — раскрыт сразу, например текущий раздел); action — действие,
+	а не раздел («Сбросить кеш»): без стрелки справа.
 	id (по умолчанию main-menu — на него ссылаются бургер и TabBar), open — открыто сразу (витрина).
 	Открывается кнопками с data-main-menu-open. Контракт — docs/contracts/main-menu.md.
 --}}
+{{#*inline "mainMenuItem"}}
+    <li>
+        {{#if children.length}}
+            <button class="main-menu__row main-menu__toggle" type="button" aria-expanded="{{#if expanded}}true{{else}}false{{/if}}" aria-controls="{{menuId}}-sub-{{scope}}-{{index}}" data-main-menu-sub>
+                {{#if icon}}{{> components/Icon/Icon name=icon class="main-menu__icon"}}{{/if}}
+                <span class="main-menu__row-text">{{text}}</span>
+                {{> components/Icon/Icon name="chevron-up" class="main-menu__row-arrow main-menu__toggle-arrow"}}
+            </button>
+            <ul class="main-menu__list main-menu__sub" id="{{menuId}}-sub-{{scope}}-{{index}}" role="list" {{#unless expanded}}hidden{{/unless}}>
+                {{#each children}}
+                    <li><a class="main-menu__row main-menu__sub-row" href="{{url}}" {{#if current}}aria-current="page"{{/if}}><span class="main-menu__row-text">{{text}}</span></a></li>
+                {{/each}}
+            </ul>
+        {{else}}
+            <a class="main-menu__row" href="{{url}}" {{#if current}}aria-current="page"{{/if}}>
+                {{#if icon}}{{> components/Icon/Icon name=icon class="main-menu__icon"}}{{/if}}
+                <span class="main-menu__row-text">{{text}}</span>
+                {{#unless action}}{{> components/Icon/Icon name="chevron-right" class="main-menu__row-arrow"}}{{/unless}}
+            </a>
+        {{/if}}
+    </li>
+{{/inline}}
 <dialog class="main-menu{{#if props.open}} main-menu--static{{/if}}" id="{{default props.id 'main-menu'}}" aria-label="{{default props.title 'Меню'}}" {{#if props.open}}open{{/if}} data-module="MainMenu" data-path="layouts">
     <div class="main-menu__header">
         <h2 class="main-menu__title">{{default props.title 'Меню'}}</h2>
@@ -25,11 +50,21 @@
                     {{#if props.user.role}}<p class="main-menu__role">{{props.user.role}}</p>{{/if}}
                     <a class="main-menu__profile-link" href="{{props.user.url}}">{{default props.user.urlText 'Моя страница'}}</a>
                 </div>
-                {{#if props.logout}}
-                    <button class="main-menu__logout" type="button" data-modal-open="{{default props.logoutId 'main-menu-logout'}}">
-                        <span class="visually-hidden">Выйти из аккаунта</span>
-                        {{> components/Icon/Icon name="exit" class="main-menu__icon"}}
-                    </button>
+                {{#if (or props.user.settingsUrl props.logout)}}
+                    <div class="main-menu__profile-actions">
+                        {{#if props.user.settingsUrl}}
+                            <a class="main-menu__settings" href="{{props.user.settingsUrl}}">
+                                <span class="visually-hidden">Настройки</span>
+                                {{> components/Icon/Icon name="settings" class="main-menu__icon"}}
+                            </a>
+                        {{/if}}
+                        {{#if props.logout}}
+                            <button class="main-menu__logout" type="button" data-modal-open="{{default props.logoutId 'main-menu-logout'}}">
+                                <span class="visually-hidden">Выйти из аккаунта</span>
+                                {{> components/Icon/Icon name="exit" class="main-menu__icon"}}
+                            </button>
+                        {{/if}}
+                    </div>
                 {{/if}}
             </div>
         {{else if props.login}}
@@ -46,42 +81,19 @@
             </div>
         {{/if}}
 
+        {{!-- CRM и «Личный кабинет»: подпись раздела и список пунктов, без сворачивания --}}
         {{#each props.groups}}
-            <p class="main-menu__label">{{label}}</p>
-            <div class="main-menu__card">
-                <button class="main-menu__group" type="button" aria-expanded="{{#if expanded}}true{{else}}false{{/if}}" aria-controls="{{default ../props.id 'main-menu'}}-group-{{@index}}" data-main-menu-group="{{default key title}}">
-                    {{> components/Icon/Icon name=icon class="main-menu__icon"}}
-                    <span class="main-menu__group-text">
-                        <span class="main-menu__group-title">{{title}}</span>
-                        {{#if meta}}<span class="main-menu__group-meta">{{meta}}</span>{{/if}}
-                    </span>
-                    {{> components/Icon/Icon name="chevron-up" class="main-menu__group-arrow"}}
-                </button>
-                <ul class="main-menu__list" id="{{default ../props.id 'main-menu'}}-group-{{@index}}" role="list" {{#unless expanded}}hidden{{/unless}}>
-                    {{#each items}}
-                        <li>
-                            <a class="main-menu__row" href="{{url}}" {{#if current}}aria-current="page"{{/if}}>
-                                {{> components/Icon/Icon name=icon class="main-menu__icon"}}
-                                <span class="main-menu__row-text">{{text}}</span>
-                                {{> components/Icon/Icon name="chevron-right" class="main-menu__row-arrow"}}
-                            </a>
-                        </li>
-                    {{/each}}
-                </ul>
-            </div>
+            <p class="main-menu__label">{{default label title}}</p>
+            <ul class="main-menu__card main-menu__list" role="list">
+                {{#each items}}{{> mainMenuItem menuId=(default ../../props.id 'main-menu') scope=(default @../index '0') index=@index}}{{/each}}
+            </ul>
         {{/each}}
 
+        {{!-- Портал — те же пункты, что в шапке; пункт с подменю раскрывает второй уровень --}}
         {{#if props.portal}}
             <p class="main-menu__label">{{props.portal.label}}</p>
-            <ul class="main-menu__tiles" role="list">
-                {{#each props.portal.items}}
-                    <li>
-                        <a class="main-menu__tile" href="{{url}}" {{#if current}}aria-current="page"{{/if}}>
-                            <span class="main-menu__tile-icon">{{> components/Icon/Icon name=icon class="main-menu__icon"}}</span>
-                            <span class="main-menu__tile-text">{{text}}</span>
-                        </a>
-                    </li>
-                {{/each}}
+            <ul class="main-menu__card main-menu__list" role="list">
+                {{#each props.portal.items}}{{> mainMenuItem menuId=(default ../props.id 'main-menu') scope="p" index=@index}}{{/each}}
             </ul>
         {{/if}}
 

@@ -7,26 +7,6 @@ const desktop = window.matchMedia('(min-width: 1024px)')
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 const COLLAPSE = { duration: 260, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
 
-const GROUPS_KEY = 'ag:main-menu-groups'
-
-const readGroups = () => {
-	try {
-		const value = JSON.parse(localStorage.getItem(GROUPS_KEY) || '{}')
-		return value && typeof value === 'object' ? value : {}
-	} catch {
-		return {}
-	}
-}
-
-const saveGroup = (key, expand) => {
-	if (!key) return
-	try {
-		localStorage.setItem(GROUPS_KEY, JSON.stringify({ ...readGroups(), [key]: expand }))
-	} catch {
-		// Хранилище недоступно — просто не запоминаем
-	}
-}
-
 export default function init(dialog) {
 	const controller = new AbortController()
 	const { signal } = controller
@@ -85,27 +65,13 @@ export default function init(dialog) {
 		cleanup()
 	}
 
-	// Свёрнутые и раскрытые группы запоминаются в браузере (data-main-menu-group — ключ группы):
-	// при следующем открытии меню, и на других страницах, группа такая же. Нет хранилища
-	// (приватный режим) — как в разметке
-	const groups = [...dialog.querySelectorAll('[data-main-menu-group]')]
-	const saved = readGroups()
-	groups.forEach((group) => {
-		const expand = saved[group.dataset.mainMenuGroup]
-		if (typeof expand !== 'boolean') return
-		group.setAttribute('aria-expanded', String(expand))
-		const list = document.getElementById(group.getAttribute('aria-controls'))
-		if (list) list.hidden = !expand
-	})
-
-	// Группа раскрывается и сворачивается по высоте (а не скачком); повторный клик во время
-	// анимации разворачивает её от текущей высоты
+	// Второй уровень (data-main-menu-sub) раскрывается и сворачивается по высоте (а не скачком);
+	// повторный клик во время анимации разворачивает его от текущей высоты
 	const running = new Map()
-	const toggleGroup = (group) => {
-		const list = document.getElementById(group.getAttribute('aria-controls'))
-		const expand = group.getAttribute('aria-expanded') !== 'true'
-		group.setAttribute('aria-expanded', String(expand))
-		saveGroup(group.dataset.mainMenuGroup, expand)
+	const toggleSub = (toggle) => {
+		const list = document.getElementById(toggle.getAttribute('aria-controls'))
+		const expand = toggle.getAttribute('aria-expanded') !== 'true'
+		toggle.setAttribute('aria-expanded', String(expand))
 		if (!list) return
 		const from = list.hidden ? 0 : list.getBoundingClientRect().height
 		running.get(list)?.cancel()
@@ -155,8 +121,8 @@ export default function init(dialog) {
 				if (!isStatic) close()
 				return
 			}
-			const group = event.target.closest('[data-main-menu-group]')
-			if (group) toggleGroup(group)
+			const toggle = event.target.closest('[data-main-menu-sub]')
+			if (toggle) toggleSub(toggle)
 		},
 		{ signal }
 	)

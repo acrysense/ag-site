@@ -51,6 +51,7 @@
 		}
 
 		&__close,
+		&__settings,
 		&__logout {
 			display: flex;
 			flex: none;
@@ -65,8 +66,16 @@
 			border-radius: 20px;
 		}
 
+		&__settings,
 		&__logout {
 			background: palette("bg-main");
+		}
+
+		// «Настройки» и «Выйти» в карточке пользователя — через 8
+		&__profile-actions {
+			display: flex;
+			flex: none;
+			gap: 8px;
 		}
 
 		&__close-icon {
@@ -210,7 +219,6 @@
 			height: 20px;
 		}
 
-		&__group,
 		&__row {
 			display: flex;
 			gap: 12px;
@@ -223,37 +231,6 @@
 			border: 0;
 		}
 
-		&__group {
-			padding-block: 10px;
-			border-bottom: 1px solid palette("form-border");
-
-			&[aria-expanded="false"] {
-				border-bottom-color: transparent;
-			}
-		}
-
-		&__group-text {
-			display: flex;
-			flex: 1 1 auto;
-			flex-direction: column;
-			gap: 2px;
-			min-width: 0;
-		}
-
-		&__group-title {
-			@include text("m-500-360");
-		}
-
-		&__group-meta {
-			@include text("s-400-360");
-
-			overflow: hidden;
-			color: palette("dark-grey-txt");
-			text-overflow: ellipsis;
-			white-space: nowrap;
-		}
-
-		&__group-arrow,
 		&__row-arrow {
 			flex: none;
 			width: 16px;
@@ -261,13 +238,32 @@
 			color: palette("icon-grey");
 		}
 
-		// Стрелка группы поворачивается плавно, как остальные
-		&__group-arrow {
+		// Пункт с подменю: стрелка вниз — свёрнут, вверх — раскрыт; поворачивается плавно
+		&__toggle-arrow {
 			transition: transform $transition-default;
 		}
 
-		&__group[aria-expanded="false"] &__group-arrow {
+		&__toggle[aria-expanded="false"] &__toggle-arrow {
 			transform: rotate(180deg);
+		}
+
+		// Текущая страница — фон BG.Info, Main Blue, 360/M/500
+		&__row[aria-current="page"] {
+			color: palette("main-blue");
+			background: palette("bg-info");
+
+			.main-menu__row-text {
+				@include text("m-500-360");
+			}
+		}
+
+		// Второй уровень — под пунктом через черту, текст с отступом иконки (14 + 20 + 12), без иконок
+		&__sub {
+			border-top: 1px solid palette("form-border");
+		}
+
+		&__sub-row {
+			padding-left: 46px;
 		}
 
 		&__list {
@@ -294,67 +290,21 @@
 			object-fit: contain;
 		}
 
-		// Плитки портала: 2 колонки, текущий раздел — синяя рамка и подпись
-		&__tiles {
-			display: grid;
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-			gap: 10px;
-			margin: 0;
-			padding: 0;
-			list-style: none;
-		}
-
-		&__tile {
-			display: flex;
-			flex-direction: column;
-			gap: 10px;
-			height: 100%;
-			padding: 14px;
-			color: palette("black-txt");
-			background: palette("white");
-			border: 1px solid transparent;
-			border-radius: $radius-inner-block;
-
-			&[aria-current="page"] {
-				color: palette("main-blue");
-				border-color: palette("main-blue");
-			}
-		}
-
-		&__tile-icon {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 36px;
-			height: 36px;
-			color: palette("black-txt");
-			background: palette("bg-info");
-			border-radius: 18px;
-		}
-
-		&__tile-text {
-			@include text("m-500-360");
-
-			overflow-wrap: anywhere;
-		}
 	}
 
-	// Наведение (только цвет): пункты, плитки, «Выйти» — Blue.TXT, крестик — Main Blue,
+	// Наведение (только цвет): пункты (кроме текущего), «Настройки», «Выйти» — Blue.TXT, крестик — Main Blue,
 	// «Моя страница» — Blue.Hover
-	.main-menu__row:hover,
-	.main-menu__group:hover,
-	.main-menu__tile:hover,
+	.main-menu__row:not([aria-current="page"]):hover,
+	.main-menu__settings:hover,
 	.main-menu__logout:hover,
-	.main-menu__row:focus-visible,
-	.main-menu__group:focus-visible,
-	.main-menu__tile:focus-visible,
+	.main-menu__row:not([aria-current="page"]):focus-visible,
+	.main-menu__settings:focus-visible,
 	.main-menu__logout:focus-visible {
 		color: palette("blue-txt");
 	}
 
 	.main-menu__row,
-	.main-menu__group,
-	.main-menu__tile,
+	.main-menu__settings,
 	.main-menu__logout,
 	.main-menu__close,
 	.main-menu__profile-link {
@@ -436,7 +386,7 @@
 		}
 	}
 
-	// Сворачивание группы — по высоте (MainMenu.js): на время анимации содержимое обрезается
+	// Второй уровень раскрывается по высоте (MainMenu.js): на время анимации содержимое обрезается
 	.main-menu__list.is-animating {
 		overflow: hidden;
 	}

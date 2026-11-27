@@ -752,7 +752,8 @@
 				"name": "Волкова Анна",
 				"role": "Заведующая аптекой",
 				"url": "#",
-				"urlText": "Моя страница"
+				"urlText": "Моя страница",
+				"settingsUrl": "#"
 			},
 			"logout": {
 				"url": "#",
@@ -762,10 +763,6 @@
 			"groups": [
 				{
 					"label": "CRM",
-					"title": "CRM",
-					"icon": "case",
-					"meta": "6 разделов",
-					"expanded": true,
 					"items": [
 						{
 							"icon": "home",
@@ -801,10 +798,6 @@
 				},
 				{
 					"label": "Личный кабинет",
-					"title": "Личный кабинет",
-					"icon": "profile",
-					"meta": "5 разделов",
-					"expanded": true,
 					"items": [
 						{
 							"icon": "edu",
@@ -830,6 +823,12 @@
 							"icon": "apple",
 							"text": "Конкурсы",
 							"url": "#"
+						},
+						{
+							"icon": "refresh",
+							"text": "Сбросить кеш",
+							"url": "?api_nocache=1",
+							"action": true
 						}
 					]
 				}
@@ -844,24 +843,51 @@
 						"current": true
 					},
 					{
-						"icon": "news",
-						"text": "Новости",
-						"url": "#"
+						"icon": "building",
+						"text": "О холдинге",
+						"children": [
+							{
+								"text": "Структура",
+								"url": "#"
+							},
+							{
+								"text": "Справочник",
+								"url": "#"
+							}
+						]
 					},
 					{
-						"icon": "directory",
-						"text": "Справочник сотрудников",
+						"icon": "news",
+						"text": "Новости",
+						"children": [
+							{
+								"text": "Новости холдинга",
+								"url": "#"
+							},
+							{
+								"text": "HR-дайджест",
+								"url": "#"
+							}
+						]
+					},
+					{
+						"icon": "case",
+						"text": "Карьера",
 						"url": "#"
 					},
 					{
 						"icon": "wiki",
 						"text": "База знаний",
-						"url": "#"
-					},
-					{
-						"icon": "case",
-						"text": "Вакансии",
-						"url": "#"
+						"children": [
+							{
+								"text": "Учебный портал",
+								"url": "#"
+							},
+							{
+								"text": "Нормативные документы",
+								"url": "#"
+							}
+						]
 					},
 					{
 						"icon": "gallery",
@@ -904,13 +930,14 @@
 			"logoutId": "story-menu-logout",
 			"open": true
 		},
-		"mainMenuCollapsed": {
+		"mainMenuSubOpen": {
 			"title": "Меню",
 			"user": {
 				"name": "Волкова Анна",
 				"role": "Заведующая аптекой",
 				"url": "#",
-				"urlText": "Моя страница"
+				"urlText": "Моя страница",
+				"settingsUrl": "#"
 			},
 			"logout": {
 				"url": "#",
@@ -920,10 +947,6 @@
 			"groups": [
 				{
 					"label": "CRM",
-					"title": "CRM",
-					"icon": "case",
-					"meta": "6 разделов",
-					"expanded": false,
 					"items": [
 						{
 							"icon": "home",
@@ -959,10 +982,6 @@
 				},
 				{
 					"label": "Личный кабинет",
-					"title": "Личный кабинет",
-					"icon": "profile",
-					"meta": "5 разделов",
-					"expanded": false,
 					"items": [
 						{
 							"icon": "edu",
@@ -988,6 +1007,12 @@
 							"icon": "apple",
 							"text": "Конкурсы",
 							"url": "#"
+						},
+						{
+							"icon": "refresh",
+							"text": "Сбросить кеш",
+							"url": "?api_nocache=1",
+							"action": true
 						}
 					]
 				}
@@ -1002,24 +1027,52 @@
 						"current": true
 					},
 					{
-						"icon": "news",
-						"text": "Новости",
-						"url": "#"
+						"icon": "building",
+						"text": "О холдинге",
+						"children": [
+							{
+								"text": "Структура",
+								"url": "#"
+							},
+							{
+								"text": "Справочник",
+								"url": "#"
+							}
+						]
 					},
 					{
-						"icon": "directory",
-						"text": "Справочник сотрудников",
+						"icon": "news",
+						"text": "Новости",
+						"children": [
+							{
+								"text": "Новости холдинга",
+								"url": "#"
+							},
+							{
+								"text": "HR-дайджест",
+								"url": "#"
+							}
+						],
+						"expanded": true
+					},
+					{
+						"icon": "case",
+						"text": "Карьера",
 						"url": "#"
 					},
 					{
 						"icon": "wiki",
 						"text": "База знаний",
-						"url": "#"
-					},
-					{
-						"icon": "case",
-						"text": "Вакансии",
-						"url": "#"
+						"children": [
+							{
+								"text": "Учебный портал",
+								"url": "#"
+							},
+							{
+								"text": "Нормативные документы",
+								"url": "#"
+							}
+						]
 					},
 					{
 						"icon": "gallery",
@@ -1226,7 +1279,8 @@
 				"name": "Волкова Анна",
 				"role": "Заведующая аптекой",
 				"url": "#",
-				"urlText": "Моя страница"
+				"urlText": "Моя страница",
+				"settingsUrl": "#"
 			},
 			"logout": {
 				"url": "#",
@@ -1236,10 +1290,6 @@
 			"groups": [
 				{
 					"label": "Личный кабинет",
-					"title": "Личный кабинет",
-					"icon": "profile",
-					"meta": "5 разделов",
-					"expanded": true,
 					"items": [
 						{
 							"icon": "edu",
@@ -1279,24 +1329,51 @@
 						"current": true
 					},
 					{
-						"icon": "news",
-						"text": "Новости",
-						"url": "#"
+						"icon": "building",
+						"text": "О холдинге",
+						"children": [
+							{
+								"text": "Структура",
+								"url": "#"
+							},
+							{
+								"text": "Справочник",
+								"url": "#"
+							}
+						]
 					},
 					{
-						"icon": "directory",
-						"text": "Справочник сотрудников",
+						"icon": "news",
+						"text": "Новости",
+						"children": [
+							{
+								"text": "Новости холдинга",
+								"url": "#"
+							},
+							{
+								"text": "HR-дайджест",
+								"url": "#"
+							}
+						]
+					},
+					{
+						"icon": "case",
+						"text": "Карьера",
 						"url": "#"
 					},
 					{
 						"icon": "wiki",
 						"text": "База знаний",
-						"url": "#"
-					},
-					{
-						"icon": "case",
-						"text": "Вакансии",
-						"url": "#"
+						"children": [
+							{
+								"text": "Учебный портал",
+								"url": "#"
+							},
+							{
+								"text": "Нормативные документы",
+								"url": "#"
+							}
+						]
 					},
 					{
 						"icon": "gallery",
