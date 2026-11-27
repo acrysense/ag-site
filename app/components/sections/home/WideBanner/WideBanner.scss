@@ -42,6 +42,12 @@
 			}
 		}
 
+		// Хоть у одного слайда нет мобильной картинки (в <picture> нет <source>) — на мобильном
+		// все слайды в пропорции десктопа: десктопная картинка целиком, без обрезки
+		&:has(.wide-banner__picture > .wide-banner__image:first-child) .wide-banner__slide {
+			aspect-ratio: 1600 / 340;
+		}
+
 		&__link,
 		&__picture {
 			display: block;

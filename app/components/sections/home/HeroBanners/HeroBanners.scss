@@ -66,6 +66,12 @@ $promo-column: calc((100% - 66.4px) / 3);
 			}
 		}
 
+		// Хоть у одного слайда нет мобильной картинки (в <picture> нет <source>) — на мобильном
+		// все слайды в пропорции десктопа: десктопная картинка целиком, без обрезки
+		&__slider:has(.hero__picture > .hero__image:first-child) .hero__slide {
+			aspect-ratio: $banner-ratio;
+		}
+
 		&__slide-link,
 		&__picture {
 			display: block;

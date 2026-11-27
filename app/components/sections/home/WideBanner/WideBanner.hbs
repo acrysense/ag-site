@@ -13,7 +13,7 @@
                 <div class="carousel__slide wide-banner__slide"{{#unless (eq ../props.slides.length 1)}} role="group" aria-roledescription="слайд" aria-label="{{add @index 1}} из {{../props.slides.length}}"{{/unless}}>
                     {{#if url}}<a class="wide-banner__link" href="{{url}}">{{/if}}
                     <picture class="wide-banner__picture">
-                        {{#if image.desktop}}<source media="(min-width: 768px)" srcset="{{image.desktop}}" />{{/if}}
+                        {{#if (and image.mobile image.desktop)}}<source media="(min-width: 768px)" srcset="{{image.desktop}}" />{{/if}}
                         <img class="wide-banner__image" src="{{default image.mobile image.desktop}}" alt="{{alt}}" loading="lazy" decoding="async" />
                     </picture>
                     {{#if url}}</a>{{/if}}
