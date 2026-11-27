@@ -296,12 +296,7 @@
 		},
 		"groups": [
 			{
-				"key": "crm",
 				"label": "CRM",
-				"title": "CRM",
-				"icon": "case",
-				"meta": "6 разделов",
-				"expanded": true,
 				"items": [
 					{
 						"icon": "home",
@@ -336,12 +331,7 @@
 				]
 			},
 			{
-				"key": "cabinet",
 				"label": "Личный кабинет",
-				"title": "Личный кабинет",
-				"icon": "profile",
-				"meta": "5 разделов",
-				"expanded": true,
 				"items": [
 					{
 						"icon": "edu",
@@ -381,24 +371,51 @@
 					"current": true
 				},
 				{
-					"icon": "news",
-					"text": "Новости",
-					"url": "#"
+					"icon": "directory",
+					"text": "О холдинге",
+					"children": [
+						{
+							"text": "Структура",
+							"url": "#"
+						},
+						{
+							"text": "Справочник",
+							"url": "#"
+						}
+					]
 				},
 				{
-					"icon": "directory",
-					"text": "Справочник сотрудников",
+					"icon": "news",
+					"text": "Новости",
+					"children": [
+						{
+							"text": "Новости холдинга",
+							"url": "#"
+						},
+						{
+							"text": "HR-дайджест",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"icon": "case",
+					"text": "Карьера",
 					"url": "#"
 				},
 				{
 					"icon": "wiki",
 					"text": "База знаний",
-					"url": "#"
-				},
-				{
-					"icon": "case",
-					"text": "Вакансии",
-					"url": "#"
+					"children": [
+						{
+							"text": "Учебный портал",
+							"url": "#"
+						},
+						{
+							"text": "Нормативные документы",
+							"url": "#"
+						}
+					]
 				},
 				{
 					"icon": "gallery",
@@ -450,24 +467,51 @@
 					"current": true
 				},
 				{
-					"icon": "news",
-					"text": "Новости",
-					"url": "#"
+					"icon": "directory",
+					"text": "О холдинге",
+					"children": [
+						{
+							"text": "Структура",
+							"url": "#"
+						},
+						{
+							"text": "Справочник",
+							"url": "#"
+						}
+					]
 				},
 				{
-					"icon": "directory",
-					"text": "Справочник сотрудников",
+					"icon": "news",
+					"text": "Новости",
+					"children": [
+						{
+							"text": "Новости холдинга",
+							"url": "#"
+						},
+						{
+							"text": "HR-дайджест",
+							"url": "#"
+						}
+					]
+				},
+				{
+					"icon": "case",
+					"text": "Карьера",
 					"url": "#"
 				},
 				{
 					"icon": "wiki",
 					"text": "База знаний",
-					"url": "#"
-				},
-				{
-					"icon": "case",
-					"text": "Вакансии",
-					"url": "#"
+					"children": [
+						{
+							"text": "Учебный портал",
+							"url": "#"
+						},
+						{
+							"text": "Нормативные документы",
+							"url": "#"
+						}
+					]
 				},
 				{
 					"icon": "gallery",

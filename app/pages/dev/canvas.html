@@ -123,12 +123,12 @@
 				{{#> state label="Загрузка" note="не применимо: подвал приходит с сервера вместе со страницей"}}{{/state}}
 			{{/story}}
 
-			{{#> story id="main-menu" widths="360 768" group="Каркас" title="Мобильное меню" how='На весь экран. Открывается бургером в шапке и пунктом «Меню» в нижней панели; поверх всего, кроме нижней панели. Кнопка выхода открывает шторку.' figma='360.MainMenu v2 (4558:842)' backend='app/components/layouts/MainMenu/ · docs/contracts/main-menu.md — данные site.mainMenu, пункты по доступу'}}
+			{{#> story id="main-menu" widths="360 768" group="Каркас" title="Мобильное меню" how='На весь экран. Открывается бургером в шапке и пунктом «Меню» в нижней панели; поверх всего, кроме нижней панели. Кнопка выхода открывает шторку.' figma='360.MainMenu v3 (8852:1781)' backend='app/components/layouts/MainMenu/ · docs/contracts/main-menu.md — данные site.mainMenu, пункты по доступу'}}
 				{{#> state label="Открыто" bg="page"}}
 					{{> layouts/MainMenu/MainMenu props=data.mainMenuOpen}}
 				{{/state}}
-				{{#> state label="Разделы свёрнуты" bg="page"}}
-					{{> layouts/MainMenu/MainMenu props=data.mainMenuCollapsed}}
+				{{#> state label="Новости раскрыты" bg="page"}}
+					{{> layouts/MainMenu/MainMenu props=data.mainMenuSubOpen}}
 				{{/state}}
 				{{#> state label="Без доступа к CRM" bg="page"}}
 					{{> layouts/MainMenu/MainMenu props=data.mainMenuNoCrm}}
