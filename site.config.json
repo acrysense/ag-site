@@ -371,7 +371,7 @@
 					"current": true
 				},
 				{
-					"icon": "directory",
+					"icon": "building",
 					"text": "О холдинге",
 					"children": [
 						{
@@ -467,7 +467,7 @@
 					"current": true
 				},
 				{
-					"icon": "directory",
+					"icon": "building",
 					"text": "О холдинге",
 					"children": [
 						{
