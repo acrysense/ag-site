@@ -23,7 +23,7 @@
                 {{> components/Icon/Icon name="tick" class="btn__icon news-article__share-icon news-article__share-icon--copied"}}
             </button>
             {{#if props.comments}}
-                {{> components/Button/Button props=(obj href=(default props.comments.anchor '#comments') icon="comment" hiddenText="Комментарии: " text=props.comments.count variant="light" size="s")}}
+                {{> components/Button/Button props=(obj href=(default props.comments.anchor '#comments') icon="comment" hiddenText="Комментарии: " text=(or props.comments.count "0") variant="light" size="s")}}
             {{/if}}
             {{#if props.like}}{{> components/LikeButton/LikeButton props=props.like}}{{/if}}
         </div>

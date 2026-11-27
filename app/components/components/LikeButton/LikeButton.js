@@ -14,8 +14,12 @@ export default function init(root) {
 	const render = (liked, value) => {
 		root.setAttribute('aria-pressed', String(liked))
 		count.textContent = String(value)
-		count.hidden = value <= 0
+		count.hidden = false
 	}
+
+	// Число видно всегда, и 0 — как у комментариев. Старая разметка прячет 0 атрибутом hidden
+	count.textContent = String(Number(count.textContent) || 0)
+	count.hidden = false
 
 	const onClick = async () => {
 		if (busy) return

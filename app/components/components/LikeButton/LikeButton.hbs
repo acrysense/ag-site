@@ -1,6 +1,7 @@
 {{!--
 	Отметка «Нравится» (кнопка light + s с иконкой like / like-filled).
 	props: count, liked, url — адрес POST для бэка (контракт: docs/contracts/news-feed.md), class.
+	Число видно всегда, и 0 — как у комментариев.
 	Без url отметка переключается только на странице (витрина, статичная вёрстка).
 --}}
 <button
@@ -10,4 +11,4 @@
     data-module="LikeButton"
     data-path="components"
     {{#if props.url}}data-like-url="{{props.url}}"{{/if}}
->{{> components/Icon/Icon name="like" class="btn__icon like-button__icon like-button__icon--off"}}{{> components/Icon/Icon name="like-filled" class="btn__icon like-button__icon like-button__icon--on"}}<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count {{#unless props.count}}hidden{{/unless}}>{{props.count}}</span></button>
+>{{> components/Icon/Icon name="like" class="btn__icon like-button__icon like-button__icon--off"}}{{> components/Icon/Icon name="like-filled" class="btn__icon like-button__icon like-button__icon--on"}}<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>{{#if props.count}}{{props.count}}{{else}}0{{/if}}</span></button>

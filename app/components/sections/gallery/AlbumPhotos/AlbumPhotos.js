@@ -39,7 +39,7 @@ export default function init(root) {
 			const count = button.querySelector('[data-like-count]')
 			if (count) {
 				count.textContent = String(likes)
-				count.hidden = likes <= 0
+				count.hidden = false
 			}
 		},
 	})
@@ -85,7 +85,7 @@ export default function init(root) {
 			else delete like.dataset.likeUrl
 			const count = like.querySelector('[data-like-count]')
 			count.textContent = String(photo.likes || 0)
-			count.hidden = !photo.likes
+			count.hidden = false
 		}
 		const download = item.querySelector('.album-photo__download')
 		if (download) {
