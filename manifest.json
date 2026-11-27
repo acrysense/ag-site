@@ -9,12 +9,12 @@
     "file": "assets/js/announce-D3OkgBby.js",
     "name": "announce"
   },
-  "_app-BURGv5Fb.css": {
-    "file": "assets/css/app-BURGv5Fb.css",
-    "src": "_app-BURGv5Fb.css"
+  "_app-Dws7Q3XG.css": {
+    "file": "assets/css/app-Dws7Q3XG.css",
+    "src": "_app-Dws7Q3XG.css"
   },
-  "_app-BeoCCR7c.js": {
-    "file": "assets/js/app-BeoCCR7c.js",
+  "_app-j-9BK7D8.js": {
+    "file": "assets/js/app-j-9BK7D8.js",
     "name": "app",
     "imports": [
       "_announce-D3OkgBby.js",
@@ -62,7 +62,7 @@
       "components/sections/shared/Comments/Comments.js"
     ],
     "css": [
-      "assets/css/app-BURGv5Fb.css"
+      "assets/css/app-Dws7Q3XG.css"
     ],
     "assets": [
       "assets/images/auth-ag-m2GDsMwR.svg"
@@ -120,11 +120,11 @@
     "src": "assets/images/decor/auth-ag.svg"
   },
   "assets/images/logotype-desktop.svg": {
-    "file": "assets/images/logotype-desktop-BIC32Kew.svg",
+    "file": "assets/images/logotype-desktop-N0t1kPYc.svg",
     "src": "assets/images/logotype-desktop.svg"
   },
   "assets/images/logotype-mobile.svg": {
-    "file": "assets/images/logotype-mobile-CBQ8SUot.svg",
+    "file": "assets/images/logotype-mobile-COgH8rdA.svg",
     "src": "assets/images/logotype-mobile.svg"
   },
   "assets/images/logotype.svg": {
@@ -162,12 +162,12 @@
     ]
   },
   "components/components/CopyLink/CopyLink.js": {
-    "file": "assets/js/CopyLink-Duz4nhup.js",
+    "file": "assets/js/CopyLink-BPBD4qYj.js",
     "name": "CopyLink",
     "src": "components/components/CopyLink/CopyLink.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-BeoCCR7c.js"
+      "_app-j-9BK7D8.js"
     ]
   },
   "components/components/DateRange/DateRange.js": {
@@ -228,7 +228,7 @@
     "isDynamicEntry": true
   },
   "components/components/PhotoStrip/PhotoStrip.js": {
-    "file": "assets/js/PhotoStrip-BPMSvJDV.js",
+    "file": "assets/js/PhotoStrip-JERtA_ZU.js",
     "name": "PhotoStrip",
     "src": "components/components/PhotoStrip/PhotoStrip.js",
     "isDynamicEntry": true,
@@ -237,12 +237,12 @@
     ]
   },
   "components/components/PhotoViewer/PhotoViewer.js": {
-    "file": "assets/js/PhotoViewer-DOoiircy.js",
+    "file": "assets/js/PhotoViewer-rDMWjo2j.js",
     "name": "PhotoViewer",
     "src": "components/components/PhotoViewer/PhotoViewer.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-BeoCCR7c.js",
+      "_app-j-9BK7D8.js",
       "_icon-NLq4soTO.js",
       "_scroll-lock-D4dlW757.js"
     ],
@@ -284,12 +284,12 @@
     "isDynamicEntry": true
   },
   "components/components/Toast/Toast.js": {
-    "file": "assets/js/Toast-DTC8P9NA.js",
+    "file": "assets/js/Toast-BjOoQUMc.js",
     "name": "Toast",
     "src": "components/components/Toast/Toast.js",
     "isDynamicEntry": true,
     "imports": [
-      "_app-BeoCCR7c.js"
+      "_app-j-9BK7D8.js"
     ]
   },
   "components/components/TopNotice/TopNotice.js": {
@@ -372,7 +372,7 @@
     ]
   },
   "components/sections/gallery/AlbumPhotos/AlbumPhotos.js": {
-    "file": "assets/js/AlbumPhotos-CeNr8FIz.js",
+    "file": "assets/js/AlbumPhotos-tSIlCVSW.js",
     "name": "AlbumPhotos",
     "src": "components/sections/gallery/AlbumPhotos/AlbumPhotos.js",
     "isDynamicEntry": true,
@@ -399,7 +399,7 @@
     "isDynamicEntry": true
   },
   "components/sections/news/JournalIssue/JournalIssue.js": {
-    "file": "assets/js/JournalIssue-CKmFPdE8.js",
+    "file": "assets/js/JournalIssue-vrtxMAKW.js",
     "name": "JournalIssue",
     "src": "components/sections/news/JournalIssue/JournalIssue.js",
     "isDynamicEntry": true,
@@ -455,20 +455,20 @@
     ]
   },
   "pages/dev/canvas.html": {
-    "file": "assets/js/dev-canvas-DpobUkfJ.js",
+    "file": "assets/js/dev-canvas-CAVQcaYW.js",
     "name": "dev-canvas",
     "src": "pages/dev/canvas.html",
     "isEntry": true,
     "imports": [
       "_pages-nav-tMX_YTRV.js",
-      "_app-BeoCCR7c.js"
+      "_app-j-9BK7D8.js"
     ],
     "css": [
-      "assets/css/dev-canvas-BOKDw_8B.css"
+      "assets/css/dev-canvas-hga8Nn3g.css"
     ],
     "assets": [
-      "assets/images/logotype-desktop-BIC32Kew.svg",
-      "assets/images/logotype-mobile-CBQ8SUot.svg",
+      "assets/images/logotype-desktop-N0t1kPYc.svg",
+      "assets/images/logotype-mobile-COgH8rdA.svg",
       "assets/images/banner-desktop-C-3y8UUt.webp",
       "assets/images/banner-mobile-CmRGagw6.webp",
       "assets/images/promo-1-desktop-Cn0B2Wbm.webp",
