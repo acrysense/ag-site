@@ -25,7 +25,7 @@
 | Карточки | `.news-list__item` | поля — как на главной (docs/contracts/news-feed.md) |
 | Категории | `a.news-filters__link` | текущая — `aria-current="page"` |
 | Годы | `a.news-filters__chip`; до 1024 — `SortMenu` «Год» (`.news-list__year`) | текущий — `aria-current="true"`; в поле выводится текст текущего года, поэтому один год всегда отмечен (если нужен вариант «Все годы» — отдельным пунктом) |
-| «Все новости» | первый пункт категорий | обычная ссылка на раздел; на «все новости» — `aria-current` у неё |
+| «Все новости» | последний пункт категорий, под остальными | обычная ссылка на раздел; на «все новости» — `aria-current` у неё |
 | Страницы | `components/Pagination` | `prev`, `next`, `pages[{ number, url, current, far, gap }]`, `total`; «Страница: N» до 768 берётся из `current` |
 | Баннер | `sections/shared/SideBanner` | картинка 350×800 (2x — 700×1600), `alt` обязателен, ссылка |
 
