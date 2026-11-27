@@ -336,13 +336,22 @@
 			height: 40px;
 			overflow: hidden;
 			color: palette("white");
-			background: palette("grey");
+			// Нет фото — подарок на Main Blue, как в блоке «День рождения» (цветная заглушка, не серая)
+			background: palette("main-blue");
 			border-radius: 50%;
 
 			@include up(desktop) {
 				flex: none;
 				width: 20px;
 				height: 20px;
+			}
+		}
+
+		// В сетке «Сегодня» залито синим — заглушка наоборот: синий подарок на белом
+		.is-today &__avatar {
+			@include up(desktop) {
+				color: palette("main-blue");
+				background: palette("white");
 			}
 		}
 
