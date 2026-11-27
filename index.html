@@ -54,9 +54,9 @@
 		<script type="module" crossorigin src="/ag-site/assets/js/pages-nav-tMX_YTRV.js"></script>
 		<script type="module" crossorigin src="/ag-site/assets/js/announce-D3OkgBby.js"></script>
 		<script type="module" crossorigin src="/ag-site/assets/js/icon-NLq4soTO.js"></script>
-		<script type="module" crossorigin src="/ag-site/assets/js/app-D5VJ3Jw8.js"></script>
+		<script type="module" crossorigin src="/ag-site/assets/js/app-BeoCCR7c.js"></script>
 		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/pages-nav--aTdp9SH.css" />
-		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-CrKUQG9u.css" />
+		<link rel="stylesheet" crossorigin href="/ag-site/assets/css/app-BURGv5Fb.css" />
 	</head>
 	<body>
 		<div class="wrapper">
@@ -766,24 +766,8 @@
 								<li><a class="menu__sublink" href="#">HR-дайджест</a></li>
 							</ul>
 						</li>
-						<li class="menu__item" data-submenu>
+						<li class="menu__item">
 							<a class="menu__link" href="#">Карьера</a>
-							<button
-								class="menu__toggle"
-								type="button"
-								aria-expanded="false"
-								aria-controls="header-submenu-3"
-								data-submenu-toggle
-							>
-								<span class="visually-hidden">Подменю «Карьера»</span>
-								<svg class="icon menu__arrow" aria-hidden="true" focusable="false">
-									<use href="/ag-site/assets/icons/sprite.svg#icon-arrow-down-small"></use>
-								</svg>
-							</button>
-							<ul class="menu__submenu" id="header-submenu-3" role="list" hidden>
-								<li><a class="menu__sublink" href="#">Вакансии</a></li>
-								<li><a class="menu__sublink" href="#">Карьерный шанс</a></li>
-							</ul>
 						</li>
 						<li class="menu__item" data-submenu>
 							<a class="menu__link" href="#">База знаний</a>
@@ -1496,7 +1480,7 @@
 													<svg class="icon btn__icon like-button__icon like-button__icon--on" aria-hidden="true" focusable="false">
 														<use href="/ag-site/assets/icons/sprite.svg#icon-like-filled"></use>
 													</svg>
-													<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count hidden>0</span>
+													<span class="visually-hidden">Нравится, </span><span class="btn__text" data-like-count>0</span>
 												</button>
 											</div>
 										</div>
@@ -2234,7 +2218,7 @@
 					</div>
 
 					<div class="footer__row footer__row--legal">
-						<p class="footer__copyright">© 2014-2026 «Аптека групп». Все права защищены.</p>
+						<p class="footer__copyright">© 2026 «Аптека групп». Все права защищены.</p>
 						<ul class="footer__legal" role="list">
 							<li><a class="footer__legal-link" href="#">Обработка cookie-файлов</a></li>
 							<li><button class="footer__legal-link" type="button" data-cookie-settings>Настройки cookie</button></li>
@@ -2274,65 +2258,125 @@
 				</div>
 
 				<p class="main-menu__label">Портал</p>
-				<ul class="main-menu__tiles" role="list">
+				<ul class="main-menu__card main-menu__list" role="list">
 					<li>
-						<a class="main-menu__tile" href="/ag-site/" aria-current="page">
-							<span class="main-menu__tile-icon"
-								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
-									<use href="/ag-site/assets/icons/sprite.svg#icon-home"></use>
-								</svg>
-							</span>
-							<span class="main-menu__tile-text">Главная</span>
+						<a class="main-menu__row" href="/ag-site/" aria-current="page">
+							<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+								<use href="/ag-site/assets/icons/sprite.svg#icon-home"></use>
+							</svg>
+
+							<span class="main-menu__row-text">Главная</span>
+							<svg class="icon main-menu__row-arrow" aria-hidden="true" focusable="false">
+								<use href="/ag-site/assets/icons/sprite.svg#icon-chevron-right"></use>
+							</svg>
 						</a>
 					</li>
 					<li>
-						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon"
-								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
-									<use href="/ag-site/assets/icons/sprite.svg#icon-news"></use>
-								</svg>
-							</span>
-							<span class="main-menu__tile-text">Новости</span>
+						<button
+							class="main-menu__row main-menu__toggle"
+							type="button"
+							aria-expanded="false"
+							aria-controls="main-menu-sub-p-1"
+							data-main-menu-sub
+						>
+							<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+								<use href="/ag-site/assets/icons/sprite.svg#icon-building"></use>
+							</svg>
+
+							<span class="main-menu__row-text">О холдинге</span>
+							<svg class="icon main-menu__row-arrow main-menu__toggle-arrow" aria-hidden="true" focusable="false">
+								<use href="/ag-site/assets/icons/sprite.svg#icon-chevron-up"></use>
+							</svg>
+						</button>
+						<ul class="main-menu__list main-menu__sub" id="main-menu-sub-p-1" role="list" hidden>
+							<li>
+								<a class="main-menu__row main-menu__sub-row" href="#"><span class="main-menu__row-text">Структура</span></a>
+							</li>
+							<li>
+								<a class="main-menu__row main-menu__sub-row" href="#"><span class="main-menu__row-text">Справочник</span></a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<button
+							class="main-menu__row main-menu__toggle"
+							type="button"
+							aria-expanded="false"
+							aria-controls="main-menu-sub-p-2"
+							data-main-menu-sub
+						>
+							<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+								<use href="/ag-site/assets/icons/sprite.svg#icon-news"></use>
+							</svg>
+
+							<span class="main-menu__row-text">Новости</span>
+							<svg class="icon main-menu__row-arrow main-menu__toggle-arrow" aria-hidden="true" focusable="false">
+								<use href="/ag-site/assets/icons/sprite.svg#icon-chevron-up"></use>
+							</svg>
+						</button>
+						<ul class="main-menu__list main-menu__sub" id="main-menu-sub-p-2" role="list" hidden>
+							<li>
+								<a class="main-menu__row main-menu__sub-row" href="#"
+									><span class="main-menu__row-text">Новости холдинга</span></a
+								>
+							</li>
+							<li>
+								<a class="main-menu__row main-menu__sub-row" href="#"><span class="main-menu__row-text">HR-дайджест</span></a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a class="main-menu__row" href="#">
+							<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+								<use href="/ag-site/assets/icons/sprite.svg#icon-case"></use>
+							</svg>
+
+							<span class="main-menu__row-text">Карьера</span>
+							<svg class="icon main-menu__row-arrow" aria-hidden="true" focusable="false">
+								<use href="/ag-site/assets/icons/sprite.svg#icon-chevron-right"></use>
+							</svg>
 						</a>
 					</li>
 					<li>
-						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon"
-								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
-									<use href="/ag-site/assets/icons/sprite.svg#icon-directory"></use>
-								</svg>
-							</span>
-							<span class="main-menu__tile-text">Справочник сотрудников</span>
-						</a>
+						<button
+							class="main-menu__row main-menu__toggle"
+							type="button"
+							aria-expanded="false"
+							aria-controls="main-menu-sub-p-4"
+							data-main-menu-sub
+						>
+							<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+								<use href="/ag-site/assets/icons/sprite.svg#icon-wiki"></use>
+							</svg>
+
+							<span class="main-menu__row-text">База знаний</span>
+							<svg class="icon main-menu__row-arrow main-menu__toggle-arrow" aria-hidden="true" focusable="false">
+								<use href="/ag-site/assets/icons/sprite.svg#icon-chevron-up"></use>
+							</svg>
+						</button>
+						<ul class="main-menu__list main-menu__sub" id="main-menu-sub-p-4" role="list" hidden>
+							<li>
+								<a class="main-menu__row main-menu__sub-row" href="#"
+									><span class="main-menu__row-text">Учебный портал</span></a
+								>
+							</li>
+							<li>
+								<a class="main-menu__row main-menu__sub-row" href="#"
+									><span class="main-menu__row-text">Нормативные документы</span></a
+								>
+							</li>
+						</ul>
 					</li>
 					<li>
-						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon"
-								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
-									<use href="/ag-site/assets/icons/sprite.svg#icon-wiki"></use>
-								</svg>
-							</span>
-							<span class="main-menu__tile-text">База знаний</span>
-						</a>
-					</li>
-					<li>
-						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon"
-								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
-									<use href="/ag-site/assets/icons/sprite.svg#icon-case"></use>
-								</svg>
-							</span>
-							<span class="main-menu__tile-text">Вакансии</span>
-						</a>
-					</li>
-					<li>
-						<a class="main-menu__tile" href="#">
-							<span class="main-menu__tile-icon"
-								><svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
-									<use href="/ag-site/assets/icons/sprite.svg#icon-gallery"></use>
-								</svg>
-							</span>
-							<span class="main-menu__tile-text">Галерея</span>
+						<a class="main-menu__row" href="#">
+							<svg class="icon main-menu__icon" aria-hidden="true" focusable="false">
+								<use href="/ag-site/assets/icons/sprite.svg#icon-gallery"></use>
+							</svg>
+
+							<span class="main-menu__row-text">Галерея</span>
+							<svg class="icon main-menu__row-arrow" aria-hidden="true" focusable="false">
+								<use href="/ag-site/assets/icons/sprite.svg#icon-chevron-right"></use>
+							</svg>
 						</a>
 					</li>
 				</ul>
