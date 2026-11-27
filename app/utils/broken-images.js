@@ -14,10 +14,13 @@ export function watchBrokenImages() {
 	}
 	document.addEventListener('error', onEvent, true)
 	document.addEventListener('load', onEvent, true)
-	// Загрузившиеся и упавшие до запуска скрипта
+	// Загрузившиеся и упавшие до запуска скрипта. У упавшей снимаем и is-loaded: бэк может вывести
+	// фото сразу с is-loaded (аватар в шапке), а файла на сервере нет — иначе инициалы останутся скрыты
 	document.querySelectorAll('img').forEach((img) => {
-		if (isBroken(img)) img.classList.add('is-broken')
-		else if (img.complete && img.naturalWidth) img.classList.add('is-loaded')
+		if (isBroken(img)) {
+			img.classList.add('is-broken')
+			img.classList.remove('is-loaded')
+		} else if (img.complete && img.naturalWidth) img.classList.add('is-loaded')
 	})
 	return () => {
 		document.removeEventListener('error', onEvent, true)
