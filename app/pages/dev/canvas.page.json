@@ -2436,6 +2436,52 @@
 			"label": "Баннеры партнёров",
 			"slides": []
 		},
+		"heroSlidesNoMobile": {
+			"slides": [
+				{
+					"url": "#",
+					"alt": "Uriage: уход для проблемной кожи",
+					"image": {
+						"desktop": "./img/banner-desktop.webp"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Аптечка при простуде — скидки до −23%",
+					"image": {
+						"desktop": "./img/banner-desktop.webp"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Всё для гигиены полости рта — скидки до −15%",
+					"image": {
+						"desktop": "./img/banner-desktop.webp"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Uriage: уход для проблемной кожи",
+					"image": {
+						"desktop": "./img/banner-desktop.webp"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Аптечка при простуде — скидки до −23%",
+					"image": {
+						"desktop": "./img/banner-desktop.webp"
+					}
+				},
+				{
+					"url": "#",
+					"alt": "Всё для гигиены полости рта — скидки до −15%",
+					"image": {
+						"desktop": "./img/banner-desktop.webp"
+					}
+				}
+			]
+		},
 		"heroPromosNoMobile": {
 			"slides": [
 				{

@@ -145,7 +145,7 @@ function setup(root) {
 			const count = pageLike.querySelector('[data-like-count]')
 			if (count) {
 				count.textContent = String(likes)
-				count.hidden = likes <= 0
+				count.hidden = false
 			}
 		},
 		onClose: (index) => go(index, false),

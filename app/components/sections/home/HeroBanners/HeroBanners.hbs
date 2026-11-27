@@ -22,7 +22,7 @@
                                 <video class="hero__image" src="{{video.src}}" {{#if video.poster}}poster="{{video.poster}}"{{/if}} muted loop playsinline preload="metadata" aria-label="{{alt}}" data-hero-video></video>
                             {{else}}
                                 <picture class="hero__picture">
-                                    {{#if image.desktop}}<source media="(min-width: 768px)" srcset="{{image.desktop}}" />{{/if}}
+                                    {{#if (and image.mobile image.desktop)}}<source media="(min-width: 768px)" srcset="{{image.desktop}}" />{{/if}}
                                     <img class="hero__image" src="{{default image.mobile image.desktop}}" width="1100" height="500" alt="{{alt}}" {{#if @first}}fetchpriority="high"{{else}}loading="lazy" decoding="async"{{/if}} />
                                 </picture>
                             {{/if}}
@@ -48,7 +48,7 @@
                     <li class="hero__promo-item">
                         {{#if url}}<a class="hero__promo{{#if image.mobile}} hero__promo--has-mobile{{/if}}" href="{{url}}">{{else}}<div class="hero__promo{{#if image.mobile}} hero__promo--has-mobile{{/if}}">{{/if}}
                         <picture class="hero__promo-picture">
-                            {{#if image.mobile}}<source media="(min-width: 768px)" srcset="{{image.desktop}}" />{{/if}}
+                            {{#if (and image.mobile image.desktop)}}<source media="(min-width: 768px)" srcset="{{image.desktop}}" />{{/if}}
                             <img class="hero__promo-image" src="{{default image.mobile image.desktop}}" alt="{{alt}}" decoding="async" />
                         </picture>
                         {{#if url}}</a>{{else}}</div>{{/if}}

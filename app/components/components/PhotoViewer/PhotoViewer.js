@@ -65,7 +65,6 @@ function likeButton(item) {
 	const count = el('span', 'btn__text')
 	count.dataset.likeCount = ''
 	count.textContent = String(item.likes || 0)
-	count.hidden = !item.likes
 	button.append(off, on, label, count)
 	return button
 }
