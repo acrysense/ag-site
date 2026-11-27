@@ -1,15 +1,13 @@
 @use "@/assets/styles/base/mixins" as *;
 @use "@/assets/styles/base/vars" as *;
 
-// Окно вакансии — 1040, поля 40, колонки 340 и описание через 40 |
-// черта Form.Border | 40. Слева через 24: должность H2, метки (BG.Info, скругление 14, поля
-// 6/12, S/400 Dark-grey.TXT, через 8), параметры через 14 (подпись S/400 Dark-grey.TXT, значение
-// M/400 через 2), плашка BG.Green (поля 10/14, скругление 10, S/400 Green) после отступа 8,
-// кнопка General во всю ширину. Справа: разделы через 28 — заголовок H4, пункты M/400 через 8.
-// Крестик 20 в 24 от края. 768–1023 — окно по центру, но в одну колонку (в две описанию не
-// хватает места). До 768 — на весь экран в одну колонку, части через 20: должность H1
-// 360, метки, параметры, черта BG.Main, разделы описания через 20; «Откликнуться» закреплена внизу
-// (Modal full), в шапке «Вакансия».
+// Окно вакансии — 1040, поля 40, одна колонка (по просьбе заказчика: описание во всю ширину, без
+// пустой левой колонки): должность H2, метки (BG.Info, скругление 14, поля 6/12, S/400
+// Dark-grey.TXT, через 8), параметры через 14 (подпись S/400 Dark-grey.TXT, значение M/400
+// через 2), черта BG.Main, описание — разделы через 28, заголовок H4, пункты M/400 через 8;
+// в конце плашка BG.Green (поля 10/14, скругление 10, S/400 Green) и кнопка General — шириной
+// 340, как была в левой колонке. Крестик 20 в 24 от края. До 768 — на весь экран, части через
+// 20: должность H1 360; «Откликнуться» закреплена внизу (Modal full), в шапке «Вакансия».
 @layer components {
 	.vacancy-modal__layout {
 		display: flex;
@@ -19,15 +17,7 @@
 		min-width: 0;
 
 		@include up(desktop) {
-			display: grid;
-			grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
-			grid-template-rows: auto auto 1fr;
-			grid-template-areas:
-				"head content"
-				"params content"
-				"actions content";
-			column-gap: 81px;
-			row-gap: 24px;
+			gap: 24px;
 		}
 	}
 
@@ -35,7 +25,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
-		grid-area: head;
 
 		@include up(tablet) {
 			gap: 24px;
@@ -82,7 +71,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 14px;
-		grid-area: params;
 		margin: 0;
 	}
 
@@ -111,12 +99,10 @@
 		display: flex;
 		flex-direction: column;
 		gap: 24px;
-		grid-area: actions;
 
-		// С 1024 «Откликнуться» — внизу левой колонки, вровень с концом описания
+		// С 1024 плашка и кнопка — шириной 340, как были в левой колонке
 		@include up(desktop) {
-			align-self: end;
-			margin-top: 8px;
+			max-width: 340px;
 		}
 	}
 
@@ -135,29 +121,9 @@
 
 	// Описание из редактора: разделы через 28, заголовок H4, пункты через 8, «•» вместо круга
 	.vacancy-modal__content {
-		grid-area: content;
-
-		// До 1024 (одна колонка) — под параметрами через черту BG.Main
-		@include down(desktop) {
-			padding-top: 20px;
-			border-top: 1px solid palette("bg-main");
-		}
-
-		@include up(desktop) {
-			position: relative;
-			padding-right: 24px;
-
-			// Черта Form.Border посередине промежутка 81 (40 | 1 | 40), во всю высоту окна
-			&::before {
-				position: absolute;
-				top: 0;
-				bottom: 0;
-				left: -41px;
-				width: 1px;
-				background: palette("form-border");
-				content: "";
-			}
-		}
+		// Под параметрами через черту BG.Main
+		padding-top: 20px;
+		border-top: 1px solid palette("bg-main");
 
 		> * + * {
 			margin-top: 20px;
