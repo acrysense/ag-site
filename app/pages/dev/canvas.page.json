@@ -752,7 +752,8 @@
 				"name": "Волкова Анна",
 				"role": "Заведующая аптекой",
 				"url": "#",
-				"urlText": "Моя страница"
+				"urlText": "Моя страница",
+				"settingsUrl": "#"
 			},
 			"logout": {
 				"url": "#",
@@ -822,6 +823,12 @@
 							"icon": "apple",
 							"text": "Конкурсы",
 							"url": "#"
+						},
+						{
+							"icon": "refresh",
+							"text": "Сбросить кеш",
+							"url": "?api_nocache=1",
+							"action": true
 						}
 					]
 				}
@@ -929,7 +936,8 @@
 				"name": "Волкова Анна",
 				"role": "Заведующая аптекой",
 				"url": "#",
-				"urlText": "Моя страница"
+				"urlText": "Моя страница",
+				"settingsUrl": "#"
 			},
 			"logout": {
 				"url": "#",
@@ -999,6 +1007,12 @@
 							"icon": "apple",
 							"text": "Конкурсы",
 							"url": "#"
+						},
+						{
+							"icon": "refresh",
+							"text": "Сбросить кеш",
+							"url": "?api_nocache=1",
+							"action": true
 						}
 					]
 				}
@@ -1265,7 +1279,8 @@
 				"name": "Волкова Анна",
 				"role": "Заведующая аптекой",
 				"url": "#",
-				"urlText": "Моя страница"
+				"urlText": "Моя страница",
+				"settingsUrl": "#"
 			},
 			"logout": {
 				"url": "#",

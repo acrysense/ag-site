@@ -1,11 +1,12 @@
 {{!--
 	Мобильное меню по бургеру и пункту «Меню» в TabBar.
-	props: title, user { name, role, url, urlText, avatar }, logout { url, title, text },
+	props: title, user { name, role, url, urlText, avatar, settingsUrl — кнопка «Настройки» }, logout { url, title, text },
 	login { title, text, button, url } — гостю вместо профиля (user нет),
 	groups — разделы CRM и «Личный кабинет» [{ label, items: [пункт] }],
 	portal { label, items: [пункт] } — те же пункты, что в меню шапки, join { label, items: [{ logo, text, url }] }.
-	Пункт: { icon, text, url, current, expanded, children: [{ text, url, current }] } — с children строка
-	раскрывает второй уровень (expanded — раскрыт сразу, например текущий раздел).
+	Пункт: { icon, text, url, current, expanded, action, children: [{ text, url, current }] } — с children
+	строка раскрывает второй уровень (expanded — раскрыт сразу, например текущий раздел); action — действие,
+	а не раздел («Сбросить кеш»): без стрелки справа.
 	id (по умолчанию main-menu — на него ссылаются бургер и TabBar), open — открыто сразу (витрина).
 	Открывается кнопками с data-main-menu-open. Контракт — docs/contracts/main-menu.md.
 --}}
@@ -26,7 +27,7 @@
             <a class="main-menu__row" href="{{url}}" {{#if current}}aria-current="page"{{/if}}>
                 {{#if icon}}{{> components/Icon/Icon name=icon class="main-menu__icon"}}{{/if}}
                 <span class="main-menu__row-text">{{text}}</span>
-                {{> components/Icon/Icon name="chevron-right" class="main-menu__row-arrow"}}
+                {{#unless action}}{{> components/Icon/Icon name="chevron-right" class="main-menu__row-arrow"}}{{/unless}}
             </a>
         {{/if}}
     </li>
@@ -49,11 +50,21 @@
                     {{#if props.user.role}}<p class="main-menu__role">{{props.user.role}}</p>{{/if}}
                     <a class="main-menu__profile-link" href="{{props.user.url}}">{{default props.user.urlText 'Моя страница'}}</a>
                 </div>
-                {{#if props.logout}}
-                    <button class="main-menu__logout" type="button" data-modal-open="{{default props.logoutId 'main-menu-logout'}}">
-                        <span class="visually-hidden">Выйти из аккаунта</span>
-                        {{> components/Icon/Icon name="exit" class="main-menu__icon"}}
-                    </button>
+                {{#if (or props.user.settingsUrl props.logout)}}
+                    <div class="main-menu__profile-actions">
+                        {{#if props.user.settingsUrl}}
+                            <a class="main-menu__settings" href="{{props.user.settingsUrl}}">
+                                <span class="visually-hidden">Настройки</span>
+                                {{> components/Icon/Icon name="settings" class="main-menu__icon"}}
+                            </a>
+                        {{/if}}
+                        {{#if props.logout}}
+                            <button class="main-menu__logout" type="button" data-modal-open="{{default props.logoutId 'main-menu-logout'}}">
+                                <span class="visually-hidden">Выйти из аккаунта</span>
+                                {{> components/Icon/Icon name="exit" class="main-menu__icon"}}
+                            </button>
+                        {{/if}}
+                    </div>
                 {{/if}}
             </div>
         {{else if props.login}}
