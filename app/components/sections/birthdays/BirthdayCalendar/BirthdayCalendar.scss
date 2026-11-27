@@ -142,10 +142,21 @@
 				background: palette("bg-info");
 			}
 
+			// Сетка: прошедшие дни — серым фоном (и выходные тоже), чтобы прошедшее, сегодня и
+			// будущее читались сразу (просьба заказчика: не хватало акцентов)
+			@include up(desktop) {
+				&.is-past {
+					background: palette("bg-main");
+				}
+			}
+
 			&.is-today {
 				background: palette("bg-violet");
 
+				// Сетка: «Сегодня» залито Main Blue, текст белый
 				@include up(desktop) {
+					color: palette("white");
+					background: palette("main-blue");
 					border: 1.5px solid palette("main-blue");
 					border-radius: $radius-inner-block;
 				}
@@ -169,6 +180,13 @@
 			color: palette("dark-grey-txt");
 		}
 
+		.is-today &__date,
+		.is-today &__month-short {
+			@include up(desktop) {
+				color: palette("white");
+			}
+		}
+
 		&__num {
 			@include text("m-500-360");
 
@@ -181,14 +199,14 @@
 			color: palette("icon-grey");
 		}
 
-		// Сегодня на десктопе — число в синей плашке
+		// Сегодня на десктопе — число в белой плашке на синем дне
 		.is-today &__num {
 			@include up(desktop) {
 				@include text("s-600");
 
 				padding: 2px 7px;
-				color: palette("white");
-				background: palette("main-blue");
+				color: palette("main-blue");
+				background: palette("white");
 				border-radius: 11px;
 			}
 		}
@@ -239,7 +257,7 @@
 				@include text("s-600");
 
 				padding: 0;
-				color: palette("blue-txt");
+				color: palette("white");
 				background: none;
 			}
 		}
@@ -257,12 +275,12 @@
 			}
 		}
 
-		// Прошедшие дни бледнее (0.55 на мобильном, 0.5 на десктопе)
+		// Прошедшие дни бледнее (0.55 на мобильном, на сером фоне сетки — 0.35)
 		.is-past &__people {
 			opacity: 0.55;
 
 			@include up(desktop) {
-				opacity: 0.5;
+				opacity: 0.35;
 			}
 		}
 
@@ -288,11 +306,25 @@
 			}
 		}
 
+		.is-today &__person-main {
+			@include up(desktop) {
+				color: palette("white");
+			}
+		}
+
 		// ФИО — ссылка на профиль: при наведении Blue.TXT, плавно. Без подчёркивания:
 		// оно не анимируется и выглядит как задержка
 		a.birthday-calendar__person-main:hover .birthday-calendar__name,
 		a.birthday-calendar__person-main:focus-visible .birthday-calendar__name {
 			color: palette("blue-txt");
+		}
+
+		// На синем «Сегодня» Blue.TXT не виден — имя при наведении светло-серое (BG.Grey)
+		.is-today a.birthday-calendar__person-main:hover .birthday-calendar__name,
+		.is-today a.birthday-calendar__person-main:focus-visible .birthday-calendar__name {
+			@include up(desktop) {
+				color: palette("bg-grey");
+			}
 		}
 
 		&__avatar {
