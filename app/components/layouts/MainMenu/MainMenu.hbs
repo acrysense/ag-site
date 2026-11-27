@@ -12,12 +12,12 @@
 {{#*inline "mainMenuItem"}}
     <li>
         {{#if children.length}}
-            <button class="main-menu__row main-menu__toggle" type="button" aria-expanded="{{#if expanded}}true{{else}}false{{/if}}" aria-controls="{{id}}" data-main-menu-sub>
+            <button class="main-menu__row main-menu__toggle" type="button" aria-expanded="{{#if expanded}}true{{else}}false{{/if}}" aria-controls="{{menuId}}-sub-{{scope}}-{{index}}" data-main-menu-sub>
                 {{#if icon}}{{> components/Icon/Icon name=icon class="main-menu__icon"}}{{/if}}
                 <span class="main-menu__row-text">{{text}}</span>
                 {{> components/Icon/Icon name="chevron-up" class="main-menu__row-arrow main-menu__toggle-arrow"}}
             </button>
-            <ul class="main-menu__list main-menu__sub" id="{{id}}" role="list" {{#unless expanded}}hidden{{/unless}}>
+            <ul class="main-menu__list main-menu__sub" id="{{menuId}}-sub-{{scope}}-{{index}}" role="list" {{#unless expanded}}hidden{{/unless}}>
                 {{#each children}}
                     <li><a class="main-menu__row main-menu__sub-row" href="{{url}}" {{#if current}}aria-current="page"{{/if}}><span class="main-menu__row-text">{{text}}</span></a></li>
                 {{/each}}
@@ -74,7 +74,7 @@
         {{#each props.groups}}
             <p class="main-menu__label">{{default label title}}</p>
             <ul class="main-menu__card main-menu__list" role="list">
-                {{#each items}}{{> mainMenuItem id=(concat (default ../../props.id 'main-menu') '-g' @../index '-' @index)}}{{/each}}
+                {{#each items}}{{> mainMenuItem menuId=(default ../../props.id 'main-menu') scope=(default @../index '0') index=@index}}{{/each}}
             </ul>
         {{/each}}
 
@@ -82,7 +82,7 @@
         {{#if props.portal}}
             <p class="main-menu__label">{{props.portal.label}}</p>
             <ul class="main-menu__card main-menu__list" role="list">
-                {{#each props.portal.items}}{{> mainMenuItem id=(concat (default ../props.id 'main-menu') '-p' @index)}}{{/each}}
+                {{#each props.portal.items}}{{> mainMenuItem menuId=(default ../props.id 'main-menu') scope="p" index=@index}}{{/each}}
             </ul>
         {{/if}}
 
